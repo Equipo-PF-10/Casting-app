@@ -4,7 +4,7 @@ const Landing = () => {
   return (
     <div>
           <div>
-              <Link to>
+              <Link to={'/home'}>
               </Link>
       </div>
     </div>
