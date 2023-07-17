@@ -1,4 +1,4 @@
-require("doten").config();
+require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
@@ -36,10 +36,10 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { empresa, evento, modelo, talento } = sequelize.models;
+const { Empresa, Evento, Modelo, Talento } = sequelize.models;
 
-empresa.belongsToMany(modelo, { through: "modelo/empresa" });
-modelo.belongsToMany(empresa, { through: "modelo/empresa" });
+Empresa.belongsToMany(Modelo, { through: "Modelo/Empresa" });
+Modelo.belongsToMany(Empresa, { through: "Modelo/Empresa" });
 
 module.exports = {
   ...sequelize.models,
