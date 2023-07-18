@@ -2,10 +2,10 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}}`,
   {
     logging: false,
     native: false,
@@ -36,10 +36,12 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Empresa, Evento, Modelo, Talento } = sequelize.models;
+const { Empresa, Evento, Representante, Talento } = sequelize.models;
 
-Empresa.belongsToMany(Modelo, { through: "Modelo/Empresa" });
-Modelo.belongsToMany(Empresa, { through: "Modelo/Empresa" });
+Empresa.belongsToMany(Talento, { through: "Talento/Empresa" });
+Talento.belongsToMany(Empresa, { through: "Talento/Empresa" });
+Representante.belongsToMany(Talento, { through: "Talento/Representante" });
+Talento.hasMany(Representante, { as: "Talento" });
 
 module.exports = {
   ...sequelize.models,
