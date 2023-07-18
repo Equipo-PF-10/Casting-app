@@ -6,7 +6,7 @@
 .containerImage {
     display: grid;
     background-color: #608080;
-    height: 100vh;
+    height: 100vh; 
     place-items: center;
 }
 
@@ -74,6 +74,7 @@
 .separarGoogle {
     display: grid;
     grid-template-columns: 20% 80%;
+    
 }
 
 .error {
