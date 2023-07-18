@@ -17,17 +17,12 @@ module.exports = (sequelize) => {
         unique: true,
       },
 
-      nationality: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-
       ubication: {
         type: DataTypes.STRING,
         allowNull: false,
       },
 
-      talent: {
+      manager: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -37,7 +32,6 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
     },
-
     { freezeTableName: true, timestamps: false }
   );
 };
