@@ -1,42 +1,82 @@
-.containerImg {
+.container {
   display: flex;
-  flex-direction: row;
-  background-color: whitesmoke;
-  border-radius: 20px;
-}
-.login{
-    padding: 20px;
-    margin: 20px;
-}
-.imagenLogin{
-    background-color: #608080;
-    max-width: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0px 20px 20px 0px;
-}
-.svgImagen{
-    width: 350px;
-}
-.logo{
-    color: #43655A;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: rgb(227, 227, 227)
 }
 
-.loginRegistro{
-    color: #608080;
+.containerImg {
+  display: flex;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*padding: 20px;
+  margin: 20px;*/
+  width: 500px;
+  height: 500px;
+}
+.imagenLogin {
+  background-image: radial-gradient(
+    circle,
+    #d1d1d1,
+    #c3cbdd,
+    #a5cae6,
+    #76cbe5,
+    #3bccd5,
+    #1dc9c7,
+    #00c6b5,
+    #00c2a2,
+    #00bd9e,
+    #00b89a,
+    #00b496,
+    #00af92
+  );
+  /*max-width: 400px;*/
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 20px 20px 0px;
+}
+.svgImagen {
+  width: 350px;
+}
+.logo {
+  color: #324844;
+  margin-bottom: 60px;
+}
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginRegistro {
+  color: #324844;
 }
 
 /*BOTON GOOGLE*/
 .buttonGoogle {
-  max-width: 320px;
+  max-width: 300px;
   display: flex;
+  justify-content: center;
+  width: 250px;
+  height: 30px;
   padding: 0.5rem 1.4rem;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   line-height: 1.25rem;
   font-weight: 700;
   text-align: center;
-  text-transform: uppercase;
   vertical-align: middle;
   align-items: center;
   border-radius: 1.5rem;
@@ -46,10 +86,11 @@
   background-color: #fff;
   cursor: pointer;
   transition: all 0.6s ease;
+  margin-bottom: 20px;
 }
 
 .buttonGoogle svg {
-  height: 20px;
+  height: 15px;
 }
 
 .buttonGoogle:hover {
@@ -59,8 +100,9 @@
 /*BOTON ENVIAR*/
 .enviarButton {
   width: 250px;
+  height: 30px;
   appearance: none;
-  background-color: #849ba2;
+  background-color: #4B31A1;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 16px;
   box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
@@ -85,11 +127,11 @@
   white-space: nowrap;
   word-wrap: break-word;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .enviarButton:hover {
-  background-color: #f3f4f6;
+  background-color: #877aae;
   text-decoration: none;
   transition-duration: 0.1s;
 }
@@ -119,19 +161,20 @@
   display: none;
 }
 
-.buttonMantener{
-    display: flex;
-    margin-top: 5px;
+.buttonMantener {
+  display: flex;
+  margin-top: 5px;
 }
 
-.mantener{
-    color: #849BA2;
-    font-size: small;
+.mantener {
+    margin-left: 10px;
+  color: #849ba2;
+  font-size: small;
 }
 
 /*INPUTS*/
 .input {
-    width: 255px;
+  width: 255px;
   line-height: 28px;
   border: 2px solid transparent;
   border-bottom-color: #777;
@@ -152,27 +195,27 @@
 }
 
 /*PREGUNTA*/
-.pregunta{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.pregunta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.registrate{
-    text-decoration: none;
-    margin-left: 10px;
-    font-weight: 500;
-    color: #608080;
+.registrate {
+  text-decoration: none;
+  margin-left: 10px;
+  font-weight: 700;
+  color: #4B31A1;
 }
-.noEstas{
-    font-weight: 700;
-    color: #608080;
+.noEstas {
+  font-weight: 700;
+  color: #324844;
 }
 
 /*CHECKBOX*/
 .checkbox {
-  --primary-color: #43655A;
+  --primary-color: #43655a;
   --secondary-color: #fff;
-  --primary-hover-color: #43655A;
+  --primary-hover-color: #43655a;
   /* checkbox */
   --checkbox-diameter: 20px;
   --checkbox-border-radius: 5px;
@@ -183,9 +226,9 @@
   --checkmark-size: 1.2;
 }
 
-.checkbox, 
-.checkbox *, 
-.checkbox *::before, 
+.checkbox,
+.checkbox *,
+.checkbox *::before,
 .checkbox *::after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -199,7 +242,8 @@
   height: var(--checkbox-diameter);
   border-radius: var(--checkbox-border-radius);
   background: var(--secondary-color);
-  border: var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
+  border: var(--checkbox-border-width) var(--checkbox-border-style)
+    var(--checkbox-border-color);
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
@@ -214,7 +258,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  -webkit-box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+  -webkit-box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5)
+    var(--primary-color);
   box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
   border-radius: inherit;
   opacity: 0;
@@ -236,9 +281,10 @@
   -ms-transform: translate(-50%, -50%) rotate(45deg) scale(0);
   transform: translate(-50%, -50%) rotate(45deg) scale(0);
   opacity: 0;
-  -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
-  -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
-  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
+  -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),
+    opacity 0.1s;
+  -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
 }
 
 /* actions */
@@ -254,8 +300,10 @@
 
 .checkbox:checked::before {
   opacity: 1;
-  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
-  -ms-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  -webkit-transform: translate(-50%, -50%) rotate(45deg)
+    scale(var(--checkmark-size));
+  -ms-transform: translate(-50%, -50%) rotate(45deg)
+    scale(var(--checkmark-size));
   transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
   -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
   -o-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
