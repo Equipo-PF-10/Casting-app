@@ -1,0 +1,87 @@
+.grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.containerImage {
+    display: grid;
+    background-color: #608080;
+    height: 100vh;
+    place-items: center;
+}
+
+.containerImage svg {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.containerRegister {
+    display: grid;
+    place-items: center;
+    background-color: white;
+    height: 100vh;
+    grid-template-rows: 20% 10% 35% 20% 5%;
+}
+
+.containerRegister h1 {
+    color: #608080;
+    font-size: 50px;
+}
+
+.containerRegister h2 {
+    color: #608080;
+    font-size: 30px;
+}
+
+.containerRegister hr {
+    border: none;
+    border-top: 4px solid #608080;
+}
+
+.containerRegister button {
+    border-radius: 10px;
+    color: white;
+    background-color: #608080;
+    width: 25vh;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 15px;
+    text-align: center;
+}
+
+.containerRegister button:disabled {
+    opacity: 0.5; 
+    cursor: not-allowed;
+} 
+
+.inputHidden {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 20px;
+}
+
+.separarSesion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-left: 80px;
+    
+}
+
+.separarGoogle {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.error {
+    color:  rgb(226, 0, 0);
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.checkBox {
+    margin-right: 10px;
+}
