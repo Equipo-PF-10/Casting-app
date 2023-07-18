@@ -10,6 +10,17 @@
 }
 .imagenLogin{
     background-color: #608080;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 20px 20px 0px;
+}
+.svgImagen{
+    width: 350px;
+}
+.logo{
+    color: #43655A;
 }
 
 .loginRegistro{
@@ -47,7 +58,7 @@
 
 /*BOTON ENVIAR*/
 .enviarButton {
-  width: 255px;
+  width: 250px;
   appearance: none;
   background-color: #849ba2;
   border: 1px solid rgba(27, 31, 35, 0.15);
