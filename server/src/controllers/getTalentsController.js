@@ -6,7 +6,9 @@ const getTalents = async (req, res) => {
   try {
     const users = await getUsersData();
     return users;
-  } catch (error) {}
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
 
 module.exports = getTalents;

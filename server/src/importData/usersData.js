@@ -1,5 +1,6 @@
 const axios = require("axios");
 const { Talento } = require("../db");
+const { v4: uuidv4 } = require("uuid");
 
 const getUsersData = async () => {
   try {
@@ -16,6 +17,10 @@ const getUsersData = async () => {
         const talent = await Talento.create({
           id,
           name,
+          email: "@gmail.com",
+          password: "1234",
+          image: "url.png",
+          hability: "Actuación",
           nationality,
           ubication,
           talent: "",
@@ -27,7 +32,7 @@ const getUsersData = async () => {
     );
     return users;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.message);
   }
 };
 
