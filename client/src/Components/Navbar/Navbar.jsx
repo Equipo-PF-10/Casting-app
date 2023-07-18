@@ -1,11 +1,13 @@
 import './NavbarModule.css'
-
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 function Navbar() {
-
+return (
     <nav>
         <svg width="100px" height="100px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#9eedef">
             <g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)">
-                <path transform="translate(-2.4, -2.4), scale(1.7999999999999998)" fill="#608080" d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z" strokewidth="0"/>
+                <path transform="translate(-2.4, -2.4), scale(1.7999999999999998)" fill="#10D831" d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z" strokewidth="0"/>
             </g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#9eedef" stroke-width="0.144"/>
             <g id="SVGRepo_iconCarrier">
@@ -15,12 +17,20 @@ function Navbar() {
                 <path opacity="0.5" d="M18 14C19.7542 14.3847 21 15.3589 21 16.5C21 17.5293 19.9863 18.4229 18.5 18.8704" stroke="#f5f5f5" stroke-width="1.7280000000000002" stroke-linecap="round"/>
             </g>
         </svg>
-        <button className='button-login'><a href="#login">Ingresa</a></button>
+        <ButtonGroup variant="text" aria-label="text button group">
+            <Button className='button-login'>Ingresa</Button>
+            <Button className='button-servicios'>Servicios</Button>
+            <Button className='button-blog'>Blog</Button>
+            <Button className='button-nosotros'>Nosotros</Button>
+            <Button className='button-contacto'>Contacto</Button>
+        </ButtonGroup>
+        {/* <button className='button-login'><a href="#login">Ingresa</a></button>
         <button className='button-servicios'><a href="#servicios">Servicios</a></button>
         <button className='button-blog'><a href="#blog">Blog</a></button>
         <button className='button-nosotros'><a href="#nosotros">Nosotros</a></button>
-        <button className='button-contacto'><a href="#contacto">Contacto</a></button>
+        <button className='button-contacto'><a href="#contacto">Contacto</a></button> */}
     </nav>
+    )
 };
 
 export default Navbar;

@@ -1,11 +1,13 @@
 
-import Navbar from '../../Components/Navbar/Navbar';
+import Navbar from '../../Components/Navbar/Navbar.jsx';
 import './LandingModule.css'
 
 const Landing = () => {
   return (
-    <div>
-      <Navbar/>
+    <>
+    <Navbar/>
+        <hr />
+    <div className='container'>
       <main>
         <section id="introduccion" className='introduccion'>
           <h3>Aqui está la seccion introducción</h3>
@@ -34,12 +36,13 @@ const Landing = () => {
         <section id="contacto">
           <h3 >Aqui está la seccioón contacto</h3>
         </section>
-        <hr />
-        <footer>
-          <h3>Aquí está el footer</h3>
-        </footer>
       </main>
+      <hr />
+      <footer>
+        <h3>Aquí está el footer</h3>
+      </footer>
     </div>
+    </>
   );
 };
 
