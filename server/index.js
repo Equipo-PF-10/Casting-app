@@ -1,7 +1,12 @@
 const server = require("./src/app");
+const getUsersData = require("./src/importData/usersData");
+const { conn } = require("./src/db");
+const { PORT } = process.env;
 
-const PORT = 3001;
-
-server.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+// Syncing all the models at once.
+// force is to reset my database
+conn.sync({ force: true }).then(() => {
+  server.listen(process.env.PORT, () => {
+    console.log("listening at", PORT);
+  });
 });

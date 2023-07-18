@@ -1,3 +1,4 @@
+
 import Navbar from '../../Components/Navbar/Navbar';
 import './LandingModule.css'
 
