@@ -1,6 +1,7 @@
-const validationSend = (errors) => {
+const validationSend = (errors, isChecked) => {
     let errExists = false;
 
+    isChecked === true &&
     errors.name === undefined &&
     errors.email === undefined &&
     errors.password === undefined

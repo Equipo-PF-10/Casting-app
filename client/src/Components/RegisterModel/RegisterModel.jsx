@@ -5,7 +5,6 @@ import google from "../../assets/google.png";
 import validationInputs from "./validationInputs";
 import validationSend from "./validationSend";
 
-
 export default function RegisterModel() {
   const [input, setInput] = useState({
     name: "",
@@ -20,6 +19,7 @@ export default function RegisterModel() {
   });
 
   const [disable, setDisable] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   // Este useEffect valida los campos en tiempo real
   useEffect(() => {
@@ -45,10 +45,7 @@ export default function RegisterModel() {
         email: "",
         password: "",
       });
-
-      // let check = document.getElementById("flexRadioDefault1");
-      // check.checked = false;
-      // return 0;
+      setIsChecked(false);
     } catch (error) {
       window.alert(error.message);
     }
@@ -56,10 +53,9 @@ export default function RegisterModel() {
 
   // Este useEffect controla que el boton "Enviar" se habilite o no
   useEffect(() => {
-    let errExists = validationSend(errors);
+    let errExists = validationSend(errors, isChecked);
     !errExists ? setDisable(true) : setDisable(false);
-  }, [errors]);
-
+  }, [errors, isChecked]);
 
   return (
     <div className={styles.grid}>
@@ -122,18 +118,20 @@ export default function RegisterModel() {
           </form>
 
           <div>
-            <input type="checkbox" className={styles.checkBox} />
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+              className={styles.checkBox}
+            />
             <label htmlFor="">Acepto los términos y condiciones</label>
           </div>
           {disable ? (
             <button type="submit" onClick={(event) => handleSubmit(event)}>
-              {" "}
-              Enviar{" "}
-            </button>
-          ) : (
-            <button disabled className={styles.buttonCreate}>
               Enviar
             </button>
+          ) : (
+            <button disabled>Enviar</button>
           )}
         </div>
         <div className={styles.separarGoogle}>
