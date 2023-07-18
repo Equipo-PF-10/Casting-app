@@ -7,12 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-     <Routes>
-        <Route exact path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-      
+    <>  
     </>
   )
 }
