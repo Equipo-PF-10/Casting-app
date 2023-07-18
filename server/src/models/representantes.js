@@ -1,10 +1,10 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("talento", {
+  sequelize.define("representante", {
     id: {
       type: DataTypes.UUID,
-      defaulValue: DataTypes.UUIDV4,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
     },
@@ -26,11 +26,6 @@ module.exports = (sequelize) => {
     },
 
     ubication: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-    talent: {
       type: DataTypes.STRING,
       allowNull: false,
     },
