@@ -1,5 +1,6 @@
-body {
+  body {
     margin: 0;
+    color: #608080;
   }
   
   html {
@@ -12,6 +13,10 @@ body {
     box-sizing: inherit;
   }
   
+  /* .container {
+    position: relative;
+  } */
+
   main {
     width: 80vw;
     margin-left: auto;
@@ -19,21 +24,86 @@ body {
   }
   
   section {
-    border: solid;
-    border-color: #FF3060;
     width: 100%;
     height: 40vh;
-    position: sticky;
     text-align: center;
     margin-top: 0;
     margin-bottom: 0; 
   }
-  .container {
-    position: relative;
-    top:12vh;
+
+  .introduccion {
+    display: inline-flex;
   }
-  section:target {
-    position: sticky;
-    top: 12vh;
+  .introduccion div {
+    width: 50%;
+    height: 100%;
+  }
+  .introduccion b {
+    color: var(--color-primario);
+  }
+  .introduccion div img {
+    margin-top: 7%;
+    width: 80%;
+    height: 80%;
+  }
+  .introduccion div p {
+    font-size: 50px;
+    text-align: right;
+    padding-top: 15%;
+
+  }
+  .login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login div {
+    width: 50%;
+    height: 100%;
+  }
+  .login div img {
+    width: 80%;
+    height: 80%;
+  }
+  .login div p {
+    font-size: 30px;
+  }
+
+  .login button {
+    top: 4vh;
+    height: 30px;
+    background-color: var(--color-primario);
+    border-style: none;
+    border-radius: 12px;
+    margin: 0;
+  }
+  .login a{
+    color: var(--color-fondo);
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .login-talento {
+    background-color: var(--color-fondo);
+    width: 40%;
+    height: 90%;
+    margin-right: 5%;
+    border-radius: 15px;
+    box-shadow: 3px 5px lightgray;
+  }
+  .login-empresa {
+    background-color: var(--color-detalle);
+    width: 40%;
+    height: 90%;
+    border-radius: 15px;
+    box-shadow: 3px 5px lightgray;
+  }
+  .anuncios {
+    background-color: var(--color-fondo);
+  }
+  .blog {
+    background-color: var(--color-fondo);
+  }
+  .contacto {
+    background-color: var(--color-fondo);
   }
   
