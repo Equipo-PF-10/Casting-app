@@ -126,8 +126,8 @@
   vertical-align: middle;
   white-space: nowrap;
   word-wrap: break-word;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .enviarButton:hover {
