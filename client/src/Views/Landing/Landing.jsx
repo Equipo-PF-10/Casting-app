@@ -3,13 +3,18 @@ import Navbar from '../../Components/Navbar/Navbar.jsx';
 import './LandingModule.css'
 
 const Landing = () => {
+
+
+
+
+
   return (
     <>
     <Navbar/>
       <main>
         <section id="introduccion-login" className='introduccion'>
           <div className='introduccion'>
-            <img src="Vector 1 -.svg" alt="Inicio" />
+            <img src="inicio.svg" alt="Inicio" />
             <p>La mejor forma de encontrar <b>TALENTOS</b></p>
           </div>
           <div className='login'>
@@ -36,7 +41,16 @@ const Landing = () => {
           <h3 >Aqui está la seccioón nosotros</h3>
         </section>
         <section id="contacto" className='contacto'>
-          <h3 >Aqui está la seccioón contacto</h3>
+        <form action="mailto:juliocegarra19@gmail.com" method="post" enctype="text/plain">
+            Nombre:<br/>
+            <input type="text" name="nombre"/><br/>
+            Correo electrónico:<br/>
+            <input type="text" name="correo"/><br/>
+            Comentario:<br/>
+            <input type="text" name="comentario" size="50"/><br/><br/>
+            <input type="submit" value="Enviar"/>
+            <input type="reset" value="Borrar"/>
+        </form>
         </section>
       </main>
       <footer>

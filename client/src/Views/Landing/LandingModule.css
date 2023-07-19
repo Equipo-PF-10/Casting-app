@@ -49,7 +49,7 @@
   .introduccion div p {
     font-size: 50px;
     text-align: right;
-    padding-top: 15%;
+    padding-top: 0;
 
   }
   .login {
@@ -65,21 +65,15 @@
     width: 80%;
     height: 80%;
   }
-  .login div p {
-    font-size: 30px;
-  }
 
   .login button {
-    top: 4vh;
-    height: 30px;
-    background-color: var(--color-primario);
-    border-style: none;
-    border-radius: 12px;
+    top: 1vh;
     margin: 0;
+    width: 10vw;
   }
   .login a{
-    color: var(--color-fondo);
-    font-weight: bold;
+    color: var(--color-primario);
+    /* font-weight: bold; */
     text-decoration: none;
   }
   .login-talento {
@@ -91,7 +85,7 @@
     box-shadow: 3px 5px lightgray;
   }
   .login-empresa {
-    background-color: var(--color-detalle);
+    background-color: var(--color-fondo);
     width: 40%;
     height: 90%;
     border-radius: 15px;

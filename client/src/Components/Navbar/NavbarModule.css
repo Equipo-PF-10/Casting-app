@@ -43,31 +43,32 @@
   nav svg {
     display: inline;
     position: relative;
-    left: -65vh;
+    left: 0vh;
     top:1vh;
+    margin-left: -70vw;
   }
 
   .button-login {
-    left: 68%;
-    width: 70px;
+    left: 52vw;
+    width: 90px;
   }
 
   .button-servicios {
-    left: 72%;
-    width: 85px;
+    left: 59vw;
+    width: 90px;
   }
 
   .button-blog {
-    left: 77%;
-    width: 50px;
+    left: 66vw;
+    width: 90px;
   }
 
   .button-nosotros {
-    left: 80%;
+    left: 73vw;
     width: 90px;
   }
 
   .button-contacto {
-    left: 85%;
-    width: 85px;
+    left: 80vw;
+    width: 90px;
   }
