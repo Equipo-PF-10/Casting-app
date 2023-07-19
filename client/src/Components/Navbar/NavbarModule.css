@@ -1,0 +1,74 @@
+  html {
+    box-sizing: border-box;
+  }
+  
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  nav {
+    background-color: var(--color-fondo);
+    
+    width: 100%;
+    text-align: center;
+    height: 14vh;
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+  nav h1 {
+    display: inline;
+    position: relative;
+    top: 4vh;
+    left: -10vw;
+  }
+  nav button {
+    position: relative;
+    top: 4vh;
+    height: 30px;
+    background-color: var(--color-detalle);
+    border-style: none;
+    border-radius: 12px;
+    position: absolute;
+  }
+
+  nav a {
+    color: var(--color-primario);
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  nav svg {
+    display: inline;
+    position: relative;
+    left: 0vh;
+    top:1vh;
+    margin-left: -70vw;
+  }
+
+  .button-login {
+    left: 52vw;
+    width: 90px;
+  }
+
+  .button-servicios {
+    left: 59vw;
+    width: 90px;
+  }
+
+  .button-blog {
+    left: 66vw;
+    width: 90px;
+  }
+
+  .button-nosotros {
+    left: 73vw;
+    width: 90px;
+  }
+
+  .button-contacto {
+    left: 80vw;
+    width: 90px;
+  }

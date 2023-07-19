@@ -1,49 +1,60 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("talento", {
-    id: {
-      type: DataTypes.UUID,
-      defaulValue: DataTypes.UUIDV4,
-      primaryKey: true,
-      allowNull: false,
-    },
+  sequelize.define(
+    "talento",
+    {
+      id: {
+        type: DataTypes.UUID,
+        defaulValue: DataTypes.UUIDV4,
+        primaryKey: true,
+        allowNull: false,
+      },
 
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
 
-    nationality: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        isEmail: true,
+      },
 
-    relation: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
 
-    ubication: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isUrl: true,
+        },
+      },
 
-    talent: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+      nationality: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
 
-    talent: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+      ubication: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
 
-    contact: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
+      hability: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false,
+      },
+
+      contact: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false,
+      },
     },
-  }),
-    { freezeTableName: true, timestamps: false };
+    { freezeTableName: true, timestamps: false }
+  );
 };

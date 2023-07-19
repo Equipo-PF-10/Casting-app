@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "modelo",
+    "empresa",
     {
       id: {
         type: DataTypes.UUID,
@@ -17,42 +17,17 @@ module.exports = (sequelize) => {
         unique: true,
       },
 
-      age: {
-        type: DataTypes.NUMBER,
-        allowNull: false,
-      },
-
-      gender: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-
-      nationality: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-
       ubication: {
         type: DataTypes.STRING,
         allowNull: false,
       },
 
-      talent: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false,
-      },
-
-      email: {
+      manager: {
         type: DataTypes.STRING,
         allowNull: false,
       },
 
-      image: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-
-      social: {
+      contact: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
