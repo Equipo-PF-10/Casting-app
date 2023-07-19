@@ -57,13 +57,23 @@ const Login = () => {
             {/*Login*/}
             <h3 className={style.loginRegistro}>Login</h3>
             <div className={style.inputContainer}>
-              <input
+              {/*<input
                 onChange={handleChange}
                 className={style.input}
                 type="text"
                 placeholder="Nombre"
                 name="name"
                 required=""
+              />*/}
+              <label for="input" className={style.text}>
+                Nombre:
+              </label>
+              <input
+                onChange={handleChange}
+                type="text"
+                placeholder="Introduzca su nombre"
+                name="name"
+                className={style.input}
               />
               <div>
                 {errors.name && (
@@ -77,13 +87,23 @@ const Login = () => {
               </div>
             </div>
             <div className={style.inputContainer}>
-              <input
+              {/*<input
                 onChange={handleChange}
                 className={style.input}
                 type="text"
                 placeholder="Email"
                 name="email"
                 required=""
+              />*/}
+              <label for="input" className={style.text}>
+                Email:
+              </label>
+              <input
+                onChange={handleChange}
+                type="text"
+                placeholder="Introduzca su email"
+                name="email"
+                className={style.input}
               />
               <div>
                 {errors.email && (
@@ -95,12 +115,12 @@ const Login = () => {
                   </span>
                 )}
               </div>
-            <div className={style.buttonMantener}>
-              <input type="checkbox" className={style.checkBox} />
-              <label htmlFor="" className={style.mantener}>
-                Mantener registrado
-              </label>
-            </div>
+              <div className={style.buttonMantener}>
+                <input type="checkbox" className={style.checkBox} />
+                <label htmlFor="" className={style.mantener}>
+                  Mantener registrado
+                </label>
+              </div>
             </div>
             <div>
               <button
