@@ -12,14 +12,10 @@ const Login = () => {
   const [errors, setErrors] = useState({});
 
   const disable = () => {
-    let disabled = true;
-    for (let error in errors) {
-      //console.log("soy error", error);
-      if (errors[error] === "" || errors[error].length === 0) disabled = false;
-      else {
-        disabled = true;
-        break;
-      }
+    let disabled=true;
+    
+    if (Object.keys(errors).length === 0) { //devuelve un array
+      disabled = false;
     }
     return disabled;
   };
@@ -53,18 +49,13 @@ const Login = () => {
         <div className={style.login}>
           {/*Casting App*/}
           <h2 className={style.logo}>Casting App</h2>
-          <form className={style.formContainer} onSubmit={handleSubmit}>
+          <form
+            className={style.formContainer}
+            onSubmit={(e) => handleSubmit(e)}
+          >
             {/*Login*/}
             <h3 className={style.loginRegistro}>Login</h3>
             <div className={style.inputContainer}>
-              {/*<input
-                onChange={handleChange}
-                className={style.input}
-                type="text"
-                placeholder="Nombre"
-                name="name"
-                required=""
-              />*/}
               <label htmlFor="input" className={style.text}>
                 Nombre:
               </label>
@@ -87,14 +78,6 @@ const Login = () => {
               </div>
             </div>
             <div className={style.inputContainer}>
-              {/*<input
-                onChange={handleChange}
-                className={style.input}
-                type="text"
-                placeholder="Email"
-                name="email"
-                required=""
-              />*/}
               <label htmlFor="input" className={style.text}>
                 Email:
               </label>
@@ -125,9 +108,9 @@ const Login = () => {
             <div>
               <button
                 className={style.enviarButton}
-                //disabled={disable()}
                 type="submit"
                 name="submit"
+                disabled={disable()}
               >
                 Entrar
               </button>
@@ -160,7 +143,9 @@ const Login = () => {
               </button>
               <div className={style.pregunta}>
                 <p className={style.noEstas}>¿No estas registrado?</p>
-                <Link className={style.registrate}>Registrate</Link>
+                <Link className={style.registrate} to={"/model/register"}>
+                  Regístrate
+                </Link>
               </div>
             </div>
           </form>

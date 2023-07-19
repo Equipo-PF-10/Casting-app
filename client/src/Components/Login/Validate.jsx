@@ -1,7 +1,7 @@
-const validate = (input) => {
+
+
+const validate=(input) => {
   let errors = {};
-  let regexEmail =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   if (!input.name) {
     errors.name = "Se requiere un nombre";
@@ -10,10 +10,24 @@ const validate = (input) => {
     errors.name = "Debe ser menor a 10 carácteres";
   }
 
-  if (!regexEmail.test(input.email)) errors.email = "Ingresa una email valido";
-  if (!input.email) errors.email = "Se requiere un email";
+  // Validacion de Email
+  const regexEmail = /\S+@\S+\.\S+/;
+  if (!regexEmail.test(input.email))
+    errors.email = "Debes ingresar un email valido";
+  if (!input.email) errors.email = "Debes ingresar un email";
+  if (input.email.length > 35)
+    errors.email = "No ingrese mas de 35 caracteres";
 
   return errors;
+  /*
+  {
+    name: "Debes ingresar un email valido",
+    email = "Debes ingresar un email valido"
+  }
+  */
+  /*
+  {}
+  */
 };
 
 export default validate;

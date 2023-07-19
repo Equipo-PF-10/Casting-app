@@ -126,7 +126,7 @@
   vertical-align: middle;
   white-space: nowrap;
   word-wrap: break-word;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
@@ -205,28 +205,6 @@
   outline: none;
 }
 
-/*INPUTS*/
-/*.input {
-  width: 255px;
-  line-height: 28px;
-  border: 2px solid transparent;
-  border-bottom-color: #777;
-  padding: 0.2rem 0;
-  outline: none;
-  background-color: transparent;
-  color: #0d0c22;
-  transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.input::placeholder {
-  color: #777;
-}
-
-.input:focus::placeholder {
-  opacity: 0;
-  transition: opacity 0.3s;
-}*/
-
 /*PREGUNTA*/
 .pregunta {
   display: flex;
@@ -237,11 +215,12 @@
   text-decoration: none;
   margin-left: 10px;
   font-weight: 700;
-  color: #4b31a1;
+  color: #7965b8;
 }
 .noEstas {
   font-weight: 700;
   color: #324844;
+  margin-bottom: -1px;
 }
 
 /*CHECKBOX*/
