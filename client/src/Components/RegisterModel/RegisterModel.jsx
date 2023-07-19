@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import validationInputs from "./validationInputs";
 import validationSend from "./validationSend";
 import { register_model } from "../../redux/actions";
+import Navbar from "../Navbar/Navbar";
 
 export default function RegisterModel() {
   const [input, setInput] = useState({
@@ -23,17 +24,19 @@ export default function RegisterModel() {
   const [isChecked, setIsChecked] = useState(false);
   const dispatch = useDispatch();
 
-  // Este useEffect valida los campos en tiempo real
-  useEffect(() => {
-    setErrors(validationInputs(input));
-  }, [input]);
-
+  //Funcion que valida los campos que el usuario este ingresando
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setInput({
       ...input,
       [name]: value,
     });
+    setErrors(
+      validationInputs({
+        ...input,
+        [name]: value,
+      })
+    );
   };
 
   //Funcion que despacha el input y luego lo setea
@@ -60,6 +63,8 @@ export default function RegisterModel() {
   }, [errors, isChecked]);
 
   return (
+    <div>
+      <Navbar/>
     <div className={styles.container}>
       <div className={styles.imagenRegister}>
         <svg
@@ -286,7 +291,7 @@ export default function RegisterModel() {
 
       <div className={styles.register}>
         <h2 className={styles.logo}>Casting App</h2>
-        <h3 className={styles.h3}>Registro</h3>
+        <h3 className={styles.h3}>Registro de Talento</h3>
         <div>
           <form action="" className={styles.formContainer}>
             <div className={styles.coolinput}>
@@ -302,7 +307,12 @@ export default function RegisterModel() {
                 className={styles.input}
               />
             </div>
-            <p className={styles.error}>{errors.name ? errors.name : null}</p>
+            <div>
+              {errors.name && (
+                <span className={styles.spanError} style={{ color: "#e74c3c" }}>{errors.name}</span>
+              )}
+            </div>
+
             <div className={styles.coolinput}>
               <label for="input" className={styles.text}>
                 Correo
@@ -316,7 +326,11 @@ export default function RegisterModel() {
                 className={styles.input}
               />
             </div>
-            <p className={styles.error}>{errors.email ? errors.email : null}</p>
+            <div>
+              {errors.email && (
+                <span className={styles.spanError} style={{ color: "#e74c3c" }}>{errors.email}</span>
+              )}
+            </div>
             <div className={styles.coolinput}>
               <label for="input" className={styles.text}>
                 Contraseña
@@ -330,7 +344,11 @@ export default function RegisterModel() {
                 className={styles.input}
               />
             </div>
-            <p className={styles.error}>{errors.password ? errors.password : null}</p>
+            <div>
+              {errors.password && (
+                <span className={styles.spanError} style={{ color: "#e74c3c" }}>{errors.password}</span>
+              )}
+            </div>
           </form>
 
           <div className={styles.buttonCheckbox}>
@@ -346,14 +364,15 @@ export default function RegisterModel() {
           </div>
           {disable ? (
             <button
-              className={styles.enviarButton}
               type="submit"
               onClick={(event) => handleSubmit(event)}
             >
               Registrarse
             </button>
           ) : (
-            <button className={styles.enviarButton} disabled>
+            <button
+              disabled
+            >
               Registrarse
             </button>
           )}
@@ -385,15 +404,14 @@ export default function RegisterModel() {
             Regístrate con Google
           </button>
         </div>
-        <hr />
         <div className={styles.pregunta}>
           <p className={styles.noEstas}>¿Ya estás registrado?</p>
-          <Link className={styles.registrate}>
+          <Link to="/login" className={styles.registrate}>
             <p>Inicia sesión</p>
           </Link>
         </div>
-        <hr />
       </div>
+    </div>
     </div>
   );
 }
