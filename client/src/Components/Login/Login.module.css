@@ -52,7 +52,7 @@
 }
 .logo {
   color: #429283;
-  margin-bottom: 60px;
+  margin-bottom: 10px;
 }
 
 .formContainer {
@@ -127,7 +127,7 @@
   white-space: nowrap;
   word-wrap: break-word;
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: -5px;
 }
 
 .enviarButton:hover {
@@ -329,4 +329,40 @@
   box-shadow: none;
   transition: none;
   opacity: 1;
+}
+
+/*BOTON VOLVER*/
+.spanV {
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.buttonVolver{
+  background-color: rgb(179, 179, 179);
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -30px;
+}
+
+.buttonVolver > svg {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  transition: all 0.4s ease-in;
+}
+
+.buttonVolver:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+}
+
+.buttonVolver:hover {
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
+}
+
+.spanBo {
+  text-decoration: none;
 }
