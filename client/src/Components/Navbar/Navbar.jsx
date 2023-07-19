@@ -17,7 +17,15 @@ return (
                 <path opacity="0.5" d="M18 14C19.7542 14.3847 21 15.3589 21 16.5C21 17.5293 19.9863 18.4229 18.5 18.8704" stroke="#f5f5f5" stroke-width="1.7280000000000002" stroke-linecap="round"/>
             </g>
         </svg>
-        <button className='button-login'><a href="#login">Ingresa</a></button>
+          {/*<div class="btn-group">
+           <a href="#introduccion" class="btn btn-primary active" aria-current="page">Active</a> 
+            <a href="/login" class="btn btn-primary">Ingresa</a>
+            <a href="#servicios" class="btn btn-primary">Servicios</a>
+            <a href="#blog" class="btn btn-primary">Blog</a>
+            <a href="#nosotros" class="btn btn-primary">Nosotros</a>
+            <a href="#contacto" class="btn btn-primary">Contacto</a>
+        </div>*/}
+        <button className='button-login'><a href="/login">Ingresa</a></button>
         <button className='button-servicios'><a href="#servicios">Servicios</a></button>
         <button className='button-blog'><a href="#blog">Blog</a></button>
         <button className='button-nosotros'><a href="#nosotros">Nosotros</a></button>
