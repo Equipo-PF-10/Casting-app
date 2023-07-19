@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import google from "../../assets/google.png";
 import validationInputs from "./validationInputs";
 import validationSend from "./validationSend";
+import { register_model } from "../../redux/actions";
 
 export default function RegisterModel() {
   const [input, setInput] = useState({
@@ -39,7 +40,7 @@ export default function RegisterModel() {
     try {
       event.preventDefault();
 
-      //dispatch(registerModel(input));
+      dispatch(register_model(input));
       setInput({
         name: "",
         email: "",
