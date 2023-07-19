@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    background-color: #f5f5f5;
+  }
+  
+  html {
+    box-sizing: border-box;
+  }
+  
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  nav {
+    background-color: #f5f5f5;
+    width: 100%;
+    text-align: center;
+    height: 11vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+  }
+
+  nav button {
+    position: relative;
+    top: 5vh;
+    background-color: #f5f5f5;
+    border-style: none;
+    position: absolute;
+  }
+
+  nav a {
+    color: #FF3060;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+  }
+
+  nav svg {
+    display: inline-block;
+    position: absolute;
+    left: 10vh;
+    top:1vh;
+  }
+
+  .button-login {
+    left: 75%;
+    width: 70px;
+  }
+
+  .button-servicios {
+    left: 75%;
+    width: 85px;
+  }
+
+  .button-blog {
+    left: 75%;
+    width: 50px;
+  }
+
+  .button-nosotros {
+    left: 75%;
+    width: 90px;
+  }
+
+  .button-contacto {
+    left: 75%;
+    width: 85px;
+  }
