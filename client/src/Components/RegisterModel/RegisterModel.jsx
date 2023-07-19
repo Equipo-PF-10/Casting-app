@@ -1,10 +1,10 @@
+import styles from "./RegisterModel.module.css";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import validationInputs from "./validationInputs";
 import validationSend from "./validationSend";
 import { register_model } from "../../redux/actions";
-import styles from "./RegisterModel.module.css";
 
 export default function RegisterModel() {
   const [input, setInput] = useState({
