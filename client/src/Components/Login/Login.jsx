@@ -65,7 +65,7 @@ const Login = () => {
                 name="name"
                 required=""
               />*/}
-              <label for="input" className={style.text}>
+              <label htmlFor="input" className={style.text}>
                 Nombre:
               </label>
               <input
@@ -95,7 +95,7 @@ const Login = () => {
                 name="email"
                 required=""
               />*/}
-              <label for="input" className={style.text}>
+              <label htmlFor="input" className={style.text}>
                 Email:
               </label>
               <input
