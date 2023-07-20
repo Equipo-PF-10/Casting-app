@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.containerGeneral {
+  background-color: rgb(255, 255, 255);
+}
+
+.cardContainer {
+  background-image: linear-gradient(
+    to bottom,
+    #d1d1d1,
+    #c3cbdd,
+    #a5cae6,
+    #76cbe5,
+    #3bccd5,
+    #1dc9c7,
+    #00c6b5,
+    #00c2a2,
+    #00bd9e,
+    #00b89a,
+    #00b496,
+    #00af92
+  );
+  width: 500px;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -100px;
+    margin-bottom: 100px;
+}
+
+.imgPerfil{
+    width: 300px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.textoCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
