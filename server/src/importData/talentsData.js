@@ -1,5 +1,4 @@
 const axios = require("axios");
-const { Talento } = require("../db");
 const { v4: uuidv4 } = require("uuid");
 
 let habilities = [
@@ -29,36 +28,40 @@ const getRandomHabilities = (habilities) => {
   return shuffledHabilities.slice(0, numberOfHabilities);
 };
 
-const getUsersData = async () => {
+const getApiTalents = async () => {
   try {
-    const response = await axios("https://randomuser.me/api/?results=100");
+    const response = await axios("https://randomuser.me/api/?results=50");
     const usersData = response.data.results;
 
     const users = await Promise.all(
       usersData.map(async (user) => {
-        const id = uuidv4();
+        // const id = uuidv4();
         const name = `${user.name.first} ${user.name.last}`;
         const { email } = user;
+        const { gender } = user;
         const nationality = user.location.country;
         const ubication = user.location.city;
         const password = user.login.password;
         const image = user.picture.large;
         const contact = [user.phone, user.cell];
+        const weight = null;
+        const height = null;
+
         const hability = getRandomHabilities(habilities);
 
-        const talent = await Talento.create({
-          id,
+        return {
           name,
           email,
           password,
           image,
+          gender,
           nationality,
           ubication,
           hability,
+          weight,
+          height,
           contact,
-        });
-
-        return talent;
+        };
       })
     );
     return users;
@@ -67,4 +70,4 @@ const getUsersData = async () => {
   }
 };
 
-module.exports = getUsersData;
+module.exports = getApiTalents;
