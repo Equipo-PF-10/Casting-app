@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./ProfileCompany.module.css";
+import empresa from '../../../assets/PNG/facebook 1.png'
 
 const profileCompany = () => {
   return (
@@ -7,7 +8,7 @@ const profileCompany = () => {
       {/*carta con foto y descripcion*/}
       <div className={style.cardContainer}>
         <div className={style.image}>
-          <img src="" alt="" />
+          <img className={style.imgPerfil} src={empresa} alt="logo empresa" />
         </div>
         <div className={style.textoCard}>
           <h2 className={style.nombre}>Empresa</h2>
@@ -36,17 +37,17 @@ const profileCompany = () => {
       </div>
       {/*carta de imagenes*/}
       <div className={style.imagenesCard}>
-        <div>
-          <p>ImagenUno</p>
+        <div className={style.contImg}>
+          <p className={style.imgs}>ImagenUno</p>
         </div>
-        <div>
-          <p>ImagenDos</p>
+        <div className={style.contImg}>
+          <p className={style.imgs}>ImagenDos</p>
         </div>
-        <div>
-          <p>ImagenTres</p>
+        <div className={style.contImg}>
+          <p className={style.imgs}>ImagenTres</p>
         </div>
-        <div>
-          <p>ImagenCuatro</p>
+        <div className={style.contImg}>
+          <p className={style.imgs}>ImagenCuatro</p>
         </div>
       </div>
       {/*carta de proyectos*/}
@@ -57,31 +58,31 @@ const profileCompany = () => {
           <p>proyecto 2</p>
           <p>proyecto 3</p>
         </div>
-          </div>
-          {/*carta de trabajos postulados*/}
-          <div>
-              <div>
-                  <h3>Trabajos postulados</h3>
-                  <p>trabajo 1</p>
-                  <p>trabajo 2</p>
-                  <p>trabajo 3</p>
-                  <p>trabajo 4</p>
-              </div>
-          </div>
-          {/*carta de contacto*/}
-          <div>
-              <div className={style.contactos}>
-                  <h3>Contactos</h3>
-              </div>
-              <div className={style.listaContactos}>
-                  <p>telefono con svg</p>
-                  <p>facebook con svg</p>
-                  <p>mail con svg</p>
-                  <p>instagram con svg</p>
-                  <p>twiter con svg</p>
-                  <p>pagina web con svg</p>
-              </div>
-          </div>
+      </div>
+      {/*carta de trabajos postulados*/}
+      <div>
+        <div>
+          <h3>Trabajos postulados</h3>
+          <p>trabajo 1</p>
+          <p>trabajo 2</p>
+          <p>trabajo 3</p>
+          <p>trabajo 4</p>
+        </div>
+      </div>
+      {/*carta de contacto*/}
+      <div>
+        <div className={style.contactos}>
+          <h3>Contactos</h3>
+        </div>
+        <div className={style.listaContactos}>
+          <p>telefono con svg</p>
+          <p>facebook con svg</p>
+          <p>mail con svg</p>
+          <p>instagram con svg</p>
+          <p>twiter con svg</p>
+          <p>pagina web con svg</p>
+        </div>
+      </div>
     </div>
   );
 };
