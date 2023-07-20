@@ -9,6 +9,7 @@ import Navbar from "../Navbar/Navbar";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth0 } from "@auth0/auth0-react";
+import { clean_error } from "../../redux/actions";
 
 export default function RegisterModel() {
 
@@ -71,8 +72,17 @@ export default function RegisterModel() {
     !errExists ? setDisable(true) : setDisable(false);
   }, [errors, isChecked]);
 
-  const mensaje_success_Toast = () => {
-    toast.success(messageRegistered, {
+
+let currentToastIdSuccess = null;
+//Evita que se renderice mas de 1 toast
+const mensaje_success_Toast = () => {
+  if (currentToastIdSuccess) {
+    toast.update(currentToastIdSuccess, {
+      render: messageRegistered,
+      autoClose: 5000,
+    });
+  } else {
+    currentToastIdSuccess = toast.success(messageRegistered, {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -81,11 +91,10 @@ export default function RegisterModel() {
       draggable: true,
       progress: undefined,
       theme: "light",
-      style: {
-        marginTop: "120px",
-      },
-      });
+      toastId: "custom-toast-id", 
+    });
   }
+};
 
   let currentToastId = null;
   //Evita que se renderice mas de 1 toast
@@ -105,7 +114,7 @@ export default function RegisterModel() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        toastId: "custom-toast-id", // Puedes cambiar "custom-toast-id" por cualquier otro valor único
+        toastId: "custom-toast-id", 
         style: {
           marginTop: "120px",
         },
@@ -116,9 +125,11 @@ export default function RegisterModel() {
   //Mostrar mensajes que me devuelve el back mendiante el Toastify
   if(Object.keys(messageRegistered).length > 0){
     mensaje_success_Toast();
+    
   }
   if(Object.keys(error).length > 0){
     mensaje_error_Toast();
+    dispatch(clean_error(""));
   }
 
   return (
