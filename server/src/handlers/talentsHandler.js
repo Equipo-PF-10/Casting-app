@@ -2,6 +2,7 @@ const {
   getAllTalents,
   createTalentDb,
   getTalentByName,
+  getTalentById,
 } = require("../controllers/talentsController");
 
 // Función handler que devuelve los talentos.
@@ -61,7 +62,19 @@ const createTalentHandler = async (req, res) => {
   }
 };
 
+const talentByIdHandler = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const talentById = await getTalentById(id);
+    res.status(200).json(talentById);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   getTalentsHandler,
   createTalentHandler,
+  talentByIdHandler,
 };

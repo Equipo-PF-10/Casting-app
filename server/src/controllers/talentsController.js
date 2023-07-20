@@ -109,4 +109,21 @@ const getTalentByName = async (name) => {
   }
 };
 
-module.exports = { getAllTalents, createTalentDb, getTalentByName };
+// Función controller que devuele el talent según el Id recibido por parámetro.
+const getTalentById = async (id) => {
+  try {
+    const foundTalent = await Talento.findByPk(id);
+
+    if (!foundTalent) throw new Error(`El Usuario con ID ${id} no existe`);
+    return foundTalent;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+module.exports = {
+  getAllTalents,
+  createTalentDb,
+  getTalentByName,
+  getTalentById,
+};
