@@ -30,6 +30,7 @@ module.exports = (sequelize) => {
         defaultValue: twoWeeks(),
       },
 
+      // Para empresa --> post creacion de un evento --> se tiene que ver en el home
       eventTypes: {
         type: DataTypes.ENUM(
           "Deporte",
