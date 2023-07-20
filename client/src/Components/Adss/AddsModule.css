@@ -7,9 +7,9 @@
     justify-content: center;
     background-color: rgb(227, 227, 227);
     border-radius: 15px;
-    height: 40vh;
+    height: 35vh;
     width: 16vw;
-    margin-top: 0.5vw;
+    margin-top: 2.7vw;
     margin-left: 2vH;
     margin-right: 2vH;
     box-shadow: 4px 4px lightgray;
@@ -18,13 +18,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 16vw;
-    height: 18vh;
+    width:16vw;
+    height: 15vh;
 }
 
 .postularte-button {
     position:absolute;
-    top:37vh;
+    top:32vh;
     left: 0;
     margin: 0;
     height: 3vh;
@@ -35,12 +35,12 @@
 }
 .resumen {
     position: absolute;
-    top:20vh;
+    top:15vh;
     left: 0vh;
     align-items: center;
     justify-content: center;
     margin: 0;
-    max-height: 18vh;
+    max-height: 15vh;
     max-width: 7.8vw;
     overflow-x:hidden;
     overflow-wrap: break-word;
@@ -50,7 +50,7 @@
 .requeridos{
     text-align: right;
     position: absolute;
-    top: 20vh;
+    top: 15vh;
     left: 8vw;
     align-items: center;
     justify-content: center;
@@ -95,6 +95,6 @@
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     width: 16vw;
-    height: 19vh;
+    height: 15vh;
     border-top: thin solid var(--color-secundario);
 }

@@ -5,7 +5,7 @@ return (
     <nav>
       <section className='logo-container'>
         
-        <svg width="100px" height="100px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#9eedef">
+        <svg width="60px" height="60px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#9eedef">
             <g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)">
                 <path transform="translate(-2.4, -2.4), scale(1.7999999999999998)" fill="#00c9a7" d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z" strokewidth="0"/>
             </g>

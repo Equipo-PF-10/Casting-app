@@ -60,19 +60,23 @@
   .login-empresa {
     background-color: var(--color-fondo);
     width: 18vw;
-    height: 20vw;
+    height: 18vw;
     border-radius: 15px;
     box-shadow: 3px 5px lightgray;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 1vw;
+
   }
   .anuncios,
   .blog, 
   .contacto {
     background-color: var(--color-fondo);
   }
-  
+  .anuncios {
+    margin-top: 1vw;
+    height: 46vH;
+  }
   .contacto p {
     font-size: 35px;
     padding-top: 1vw;
@@ -87,7 +91,6 @@
     height: 15VW;
     padding-top: 3px;
     border-radius: 15px;
-    /* box-shadow: 2px 2px var(--color-primario); */
     box-shadow: 3px 2px gray;
   }
   .contacto form input[type="text"]{
