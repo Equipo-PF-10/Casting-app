@@ -1,0 +1,100 @@
+.anuncio {
+    position: relative;
+    display:inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(227, 227, 227);
+    border-radius: 15px;
+    height: 40vh;
+    width: 16vw;
+    margin-top: 0.5vw;
+    margin-left: 2vH;
+    margin-right: 2vH;
+    box-shadow: 4px 4px lightgray;
+}
+.imagen-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16vw;
+    height: 18vh;
+}
+
+.postularte-button {
+    position:absolute;
+    top:37vh;
+    left: 0;
+    margin: 0;
+    height: 3vh;
+    width: 16vw;
+    border-radius: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.resumen {
+    position: absolute;
+    top:20vh;
+    left: 0vh;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    max-height: 18vh;
+    max-width: 7.8vw;
+    overflow-x:hidden;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+    text-align: left;
+}
+.requeridos{
+    text-align: right;
+    position: absolute;
+    top: 20vh;
+    left: 8vw;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    max-height: 18vh;
+    max-width: 7.8vw;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+}
+.postularte-button  a{
+    text-decoration: none;
+    color: var(--color-fondo);
+}
+.imagen-container {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.requeridos h6 {
+    margin: 0;
+    font-size: small;
+    padding-right:0.5vw;
+    font-size: small;
+}
+.requeridos li {
+    margin: 0;
+    font-size: small;
+    padding-right:0.5vw;
+    font-size: x-small;
+}
+.resumen h6 {
+    margin: 0;
+    font-size: small;
+    font-size: small;
+}
+.resumen p {
+    margin: 0;
+    font-size: small;
+    font-size: x-small;
+}
+
+.imagen-container img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 16vw;
+    height: 19vh;
+    border-top: thin solid var(--color-secundario);
+}

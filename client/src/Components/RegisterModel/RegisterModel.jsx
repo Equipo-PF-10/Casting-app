@@ -1,13 +1,21 @@
 import styles from "./RegisterModel.module.css";
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import validationInputs from "./validationInputs";
 import validationSend from "./validationSend";
 import { register_model } from "../../redux/actions";
 import Navbar from "../Navbar/Navbar";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useAuth0 } from "@auth0/auth0-react";
+import { clean_error } from "../../redux/actions";
 
 export default function RegisterModel() {
+
+  //Autenticacion
+  const { loginWithRedirect } = useAuth0();
+
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -22,6 +30,8 @@ export default function RegisterModel() {
 
   const [disable, setDisable] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  let error = useSelector((state) => state.errors);
+  let messageRegistered = useSelector((state) => state.messageRegistered);
   const dispatch = useDispatch();
 
   //Funcion que valida los campos que el usuario este ingresando
@@ -62,9 +72,72 @@ export default function RegisterModel() {
     !errExists ? setDisable(true) : setDisable(false);
   }, [errors, isChecked]);
 
+
+let currentToastIdSuccess = null;
+//Evita que se renderice mas de 1 toast
+const mensaje_success_Toast = () => {
+  if (currentToastIdSuccess) {
+    toast.update(currentToastIdSuccess, {
+      render: messageRegistered,
+      autoClose: 5000,
+    });
+  } else {
+    currentToastIdSuccess = toast.success(messageRegistered, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      toastId: "custom-toast-id", 
+    });
+  }
+};
+
+  let currentToastId = null;
+  //Evita que se renderice mas de 1 toast
+  const mensaje_error_Toast = () => {
+    if (currentToastId) {
+      toast.update(currentToastId, {
+        render: error,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastId = toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id", 
+        style: {
+          marginTop: "120px",
+        },
+      });
+    }
+  };
+
+  //Mostrar mensajes que me devuelve el back mendiante el Toastify
+  if(Object.keys(messageRegistered).length > 0){
+    mensaje_success_Toast();
+    
+  }
+  if(Object.keys(error).length > 0){
+    mensaje_error_Toast();
+    dispatch(clean_error(""));
+  }
+
   return (
     <div>
       <Navbar/>
+      <div>
+      <ToastContainer />
+      </div>
     <div className={styles.container}>
       <div className={styles.imagenRegister}>
         <svg
@@ -378,7 +451,10 @@ export default function RegisterModel() {
           )}
         </div>
         <div className={styles.separarGoogle}>
-          <button className={styles.buttonGoogle}>
+          <button 
+          className={styles.buttonGoogle}
+          onClick={() => loginWithRedirect()}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="xMidYMid"
