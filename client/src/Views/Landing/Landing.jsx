@@ -1,4 +1,5 @@
 
+import Adds from '../../Components/Adss/Adds.jsx';
 import Navbar from '../../Components/Navbar/Navbar.jsx';
 import './LandingModule.css'
 
@@ -29,7 +30,12 @@ const Landing = () => {
           </div>
         </section>
         <section id="anuncios" className='anuncios'>
-          <h3>Aqui está la sección Anuncios</h3>
+          <button className='paginado-button'><img src="/prev.svg" alt="" /></button>
+          <Adds/>
+          <Adds/>
+          <Adds/>
+          <Adds/>
+          <button className='paginado-button'><img src="/next.svg" alt="" /></button>
         </section>
         <section id="servicios" className='servicios'>
           <h3 >Aqui está la seccioón servicios</h3>
@@ -41,16 +47,17 @@ const Landing = () => {
           <h3 >Aqui está la seccioón nosotros</h3>
         </section>
         <section id="contacto" className='contacto'>
-        <form action="mailto:juliocegarra19@gmail.com" method="post" enctype="text/plain">
+          <p>!!! Tienes algo que quisieras contarnos...? <b>Contactanos</b></p>
+          <form action="mailto:castingapp.pf.10@gmail.com" method="post" encType="text/plain" autoComplete='off'>
             Nombre:<br/>
             <input type="text" name="nombre"/><br/>
             Correo electrónico:<br/>
             <input type="text" name="correo"/><br/>
             Comentario:<br/>
-            <input type="text" name="comentario" size="50"/><br/><br/>
+            <textarea type="text" name="comentario" size="50" className='input-comentario'/><br/><br/>
             <input type="submit" value="Enviar"/>
             <input type="reset" value="Borrar"/>
-        </form>
+          </form>
         </section>
       </main>
       <footer>
