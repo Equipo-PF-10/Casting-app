@@ -1,10 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Login.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import validate from "./Validate";
 import Navbar from "../../Components/Navbar/Navbar";
+import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 
 const Login = () => {
+  const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const saveUserToDatabase = async () => {
+      if (isAuthenticated) {
+        const token = await getAccessTokenSilently();
+        // Envía el token JWT al backend para almacenar los datos del usuario en tu base de datos local
+        try {
+          const response = await axios.post(
+            "http://localhost:3002/guardarUsuario",
+            user,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          console.log(response.data); // Respuesta del backend
+        } catch (error) {
+          console.error("Error al guardar el usuario:", error);
+        }
+      }
+    };
+
+    saveUserToDatabase();
+  }, [isAuthenticated, user, getAccessTokenSilently]);
+
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -43,6 +73,8 @@ const Login = () => {
       name: "",
       email: "",
     });
+    // Aquí puedes agregar la lógica para redirigir al usuario a otra ruta después de iniciar sesión
+    navigate("/otra-ruta");
   };
 
   return (
@@ -120,6 +152,7 @@ const Login = () => {
                 </button>
               </div>
               <div className={style.buttonPlan}>
+                
                 <button className={style.buttonGoogle}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
