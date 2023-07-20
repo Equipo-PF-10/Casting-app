@@ -1,65 +1,36 @@
-const { Talento } = require("../db")
-const { Op } = require("sequelize");
+const {
+  apiTalents,
+  createTalentDb,
+} = require("../controllers/talentsController");
 
-
-const allTalents = async (req, res) => {
+const getTalentsHandler = async (req, res) => {
   try {
-    const { name } = req.query;
-    if (name) {
-      talentsController.searchTalents(req, res);
-    } else {
-      const talents = await Talento.findAll();
-      res.status(200).json(talents);
-    }
+    const talents = await apiTalents();
+
+    res.status(200).json(talents);
   } catch (error) {
-    res.status(500).json({ error: "Error al obtener los talentos de la base de datos // ALL TALENTS" + error });
+    throw new Error(error.message);
   }
 };
 
+const createTalentHandler = async (req, res) => {
+  console.log(req.body);
+  const { name, email, password } = req.body;
 
-const searchTalentsBySkill = async (req, res) => {
-  const { skill } = req.query;
-  try {
-    const talents = await Talento.findAll({
-      where: {
-        habilidad: {
-          [Op.iLike]: `%${skill}%`,
-        },
-      },
-    });
-    if (talents.length === 0) {
-      res.status(404).json({ error: "No se encontró ningún talento con la habilidad: " + skill });
-    } else {
-      res.status(200).json(talents);
-    }
-  } catch (error) {
-    res.status(500).json({ error: "Error al obtener los talentos de la base de datos // SEARCH TALENTS BY SKILL " + error });
+  if (!name || !email || !password) {
+    return res.status(400).send("Faltan datos obligatorios");
   }
-};
 
-
-const searchTalentsByLocation = async (req, res) => {
-  const { location } = req.query;
   try {
-    const talents = await Talento.findAll({
-      where: {
-        ubicacion: {
-          [Op.iLike]: `%${location}%`,
-        },
-      },
-    });
-    if (talents.length === 0) {
-      res.status(404).json({ error: "No se encontró ningún talento en la ubicación: " + location });
-    } else {
-      res.status(200).json(talents);
-    }
+    await createTalentDb(name, email, password);
+
+    res.status(200).send("Se ha registrado correctamente");
   } catch (error) {
-    res.status(500).json({ error: "Error al obtener los talentos de la base de datos // SEARCH TALENTS BY LOCATION " + error });
+    res.status(400).json(error.message);
   }
 };
 
 module.exports = {
-  allTalents,
-  searchTalentsBySkill,
-  searchTalentsByLocation,
+  getTalentsHandler,
+  createTalentHandler,
 };

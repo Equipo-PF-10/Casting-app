@@ -1,5 +1,4 @@
 const server = require("./src/app");
-const getUsersData = require("./src/importData/usersData");
 const { conn } = require("./src/db");
 const { PORT } = process.env;
 

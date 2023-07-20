@@ -6,9 +6,8 @@ module.exports = (sequelize) => {
     {
       id: {
         type: DataTypes.UUID,
-        defaulValue: DataTypes.UUIDV4,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
-        allowNull: false,
       },
 
       name: {
@@ -29,30 +28,40 @@ module.exports = (sequelize) => {
 
       image: {
         type: DataTypes.STRING,
-        allowNull: false,
+
         validate: {
           isUrl: true,
         },
       },
 
+      gender: {
+        type: DataTypes.ENUM("Masculino", "Femenino", "Otro"),
+      },
+
       nationality: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
 
       ubication: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
 
       hability: {
         type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false,
+      },
+
+      weight: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+      },
+
+      height: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
       },
 
       contact: {
         type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false,
       },
     },
     { freezeTableName: true, timestamps: false }
