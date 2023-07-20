@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./Login.module.css";
 import { Link } from "react-router-dom";
 import validate from "./Validate";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const Login = () => {
   const [input, setInput] = useState({
@@ -47,7 +47,7 @@ const Login = () => {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div className={style.container}>
         <div className={style.containerImg}>
           <div className={style.login}>
