@@ -2,7 +2,7 @@ export const REGISTER_MODEL = "REGISTER_MODEL";
 export const ERROR = "ERROR";
 
 export const register_model = (payload) => {
-    let endpoint = "https://casting-app-server.onrender.com/talent/register"; 
+    let endpoint = "https://casting-app-server.onrender.com/talents/register"; 
     return async (dispatch) => {
        try {
           const response = await axios.post(endpoint, payload);
