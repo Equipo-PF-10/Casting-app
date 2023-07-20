@@ -12,17 +12,20 @@ const profileCompany = () => {
         </div>
         <div className={style.textoCard}>
           <h2 className={style.nombre}>Empresa</h2>
-          <p className={style.titulo}>Titulo</p>
+          <h5 className={style.titulo}>Titulo</h5>
           <p className={style.descripcion}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             dapibus egestas tortor, fermentum sagittis sem tincidunt sit amet.
-            Ut at risus magna. Nulla in ullamcorper urna.
+            Ut at risus magna. Nulla in ullamcorper urna. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit. Etiam dapibus egestas tortor,
+            fermentum sagittis sem tincidunt sit amet. Ut at risus magna. Nulla
+            in ullamcorper urna.
           </p>
         </div>
       </div>
       {/*carta de orientacion*/}
-      <div className={style.orientacion}>
-        <h3>Orientacion Artistica</h3>
+      <div className={style.orientacionCard}>
+        <h3 className={style.orientacionTexto}>Orientacion Artistica</h3>
         <div className={style.habilidades}>
           <div className={style.habilidad}>
             <h4>Deporte</h4>

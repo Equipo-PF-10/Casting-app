@@ -11,7 +11,7 @@ const validationInputs = (input) => {
   const regexEmail = /\S+@\S+\.\S+/;
   if (!regexEmail.test(input.email)) errors.email = "Debes ingresar un email valido";
   if (!input.email) errors.email = "¡Debes ingresar un email!";
-  if (input.email.length > 35) errors.email = "¡No ingrese mas de 35 caracteres!";
+  if (input.email.length > 60) errors.email = "¡No ingrese mas de 60 caracteres!";
 
   // Validacion de Password
   if (!regexNumbers.test(input.password)) errors.password = "¡Debe ingresar al menos un número!";
