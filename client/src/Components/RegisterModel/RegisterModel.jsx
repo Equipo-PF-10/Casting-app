@@ -53,7 +53,6 @@ export default function RegisterModel() {
   function handleSubmit(event) {
     try {
       event.preventDefault();
-
       dispatch(register_model(input));
       setInput({
         name: "",
