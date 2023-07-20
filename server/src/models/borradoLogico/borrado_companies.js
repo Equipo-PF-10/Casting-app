@@ -17,20 +17,31 @@ module.exports = (sequelize) => {
         unique: true,
       },
 
-      ubication: {
+      descriptionShort: {
+        type: DataTypes.STRING,
+        allowNull: false,        
+      },
+
+      domain: {
         type: DataTypes.STRING,
         allowNull: false,
       },
 
-      manager: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-
-      contact: {
+      socialNetworks: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
+
+      country: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
+      logo: {                         //para almacenar la URL del logo
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
     },
     { freezeTableName: true, timestamps: false }
   );
