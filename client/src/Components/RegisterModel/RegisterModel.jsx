@@ -1,11 +1,13 @@
 import styles from "./RegisterModel.module.css";
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import validationInputs from "./validationInputs";
 import validationSend from "./validationSend";
 import { register_model } from "../../redux/actions";
 import Navbar from "../Navbar/Navbar";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RegisterModel() {
   const [input, setInput] = useState({
@@ -22,6 +24,8 @@ export default function RegisterModel() {
 
   const [disable, setDisable] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  let error = useSelector((state) => state.errors);
+  let messageRegistered = useSelector((state) => state.messageRegistered);
   const dispatch = useDispatch();
 
   //Funcion que valida los campos que el usuario este ingresando
@@ -62,9 +66,63 @@ export default function RegisterModel() {
     !errExists ? setDisable(true) : setDisable(false);
   }, [errors, isChecked]);
 
+  const mensaje_success_Toast = () => {
+    toast.success(messageRegistered, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      style: {
+        marginTop: "120px",
+      },
+      });
+  }
+
+
+  let currentToastId = null;
+  //Evita que se renderice mas de 1 toast
+  const mensaje_error_Toast = () => {
+    if (currentToastId) {
+      toast.update(currentToastId, {
+        render: error,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastId = toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id", // Puedes cambiar "custom-toast-id" por cualquier otro valor único
+        style: {
+          marginTop: "120px",
+        },
+      });
+    }
+  };
+
+  //Mostrar mensajes que me devuelve el back mendiante el Toastify
+  if(Object.keys(messageRegistered).length > 0){
+    mensaje_success_Toast();
+  }
+  if(Object.keys(error).length > 0){
+    mensaje_error_Toast();
+  }
+
   return (
     <div>
       <Navbar/>
+      <div>
+      <ToastContainer />
+      </div>
     <div className={styles.container}>
       <div className={styles.imagenRegister}>
         <svg
