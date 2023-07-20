@@ -20,3 +20,13 @@ export const register_model = (payload) => {
        }
     };
  }
+
+ export const clean_error = (payload) => {
+   return (dispatch) => {
+      return dispatch({
+        type: ERROR,
+        payload: payload
+      })
+   }
+}
+
