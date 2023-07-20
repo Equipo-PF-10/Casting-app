@@ -5,6 +5,7 @@ import Login from "./Views/Login/Login.jsx";
 import RegisterModel from "./Components/RegisterModel/RegisterModel";
 import ProfileCompany from "./Views/profiles/profileCompany";
 import ProfileModel from "./Views/profiles/ProfileModel";
+import EventForm from "./Components/eventForm/eventsFrom";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/model/register" element={<RegisterModel />} />
         <Route path="/company/profile" element={<ProfileCompany />} />
         <Route path="/model/profile" element={<ProfileModel />} />
+        <Route path="/createEvent" element={<EventForm/>} />
       </Routes>
     </>
   );

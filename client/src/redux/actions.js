@@ -1,6 +1,8 @@
 export const REGISTER_MODEL = "REGISTER_MODEL";
 export const ERROR = "ERROR";
 
+import axios from "axios";
+
 export const register_model = (payload) => {
     let endpoint = "https://casting-app-server.onrender.com/talents/register"; 
     return async (dispatch) => {
