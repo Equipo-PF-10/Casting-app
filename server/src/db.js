@@ -2,13 +2,21 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
+
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DB_DEPLOY } =
+  process.env;
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}}`,
+  // DB_DEPLOY ||
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
   {
     logging: false,
     native: false,
+    // dialectOptions: {
+    //   ssl: {
+    //     require: true,
+    //   },
+    // },
   }
 );
 
@@ -36,12 +44,13 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Empresa, Evento, Representante, Talento } = sequelize.models;
+const { Empresa, Evento, Talento, Mensaje } = sequelize.models;
 
 Empresa.belongsToMany(Talento, { through: "Talento/Empresa" });
 Talento.belongsToMany(Empresa, { through: "Talento/Empresa" });
-Representante.belongsToMany(Talento, { through: "Talento/Representante" });
-Talento.hasMany(Representante, { as: "Talento" });
+
+Empresa.belongsToMany(Evento, { through: "Empresa/Eventos" });
+Evento.belongsToMany(Empresa, { through: "Empresa/Eventos" });
 
 module.exports = {
   ...sequelize.models,

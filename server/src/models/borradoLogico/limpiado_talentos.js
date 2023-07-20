@@ -12,15 +12,28 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
 
-    nationality: {
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      isEmail: true,
+    },
+
+    password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
-    relation: {
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isUrl: true,
+      },
+    },
+
+    nationality: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -30,8 +43,22 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
-    talent: {
-      type: DataTypes.STRING,
+    hability: {
+      type: DataTypes.ENUM(
+        "Actuación",
+        "Animador/a",
+        "Bailarín/a",
+        "Blogger",
+        "Cantante",
+        "DJ",
+        "Influencer",
+        "Locutor/a",
+        "Mago/a",
+        "Músico/a",
+        "Modelo",
+        "Presentador/a",
+        "Promotor/a"
+      ),
       allowNull: false,
     },
 

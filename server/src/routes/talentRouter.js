@@ -1,8 +1,12 @@
 const { Router } = require("express");
-const getUserHandler = require("../handlers/getTalentsHandler");
+const {
+  getTalentsHandler,
+  createTalentHandler,
+} = require("../handlers/talentsHandler");
 
-const userRouter = Router();
+const talentRouter = Router();
 
-userRouter.get("/users", getUserHandler);
+talentRouter.get("/", getTalentsHandler);
+talentRouter.post("/", createTalentHandler);
 
-module.exports = userRouter;
+module.exports = talentRouter;
