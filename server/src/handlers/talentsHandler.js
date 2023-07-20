@@ -1,8 +1,8 @@
 const {
-  getAllTalents,
   createTalentDb,
   getTalentByName,
   getTalentById,
+  getDbTalents,
 } = require("../controllers/talentsController");
 
 // Función handler que devuelve los talentos.
@@ -14,7 +14,7 @@ const getTalentsHandler = async (req, res) => {
       const talentByName = await getTalentByName(name);
       res.status(200).json(talentByName);
     } else {
-      const talents = await getAllTalents();
+      const talents = await getDbTalents();
       res.status(200).json(talents);
     }
   } catch (error) {
