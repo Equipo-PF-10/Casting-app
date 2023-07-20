@@ -30,3 +30,12 @@ export const register_model = (payload) => {
    }
 }
 
+export const clean_message_register = (payload) => {
+   return (dispatch) => {
+      return dispatch({
+        type: REGISTER_MODEL,
+        payload: payload
+      })
+   }
+}
+
