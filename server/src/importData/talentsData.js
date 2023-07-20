@@ -56,7 +56,7 @@ const getApiTalents = async () => {
           gender = "Otro";
         }
 
-        return {
+        const createdTalent = await Talento.create({
           name,
           email,
           password,
@@ -68,7 +68,8 @@ const getApiTalents = async () => {
           weight,
           height,
           contact,
-        };
+        });
+        return createdTalent;
       })
     );
     return users;
