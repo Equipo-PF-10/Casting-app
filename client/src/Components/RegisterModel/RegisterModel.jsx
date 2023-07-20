@@ -8,8 +8,13 @@ import { register_model } from "../../redux/actions";
 import Navbar from "../Navbar/Navbar";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function RegisterModel() {
+
+  //Autenticacion
+  const { loginWithRedirect } = useAuth0();
+
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -81,7 +86,6 @@ export default function RegisterModel() {
       },
       });
   }
-
 
   let currentToastId = null;
   //Evita que se renderice mas de 1 toast
@@ -436,7 +440,10 @@ export default function RegisterModel() {
           )}
         </div>
         <div className={styles.separarGoogle}>
-          <button className={styles.buttonGoogle}>
+          <button 
+          className={styles.buttonGoogle}
+          onClick={() => loginWithRedirect()}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="xMidYMid"
