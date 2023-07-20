@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { v4: uuidv4 } = require("uuid");
+const { Talento } = require("../db");
 
 let habilities = [
   "Actuación",
@@ -30,15 +30,14 @@ const getRandomHabilities = (habilities) => {
 
 const getApiTalents = async () => {
   try {
-    const response = await axios("https://randomuser.me/api/?results=50");
+    const response = await axios("https://randomuser.me/api/?results=20");
     const usersData = response.data.results;
 
     const users = await Promise.all(
       usersData.map(async (user) => {
-        // const id = uuidv4();
         const name = `${user.name.first} ${user.name.last}`;
         const { email } = user;
-        const { gender } = user;
+        let { gender } = user;
         const nationality = user.location.country;
         const ubication = user.location.city;
         const password = user.login.password;
@@ -48,6 +47,14 @@ const getApiTalents = async () => {
         const height = null;
 
         const hability = getRandomHabilities(habilities);
+
+        if (gender === "male") {
+          gender = "Masculino";
+        } else if (gender === "female") {
+          gender = "Femenino";
+        } else {
+          gender = "Otro";
+        }
 
         return {
           name,
