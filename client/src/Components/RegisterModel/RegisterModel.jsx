@@ -9,7 +9,7 @@ import Navbar from "../Navbar/Navbar";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth0 } from "@auth0/auth0-react";
-import { clean_error } from "../../redux/actions";
+import { clean_error, clean_message_register } from "../../redux/actions";
 
 export default function RegisterModel() {
 
@@ -91,7 +91,11 @@ const mensaje_success_Toast = () => {
       draggable: true,
       progress: undefined,
       theme: "light",
-      toastId: "custom-toast-id", 
+      toastId: "custom-toast-id",
+      style: {
+        marginTop: "120px",
+        width: "400px"
+      }, 
     });
   }
 };
@@ -117,6 +121,7 @@ const mensaje_success_Toast = () => {
         toastId: "custom-toast-id", 
         style: {
           marginTop: "120px",
+          width: "400px"
         },
       });
     }
@@ -125,7 +130,7 @@ const mensaje_success_Toast = () => {
   //Mostrar mensajes que me devuelve el back mendiante el Toastify
   if(Object.keys(messageRegistered).length > 0){
     mensaje_success_Toast();
-    
+    dispatch(clean_message_register(""));
   }
   if(Object.keys(error).length > 0){
     mensaje_error_Toast();
