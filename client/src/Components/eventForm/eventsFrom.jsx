@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./eventForm.module.css";
 import validation from "./validation";
+import axios from "axios";
 
 const EventForm = () => {
 
@@ -21,10 +22,21 @@ const EventForm = () => {
         setError(validation({ ...input, [name]: value }));
       };
 
+      
+    const hanldeSubmit = async(event) => {
+        event.preventDefault();
+        try {
+            await axios.post()
+            setInput(initialState)
+        } catch (error) {
+            console.log({error: error.message})
+        }
+    }
+  
     return(
         <section className={styles.section}>
             <div>
-                <form action="">
+                <form action=""  method="POST" onSubmit={hanldeSubmit}>
                 <h1 className={styles.title}>Crea tu Evento</h1>
                     <section className={styles.inputs}>
                         <div>

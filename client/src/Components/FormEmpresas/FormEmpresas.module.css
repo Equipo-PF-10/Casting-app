@@ -1,6 +1,6 @@
 .section{
     background-color: whitesmoke;
-    color: #324844;
+/*     color: #324844; */
     padding-inline: 10rem;
     height: 100vh;
 }
@@ -8,14 +8,13 @@
 .form{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    padding-block: 2rem;
+    padding-block: 6rem;
 }
 
 .img{
     border-radius: 50%;
     height: 15rem;
     width: 15rem;
-    box-shadow: 0px 2.8864142894744873px 2.8864142894744873px 1.4432071447372437px rgba(0, 0, 0, 0.25);
 }
 
 .svg1{
@@ -35,12 +34,49 @@
 .art{
     display: flex;
     flex-direction: column;
+    height: 4rem;
 }
+
+.art input{
+    background-color: whitesmoke;
+    border: none;
+    border-bottom: #00c9a7 3px solid;
+    max-width: 10rem;
+}
+
+.art label {
+    position: absolute;
+    padding-left: 10px;
+    transition: 0.5s;
+}
+
+.art input:valid + label,
+.art input:focus + label {
+  color: #00c9a7;
+  transform: translateY(-15px);
+  font-size: 15px;
+  background-color: whitesmoke;
+}
+
+
+
+.art input[type=file]{
+    cursor: pointer;
+}
+
+.error{
+    font-size: 12px
+}
+
 
 .art1{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.art1 select{
+    cursor: pointer;
 }
 
 .div{
