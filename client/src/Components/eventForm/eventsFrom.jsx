@@ -30,7 +30,7 @@ const EventForm = () => {
                         <div>
                             <article  className={styles.coolinput}>
                                 <label className={styles.text}> Nombre del evento</label>
-                                <input type="text" name="name" value={input.name} onChange={handleChange}/>
+                                <input type="text" name="name" value={input.name} onChange={handleChange} placeholder="Nombre de tu evento..."/>
                                 <p className={error.name ? styles.error : ""}>{error.name ? error.name : null}</p>
                             </article>
                             <article  className={styles.coolinput}>
@@ -40,7 +40,7 @@ const EventForm = () => {
                             </article>
                             <article className={styles.coolinput}>
                                 <label className={styles.text}> Locación del evento</label>
-                                <input type="text" name="location" value={input.location} onChange={handleChange}/>
+                                <input type="text" name="location" value={input.location} onChange={handleChange} placeholder="Locación de tu evento..."/>
                                 <p className={error.location ? styles.error : ""}>{error.location ? error.location : null}</p>
                             </article>
                         </div>
@@ -50,7 +50,7 @@ const EventForm = () => {
                     </section>
                     <article className={styles.textArea}>
                         <label htmlFor="" className={styles.text}>Descripción</label>
-                        <textarea name="description" id="" cols="30" rows="10" value={input.description} onChange={handleChange}></textarea>
+                        <textarea name="description" id="" cols="30" rows="10" value={input.description} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
                         <p className={error.description ? styles.error : ""}>{error.description ? error.description : null}</p>
                     </article>
                     <button type="submit">Crear</button>

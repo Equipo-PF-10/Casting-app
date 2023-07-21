@@ -6,6 +6,9 @@ import RegisterModel from "./Components/RegisterModel/RegisterModel";
 import ProfileCompany from "./Views/profiles/profileCompany";
 import ProfileModel from "./Views/profiles/ProfileModel";
 import EventForm from "./Components/eventForm/eventsFrom";
+import NavBarLateral from "./Components/NavBarLateral/NavBarLateral";
+import FormEmpresa from "./Components/FormEmpresas/FormEmpresas";
+import FormTalento from "./Components/FormTalento/FormTalento";
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
         <Route path="/company/profile" element={<ProfileCompany />} />
         <Route path="/model/profile" element={<ProfileModel />} />
         <Route path="/createEvent" element={<EventForm/>} />
+        <Route path="/NavBarLateral" element={<NavBarLateral/>}/>
+        <Route path="/form/empresas" element={<FormEmpresa/>}/>
+        <Route path="/form/talentos" element={<FormTalento/>}/>
       </Routes>
     </>
   );

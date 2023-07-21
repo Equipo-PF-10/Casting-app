@@ -2,7 +2,6 @@ export const REGISTER_MODEL = "REGISTER_MODEL";
 export const ERROR = "ERROR";
 import axios from 'axios';
 
-import axios from "axios";
 
 export const register_model = (payload) => {
    let endpoint = "http://localhost:3001/talents/register";
