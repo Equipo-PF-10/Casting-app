@@ -26,29 +26,29 @@ module.exports = (sequelize) => {
       detail: {
         type: DataTypes.STRING,
         allowNull: false,
-        // validate: {
-        //   len: [2, 90], // solo permite valores entre 2 y 90
-        // },
+        validate: {
+          len: [0, 130], // Permite valores entre 0 y 130 caracteres.
+        },
       },
 
       active: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
       },
 
       ubication: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
 
       habilityRequired: {
         type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false,
+        allowNull: true,
       },
 
       contact: {
         type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false,
+        allowNull: true,
       },
     },
     { freezeTableName: true, timestamps: false }

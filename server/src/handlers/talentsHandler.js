@@ -24,7 +24,6 @@ const getTalentsHandler = async (req, res) => {
 
 // Función handler que crea los talentos.
 const createTalentHandler = async (req, res) => {
-  console.log(req.body);
   const {
     name,
     email,
@@ -38,7 +37,7 @@ const createTalentHandler = async (req, res) => {
     height,
   } = req.body;
 
-  if (!name || !email || !password) {
+  if (!email || !password) {
     return res.status(400).send("Faltan datos obligatorios");
   }
 

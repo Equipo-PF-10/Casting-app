@@ -47,13 +47,11 @@ const getTalentByName = async (name) => {
   try {
     const nameToLower = name.toLowerCase(); // Convertir el nombre a minúsculas
 
-    // Si no se encuentra en la API, buscar en la base de datos
-    const foundInDb = await Talento.findAll({
+    const foundInDb = await Talento.findOne({
       where: { name: nameToLower },
-      limit: 5,
     });
 
-    if (foundInDb.length === 0) {
+    if (!foundInDb) {
       throw new Error(
         `El nombre ${name} no se ha encontrado. Intenta de nuevo.`
       );
