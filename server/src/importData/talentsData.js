@@ -38,8 +38,8 @@ const getApiTalents = async () => {
         const name = `${user.name.first} ${user.name.last}`;
         const { email } = user;
         let { gender } = user;
-        const nationality = user.location.country;
-        const ubication = user.location.city;
+        const nationality = "Argentina";
+        const ubication = "Argentina";
         const password = user.login.password;
         const image = user.picture.large;
         const contact = [user.phone, user.cell];
