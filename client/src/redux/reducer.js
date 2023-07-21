@@ -1,4 +1,4 @@
-import { ERROR, REGISTER_MODEL } from "./actions.js";
+import { ERROR, REGISTER_MODEL_OR_COMPANY } from "./actions.js";
 
 const initialState = {
   models: [],
@@ -9,7 +9,7 @@ const initialState = {
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     
-    case REGISTER_MODEL:
+    case REGISTER_MODEL_OR_COMPANY:
       return {
         ...state,
         messageRegistered: payload,
