@@ -5,6 +5,10 @@ import Login from "./Views/Login/Login.jsx";
 import RegisterModel from "./Components/RegisterModel/RegisterModel";
 import ProfileCompany from "./Views/profiles/profileCompany";
 import ProfileModel from "./Views/profiles/ProfileModel";
+import EventForm from "./Components/eventForm/eventsFrom";
+import NavBarLateral from "./Components/NavBarLateral/NavBarLateral";
+import FormEmpresa from "./Components/FormEmpresas/FormEmpresas";
+import FormTalento from "./Components/FormTalento/FormTalento";
 import RegisterCompany from "./Views/RegisterCompany/RegisterCompany";
 import CompanySearch from "./Views/Searches/CompanySearch";
 import TalentSearch from "./Views/Searches/TalentSearch";
@@ -19,8 +23,10 @@ function App() {
         <Route path="/company/register" element={<RegisterCompany />} />
         <Route path="/company/profile" element={<ProfileCompany />} />
         <Route path="/model/profile" element={<ProfileModel />} />
-        <Route path="/company/search" element={<CompanySearch />} />
-        <Route path="/model/search" element={<TalentSearch />} />
+        <Route path="/createEvent" element={<EventForm/>} />
+        <Route path="/NavBarLateral" element={<NavBarLateral/>}/>
+        <Route path="/form/empresas" element={<FormEmpresa/>}/>
+        <Route path="/form/talentos" element={<FormTalento/>}/>
       </Routes>
     </>
   );
