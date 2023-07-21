@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import validationInputs from "../../Components/RegisterModel/validationInputs.js";
 import validationSend from "../../Components/RegisterModel/validationSend.js";
-//import { register_company } from "../../redux/actions";
+import { register_company } from "../../redux/actions";
 import Navbar from "../../Components/Navbar/Navbar.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -52,7 +52,7 @@ export default function RegisterCompany() {
   function handleSubmit(event) {
     try {
       event.preventDefault();
-      //dispatch(register_company(input));
+      dispatch(register_company(input));
       setInput({
         name: "",
         email: "",

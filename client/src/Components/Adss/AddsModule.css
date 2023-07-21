@@ -16,7 +16,7 @@
    }
    
    .card-img {
-    background-color: var(--color-contraste);
+    /* background-color: var(--color-contraste); */
     height: 40%;
     width: 100%;
     border-radius: .5rem;
@@ -24,7 +24,7 @@
    }
    .card-img img {
     height: 100%;
-    width: 100%;
+    width: 60%;
     border-radius: .5rem;
     transition: .3s ease;
    }
@@ -76,7 +76,7 @@
    
    .card-button:hover {
     border: 1px solid #ffcaa6;
-    background-color: #ffcaa6;
+    /* background-color: #ffcaa6; */
    }
    .talento-label {
     margin: 0;
@@ -99,7 +99,7 @@
     list-style: none;
     padding: 0px 1px;
     position: relative;
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    /* transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1); */
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
