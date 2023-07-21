@@ -9,6 +9,7 @@ import EventForm from "./Components/eventForm/eventsFrom";
 import NavBarLateral from "./Components/NavBarLateral/NavBarLateral";
 import FormEmpresa from "./Components/FormEmpresas/FormEmpresas";
 import FormTalento from "./Components/FormTalento/FormTalento";
+import RegisterCompany from "./Views/RegisterCompany/RegisterCompany";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/model/register" element={<RegisterModel />} />
+        <Route path="/company/register" element={<RegisterCompany />} />
         <Route path="/company/profile" element={<ProfileCompany />} />
         <Route path="/model/profile" element={<ProfileModel />} />
         <Route path="/createEvent" element={<EventForm/>} />
