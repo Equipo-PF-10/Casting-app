@@ -6,6 +6,8 @@ import RegisterModel from "./Components/RegisterModel/RegisterModel";
 import ProfileCompany from "./Views/profiles/profileCompany";
 import ProfileModel from "./Views/profiles/ProfileModel";
 import RegisterCompany from "./Views/RegisterCompany/RegisterCompany";
+import CompanySearch from "./Views/Searches/CompanySearch";
+import TalentSearch from "./Views/Searches/TalentSearch";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/company/register" element={<RegisterCompany />} />
         <Route path="/company/profile" element={<ProfileCompany />} />
         <Route path="/model/profile" element={<ProfileModel />} />
+        <Route path="/company/search" element={<CompanySearch />} />
+        <Route path="/model/search" element={<TalentSearch />} />
       </Routes>
     </>
   );
