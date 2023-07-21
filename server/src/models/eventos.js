@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 // Función twoWeeks() que retorna el valor de dos semanas en el futuro a partir de hoy.
-const twoWeeks = () => new Date(Date.now() + 2 * 7 * 24 * 60 * 60 * 1000);
+// const twoWeeks = () => new Date(Date.now() + 2 * 7 * 24 * 60 * 60 * 1000);
 
 module.exports = (sequelize) => {
   const Evento = sequelize.define(
