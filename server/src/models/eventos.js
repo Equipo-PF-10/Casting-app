@@ -11,7 +11,6 @@ module.exports = (sequelize) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
-        allowNull: false,
       },
 
       name: {
@@ -19,34 +18,21 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
 
+      image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
+      detail: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [2, 90], // solo permite valores entre 2 y 90
+        },
+      },
+
       active: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-
-      castingDuration: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: twoWeeks(),
-      },
-
-      // Para empresa --> post creacion de un evento --> se tiene que ver en el home
-      eventTypes: {
-        type: DataTypes.ENUM(
-          "Deporte",
-          "Humor",
-          "Arte",
-          "Música",
-          "Magia",
-          "Baile",
-          "Animación",
-          "Otro"
-        ),
-        allowNull: false,
-      },
-
-      selectedEventTypes: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
 
@@ -68,10 +54,21 @@ module.exports = (sequelize) => {
     { freezeTableName: true, timestamps: false }
   );
 
-  // Hook de Sequelize para guardar los eventos seleccionados en un array de info.
-  Evento.beforeSave((evento, _options) => {
-    evento.selectedEventTypes = evento.eventTypes;
-  });
-
   return Evento;
 };
+
+// castingDuration: {
+//   type: DataTypes.DATE,
+//   allowNull: false,
+//   defaultValue: twoWeeks(),
+// },
+
+// selectedEventTypes: {
+//   type: DataTypes.ARRAY(DataTypes.STRING),
+//   allowNull: false,
+// },
+
+// Hook de Sequelize para guardar los eventos seleccionados en un array de info.
+// Evento.beforeSave((evento, _options) => {
+//   evento.selectedEventTypes = evento.eventTypes;
+// });
