@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./ProfileCompany.module.css";
-import empresa from '../../../assets/PNG/facebook 1.png'
+import empresa from "../../../assets/PNG/facebook 1.png";
 
 const profileCompany = () => {
   return (
@@ -57,20 +57,37 @@ const profileCompany = () => {
       <div className={style.proyectosCard}>
         <div className={style.textoProyectos}>
           <h3>Proyectos</h3>
-          <p>proyecto 1</p>
-          <p>proyecto 2</p>
-          <p>proyecto 3</p>
+          <div className={style.proyP}>
+            <p className={style.pe}>
+              Aenean id arcu dapibus, cursus nisl ut, facilisis est.
+            </p>
+            <p className={style.pe}>
+              Aenean id arcu dapibus, cursus nisl ut, facilisis est.
+            </p>
+            <p className={style.pe}>
+              Aenean id arcu dapibus, cursus nisl ut, facilisis est.
+            </p>
+            <p className={style.pe}>
+              Aenean id arcu dapibus, cursus nisl ut, facilisis est.
+            </p>
+          </div>
         </div>
       </div>
       {/*carta de trabajos postulados*/}
-      <div>
-        <div>
-          <h3>Trabajos postulados</h3>
-          <p>trabajo 1</p>
-          <p>trabajo 2</p>
-          <p>trabajo 3</p>
-          <p>trabajo 4</p>
-        </div>
+      <div className={style.trabajosPostulados}>
+        <h3 className={style.tituloTrabajos}>Trabajos postulados</h3>
+        <p className={style.textoTrab}>
+          Ut consequat justo eu accumsan porta. fermentum vitae vel elit.
+        </p>
+        <p className={style.textoTrab}>
+          Mauris eu eros aliquet magna viverra fermentum vitae vel elit.
+        </p>
+        <p className={style.textoTrab}>
+          Aenean id arcu dapibus, cursus nisl ut, facilisis est.
+        </p>
+        <p className={style.textoTrab}>
+          Aenean id arcu dapibus, cursus nisl ut, facilisis est.
+        </p>
       </div>
       {/*carta de contacto*/}
       <div>
