@@ -1,4 +1,5 @@
 export const REGISTER_MODEL_OR_COMPANY = "REGISTER_MODEL_OR_COMPANY";
+export const MODAL_LOGIN = "MODAL_LOGIN";
 export const ERROR = "ERROR";
 import axios from 'axios';
 
@@ -44,7 +45,7 @@ export const register_company = (payload) => {
  export const clean_error = (payload) => {
    return (dispatch) => {
       return dispatch({
-        type: ERROR,
+        type: "ERROR",
         payload: payload
       })
    }
@@ -53,9 +54,19 @@ export const register_company = (payload) => {
 export const clean_message_register = (payload) => {
    return (dispatch) => {
       return dispatch({
-        type: REGISTER_MODEL,
+        type: "REGISTER_MODEL_OR_COMPANY",
         payload: payload
       })
    }
 }
+
+export const modal_login = (payload) => {
+   return (dispatch) => {
+      return dispatch({
+        type: "MODAL_LOGIN",
+        payload: payload
+      })
+   }
+}
+
 
