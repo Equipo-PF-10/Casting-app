@@ -1,0 +1,35 @@
+.containerCard{
+    width: 200px;
+    height: 300px;
+    background-image: linear-gradient(
+    to bottom,
+    #d1d1d1,
+    #c3cbdd,
+    #a5cae6,
+    #76cbe5,
+    #3bccd5,
+    #1dc9c7,
+    #00c6b5,
+    #00c2a2,
+    #00bd9e,
+    #00b89a,
+    #00b496,
+    #00af92
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.1) 3px 8px 12px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 2px inset;
+}
+
+.imagen{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 40px;
+}

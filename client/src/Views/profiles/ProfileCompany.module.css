@@ -6,8 +6,8 @@
 
 .containerGeneral {
   background-color: rgb(255, 255, 255);
+  padding: 30px;
 }
-
 
 /*carta con foto y descripcion*/
 .cardContainer {
@@ -38,19 +38,19 @@
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
-.image{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -100px;
-    margin-bottom: 100px;
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -100px;
+  margin-bottom: 100px;
 }
 
-.imgPerfil{
-    width: 300px;
-    height: auto;
-    border-radius: 50%;
-    margin-top: 20px;
+.imgPerfil {
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+  margin-top: 20px;
 }
 
 .textoCard {
@@ -58,18 +58,17 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-    margin-left: 20px;
-    margin-right: 20px;
-    text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
 }
 
-.nombre{
+.nombre {
   margin-bottom: 30px;
 }
 
-
 /*carta de orientacion*/
-.orientacionCard{
+.orientacionCard {
   width: 500px;
   height: 300px;
   display: flex;
@@ -83,26 +82,98 @@
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
-.orientacionTexto{
+.orientacionTexto {
   margin-top: -50px;
+  font-weight: 700;
 }
 
-.habilidades{
+.habilidades {
   display: flex;
   justify-content: space-around;
   margin-top: 50px;
 }
 
-.habilidad{
+.habilidad {
   padding-left: 10px;
   padding-right: 10px;
   margin: 20px;
-  background-color: #00C9A7;
+  background-color: #00c9a7;
   border-radius: 20px;
 }
 
-.habilidad h4{
+.habilidad h4 {
   color: whitesmoke;
 }
 
 /*carta de imagenes*/
+.imagenesCard {
+  background-color: #00c9a7;
+  width: 500px;
+  height: 800px;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 10px;
+      box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+}
+
+/*carta de proyectos*/
+.proyectosCard{
+  width: 600px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+    padding-left: 30px;
+}
+
+.textoProyectos h3{
+  margin-top: -160px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.proyP{
+  margin-bottom: -30px;
+}
+
+.pe{
+  margin-left: 30px;
+}
+
+/*carta de trabajos postulados*/
+.trabajosPostulados{
+  width: 600px;
+  height: 650px;
+  background-color: #7E7193;
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+    padding-left: 30px;
+}
+
+.tituloTrabajos{
+  margin-top: -200px;
+  font-weight: 700;
+  color: whitesmoke;
+}
+
+.textoTrab{
+    margin-left: 30px;
+    margin-top: 30px;
+    color: whitesmoke;
+}
+
+/*carta de contacto*/

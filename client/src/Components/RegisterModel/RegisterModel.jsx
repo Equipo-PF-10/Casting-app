@@ -99,7 +99,6 @@ auth.parseHash((err, authResult) => {
   function handleSubmit(event) {
     try {
       event.preventDefault();
-
       dispatch(register_model(input));
       setInput({
         name: "",
