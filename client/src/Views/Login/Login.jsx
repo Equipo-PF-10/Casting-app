@@ -74,7 +74,7 @@ const Login = () => {
       email: "",
     });
     // Aquí puedes agregar la lógica para redirigir al usuario a otra ruta después de iniciar sesión
-    navigate("/otra-ruta");
+    navigate("/redirige a landing");
   };
 
   return (
