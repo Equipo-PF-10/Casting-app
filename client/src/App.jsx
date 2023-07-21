@@ -10,6 +10,8 @@ import NavBarLateral from "./Components/NavBarLateral/NavBarLateral";
 import FormEmpresa from "./Components/FormEmpresas/FormEmpresas";
 import FormTalento from "./Components/FormTalento/FormTalento";
 import RegisterCompany from "./Views/RegisterCompany/RegisterCompany";
+import CompanySearch from "./Views/Searches/CompanySearch";
+import TalentSearch from "./Views/Searches/TalentSearch";
 
 function App() {
   return (
