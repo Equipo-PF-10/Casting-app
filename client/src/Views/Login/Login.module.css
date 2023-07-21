@@ -73,6 +73,7 @@
   justify-content: center;
   width: 250px;
   height: 30px;
+  margin-left: 2px;
   padding: 0.5rem 1.4rem;
   font-size: 0.8rem;
   line-height: 1.25rem;
@@ -196,7 +197,7 @@
 
 .inputContainer input[type="text"].input {
   padding: 11px 10px;
-  font-size: 0.90rem;
+  font-size: 0.9rem;
   border: 2px #429283 solid;
   border-radius: 5px;
   background: whitesmoke;
@@ -213,10 +214,18 @@
   align-items: center;
 }
 .registrate {
-  text-decoration: none;
   margin-left: 10px;
   font-weight: 700;
   color: #7965b8;
+  width: 8.5vh;
+  margin-top: 30px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background-color: transparent;
+}
 }
 .noEstas {
   font-weight: 700;
@@ -336,6 +345,100 @@
   text-decoration: none;
 }
 
-.spanError{
+.spanError {
   font-size: 12px;
+}
+
+/* MODAL OPENED */
+.containerModalOpened {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalOpened {
+  width: 30%;
+  min-width: 400px;
+  height: 30%;
+  overflow: hidden;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  display: grid;
+  grid-template-rows: 45% 25% 25%;
+  justify-items: center;
+  align-items: center; 
+  text-align: center;
+  /* position: relative; */
+  border: 1px solid black;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.599);
+  &:hover {
+    border: 1px solid blue;
+  }
+  transition: transform 1s;
+  transform: translateY(0%);
+}
+
+.buttonCompany {
+  background-color: whitesmoke;
+  color: #4b31a1;
+  width: 35vh;
+}
+
+.delete {
+  position: absolute;
+  width: 2.5vh;
+  height: 2.5vh;
+  top: 1px;
+  right: 10px;
+  border-radius: 3px;
+  background-color: red;
+  color: white;
+  box-shadow: 0 3px 3px black;
+  &:hover {
+    color: red;
+    background-color: white;
+    box-shadow: 0 3px 3px red;
+  }
+}
+
+/* Modal Closed */
+
+.containerModalClosed {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalClosed {
+  width: 40%;
+  height: 52%;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  border: 3px solid black;
+  &:hover {
+    box-shadow: 0 0 10px black;
+  }
+  transition: transform 1s;
+  transform: translateY(-200%);
 }
