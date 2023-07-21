@@ -1,13 +1,10 @@
-
+import React from 'react';
+// import ChartComponent from '../../Components/graficos/chart.jsx';
 import Adds from '../../Components/Adss/Adds.jsx';
 import Navbar from '../../Components/Navbar/Navbar.jsx';
 import './LandingModule.css'
 
 const Landing = () => {
-
-
-
-
 
   return (
     <>
@@ -91,6 +88,7 @@ const Landing = () => {
         </section>
         <section id="blog" className='blog'>
           <h3 >Aqui está la seccioón blog</h3>
+          {/* <ChartComponent/> */}
         </section>
         <section id="nosotros" className='nosotros'>
           <h3 >Aqui está la seccioón nosotros</h3>
