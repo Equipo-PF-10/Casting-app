@@ -16,21 +16,32 @@ module.exports = (sequelize) => {
         allowNull: false,
         unique: true,
       },
-
-      ubication: {
+      
+      logo: {                         
         type: DataTypes.STRING,
         allowNull: false,
       },
 
-      manager: {
+      domain: {
         type: DataTypes.STRING,
         allowNull: false,
       },
 
-      contact: {
+      descriptionShort: {
+        type: DataTypes.STRING,
+        allowNull: false,        
+      },      
+
+      socialNetworks: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
+
+      country: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        },
+
     },
     { freezeTableName: true, timestamps: false }
   );
