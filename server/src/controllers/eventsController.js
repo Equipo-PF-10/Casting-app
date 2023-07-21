@@ -1,4 +1,4 @@
-const Evento = require("../db");
+const { Evento } = require("../db");
 
 // Función controller que retorna los eventos de la database.
 const getAllEvents = async () => {

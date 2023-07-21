@@ -3,7 +3,7 @@ const jsonData = require("./eventos.json");
 
 const getEvents = async () => {
   try {
-    const eventsData = Object.values(jsonData.eventos);
+    const eventsData = jsonData.results;
 
     const allEvents = await Promise.all(
       eventsData.map(async (event) => {
