@@ -26,9 +26,9 @@ module.exports = (sequelize) => {
       detail: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          len: [2, 90], // solo permite valores entre 2 y 90
-        },
+        // validate: {
+        //   len: [2, 90], // solo permite valores entre 2 y 90
+        // },
       },
 
       active: {

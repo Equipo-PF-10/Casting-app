@@ -1,8 +1,13 @@
-const Evento = require("../models/events");
+const Evento = require("../db");
 
-const getAllEvents = async (req, res) => {
+// Función controller que retorna los eventos de la database.
+const getAllEvents = async () => {
   try {
-  } catch (error) {}
+    const allEvents = await Evento.findAll();
+    return allEvents;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
 
 module.exports = { getAllEvents };

@@ -3,7 +3,7 @@ const { conn } = require("./src/db");
 const { PORT } = process.env;
 const getApiTalents = require("./src/importData/talentsData");
 const getCompaniesData = require("./src/importData/companiesData");
-const eventsData = require("./src/importData/eventsData");
+const getEvents = require("./src/importData/eventsData");
 
 // Syncing all the models at once.
 // force is to reset my database
@@ -13,5 +13,5 @@ conn.sync({ force: true }).then(() => {
   });
   getApiTalents();
   // getCompaniesData();
-  eventsData();
+  getEvents();
 });

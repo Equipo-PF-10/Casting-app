@@ -1,16 +1,38 @@
-const axios = require("axios");
 const { Evento } = require("../db");
+const jsonData = require("./eventos.json");
 
-let eventsName = [
-  "Deporte",
-  "Humor",
-  "Arte",
-  "Música",
-  "Magia",
-  "Baile",
-  "Animación",
-];
+const getEvents = async () => {
+  try {
+    const eventsData = Object.values(jsonData.eventos);
 
-const eventsData = async () => {};
+    const allEvents = await Promise.all(
+      eventsData.map(async (event) => {
+        const {
+          name,
+          image,
+          detail,
+          active,
+          ubication,
+          habilityRequired,
+          contact,
+        } = event;
 
-module.exports = eventsData;
+        const createdEvent = await Evento.create({
+          name,
+          image,
+          detail,
+          active,
+          ubication,
+          habilityRequired,
+          contact,
+        });
+        return createdEvent;
+      })
+    );
+    return allEvents;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+module.exports = getEvents;
