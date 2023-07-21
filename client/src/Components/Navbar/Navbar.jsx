@@ -1,12 +1,13 @@
 import './NavbarModule.css'
+import {Link} from 'react-router-dom'; 
 
 function Navbar() {
 return (
     <nav>
       <section className='logo-container'>
-        <a href="/">
-          <img src="Logo con Letras.svg" alt="" />
-        </a>
+        <Link to={"/"}>
+          <img src="/Logo con Letras.svg" alt="" />
+        </Link>
       </section>
       <section className='buttons-container'>
         <button className='button-login'><a href="/login">Ingresa</a></button>
