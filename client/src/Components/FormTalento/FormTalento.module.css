@@ -1,19 +1,21 @@
 .section{
     background-color: whitesmoke;
-/*     color: #324844; */
-    padding-inline: 10rem;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .form{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    padding-block: 1rem;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .img{
     border-radius: 50%;
-    height: 15rem;
+    height: 12rem;
     width: 15rem;
 }
 
@@ -37,7 +39,16 @@
     width: fit-content;
     position: static;
     max-width: 240px;
-    height: 100px;
+    height: 80px;
+  }
+
+  .coolinput select{
+    padding: 11px 10px;
+    font-size: 0.90rem;
+    border: 2px #429283 solid;
+    border-radius: 5px;
+    background: whitesmoke;
+    width:5rem;
   }
   
   .coolinput label.text {
@@ -62,6 +73,16 @@
     width: 250px;
   }
   
+  .coolinput input[type=number]{
+    padding: 11px 10px;
+    font-size: 0.90rem;
+    border: 2px #429283 solid;
+    border-radius: 5px;
+    background: whitesmoke;
+    width:5rem;
+  }
+  
+
   .coolinput textArea {
     padding: 11px 10px;
     font-size: 0.90rem;
@@ -72,7 +93,8 @@
     height: 150px;
   }
 .error{
-    font-size: 12px
+    font-size: 12px;
+    color: #990004;
 }
 
 
@@ -87,9 +109,28 @@
 }
 
 .div{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 10px;
+    padding-inline: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.select{
+    margin-top: 1rem;
+}
+
+.btn{
+    margin-top: 4rem;
+}
+
+.select{
+    width:20rem;
+    border: #429283;
+}
+
+.char{
+    display: flex;
+    justify-content: space-around;
+    gap: 3rem;
 }
