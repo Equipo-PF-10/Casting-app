@@ -13,6 +13,7 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         defaultValue: "Talento Anónimo",
+        allowNull: true,
       },
 
       email: {
@@ -23,7 +24,7 @@ module.exports = (sequelize) => {
 
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
 
       image: {

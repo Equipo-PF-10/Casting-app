@@ -12,10 +12,56 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { clean_error, clean_message_register } from "../../redux/actions";
 
 export default function RegisterModel() {
+  // Ejemplo de cómo obtener el token después de autenticar al usuario con Auth0
+// const auth = new auth0.WebAuth({
+//   domain: 'dev-4hjyir23x5jta1gu.us.auth0.com',
+//   clientID: 'bNwYLJVwAc52r1yOO7AeOsZCUdCfJ90p',
+//   redirectUri: 'http://localhost:5173/login',
+//   audience: 'your_api_audience',
+//   responseType: 'token id_token',
+// });
 
+// Luego de autenticar al usuario, obtén el token y guárdalo en localStorage o en una variable
+auth.parseHash((err, authResult) => {
+  if (authResult && authResult.accessToken) {
+    const token = authResult.accessToken;
+    localStorage.setItem('accessToken', token); // Guárdalo en localStorage u otra forma segura
+  }
+});
   //Autenticacion
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, user, isAuthenticated } = useAuth0();
 
+  const handleRegister = async () => {
+    // Inicia el proceso de inicio de sesión con Auth0
+    await loginWithRedirect();
+  };
+
+  const handleSaveUserToDatabase = async () => {
+    if (isAuthenticated) {
+      const token = await user.getIdTokenClaims(); // Obtiene el token de acceso
+
+      try {
+        const response = await fetch("/guardarUsuario", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token.__raw}`, // Agrega el token en el encabezado de la solicitud
+          },
+          body: JSON.stringify({ email: user.email }), // Envia el email del usuario al backend
+        });
+
+        if (response.ok) {
+          reactToastify.success("Usuario guardado en la base de datos");
+        } else {
+          reactToastify.error("Error al guardar el usuario en la base de datos");
+        }
+      } catch (error) {
+        console.error("Error al guardar el usuario:", error);
+        reactToastify.error("Error al guardar el usuario en la base de datos");
+}
+}
+};
+////////////////////////////////////////////////////////////////////////////////
   const [input, setInput] = useState({
     name: "",
     email: "",

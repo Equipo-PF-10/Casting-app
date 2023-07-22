@@ -1,3 +1,4 @@
+
 .coolinput{
     display: flex;
     flex-direction: column;
@@ -18,7 +19,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: #f5f5f5;
-    padding-left: 80px;
+    padding-left: 120px;
     padding-top: 4rem;
     color: #324844;
   }

@@ -54,4 +54,4 @@ Evento.belongsTo(Empresa); // 1 evento solo pertenece a una empresa
 module.exports = {
   ...sequelize.models,
   conn: sequelize,
-};
+ };

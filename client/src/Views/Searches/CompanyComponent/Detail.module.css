@@ -1,0 +1,56 @@
+.containerDetail {
+  /*margin-right: 20px;*/
+  position: fixed;
+  padding: 30px;
+  width: 400px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+}
+
+.textoDetail {
+  margin-top: 30px;
+}
+
+.acomodarOrientacion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orientacionArt {
+  margin-top: 40px;
+}
+
+/*carta de orientacion*/
+.habilidades {
+  display: flex;
+  justify-content: space-around;
+}
+
+.habilidad {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 20px;
+  background-color: #00c9a7;
+  border-radius: 20px;
+}
+
+.habilidad h4 {
+  color: whitesmoke;
+  font-size: medium;
+  margin-top: 4px;
+}
+
+/*boton conectar*/
+
+.conectar {
+  /*width: 200px;*/
+  width: 100%;
+  height: 40px;
+  border-radius: 100px;
+  font-size: larger;
+  margin: 0;
+  margin-top: 40px;
+}

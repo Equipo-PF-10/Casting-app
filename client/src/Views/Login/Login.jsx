@@ -81,7 +81,6 @@ const Login = () => {
     // Aquí puedes agregar la lógica para redirigir al usuario a otra ruta después de iniciar sesión
     //navigate("/otra-ruta");
   };
-
   const handler_click = () => {
     const open = "isOpened";
     dispatch(modal_login(open));

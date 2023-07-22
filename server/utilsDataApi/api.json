@@ -1,0 +1,4450 @@
+{
+"companies": [
+{
+"alexaRank": 83002,
+"analyzedAt": "2022-12-25T16:31:34.000Z",
+"businessType": null,
+"city": {
+"address": "400 north ashley drive",
+"code": "tampa|florida|us",
+"latitude": "27.9477595",
+"longitude": "-82.458444",
+"name": "Tampa",
+"postcode": null
+},
+"codeNaics": null,
+"codeSic": null,
+"companiesAcquisitions": [
+{
+"descriptionShort": "Clearlink, a SYKES company, partners with the world's leading brands to extend their reach, drive valuable transactions and deepen consumer insight.",
+"domain": "clearlink.com",
+"id": 794882,
+"name": "Clearlink"
+}
+],
+"companiesSimilar": [
+{
+"descriptionShort": "A wholly owned subsidiary of SYNNEX Corporation (NYSE: SNX), Concentrix is a leader in high-value global business services.",
+"domain": "concentrix.com",
+"id": 55940,
+"name": "Concentrix",
+"similitude": "100"
+},
+{
+"descriptionShort": "Amazon is guided by four principles: customer obsession rather than competitor focus, passion for invention, commitment to operational excellence, and long-term thinking.",
+"domain": "aboutamazon.com",
+"id": 7235,
+"name": "Amazon",
+"similitude": "100"
+},
+{
+"descriptionShort": "Sitel is one of the world's leading outsourcing providers of customer experience management.",
+"domain": "sitel.com",
+"id": 80200,
+"name": "Sitel",
+"similitude": "100"
+},
+{
+"descriptionShort": "We are the worldwide leader in outsourced omnichannel customer experience management.",
+"domain": "teleperformance.com",
+"id": 92681,
+"name": "Teleperformance",
+"similitude": "100"
+},
+{
+"descriptionShort": "Clearlink, a SYKES company, partners with the world's leading brands to extend their reach, drive valuable transactions and deepen consumer insight.",
+"domain": "clearlink.com",
+"id": 794882,
+"name": "Clearlink",
+"similitude": "100"
+},
+{
+"descriptionShort": "Liveops offers an on-demand skilled workforce of onshore virtual agents for customer service and sales.",
+"domain": "liveops.com",
+"id": 324582,
+"name": "LiveOps",
+"similitude": "100"
+},
+{
+"descriptionShort": "BroadPath provides specialized business, compliance, and technology services to healthcare payers and providers in commercial and government sectors.",
+"domain": "broad-path.com",
+"id": 2187172,
+"name": "BroadPath Healthcare Solutions",
+"similitude": "100"
+},
+{
+"descriptionShort": "",
+"domain": "sykescostarica.com",
+"id": 2692611,
+"name": "SYKES Costa Rica",
+"similitude": "100"
+},
+{
+"descriptionShort": "Nikhil Analytics is a brain child of IBS Alumni.",
+"domain": "nikhilanalytics.com",
+"id": 1850426,
+"name": "Nikhil Analytics",
+"similitude": "29.03"
+},
+{
+"descriptionShort": "The domain name trainerx.",
+"domain": "undeveloped.com",
+"id": 16829016,
+"name": "Consulente",
+"similitude": "25.81"
+},
+{
+"descriptionShort": "NICE (NASDAQ: NICE) is the worldwide leading provider of both cloud and on-premises enterprise software solutions that empower organizations to make smarter decisions based on advanced analytics of structured and unstructured data.",
+"domain": "nice.com",
+"id": 16782873,
+"name": "NICE",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "Tableau Software helps people see and understand data.",
+"domain": "tableau.com",
+"id": 3572,
+"name": "Tableau",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "Bigtincan transforms the way that field sales and service organizations access, interact with, present and collaborate on content, as well as how they engage with customers when using their mobile devices.",
+"domain": "bigtincan.com",
+"id": 646235,
+"name": "Bigtincan",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "For over 25 years, Micropole has partnered its customers in the creation of high value-added projects by helping them in their transformation at organizational, functional and technical levels.",
+"domain": "micropole.com",
+"id": 973614,
+"name": "Micropole",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "Rocket Software (www.",
+"domain": "rocketsoftware.com",
+"id": 477401,
+"name": "Rocket Software",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "Showpad delivers the world's most intuitive sales enablement software-one that makes your content incredibly easy to find, present, share, and measure.",
+"domain": "showpad.com",
+"id": 64793,
+"name": "Showpad",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "inContact is the cloud contact center software leader, with the most complete, easiest and most reliable solution to help organizations achieve their customer experience goals.",
+"domain": "incontact.com",
+"id": 16751432,
+"name": "inContact",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "Brainshark sales readiness software equips businesses with the training, coaching and content authoring capabilities to achieve sales mastery and outsell the competition.",
+"domain": "brainshark.com",
+"id": 60369,
+"name": "Brainshark",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "Contently is a technology company that helps brands create great content at scale.",
+"domain": "contently.com",
+"id": 10812,
+"name": "Contently",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "SalesFuel provides the tools, training and intelligence for developing sales.",
+"domain": "salesfuel.com",
+"id": 675356,
+"name": "SalesFuel",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "Excella is an Agile technology firm helping Washington, DC's leading organizations realize their future through the power of technology.",
+"domain": "excella.com",
+"id": 857484,
+"name": "Excella Consulting",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "Qstream is a sales capabilities platform that combines performance analytics, coaching optimization and knowledge reinforcement in a powerfully simple mobile enterprise solution.",
+"domain": "qstream.com",
+"id": 724910,
+"name": "Qstream",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "Jigsaw Academy offers courses in big data and data analytics at the beginner, intermediate, and advanced levels, as well as specialized courses for specific sectors.",
+"domain": "jigsawacademy.com",
+"id": 58230,
+"name": "Jigsaw Academy",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "Vidlet is revolutionizing the way people do research and disrupting a space that has been largely untouched.",
+"domain": "vidlet.com",
+"id": 296197,
+"name": "Vidlet",
+"similitude": "22.58"
+},
+{
+"descriptionShort": "Rakuten Aquafadas (formerly Aquafadas) is a mobile software company offering businesses tools designed to create bespoke apps and digital documents.",
+"domain": "aquafadas.com",
+"id": 548606,
+"name": "Rakuten Aquafadas",
+"similitude": "22.58"
+}
+],
+"companiesSubsidiaries": [
+{
+"descriptionShort": "",
+"domain": "sykescostarica.com",
+"id": 2692611,
+"name": "SYKES Costa Rica"
+}
+],
+"companyParent": {
+"descriptionShort": "Sitel is one of the world's leading outsourcing providers of customer experience management.",
+"domain": "sitel.com",
+"id": 80200,
+"name": "Sitel",
+"socialNetworks": {
+"facebook": "http://www.facebook.com/sitelworldwide",
+"instagram": "https://instagram.com/life_at_sitel",
+"linkedin": "https://www.linkedin.com/company/3095",
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/3095",
+"twitter": "http://twitter.com/sitel_worldwide",
+"youtube": "https://youtube.com/user/acticallgroupe"
+}
+},
+"continent": {
+"code": "na",
+"latitude": "51.0000002",
+"longitude": "-109",
+"name": "North America",
+"nameEs": "América del Norte",
+"nameFr": "Amérique du Nord"
+},
+"country": {
+"code": "us",
+"latitude": "39.7837304",
+"longitude": "-100.4458825",
+"name": "United States",
+"nameEs": "Estados Unidos",
+"nameFr": "États-Unis"
+},
+"county": {
+"code": "hillsborough-county|us",
+"latitude": "27.9184543",
+"longitude": "-82.3488057",
+"name": "Hillsborough County"
+},
+"description": "SYKES is a global business process outsourcing (BPO) leader in providing comprehensive inbound customer engagement services to Global 2000 companies, primarily in the communications, financial services, healthcare, technology, transportation and retail industries. SYKES'​ differentiated end-to-end service platform effectively engages consumers at every touch point in their customer lifecycle, starting from digital marketing and acquisition to customer support, technical support, up-sell/cross-sell and retention. Headquartered in Tampa, Florida, with customer contact engagement centers throughout the world, SYKES provides its services through multiple communication channels encompassing phone, e-mail, web, chat, social media and digital self-service. Utilizing its integrated onshore/offshore and virtual at-home agent delivery models, SYKES serves its clients through two geographic operating segments: the Americas (United States, Canada, Latin America, India and the Asia Pacific region) and EMEA (Europe, Middle East and Africa). SYKES also provides various enterprise support services in the Americas and fulfillment services in EMEA, which include order processing, inventory control, product delivery and product returns handling. For additional information please visit www.sykes.com.",
+"descriptionShort": "SYKES is a global business process outsourcing (BPO) leader in providing comprehensive inbound customer engagement services to Global 2000 companies, primarily in the communications, financial services, healthcare, technology, transportation and retail industries.",
+"domain": "sykes.com",
+"domainAlts": [],
+"domainName": "sykes",
+"domainTld": "com",
+"emailPatterns": [
+{
+"pattern": "[F].[L]",
+"usagePercentage": 99.1525
+},
+{
+"pattern": "[L].[F]",
+"usagePercentage": 0.3481
+},
+{
+"pattern": "[F1][L]",
+"usagePercentage": 0.1211
+},
+{
+"pattern": "[F]",
+"usagePercentage": 0.1059
+},
+{
+"pattern": "[F][L]",
+"usagePercentage": 0.1059
+},
+{
+"pattern": "[F1].[L]",
+"usagePercentage": 0.0605
+},
+{
+"pattern": "[F][L1]",
+"usagePercentage": 0.0454
+},
+{
+"pattern": "[L]",
+"usagePercentage": 0.0303
+},
+{
+"pattern": "[F].[L1]",
+"usagePercentage": 0.0151
+},
+{
+"pattern": "[F].[M].[L]",
+"usagePercentage": 0.0151
+}
+],
+"id": 41376,
+"industries": [
+"analytics",
+"brand-loyalty",
+"chat",
+"chat-sales",
+"coaching",
+"cobots",
+"community-management",
+"contact-management",
+"content",
+"customer-experience",
+"customer-service",
+"digital-transformation",
+"enterprise-software",
+"experience-analytics",
+"full-service-digital-marketing",
+"inbound-sales",
+"information-technology",
+"insights",
+"intelligent-automation",
+"intelligent-chatbots",
+"offshoring",
+"outsourcing",
+"outsourcing-offshoring",
+"reviews",
+"sales-service",
+"services",
+"social-support",
+"software",
+"technical-support",
+"telehealth-services",
+"training",
+"voice"
+],
+"industryMain": "outsourcing-offshoring",
+"logo": "https://poweredwith.nyc3.cdn.digitaloceanspaces.com/images/domains/sykes.com.jpg",
+"monthlyVisitors": "1m-10m",
+"name": "Sykes Enterprises",
+"phoneNumber": "(813) 274-1000",
+"revenue": "over-1b",
+"socialNetworks": {
+"angellist": "http://angel.co/sykes-enterprises",
+"angellistId": "sykes-enterprises",
+"facebook": "http://www.facebook.com/iamsykes",
+"facebookId": "iamsykes",
+"instagram": "https://instagram.com/sykes_global",
+"instagramId": "sykes_global",
+"linkedin": "https://www.linkedin.com/company/4602",
+"linkedinIdAlpha": "sykes",
+"linkedinIdNumeric": 4602,
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/4602",
+"twitter": "http://twitter.com/sykesteam",
+"twitterId": "sykesteam",
+"youtube": "https://youtube.com/user/sykesvideo",
+"youtubeId": "sykesvideo"
+},
+"state": {
+"code": "florida|us",
+"latitude": "27.7567667",
+"longitude": "-81.4639835",
+"name": "Florida"
+},
+"stockExchange": "NASDAQ",
+"stockSymbol": "SYKE",
+"technologies": [
+"amazon-cloudfront",
+"amazon-s3",
+"apache",
+"cloudflare-cdn",
+"facebook-social-plugins",
+"google-analytics",
+"google-tag-manager",
+"hotjar",
+"hubspot",
+"matomo",
+"microsoft-asp-net",
+"mysql",
+"nginx",
+"php",
+"salesforce-account-engagement",
+"section-io",
+"wordpress"
+],
+"technologyCategories": [
+"ai-sales-assistant",
+"application-development",
+"application-server",
+"archive-storage",
+"attribution",
+"aws-marketplace",
+"business-card-scanning",
+"business-scheduling",
+"container-networking",
+"containerization",
+"content-analytics",
+"content-delivery-network",
+"content-management",
+"content-marketing",
+"conversation-intelligence",
+"conversion-rate-optimization",
+"cpq",
+"crm",
+"database",
+"ddos-protection",
+"demand-generation",
+"development",
+"devops",
+"devsecops",
+"digital-analytics",
+"email-tracking",
+"enterprise-content-delivery-network",
+"heatmap",
+"hosting",
+"it-infrastructure",
+"it-management",
+"landing-page-builders",
+"lead-generation",
+"load-balancing",
+"marketing",
+"marketing-analytics",
+"marketing-automation",
+"marketplace-apps",
+"mobile-analytics",
+"mobile-app-analytics",
+"mobile-development",
+"object-storage",
+"office",
+"online-appointment-scheduling",
+"other-web-frameworks",
+"outbound-call-tracking",
+"programming-languages",
+"quote-management",
+"quote-to-cash",
+"relational-databases",
+"sales",
+"sales-acceleration",
+"sales-acceleration-platforms",
+"sales-analytics",
+"sales-enablement",
+"sales-engagement",
+"sales-intelligence",
+"sales-performance-management",
+"sales-platforms",
+"security",
+"session-replay",
+"social-media-marketing",
+"storage-management",
+"tag-management",
+"user-research",
+"virtual-waiting-room",
+"visitor-identification",
+"web-accelerator",
+"web-application-firewalls",
+"web-content-management",
+"web-frameworks",
+"web-security",
+"web-server-accelerator"
+],
+"totalEmployees": "over-10k",
+"totalEmployeesExact": 19300,
+"yearFounded": 1977
+},
+{
+"alexaRank": 71875,
+"analyzedAt": "2022-12-28T16:39:15.000Z",
+"businessType": null,
+"city": {
+"address": "41 farnsworth street",
+"code": "boston|massachusetts|us",
+"latitude": "42.3602534",
+"longitude": "-71.0582912",
+"name": "Boston",
+"postcode": null
+},
+"codeNaics": "522220",
+"codeSic": "36",
+"companiesAcquisitions": [],
+"companiesSimilar": [
+{
+"descriptionShort": "Honeywell is a Fortune 100 company that invents and manufactures technologies to address tough challenges linked to global macrotrends such as safety, security, and energy.",
+"domain": "honeywell.com",
+"id": 16750654,
+"name": "Honeywell International",
+"similitude": "100"
+},
+{
+"descriptionShort": "GE Aviation, an operating unit of GE (NYSE: GE), is a world-leading provider of jet and turboprop engines, components and integrated systems for commercial, military, business and general aviation aircraft.",
+"domain": "geaviation.com",
+"id": 466867,
+"name": "GE Aviation",
+"similitude": "100"
+},
+{
+"descriptionShort": "GE Healthcare (NYSE: GE) provides transformational medical technologies and services to meet the demand for increased access, enhanced quality and more affordable healthcare around the world.",
+"domain": "gehealthcare.com",
+"id": 16777582,
+"name": "GE Healthcare",
+"similitude": "100"
+},
+{
+"descriptionShort": "At General Motors, we are passionate about designing, building and selling the world's best vehicles.",
+"domain": "gm.com",
+"id": 16752211,
+"name": "General Motors",
+"similitude": "100"
+},
+{
+"descriptionShort": "For more than 165 years, Siemens AG (Berlin and Munich) has stood for innovative strength, a passion for technology, sustainability, responsibility and an uncompromising commitment to quality and excellence.",
+"domain": "siemens.com",
+"id": 5635,
+"name": "Siemens",
+"similitude": "100"
+},
+{
+"descriptionShort": "On any given day, two billion people use Unilever products to look good, feel good and get more out of life.",
+"domain": "unilever.com",
+"id": 29449,
+"name": "Unilever",
+"similitude": "100"
+},
+{
+"descriptionShort": "Schneider Electric's purpose is to empower all to make the most of our energy and resources, bridging progress and sustainability for all.",
+"domain": "se.com",
+"id": 16749805,
+"name": "EcoStruxure",
+"similitude": "100"
+},
+{
+"descriptionShort": "ABB is a leading global technology company that energizes the transformation of society and industry to achieve a more productive, sustainable future.",
+"domain": "social.abb",
+"id": 27585437,
+"name": "ABB",
+"similitude": "100"
+},
+{
+"descriptionShort": "Anuva is a premier turnkey engineering, manufacturing and logistics company, specializing in design-to-distribution partnerships.",
+"domain": "anuva.com",
+"id": 16962809,
+"name": "Anuva",
+"similitude": "15.00"
+},
+{
+"descriptionShort": "I started sharing the latest fashion trends for men and women ALLARD Fashion was born.",
+"domain": "wixsite.com",
+"id": 17920681,
+"name": "ALLARD Vegelien",
+"similitude": "15.00"
+},
+{
+"descriptionShort": "PlaceLogic provides location-focused solutions to business and organizations.",
+"domain": "placelogic.com",
+"id": 17057705,
+"name": "PlaceLogic",
+"similitude": "15.00"
+},
+{
+"descriptionShort": "TSYS® (NYSE: TSS) unlocks opportunities in payments for payment providers, businesses and consumers.",
+"domain": "tsys.com",
+"id": 106494,
+"name": "TSYS",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "BD is a global medical technology company that is advancing the world of health by improving medical discovery, diagnostics and the delivery of care.",
+"domain": "bd.com",
+"id": 83347,
+"name": "BD",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "Workday is a leading provider of enterprise cloud applications for finance and human resources.",
+"domain": "workday.com",
+"id": 9793,
+"name": "Workday",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "Randstad North America is a wholly-owned subsidiary of Randstad Holding nv, a € 20.",
+"domain": "randstadusa.com",
+"id": 266331,
+"name": "Randstad USA",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "Xerox Corporation (NYSE: XRX) is an $11 billion technology leader that innovates the way the world communicates, connects and works.",
+"domain": "xerox.com",
+"id": 23067,
+"name": "Xerox",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "Since 1897, when CNA entered the insurance market, we've been there for our customers and have evolved to meet the needs of our times.",
+"domain": "cna.com",
+"id": 16782219,
+"name": "CNA Insurance",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "EXL (NASDAQ: EXLS) is a leading operations management and analytics company that helps businesses enhance growth and profitability in the face of relentless competition and continuous disruption.",
+"domain": "exlservice.com",
+"id": 169242,
+"name": "EXL",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "In 2016, Verisk Analytics was 1 of only 14 companies named to Forbes' World's Most Innovative Companies and America's Best Large Employers lists.",
+"domain": "verisk.com",
+"id": 127863,
+"name": "Verisk",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "Hexaware is a global provider of IT & IT-enabled services with progressively increasing relevance owing to its disruptive competitiveness.",
+"domain": "hexaware.com",
+"id": 132061,
+"name": "Hexaware Technologies",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "Sia Partners is an independent management & operational strategy consulting company, organized around the following Business Units: Energy & Environment, Financial Services, Transportation &Industry, Telecommunications, Actuarial Sciences, Human Resources.",
+"domain": "sia-partners.com",
+"id": 429997,
+"name": "Sia Partners",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "Over the past decade, HCL has been one of the fastest growing technology companies not only in India but in the world - even during the depths of the economic downturn.",
+"domain": "hcl.com",
+"id": 51857,
+"name": "HCL Enterprise",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "Wilmington plc is a dynamic and expanding company with a common aim of turning knowledge into advantage.",
+"domain": "wilmingtonplc.com",
+"id": 17236466,
+"name": "Wilmington",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "Founded in 1998 and headquartered in Allen, Texas, Forte Payment Systems offers merchants a broad range of payment solutions, including credit card and debit card processing, ACH/eCheck origination, check verification and fraud prevention.",
+"domain": "forte.net",
+"id": 950889,
+"name": "CSG Forte",
+"similitude": "13.33"
+},
+{
+"descriptionShort": "InstaMed is healthcare's most trusted payments network, connecting providers, payers and consumers on one platform.",
+"domain": "instamed.com",
+"id": 204401,
+"name": "InstaMed",
+"similitude": "13.33"
+}
+],
+"companiesSubsidiaries": [
+{
+"descriptionShort": "",
+"domain": "gesoftware.com",
+"id": 16948212,
+"name": "ge digital"
+},
+{
+"descriptionShort": "At GE Lighting, we're bringing the future to light through a new generation of lighting that is as different from Edison's first light bulbs as smartphones are from the first telephones.",
+"domain": "gelighting.com",
+"id": 202361,
+"name": "GE Lighting"
+},
+{
+"descriptionShort": "**NEW STATUTORY NAME**Following a strategic review, GE Artesia Bank has decided to return its banking license, effective 30 December 2015, to the Dutch Central Bank (DNB).",
+"domain": "geartesia.nl",
+"id": 17430468,
+"name": "GE Artesia Bank"
+},
+{
+"descriptionShort": "GE Aviation, an operating unit of GE (NYSE: GE), is a world-leading provider of jet and turboprop engines, components and integrated systems for commercial, military, business and general aviation aircraft.",
+"domain": "geaviation.com",
+"id": 466867,
+"name": "GE Aviation"
+},
+{
+"descriptionShort": "Every year, the infrastructure that powers our homes, transports our products, heals our loved ones, and keeps our societies moving forward needs a trillion dollars more investment than it gets.",
+"domain": "gecapital.com",
+"id": 16832429,
+"name": "GE Capital"
+},
+{
+"descriptionShort": "We moved! Please follow the energy conversation at GE PowerPlease follow us at: LinkedIn at.",
+"domain": "gegridsolutions.com",
+"id": 16805573,
+"name": "GE Grid Solutions"
+},
+{
+"descriptionShort": "GE Healthcare (NYSE: GE) provides transformational medical technologies and services to meet the demand for increased access, enhanced quality and more affordable healthcare around the world.",
+"domain": "gehealthcare.com",
+"id": 16777582,
+"name": "GE Healthcare"
+},
+{
+"descriptionShort": "At GE Global Research, we see, move and create the future, inventing breakthrough technologies that build better GE businesses, a better GE store and a better research center.",
+"domain": "geglobalresearch.com",
+"id": 16836597,
+"name": "GE Global Research"
+},
+{
+"descriptionShort": "At Wabtec, we move the world.",
+"domain": "wabteccorp.com",
+"id": 902452,
+"name": "Wabtec"
+},
+{
+"descriptionShort": "LM Wind Power is the world's leading supplier of blades for wind turbines, offering blade development, manufacturing, service and logistics.",
+"domain": "lmwindpower.com",
+"id": 597149,
+"name": "LM Wind Power"
+},
+{
+"descriptionShort": "Mubadala GE Capital(\"MGEC\") is a 50/50 commercial finance joint venture between Mubadala Development Company(\"Mubadala\") and General Electric Capital Corporation(\"GE Capital\") that was established in 2009.",
+"domain": "mubadala-ge.com",
+"id": 17325741,
+"name": "Mubadala GE Capital PJSC"
+}
+],
+"companyParent": null,
+"continent": {
+"code": "na",
+"latitude": "51.0000002",
+"longitude": "-109",
+"name": "North America",
+"nameEs": "América del Norte",
+"nameFr": "Amérique du Nord"
+},
+"country": {
+"code": "us",
+"latitude": "39.7837304",
+"longitude": "-100.4458825",
+"name": "United States",
+"nameEs": "Estados Unidos",
+"nameFr": "États-Unis"
+},
+"county": {
+"code": "suffolk-county|us",
+"latitude": "40.8832318",
+"longitude": "-72.8578027",
+"name": "Suffolk County"
+},
+"description": "GE (NYSE: GE) is the world's Digital Industrial Company, transforming industry with software-defined machines and solutions that are connected, responsive and predictive. GE is organized around a global exchange of knowledge, the 'GE Store,'​ through which each business shares and accesses the same technology, markets, structure and intellect. Each invention further fuels innovation and application across our industrial sectors. With people, services, technology and scale, GE delivers better outcomes for customers by speaking the language of industry. www.ge.com",
+"descriptionShort": "GE (NYSE: GE) is the world's Digital Industrial Company, transforming industry with software-defined machines and solutions that are connected, responsive and predictive.",
+"domain": "ge.com",
+"domainAlts": [],
+"domainName": "ge",
+"domainTld": "com",
+"emailPatterns": [
+{
+"pattern": "[F].[L]",
+"usagePercentage": 97.027
+},
+{
+"pattern": "[L].[F]",
+"usagePercentage": 0.8335
+},
+{
+"pattern": "[F][L]",
+"usagePercentage": 0.6929
+},
+{
+"pattern": "[L]",
+"usagePercentage": 0.5016
+},
+{
+"pattern": "[F]",
+"usagePercentage": 0.1887
+},
+{
+"pattern": "[F1][L]",
+"usagePercentage": 0.1824
+},
+{
+"pattern": "[F1].[L]",
+"usagePercentage": 0.1469
+},
+{
+"pattern": "[F]_[L]",
+"usagePercentage": 0.1419
+},
+{
+"pattern": "[F].[L1]",
+"usagePercentage": 0.1089
+},
+{
+"pattern": "[L][F1]",
+"usagePercentage": 0.057
+},
+{
+"pattern": "[L1].[F]",
+"usagePercentage": 0.0228
+},
+{
+"pattern": "[F].[M1].[L]",
+"usagePercentage": 0.0228
+},
+{
+"pattern": "[F][L1]",
+"usagePercentage": 0.019
+},
+{
+"pattern": "[L][F]",
+"usagePercentage": 0.0177
+},
+{
+"pattern": "[F][M][L]",
+"usagePercentage": 0.0152
+}
+],
+"id": 45359,
+"industries": [
+"additive-manufacturing",
+"aerospace",
+"appliances",
+"aviation",
+"capital",
+"clean-energy",
+"components",
+"computer-hardware",
+"contract-manufacturing",
+"digital",
+"distributed-power",
+"ebm-systems",
+"electrical",
+"electrical-electronic-manufacturing",
+"electricians",
+"electronic",
+"electronic-manufacturing",
+"electronics",
+"energy",
+"energy-management",
+"environmental-services",
+"finance",
+"finance-technology",
+"fintech",
+"fitness",
+"gas",
+"gasification",
+"ge",
+"generators",
+"hardware",
+"health",
+"health-care",
+"healthcare",
+"heavy-duty-gas-turbines",
+"home-services",
+"hospital",
+"industrial-engineering",
+"industrial-machinery-manufacturing",
+"information-technology",
+"intelligent-platforms",
+"lighting",
+"manufacturing",
+"mechanical",
+"metal-powders",
+"nuclear-energy",
+"oil",
+"oil-gas",
+"orthopedic-implants",
+"other-electrical-equipment",
+"power",
+"power-generation",
+"power-water",
+"process-technologies",
+"renewable-energy",
+"services",
+"steam-turbines",
+"technology",
+"transportation",
+"utilities",
+"water",
+"wellness"
+],
+"industryMain": "electrical-electronic-manufacturing",
+"logo": "https://poweredwith.nyc3.cdn.digitaloceanspaces.com/images/domains/ge.com.jpg",
+"monthlyVisitors": "1m-10m",
+"name": "General Electric",
+"phoneNumber": "(502) 452-4311",
+"revenue": "over-1b",
+"socialNetworks": {
+"angellist": "http://angel.co/general-electric",
+"angellistId": "general-electric",
+"facebook": "http://www.facebook.com/ge",
+"facebookId": "ge",
+"github": "https://github.com/afarkas/lazysizes",
+"githubId": "afarkas",
+"instagram": "https://instagram.com/generalelectric",
+"instagramId": "generalelectric",
+"linkedin": "https://www.linkedin.com/company/1015",
+"linkedinIdAlpha": "ge",
+"linkedinIdNumeric": 1015,
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/1015",
+"pinterest": "https://pinterest.com/generalelectric",
+"pinterestId": "generalelectric",
+"snapchat": "https://snapchat.com/add/generalelectric",
+"snapchatId": "generalelectric",
+"twitter": "http://www.twitter.com/generalelectric",
+"twitterId": "generalelectric",
+"youtube": "https://youtube.com/c/ge",
+"youtubeId": "ge"
+},
+"state": {
+"code": "massachusetts|us",
+"latitude": "42.3788774",
+"longitude": "-72.032366",
+"name": "Massachusetts"
+},
+"stockExchange": "NYSE",
+"stockSymbol": "GE",
+"technologies": [
+"akamai",
+"amazon-cloudfront",
+"amazon-s3",
+"angularjs",
+"apache",
+"cloudflare-cdn",
+"crazy-egg",
+"drupal",
+"express-js",
+"google-analytics",
+"google-tag-manager",
+"new-relic",
+"node-js",
+"php"
+],
+"technologyCategories": [
+"a-b-testing",
+"aiops-platforms",
+"application-development",
+"application-performance-monitoring",
+"application-server",
+"archive-storage",
+"aws-marketplace",
+"cloud-infrastructure-monitoring",
+"container-monitoring",
+"containerization",
+"content-analytics",
+"content-delivery-network",
+"content-management",
+"content-marketing",
+"conversion-rate-optimization",
+"development",
+"devops",
+"devsecops",
+"digital-analytics",
+"digital-experience-monitoring",
+"enterprise-content-delivery-network",
+"heatmap",
+"hosting",
+"incident-management",
+"it-alerting",
+"it-infrastructure",
+"it-management",
+"javascript-web-frameworks",
+"log-analysis",
+"log-monitoring",
+"marketing",
+"marketplace-apps",
+"mobile-analytics",
+"mobile-app-analytics",
+"mobile-development",
+"monitoring",
+"object-storage",
+"observability-solution-suites",
+"office",
+"programming-languages",
+"security",
+"server-monitoring",
+"session-replay",
+"storage-management",
+"tag-management",
+"web-content-management",
+"web-frameworks"
+],
+"totalEmployees": "over-10k",
+"totalEmployeesExact": 226440,
+"yearFounded": 1892
+},
+{
+"alexaRank": 480209,
+"analyzedAt": "2022-12-28T16:41:15.000Z",
+"businessType": null,
+"city": {
+"address": "Freier Pl. 10",
+"code": "cork|munster|ie",
+"latitude": "51.897077",
+"longitude": "-8.4654674",
+"name": "Cork",
+"postcode": null
+},
+"codeNaics": "5616",
+"codeSic": "7381",
+"companiesAcquisitions": [],
+"companiesSimilar": [
+{
+"descriptionShort": "Johnson Controls is a global diversified technology and multi industrial leader serving a wide range of customers in more than 150 countries.",
+"domain": "johnsoncontrols.com",
+"id": 223031,
+"name": "Johnson Controls",
+"similitude": "100"
+},
+{
+"descriptionShort": "Honeywell is a Fortune 100 company that invents and manufactures technologies to address tough challenges linked to global macrotrends such as safety, security, and energy.",
+"domain": "honeywell.com",
+"id": 16750654,
+"name": "Honeywell International",
+"similitude": "100"
+},
+{
+"descriptionShort": "Home isn't just a place, it's a feeling: the feeling that you're safe to enjoy the things that matter most.",
+"domain": "adt.com",
+"id": 16767203,
+"name": "ADT",
+"similitude": "100"
+},
+{
+"descriptionShort": "For more than 165 years, Siemens AG (Berlin and Munich) has stood for innovative strength, a passion for technology, sustainability, responsibility and an uncompromising commitment to quality and excellence.",
+"domain": "siemens.com",
+"id": 5635,
+"name": "Siemens",
+"similitude": "100"
+},
+{
+"descriptionShort": "TE Connectivity (NYSE: TEL) is a $12 billion global technology leader.",
+"domain": "te.com",
+"id": 16784582,
+"name": "TE Connectivity",
+"similitude": "100"
+},
+{
+"descriptionShort": "Tyco is now Johnson Controls, the world leader in security, fire protection, HVAC, building controls and energy storage.",
+"domain": "tycois.com",
+"id": 775777,
+"name": "Tyco Integrated Security",
+"similitude": "100"
+},
+{
+"descriptionShort": "Schneider Electric's purpose is to empower all to make the most of our energy and resources, bridging progress and sustainability for all.",
+"domain": "se.com",
+"id": 16749805,
+"name": "EcoStruxure",
+"similitude": "100"
+},
+{
+"descriptionShort": "Johnson Controls Fire Suppression Products, formerly Tyco Fire Protection Products, manufactures and delivers an unmatched range of fire suppression systems, including extinguishing agents, sprinkler systems, valves, piping products, fittings and fire-fighting equipment and services that help our customers save lives and protect property.",
+"domain": "tyco-fire.com",
+"id": 666574,
+"name": "Tyco Fire Products",
+"similitude": "100"
+},
+{
+"descriptionShort": "We believe that an intelligent world begins with talented people.",
+"domain": "nextgenges.com",
+"id": 17125475,
+"name": "NextGen Executive Search",
+"similitude": "40.00"
+},
+{
+"descriptionShort": "UNLOCK THE VALUE OF ANY BUILDINGBeyond slick dashboards, Bractlet uses automated software solutions to improve building performance and decrease energy spend.",
+"domain": "bractlet.com",
+"id": 1940216,
+"name": "Bractlet",
+"similitude": "36.00"
+},
+{
+"descriptionShort": "The sole mission of Mitsubishi Electric Automation, Inc, is to support the automation needs of North and Latin American customers with combined sales, marketing, service, engineering and manufacturing resources.",
+"domain": "mitsubishielectric.com",
+"id": 55088,
+"name": "Mitsubishi Electric",
+"similitude": "32.00"
+},
+{
+"descriptionShort": "eMotorWerk, an Enel Group Company, is a California based company focused on promoting high performance electric vehicle charging solutions, such as EV charging stations (EVSE) and smart grid EV charging networks.",
+"domain": "emotorwerks.com",
+"id": 16866856,
+"name": "eMotorWerks",
+"similitude": "32.00"
+},
+{
+"descriptionShort": "Progea International SA is based in Balerna (CH) and it is the central office supporting the International sales of the Movicon technology.",
+"domain": "progea.com",
+"id": 16814808,
+"name": "Progea",
+"similitude": "32.00"
+},
+{
+"descriptionShort": "It's not about BIG data, it's about the RIGHT data.",
+"domain": "cytiot.com",
+"id": 1484624,
+"name": "ConnectingYourThings",
+"similitude": "32.00"
+},
+{
+"descriptionShort": "At Henneman Engineering, we provide engineering and technology solutions that allow our clients to view the future with confidence.",
+"domain": "henneman.com",
+"id": 1279522,
+"name": "Henneman Engineering",
+"similitude": "32.00"
+},
+{
+"descriptionShort": "Solbright Group, Inc.",
+"domain": "arkadosgroup.com",
+"id": 1082638,
+"name": "Solbright Group",
+"similitude": "32.00"
+},
+{
+"descriptionShort": "TÜV SÜD Product Service is part of the Industrial Division of the TÜV SÜD Group who employs over 13,000 people across 600 locations and is one of the leading technical service companies in the world and established in 1866.",
+"domain": "tuv-sud.co.uk",
+"id": 16863178,
+"name": "TÜV SÜD",
+"similitude": "32.00"
+},
+{
+"descriptionShort": "Datek Wireless AS is one of Norway's leading providers of custom M2M (machine to machine) and IoT (Internet of Things) solutions.",
+"domain": "datek.no",
+"id": 1561864,
+"name": "Datek",
+"similitude": "32.00"
+},
+{
+"descriptionShort": "OFweek is a comprehensive web portal in Chinese high-tech industry with over 2 million members across various fields.",
+"domain": "ofweek.com",
+"id": 16745666,
+"name": "OFweek Industrial B2B Marketplace",
+"similitude": "32.00"
+},
+{
+"descriptionShort": "✩ www.",
+"domain": "beatthesystems.com",
+"id": 1355350,
+"name": "Beat the Systems",
+"similitude": "32.00"
+},
+{
+"descriptionShort": "As a consulting company, Bandacorp engages in; Research and Development, Prototyping and Procurement across a broad spectrum of materials and components.",
+"domain": "bandacorp.com",
+"id": 1146660,
+"name": "Bandacorp PI",
+"similitude": "32.00"
+},
+{
+"descriptionShort": "We digitize movement - Terabee designs, develops and manufactures the TeraRanger brand of 2D and 3D distance sensors.",
+"domain": "terabee.com",
+"id": 1370759,
+"name": "Terabee",
+"similitude": "24.00"
+},
+{
+"descriptionShort": "GE (NYSE: GE) is the world's Digital Industrial Company, transforming industry with software-defined machines and solutions that are connected, responsive and predictive.",
+"domain": "ge.com",
+"id": 45359,
+"name": "General Electric",
+"similitude": "20.00"
+},
+{
+"descriptionShort": "STMicroelectronics is a world leader in providing the semiconductor solutions that make a positive contribution to people's lives, today and into the future.",
+"domain": "st.com",
+"id": 16756304,
+"name": "STMicroelectronics",
+"similitude": "20.00"
+},
+{
+"descriptionShort": "OHM Advisors is a community advancement firm designing award-winning work across the architecture, engineering, and planning spheres.",
+"domain": "ohm-advisors.com",
+"id": 165284,
+"name": "OHM Advisors",
+"similitude": "20.00"
+}
+],
+"companiesSubsidiaries": [
+{
+"descriptionShort": "ADT Security has made it our business to help safeguard people, property and possessions.",
+"domain": "adtsecurity.com.au",
+"id": 16942982,
+"name": "ADT Security Australia"
+},
+{
+"descriptionShort": "ASTER is India's leading provider of ANSUL Kitchen Fire Suppression Systems to the hospitality industry.",
+"domain": "asterindia.com",
+"id": 3635591,
+"name": "Aster India"
+},
+{
+"descriptionShort": "Carter Brothers was founded in 2000 by 2013 NFL Hall of Fame Inductee, Chairman, Cris Carter and his brother, John F.",
+"domain": "carterbrothers.com",
+"id": 17712693,
+"name": "Carter Brothers"
+},
+{
+"descriptionShort": "Chemguard develops and produces fire suppression foams, equipment, and systems, specialty foam pumps, and fluorosurfactant specialty chemicals for demanding applications around the globe.",
+"domain": "chemguard.com",
+"id": 2283746,
+"name": "Chemguard"
+},
+{
+"descriptionShort": "DSC Limited operates as an infrastructure development and engineering construction company.",
+"domain": "dsclimited.com",
+"id": 1154886,
+"name": "D S Constructions"
+},
+{
+"descriptionShort": "Elpas (formerly Visonic Technologies), part of the Tyco Security Products portfolio of brands, is a global provider of scalable Passive & Active RFID/RTLS Safety, Security and Visibility Solutions for Healthcare, Manufacturing, Logistics and Building Automation.",
+"domain": "elpas.com",
+"id": 17538756,
+"name": "Elpas"
+},
+{
+"descriptionShort": "Kantecare is a fast-growing medical equipment, hospital facilities and solutions provider in China.",
+"domain": "kantecare.com",
+"id": 17010235,
+"name": "Kantech International (Jiangxi) Co."
+},
+{
+"descriptionShort": "Proximex Change Notification : January 20, 2017This note serves as official notification from Tyco Security Products that Proximex Surveillint Enterprise and Surveillint Essentials will be entering Maintenance Mode.",
+"domain": "proximex.com",
+"id": 1724368,
+"name": "Proximex"
+},
+{
+"descriptionShort": "Tyco Retail Solutions' Sensormatic brand delivers integrated value-based store performance and security solutions that reach across a broad array of mission-critical retail operations.",
+"domain": "sensormatic.com",
+"id": 605194,
+"name": "Sensormatic"
+},
+{
+"descriptionShort": "Tyco is now Johnson Controls, the world leader in fire protection, security, HVAC, building controls and energy storage.",
+"domain": "tycosimplexgrinnell.com",
+"id": 631744,
+"name": "Tyco SimplexGrinnell"
+},
+{
+"descriptionShort": "Every day customers in more than 60 countries rely on Tyco’s fire protection business to help protect lives and property on land and at sea.",
+"domain": "tycofsbp.com",
+"id": 1101316,
+"name": "Tyco Fire & Building Products"
+},
+{
+"descriptionShort": "Johnson Controls Fire Suppression Products, formerly Tyco Fire Protection Products, manufactures and delivers an unmatched range of fire suppression systems, including extinguishing agents, sprinkler systems, valves, piping products, fittings and fire-fighting equipment and services that help our customers save lives and protect property.",
+"domain": "tyco-fire.com",
+"id": 666574,
+"name": "Tyco Fire Products"
+},
+{
+"descriptionShort": "Every day customers in more than 60 countries rely on Tyco's fire protection business to help protect lives and property on land and at sea.",
+"domain": "tycofp.com",
+"id": 17246059,
+"name": "Tyco Fire & Building Products"
+},
+{
+"descriptionShort": "Tyco is now Johnson Controls, the world leader in security, fire protection, HVAC, building controls and energy storage.",
+"domain": "tycois.com",
+"id": 775777,
+"name": "Tyco Integrated Security"
+},
+{
+"descriptionShort": "Tyco Retail Solutions is the leading global provider of retail performance and security solutions, deployed at over 80 percent of the world's top 200 retailers ranging from single-store boutiques to global retail enterprises.",
+"domain": "tycoretailsolutions.com",
+"id": 16919525,
+"name": "Tyco Retail Solutions"
+},
+{
+"descriptionShort": "Visonic, part of the Tyco Security Products portfolio of brands, founded in 1973, is a leading developer and manufacturer of cutting-edge home security systems and components that provide people around the world with peace of mind and safety in their homes.",
+"domain": "visonic.com",
+"id": 573343,
+"name": "Visonic"
+},
+{
+"descriptionShort": "World leaders in Industrial Emergency Response Services and designers of speciality products that serve the POG Industry.",
+"domain": "williamsfire.com",
+"id": 3273037,
+"name": "Tyco- Williams Fire & Hazard Control"
+}
+],
+"companyParent": {
+"descriptionShort": "Johnson Controls is a global diversified technology and multi industrial leader serving a wide range of customers in more than 150 countries.",
+"domain": "johnsoncontrols.com",
+"id": 223031,
+"name": "Johnson Controls",
+"socialNetworks": {
+"angellist": "http://angel.co/johnson-controls",
+"facebook": "https://www.facebook.com/johnsoncontrols",
+"instagram": "https://instagram.com/johnsoncontrols",
+"linkedin": "https://www.linkedin.com/company/2247",
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/2247",
+"twitter": "http://twitter.com/johnsoncontrol",
+"youtube": "https://youtube.com/user/johnsoncontrolsinc/johnsoncontrols"
+}
+},
+"continent": {
+"code": "eu",
+"latitude": "51",
+"longitude": "10",
+"name": "Europe",
+"nameEs": "Europa",
+"nameFr": "Europe"
+},
+"country": {
+"code": "ie",
+"latitude": "52.865196",
+"longitude": "-7.9794599",
+"name": "Ireland",
+"nameEs": "Irlanda",
+"nameFr": "Irlande"
+},
+"county": {
+"code": "county-cork|ie",
+"latitude": "51.917535900000004",
+"longitude": "-8.58597726870895",
+"name": "County Cork"
+},
+"description": "Tyco Fire Protection Products is a division of Tyco, the world's largest pure-play fire protection and security company. As an industry leader, Tyco Fire Protection Products uses its global scale and deep expertise to drive innovation, advance safety and solve the unique challenges of customers in more than 190 countries worldwide. Every day, Tyco Fire Protection Products manufactures and delivers an unmatched range of detection and suppression systems, extinguishing agents, sprinkler systems, valves, piping products, fittings, fire-fighting equipment and services that helps its customers save lives and protect property. Its global technology portfolio includes fire suppression, fire detection and mechanical building product offerings sold under many of the world's best-known brands: ANSUL, CHEMGUARD, CWSI, EZCARE, FIRECLASS, FLAMEVISION, GRINNELL, HYGOOD, LPG, NEURUPPIN, PYRO-CHEM, RAPID RESPONSE, SABOFOAM, SIMPLEX, SKUM, SPRINKCAD, THORN SECURITY, VIGILANT, WILLIAMS FIRE & HAZARD CONTROL, and ZETTLER.",
+"descriptionShort": "Tyco Fire Protection Products is a division of Tyco, the world's largest pure-play fire protection and security company.",
+"domain": "tyco.com",
+"domainAlts": [],
+"domainName": "tyco",
+"domainTld": "com",
+"emailPatterns": [
+{
+"pattern": "[F1][L]",
+"usagePercentage": 98.7093
+},
+{
+"pattern": "[F][L]",
+"usagePercentage": 0.5224
+},
+{
+"pattern": "[F].[L]",
+"usagePercentage": 0.3073
+},
+{
+"pattern": "[L1][F]",
+"usagePercentage": 0.2305
+},
+{
+"pattern": "[L]",
+"usagePercentage": 0.1076
+},
+{
+"pattern": "[F]",
+"usagePercentage": 0.0461
+},
+{
+"pattern": "[F]_[L]",
+"usagePercentage": 0.0307
+},
+{
+"pattern": "[F1][L1]",
+"usagePercentage": 0.0307
+},
+{
+"pattern": "[F1].[L]",
+"usagePercentage": 0.0154
+}
+],
+"id": 107291,
+"industries": [
+"advanced-energy-storage-systems",
+"armored-car-services",
+"building",
+"clean-energy",
+"detective",
+"energy",
+"energy-efficiency",
+"environmental-services",
+"facility-management",
+"fire-detection",
+"fire-protection-products",
+"hvac",
+"industrial",
+"industrial-engineering",
+"information-technology",
+"investigations",
+"leadacid-batteries",
+"mechanical",
+"mechanical-or-industrial-engineering",
+"oil",
+"safety-amp-security-systems",
+"safety-security-systems",
+"security",
+"services",
+"software",
+"sustainability"
+],
+"industryMain": "mechanical-or-industrial-engineering",
+"logo": "https://poweredwith.nyc3.cdn.digitaloceanspaces.com/images/domains/tyco.com.jpg",
+"monthlyVisitors": "50k-100k",
+"name": "Tyco International",
+"phoneNumber": "353 21 423 5000",
+"revenue": "over-1b",
+"socialNetworks": {
+"angellist": "https://angel.co/tyco-international",
+"angellistId": "tyco-international",
+"facebook": "https://facebook.com/johnsoncontrols",
+"facebookId": "johnsoncontrols",
+"instagram": "https://instagram.com/johnsoncontrols",
+"instagramId": "johnsoncontrols",
+"linkedin": "https://www.linkedin.com/company/tyco",
+"linkedinIdAlpha": "tyco",
+"linkedinIdNumeric": 2058,
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/2058",
+"twitter": "https://twitter.com/johnsoncontrols",
+"twitterId": "johnsoncontrols",
+"youtube": "https://youtube.com/channel/ucvdxoo2sygefzefmvvkpgkq/johnsoncontrols",
+"youtubeId": "ucvdxoo2sygefzefmvvkpgkq"
+},
+"state": {
+"code": "munster|ie",
+"latitude": "52.307621600000004",
+"longitude": "-8.570897276292667",
+"name": "Munster"
+},
+"stockExchange": "XTAI",
+"stockSymbol": "1522",
+"technologies": [
+"akamai",
+"amazon-cloudfront",
+"amazon-s3",
+"backbone-js",
+"cloudflare-cdn",
+"google-analytics",
+"google-tag-manager",
+"hotjar",
+"imperva-app-protect",
+"microsoft-asp-net",
+"microsoft-azure",
+"microsoft-azure-cdn",
+"microsoft-iis",
+"microsot-365",
+"salesforce-account-engagement",
+"section-io",
+"sitecore",
+"tealium"
+],
+"technologyCategories": [
+"application-development",
+"application-server",
+"archive-storage",
+"attribution",
+"block-storage",
+"calendar-and-scheduling",
+"cloud-ddos-mitigation",
+"cloud-file-storage",
+"cloud-platform-as-a-service",
+"cloud-security",
+"cloud-storage",
+"collaboration",
+"container-management",
+"container-orchestration",
+"container-registry",
+"containerization",
+"content-analytics",
+"content-delivery-network",
+"content-management",
+"content-marketing",
+"conversion-rate-optimization",
+"development",
+"devops",
+"devsecops",
+"digital-analytics",
+"digital-experience-platforms",
+"email-service",
+"enterprise-content-delivery-network",
+"heatmap",
+"hosting",
+"hybrid-cloud-storage",
+"it-infrastructure",
+"it-management",
+"javascript-web-frameworks",
+"landing-page-builders",
+"load-balancing",
+"marketing",
+"marketing-analytics",
+"marketing-automation",
+"mobile-analytics",
+"mobile-app-analytics",
+"mobile-development",
+"object-storage",
+"other-web-frameworks",
+"productivity",
+"security",
+"session-replay",
+"storage-management",
+"tag-management",
+"user-research",
+"video-conferencing",
+"virtual-private-cloud",
+"virtual-waiting-room",
+"web-application-firewalls",
+"web-content-management",
+"web-frameworks",
+"web-security",
+"webops-platforms",
+"website-security"
+],
+"totalEmployees": "over-10k",
+"totalEmployeesExact": 18050,
+"yearFounded": 1960
+},
+{
+"alexaRank": 20,
+"analyzedAt": "2022-12-28T19:47:04.000Z",
+"businessType": null,
+"city": {
+"address": "1 microsoft way",
+"code": "redmond|washington|us",
+"latitude": "47.6694141",
+"longitude": "-122.1238767",
+"name": "Redmond",
+"postcode": null
+},
+"codeNaics": "511210",
+"codeSic": "7372",
+"companiesAcquisitions": [
+{
+"descriptionShort": "",
+"domain": "6wunderkinder.com",
+"id": 489924,
+"name": "6wunderkinder"
+},
+{
+"descriptionShort": "We are hiring! Visit us at ALTVR.",
+"domain": "altvr.com",
+"id": 110035,
+"name": "AltspaceVR"
+},
+{
+"descriptionShort": "",
+"domain": "aorato.com",
+"id": 18476913,
+"name": "aorato (acquired by microsoft)"
+},
+{
+"descriptionShort": "Avere helps enterprise IT organizations enable innovation with high-performance data storage access, and the flexibility to compute and store data where necessary to match business demands.",
+"domain": "averesystems.com",
+"id": 16895713,
+"name": "Avere Systems"
+},
+{
+"descriptionShort": "",
+"domain": "bonsai.ai",
+"id": 19480352,
+"name": "Bonsai Ai"
+},
+{
+"descriptionShort": "",
+"domain": "codeconnect.io",
+"id": 18081649,
+"name": "Dan.com"
+},
+{
+"descriptionShort": "Cycle Computing is the leader in cloud computing orchestration software for Big Compute and Big Data.",
+"domain": "cyclecomputing.com",
+"id": 16946359,
+"name": "Cycle Computing"
+},
+{
+"descriptionShort": "ComponentArt is a leading vendor of mobile Business Intelligence solutions and developer tools for Microsoft Visual Studio.",
+"domain": "datazen.com",
+"id": 16956268,
+"name": "Datazen Software"
+},
+{
+"descriptionShort": "Microsoft acquired Event Zero in January 2016.",
+"domain": "eventzero.com",
+"id": 17846127,
+"name": "Event Zero"
+},
+{
+"descriptionShort": "Download the free, easy to use app that helps you train custom machine learning models and ship them in your app.",
+"domain": "lobe.ai",
+"id": 911967,
+"name": "Lobe"
+},
+{
+"descriptionShort": "Microsoft acquired Matanautix in December 2015.",
+"domain": "metanautix.com",
+"id": 18943088,
+"name": "Metanautix"
+},
+{
+"descriptionShort": "Semantic Machines is a new startup founded by a team of proven entrepreneurs and researchers from the fields of speech recognition and synthesis, natural language processing, and artificial intelligence.",
+"domain": "semanticmachines.com",
+"id": 1821729,
+"name": "Semantic Machines"
+},
+{
+"descriptionShort": "Softomotive is a world-class Robotic Process Automation (RPA) technology provider, trusted by more than 7,000 companies worldwide.",
+"domain": "softomotive.com",
+"id": 18575549,
+"name": "Softomotive"
+},
+{
+"descriptionShort": "Solair was acquired by Microsoft in May 2016.",
+"domain": "solaircorporate.com",
+"id": 17773179,
+"name": "Solair"
+},
+{
+"descriptionShort": "Xamarin is the new standard for enterprise mobile development and quality.",
+"domain": "xamarin.com",
+"id": 16748037,
+"name": "Xamarin"
+},
+{
+"descriptionShort": "Microsoft acquired Yammer, a best-in-class Enterprise Social Network (ESN), in June 2012 to be included in their broader portfolio.",
+"domain": "yammer.com",
+"id": 4731,
+"name": "Yammer"
+}
+],
+"companiesSimilar": [
+{
+"descriptionShort": "The Oracle Cloud offers complete SaaS application suites for ERP, HCM and CX, plus best-in-class database Platform as a Service (PaaS) and Infrastructure as a Service (IaaS) from data centers throughout the Americas, Europe and Asia.",
+"domain": "oracle.com",
+"id": 16744299,
+"name": "Oracle",
+"similitude": "100"
+},
+{
+"descriptionShort": "Accenture is a leading global professional services company, providing a broad range of services and solutions in strategy, consulting, digital, technology and operations.",
+"domain": "accenture.com",
+"id": 4080,
+"name": "Accenture",
+"similitude": "100"
+},
+{
+"descriptionShort": "Amazon is guided by four principles: customer obsession rather than competitor focus, passion for invention, commitment to operational excellence, and long-term thinking.",
+"domain": "aboutamazon.com",
+"id": 7235,
+"name": "Amazon",
+"similitude": "100"
+},
+{
+"descriptionShort": "LinkedIn（领英）是全球最大的职业社交网站，于 2003 年 5 月 5 日正式上线，目前用户人数超过4亿，覆盖全球 200 多个国家，拥有 23 种官方语言 版本。领英的使命是连接全球职场人士，使他们事半功倍，发挥所长；更长远的愿景则是为全球33 亿劳动力创造商业机会，进而创建世界首个经济图谱。 领英为会员提供的核心价值包括：职业身份、知识洞察、商业机会。在这个职业社交网络平台上，每天产生 4500 多万简历浏览，每年发生 57 亿次职业搜索。450 位全球最具影响力的思想领袖作为领英的\"影响力人物\"在此独家分享知识、经验和洞察。来自 140 个行业的 400 多万家公司已在领英上建立了主页。 领英为企业和机构提供包括招聘、市场和销售在内的一系列解决方案。领英拥有多元化经营模式，主要收入来自于为客户所提供的征才、营销解决方案及高级帐户。 领英由美国著名投资家和创业者里德·霍夫曼（Reid Hoffman）先生创办，公司总部位于美国加州硅谷，在全世界 30 个城市开设办公室，拥有 6,000 多名员工。领英于 2011 年 5 月在纽约证券交易所上市。 为了更好地连接中国职场人士，为其提供全球化平台，助力他们实现职业理想，2014 年 1 月，领英宣布正式进入中国，2 月 25 日，简体中文测试版上线，并正式启用中文名称 - \"领英\"。 领英在中国与红杉资本和宽带资本成立了合资公司，共同探索和开展在华业务，努力为中国用户提供更好的本地化产品和服务。.",
+"domain": "linkedin.com",
+"id": 16743873,
+"name": "LinkedIn",
+"similitude": "100"
+},
+{
+"descriptionShort": "IBM is a global technology and innovation company headquartered in Armonk, NY.",
+"domain": "ibm.com",
+"id": 16744432,
+"name": "IBM",
+"similitude": "100"
+},
+{
+"descriptionShort": "A problem isn't truly solved until it's solved for all.",
+"domain": "goo.gle",
+"id": 16842770,
+"name": "Google",
+"similitude": "100"
+},
+{
+"descriptionShort": "We're a diverse collection of thinkers and doers, continually reimagining what's possible to help us all do what we love in new ways.",
+"domain": "apple.com",
+"id": 16743661,
+"name": "Apple",
+"similitude": "100"
+},
+{
+"descriptionShort": "Netflix has been leading the way for digital content since 1997Netflix is the world's leading Internet television network with over 100 million members in over 190 countries enjoying more than 125 million hours of TV shows and movies per day, including original series, documentaries and feature films.",
+"domain": "netflix.com",
+"id": 16743541,
+"name": "Netflix",
+"similitude": "100"
+},
+{
+"descriptionShort": "Meta builds technologies that help people connect, find communities, and grow businesses.",
+"domain": "metacareers.com",
+"id": 27582482,
+"name": "Meta",
+"similitude": "100"
+},
+{
+"descriptionShort": "Clarabyte provides absolute data erasure for all IT assets, including servers, desktop/laptop computers, smartphones, Tablets, SSDs and virtual drives.",
+"domain": "clarabyte.com",
+"id": 1034419,
+"name": "Clarabyte",
+"similitude": "37.84"
+},
+{
+"descriptionShort": "Frogtek is a for-profit social venture dedicated to creating business tools for small shopkeepers in emerging markets.",
+"domain": "frogtek.org",
+"id": 1152168,
+"name": "Frogtek",
+"similitude": "37.84"
+},
+{
+"descriptionShort": "MINDBODY Business Management Software is trusted by thousands of clients in over 80 countries to manage and grow their businesses.",
+"domain": "mindbodyonline.com",
+"id": 15942,
+"name": "Mindbody",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "Shopgate is the leading mobile commerce platform.",
+"domain": "shopgate.com",
+"id": 494667,
+"name": "Shopgate",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "Imaginovation aims to be the premier long-term partner offering software and website development, web and mobile apps, IoT, and AI leveraged by 4K optimized video.",
+"domain": "imaginovation.net",
+"id": 968190,
+"name": "Imaginovation",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "Abax Soft Solutions is a Software Development Company in Indore (INDIA) providing IT services including website design,web development , search engine optimization (seo) , e-commerce application development , content management systems , blogs, software development , bulk sms, internet marketing, web hosting , domain registration & mobile application development.",
+"domain": "abaxsoft.com",
+"id": 1164366,
+"name": "Abaxsoft Solutions",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "Clutch is a customer marketing platform for B2C brands.",
+"domain": "clutch.com",
+"id": 804167,
+"name": "Clutch",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "Pixafy is an award-winning ecommerce agency specializing in world-class web development, engineering, and integration, as well as strategic consulting, and functional design.",
+"domain": "pixafy.com",
+"id": 266160,
+"name": "Pixafy",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "AppTech Corp.",
+"domain": "apptechcorp.com",
+"id": 17183688,
+"name": "AppTech",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "Tagove is a unique live chat platform for businesses to boost the sales with Live Video chat, Voice call, and Text Chat Software integrate Co-browsing and Screen sharing features with your website.",
+"domain": "tagove.com",
+"id": 16946444,
+"name": "Tagove",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "Corelynx Inc.",
+"domain": "corelynx.com",
+"id": 234826,
+"name": "Corelynx",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "Launched in 2011 in London, Shopcade (part of the Lagardère group) is leading the convergence of fashion content and e-commerce, so consumers can keep up with latest fashion news and shop related items all in one place.",
+"domain": "shopcade.com",
+"id": 711213,
+"name": "SHOPCADE",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "- Stealz is a dynamic customer engagement tool that helps businesses turn their guests into brand ambassadors.",
+"domain": "getstealz.com",
+"id": 1732198,
+"name": "Stealz",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "Zen Shopping is solving the current biggest problem on m-commerce, the checkout.",
+"domain": "joinzen.com",
+"id": 17185372,
+"name": "Zen Shopping",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "Spreesy automates your sales & eCommerce marketing.",
+"domain": "spreesy.com",
+"id": 16852945,
+"name": "Spreesy",
+"similitude": "35.14"
+},
+{
+"descriptionShort": "On September 10, 2015, Oracle completed the acquisition of Maxymiser.",
+"domain": "maxymiser.com",
+"id": 16854696,
+"name": "Maxymiser",
+"similitude": "35.14"
+}
+],
+"companiesSubsidiaries": [
+{
+"descriptionShort": "Flipgrid empowers student voice and enables peer-to-peer engagement in classrooms and organizations through video discussions.",
+"domain": "flipgrid.com",
+"id": 4658,
+"name": "Flipgrid"
+},
+{
+"descriptionShort": "GitHub is how people build software.",
+"domain": "github.com",
+"id": 16743592,
+"name": "GitHub"
+},
+{
+"descriptionShort": "LinkedIn（领英）是全球最大的职业社交网站，于 2003 年 5 月 5 日正式上线，目前用户人数超过4亿，覆盖全球 200 多个国家，拥有 23 种官方语言 版本。领英的使命是连接全球职场人士，使他们事半功倍，发挥所长；更长远的愿景则是为全球33 亿劳动力创造商业机会，进而创建世界首个经济图谱。 领英为会员提供的核心价值包括：职业身份、知识洞察、商业机会。在这个职业社交网络平台上，每天产生 4500 多万简历浏览，每年发生 57 亿次职业搜索。450 位全球最具影响力的思想领袖作为领英的\"影响力人物\"在此独家分享知识、经验和洞察。来自 140 个行业的 400 多万家公司已在领英上建立了主页。 领英为企业和机构提供包括招聘、市场和销售在内的一系列解决方案。领英拥有多元化经营模式，主要收入来自于为客户所提供的征才、营销解决方案及高级帐户。 领英由美国著名投资家和创业者里德·霍夫曼（Reid Hoffman）先生创办，公司总部位于美国加州硅谷，在全世界 30 个城市开设办公室，拥有 6,000 多名员工。领英于 2011 年 5 月在纽约证券交易所上市。 为了更好地连接中国职场人士，为其提供全球化平台，助力他们实现职业理想，2014 年 1 月，领英宣布正式进入中国，2 月 25 日，简体中文测试版上线，并正式启用中文名称 - \"领英\"。 领英在中国与红杉资本和宽带资本成立了合资公司，共同探索和开展在华业务，努力为中国用户提供更好的本地化产品和服务。.",
+"domain": "linkedin.com",
+"id": 16743873,
+"name": "LinkedIn"
+},
+{
+"descriptionShort": "M12 is Microsoft's venture capital fund.",
+"domain": "m12.vc",
+"id": 534820,
+"name": "M12 - Microsoft's Venture Fund"
+},
+{
+"descriptionShort": "Metaswitch is the world's leading cloud native communications software company.",
+"domain": "metaswitch.com",
+"id": 489840,
+"name": "Metaswitch Networks"
+},
+{
+"descriptionShort": "",
+"domain": "xbox.com",
+"id": 16744032,
+"name": "Xbox"
+}
+],
+"companyParent": null,
+"continent": {
+"code": "na",
+"latitude": "51.0000002",
+"longitude": "-109",
+"name": "North America",
+"nameEs": "América del Norte",
+"nameFr": "Amérique du Nord"
+},
+"country": {
+"code": "us",
+"latitude": "39.7837304",
+"longitude": "-100.4458825",
+"name": "United States",
+"nameEs": "Estados Unidos",
+"nameFr": "États-Unis"
+},
+"county": {
+"code": "king-county|us",
+"latitude": "33.588178",
+"longitude": "-100.2178972",
+"name": "King County"
+},
+"description": "At Microsoft, our mission is to empower every person and every organization on the planet to achieve more. Our mission is grounded in both the world in which we live and the future we strive to create. Today, we live in a mobile-first, cloud-first world, and the transformation we are driving across our businesses is designed to enable Microsoft and our customers to thrive in this world. We do business in 170 countries and are made up of 114,000 passionate employees dedicated to fulfilling our mission of helping you and your organization achieve more.",
+"descriptionShort": "At Microsoft, our mission is to empower every person and every organization on the planet to achieve more.",
+"domain": "microsoft.com",
+"domainAlts": [
+"bing.com"
+],
+"domainName": "microsoft",
+"domainTld": "com",
+"emailPatterns": [
+{
+"pattern": "[F][L1]",
+"usagePercentage": 47.204
+},
+{
+"pattern": "[F1][L]",
+"usagePercentage": 26.0307
+},
+{
+"pattern": "[F].[L]",
+"usagePercentage": 22.9093
+},
+{
+"pattern": "[F][L]",
+"usagePercentage": 2.3292
+},
+{
+"pattern": "[F]",
+"usagePercentage": 0.7048
+},
+{
+"pattern": "[L]",
+"usagePercentage": 0.5309
+},
+{
+"pattern": "[L].[F]",
+"usagePercentage": 0.0818
+},
+{
+"pattern": "[L][F1]",
+"usagePercentage": 0.04
+},
+{
+"pattern": "[L1][F]",
+"usagePercentage": 0.04
+},
+{
+"pattern": "[F1].[L]",
+"usagePercentage": 0.0288
+},
+{
+"pattern": "[L][F]",
+"usagePercentage": 0.0205
+},
+{
+"pattern": "[F].[L1]",
+"usagePercentage": 0.0186
+},
+{
+"pattern": "[F1][L1]",
+"usagePercentage": 0.0139
+},
+{
+"pattern": "[F]_[L]",
+"usagePercentage": 0.0121
+},
+{
+"pattern": "[F1][M1][L]",
+"usagePercentage": 0.0112
+}
+],
+"id": 16743585,
+"industries": [
+"advertising",
+"business-software",
+"cloud-computing",
+"collaboration",
+"computer-games",
+"computer-software",
+"computers",
+"consumer-electronics",
+"consumer-internet",
+"consumers",
+"design-tools",
+"developer-tools",
+"e-commerce",
+"electronics",
+"enterprise-software",
+"enterprises",
+"entertainment-products",
+"games",
+"hardware",
+"home-educational-software",
+"information-technology",
+"internet",
+"mobile",
+"mobile-devices",
+"mobile-phones",
+"operating-systems",
+"prepackaged-software",
+"search",
+"servers",
+"services",
+"shopping",
+"smartphones",
+"software",
+"tablets",
+"video-games",
+"windows-applications-platforms",
+"windows-operating-system"
+],
+"industryMain": "computer-software",
+"logo": "https://poweredwith.nyc3.cdn.digitaloceanspaces.com/images/domains/microsoft.com.jpg",
+"monthlyVisitors": "over-1b",
+"name": "Microsoft",
+"phoneNumber": "(503) 443-7070",
+"revenue": "over-1b",
+"socialNetworks": {
+"angellist": "http://angel.co/microsoft",
+"angellistId": "microsoft",
+"facebook": "https://www.facebook.com/microsoftindia?brand_redir=1",
+"facebookId": "microsoftindia",
+"github": "https://github.com/requirejs/requirejs/license",
+"githubId": "requirejs",
+"instagram": "https://instagram.com/microsoftcanada",
+"instagramId": "microsoftcanada",
+"linkedin": "https://www.linkedin.com/company/1035",
+"linkedinIdAlpha": "microsoft",
+"linkedinIdNumeric": 1035,
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/1035",
+"twitter": "http://twitter.com/microsoft",
+"twitterId": "microsoft",
+"youtube": "https://youtube.com/channel/ucjc0diarofqjzweayrh4ytg",
+"youtubeId": "ucjc0diarofqjzweayrh4ytg"
+},
+"state": {
+"code": "washington|us",
+"latitude": "38.8950368",
+"longitude": "-77.0365427",
+"name": "Washington"
+},
+"stockExchange": "NASDAQ",
+"stockSymbol": "MSFT",
+"technologies": [
+"apple-business-manager",
+"comscore",
+"kestrel",
+"microsoft-asp-net",
+"microsoft-iis",
+"microsot-365"
+],
+"technologyCategories": [
+"application-server",
+"calendar-and-scheduling",
+"cloud-file-storage",
+"cloud-storage",
+"collaboration",
+"development",
+"digital-analytics",
+"email-service",
+"it-infrastructure",
+"marketing",
+"office-suites",
+"other-web-frameworks",
+"productivity",
+"servers",
+"team-collaboration",
+"video-conferencing",
+"web-frameworks"
+],
+"totalEmployees": "over-10k",
+"totalEmployeesExact": 223660,
+"yearFounded": 1975
+},
+{
+"alexaRank": 684,
+"analyzedAt": "2022-12-28T16:36:32.000Z",
+"businessType": null,
+"city": {
+"address": "7060 hollywood boulevard",
+"code": "los-angeles|california|us",
+"latitude": "34.0536909",
+"longitude": "-118.242766",
+"name": "Los Angeles",
+"postcode": null
+},
+"codeNaics": "71",
+"codeSic": "7991",
+"companiesAcquisitions": [
+{
+"descriptionShort": "moshtix is Australia's leading independent ticketing provider specialising in live music and entertainment events.",
+"domain": "moshtix.com.au",
+"id": 16824144,
+"name": "Moshtix"
+},
+{
+"descriptionShort": "UPGRADED is a new technology platform that converts traditional event tickets into Smart Tickets.",
+"domain": "upgraded-inc.com",
+"id": 19273497,
+"name": "UPGRADED"
+}
+],
+"companiesSimilar": [
+{
+"descriptionShort": "StubHub is the world's largest ticket marketplace with tickets available for more than 10 million live sports, music and theater events in more than 40 countries.",
+"domain": "stubhub.com",
+"id": 16753328,
+"name": "StubHub",
+"similitude": "100"
+},
+{
+"descriptionShort": "Universal Music Group (UMG) is the world leader in music-based entertainment, with a broad array of businesses engaged in recorded music, music publishing, merchandising and audiovisual content in more than 60 countries.",
+"domain": "universalmusic.com",
+"id": 19467,
+"name": "Universal Music Group",
+"similitude": "100"
+},
+{
+"descriptionShort": "Named one of the top 40 U.",
+"domain": "livenationentertainment.com",
+"id": 34849,
+"name": "Live Nation Entertainment",
+"similitude": "100"
+},
+{
+"descriptionShort": "Sony Music Entertainment is a global recorded music company with a current roster that includes a broad array of both local artists and international superstars.",
+"domain": "sonymusic.com",
+"id": 115624,
+"name": "Sony Music Entertainment",
+"similitude": "100"
+},
+{
+"descriptionShort": "With its broad roster of new stars and legendary artists, Warner Music Group is home to a collection of the best-known record labels in the music industry including Asylum, Atlantic, East West, Elektra, Fueled By Ramen, Nonesuch, Reprise, Rhino, Roadrunner, Rykodisc, Sire, Warner Bros.",
+"domain": "wmg.com",
+"id": 16771471,
+"name": "Warner Music Group",
+"similitude": "100"
+},
+{
+"descriptionShort": "Netflix has been leading the way for digital content since 1997Netflix is the world's leading Internet television network with over 100 million members in over 190 countries enjoying more than 125 million hours of TV shows and movies per day, including original series, documentaries and feature films.",
+"domain": "netflix.com",
+"id": 16743541,
+"name": "Netflix",
+"similitude": "100"
+},
+{
+"descriptionShort": "SeatGeek does the ticket searching for you, so all you have to do is pick your seat.",
+"domain": "seatgeek.com",
+"id": 48477,
+"name": "SeatGeek",
+"similitude": "100"
+},
+{
+"descriptionShort": "Ticketmaster: All your entertainment needs under one virtual roof with tickets for theatre, concerts, sport, family events, clubs and more.",
+"domain": "ticketmaster.co.uk",
+"id": 55280,
+"name": "Ticketmaster UK",
+"similitude": "100"
+},
+{
+"descriptionShort": "",
+"domain": "ocesa.com.mx",
+"id": 16852654,
+"name": "OCESA",
+"similitude": "100"
+},
+{
+"descriptionShort": "Our mission is to unlock the potential of human creativity-by giving a million creative artists the opportunity to live off their art and billions of fans the opportunity to enjoy and be inspired by it.",
+"domain": "spotifyjobs.com",
+"id": 88703,
+"name": "Spotify",
+"similitude": "100"
+},
+{
+"descriptionShort": "WePay helps online platforms increase revenue through integrated payments processing under their own name.",
+"domain": "wepay.com",
+"id": 89083,
+"name": "WePay",
+"similitude": "58.82"
+},
+{
+"descriptionShort": "At Fandango, we love movies.",
+"domain": "fandango.com",
+"id": 16745656,
+"name": "Fandango",
+"similitude": "58.82"
+},
+{
+"descriptionShort": "Ticketleap gives you the tools to engage your community in the most effective way possible: by forming a connection with them in person.",
+"domain": "ticketleap.com",
+"id": 137680,
+"name": "Ticketleap",
+"similitude": "58.82"
+},
+{
+"descriptionShort": "We understand the business of B2B and can help you make the most of the ecommerce opportunity.",
+"domain": "shopcreator.com",
+"id": 744892,
+"name": "Shopcreator",
+"similitude": "58.82"
+},
+{
+"descriptionShort": "Established in 2000, Etix is an American-owned, international web-based ticketing service provider processing more than 50 million tickets per year for 4,100+ clients in the entertainment, travel and sports industries in 40 countries.",
+"domain": "rockhousepartners.com",
+"id": 17045586,
+"name": "Etix",
+"similitude": "58.82"
+},
+{
+"descriptionShort": "We Build Social Websites with Groundbreaking TechRebelMouse's technology is what comes when you are exhausted working within the complicated confines of WordPress.",
+"domain": "rebelmouse.com",
+"id": 85921,
+"name": "RebelMouse",
+"similitude": "58.82"
+},
+{
+"descriptionShort": "We Build Social Websites with Groundbreaking TechRebelMouse's technology is what comes when you are exhausted working within the complicated confines of WordPress.",
+"domain": "rbl.ms",
+"id": 16825646,
+"name": "RebelMouse",
+"similitude": "58.82"
+},
+{
+"descriptionShort": "Located just 2 miles from downtown Charlotte, NC, Tremont Music Hall is one of the city's premiere clubs hosting a wide variety of the hottest musical acts ranging from local Charlotte bands to national and world tours.",
+"domain": "ticketfly.com",
+"id": 16820374,
+"name": "Tremont Music Hall",
+"similitude": "58.82"
+},
+{
+"descriptionShort": "Discovery Communications (Nasdaq: DISCA, DISCB, DISCK) satisfies curiosity and engages superfans with a portfolio of premium nonfiction, lifestyle, sports and kids programming brands.",
+"domain": "discovery.com",
+"id": 16750030,
+"name": "Discovery",
+"similitude": "52.94"
+},
+{
+"descriptionShort": "TicketWeb is the industry's best-in-class event ticketing, marketing and management solution.",
+"domain": "ticketweb.com",
+"id": 72624,
+"name": "TicketWeb",
+"similitude": "52.94"
+},
+{
+"descriptionShort": "Founded in 1995 as Israel's first online website directory and part of Teletel Communications Ltd.",
+"domain": "walla.co.il",
+"id": 2272,
+"name": "Walla! NEWS",
+"similitude": "52.94"
+},
+{
+"descriptionShort": "Time Out Group plc is the leading global media and entertainment business that inspires and enables people to make the most of the city.",
+"domain": "timeout.com",
+"id": 4315,
+"name": "Time Out",
+"similitude": "52.94"
+},
+{
+"descriptionShort": "Hunter Public Relations is an award-winning consumer products PR firm located in New York City.",
+"domain": "hunterpr.com",
+"id": 1534496,
+"name": "Hunter",
+"similitude": "52.94"
+},
+{
+"descriptionShort": "Fever is the immediate answer to the question: 'What are we doing tonight?\" Fever delivers a curated list of the most exciting events going on in your city, tailored personally for you.",
+"domain": "feverup.com",
+"id": 16752302,
+"name": "Fever",
+"similitude": "52.94"
+},
+{
+"descriptionShort": "Dwell: Good Design for EveryoneDwell has been a champion and purveyor of good design for over 10 years.",
+"domain": "dwell.com",
+"id": 16748789,
+"name": "Dwell",
+"similitude": "52.94"
+}
+],
+"companiesSubsidiaries": [
+{
+"descriptionShort": "Ticketmaster, a proud division of Live Nation Entertainment, is the world's leading live event ticketing company selling over 465 million tickets each year and supporting more than 12,500 clients in 22 countries worldwide.",
+"domain": "biletix.com",
+"id": 16773219,
+"name": "Biletix - Ticketmaster Türkiye"
+},
+{
+"descriptionShort": "Front Gate Tickets was founded with the idea of being an alternative approach to ticketing.",
+"domain": "frontgatetickets.com",
+"id": 458950,
+"name": "Front Gate Tickets"
+},
+{
+"descriptionShort": "Ticketmaster, a proud division of Live Nation Entertainment, is the world's leading live event ticketing company selling over 465 million tickets each year and supporting more than 12,500 clients in 22 countries worldwide.",
+"domain": "ticketmaster.dk",
+"id": 481584,
+"name": "Ticketmaster Danmark"
+},
+{
+"descriptionShort": "Ticketmaster, a proud division of Live Nation Entertainment, is the world's leading live event ticketing company selling over 465 million tickets each year and supporting more than 12,500 clients in 22 countries worldwide.",
+"domain": "ticketmaster.de",
+"id": 194271,
+"name": "Ticketmaster Deutschland"
+},
+{
+"descriptionShort": "Billets et places pour tous événements en France.",
+"domain": "ticketmaster.fr",
+"id": 460410,
+"name": "Ticketmaster France"
+},
+{
+"descriptionShort": "Ticketmaster, a proud division of Live Nation Entertainment, is the world's leading live event ticketing company selling over 465 million tickets each year and supporting more than 12,500 clients in 22 countries worldwide.",
+"domain": "ticketmaster.ae",
+"id": 636563,
+"name": "Ticketmaster Middle East"
+},
+{
+"descriptionShort": "Ticketmaster, a proud division of Live Nation Entertainment, is the world's leading live event ticketing company selling over 465 million tickets each year and supporting more than 12,500 clients in 22 countries worldwide.",
+"domain": "ticketmaster.pl",
+"id": 501217,
+"name": "Ticketmaster Polska"
+},
+{
+"descriptionShort": "Ticketmaster, a proud division of Live Nation Entertainment, is the world's leading live event ticketing company selling over 465 million tickets each year and supporting more than 12,500 clients in 22 countries worldwide.",
+"domain": "ticketmaster.se",
+"id": 472222,
+"name": "Ticketmaster Sverige"
+},
+{
+"descriptionShort": "Ticketmaster, internationale marktleider op het gebied van ticketverkoop, heeft in 2014 het Belgische Ticketnet en Sherpa overgenomen en lanceerde Ticketmaster.",
+"domain": "ticketmaster.be",
+"id": 493091,
+"name": "Ticketmaster België"
+},
+{
+"descriptionShort": "Ticketmaster, a proud division of Live Nation Entertainment, is the world's leading live event ticketing company selling over 465 million tickets each year and supporting more than 12,500 clients in 22 countries worldwide.",
+"domain": "ticketmaster.nl",
+"id": 459798,
+"name": "Ticketmaster Nederland"
+},
+{
+"descriptionShort": "Ticketmaster, a proud division of Live Nation Entertainment, is the world's leading live event ticketing company selling over 465 million tickets each year and supporting more than 12,500 clients in 22 countries worldwide.",
+"domain": "ticketmaster.no",
+"id": 35870,
+"name": "Ticketmaster Norge"
+},
+{
+"descriptionShort": "At Universe, our mission is simple: Bring people together in real life through events.",
+"domain": "universe.com",
+"id": 216060,
+"name": "Universe"
+}
+],
+"companyParent": {
+"descriptionShort": "Named one of the top 40 U.",
+"domain": "livenationentertainment.com",
+"id": 34849,
+"name": "Live Nation Entertainment",
+"socialNetworks": {
+"facebook": "https://facebook.com/livenation",
+"instagram": "https://instagram.com/livenation",
+"linkedin": "https://www.linkedin.com/company/6593",
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/6593",
+"pinterest": "https://pinterest.com/livenation",
+"twitter": "https://twitter.com/livenation",
+"youtube": "https://youtube.com/user/livenation"
+}
+},
+"continent": {
+"code": "na",
+"latitude": "51.0000002",
+"longitude": "-109",
+"name": "North America",
+"nameEs": "América del Norte",
+"nameFr": "Amérique du Nord"
+},
+"country": {
+"code": "us",
+"latitude": "39.7837304",
+"longitude": "-100.4458825",
+"name": "United States",
+"nameEs": "Estados Unidos",
+"nameFr": "États-Unis"
+},
+"county": null,
+"description": "Ticketmaster, a proud division of Live Nation Entertainment - an organization certified as a Great Place to Work® - is the world's leading live event ticketing company selling over 465 million tickets each year in over 30 countries worldwide. At Ticketmaster, we power the people who create culture through live events, connecting more passionate fans to those experiences than anyone else. We are innovators that embrace change and work hard to help others succeed. We believe in open communication and stress accountability, because fans and clients count on us every day. We strive for ease of use for our clients and fans while seeking out those who have a bias for action versus a desire for directives. Live Nation Entertainment (NYSE: LYV) is the world's leading live entertainment company comprised of global market leaders Live Nation Concerts, Ticketmaster, and Live Nation Media & Sponsorship. Apply online at jobs.ticketmaster.com to join the Ticketmaster team today!",
+"descriptionShort": "Ticketmaster, a proud division of Live Nation Entertainment - an organization certified as a Great Place to Work® - is the world's leading live event ticketing company selling over 465 million tickets each year in over 30 countries worldwide.",
+"domain": "ticketmaster.com",
+"domainAlts": [
+"zerohero.com"
+],
+"domainName": "ticketmaster",
+"domainTld": "com",
+"emailPatterns": [
+{
+"pattern": "[F].[L]",
+"usagePercentage": 97.8402
+},
+{
+"pattern": "[F1][L]",
+"usagePercentage": 0.7405
+},
+{
+"pattern": "[F]",
+"usagePercentage": 0.4937
+},
+{
+"pattern": "[F][L1]",
+"usagePercentage": 0.216
+},
+{
+"pattern": "[F]_[L]",
+"usagePercentage": 0.1851
+},
+{
+"pattern": "[L]",
+"usagePercentage": 0.1543
+},
+{
+"pattern": "[F1].[L]",
+"usagePercentage": 0.1543
+},
+{
+"pattern": "[F][L]",
+"usagePercentage": 0.1234
+},
+{
+"pattern": "[L].[F]",
+"usagePercentage": 0.0309
+},
+{
+"pattern": "[F1][L1]",
+"usagePercentage": 0.0309
+},
+{
+"pattern": "[L1][F1]",
+"usagePercentage": 0.0309
+}
+],
+"id": 1834,
+"industries": [
+"arts",
+"consumer-internet",
+"consumers",
+"curated-web",
+"digital-entertainment",
+"e-commerce",
+"entertainment",
+"information-technology",
+"internet",
+"media",
+"music-venues",
+"nightlife",
+"physical-fitness-facilities",
+"services",
+"social-media",
+"ticket-sales",
+"ticketing"
+],
+"industryMain": "entertainment",
+"logo": "https://poweredwith.nyc3.cdn.digitaloceanspaces.com/images/domains/ticketmaster.com.jpg",
+"monthlyVisitors": "500m-1b",
+"name": "Ticketmaster",
+"phoneNumber": "(323) 769-4600",
+"revenue": "200m-1b",
+"socialNetworks": {
+"angellist": "http://angel.co/ticketmaster",
+"angellistId": "ticketmaster",
+"facebook": "http://facebook.com/ticketmaster",
+"facebookId": "ticketmaster",
+"instagram": "https://instagram.com/ticketmaster",
+"instagramId": "ticketmaster",
+"linkedin": "https://www.linkedin.com/company/5097",
+"linkedinIdAlpha": "ticketmaster",
+"linkedinIdNumeric": 5097,
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/5097",
+"pinterest": "https://pinterest.com/ticketmaster",
+"pinterestId": "ticketmaster",
+"twitter": "http://www.twitter.com/ticketmaster",
+"twitterId": "ticketmaster",
+"youtube": "https://youtube.com/user/ticketmaster",
+"youtubeId": "ticketmaster"
+},
+"state": {
+"code": "california|us",
+"latitude": "36.7014631",
+"longitude": "-118.755997",
+"name": "California"
+},
+"stockExchange": null,
+"stockSymbol": null,
+"technologies": [
+"amazon-cloudfront",
+"amazon-s3",
+"apollo-graphql",
+"express-js",
+"getfeedback",
+"google-analytics",
+"google-tag-manager",
+"lua",
+"next-js",
+"nginx",
+"node-js",
+"openresty",
+"quantcast",
+"react"
+],
+"technologyCategories": [
+"application-development",
+"application-performance-monitoring",
+"application-server",
+"archive-storage",
+"cloud-infrastructure-monitoring",
+"container-networking",
+"containerization",
+"content-analytics",
+"content-delivery-network",
+"content-marketing",
+"customer-service",
+"database",
+"ddos-protection",
+"development",
+"devops",
+"devsecops",
+"digital-analytics",
+"employee-engagement",
+"enterprise-content-delivery-network",
+"experience-management",
+"feedback-analytics",
+"graph-databases",
+"hosting",
+"hr",
+"it-infrastructure",
+"javascript-web-frameworks",
+"load-balancing",
+"log-analysis",
+"marketing",
+"mobile-analytics",
+"mobile-app-analytics",
+"mobile-development",
+"monitoring",
+"nosql-databases",
+"object-storage",
+"observability-solution-suites",
+"programming-languages",
+"security",
+"server-monitoring",
+"storage-management",
+"tag-management",
+"talent-management",
+"web-accelerator",
+"web-application-firewalls",
+"web-frameworks",
+"web-security",
+"web-server-accelerator",
+"website-builder"
+],
+"totalEmployees": "1k-5k",
+"totalEmployeesExact": 4070,
+"yearFounded": 1976
+},
+{
+"alexaRank": 112245,
+"analyzedAt": "2022-12-28T16:34:22.000Z",
+"businessType": null,
+"city": {
+"address": "8750 west bryn mawr avenue",
+"code": "chicago|illinois|us",
+"latitude": "41.8755616",
+"longitude": "-87.6244212",
+"name": "Chicago",
+"postcode": null
+},
+"codeNaics": "524",
+"codeSic": "63",
+"companiesAcquisitions": [],
+"companiesSimilar": [
+{
+"descriptionShort": "Aon plc (NYSE:AON) is a leading global professional services firm providing a broad range of risk, retirement and health solutions.",
+"domain": "aon.com",
+"id": 32757,
+"name": "Aon",
+"similitude": "100"
+},
+{
+"descriptionShort": "We live in a time of unprecedented change.",
+"domain": "metlife.com",
+"id": 13040,
+"name": "MetLife",
+"similitude": "100"
+},
+{
+"descriptionShort": "WELCOME to Zurich's official Linkedin company profile.",
+"domain": "zurich.com",
+"id": 184658,
+"name": "Zurich Insurance Group",
+"similitude": "100"
+},
+{
+"descriptionShort": "Over 50 Million people worldwide have chosen Aflac because of our commitment to providing customers with the confidence that comes from knowing they have assistance in being prepared for whatever life may bring.",
+"domain": "aflac.com",
+"id": 456159,
+"name": "Aflac",
+"similitude": "100"
+},
+{
+"descriptionShort": "Progressive is a place where collaboration is encouraged, hard work is rewarded and creativity is celebrated.",
+"domain": "progressive.com",
+"id": 4637,
+"name": "Progressive",
+"similitude": "100"
+},
+{
+"descriptionShort": "Chubb is the world's largest publicly traded property and casualty insurer.",
+"domain": "chubb.com",
+"id": 454592,
+"name": "Chubb",
+"similitude": "100"
+},
+{
+"descriptionShort": "Founded in 1919, we're a leading insurance company serving commercial, institutional, and individual customers through one of the most extensive worldwide property-casualty networks of any insurer.",
+"domain": "aig.com",
+"id": 16758914,
+"name": "AIG",
+"similitude": "100"
+},
+{
+"descriptionShort": "75 years ago, Colonial Life made a promise to America's workers.",
+"domain": "coloniallife.com",
+"id": 86761,
+"name": "Colonial Life",
+"similitude": "100"
+},
+{
+"descriptionShort": "In an uncertain world, Travelers is an insurance leader, committed to keeping pace with the ever-changing needs of our customers, and anticipating their needs for the future.",
+"domain": "travelers.com",
+"id": 16757926,
+"name": "Travelers",
+"similitude": "100"
+},
+{
+"descriptionShort": "As a member of the Chubb Group of Insurance Companies, Combined Insurance offers products in North America.",
+"domain": "combined.ca",
+"id": 18211132,
+"name": "Combined Insurance Canada / Combined Assurances Canada",
+"similitude": "100"
+},
+{
+"descriptionShort": "ManhattanLife is a group of four operating life and health insurance companies; Manhattan Life Insurance Company, ManhattanLife Assurance Company of America, Western United Life Assurance Company and Family Life Insurance Company.",
+"domain": "manhattanlife.com",
+"id": 16936323,
+"name": "ManhattanLife",
+"similitude": "57.14"
+},
+{
+"descriptionShort": "Connecture has been streamlining health insurance distribution for more than 15 years.",
+"domain": "connecture.com",
+"id": 3257905,
+"name": "ConnectureDRX",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "When it matters most, you need a specialist.",
+"domain": "smsteam.net",
+"id": 3242960,
+"name": "Senior Marketing Specialists",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "Established in 1988 as a wholly owned subsidiary of the American Medical Association (AMA), AMA Insurance Agency, Inc.",
+"domain": "amainsure.com",
+"id": 1504814,
+"name": "AMA Insurance",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "WE'VE GOTCHA COVERED with.",
+"domain": "fbhealthplans.com",
+"id": 1061967,
+"name": "Farm Bureau Health Plans",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "Based in Clearwater, FL, AmeriLife is a national leader in developing, marketing and distributing annuity, life and health insurance solutions to protect the health and retirement needs of consumers.",
+"domain": "amerilife.com",
+"id": 16778638,
+"name": "AmeriLife",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "Our goal is to help our clients understand Medicare and Medicare Supplement Offerings so they can make an educated decision on the coverage that is best for their situation.",
+"domain": "gomedigap.com",
+"id": 909623,
+"name": "GoMedigap",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "Art Jetter & Company supports consumer-oriented insurance advisors, general agents, financial planners, and sales forces.",
+"domain": "jetter.com",
+"id": 2269228,
+"name": "Art Jetter & Company",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "We're paid commissions by the insurance companies, but you would pay the same premium with or without a broker.",
+"domain": "healthinsurancecolorado.net",
+"id": 1939608,
+"name": "Colorado Health Insurance Insider",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "We Speak Medicare! Follow us for regular updates about Medicare legislation, Medicare supplements, Medicare Advantage plans, Part D and insurance buyer's tips for Medicare beneficiaries.",
+"domain": "boomerbenefits.com",
+"id": 16786290,
+"name": "Boomer Benefits",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "Cardinal Advisors can help you sort out the confusion around long-term care, Medicare, Social Security, IRAs, life insurance, and taxes.",
+"domain": "cardinalguide.com",
+"id": 16315165,
+"name": "Cardinal Advisors",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "A Health, Medicare, and Life insurance agency making affordability and ease a reality.",
+"domain": "affordablemedicaresolutions.com",
+"id": 17356965,
+"name": "MedicareSolutions",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "5 Time Angie's List Super Service Award Winner and Preferred AARP Plan Provider.",
+"domain": "ihealthbrokers.com",
+"id": 2137709,
+"name": "iHealthBrokers",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "The Polish Falcons of America (PFA), one of the nation's leading Polish-American organizations, is an ethnic fraternal benefit society with over 21,000 Members nationwide.",
+"domain": "polishfalcons.org",
+"id": 2854245,
+"name": "Polish Falcons of America",
+"similitude": "42.86"
+},
+{
+"descriptionShort": "Glenwood Insurance Agency has served our community since 1911.",
+"domain": "glenwoodinsurance.com",
+"id": 1094566,
+"name": "Glenwood Insurance Agency",
+"similitude": "42.86"
+}
+],
+"companiesSubsidiaries": [
+{
+"descriptionShort": "As a member of the Chubb Group of Insurance Companies, Combined Insurance offers products in North America.",
+"domain": "combined.ca",
+"id": 18211132,
+"name": "Combined Insurance Canada / Combined Assurances Canada"
+}
+],
+"companyParent": {
+"descriptionShort": "Chubb is the world's largest publicly traded property and casualty insurer.",
+"domain": "chubb.com",
+"id": 454592,
+"name": "Chubb",
+"socialNetworks": {
+"angellist": "http://angel.co/chubb-insurance",
+"facebook": "https://www.facebook.com/chubbinsurance",
+"linkedin": "https://www.linkedin.com/company/1269",
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/1269",
+"twitter": "https://www.twitter.com/chubbna"
+}
+},
+"continent": {
+"code": "na",
+"latitude": "51.0000002",
+"longitude": "-109",
+"name": "North America",
+"nameEs": "América del Norte",
+"nameFr": "Amérique du Nord"
+},
+"country": {
+"code": "us",
+"latitude": "39.7837304",
+"longitude": "-100.4458825",
+"name": "United States",
+"nameEs": "Estados Unidos",
+"nameFr": "États-Unis"
+},
+"county": {
+"code": "cook-county|us",
+"latitude": "41.8197385",
+"longitude": "-87.756525",
+"name": "Cook County"
+},
+"description": "Combined Insurance, a Chubb company, is a leading provider of supplemental accident, health and life insurance products in North America, Europe and Asia Pacific. Combined Insurance Company of America is committed to helping people find the coverage they need at a price they can afford. We help customers and policyholders navigate the sometimes confusing world of supplemental insurance to make sure their needs, and the needs of their family are taken care of when peace of mind is needed most. We take pride in providing coverage that is clearly written and easy to understand so customers can be sure they're getting the right coverage.",
+"descriptionShort": "Combined Insurance, a Chubb company, is a leading provider of supplemental accident, health and life insurance products in North America, Europe and Asia Pacific.",
+"domain": "combinedinsurance.com",
+"domainAlts": [],
+"domainName": "combinedinsurance",
+"domainTld": "com",
+"emailPatterns": [
+{
+"pattern": "[F].[L]",
+"usagePercentage": 85.2941
+},
+{
+"pattern": "[F1][L]",
+"usagePercentage": 14.7059
+}
+],
+"id": 176071,
+"industries": [
+"insurance",
+"insurance-carriers",
+"medicare-supplement",
+"supplemental-accident-insurance",
+"supplemental-disability-insurance",
+"supplemental-health-insurance",
+"supplemental-life-insurance"
+],
+"industryMain": "insurance",
+"logo": "https://poweredwith.nyc3.cdn.digitaloceanspaces.com/images/domains/combinedinsurance.com.jpg",
+"monthlyVisitors": "500k-1m",
+"name": "Combined Insurance",
+"phoneNumber": "(847) 953-2025",
+"revenue": "200m-1b",
+"socialNetworks": {
+"angellist": "https://angel.co/combined-insurance",
+"angellistId": "combined-insurance",
+"facebook": "https://www.facebook.com/combinedinsuranceunitedstates",
+"facebookId": "combinedinsuranceunitedstates",
+"instagram": "https://instagram.com/combinedinsurance",
+"instagramId": "combinedinsurance",
+"linkedin": "https://www.linkedin.com/company/combined-insurance",
+"linkedinIdAlpha": "combined-insurance",
+"linkedinIdNumeric": 11703,
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/11703",
+"twitter": "https://twitter.com/combinedins",
+"twitterId": "combinedins",
+"youtube": "https://youtube.com/user/combinedinsuranceusa",
+"youtubeId": "combinedinsuranceusa"
+},
+"state": {
+"code": "illinois|us",
+"latitude": "40.0796606",
+"longitude": "-89.4337288",
+"name": "Illinois"
+},
+"stockExchange": "XMIL",
+"stockSymbol": "ACE",
+"technologies": [
+"adobe-experience-manager",
+"amazon-s3",
+"apache",
+"facebook-social-plugins",
+"google-analytics",
+"google-tag-manager",
+"java",
+"microsoft-asp-net",
+"microsoft-iis",
+"new-relic",
+"tealium"
+],
+"technologyCategories": [
+"aiops-platforms",
+"application-development",
+"application-performance-monitoring",
+"application-server",
+"archive-storage",
+"cloud-infrastructure-monitoring",
+"container-monitoring",
+"containerization",
+"content-analytics",
+"content-experience-platforms",
+"content-management",
+"content-marketing",
+"customer-communications-management",
+"customer-service",
+"development",
+"devops",
+"devsecops",
+"digital-analytics",
+"digital-experience-monitoring",
+"digital-experience-platforms",
+"digital-governance",
+"incident-management",
+"it-alerting",
+"it-infrastructure",
+"it-management",
+"log-analysis",
+"log-monitoring",
+"marketing",
+"mobile-analytics",
+"mobile-app-analytics",
+"mobile-development",
+"monitoring",
+"object-storage",
+"observability-solution-suites",
+"other-web-frameworks",
+"programming-languages",
+"security",
+"server-monitoring",
+"social-media-marketing",
+"storage-management",
+"tag-management",
+"user-generated-content",
+"web-content-management",
+"web-frameworks"
+],
+"totalEmployees": "1k-5k",
+"totalEmployeesExact": 4170,
+"yearFounded": 1922
+},
+{
+"alexaRank": 68395,
+"analyzedAt": "2022-12-28T17:27:34.000Z",
+"businessType": null,
+"city": {
+"address": null,
+"code": "milwaukee|wisconsin|us",
+"latitude": "43.0349931",
+"longitude": "-87.922497",
+"name": "Milwaukee",
+"postcode": null
+},
+"codeNaics": null,
+"codeSic": null,
+"companiesAcquisitions": [
+{
+"descriptionShort": "Tyco Fire Protection Products is a division of Tyco, the world's largest pure-play fire protection and security company.",
+"domain": "tyco.com",
+"id": 107291,
+"name": "Tyco International"
+}
+],
+"companiesSimilar": [
+{
+"descriptionShort": "GE (NYSE: GE) is the world's Digital Industrial Company, transforming industry with software-defined machines and solutions that are connected, responsive and predictive.",
+"domain": "ge.com",
+"id": 45359,
+"name": "General Electric",
+"similitude": "100"
+},
+{
+"descriptionShort": "Honeywell is a Fortune 100 company that invents and manufactures technologies to address tough challenges linked to global macrotrends such as safety, security, and energy.",
+"domain": "honeywell.com",
+"id": 16750654,
+"name": "Honeywell International",
+"similitude": "100"
+},
+{
+"descriptionShort": "Caring for the world, one person at a time.",
+"domain": "jnj.com",
+"id": 37776,
+"name": "Johnson & Johnson",
+"similitude": "100"
+},
+{
+"descriptionShort": "For more than 165 years, Siemens AG (Berlin and Munich) has stood for innovative strength, a passion for technology, sustainability, responsibility and an uncompromising commitment to quality and excellence.",
+"domain": "siemens.com",
+"id": 5635,
+"name": "Siemens",
+"similitude": "100"
+},
+{
+"descriptionShort": "Founded by the inventor of modern air conditioning, Carrier is a world leader in high-technology heating, air-conditioning and refrigeration solutions.",
+"domain": "carrier.com",
+"id": 233980,
+"name": "Carrier",
+"similitude": "100"
+},
+{
+"descriptionShort": "Schneider Electric's purpose is to empower all to make the most of our energy and resources, bridging progress and sustainability for all.",
+"domain": "se.com",
+"id": 16749805,
+"name": "EcoStruxure",
+"similitude": "100"
+},
+{
+"descriptionShort": "ABB is a leading global technology company that energizes the transformation of society and industry to achieve a more productive, sustainable future.",
+"domain": "social.abb",
+"id": 27585437,
+"name": "ABB",
+"similitude": "100"
+},
+{
+"descriptionShort": "Trane, a business of Ingersoll Rand - the world leader in creating and sustaining safe, comfortable and energy efficient environments - improves the performance of homes and buildings around the world.",
+"domain": "trane.com",
+"id": 215590,
+"name": "Trane",
+"similitude": "100"
+},
+{
+"descriptionShort": "Established in 1991, Al Salem Group of Companies in Saudi Arabia joined arms with YORK's mother company \"Johnson Controls\", a leading multi-industrial company and a pioneering provider of energy efficient HVAC solutions for the residential, commercial and industrial sectorsتأسست مجموعة شركات آل سالم في المملكة العربية السعودية في عام 1991، واتحدت مع شركة جونسون كنترولز العالمية، الشركة الأم للعلامة التجارية 'يورك'، إحدى الشركات الرائدة متعددة الصناعات وموردة لحلول التهوية والتبريد والتكييف التي تتمتع بكفاءة في استهلاك الطاقة للقطاعات السكنية والتجارية والصناعية.",
+"domain": "york.com.sa",
+"id": 194391,
+"name": "YORKksa",
+"similitude": "100"
+},
+{
+"descriptionShort": "Johnson Control is a Facilities Services company located in 1819 S School Ave, Fayetteville, Arkansas, United States.",
+"domain": "johnsoncontrols.com.sa",
+"id": 17541051,
+"name": "Johnson Control",
+"similitude": "100"
+},
+{
+"descriptionShort": "We believe that an intelligent world begins with talented people.",
+"domain": "nextgenges.com",
+"id": 17125475,
+"name": "NextGen Executive Search",
+"similitude": "26.67"
+},
+{
+"descriptionShort": "Tyco Fire Protection Products is a division of Tyco, the world's largest pure-play fire protection and security company.",
+"domain": "tyco.com",
+"id": 107291,
+"name": "Tyco International",
+"similitude": "20.00"
+},
+{
+"descriptionShort": "The sole mission of Mitsubishi Electric Automation, Inc, is to support the automation needs of North and Latin American customers with combined sales, marketing, service, engineering and manufacturing resources.",
+"domain": "mitsubishielectric.com",
+"id": 55088,
+"name": "Mitsubishi Electric",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "UNLOCK THE VALUE OF ANY BUILDINGBeyond slick dashboards, Bractlet uses automated software solutions to improve building performance and decrease energy spend.",
+"domain": "bractlet.com",
+"id": 1940216,
+"name": "Bractlet",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "eMotorWerk, an Enel Group Company, is a California based company focused on promoting high performance electric vehicle charging solutions, such as EV charging stations (EVSE) and smart grid EV charging networks.",
+"domain": "emotorwerks.com",
+"id": 16866856,
+"name": "eMotorWerks",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "Progea International SA is based in Balerna (CH) and it is the central office supporting the International sales of the Movicon technology.",
+"domain": "progea.com",
+"id": 16814808,
+"name": "Progea",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "It's not about BIG data, it's about the RIGHT data.",
+"domain": "cytiot.com",
+"id": 1484624,
+"name": "ConnectingYourThings",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "At Henneman Engineering, we provide engineering and technology solutions that allow our clients to view the future with confidence.",
+"domain": "henneman.com",
+"id": 1279522,
+"name": "Henneman Engineering",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "Solbright Group, Inc.",
+"domain": "arkadosgroup.com",
+"id": 1082638,
+"name": "Solbright Group",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "TÜV SÜD Product Service is part of the Industrial Division of the TÜV SÜD Group who employs over 13,000 people across 600 locations and is one of the leading technical service companies in the world and established in 1866.",
+"domain": "tuv-sud.co.uk",
+"id": 16863178,
+"name": "TÜV SÜD",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "Sirris, the collective centre of the Belgian technology industry, helps companies to introduce technological innovation enabling them to strengthen their competitive position.",
+"domain": "sirris.be",
+"id": 658199,
+"name": "Sirris",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "Datek Wireless AS is one of Norway's leading providers of custom M2M (machine to machine) and IoT (Internet of Things) solutions.",
+"domain": "datek.no",
+"id": 1561864,
+"name": "Datek",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "OFweek is a comprehensive web portal in Chinese high-tech industry with over 2 million members across various fields.",
+"domain": "ofweek.com",
+"id": 16745666,
+"name": "OFweek Industrial B2B Marketplace",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "iEngineering Australia specializes in:1) Engineering Software Products a) NEPLAN - Power & Network Analysis Software b) Primtech - 3D Substation Design Software c) XGSLab - Earthing/Lightning/EMFI Analysis Software d) CARL - Computerized Maintenance Management System & Enterprise Asset Management e) EBase - Engineering platform ideal for leading industry solutions customized for to various Process 2) Engineering Design & Consulting a) Automation and Industrial Engineering b) ASP Level 3 Design c) Power System Studies d) Earthing/Lightning/EMFI Studies e) Power Quality and Energy Saving f) Electrical Safety Audit g) Renewable Energy3) Hardware Product Sales a) Electrical & Electronic Parts b) Mechanical Parts c) Plants and Equipment d) Machinery e) Lightning Protection System.",
+"domain": "iengaust.com.au",
+"id": 2087879,
+"name": "iEngineering Australia",
+"similitude": "16.67"
+},
+{
+"descriptionShort": "Bamep Muhendislik is a leading full-service building automation contractor for new construction and retrofit projects.",
+"domain": "bamep.com",
+"id": 367887,
+"name": "Bamep Mühendislik",
+"similitude": "16.67"
+}
+],
+"companiesSubsidiaries": [
+{
+"descriptionShort": "Established in 1991, Al Salem Group of Companies in Saudi Arabia joined arms with YORK's mother company \"Johnson Controls\", a leading multi-industrial company and a pioneering provider of energy efficient HVAC solutions for the residential, commercial and industrial sectorsتأسست مجموعة شركات آل سالم في المملكة العربية السعودية في عام 1991، واتحدت مع شركة جونسون كنترولز العالمية، الشركة الأم للعلامة التجارية 'يورك'، إحدى الشركات الرائدة متعددة الصناعات وموردة لحلول التهوية والتبريد والتكييف التي تتمتع بكفاءة في استهلاك الطاقة للقطاعات السكنية والتجارية والصناعية.",
+"domain": "york.com.sa",
+"id": 194391,
+"name": "YORKksa"
+}
+],
+"companyParent": null,
+"continent": {
+"code": "na",
+"latitude": "51.0000002",
+"longitude": "-109",
+"name": "North America",
+"nameEs": "América del Norte",
+"nameFr": "Amérique du Nord"
+},
+"country": {
+"code": "us",
+"latitude": "39.7837304",
+"longitude": "-100.4458825",
+"name": "United States",
+"nameEs": "Estados Unidos",
+"nameFr": "États-Unis"
+},
+"county": {
+"code": "milwaukee-county|us",
+"latitude": "43.018032500000004",
+"longitude": "-87.58075460628575",
+"name": "Milwaukee County"
+},
+"description": "Johnson Controls is a global diversified technology and multi industrial leader serving a wide range of customers in more than 150 countries. Our 120,000 employees create intelligent buildings, efficient energy solutions, integrated infrastructure and next generation transportation systems that work seamlessly together to deliver on the promise of smart cities and communities. Our commitment to sustainability dates back to our roots in 1885, with the invention of the first electric room thermostat. We are committed to helping our customers win and creating greater value for all of our stakeholders through strategic focus on our buildings and energy growth platforms. For additional information, please visit",
+"descriptionShort": "Johnson Controls is a global diversified technology and multi industrial leader serving a wide range of customers in more than 150 countries.",
+"domain": "johnsoncontrols.com",
+"domainAlts": [
+"johnsoncontrols.pl",
+"johnsoncontrols.in",
+"johnsoncontrols.com.sa",
+"johnsoncontrols.com.au",
+"johnsoncontrols.kr",
+"johnsoncontrols.no"
+],
+"domainName": "johnsoncontrols",
+"domainTld": "com",
+"emailPatterns": [
+{
+"pattern": "[F]",
+"usagePercentage": 70.5882
+},
+{
+"pattern": "[F].[L]",
+"usagePercentage": 12.4434
+},
+{
+"pattern": "[F1][L]",
+"usagePercentage": 9.9548
+},
+{
+"pattern": "[F1].[L]",
+"usagePercentage": 5.6561
+},
+{
+"pattern": "[F][L]",
+"usagePercentage": 0.4525
+},
+{
+"pattern": "[L]",
+"usagePercentage": 0.2262
+},
+{
+"pattern": "[F].[L1]",
+"usagePercentage": 0.2262
+},
+{
+"pattern": "[L][F]",
+"usagePercentage": 0.2262
+},
+{
+"pattern": "[F]_[L]",
+"usagePercentage": 0.2262
+}
+],
+"id": 223031,
+"industries": [
+"advanced-energy-storage-systems",
+"automotive-interiors",
+"building",
+"building-automation",
+"clean-energy",
+"consultants-in-electrical",
+"energy-efficiency",
+"energy-management-software",
+"engineering",
+"environmental-services",
+"facility-management",
+"fire",
+"fire-detection",
+"hazard-protection",
+"hvac",
+"industrial-engineering",
+"industrial-machinery-manufacturing",
+"industrial-refrigeration",
+"leadacid-batteries",
+"manufacturing-operations",
+"mechanical",
+"mechanical-or-industrial-engineering",
+"mechanical-projects",
+"operations",
+"physical-security",
+"safety",
+"sales",
+"security",
+"security-systems-",
+"software",
+"sustainability"
+],
+"industryMain": "mechanical-or-industrial-engineering",
+"logo": "https://poweredwith.nyc3.cdn.digitaloceanspaces.com/images/domains/johnsoncontrols.com.jpg",
+"monthlyVisitors": "1m-10m",
+"name": "Johnson Controls",
+"phoneNumber": "(877) 976-9593",
+"revenue": "over-1b",
+"socialNetworks": {
+"angellist": "http://angel.co/johnson-controls",
+"angellistId": "johnson-controls",
+"facebook": "https://www.facebook.com/johnsoncontrols",
+"facebookId": "johnsoncontrols",
+"instagram": "https://instagram.com/johnsoncontrols",
+"instagramId": "johnsoncontrols",
+"linkedin": "https://www.linkedin.com/company/2247",
+"linkedinIdAlpha": "johnson-controls",
+"linkedinIdNumeric": 2247,
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/2247",
+"twitter": "http://twitter.com/johnsoncontrol",
+"twitterId": "johnsoncontrol",
+"youtube": "https://youtube.com/user/johnsoncontrolsinc/johnsoncontrols",
+"youtubeId": "johnsoncontrolsinc"
+},
+"state": {
+"code": "wisconsin|us",
+"latitude": "44.4308975",
+"longitude": "-89.6884637",
+"name": "Wisconsin"
+},
+"stockExchange": "NYSE",
+"stockSymbol": "JCI",
+"technologies": [
+"akamai",
+"amazon-cloudfront",
+"amazon-s3",
+"cloudflare-cdn",
+"facebook-social-plugins",
+"google-analytics",
+"google-cloud",
+"google-maps",
+"google-tag-manager",
+"hotjar",
+"imperva-app-protect",
+"microsoft-asp-net",
+"microsoft-azure",
+"microsoft-azure-cdn",
+"microsoft-iis",
+"salesforce-account-engagement",
+"section-io",
+"sitecore",
+"tealium"
+],
+"technologyCategories": [
+"application-development",
+"application-server",
+"archive-storage",
+"attribution",
+"block-storage",
+"cloud-ddos-mitigation",
+"cloud-file-storage",
+"cloud-platform-as-a-service",
+"cloud-security",
+"container-management",
+"container-orchestration",
+"container-registry",
+"containerization",
+"content-analytics",
+"content-delivery-network",
+"content-management",
+"content-marketing",
+"conversion-rate-optimization",
+"development",
+"devops",
+"devsecops",
+"digital-analytics",
+"digital-experience-platforms",
+"enterprise-content-delivery-network",
+"gis",
+"heatmap",
+"hosting",
+"hybrid-cloud-storage",
+"it-infrastructure",
+"it-management",
+"landing-page-builders",
+"load-balancing",
+"marketing",
+"marketing-analytics",
+"marketing-automation",
+"mobile-analytics",
+"mobile-app-analytics",
+"mobile-development",
+"object-storage",
+"other-web-frameworks",
+"security",
+"session-replay",
+"social-media-marketing",
+"storage-management",
+"tag-management",
+"user-research",
+"virtual-private-cloud",
+"virtual-waiting-room",
+"web-application-firewalls",
+"web-content-management",
+"web-frameworks",
+"web-security",
+"webops-platforms",
+"website-security"
+],
+"totalEmployees": "over-10k",
+"totalEmployeesExact": 69650,
+"yearFounded": 1885
+},
+{
+"alexaRank": 168528,
+"analyzedAt": "2022-12-28T23:21:18.000Z",
+"businessType": null,
+"city": {
+"address": "2000 north m63",
+"code": "benton-harbor|michigan|us",
+"latitude": "42.1167065",
+"longitude": "-86.4541894",
+"name": "Benton Harbor",
+"postcode": null
+},
+"codeNaics": "423620",
+"codeSic": "5064",
+"companiesAcquisitions": [
+{
+"descriptionShort": "Following the acquisition of Indesit Company by Whirlpool Corporation, this page is not updated anymore.",
+"domain": "indesitcompany.com",
+"id": 16790428,
+"name": "Indesit Company"
+}
+],
+"companiesSimilar": [
+{
+"descriptionShort": "As the world's largest food and beverage company we are driven by a simple aim: enhancing quality of life and contributing to a healthier future.",
+"domain": "nestle.com",
+"id": 32645,
+"name": "Nestlé",
+"similitude": "100"
+},
+{
+"descriptionShort": "At LG, we deliver products and services that make lives better, easier and happier though increased functionality and fun.",
+"domain": "lg.com",
+"id": 1364,
+"name": "LG Electronics",
+"similitude": "100"
+},
+{
+"descriptionShort": "Samsung Electronics is a global leader in technology, opening new possibilities for people everywhere.",
+"domain": "samsung.com",
+"id": 16743736,
+"name": "Samsung",
+"similitude": "100"
+},
+{
+"descriptionShort": "On any given day, two billion people use Unilever products to look good, feel good and get more out of life.",
+"domain": "unilever.com",
+"id": 29449,
+"name": "Unilever",
+"similitude": "100"
+},
+{
+"descriptionShort": "PepsiCo is a global food and beverage leader with a product portfolio including 22 brands that generate more than $1 billion each in annual retail sales.",
+"domain": "pepsico.com",
+"id": 108075,
+"name": "Pepsi",
+"similitude": "100"
+},
+{
+"descriptionShort": "Electrolux is a leading global appliance company that has shaped living for the better for more than 100 years.",
+"domain": "electroluxgroup.com",
+"id": 471274,
+"name": "Electrolux",
+"similitude": "100"
+},
+{
+"descriptionShort": "We are a multinational in the hermetic compressor refrigeration industry and offer innovative solutions for a better quality of life.",
+"domain": "embraco.com",
+"id": 109192,
+"name": "Embra",
+"similitude": "100"
+},
+{
+"descriptionShort": "Referência nos setores em que atua, com uma marca que é sinônimo de qualidade e inovação, a Tigre empenha-se na construção de um mundo melhor e busca profissionais que estejam sintonizados com este objetivo.",
+"domain": "tigre.com.br",
+"id": 641924,
+"name": "Tigre",
+"similitude": "100"
+},
+{
+"descriptionShort": "Líder global do mercado de blocos e cabeçotes de ferro para motores, a Tupy desenvolve e produz componentes fundidos e usinados para o setor automotivo, além de conexões de ferro maleável, granalhas e perfis contínuos para segmentos diversos da indústria e da construção.",
+"domain": "tupy.com.br",
+"id": 2778800,
+"name": "Tupy",
+"similitude": "100"
+},
+{
+"descriptionShort": "We do three things:- Custom coloured 3d shapes for retail paint display- Custom coloured 3d shapes for special events- Standard raw and finished shapes*******************************************************************************When, where and how- Founded in Torino, Italy in 1997 as a spin-off from Swiss design firm, Protoscar- Colorfrog product in the whole world: from Australia to Chile- +1 Million Colorfrog product units sold- Niche experts: from shape research, to materials and colour, to prototyping and production- Being niche, allows us to be extremely flexible too: we are able to adapt our design and processes to satisfy our clients' requirements- Quality above all: we do understand our clients have a brand to protect and enhance- Established network of artisans and specialists to support small and large projects.",
+"domain": "goo.gl",
+"id": 16746652,
+"name": "ColorFrog",
+"similitude": "40.91"
+},
+{
+"descriptionShort": "BIOWORLD Merchandising is a leading design and distribution company of licensed and private label apparel, head-wear & accessories to all retails channels.",
+"domain": "bioworldmerch.com",
+"id": 123233,
+"name": "Bioworld",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "We are a screen printer, promo product peddler, graphic design firm and warehouse/fulfillment center; but most of all - we are brand evangelists.",
+"domain": "kotisdesign.com",
+"id": 16787358,
+"name": "Kotis Design",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "KiwiTech is a startup investment and technology services company.",
+"domain": "kiwitech.com",
+"id": 240964,
+"name": "KiwiTech",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "©ABOUT TINT WORLD®Tint World® franchise was founded in 1982 in Fort Lauderdale Florida; starting a new segment in the window tinting and automotive aftermarket specializing in: car stereo systems, auto security, car and truck accessories, and complete detailing and appearance services, thereby creating a unique 'Automotive Styling Centers™'​.",
+"domain": "tintworld.com",
+"id": 656223,
+"name": "Tint World",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "Qoo10 was launched in June 2010 and is now the No.",
+"domain": "qoo10.sg",
+"id": 16743950,
+"name": "Qoo10 Singapore",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "Profusion is a data science and marketing services company.",
+"domain": "profusion.com",
+"id": 509277,
+"name": "Profusion",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "Mobilendo is focused on the development of innovative applications in the mobile phone sphere.",
+"domain": "mobilendo.com",
+"id": 1165312,
+"name": "Mobilendo",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "Roller is a creative design and development studio, where digital innovators bring businesses and brands together to maximize creative potential.",
+"domain": "rolleragency.co.uk",
+"id": 17210301,
+"name": "Roller Agency",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "Spark Compass (Total Communicator Solutions, Inc.",
+"domain": "sparkcompass.com",
+"id": 1323673,
+"name": "Spark Compass",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "AVOCADO is on a mission to change the grocery industry.",
+"domain": "avocadonext.com",
+"id": 147010,
+"name": "AVOCADO",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "Milestone Sports, Ltd.",
+"domain": "milestonepod.com",
+"id": 1922332,
+"name": "Milestone Sports",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "With Tech, Voice! WT VOX is the most trustworthy, authoritative resource in IoT and emerging technologies.",
+"domain": "wtvox.com",
+"id": 140657,
+"name": "WTVOX",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "Global Ventures Group is an International Business Builder that works closely with private investors, and company founders create more awareness, develop their projects and expand beyond borders.",
+"domain": "globalxpansions.com",
+"id": 1876322,
+"name": "Global Ventures Group",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "La mission di Netgrid è permettere alle persone di vivere in pieno le proprie passioni.",
+"domain": "netgrid.it",
+"id": 17032852,
+"name": "Netgrid",
+"similitude": "36.36"
+},
+{
+"descriptionShort": "KERUYUN provide SaaS solution for millions of local services merchants in China.",
+"domain": "keruyun.com",
+"id": 16748148,
+"name": "KERUYUN TECHNOLOGIES（BEIJING） CORPORATION",
+"similitude": "36.36"
+}
+],
+"companiesSubsidiaries": [
+{
+"descriptionShort": "Netflix and Pandora understand your preferences.",
+"domain": "yummly.com",
+"id": 3325,
+"name": "Yummly"
+}
+],
+"companyParent": null,
+"continent": {
+"code": "na",
+"latitude": "51.0000002",
+"longitude": "-109",
+"name": "North America",
+"nameEs": "América del Norte",
+"nameFr": "Amérique du Nord"
+},
+"country": {
+"code": "us",
+"latitude": "39.7837304",
+"longitude": "-100.4458825",
+"name": "United States",
+"nameEs": "Estados Unidos",
+"nameFr": "États-Unis"
+},
+"county": {
+"code": "berrien-county|us",
+"latitude": "31.2561376",
+"longitude": "-83.2443709",
+"name": "Berrien County"
+},
+"description": "For generations, Whirlpool Corporation has been helping people make the most of time so they can focus on what really matters - their families and their lives. \"There is no right way to do a wrong thing\" has guided everything we do, and for generations to come, we will sustain our commitment to make each experience an extraordinary one. Whirlpool Corporation is the number one major appliance manufacturer in the world, with approximately $21 billion in annual sales, 97,000 employees and 70 manufacturing and technology research centers in 2015. The company markets Whirlpool, KitchenAid, Maytag, Consul, Brastemp, Amana, Bauknecht, Jenn-Air, Indesit and other major brand names in nearly every country throughout the world. Additional information about the company can be found on Twitter at @WhirlpoolCorp and WhirlpoolCorp.com.",
+"descriptionShort": "For generations, Whirlpool Corporation has been helping people make the most of time so they can focus on what really matters - their families and their lives.",
+"domain": "whirlpoolcorp.com",
+"domainAlts": [],
+"domainName": "whirlpoolcorp",
+"domainTld": "com",
+"emailPatterns": [
+{
+"pattern": "[F].[L]",
+"usagePercentage": 99.1941
+},
+{
+"pattern": "[F]_[L]",
+"usagePercentage": 0.3327
+},
+{
+"pattern": "[F]",
+"usagePercentage": 0.1922
+},
+{
+"pattern": "[F1][L]",
+"usagePercentage": 0.1257
+},
+{
+"pattern": "[L]",
+"usagePercentage": 0.0813
+},
+{
+"pattern": "[F][L]",
+"usagePercentage": 0.0296
+},
+{
+"pattern": "[L].[F]",
+"usagePercentage": 0.0222
+},
+{
+"pattern": "[F1].[L]",
+"usagePercentage": 0.0148
+}
+],
+"id": 467836,
+"industries": [
+"airports",
+"brand-leadership",
+"computer-hardware",
+"computer-software",
+"consumer-electronics",
+"consumer-goods",
+"consumers",
+"diversity",
+"environmental-sustainability",
+"flying-fields",
+"hardware",
+"inclusion",
+"information-technology",
+"innovation",
+"manufacturing",
+"marketing",
+"operational-excellence",
+"people-excellence",
+"product-leadership",
+"services",
+"social-responsibility",
+"software"
+],
+"industryMain": "consumer-goods",
+"logo": "https://poweredwith.nyc3.cdn.digitaloceanspaces.com/images/domains/whirlpoolcorp.com.jpg",
+"monthlyVisitors": "500k-1m",
+"name": "Whirlpool Corporation",
+"phoneNumber": "(269) 923-7405",
+"revenue": "over-1b",
+"socialNetworks": {
+"angellist": "http://angel.co/whirlpool",
+"angellistId": "whirlpool",
+"facebook": "https://www.facebook.com/whirlpoolusa",
+"facebookId": "whirlpoolusa",
+"instagram": "https://instagram.com/whirlpoolcorp",
+"instagramId": "whirlpoolcorp",
+"linkedin": "https://www.linkedin.com/company/2551",
+"linkedinIdAlpha": "whirlpool-corporation",
+"linkedinIdNumeric": 2551,
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/2551",
+"twitter": "http://twitter.com/whirlpoolcorp",
+"twitterId": "whirlpoolcorp",
+"youtube": "https://youtube.com/user/whirlpoolcorporation",
+"youtubeId": "whirlpoolcorporation"
+},
+"state": {
+"code": "michigan|us",
+"latitude": "43.6211955",
+"longitude": "-84.6824346",
+"name": "Michigan"
+},
+"stockExchange": "NYSE",
+"stockSymbol": "WHR",
+"technologies": [
+"apache",
+"google-analytics",
+"google-tag-manager",
+"google-workspace",
+"mysql",
+"php",
+"wordpress"
+],
+"technologyCategories": [
+"application-development",
+"application-server",
+"aws-marketplace",
+"business-instant-messaging",
+"calendar",
+"cloud-content-collaboration",
+"content-analytics",
+"content-management",
+"content-marketing",
+"database",
+"development",
+"digital-analytics",
+"document-creation",
+"email",
+"idea-management",
+"internal-communications",
+"it-infrastructure",
+"marketing",
+"marketplace-apps",
+"mobile-analytics",
+"mobile-app-analytics",
+"mobile-development",
+"note-taking-management",
+"office",
+"office-suites",
+"presentation",
+"programming-languages",
+"relational-databases",
+"screen-sharing",
+"spreadsheets",
+"survey",
+"tag-management",
+"team-collaboration",
+"video-conferencing",
+"web-content-management",
+"website-builder"
+],
+"totalEmployees": "over-10k",
+"totalEmployeesExact": 39590,
+"yearFounded": 1911
+},
+{
+"alexaRank": 573246,
+"analyzedAt": "2022-12-25T16:29:55.000Z",
+"businessType": null,
+"city": {
+"address": "21557 telegraph road",
+"code": "southfield|michigan|us",
+"latitude": "42.4733689",
+"longitude": "-83.2218731",
+"name": "Southfield",
+"postcode": null
+},
+"codeNaics": null,
+"codeSic": null,
+"companiesAcquisitions": [
+{
+"descriptionShort": "As a global supplier of precision engineered assemblies, we design, engineer and manufacture things that move.",
+"domain": "gill-industries.com",
+"id": 3388553,
+"name": "Gill Industries"
+}
+],
+"companiesSimilar": [
+{
+"descriptionShort": "We are a leading global automotive supplier with 321 manufacturing operations and 102 product development, engineering and sales centres in 29 countries.",
+"domain": "magna.com",
+"id": 459557,
+"name": "Magna International",
+"similitude": "100"
+},
+{
+"descriptionShort": "At General Motors, we are passionate about designing, building and selling the world's best vehicles.",
+"domain": "gm.com",
+"id": 16752211,
+"name": "General Motors",
+"similitude": "100"
+},
+{
+"descriptionShort": "Faurecia is one of the largest automotive suppliers worldwide.",
+"domain": "faurecia.com",
+"id": 466583,
+"name": "Faurecia",
+"similitude": "100"
+},
+{
+"descriptionShort": "Valeo is an automotive supplier, partner to all automakers worldwide.",
+"domain": "valeo.com",
+"id": 459806,
+"name": "Valeo",
+"similitude": "100"
+},
+{
+"descriptionShort": "ZF is a global leader in driveline and chassis technology as well as active and passive safety technology.",
+"domain": "zf.com",
+"id": 354336,
+"name": "ZF Group",
+"similitude": "100"
+},
+{
+"descriptionShort": "On Dec.",
+"domain": "delphi.com",
+"id": 16820678,
+"name": "Delphi",
+"similitude": "100"
+},
+{
+"descriptionShort": "Adient is the global leader in the $60 billion automotive seating market, with approximately 75,000 employees in 230 locations across 33 countries.",
+"domain": "adient.com",
+"id": 573676,
+"name": "Adient",
+"similitude": "100"
+},
+{
+"descriptionShort": "MAHLE is a leading international development partner and supplier to the automotive industry as well as a pioneer and technology driver for the mobility of the future.",
+"domain": "mahle.com",
+"id": 442326,
+"name": "MAHLE",
+"similitude": "100"
+},
+{
+"descriptionShort": "Aptiv specializes in working interactively with its clients to develop customized database applications to meet their unique business requirements.",
+"domain": "aptiv.com",
+"id": 146952,
+"name": "Aptiv",
+"similitude": "100"
+},
+{
+"descriptionShort": "Continental develops pioneering technologies and services for sustainable and connected mobility of people and their goods.",
+"domain": "continental-careers.com",
+"id": 27582181,
+"name": "Continental",
+"similitude": "100"
+},
+{
+"descriptionShort": "Johnson Controls is a global diversified technology and multi industrial leader serving a wide range of customers in more than 150 countries.",
+"domain": "johnsoncontrols.com",
+"id": 223031,
+"name": "Johnson Controls",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "*Planes.",
+"domain": "eaton.com",
+"id": 118175,
+"name": "Eaton",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "The World's Sixth SenseFLIR Systems, Inc.",
+"domain": "flir.com",
+"id": 454585,
+"name": "FLIR Systems",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "ABB is a pioneering technology leader in electrification products, robotics and motion, industrial automation and power grids, serving customers in utilities, industry and transport & infrastructure globally.",
+"domain": "abb.com",
+"id": 15170,
+"name": "ABB",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "Cummins is a place big enough to coach and develop a global workforce and create the world's leading clean, engine technology.",
+"domain": "cummins.com",
+"id": 235157,
+"name": "Cummins",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "Tenaris is a leading supplier of tubes and related services for the world's energy industry and certain other industrial applications.",
+"domain": "tenaris.com",
+"id": 505926,
+"name": "Tenaris",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "The world leader in mineral-based specialty solutions for industry, with +16,000 employees and 4.",
+"domain": "imerys.com",
+"id": 543677,
+"name": "Imerys",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "Headquartered in Stamford, Connecticut, HARMAN (harman.",
+"domain": "harman.com",
+"id": 118877,
+"name": "HARMAN International",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "Johnson Electric is among the world's largest providers of motion subsystems and motion components including DC motors, brushless motors, synchronous motors, piezo motors, solenoids, microswitches and flexible circuits.",
+"domain": "johnsonelectric.com",
+"id": 520203,
+"name": "Johnson Electric",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "Business disruption across multiple sectors is accelerating at record pace.",
+"domain": "jabil.com",
+"id": 470326,
+"name": "Jabil",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "For the builders and protectors, for the makers and explorers, for those shaping and reshaping our world through hard work and inspiration, Stanley Black & Decker provides the tools and innovative solutions you can trust to get the job done-and we have since 1843.",
+"domain": "stanleyblackanddecker.com",
+"id": 115644,
+"name": "Stanley Black & Decker",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "DAF Trucks N.",
+"domain": "daf.com",
+"id": 287658,
+"name": "DAF Trucks N.V",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "Navistar International Corporation (NYSE: NAV) is a holding company whose subsidiaries and affiliates produce International® brand commercial and military trucks, and IC Bus™ brand school and commercial buses.",
+"domain": "navistar.com",
+"id": 165081,
+"name": "Navistar International",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "Welcome to the official Linkedin page of Tata Motors - India's largest automobile company, with consolidated revenues of INR 2,75,561.",
+"domain": "tatamotors.com",
+"id": 20212,
+"name": "Tata Motors",
+"similitude": "50.00"
+},
+{
+"descriptionShort": "ON Semiconductor (Nasdaq: ON) is driving energy efficient innovations, empowering customers to reduce global energy use.",
+"domain": "onsemi.com",
+"id": 106742,
+"name": "ON Semiconductor",
+"similitude": "50.00"
+}
+],
+"companiesSubsidiaries": [
+{
+"descriptionShort": "Guilford Performance Textiles, Inc.",
+"domain": "guilfordtextiles.com",
+"id": 2582948,
+"name": "Guilford Performance Textiles"
+}
+],
+"companyParent": null,
+"continent": {
+"code": "na",
+"latitude": "51.0000002",
+"longitude": "-109",
+"name": "North America",
+"nameEs": "América del Norte",
+"nameFr": "Amérique du Nord"
+},
+"country": {
+"code": "us",
+"latitude": "39.7837304",
+"longitude": "-100.4458825",
+"name": "United States",
+"nameEs": "Estados Unidos",
+"nameFr": "États-Unis"
+},
+"county": {
+"code": "oakland-county|us",
+"latitude": "42.6618842",
+"longitude": "-83.3804439",
+"name": "Oakland County"
+},
+"description": "Lear Corporation is a leading global Tier 1 automotive supplier that serves all of the world's major automakers with content on more than 400 vehicle nameplates worldwide. Lear is one of the world's largest suppliers of automotive seating and E-Systems. Lear provides complete seating systems and components, as well as both traditional and high voltage/high power electronic products and E-Systems and components. With facilities in 38 countries on six continents, Lear operates in every major auto producing region of the world. Achieving $18.6 billion in 2016 sales, Lear ranks #151 among the Fortune 500. Headquartered in Southfield, Michigan, Lear's world-class products are designed, engineered and manufactured by a diverse team of more than 156,000 employees. Lear shares are traded on the New York Stock Exchange under the symbol [LEA].",
+"descriptionShort": "Lear Corporation is a leading global Tier 1 automotive supplier that serves all of the world's major automakers with content on more than 400 vehicle nameplates worldwide.",
+"domain": "lear.com",
+"domainAlts": [],
+"domainName": "lear",
+"domainTld": "com",
+"emailPatterns": [
+{
+"pattern": "[F1][L]",
+"usagePercentage": 98.2284
+},
+{
+"pattern": "[L1][F]",
+"usagePercentage": 0.9284
+},
+{
+"pattern": "[F][L]",
+"usagePercentage": 0.4255
+},
+{
+"pattern": "[F].[L]",
+"usagePercentage": 0.2708
+},
+{
+"pattern": "[L]",
+"usagePercentage": 0.0619
+},
+{
+"pattern": "[F]",
+"usagePercentage": 0.0387
+},
+{
+"pattern": "[F1].[L]",
+"usagePercentage": 0.0309
+}
+],
+"id": 474300,
+"industries": [
+"automotive",
+"automotive-seating",
+"electrical-distribution-systems",
+"manufacturing"
+],
+"industryMain": "automotive",
+"logo": "https://poweredwith.nyc3.cdn.digitaloceanspaces.com/images/domains/lear.com.jpg",
+"monthlyVisitors": "10k-50k",
+"name": "Lear",
+"phoneNumber": "(248) 447-1500",
+"revenue": "over-1b",
+"socialNetworks": {
+"facebook": "https://www.facebook.com/lear-corporation-152066538153641",
+"facebookId": "lear-corporation-152066538153641",
+"github": "https://github.com/inorganik/countup.js",
+"githubId": "inorganik",
+"instagram": "https://instagram.com/learcorp",
+"instagramId": "learcorp",
+"linkedin": "https://www.linkedin.com/company/3701",
+"linkedinIdAlpha": "lear-corporation",
+"linkedinIdNumeric": 3701,
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/3701",
+"twitter": "https://www.twitter.com/learcorporation",
+"twitterId": "learcorporation",
+"youtube": "https://youtube.com/user/corplear",
+"youtubeId": "corplear"
+},
+"state": {
+"code": "michigan|us",
+"latitude": "43.6211955",
+"longitude": "-84.6824346",
+"name": "Michigan"
+},
+"stockExchange": "NYSE",
+"stockSymbol": "LEA",
+"technologies": [
+"amazon-ecs",
+"apple-business-manager",
+"facebook-social-plugins",
+"google-analytics",
+"google-tag-manager",
+"lua",
+"microsoft-asp-net",
+"microsoft-azure-cdn",
+"microsoft-iis",
+"microsot-365",
+"nginx",
+"openresty",
+"webflow"
+],
+"technologyCategories": [
+"application-development",
+"application-performance-monitoring",
+"application-server",
+"calendar-and-scheduling",
+"cloud-file-storage",
+"cloud-infrastructure-monitoring",
+"cloud-storage",
+"collaboration",
+"container-management",
+"container-networking",
+"container-orchestration",
+"containerization",
+"content-analytics",
+"content-delivery-network",
+"content-management",
+"content-marketing",
+"ddos-protection",
+"design",
+"development",
+"devops",
+"devsecops",
+"digital-analytics",
+"email-service",
+"enterprise-content-delivery-network",
+"hosting",
+"it-infrastructure",
+"load-balancing",
+"log-analysis",
+"marketing",
+"mobile-analytics",
+"mobile-app-analytics",
+"mobile-development",
+"monitoring",
+"observability-solution-suites",
+"office-suites",
+"other-web-frameworks",
+"productivity",
+"programming-languages",
+"security",
+"server-monitoring",
+"social-media-marketing",
+"software-design",
+"tag-management",
+"team-collaboration",
+"video-conferencing",
+"web-accelerator",
+"web-application-firewalls",
+"web-content-management",
+"web-design",
+"web-frameworks",
+"web-hosting-providers",
+"web-security",
+"web-server-accelerator",
+"webops-platforms",
+"website-builder"
+],
+"totalEmployees": "over-10k",
+"totalEmployeesExact": 34220,
+"yearFounded": 1917
+},
+{
+"alexaRank": 42538,
+"analyzedAt": "2022-12-25T18:12:12.000Z",
+"businessType": null,
+"city": {
+"address": "100 north riverside",
+"code": "chicago|illinois|us",
+"latitude": "41.8755616",
+"longitude": "-87.6244212",
+"name": "Chicago",
+"postcode": null
+},
+"codeNaics": null,
+"codeSic": null,
+"companiesAcquisitions": [
+{
+"descriptionShort": "Leveraging three decades of experience, Tapestry Solutions is a global provider of information management software and services for defense, government and commercial customers.",
+"domain": "tapestrysolutions.com",
+"id": 3490555,
+"name": "Tapestry Solutions"
+}
+],
+"companiesSimilar": [
+{
+"descriptionShort": "We are a close-knit community of big thinkers collaborating to keep the world safe.",
+"domain": "northropgrumman.com",
+"id": 375456,
+"name": "Northrop Grumman",
+"similitude": "100"
+},
+{
+"descriptionShort": "GE Aviation, an operating unit of GE (NYSE: GE), is a world-leading provider of jet and turboprop engines, components and integrated systems for commercial, military, business and general aviation aircraft.",
+"domain": "geaviation.com",
+"id": 466867,
+"name": "GE Aviation",
+"similitude": "100"
+},
+{
+"descriptionShort": "Breakthrough performance.",
+"domain": "lockheedmartin.com",
+"id": 16760538,
+"name": "Lockheed Martin",
+"similitude": "100"
+},
+{
+"descriptionShort": "Amazon is guided by four principles: customer obsession rather than competitor focus, passion for invention, commitment to operational excellence, and long-term thinking.",
+"domain": "aboutamazon.com",
+"id": 7235,
+"name": "Amazon",
+"similitude": "100"
+},
+{
+"descriptionShort": "Tesla's mission is to accelerate the world's transition to sustainable energy through increasingly affordable electric vehicles in addition to renewable energy generation and storage.",
+"domain": "tesla.com",
+"id": 16745566,
+"name": "Tesla",
+"similitude": "100"
+},
+{
+"descriptionShort": "Rolls-Royce is a global company, providing integrated power solutions to the aerospace and marine/industrial power systems markets.",
+"domain": "rolls-royce.com",
+"id": 246056,
+"name": "Rolls-Royce",
+"similitude": "100"
+},
+{
+"descriptionShort": "Airbus is a global leader in aeronautics, space and related services.",
+"domain": "airbus.com",
+"id": 16757785,
+"name": "Airbus",
+"similitude": "100"
+},
+{
+"descriptionShort": "For more than 50 years, NASA has been breaking barriers to achieve the seemingly impossible-from walking on the Moon to pushing the boundaries of human spaceflight farther than ever before.",
+"domain": "nasa.gov",
+"id": 16744543,
+"name": "NASA - National Aeronautics and Space Administration",
+"similitude": "100"
+},
+{
+"descriptionShort": "SpaceX designs, manufactures and launches the world's most advanced rockets and spacecraft.",
+"domain": "spacex.com",
+"id": 32838,
+"name": "SpaceX",
+"similitude": "100"
+},
+{
+"descriptionShort": "",
+"domain": "collinsaerospace.com",
+"id": 83930,
+"name": "Collins Aerospace",
+"similitude": "100"
+},
+{
+"descriptionShort": "Based in Denmark and managing the full portfolio of Services, Solutions, Products and Projects in Europe, Middle East, Africa, Russia and China, CWIIL Group Global Regional Headquarters Denmark works closely with CWIIL Group Global Financial Headquarters in London, UK and CWIIL Group Global Marketing Headquarters, Mumbai, India, and also with Back Offices and R&D Centres spread across the Globe.",
+"domain": "cwiilgroup.eu",
+"id": 2063082,
+"name": "CWIIL Group Global Regional Headquarters Denmark",
+"similitude": "27.27"
+},
+{
+"descriptionShort": "Founded in 1923, Applied Industrial Technologies is a leading distributor of bearings, power transmission products, engineered fluid power, specialty flow control solutions, and other industrial supplies, serving MRO and OEM customers in virtually every industry.",
+"domain": "applied.com",
+"id": 537047,
+"name": "Applied Industrial Technologies",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "Wilhelmsen is a global maritime industry group, and leaders within our industry.",
+"domain": "wilhelmsen.com",
+"id": 360089,
+"name": "Wilhelmsen group",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "Kuwait & Gulf Link Transport Company (KGL) is a highly focused group of companies, with regional interests in Transportation, Logistics and Supply Chain Management (SCM).",
+"domain": "kgl.com",
+"id": 2928302,
+"name": "KGL",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "SaxonCantrell is a national full-service executive search firm dedicated to offering premier retained quality service through contingent no-risk contract agreements.",
+"domain": "saxoncantrell.com",
+"id": 2263875,
+"name": "SaxonCantrell",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "We are a rapidly growing, international executive recruiting firm, and our job is to be connected, professionally and personally, to the people and companies, in the markets we serve.",
+"domain": "macrecruiters.com",
+"id": 1452477,
+"name": "MAC Executive Recruiters",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "HW Coates specialises in the storage and distribution of packaged chemicals.",
+"domain": "hwcoates.co.uk",
+"id": 1133941,
+"name": "HW Coates",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "As an independent liquids storage centre, Standic is the base for bulk liquid distribution.",
+"domain": "standic.com",
+"id": 1558934,
+"name": "Standic",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "United Warehouse Company Limited began operations in 2006 as a storage soulutions provider for the manufacturing sector.",
+"domain": "uwc-logistics.com.sa",
+"id": 17767762,
+"name": "United Warehouse",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "The Saudi Company of Chemical Trading Ltd.",
+"domain": "chemtrade.com",
+"id": 1765458,
+"name": "Chemtrade",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "JMH CAPITAL PARTNERS is a private equity firm that acquires profitable businesses in North America with revenues of $5 million to $150 million, participating in industry niches where the principals of JMH can leverage their OPERATIONAL EXPERTISE and EXTENSIVE NETWORK OF EXECUTIVES Join our MAILING LIST:.",
+"domain": "jmhcapital.com",
+"id": 17325046,
+"name": "JMH Capital Partners",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "Navbharat Shipping India Ltd, is the flagship company of the Navbharat Group.",
+"domain": "nsil.in",
+"id": 3938311,
+"name": "Navbharat Shipping India",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "Getz is an international marketing & services company with over 50 offices in 24 countries around the world with its origins dating back to 1852.",
+"domain": "getz.com",
+"id": 1740081,
+"name": "The Getz Group",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "We do three things:- Custom coloured 3d shapes for retail paint display- Custom coloured 3d shapes for special events- Standard raw and finished shapes*******************************************************************************When, where and how- Founded in Torino, Italy in 1997 as a spin-off from Swiss design firm, Protoscar- Colorfrog product in the whole world: from Australia to Chile- +1 Million Colorfrog product units sold- Niche experts: from shape research, to materials and colour, to prototyping and production- Being niche, allows us to be extremely flexible too: we are able to adapt our design and processes to satisfy our clients' requirements- Quality above all: we do understand our clients have a brand to protect and enhance- Established network of artisans and specialists to support small and large projects.",
+"domain": "goo.gl",
+"id": 16746652,
+"name": "ColorFrog",
+"similitude": "22.73"
+},
+{
+"descriptionShort": "At Walmart, we help people save money so they can live better.",
+"domain": "walmart.com",
+"id": 16743933,
+"name": "Walmart",
+"similitude": "18.18"
+}
+],
+"companiesSubsidiaries": [
+{
+"descriptionShort": "",
+"domain": "boeingvancouver.com",
+"id": 20442441,
+"name": "boeing vancouver"
+},
+{
+"descriptionShort": "CDG can help you to create a specific operating or maintenance manual for an individual product or client, or we can provide a complete outsourced technical documentation service, handling all your technical documentation needs.",
+"domain": "cdgnow.com",
+"id": 17857237,
+"name": "CDG"
+}
+],
+"companyParent": null,
+"continent": {
+"code": "na",
+"latitude": "51.0000002",
+"longitude": "-109",
+"name": "North America",
+"nameEs": "América del Norte",
+"nameFr": "Amérique du Nord"
+},
+"country": {
+"code": "us",
+"latitude": "39.7837304",
+"longitude": "-100.4458825",
+"name": "United States",
+"nameEs": "Estados Unidos",
+"nameFr": "États-Unis"
+},
+"county": {
+"code": "cook-county|us",
+"latitude": "41.8197385",
+"longitude": "-87.756525",
+"name": "Cook County"
+},
+"description": "As we enter our second century, Boeing is the world's largest aerospace company and leading manufacturer of commercial airplanes and defense, space and security systems. We are engineers and technicians. Skilled scientists and thinkers. Bold innovators and dreamers. Join us, and build something better for yourself, for our customers and for the world. Boeing is an Equal Opportunity Employer. Employment decisions are made without regard to race, color, religion, national origin, gender, sexual orientation, gender identity, age, physical or mental disability, genetic factors, military/veteran status or other characteristics protected by law.",
+"descriptionShort": "As we enter our second century, Boeing is the world's largest aerospace company and leading manufacturer of commercial airplanes and defense, space and security systems.",
+"domain": "boeing.com",
+"domainAlts": [],
+"domainName": "boeing",
+"domainTld": "com",
+"emailPatterns": [
+{
+"pattern": "[F].[L]",
+"usagePercentage": 99.1266
+},
+{
+"pattern": "[F].[M1].[L]",
+"usagePercentage": 0.3701
+},
+{
+"pattern": "[L].[F]",
+"usagePercentage": 0.2105
+},
+{
+"pattern": "[L]",
+"usagePercentage": 0.0938
+},
+{
+"pattern": "[F1][L]",
+"usagePercentage": 0.0641
+},
+{
+"pattern": "[F][L]",
+"usagePercentage": 0.0428
+},
+{
+"pattern": "[F1].[L]",
+"usagePercentage": 0.0395
+},
+{
+"pattern": "[F]",
+"usagePercentage": 0.0197
+},
+{
+"pattern": "[F][L1]",
+"usagePercentage": 0.0115
+}
+],
+"id": 85730,
+"industries": [
+"aerospace",
+"aftermarket-solutions",
+"aircraft-parts",
+"aog",
+"aviation",
+"aviation-and-aerospace",
+"batteries",
+"brake",
+"chemicals",
+"defense",
+"distribution",
+"kitting",
+"logistics",
+"manufacturing",
+"national-security",
+"paint-mixing",
+"repair",
+"rotables",
+"services",
+"space-manufacturing",
+"supply-chain",
+"transportation",
+"wheel"
+],
+"industryMain": "aviation-and-aerospace",
+"logo": "https://poweredwith.nyc3.cdn.digitaloceanspaces.com/images/domains/boeing.com.jpg",
+"monthlyVisitors": "10m-50m",
+"name": "Boeing",
+"phoneNumber": "(312) 544-2000",
+"revenue": "over-1b",
+"socialNetworks": {
+"angellist": "http://angel.co/boeing",
+"angellistId": "boeing",
+"facebook": "https://www.facebook.com/pages/boeing-company/115345968480189",
+"facebookId": "boeing-company",
+"instagram": "https://instagram.com/boeing",
+"instagramId": "boeing",
+"linkedin": "https://www.linkedin.com/company/1384",
+"linkedinIdAlpha": "boeing",
+"linkedinIdNumeric": 1384,
+"linkedinSalesNavigator": "https://www.linkedin.com/sales/company/1384",
+"twitter": "http://twitter.com/boeingairplanes",
+"twitterId": "boeingairplanes",
+"youtube": "https://youtube.com/user/boeing",
+"youtubeId": "boeing"
+},
+"state": {
+"code": "illinois|us",
+"latitude": "40.0796606",
+"longitude": "-89.4337288",
+"name": "Illinois"
+},
+"stockExchange": "NYSE",
+"stockSymbol": "BA",
+"technologies": [
+"addthis",
+"amazon-ecs",
+"amazon-s3",
+"apache",
+"apache-tomcat",
+"cloudflare-cdn",
+"google-analytics",
+"google-tag-manager",
+"java",
+"microsoft-azure-cdn",
+"nginx",
+"segment"
+],
+"technologyCategories": [
+"application-development",
+"application-server",
+"archive-storage",
+"consent-management-platforms",
+"container-management",
+"container-networking",
+"container-orchestration",
+"containerization",
+"content-analytics",
+"content-delivery-network",
+"content-distribution",
+"content-marketing",
+"customer-data-platforms",
+"data-governance",
+"data-integration",
+"data-privacy",
+"data-privacy-management",
+"data-subject-access-request",
+"ddos-protection",
+"development",
+"devops",
+"devsecops",
+"digital-analytics",
+"e-commerce-data-integration",
+"enterprise-content-delivery-network",
+"hosting",
+"it-infrastructure",
+"it-management",
+"load-balancing",
+"marketing",
+"mobile-analytics",
+"mobile-app-analytics",
+"mobile-development",
+"object-storage",
+"programming-languages",
+"security",
+"storage-management",
+"tag-management",
+"web-accelerator",
+"web-application-firewalls",
+"web-security",
+"web-server-accelerator"
+],
+"totalEmployees": "over-10k",
+"totalEmployeesExact": 137330,
+"yearFounded": 1916
+}
+],
+"meta": {
+"currentPage": 1,
+"firstPage": 1,
+"lastPage": 1000,
+"perPage": 10,
+"total": 10000
+},
+"query": []
+}

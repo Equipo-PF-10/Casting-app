@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
 const domain = "dev-4hjyir23x5jta1gu.us.auth0.com";
-const clientId = "bNwYLJVwAc52r1yOO7AeOsZCUdCfJ90p";
+const clientId = "64ba3dfe7872259dabb5c283";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

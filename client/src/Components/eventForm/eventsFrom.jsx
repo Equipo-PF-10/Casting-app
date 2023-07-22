@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./eventForm.module.css";
 import validation from "./validation";
 import axios from "axios";
+import NavBarLateral from "../NavBarLateral/NavBarLateral";
 
 const EventForm = () => {
 
@@ -34,6 +35,8 @@ const EventForm = () => {
     }
   
     return(
+    <div>
+        <NavBarLateral/>
         <section className={styles.section}>
             <div>
                 <form action=""  method="POST" onSubmit={hanldeSubmit}>
@@ -97,6 +100,7 @@ const EventForm = () => {
                 <path d="M324 317C318.477 317 314 312.523 314 307C314 301.477 318.477 297 324 297C329.523 297 334 301.477 334 307C334 312.523 329.523 317 324 317Z" fill="#3F3D56"/>
             </svg>
         </section>
+    </div>
     )
 }
 
