@@ -1,30 +1,101 @@
 .container {
   display: grid;
-  grid-template-rows: 15% 35% 5% 45%;
+  grid-template-rows: 10% 35% 8% 5% 42%;
+  background-color: var(--color-fondo);
 }
 .topSection {
-    background-color: red;
-    height: 15vh;
-    display: grid;
-    grid-template-columns: 10% 90%;
-    justify-items: center;
-    align-items: center; 
+  height: 10vh;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  justify-items: center;
+  align-items: center;
 }
 .topSection h3 {
-    text-align: center;
-}
-.middleSection {
-    background-color: blue;
-    height: 35vh; 
-}
-.text {
-    background-color: green;
-    height: 5vh;
-}
-.bottomSection {
-    background-color: yellow;
-    height: 45vh;
+  text-align: center;
 }
 .logo {
-    margin-left: 150px;
+  margin-left: 150px;
 }
+.head {
+  min-width: 600px;
+  margin-right: 150px;
+}
+.middleSection {
+  height: 35vh;
+  display: grid;
+  grid-template-columns: auto;
+  text-align: center;
+  justify-items: center;
+  align-items: center;
+}
+.intro {
+  width: 600px;
+  height: 320px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+  text-align:justify;
+  padding: 30px;
+}
+.intro h4 {
+    margin-left: 200px;
+}
+.text {
+  height: 8vh;
+  grid-template-rows: 50% 50%;
+  text-align: center;
+  justify-items: center;
+  align-items: center;
+}
+.text h1 {
+    font-size: 35px;
+    letter-spacing: 5px;
+    margin-top: 15px;
+}
+.text hr {
+  color: var(--color-primario);
+  width: 40vh;
+  margin: auto;
+  border-top: 4px solid;
+}
+.titles {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-items: center;
+  align-items: center;
+  height: 5vh;
+  margin-left: 20px;
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+.bottomSection {
+  height: 42vh;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-items: center;
+}
+.text_margin{
+    margin-left: 35px;
+}
+.card {
+  width: 300px;
+  height: 370px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  margin: 0px 20px 20px 20px;
+  padding: 15px;
+  text-align: justify;
+  border: 3px solid var(--color-primario);
+  display: grid;
+  grid-template-rows: 30% 63% 7%;
+  /* justify-items: center;*/
+    
+    justify-items: center;
+}
+
+.card button {
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+
