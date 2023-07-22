@@ -2,10 +2,10 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const app = express(); 
-// const mainRouter = require("./routes/mainRouter");
+const mainRouter = require("./routes/mainRouter");
+// const sequelize = require('./database'); //
 // const bodyParser = require("body-parser");
 // const jwt = require("jsonwebtoken");
-// const sequelize = require('./database'); //
 // const { Auth0Client } = require('@auth0/auth0-spa-js'); //
 // const talento = require('./models/talentos.js'); //
 // const { auth } = require('express-oauth2-jwt-bearer'); //
@@ -93,6 +93,6 @@ app.use((req, res, next) => {
 //     }
 //   })();
 // });
-// app.use("/", mainRouter);
+app.use("/", mainRouter);
 
 module.exports = app;
