@@ -2,7 +2,6 @@ import React from "react";
 import Card from "./CompanyComponent/Card";
 import style from "./CompanySearch.module.css";
 import Search from "./CompanyComponent/Search";
-import Navbar from "../../Components/Navbar/Navbar";
 import Detail from "./CompanyComponent/Detail";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 
