@@ -22,7 +22,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 8rem;
-    padding-left: 1rem;
+    padding-left: 1.8rem;
 }
 
 .icons2{
@@ -34,6 +34,7 @@
     gap: 1.5rem;
     position: relative;
     transition: all ease 0.5s; 
+    align-items: center;
 }
 
 .link{
@@ -52,9 +53,10 @@
 .icons1{
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     font-weight: 5rem;
     color: #4B31A1;
-    gap: 1rem;
+    gap: 1.5rem;
     position: relative;
     transition: all ease 0.5s; 
 }
