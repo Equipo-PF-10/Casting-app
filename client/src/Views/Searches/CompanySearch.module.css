@@ -4,7 +4,7 @@
 
 .secciones{
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 4% 70% 30%;
 }
 
 .grid {
@@ -31,4 +31,8 @@
   margin-right: 30px;
   margin-left: -40px;
   /*position: fixed;*/
+}
+
+.navLateral{
+  margin-top: -85px;
 }
