@@ -1,0 +1,31 @@
+.containerGralTalent {
+  background-color: rgb(255, 255, 255);
+}
+
+.secciones{
+  display: grid;
+  grid-template-columns: 9% 30% 50%;
+}
+
+.searchFil {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.navLateral{
+  margin-top: -72px;
+}
+
+.brLinea{
+  border: 3px solid #00C9A7;
+}
+
+.cardJobsStyle{
+  margin-bottom: 40px;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.detailStyle{
+  margin-left: 20px;
+}
