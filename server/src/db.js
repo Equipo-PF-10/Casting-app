@@ -54,4 +54,4 @@ Evento.belongsToMany(Empresa, { through: "Empresa/Eventos" });
 module.exports = {
   ...sequelize.models,
   conn: sequelize,
-};
+ };

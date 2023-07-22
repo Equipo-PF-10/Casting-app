@@ -1,50 +1,42 @@
-const { Empresa } = require ("../db");
+const { allCompanies, searchByLocation, createCompany } = require("../controllers/companiesController");
 
-const searchByName = async (req, res) => {
+const handleAllCompanies = async (req, res) => {
+  
   try {
-    const nombre = req.query.nombre;
-    const empresas = await Empresa.find({ nombre: { $like: "%" + nombre + "%" } });
-   return res.status(200).json(empresas);
+    if (req.query){
+      const {name} = req.query;
+      const companies = await allCompanies(name);
+      res.status(200).json(companies);
+    } else { 
+      const companies = await allCompanies();
+      res.status(200).json(companies);
+    }    
   } catch (error) {
-    res.status(500).json({ error: "Error al buscar empresas por nombre: " + error });
+    res.status(500).json({ error: "Error al obtener las empresas de la base de datos: " + error });
   }
 };
 
-
-const searchByLocation = async (req, res) => {
+const handleSearchByLocation = async (req, res) => {
   try {
-    const ubicacion = req.query.ubicacion;
-    const empresas = await Empresa.find({ ubicacion: { $like: "%" + ubicacion + "%" } });
-    res.status(200).json(empresas);
+    const companies = await searchByLocation(req.query.country);
+    res.status(200).json(companies);
   } catch (error) {
     res.status(500).json({ error: "Error al buscar empresas por ubicación: " + error });
   }
 };
 
-
-const createCompany = async (req, res) => {
+const handleCreateCompany = async (req, res) => {
   try {
-    const { name, descriptionShort, domain, logo, socialNetworks, country } = req.body;
-    const newCompany = {
-      name,
-      descriptionShort,
-      domain,
-      logo,
-      socialNetworks,
-      country,
-    };
-
-  const companyCreate = await Empresa.create(newCompany);
-
-    res.status(201).json(companyCreate);
+    const company = req.body;
+    const newCompany = await createCompany(company);
+    res.status(201).json(newCompany);
   } catch (error) {
     res.status(500).json({ error: "Error al crear la empresa: " + error });
   }
 };
 
 module.exports = {
-  searchByName,
-  searchByLocation,
-  createCompany,
+  handleAllCompanies,
+  handleSearchByLocation,
+  handleCreateCompany,
 };
-
