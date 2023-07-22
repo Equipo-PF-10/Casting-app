@@ -1,4 +1,5 @@
 const { Talento } = require("../db");
+const { Op } = require("sequelize");
 
 // Función controller que retorna los talentos de la database.
 const getDbTalents = async () => {
@@ -45,10 +46,8 @@ const createTalentDb = async (
 
 const getTalentByName = async (name) => {
   try {
-    const nameToLower = name.toLowerCase(); // Convertir el nombre a minúsculas
-
     const foundInDb = await Talento.findOne({
-      where: { name: nameToLower },
+      where: { name: { [Op.iLike]: `%${name}%` } },
     });
 
     if (!foundInDb) {
