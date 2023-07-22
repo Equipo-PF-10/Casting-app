@@ -1,11 +1,10 @@
 const { Router } = require("express");
-const { searchByName, searchByLocation, createCompany } = require("../handlers/companiesHandler");
+const { handleSearchByLocation, handleCreateCompany, handleAllCompanies } = require("../handlers/companiesHandler");
 
 const companyRouter = Router();
 
-companyRouter.get("/companies", searchByName);
-companyRouter.get("/companies/location", searchByLocation);
-companyRouter.post("/companies", createCompany);
-
+companyRouter.get("/location", handleSearchByLocation);
+companyRouter.get("/", handleAllCompanies);
+companyRouter.post("/", handleCreateCompany);
 
 module.exports = companyRouter;

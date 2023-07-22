@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "empresa",
+    "Empresa",
     {
       id: {
         type: DataTypes.UUID,
@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
       
       logo: {                         
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
 
       domain: {

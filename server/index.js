@@ -11,7 +11,7 @@ conn.sync({ force: true }).then(() => {
   app.listen(process.env.PORT, () => {
     console.log("listening at", PORT);
   });
+  getCompaniesData();
   getApiTalents();
-  // getCompaniesData();
   getEvents();
 });
