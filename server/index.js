@@ -8,10 +8,10 @@ const getEvents = require("./src/importData/eventsData");
 // Syncing all the models at once.
 // force is to reset my database
 conn.sync({ force: true }).then(() => {
-  getCompaniesData();
   server.listen(process.env.PORT, () => {
     console.log("listening at", PORT);
   });
+  getCompaniesData();
   getApiTalents();
   getEvents();
 });
