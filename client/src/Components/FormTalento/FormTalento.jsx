@@ -1,9 +1,26 @@
 import { useState } from "react"
+import Select from "react-select"
 import Styles from "./FormTalento.module.css"
 import axios from "axios"
 import validationTalentos from "./validationTalentos"
 
 const FormTalento = () => {
+
+    const optionshabilityRequired = [
+        { value: 'Actuación', label: 'Actuación' },
+        { value: 'Animador/a', label: 'Animador/a' },
+        { value: 'Bailarín/a', label: 'Bailarín/a' },
+        { value: 'Blogger', label: 'Blogger' },
+        { value: 'Cantante', label: 'Cantante' },
+        { value: 'DJ', label: 'DJ' },
+        { value: 'Influencer', label: 'Influencer' },
+        { value: 'Locutor/a', label: 'Locutor/a' },
+        { value: 'Mago/a', label: 'Mago/a' },
+        { value: 'Músico/a', label: 'Músico/a' },
+        { value: 'Modelo', label: 'Modelo' },
+        { value: 'Presentador/a', label: 'Presentador/a' },
+        { value: 'Promotor/a', label: 'Promotor/a' },
+      ];
 
     const initialState = {
         name: "",
@@ -21,6 +38,7 @@ const FormTalento = () => {
         nacionalidad: "",
         location: "",
         dni: "",
+        habilityRequired: []
     }
 
     const [input, setInput] = useState(initialState)
@@ -32,6 +50,11 @@ const FormTalento = () => {
         setInput({...input, [name]: value})
         setError(validationTalentos({ ...input, [name]: value }))
     }
+
+    
+    const handleChangeSelect = (selectedOptions) => {
+        setInput({ ...input, habilityRequired: selectedOptions });
+      };
 
     const hanldeSubmit = async(event) => {
         event.preventDefault();
@@ -79,7 +102,17 @@ const FormTalento = () => {
                         <label htmlFor="emailConfirm">Confirmar Email</label>
                         <p className={error.emailConfirm ? Styles.error : ""}>{error.emailConfirm ? error.emailConfirm: null}</p>
                     </article>
-                    <h4>Orientación Artística</h4>
+                    <article className={Styles.coolinput}>
+                                <label htmlFor="" className={Styles.text}>Orientación Artística</label>
+                                <Select
+                                isMulti 
+                                options={optionshabilityRequired}
+                                className={Styles.select}
+                                value={input.habilityRequired}
+                                onChange={handleChangeSelect}
+                                name="habilityRequired"/>
+                                <p className={error.habilityRequired ? Styles.error : ""}>{error.habilityRequired ? error.habilityRequired : null}</p>
+                            </article> 
                     <article className={Styles.art}>
                         
                     </article>

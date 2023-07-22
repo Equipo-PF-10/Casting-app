@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Select from "react-select"
-import styles from "./eventForm.module.css";
+import styles from "./EventForm.module.css";
 import validation from "./validation";
 import axios from "axios";
 import NavBarLateral from "../NavBarLateral/NavBarLateral";
@@ -101,11 +101,11 @@ const EventForm = () => {
                             </article>     
                             <article className={styles.coolinput}>
                                 <label htmlFor="image" className={styles.text} >Imagen promocional</label>
-                                <input type="file" value={input.image} id="image"/>
+                                <input type="file" value={input.image} name="image" id="image" onChange={handleChange}/>
                             </article>        
                             <article className={styles.coolinput}>
                                 <label htmlFor="contact" className={styles.text}>Contacto</label>
-                                <input type="text" id="contact" value={input.contact}/>
+                                <input type="text" id="contact" name="contact" value={input.contact} onChange={handleChange}/>
                                 <p className={error.contact ? styles.error : ""}>{error.contact ? error.contact : null}</p>
                             </article>        
                         </div>
