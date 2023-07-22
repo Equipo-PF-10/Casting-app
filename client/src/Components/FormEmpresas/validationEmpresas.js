@@ -44,6 +44,10 @@ export default function validationEmpresas(input){
         error.location = "Debe ingresar una ubicación"
     }
 
+    if(!input.description){
+        error.description = "Debe ingresar una descripción"
+    }
+
 
     return error
 }
