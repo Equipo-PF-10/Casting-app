@@ -25,7 +25,6 @@ module.exports = (sequelize) => {
 
       detail: {
         type: DataTypes.STRING,
-        allowNull: false,
         validate: {
           len: [0, 130], // Permite valores entre 0 y 130 caracteres.
         },

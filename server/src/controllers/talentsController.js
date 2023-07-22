@@ -44,6 +44,7 @@ const createTalentDb = async (
   if (!created) throw new Error("El usuario con el correo ingresado ya existe");
 };
 
+// Función controller para obtener talentos por nombre.
 const getTalentByName = async (name) => {
   try {
     const foundInDb = await Talento.findOne({
@@ -73,9 +74,46 @@ const getTalentById = async (id) => {
   }
 };
 
+// Función controller que elimina a un talento de la base de datos.
+const deleteTalent = async (id) => {
+  try {
+    const deletedTalent = await Talento.destroy({
+      where: { id },
+    });
+
+    if (deletedTalent === 0) {
+      throw new Error("No existe un usuario con ese ID para eliminar.");
+    }
+
+    return deletedTalent;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller que actualiza los datos del usuario talento.
+const updateTalent = async (id, updatedData) => {
+  try {
+    const talentToUpdate = await Talento.findByPk(id);
+
+    if (!talentToUpdate) {
+      throw new Error(`El Usuario con ID ${id} no existe`);
+    }
+
+    // Actualizar los campos del talento con los datos proporcionados
+    await talentToUpdate.update(updatedData);
+
+    return talentToUpdate;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getDbTalents,
   createTalentDb,
   getTalentByName,
   getTalentById,
+  deleteTalent,
+  updateTalent,
 };

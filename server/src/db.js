@@ -48,8 +48,8 @@ const { Empresa, Evento, Talento, Mensaje } = sequelize.models;
 Empresa.belongsToMany(Talento, { through: "Talento/Empresa" });
 Talento.belongsToMany(Empresa, { through: "Talento/Empresa" });
 
-Empresa.belongsToMany(Evento, { through: "Empresa/Eventos" });
-Evento.belongsToMany(Empresa, { through: "Empresa/Eventos" });
+Empresa.hasMany(Evento); // 1 empresa puede tener muchos eventos
+Evento.belongsTo(Empresa); // 1 evento solo pertenece a una empresa
 
 module.exports = {
   ...sequelize.models,
