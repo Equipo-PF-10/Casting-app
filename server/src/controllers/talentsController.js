@@ -1,4 +1,5 @@
 const { Talento } = require("../db");
+const { Op } = require("sequelize");
 
 // Función controller que retorna los talentos de la database.
 const getDbTalents = async () => {
@@ -43,17 +44,14 @@ const createTalentDb = async (
   if (!created) throw new Error("El usuario con el correo ingresado ya existe");
 };
 
+// Función controller para obtener talentos por nombre.
 const getTalentByName = async (name) => {
   try {
-    const nameToLower = name.toLowerCase(); // Convertir el nombre a minúsculas
-
-    // Si no se encuentra en la API, buscar en la base de datos
-    const foundInDb = await Talento.findAll({
-      where: { name: nameToLower },
-      limit: 5,
+    const foundInDb = await Talento.findOne({
+      where: { name: { [Op.iLike]: `%${name}%` } },
     });
 
-    if (foundInDb.length === 0) {
+    if (!foundInDb) {
       throw new Error(
         `El nombre ${name} no se ha encontrado. Intenta de nuevo.`
       );
@@ -76,9 +74,46 @@ const getTalentById = async (id) => {
   }
 };
 
+// Función controller que elimina a un talento de la base de datos.
+const deleteTalent = async (id) => {
+  try {
+    const deletedTalent = await Talento.destroy({
+      where: { id },
+    });
+
+    if (deletedTalent === 0) {
+      throw new Error("No existe un usuario con ese ID para eliminar.");
+    }
+
+    return deletedTalent;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller que actualiza los datos del usuario talento.
+const updateTalent = async (id, updatedData) => {
+  try {
+    const talentToUpdate = await Talento.findByPk(id);
+
+    if (!talentToUpdate) {
+      throw new Error(`El Usuario con ID ${id} no existe`);
+    }
+
+    // Actualizar los campos del talento con los datos proporcionados
+    await talentToUpdate.update(updatedData);
+
+    return talentToUpdate;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getDbTalents,
   createTalentDb,
   getTalentByName,
   getTalentById,
+  deleteTalent,
+  updateTalent,
 };
