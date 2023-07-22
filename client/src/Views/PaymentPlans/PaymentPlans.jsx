@@ -10,7 +10,7 @@ export default function PaymentPlans() {
           <Link to={"/"}>
             <svg
               width="200"
-              height="150"
+              height="100"
               viewBox="0 0 1541 731"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -39,21 +39,63 @@ export default function PaymentPlans() {
             </svg>
           </Link>
         </div>
-        <div>
-          <h3>Escoge uno de nuestros planes para empresas</h3>
+        <div className={styles.head}>
+          <h3>Escoge uno de nuestros planes para tu Empresa</h3>
         </div>
       </div>
       <div className={styles.middleSection}>
-        {/* Puedo usar flex aqui para alinear */}
+        <div className={styles.intro}>
+          <h4>Información</h4>
+          <h6>
+            Casting app ofrece a las empresas tres planes de pago: Free, Básico
+            y Premium, para adaptarse a sus necesidades y presupuestos
+            específicos. El plan Free es ideal para aquellos que desean explorar
+            las funcionalidades básicas de la plataforma sin costo alguno. Con
+            el plan Básico, las empresas obtienen acceso a características
+            adicionales, como la publicacion ilimitada de eventos para que los
+            talentos tenga la posibilidad de postularse en los mismos. Por otro
+            lado, el plan Premium brinda una experiencia completa, con
+            herramientas avanzadas de búsqueda y filtrado, destacando sus
+            vacantes y una mayor visibilidad para atraer talentos de alto nivel.
+            Nuestros planes permiten a las empresas personalizar su experiencia
+            y aprovechar al máximo nuestra plataforma, encontrando el talento
+            perfecto de manera eficiente y a un precio justo.
+          </h6>
+        </div>
       </div>
       <div className={styles.text}>
-        <h2>Planes</h2>
+        <h1>Planes</h1>
+        <hr />
+      </div>
+      <div className={styles.titles}>
+        <h4>Free</h4>
+        <h4 className={styles.text_margin}>Básico</h4>
+        <h4>Premium</h4>
       </div>
       <div className={styles.bottomSection}>
-        <div className={styles.card}></div>
-        <div className={styles.card}></div>
         <div className={styles.card}>
-          {/* El boton debe estar dentro del div, no afuera */}
+          <p>El plan Free es la opción perfecta para aquellos que desean descubrir las funcionalidades básicas de nuestra plataforma sin costo alguno.</p>
+          <ul>
+            <li>Tiene la posibilidad de publicar hasta 2 oportunidades laborales de forma gratuita para empezar a dar a conocer tu Empresa.</li>
+            <li>Recibe alertas por correo electrónico cuando se postulen candidatos a tus empleos.</li>
+          </ul>
+          <button>Escoger</button>
+        </div>
+        <div className={styles.card}>
+          <p>El plan Normal brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
+          <ul>
+            <li>Publica hasta 30 oportunidades laborales de forma gratuita y atrae a talentos interesados en trabajar contigo.</li>
+            <li>Recibe notificaciones en tiempo real cuando nuevos talentos postulen a tus vacantes, asegurando que no te pierdas ninguna oportunidad.</li>
+          </ul>
+          <button>Escoger</button>
+        </div>
+        <div className={styles.card}>
+          <p>Nuestro exclusivo Plan Premium está diseñado para llevar la experiencia de búsqueda de talento al siguiente nivel. </p>
+          <ul>
+            <li>Publica oportunidades laborales de forma gratuita e ilimitada para que tu Empresa sea renocida por la comunidad.</li>
+            <li>Obten una mayor visibilidad al resaltar sus eventos en la pagina principal, lo que les permite atraer muchos mas talentos.</li>
+          </ul>
+          <button>Escoger</button>
         </div>
       </div>
     </div>
