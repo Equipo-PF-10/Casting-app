@@ -16,7 +16,7 @@
     border-radius: 0px 20px 20px 0px;
     border: 1px solid rgba(0, 0, 0, 0.25);
     width: 500px;
-    height: 650px;
+    height: 550px;
   }
 
 
@@ -40,7 +40,7 @@
       #00af92
     );
     width: 500px;
-    height: 650px;
+    height: 550px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -179,6 +179,9 @@
 
 .spanError{
   font-size: 12px;
+}
+.logoCasting {
+  margin-bottom: 30px;
 }
 
   /*PREGUNTA*/
