@@ -76,7 +76,7 @@ const Login = () => {
       })
       )
   };
-
+  //comentario
   let access = undefined;
   const [errorMessage,setErrorMessage]= useState("");
   const handleSubmit = async(e) => {
@@ -331,7 +331,7 @@ const mensaje_success_Toast = () => {
                     </div>
                   </div>
                 )}
-                {modalLogin ? (
+                {/* {modalLogin ? (
                   <div className={style.containerModalOpened}>
                     <div className={style.modalOpened}>
                       <button onClick={handler_click_close_login} className={style.delete}>{" "}X{" "}</button>
@@ -347,7 +347,7 @@ const mensaje_success_Toast = () => {
                     </div>
                   </div>
                 )
-                }
+                } */}
               </div>
             </form>
           </div>
