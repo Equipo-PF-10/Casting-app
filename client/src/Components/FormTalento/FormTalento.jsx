@@ -7,6 +7,8 @@ import {NavLink} from "react-router-dom"
 
 const FormTalento = () => {
 
+    const URL = "http://localhost:3001/talents/register"
+
     const optionshability = [
         { value: 'Actuación', label: 'Actuación' },
         { value: 'Animador/a', label: 'Animador/a' },
@@ -60,7 +62,7 @@ const FormTalento = () => {
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
-            await axios.post()
+            await axios.post(URL, input)
             setInput(initialState)
         } catch (error) {
             console.log({error: error.message})
@@ -154,22 +156,22 @@ const FormTalento = () => {
                                 <p className={error.hability ? Styles.error : ""}>{error.hability ? error.hability : null}</p>
                     </article> 
                     <article className={Styles.charSec}>
-                        <h5>Características</h5>
+                        <p>Características</p>
                         <div className={Styles.char}>
                             <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Piel</label>
                                 <select name="" id="">
-                                    <option value="">Tipos</option>
+                                    <option value="" disabled>Tipos</option>
                                 </select>
                             </article>
                             <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Contextura</label>
                                 <select name="" id="">
-                                    <option value="">Tipos</option>
+                                    <option value="" disabled>Tipos</option>
                                 </select>
                             </article>
                         </div>
-                        <h5>Medidas</h5>
+                        <p>Medidas</p>
                         <div className={Styles.char}>
                             <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Altura</label>
@@ -179,6 +181,17 @@ const FormTalento = () => {
                                 <label htmlFor="" className={Styles.text}>Peso</label>
                                 <input type="number" onChange={handleChange} />
                             </article >
+                        </div>
+                        <div>
+                            <article className={Styles.coolinput1}>
+                                <label htmlFor="" className={Styles.text}>Género</label>
+                                <select name="" id="">
+                                    <option value="" disabled>Género</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </article>
                         </div>
                     </article>
                     <button type="submit" className={Styles.btn}>Enviar Datos</button>

@@ -42,6 +42,15 @@
     height: 80px;
   }
 
+.coolinput1 {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    position: static;
+    max-width: 240px;
+    height: 80px;
+  }
+
   .coolinput select{
     padding: 11px 10px;
     font-size: 0.90rem;
@@ -52,6 +61,28 @@
   }
   
   .coolinput label.text {
+    font-size: 0.75rem;
+    color: #429283;
+    font-weight: 700;
+    position: relative;
+    top: 0.5rem;
+    margin: 0 0 0 7px;
+    padding: 0 3px;
+    background: whitesmoke;
+    width: fit-content;
+    z-index: 0;
+  }
+
+  .coolinput1 select{
+    padding: 11px 10px;
+    font-size: 0.90rem;
+    border: 2px #429283 solid;
+    border-radius: 5px;
+    background: whitesmoke;
+    width:10rem;
+  }
+  
+  .coolinput1 label.text {
     font-size: 0.75rem;
     color: #429283;
     font-weight: 700;
@@ -92,20 +123,10 @@
     width: 250px;
     height: 150px;
   }
+
 .error{
     font-size: 12px;
     color: #990004;
-}
-
-
-.art1{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.art1 select{
-    cursor: pointer;
 }
 
 .div{
@@ -121,11 +142,11 @@
 }
 
 .btn{
-    margin-top: 4rem;
+    margin-top: 1rem;
 }
 
 .select{
-    width:20rem;
+    width:16rem;
     border: #429283;
 }
 
@@ -137,4 +158,8 @@
 
 .charSec{
     margin-top: 20px;
+}
+
+.charSec p {
+    margin: 1px;
 }
