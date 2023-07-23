@@ -8,12 +8,12 @@ import { register_company } from "../../redux/actions";
 import Navbar from "../../Components/Navbar/Navbar.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAuth0 } from "@auth0/auth0-react";
+//import { useAuth0 } from "@auth0/auth0-react";
 import { clean_error, clean_message_register } from "../../redux/actions";
 
 export default function RegisterCompany() {
   //Autenticacion
-  const { loginWithRedirect } = useAuth0();
+  //const { loginWithRedirect } = useAuth0();
 
   const [input, setInput] = useState({
     name: "",

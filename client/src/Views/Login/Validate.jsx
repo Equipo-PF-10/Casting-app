@@ -2,14 +2,6 @@
 
 const validate=(input) => {
   let errors = {};
-
-  if (!input.name) {
-    errors.name = "Se requiere un nombre";
-  }
-  if (input.name.length > 10) {
-    errors.name = "Debe ser menor a 10 carácteres";
-  }
-
   // Validacion de Email
   const regexEmail = /\S+@\S+\.\S+/;
   if (!regexEmail.test(input.email))
@@ -18,16 +10,13 @@ const validate=(input) => {
   if (input.email.length > 35)
     errors.email = "No ingrese mas de 35 caracteres";
 
+  // Validacion de Password
+  //const regexNumbers = new RegExp("[0-9]");
+  //if (!regexNumbers.test(input.password)) errors.password = "¡Debe ingresar al menos un número!";
+  if (input.password.length < 6) errors.password = "¡Debe ingresar mas de 5 carácteres!";
+
+
   return errors;
-  /*
-  {
-    name: "Debes ingresar un email valido",
-    email = "Debes ingresar un email valido"
-  }
-  */
-  /*
-  {}
-  */
 };
 
 export default validate;
