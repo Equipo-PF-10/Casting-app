@@ -1,5 +1,5 @@
 const { Evento } = require("../db");
-const jsonData = require("./eventos.json");
+const jsonData = require("../../utilsDataApi/eventos.json");
 
 const getEvents = async () => {
   try {

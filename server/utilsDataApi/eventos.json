@@ -3,7 +3,7 @@
         {
             "name": "Deporte",
             "image": "https://www.unesco.org/sites/default/files/styles/best_image/public/deportepandemia-cover900.jpg?itok=VI2gkFsn",
-            "detail": "El deporte es para hacer deportes de forma deportiva, moviendo tu cuerpo y haciendo deporte",
+            "detail": "Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.",
             "active": "false",
             "ubication": "Argentina",
             "habilityRequired": [
@@ -18,7 +18,7 @@
         {
             "name": "Humor",
             "image": "https://www.shutterstock.com/shutterstock/photos/562827361/display_1500/stock-vector-caucasian-office-worker-laughing-office-worker-laughing-with-hands-on-his-head-office-worker-562827361.jpg",
-            "detail": "El humor es para hacer humor de forma humorística, moviendo tu sonrisa y haciendo humor",
+            "detail": "Noche de risas aseguradas: Humor ingenioso, comediantes talentosos y diversión sin límites.",
             "active": "false",
             "ubication": "Argentina",
             "habilityRequired": [
@@ -34,7 +34,7 @@
         {
             "name": "Arte",
             "image": "https://png.pngtree.com/png-clipart/20220621/original/pngtree-office-worker-vector-analyzing-art-png-image_8167420.png",
-            "detail": "El arte es para hacer arte de forma artística, moviendo tu creatividad y haciendo arte",
+            "detail": "Exposición artística imperdible: Obras asombrosas, creatividad deslumbrante y expresiones cautivadoras.",
             "active": "false",
             "ubication": "Argentina",
             "habilityRequired": [
@@ -51,7 +51,7 @@
         {
             "name": "Música",
             "image": "https://www.ciencuadras.com/blog/wp-content/uploads/2020/05/hombre-bailando-en-la-sala.jpg",
-            "detail": "La música es para hacer música de forma musical, moviendo tus cuerdas vocales y haciendo música",
+            "detail": "Evento musical inolvidable: Ritmos envolventes, voces impresionantes y emociones compartidas.",
             "active": "false",
             "ubication": "Argentina",
             "habilityRequired": [
@@ -68,7 +68,7 @@
         {
             "name": "Magia",
             "image": "https://media.istockphoto.com/id/1448416842/es/vector/l%C3%A1mpara-de-oficinista-m%C3%A1gica-del-genio-de-los-negocios-ilustraci%C3%B3n-del-concepto-de-elemento.jpg?s=612x612&w=0&k=20&c=LGJQUdmDz_xjKOYHsteTEImpk3LnMyrdj6OXiCG3Kas=",
-            "detail": "La magia es para hacer magia de forma mágica, moviendo tus poderes y haciendo magia",
+            "detail": "Espectáculo de magia asombroso: Trucos sorprendentes, ilusiones cautivadoras y misterio en el aire.",
             "active": "false",
             "ubication": "Argentina",
             "habilityRequired": [
@@ -83,7 +83,7 @@
         {
             "name": "Baile",
             "image": "https://media.istockphoto.com/id/686029774/es/vector/feliz-baile-oficinista.jpg?s=612x612&w=0&k=20&c=Rltohkhvf46_0_oIy3-Wak9ppduw8rgDPOnHirZIQR0=",
-            "detail": "El baile es para hacer baile de forma bailable, moviendo tu cuerpo y haciendo baile",
+            "detail": "Extravagante evento de baile: Pasión desbordante, movimientos fascinantes y ritmo contagioso.",
             "active": "false",
             "ubication": "Argentina",
             "habilityRequired": [
@@ -99,7 +99,7 @@
         {
             "name": "Animación",
             "image": "https://st2.depositphotos.com/1036149/7792/i/450/depositphotos_77927390-stock-photo-funny-cartoon-bee.jpg",
-            "detail": "La animación es para hacer animaciones de forma anímica, moviendo tu ánimo y haciendo animación",
+            "detail": "Evento de animación sorprendente: Creatividad en movimiento, personajes encantadores y mundos imaginativos.",
             "active": "false",
             "ubication": "Argentina",
             "habilityRequired": [

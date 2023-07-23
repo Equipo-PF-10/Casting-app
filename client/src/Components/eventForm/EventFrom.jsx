@@ -1,16 +1,39 @@
 import { useState } from "react";
-import styles from "./eventForm.module.css";
+import Select from "react-select"
+import styles from "./EventForm.module.css";
 import validation from "./validation";
 import axios from "axios";
 import NavBarLateral from "../NavBarLateral/NavBarLateral";
 
 const EventForm = () => {
 
+    const URL = "localhost:3001/events/"
+
+    const optionshabilityRequired = [
+        { value: 'Actuación', label: 'Actuación' },
+        { value: 'Animador/a', label: 'Animador/a' },
+        { value: 'Bailarín/a', label: 'Bailarín/a' },
+        { value: 'Blogger', label: 'Blogger' },
+        { value: 'Cantante', label: 'Cantante' },
+        { value: 'DJ', label: 'DJ' },
+        { value: 'Influencer', label: 'Influencer' },
+        { value: 'Locutor/a', label: 'Locutor/a' },
+        { value: 'Mago/a', label: 'Mago/a' },
+        { value: 'Músico/a', label: 'Músico/a' },
+        { value: 'Modelo', label: 'Modelo' },
+        { value: 'Presentador/a', label: 'Presentador/a' },
+        { value: 'Promotor/a', label: 'Promotor/a' },
+      ];
+
     const initialState = {
         name: "",
         date: "",
-        location: "",
+        ubication: "",
+        image: "",
         description: "",
+        brevDescription: "",
+        habilityRequired: [],
+        contact: "",
     }
 
     const [input, setInput] = useState(initialState)
@@ -23,11 +46,16 @@ const EventForm = () => {
         setError(validation({ ...input, [name]: value }));
       };
 
+      const handleChangeSelect = (selectedOptions) => {
+        setInput({ ...input, habilityRequired: selectedOptions });
+      };
       
+    console.log(input)
+
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
-            await axios.post()
+            await axios.post(URL, input)
             setInput(initialState)
         } catch (error) {
             console.log({error: error.message})
@@ -42,7 +70,7 @@ const EventForm = () => {
                 <form action=""  method="POST" onSubmit={hanldeSubmit}>
                 <h1 className={styles.title}>Crea tu Evento</h1>
                     <section className={styles.inputs}>
-                        <div>
+                        <div className={styles.div}>
                             <article  className={styles.coolinput}>
                 <label className={styles.text}> Nombre del evento</label>
                                 <input type="text" name="name" value={input.name} onChange={handleChange} placeholder="Nombre de tu evento..."/>
@@ -55,20 +83,46 @@ const EventForm = () => {
                             </article>
                             <article className={styles.coolinput}>
                                 <label className={styles.text}> Locación del evento</label>
-                                <input type="text" name="location" value={input.location} onChange={handleChange} placeholder="Locación de tu evento..."/>
-                                <p className={error.location ? styles.error : ""}>{error.location ? error.location : null}</p>
+                                <input type="text" name="ubication" value={input.ubication} onChange={handleChange} placeholder="Locación de tu evento..."/>
+                                <p className={error.ubication ? styles.error : ""}>{error.ubication ? error.ubication : null}</p>
                             </article>
                         </div>
+                        <div className={styles.div}>
+                            <article className={styles.coolinput}>
+                                <label htmlFor="" className={styles.text}>Orientación Artística</label>
+                                <Select
+                                isMulti 
+                                options={optionshabilityRequired}
+                                className={styles.select}
+                                value={input.habilityRequired}
+                                onChange={handleChangeSelect}
+                                name="habilityRequired"/>
+                                <p className={error.habilityRequired ? styles.error : ""}>{error.habilityRequired ? error.habilityRequired : null}</p>
+                            </article>     
+                            <article className={styles.coolinput}>
+                                <label htmlFor="image" className={styles.text} >Imagen promocional</label>
+                                <input type="file" value={input.image} name="image" id="image" onChange={handleChange}/>
+                            </article>        
+                            <article className={styles.coolinput}>
+                                <label htmlFor="contact" className={styles.text}>Contacto</label>
+                                <input type="text" id="contact" name="contact" value={input.contact} onChange={handleChange}/>
+                                <p className={error.contact ? styles.error : ""}>{error.contact ? error.contact : null}</p>
+                            </article>        
+                        </div>
+                    </section>
+                    <section className={styles.inputsCont}>
                         <article className={styles.coolinput}>
-                            <label htmlFor="" className={styles.text}>Orientación Artística</label>
+                            <label htmlFor="" className={styles.text}>Descripción</label>
+                            <textarea name="description" id="" cols="30" rows="10" value={input.description} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
+                            <p className={error.description ? styles.error : ""}>{error.description ? error.description : null}</p>
+                        </article>
+                        <article className={styles.coolinput}>
+                            <label htmlFor="brevDescription" className={styles.text}>Descripción Breve</label>
+                            <textarea name="brevDescription" id="brevDescription" cols="30" rows="10" value={input.brevDescription} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
+                            <p className={error.brevDescription ? styles.error : ""}>{error.brevDescription ? error.brevDescription : null}</p>
                         </article>
                     </section>
-                    <article className={styles.textArea}>
-                        <label htmlFor="" className={styles.text}>Descripción</label>
-                        <textarea name="description" id="" cols="30" rows="10" value={input.description} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
-                        <p className={error.description ? styles.error : ""}>{error.description ? error.description : null}</p>
-                    </article>
-                    <button type="submit">Crear</button>
+                    <button type="submit" className={styles.btn}>Crear</button>
                 </form>
             </div>
             <svg className={styles.img} width="567" height="624" viewBox="0 0 567 624" fill="none" xmlns="http://www.w3.org/2000/svg">

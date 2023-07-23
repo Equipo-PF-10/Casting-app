@@ -40,16 +40,24 @@ export default function validationTalentos(input){
         error.emailConfirm = "Deben ser iguales"
     }
 
-    if(!input.location){
-        error.location = "Debe ingresar una ubicación"
+    if(!input.ubication){
+        error.ubication = "Debe ingresar una ubicación"
     }
 
-    if(!input.nacionalidad){
-        error.nacionalidad = "Debe ingresar una nacionalidad"
+    if(!input.nacionality){
+        error.nacionality = "Debe ingresar una nacionalidad"
     }
 
     if(!input.dni){
         error.dni = "Debe ingresar un Número de documento"
+    }
+
+    if(input.hability.length === 0){
+        error.hability = "Debe ingresar una o más orientaciones"
+    }
+
+    if(!input.description){
+        error.description = "Debe ingresar una descripción"
     }
 
     return error

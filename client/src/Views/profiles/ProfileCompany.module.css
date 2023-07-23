@@ -7,6 +7,8 @@
 .containerGeneral {
   background-color: rgb(255, 255, 255);
   padding: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 /*carta con foto y descripcion*/
@@ -38,19 +40,21 @@
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
-.image {
+/*.image {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: -100px;
   margin-bottom: 100px;
-}
+}*/
 
-.imgPerfil {
+.image {
+  background-color: #a3a3a3;
   width: 300px;
-  height: auto;
+  height: 300px;
   border-radius: 50%;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
+  margin-bottom: 50px;
 }
 
 .textoCard {
@@ -109,71 +113,98 @@
 .imagenesCard {
   background-color: #00c9a7;
   width: 500px;
-  height: 800px;
+  height: 600px;
   border-radius: 20px;
   margin: 20px;
   padding: 10px;
-      box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
 /*carta de proyectos*/
-.proyectosCard{
+.proyectosCard {
   width: 600px;
   height: 500px;
   display: flex;
   justify-content: center;
-  align-items:flex-start;
+  align-items: flex-start;
   flex-direction: column;
   border-radius: 20px;
   margin: 20px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
-    padding-left: 30px;
+  padding-left: 30px;
 }
 
-.textoProyectos h3{
+.textoProyectos h3 {
   margin-top: -160px;
   font-weight: 700;
   margin-bottom: 30px;
 }
 
-.proyP{
+.proyP {
   margin-bottom: -30px;
 }
 
-.pe{
+.pe {
   margin-left: 30px;
 }
 
 /*carta de trabajos postulados*/
-.trabajosPostulados{
+.trabajosPostulados {
   width: 600px;
   height: 650px;
-  background-color: #7E7193;
+  background-color: #7e7193;
   display: flex;
   justify-content: center;
-  align-items:flex-start;
+  align-items: flex-start;
   flex-direction: column;
   border-radius: 20px;
   margin: 20px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
-    padding-left: 30px;
+  padding-left: 30px;
 }
 
-.tituloTrabajos{
+.tituloTrabajos {
   margin-top: -200px;
   font-weight: 700;
   color: whitesmoke;
 }
 
-.textoTrab{
-    margin-left: 30px;
-    margin-top: 30px;
-    color: whitesmoke;
+.textoTrab {
+  margin-left: 30px;
+  margin-top: 30px;
+  color: whitesmoke;
 }
 
 /*carta de contacto*/
+.cardContactos {
+  width: 600px;
+  height: auto;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+  padding-left: 30px;
+}
+
+.contactos {
+  margin-bottom: 30px;
+}
+
+.svgIcono {
+  margin-right: 30px;
+}
+
+.svgIconoInst {
+  margin-right: 21px;
+}

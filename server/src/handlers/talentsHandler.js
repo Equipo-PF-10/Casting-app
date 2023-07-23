@@ -3,6 +3,8 @@ const {
   getTalentByName,
   getTalentById,
   getDbTalents,
+  deleteTalent,
+  updateTalent,
 } = require("../controllers/talentsController");
 
 // Función handler que devuelve los talentos.
@@ -24,7 +26,6 @@ const getTalentsHandler = async (req, res) => {
 
 // Función handler que crea los talentos.
 const createTalentHandler = async (req, res) => {
-  console.log(req.body);
   const {
     name,
     email,
@@ -38,7 +39,7 @@ const createTalentHandler = async (req, res) => {
     height,
   } = req.body;
 
-  if (!name || !email || !password) {
+  if (!email || !password) {
     return res.status(400).send("Faltan datos obligatorios");
   }
 
@@ -62,6 +63,7 @@ const createTalentHandler = async (req, res) => {
   }
 };
 
+// Función handler para obtener talento por ID.
 const talentByIdHandler = async (req, res) => {
   const { id } = req.params;
 
@@ -73,8 +75,75 @@ const talentByIdHandler = async (req, res) => {
   }
 };
 
+// Función handler para eliminar talento.
+const deleteTalentHandler = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const talent = await getTalentById(id);
+
+    if (talent) {
+      await deleteTalent(id);
+    }
+
+    res
+      .status(200)
+      .send(`El usuario con ID ${id} ha sido eliminado con éxito.`);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Función handler para modificar un usuario talento mediante su ID.
+const updateTalentHandler = async (req, res) => {
+  const { id } = req.params;
+  const {
+    name,
+    email,
+    password,
+    image,
+    gender,
+    nationality,
+    ubication,
+    hability,
+    weight,
+    height,
+  } = req.body;
+
+  try {
+    // Verificar primero si el usuario talento existe antes de intentar actualizarlo
+    const talent = await getTalentById(id);
+
+    // Si el usuario talento existe, procedemos a actualizarlo
+    if (talent) {
+      const updatedData = {
+        name,
+        email,
+        password,
+        image,
+        gender,
+        nationality,
+        ubication,
+        hability,
+        weight,
+        height,
+      };
+
+      await updateTalent(id, updatedData);
+
+      res
+        .status(200)
+        .send(`El usuario con ID ${id} ha sido actualizado con éxito.`);
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   getTalentsHandler,
   createTalentHandler,
   talentByIdHandler,
+  deleteTalentHandler,
+  updateTalentHandler,
 };

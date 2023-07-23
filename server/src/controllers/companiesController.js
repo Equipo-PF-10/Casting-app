@@ -1,12 +1,36 @@
-const Empresa = require("../models/companies");
+const { Empresa } = require("../db");
 
-const getAllCompanies = async (req, res) => {
-  try {
-    const empresas = await Empresa.findAll();
-    res.status(200).json(empresas);
-  } catch (error) {
-    res.status(500).json({ error: "Error al obtener las empresas de la base de datos: " + error });
-  }
+
+const allCompanies = async (name) => {
+  if (name) {
+    const foundAtDb = await Empresa.findAll({ where: { name } });
+        if (foundAtDb.length === 0) throw new Error(`Company ${name} was not found. Try again.`);
+        return foundAtDb;
+      } else {
+        return await Empresa.findAll();
+      }
+  };
+
+const searchByLocation = async (country) => {
+  const response = await Empresa.findAll({ where: { country: { $like: "%" + country + "%" } } });
+  return response;
 };
 
-module.exports = { getAllCompanies };
+const createCompanyDB = async (name, email, password) =>
+{
+  const [companies, created] = await Empresa.findOrCreate({
+    where: { email },
+    defaults: {
+      name,
+      email,
+      password,
+    }
+  });
+  if (!created) throw new Error("La empresa con el correo ingresado ya existe");
+};   
+
+module.exports = {
+  allCompanies,
+  searchByLocation,
+  createCompanyDB,
+};

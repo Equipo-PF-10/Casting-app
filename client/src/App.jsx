@@ -5,7 +5,7 @@ import Login from "./Views/Login/Login.jsx";
 import RegisterModel from "./Components/RegisterModel/RegisterModel";
 import ProfileCompany from "./Views/profiles/profileCompany";
 import ProfileModel from "./Views/profiles/ProfileModel";
-import EventForm from "./Components/eventForm/eventsFrom";
+import EventForm from "./Components/EventForm/EventFrom";
 import NavBarLateral from "./Components/NavBarLateral/NavBarLateral";
 import FormEmpresa from "./Components/FormEmpresas/FormEmpresas";
 import FormTalento from "./Components/FormTalento/FormTalento";

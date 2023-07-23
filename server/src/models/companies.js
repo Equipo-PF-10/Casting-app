@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "empresa",
+    "Empresa",
     {
       id: {
         type: DataTypes.UUID,
@@ -11,38 +11,73 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
 
-      name: {
+      email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+        isEmail: true,
+      },
+
+      name: {
+        type: DataTypes.STRING,
+        get(){
+          return `${this.email}`
+        }
       },
       
       logo: {                         
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true, 
       },
+          
+      country: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "Argentina",  
+        },
 
       domain: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
+      },     
+
+      password: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
 
       descriptionShort: {
         type: DataTypes.STRING,
-        allowNull: false,        
+        allowNull: true,  
       },      
 
-      socialNetworks: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false,
+      instagram: {
+        type: DataTypes.STRING,
+        allowNull: true,   
       },
 
-      country: {
+      facebook: {
         type: DataTypes.STRING,
-        allowNull: false,
-        },
+        allowNull: true,   
+      },
+
+      linkedin: {
+        type: DataTypes.STRING,
+        allowNull: true,   
+      },
+
+      twitter: {
+        type: DataTypes.STRING,
+        allowNull: true,   
+      },
+
+      phoneNumber: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      }
 
     },
-    { freezeTableName: true, timestamps: false }
-  );
-};
+        
+    { freezeTableName: true, timestamps: false,
+            
+  }
+  )}; 
