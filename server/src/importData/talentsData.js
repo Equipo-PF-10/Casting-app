@@ -30,7 +30,7 @@ const getRandomHabilities = (habilities) => {
 
 const getApiTalents = async () => {
   try {
-    const response = await axios("https://randomuser.me/api/?results=20");
+    const response = await axios("https://randomuser.me/api/?results=100");
     const usersData = response.data.results;
 
     const users = await Promise.all(
@@ -40,7 +40,7 @@ const getApiTalents = async () => {
         let { gender } = user;
         const nationality = "Argentina";
         const ubication = "Argentina";
-        const password = user.login.password;
+        const password = `${user.login.password}${user.dob.age}`;
         const image = user.picture.large;
         const contact = [user.phone, user.cell];
         const weight = null;
