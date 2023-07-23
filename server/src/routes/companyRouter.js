@@ -5,6 +5,6 @@ const companyRouter = Router();
 
 companyRouter.get("/location", handleSearchByLocation);
 companyRouter.get("/", handleAllCompanies);
-companyRouter.post("/", handleCreateCompany);
+companyRouter.post("/register", handleCreateCompany);
 
 module.exports = companyRouter;

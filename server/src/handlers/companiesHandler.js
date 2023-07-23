@@ -1,4 +1,4 @@
-const { allCompanies, searchByLocation, createCompany } = require("../controllers/companiesController");
+const { allCompanies, searchByLocation, createCompanyDB } = require("../controllers/companiesController");
 
 const handleAllCompanies = async (req, res) => {
   
@@ -25,13 +25,29 @@ const handleSearchByLocation = async (req, res) => {
   }
 };
 
+
 const handleCreateCompany = async (req, res) => {
+  const {
+    name,
+    email,
+    password,
+  } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).send("Faltan datos obligatorios");
+  }
+
   try {
-    const company = req.body;
-    const newCompany = await createCompany(company);
-    res.status(201).json(newCompany);
+    await createCompanyDB (
+      name,
+      email,
+      password,
+      );
+
+    res.status(200).send("Se ha registrado correctamente");
   } catch (error) {
-    res.status(500).json({ error: "Error al crear la empresa: " + error });
+    console.log(error.message)
+    res.status(400).json(error.message);
   }
 };
 
