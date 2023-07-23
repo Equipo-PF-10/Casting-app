@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginControler } from "./loginControler";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { clean_message_register } from "../../redux/actions";
+import { clean_message_register, id_user } from "../../redux/actions";
 
 const Login = () => {
   //const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
@@ -108,25 +108,29 @@ const Login = () => {
   //--Le asigno el mensaje de error al inicio para que lo renderice en primer caso de error
   //--El mensaje de error se setea a string vacio solo en caso de que el usuario se registre correctamente (No lo setea)
   const [errorMessage, setErrorMessage] = useState("El email o contraseña no coinciden con un usuario registrado");
-  let access;
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      access = await loginControler(input.email, input.password);
+      const obj = await loginControler(input.email, input.password);
+      console.log(obj);
       setInput({
         email: "",
         password: "",
       });
       //este navigate deberia ser para una ruta donde la data sea del talento por id
-      if (access === 1) {
+      if (obj.access === 1) {
+        dispatch(id_user(obj.id));
         setErrorMessage("");
-        navigate("/model/search");
+        navigate(`/model/search`);  //navigate(`/model/search/:${id}`);
+        
       }
       //este navigate deberia ser para una ruta donde la data sea de la empresa por id
-      if (access === 2) {
-        setErrorMessage("");
-        navigate("/company/search");
+      if (obj.access === 2) {
+        dispatch(id_user(obj.id));
+        setErrorMessage("")
+        navigate(`/company/search`);
       }
       //Este caso es cuando no consigue ningun match en la base de datos (Mostrar el mensaje de error por medio de Toastify)
       if(errorMessage.length > 0) mensaje_error_Toast(); 

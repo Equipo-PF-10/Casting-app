@@ -1,6 +1,7 @@
 export const REGISTER_MODEL_OR_COMPANY = "REGISTER_MODEL_OR_COMPANY";
 export const MODAL_LOGIN = "MODAL_LOGIN";
 export const ERROR = "ERROR";
+export const ID_USER = "ID_USER";
 import axios from 'axios';
 
 
@@ -69,4 +70,14 @@ export const modal_login = (payload) => {
       })
    }
 }
+
+export const id_user = (payload) => {
+   return (dispatch) => {
+      return dispatch({
+        type: "ID_USER",
+        payload: payload
+      })
+   }
+}
+
 
