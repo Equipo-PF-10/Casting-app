@@ -56,5 +56,9 @@ export default function validationTalentos(input){
         error.hability = "Debe ingresar una o más orientaciones"
     }
 
+    if(!input.description){
+        error.description = "Debe ingresar una descripción"
+    }
+
     return error
 }

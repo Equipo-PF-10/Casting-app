@@ -104,19 +104,10 @@ const FormTalento = () => {
                         <p className={error.emailConfirm ? Styles.error : ""}>{error.emailConfirm ? error.emailConfirm: null}</p>
                     </article>
                     <article className={Styles.coolinput}>
-                                <label htmlFor="" className={Styles.text}>Orientación artística</label>
-                                <Select
-                                isMulti 
-                                options={optionshability}
-                                className={Styles.select}
-                                value={input.hability}
-                                onChange={handleChangeSelect}
-                                name="hability"/>
-                                <p className={error.hability ? Styles.error : ""}>{error.hability ? error.hability : null}</p>
-                            </article> 
-                    <article className={Styles.coolinput}>
-                        
-                    </article>
+                            <label htmlFor="" className={Styles.text}>Descripción</label>
+                            <textarea name="description" id="" value={input.description} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
+                            <p className={error.description ? Styles.error : ""}>{error.description ? error.description : null}</p>
+                        </article>
 
                 </div>
                 <div className={Styles.div}>
@@ -151,33 +142,45 @@ const FormTalento = () => {
                         <label htmlFor="" className={Styles.text}>Subir Imágen</label>
                         <input type="file" name="image" value={input.image} required onChange={handleChange}/>
                     </article>
-
-                    <h5>Características</h5>
-                    <div className={Styles.char}>
-                        <article className={Styles.coolinput}>
-                            <label htmlFor="" className={Styles.text}>Piel</label>
-                            <select name="" id="">
-                                <option value="">Tipos</option>
-                            </select>
-                        </article>
-                        <article className={Styles.coolinput}>
-                            <label htmlFor="" className={Styles.text}>Contextura</label>
-                            <select name="" id="">
-                                <option value="">Tipos</option>
-                            </select>
-                        </article>
-                    </div>
-                    <h5>Medidas</h5>
-                    <div className={Styles.char}>
-                        <article className={Styles.coolinput}>
-                            <label htmlFor="" className={Styles.text}>Altura</label>
-                            <input type="number" onChange={handleChange}/>
-                        </article>
-                        <article className={Styles.coolinput}>
-                            <label htmlFor="" className={Styles.text}>Peso</label>
-                            <input type="number" onChange={handleChange} />
-                        </article >
-                    </div>
+                    <article className={Styles.coolinput}>
+                                <label htmlFor="" className={Styles.text}>Orientación artística</label>
+                                <Select
+                                isMulti 
+                                options={optionshability}
+                                className={Styles.select}
+                                value={input.hability}
+                                onChange={handleChangeSelect}
+                                name="hability"/>
+                                <p className={error.hability ? Styles.error : ""}>{error.hability ? error.hability : null}</p>
+                    </article> 
+                    <article className={Styles.charSec}>
+                        <h5>Características</h5>
+                        <div className={Styles.char}>
+                            <article className={Styles.coolinput}>
+                                <label htmlFor="" className={Styles.text}>Piel</label>
+                                <select name="" id="">
+                                    <option value="">Tipos</option>
+                                </select>
+                            </article>
+                            <article className={Styles.coolinput}>
+                                <label htmlFor="" className={Styles.text}>Contextura</label>
+                                <select name="" id="">
+                                    <option value="">Tipos</option>
+                                </select>
+                            </article>
+                        </div>
+                        <h5>Medidas</h5>
+                        <div className={Styles.char}>
+                            <article className={Styles.coolinput}>
+                                <label htmlFor="" className={Styles.text}>Altura</label>
+                                <input type="number" onChange={handleChange}/>
+                            </article>
+                            <article className={Styles.coolinput}>
+                                <label htmlFor="" className={Styles.text}>Peso</label>
+                                <input type="number" onChange={handleChange} />
+                            </article >
+                        </div>
+                    </article>
                     <button type="submit" className={Styles.btn}>Enviar Datos</button>
                 </div>
                 <div className={Styles.div}>
