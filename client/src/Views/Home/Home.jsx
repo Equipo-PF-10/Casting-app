@@ -6,6 +6,7 @@ import HomeProfileCard from '../../Components/HomeProfileCard/HomeProfileCard.js
 import HomeEventsCard from '../../Components/HomeEventsCard/HomeEventsCard.jsx';
 import HomeItemList from '../../Components/HomeItemList/HomeItemList.jsx';
 import ChartsComponent from '../../Components/ChartsComponent/ChartsComponent.jsx';
+import SolicitudesDeEmpresas from '../../Components/SolicitudesDeEmpresas/SolicitudesDeEmpresas.jsx';
 import styles from './Home.module.css';
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
         </div> */}
 
         <ChartsComponent />
+        <SolicitudesDeEmpresas />
       </div>
     </>
   );
