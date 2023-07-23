@@ -1,10 +1,10 @@
 import styles from './HomeItem.module.css';
 
 
-const HomeItem = () => {
+const HomeItem = (props) => {
   return (
     <div className={styles.container}>
-        <h1 className={styles.text}>Title</h1>
+        <h1 className={styles.text}>{props.title}</h1>
     </div>
   );
 };

@@ -5,9 +5,18 @@ const HomeEventsCard = (props) => {
   return (
     <div className={styles.container}>
         <h1>{props.title}</h1>
-        <HomeEvent />
-        <HomeEvent />
-        <HomeEvent />
+        <HomeEvent 
+          title = "Lorem ipsum dolor sit amet."
+          subTitle = "Lorem ipsum dolor sit amet."
+        />
+        <HomeEvent 
+          title = "Lorem ipsum dolor sit amet."
+          subTitle = "Lorem ipsum dolor sit amet."
+        />
+        <HomeEvent 
+          title = "Lorem ipsum dolor sit amet."
+          subTitle = "Lorem ipsum dolor sit amet."
+        />
     </div>
   );
 };

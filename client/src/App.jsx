@@ -32,7 +32,8 @@ function App() {
         <Route path="/form/empresas" element={<FormEmpresa />} />
         <Route path="/form/talentos" element={<FormTalento />} />
         <Route path="/NavBarLateral" element={<NavBarLateral />} />
-        <Route path="/Home" element={<Home />} />
+        <Route path="/home/talent" element={<Home type="talent"/>} />
+        <Route path="/home/company" element={<Home type="company"/>} />
       </Routes>
     </>
   );

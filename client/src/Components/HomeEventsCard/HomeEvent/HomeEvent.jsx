@@ -1,10 +1,10 @@
 import styles from './HomeEvent.module.css';
 
-const HomeEvent = () => {
+const HomeEvent = (props) => {
   return (
     <div className={styles.container}>
-        <h2>Lorem ipsum dolor sit amet.</h2>
-        <h5>Lorem ipsum dolor sit amet.</h5>
+        <h2>{props.title}</h2>
+        <h5>{props.subTitle}</h5>
     </div>
   );
 };

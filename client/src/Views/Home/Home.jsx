@@ -9,22 +9,27 @@ import ChartsComponent from '../../Components/ChartsComponent/ChartsComponent.js
 import SolicitudesDeEmpresas from '../../Components/SolicitudesDeEmpresas/SolicitudesDeEmpresas.jsx';
 import styles from './Home.module.css';
 
-const Home = () => {
+const Home = (props) => {
   return (
     <>
       <NavBarLateral />
       <div className={styles.container}>
         <HomeProfileCard />
-        <HomeEventsCard title="Publicaciones Recientes"/>
-        <HomeEventsCard title="Publicaciones de Interes"/>
-        <HomeItemList />
-
-        {/* <div className={styles.testSection}>
-        <h2>Solicitudes de Empresas</h2>
-        </div> */}
-
-        <ChartsComponent />
-        <SolicitudesDeEmpresas />
+        <HomeEventsCard title={
+          props.type === "talent" ? "Publicaciones Recientes" : "Mis Publicaciones"
+        }/>
+        <HomeEventsCard title={
+          props.type === "talent" ? "Publicaciones de Interes" : "Contactados"
+        }/>
+        <HomeItemList title={
+          props.type === "talent" ? "Tus Postulaciones" : "Tus Favoritos"
+        }/>
+        {
+          props.type === "talent" ? 
+          <SolicitudesDeEmpresas /> : <ChartsComponent />
+        }
+        
+        
       </div>
     </>
   );

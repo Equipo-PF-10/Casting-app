@@ -1,5 +1,6 @@
 .container {
-    width: 35%;
+    /* width: 35%; */
+    width: 665px;
     height: 390px;
     background: #f5f5f5;
     overflow: hidden;

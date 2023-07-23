@@ -5,10 +5,22 @@ const SolicitudesDeEmpresas = () => {
   return (
     <div className={styles.container}>
         <h1 className={styles.text}>Solicitudes De Empresas</h1>
-        <SolicitudDeEmpresa />
-        <SolicitudDeEmpresa />
-        <SolicitudDeEmpresa />
-        <SolicitudDeEmpresa />
+        <SolicitudDeEmpresa
+          companyName="Nombre de la Empresa"
+          eventName="Titulo del evento."
+        />
+        <SolicitudDeEmpresa
+          companyName="Nombre de la Empresa"
+          eventName="Titulo del evento."
+        />
+        <SolicitudDeEmpresa
+          companyName="Nombre de la Empresa"
+          eventName="Titulo del evento."
+        />
+        <SolicitudDeEmpresa
+          companyName="Nombre de la Empresa"
+          eventName="Titulo del evento."
+        />
     </div>
   );
 };
