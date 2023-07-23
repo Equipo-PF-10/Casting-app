@@ -33,14 +33,17 @@ const FormTalento = () => {
         emailConfirm: "",
         image: "",
         piel: "",
-        contextura: "",
-        facebook: "",
-        twitter: "",
-        instagram: "",
+        contexture: "",
+        socialNetwork: [],
         num: "",
         nacionality: "",
         ubication: "",
         dni: "",
+        aboutMe: "",
+        gender: "",
+        height: "",
+        weight: "",
+        ethnicOrigin: "",
         hability: []
     }
 
@@ -107,8 +110,8 @@ const FormTalento = () => {
                     </article>
                     <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Descripción</label>
-                            <textarea name="description" id="" value={input.description} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
-                            <p className={error.description ? Styles.error : ""}>{error.description ? error.description : null}</p>
+                            <textarea name="aboutMe" id="" value={input.aboutMe} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
+                            <p className={error.aboutMe ? Styles.error : ""}>{error.aboutMe ? error.aboutMe : null}</p>
                         </article>
 
                 </div>
@@ -156,42 +159,43 @@ const FormTalento = () => {
                                 <p className={error.hability ? Styles.error : ""}>{error.hability ? error.hability : null}</p>
                     </article> 
                     <article className={Styles.charSec}>
-                        <p>Características</p>
+                            <article className={Styles.coolinput}>
+                                <label htmlFor="" className={Styles.text}>Origen étnico</label>
+                                <input type="text" value={input.ethnicOrigin} className={Styles.etnic}/>
+                            </article>
                         <div className={Styles.char}>
-                            <article className={Styles.coolinput}>
-                                <label htmlFor="" className={Styles.text}>Piel</label>
-                                <select name="" id="">
-                                    <option value="" disabled>Tipos</option>
-                                </select>
-                            </article>
-                            <article className={Styles.coolinput}>
-                                <label htmlFor="" className={Styles.text}>Contextura</label>
-                                <select name="" id="">
-                                    <option value="" disabled>Tipos</option>
-                                </select>
-                            </article>
-                        </div>
-                        <p>Medidas</p>
+
+                        </div>  
                         <div className={Styles.char}>
                             <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Altura</label>
-                                <input type="number" onChange={handleChange}/>
+                                <input type="number" onChange={handleChange} value={input.height}/>
                             </article>
                             <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Peso</label>
-                                <input type="number" onChange={handleChange} />
+                                <input type="number" onChange={handleChange} value={input.weight} />
                             </article >
+                            <article className={Styles.coolinput}>
+                                <label htmlFor="" className={Styles.text}>Contextura</label>
+                                <select name="contexture" id="" value={input.contexture}>
+                                    <option value="" disabled>Tipos</option>
+                                    <option value="Ectomorfo" >Ectomorfo</option>
+                                    <option value="Endomorfo" >Endomorfo</option>
+                                    <option value="Mesomorfo" >Mesomorfo</option>
+                                </select>
+                            </article>
                         </div>
                         <div>
                             <article className={Styles.coolinput1}>
-                                <label htmlFor="" className={Styles.text}>Género</label>
-                                <select name="" id="">
+                                <label htmlFor="gender" className={Styles.text}>Género</label>
+                                <select name="gender" id="gender" value={input.gender}>
                                     <option value="" disabled>Género</option>
                                     <option value="masculino">Masculino</option>
                                     <option value="femenino">Femenino</option>
                                     <option value="otro">Otro</option>
                                 </select>
                             </article>
+                            
                         </div>
                     </article>
                     <button type="submit" className={Styles.btn}>Enviar Datos</button>
@@ -214,15 +218,15 @@ const FormTalento = () => {
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Facebook</label>
-                        <input type="text" name="facebook" value={input.facebook} onChange={handleChange}/>
+                        <input type="text" name="facebook" value={input.socialNetwork} onChange={handleChange}/>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Instagram</label>
-                        <input type="text" name="instagram" value={input.instagram}  onChange={handleChange}/>
+                        <input type="text" name="instagram" value={input.socialNetwork}  onChange={handleChange}/>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Twitter</label>
-                        <input type="text" name="twitter" value={input.twitter} onChange={handleChange}/>
+                        <input type="text" name="twitter" value={input.socialNetwork} onChange={handleChange}/>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="ubication" className={Styles.text}>Ubicación</label>
