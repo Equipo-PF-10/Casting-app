@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "./Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import validate from "./Validate";
+import validate from "./Validate.jsx";
 import Navbar from "../../Components/Navbar/Navbar";
 //import { useAuth0 } from "@auth0/auth0-react";
 import { modal_login } from "../../redux/actions";
@@ -79,7 +79,6 @@ const Login = () => {
     );
   };
 
-
   let currentToastId = null;
   //Evita que se renderice mas de 1 toast
   const mensaje_error_Toast = () => {
@@ -130,14 +129,15 @@ const Login = () => {
         navigate("/company/search");
       }
       //Este caso es cuando no consigue ningun match en la base de datos (Mostrar el mensaje de error por medio de Toastify)
-      mensaje_error_Toast(); 
-      //document.getElementById("loginForm").reset();
+      if(errorMessage.length > 0) mensaje_error_Toast(); 
+      document.getElementById("loginForm").reset();
     } catch (error) {
       alert(error.message);
     }
   };
  
   const handler_click = () => {
+    setErrorMessage("");
     const open = "isOpened";
     dispatch(modal_login(open));
   };
