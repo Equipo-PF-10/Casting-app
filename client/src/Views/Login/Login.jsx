@@ -7,8 +7,8 @@ import Navbar from "../../Components/Navbar/Navbar";
 import { modal_login } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { loginControler } from "./loginControler";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { clean_message_register } from "../../redux/actions";
 
 const Login = () => {
@@ -18,7 +18,6 @@ const Login = () => {
   const dispatch = useDispatch();
   let modal = useSelector((state) => state.modalInLogin);
   let messageRegistered = useSelector((state) => state.messageRegistered);
-  console.log(messageRegistered);
 
   // useEffect(() => {
   //   const saveUserToDatabase = async () => {
@@ -50,13 +49,16 @@ const Login = () => {
     password: "",
   });
 
-  const [modalLogin, setModalLogin] = useState(false);
   const [errors, setErrors] = useState({});
 
   const disable = () => {
     let disabled = true;
 
-    if (Object.keys(errors).length === 0 && input.email.length>0 && input.password.length>0) {
+    if (
+      Object.keys(errors).length === 0 &&
+      input.email.length > 0 &&
+      input.password.length > 0
+    ) {
       //devuelve un array
       disabled = false;
     }
@@ -74,108 +76,129 @@ const Login = () => {
         ...input,
         [e.target.name]: e.target.value,
       })
-      )
+    );
   };
-  //comentario
-  let access = undefined;
-  const [errorMessage,setErrorMessage]= useState("");
-  const handleSubmit = async(e) => {
+
+
+  let currentToastId = null;
+  //Evita que se renderice mas de 1 toast
+  const mensaje_error_Toast = () => {
+    if (currentToastId) {
+      toast.update(currentToastId, {
+        render: errorMessage,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastId = toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          marginTop: "120px",
+          width: "400px",
+        },
+      });
+    }
+  };
+  //--Le asigno el mensaje de error al inicio para que lo renderice en primer caso de error
+  //--El mensaje de error se setea a string vacio solo en caso de que el usuario se registre correctamente (No lo setea)
+  const [errorMessage, setErrorMessage] = useState("El email o contraseña no coinciden con un usuario registrado");
+  let access;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      access = await loginControler (input.email,input.password);
+      access = await loginControler(input.email, input.password);
       setInput({
         email: "",
         password: "",
       });
       //este navigate deberia ser para una ruta donde la data sea del talento por id
-      if (access===1) navigate ("/model/search")
-      //este navigate deberia ser para una ruta donde la data sea de la empresa por id
-      if (access===2) navigate ("/company/search")
-      //este caso es cuando no consigue ningun match en la base de datos
-      if (access===undefined){
-        // mostrar un modal que diga que el usuario no existe
-        document.getElementById('loginForm').reset();
-        setErrorMessage("El email o contraseña no coinciden con un usuario registrado")
-        setModalLogin(true);
-      }else {
-        document.getElementById('loginForm').reset();
-        setErrorMessage(access);
-        setModalLogin(true);
+      if (access === 1) {
+        setErrorMessage("");
+        navigate("/model/search");
       }
+      //este navigate deberia ser para una ruta donde la data sea de la empresa por id
+      if (access === 2) {
+        setErrorMessage("");
+        navigate("/company/search");
+      }
+      //Este caso es cuando no consigue ningun match en la base de datos (Mostrar el mensaje de error por medio de Toastify)
+      mensaje_error_Toast(); 
+      document.getElementById("loginForm").reset();
     } catch (error) {
-      console.log(error)      
+      alert(error.message);
     }
-    }
-  
-
+  };
+ 
   const handler_click = () => {
     const open = "isOpened";
     dispatch(modal_login(open));
   };
 
   const handler_click_talent = () => {
-    navigate('/model/register');
-    dispatch(modal_login("isClosed")); 
-  }
+    navigate("/model/register");
+    dispatch(modal_login("isClosed"));
+  };
 
   const handler_click_company = () => {
-    navigate('/company/register');
-    dispatch(modal_login("isClosed")); 
-  }
+    navigate("/company/register");
+    dispatch(modal_login("isClosed"));
+  };
 
   const handler_click_close = () => {
     const close = "isClosed";
     dispatch(modal_login(close));
-  }
-  const handler_click_close_login = () => {
-    setModalLogin(false);
-    // const close = "isClosed";
-    // dispatch(modal_login(close));
-  }
+  };
 
+  //----------------------------Aplico Toastify (Edward)
 
-//----------------------------Aplico Toatify (Edward)
-
-let currentToastIdSuccess = null;
-//Evita que se renderice mas de 1 toast
-const mensaje_success_Toast = () => {
-  if (currentToastIdSuccess) {
-    toast.update(currentToastIdSuccess, {
-      render: messageRegistered,
-      autoClose: 5000,
-    });
-  } else {
-    currentToastIdSuccess = toast.success(messageRegistered, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      toastId: "custom-toast-id",
-      style: {
-        marginTop: "120px",
-        width: "400px"
-      }, 
-    });
-  }
-};
+  let currentToastIdSuccess = null;
+  //Evita que se renderice mas de 1 toast
+  const mensaje_success_Toast = () => {
+    if (currentToastIdSuccess) {
+      toast.update(currentToastIdSuccess, {
+        render: messageRegistered,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastIdSuccess = toast.success(messageRegistered, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          marginTop: "120px",
+          width: "400px",
+        },
+      });
+    }
+  };
 
   //-------------Mensaje Success Toast que viene de los registros (Talento o Empresa)
-  useEffect(()=>{
-    if(Object.keys(messageRegistered).length > 0) {
+  useEffect(() => {
+    if (Object.keys(messageRegistered).length > 0) {
       mensaje_success_Toast();
       dispatch(clean_message_register(""));
     }
-  }, [messageRegistered])
-  
+  }, [messageRegistered]);
+
   return (
     <div>
       <Navbar />
       <div>
-      <ToastContainer />
+        <ToastContainer />
       </div>
       <div className={style.container}>
         <div className={style.containerImg}>
@@ -316,12 +339,23 @@ const mensaje_success_Toast = () => {
                 {modal ? (
                   <div className={style.containerModalOpened}>
                     <div className={style.modalOpened}>
-                      <button onClick={handler_click_close} className={style.delete}>{" "}X{" "}</button>
+                      <button
+                        onClick={handler_click_close}
+                        className={style.delete}
+                      >
+                        {" "}
+                        X{" "}
+                      </button>
 
                       <h3>Selecciona un tipo de Registro</h3>
 
                       <button onClick={handler_click_talent}>Talento</button>
-                      <button onClick={handler_click_company} className={style.buttonCompany}>Empresa</button>
+                      <button
+                        onClick={handler_click_company}
+                        className={style.buttonCompany}
+                      >
+                        Empresa
+                      </button>
                     </div>
                   </div>
                 ) : (
@@ -331,23 +365,6 @@ const mensaje_success_Toast = () => {
                     </div>
                   </div>
                 )}
-                {/* {modalLogin ? (
-                  <div className={style.containerModalOpened}>
-                    <div className={style.modalOpened}>
-                      <button onClick={handler_click_close_login} className={style.delete}>{" "}X{" "}</button>
-                      <br />
-                      <h3>{errorMessage}</h3>
-                    </div>
-                  </div>
-                ) :
-                (
-                  <div className={style.containerModalClosed}>
-                    <div className={style.modalClosed}>
-                      <h2>{errorMessage}</h2>
-                    </div>
-                  </div>
-                )
-                } */}
               </div>
             </form>
           </div>
