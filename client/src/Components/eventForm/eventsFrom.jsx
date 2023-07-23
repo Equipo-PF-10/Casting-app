@@ -44,7 +44,7 @@ const EventForm = () => {
                     <section className={styles.inputs}>
                         <div>
                             <article  className={styles.coolinput}>
-                                <label className={styles.text}> Nombre del evento</label>
+                <label className={styles.text}> Nombre del evento</label>
                                 <input type="text" name="name" value={input.name} onChange={handleChange} placeholder="Nombre de tu evento..."/>
                                 <p className={error.name ? styles.error : ""}>{error.name ? error.name : null}</p>
                             </article>
