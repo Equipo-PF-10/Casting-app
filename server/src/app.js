@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const app = express(); 
-// const mainRouter = require("./routes/mainRouter");
+const mainRouter = require("./routes/mainRouter");
 // const bodyParser = require("body-parser");
 // const jwt = require("jsonwebtoken");
 // const sequelize = require('./database'); //
@@ -93,6 +93,6 @@ app.use((req, res, next) => {
 //     }
 //   })();
 // });
-// app.use("/", mainRouter);
+app.use("/", mainRouter);
 
 module.exports = app;

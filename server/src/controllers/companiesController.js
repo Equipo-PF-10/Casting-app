@@ -16,12 +16,21 @@ const searchByLocation = async (country) => {
   return response;
 };
 
-const createCompany = async (company) => {
-  return Empresa.create(company);
-};
+const createCompanyDB = async (name, email, password) =>
+{
+  const [companies, created] = await Empresa.findOrCreate({
+    where: { email },
+    defaults: {
+      name,
+      email,
+      password,
+    }
+  });
+  if (!created) throw new Error("La empresa con el correo ingresado ya existe");
+};   
 
 module.exports = {
   allCompanies,
   searchByLocation,
-  createCompany,
+  createCompanyDB,
 };
