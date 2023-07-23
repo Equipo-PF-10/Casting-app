@@ -1,0 +1,19 @@
+.container {
+    width: 510px;
+    height: 350px;
+    overflow: hidden;
+    box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
+    border-radius: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    padding: 15px;
+    position: relative;
+    background-color: #7e7193;
+    color: #f5f5f5;
+}
+
+.text {
+    font-size: 30px;
+    text-decoration: underline;
+}

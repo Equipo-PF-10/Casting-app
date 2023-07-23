@@ -13,6 +13,7 @@ import RegisterCompany from "./Views/RegisterCompany/RegisterCompany";
 import CompanySearch from "./Views/Searches/CompanySearch";
 import TalentSearch from "./Views/Searches/TalentSearch";
 import PaymentPlans from "./Views/PaymentPlans/PaymentPlans";
+import Home from "./Views/Home/Home";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/form/empresas" element={<FormEmpresa />} />
         <Route path="/form/talentos" element={<FormTalento />} />
         <Route path="/NavBarLateral" element={<NavBarLateral />} />
+        <Route path="/Home" element={<Home />} />
       </Routes>
     </>
   );
