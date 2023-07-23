@@ -52,6 +52,7 @@ const {
   TalentoEliminado,
   EventoEliminado,
   TalentosFavoritos,
+  Contactado,
 } = sequelize.models;
 
 Empresa.belongsToMany(Talento, { through: "Talento/Empresa" });
