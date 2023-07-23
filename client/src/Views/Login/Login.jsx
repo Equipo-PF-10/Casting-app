@@ -3,54 +3,56 @@ import style from "./Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import validate from "./Validate";
 import Navbar from "../../Components/Navbar/Navbar";
-import { useAuth0 } from "@auth0/auth0-react";
+//import { useAuth0 } from "@auth0/auth0-react";
 import { modal_login } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+
+import { loginControler } from "./loginControler";
 
 const Login = () => {
-  const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
+  //const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
   let modal = useSelector((state) => state.modalInLogin);
 
-  useEffect(() => {
-    const saveUserToDatabase = async () => {
-      if (isAuthenticated) {
-        const token = await getAccessTokenSilently();
-        // Envía el token JWT al backend para almacenar los datos del usuario en tu base de datos local
-        try {
-          const response = await axios.post(
-            "http://localhost:3002/guardarUsuario",
-            user,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-          console.log(response.data); // Respuesta del backend
-        } catch (error) {
-          console.error("Error al guardar el usuario:", error);
-        }
-      }
-    };
+  // useEffect(() => {
+  //   const saveUserToDatabase = async () => {
+  //     if (isAuthenticated) {
+  //       const token = await getAccessTokenSilently();
+  //       // Envía el token JWT al backend para almacenar los datos del usuario en tu base de datos local
+  //       try {
+  //         const response = await axios.post(
+  //           "http://localhost:3002/guardarUsuario",
+  //           user,
+  //           {
+  //             headers: {
+  //               Authorization: `Bearer ${token}`,
+  //             },
+  //           }
+  //         );
+  //         console.log(response.data); // Respuesta del backend
+  //       } catch (error) {
+  //         console.error("Error al guardar el usuario:", error);
+  //       }
+  //     }
+  //   };
 
-    saveUserToDatabase();
-  }, [isAuthenticated, user, getAccessTokenSilently]);
+  //   saveUserToDatabase();
+  // }, [isAuthenticated, user, getAccessTokenSilently]);
 
   const [input, setInput] = useState({
-    name: "",
     email: "",
+    password: "",
   });
 
+  const [modalLogin, setModalLogin] = useState(false);
   const [errors, setErrors] = useState({});
 
   const disable = () => {
     let disabled = true;
 
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === 0 && input.email.length>0 && input.password.length>0) {
       //devuelve un array
       disabled = false;
     }
@@ -68,19 +70,38 @@ const Login = () => {
         ...input,
         [e.target.name]: e.target.value,
       })
-    );
-    //console.log(input);
+      )
   };
-
-  const handleSubmit = (e) => {
+  let access = undefined;
+  const [errorMessage,setErrorMessage]= useState("");
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    setInput({
-      name: "",
-      email: "",
-    });
-    // Aquí puedes agregar la lógica para redirigir al usuario a otra ruta después de iniciar sesión
-    //navigate("/otra-ruta");
-  };
+    try {
+      access = await loginControler (input.email,input.password);
+      setInput({
+        email: "",
+        password: "",
+      });
+      //este navigate deberia ser para una ruta donde la data sea del talento por id
+      if (access===1) navigate ("/model/search")
+      //este navigate deberia ser para una ruta donde la data sea de la empresa por id
+      if (access===2) navigate ("/company/search")
+      //este caso es cuando no consigue ningun match en la base de datos
+      if (access===undefined){
+        // mostrar un modal que diga que el usuario no existe
+        document.getElementById('loginForm').reset();
+        setErrorMessage("El email o contraseña no coinciden con un usuario registrado")
+        setModalLogin(true);
+      }else {
+        document.getElementById('loginForm').reset();
+        setErrorMessage(access);
+        setModalLogin(true);
+      }
+    } catch (error) {
+      console.log(error)      
+    }
+    }
+
   const handler_click = () => {
     const open = "isOpened";
     dispatch(modal_login(open));
@@ -99,6 +120,11 @@ const Login = () => {
   const handler_click_close = () => {
     const close = "isClosed";
     dispatch(modal_login(close));
+  }
+  const handler_click_close_login = () => {
+    setModalLogin(false);
+    // const close = "isClosed";
+    // dispatch(modal_login(close));
   }
 
   return (
@@ -142,33 +168,12 @@ const Login = () => {
               </Link>
             </div>
             <form
+              id="loginForm"
               className={style.formContainer}
               onSubmit={(e) => handleSubmit(e)}
             >
               {/*Login*/}
               <h3 className={style.loginRegistro}>Iniciar sesión</h3>
-              <div className={style.inputContainer}>
-                <label htmlFor="input" className={style.text}>
-                  Nombre:
-                </label>
-                <input
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Introduzca su nombre"
-                  name="name"
-                  className={style.input}
-                />
-                <div>
-                  {errors.name && (
-                    <span
-                      className={style.spanError}
-                      style={{ color: "#e74c3c" }}
-                    >
-                      {errors.name}
-                    </span>
-                  )}
-                </div>
-              </div>
               <div className={style.inputContainer}>
                 <label htmlFor="input" className={style.text}>
                   Email:
@@ -187,6 +192,28 @@ const Login = () => {
                       style={{ color: "#e74c3c" }}
                     >
                       {errors.email}
+                    </span>
+                  )}
+                </div>
+              </div>
+              <div className={style.inputContainer}>
+                <label htmlFor="input" className={style.text}>
+                  Contraseña:
+                </label>
+                <input
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Introduzca su contraseña"
+                  name="password"
+                  className={style.input}
+                />
+                <div>
+                  {errors.password && (
+                    <span
+                      className={style.spanError}
+                      style={{ color: "#e74c3c" }}
+                    >
+                      {errors.password}
                     </span>
                   )}
                 </div>
@@ -257,6 +284,23 @@ const Login = () => {
                     </div>
                   </div>
                 )}
+                {modalLogin ? (
+                  <div className={style.containerModalOpened}>
+                    <div className={style.modalOpened}>
+                      <button onClick={handler_click_close_login} className={style.delete}>{" "}X{" "}</button>
+                      <br />
+                      <h3>{errorMessage}</h3>
+                    </div>
+                  </div>
+                ) :
+                (
+                  <div className={style.containerModalClosed}>
+                    <div className={style.modalClosed}>
+                      <h2>{errorMessage}</h2>
+                    </div>
+                  </div>
+                )
+                }
               </div>
             </form>
           </div>
