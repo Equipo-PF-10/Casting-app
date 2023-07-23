@@ -6,8 +6,10 @@ import Navbar from "../../Components/Navbar/Navbar";
 //import { useAuth0 } from "@auth0/auth0-react";
 import { modal_login } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-
 import { loginControler } from "./loginControler";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { clean_message_register } from "../../redux/actions";
 
 const Login = () => {
   //const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
@@ -15,6 +17,8 @@ const Login = () => {
 
   const dispatch = useDispatch();
   let modal = useSelector((state) => state.modalInLogin);
+  let messageRegistered = useSelector((state) => state.messageRegistered);
+  console.log(messageRegistered);
 
   // useEffect(() => {
   //   const saveUserToDatabase = async () => {
@@ -72,6 +76,7 @@ const Login = () => {
       })
       )
   };
+
   let access = undefined;
   const [errorMessage,setErrorMessage]= useState("");
   const handleSubmit = async(e) => {
@@ -101,6 +106,7 @@ const Login = () => {
       console.log(error)      
     }
     }
+  
 
   const handler_click = () => {
     const open = "isOpened";
@@ -127,9 +133,50 @@ const Login = () => {
     // dispatch(modal_login(close));
   }
 
+
+//----------------------------Aplico Toatify (Edward)
+
+let currentToastIdSuccess = null;
+//Evita que se renderice mas de 1 toast
+const mensaje_success_Toast = () => {
+  if (currentToastIdSuccess) {
+    toast.update(currentToastIdSuccess, {
+      render: messageRegistered,
+      autoClose: 5000,
+    });
+  } else {
+    currentToastIdSuccess = toast.success(messageRegistered, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      toastId: "custom-toast-id",
+      style: {
+        marginTop: "120px",
+        width: "400px"
+      }, 
+    });
+  }
+};
+
+  //-------------Mensaje Success Toast que viene de los registros (Talento o Empresa)
+  useEffect(()=>{
+    if(Object.keys(messageRegistered).length > 0) {
+      mensaje_success_Toast();
+      dispatch(clean_message_register(""));
+    }
+  }, [messageRegistered])
+  
   return (
     <div>
       <Navbar />
+      <div>
+      <ToastContainer />
+      </div>
       <div className={style.container}>
         <div className={style.containerImg}>
           <div className={style.login}>

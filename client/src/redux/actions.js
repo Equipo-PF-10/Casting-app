@@ -11,7 +11,7 @@ export const register_model = (payload) => {
     return async (dispatch) => {
        try {
           const response = await axios.post(endpoint, payload);
-          console.log(response.data);
+          //console.log(response.data);
           return dispatch({
              type: "REGISTER_MODEL_OR_COMPANY",
              payload: response.data
@@ -29,7 +29,7 @@ export const register_company = (payload) => {
     return async (dispatch) => {
        try {
           const response = await axios.post(endpoint, payload);
-          console.log(response.data);
+          //console.log(response.data);
           return dispatch({
              type: "REGISTER_MODEL_OR_COMPANY",
              payload: response.data
