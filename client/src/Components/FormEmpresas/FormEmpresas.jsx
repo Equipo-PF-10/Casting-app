@@ -9,7 +9,7 @@ const FormEmpresa = () => {
 
     const URL = "http://localhost:3001/company/register"
 
-    const optionshability = [
+    const optionsindustryMain = [
         { value: 'Actuación', label: 'Actuación' },
         { value: 'Animador/a', label: 'Animador/a' },
         { value: 'Bailarín/a', label: 'Bailarín/a' },
@@ -31,13 +31,14 @@ const FormEmpresa = () => {
         passwordConfirm: "",
         email: "",
         emailConfirm: "",
-        img: "",
+        logo: "",
         facebook: "",
         twitter: "",
         instagram: "",
         num: "",
-        location: "",
-        hability: [],
+        country: "",
+        domain: "",
+        industryMain: [],
     }
 
     const [input, setInput] = useState(initialState)
@@ -60,7 +61,7 @@ const FormEmpresa = () => {
     }
 
     const handleChangeSelect = (selectedOptions) => {
-        setInput({ ...input, hability: selectedOptions });
+        setInput({ ...input, industryMain: selectedOptions });
       };
 
 
@@ -106,49 +107,55 @@ const FormEmpresa = () => {
                         </article>
                 </div>
                 <div className={Styles.div}>
-                    <article className={Styles.img}>
-                            <svg width="187" height="187" viewBox="0 0 187 187" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g filter="url(#filter0_d_497_36)">
-                            <g clipPath="url(#clip0_497_36)">
-                            <rect x="3" y="1" width="181" height="181" rx="90.5" fill="#F5F5F5"/>
-                            <rect x="57.2197" y="30.0244" width="72.5612" height="72.5612" rx="36.2806" fill="#4B31A1"/>
-                            <rect x="-42.3506" y="121.734" width="271.702" height="271.702" rx="135.851" fill="#4B31A1"/>
-                            </g>
-                            </g>
-                            <defs>
-                            <filter id="filter0_d_497_36" x="0.581292" y="0.193764" width="185.837" height="185.837" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                            <feMorphology radius="0.806236" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_497_36"/>
-                            <feOffset dy="1.61247"/>
-                            <feGaussianBlur stdDeviation="0.806236"/>
-                            <feComposite in2="hardAlpha" operator="out"/>
-                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_497_36"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_497_36" result="shape"/>
-                            </filter>
-                            <clipPath id="clip0_497_36">
-                            <rect x="3" y="1" width="181" height="181" rx="90.5" fill="white"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
-                    </article>
-                    <article className={Styles.coolinput}>
-                        <label htmlFor="" className={Styles.text}>Subir Imágen</label>
-                        <input type="file" name="image" value={input.image} required onChange={handleChange}/>
-                    </article>
-                    <article className={Styles.coolinput}>
-                                <label htmlFor="" className={Styles.text}>Orientación artística</label>
-                                <Select
-                                isMulti 
-                                options={optionshability}
-                                className={Styles.select}
-                                value={input.hability}
-                                onChange={handleChangeSelect}
-                                name="hability"/>
-                                <p className={error.hability ? Styles.error : ""}>{error.hability ? error.hability : null}</p>
-                    </article>   
+                    <section className={Styles.chart}>
+                        <article className={Styles.img}>
+                                <svg width="187" height="187" viewBox="0 0 187 187" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_d_497_36)">
+                                <g clipPath="url(#clip0_497_36)">
+                                <rect x="3" y="1" width="181" height="181" rx="90.5" fill="#F5F5F5"/>
+                                <rect x="57.2197" y="30.0244" width="72.5612" height="72.5612" rx="36.2806" fill="#4B31A1"/>
+                                <rect x="-42.3506" y="121.734" width="271.702" height="271.702" rx="135.851" fill="#4B31A1"/>
+                                </g>
+                                </g>
+                                <defs>
+                                <filter id="filter0_d_497_36" x="0.581292" y="0.193764" width="185.837" height="185.837" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feMorphology radius="0.806236" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_497_36"/>
+                                <feOffset dy="1.61247"/>
+                                <feGaussianBlur stdDeviation="0.806236"/>
+                                <feComposite in2="hardAlpha" operator="out"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_497_36"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_497_36" result="shape"/>
+                                </filter>
+                                <clipPath id="clip0_497_36">
+                                <rect x="3" y="1" width="181" height="181" rx="90.5" fill="white"/>
+                                </clipPath>
+                                </defs>
+                                </svg>
+                        </article>
+                        <article className={Styles.coolinput}>
+                            <label htmlFor="logo" className={Styles.text}>Subir Imágen</label>
+                            <input type="file" name="logo" id="logo" value={input.logo} required onChange={handleChange}/>
+                        </article>
+                        <article className={Styles.coolinput}>
+                                    <label htmlFor="" className={Styles.text}>Orientación artística</label>
+                                    <Select
+                                    isMulti 
+                                    options={optionsindustryMain}
+                                    className={Styles.select}
+                                    value={input.industryMain}
+                                    onChange={handleChangeSelect}
+                                    name="industryMain"/>
+                                    <p className={error.industryMain ? Styles.error : ""}>{error.industryMain ? error.industryMain : null}</p>
+                        </article>
+                        <article className={Styles.coolinput}>
+                            <label htmlFor="logo" className={Styles.text}>Página Web</label>
+                            <input type="text" name="domain" id="domain" value={input.domain} required onChange={handleChange}/>
+                        </article>
                     <button type="submit" className={Styles.btn}>Enviar Datos</button>
+                    </section>
                 </div>
                 <div className={Styles.div}>
                     <NavLink to="/" className={Styles.nav}>
@@ -183,9 +190,9 @@ const FormEmpresa = () => {
                         <input type="text" name="linkedin" value={input.linkedin} onChange={handleChange}/>
                     </article>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="location" className={Styles.text}>Ubicación</label>
-                        <input type="text" id="location" name="location" value={input.location} onChange={handleChange} required/>
-                        <p className={error.location ? Styles.error : ""}>{error.location ? error.location : null}</p>
+                        <label htmlFor="country" className={Styles.text}>Ubicación</label>
+                        <input type="text" id="country" name="country" value={input.country} onChange={handleChange} required/>
+                        <p className={error.country ? Styles.error : ""}>{error.country ? error.country : null}</p>
                     </article>
                 </div>
             </form>
