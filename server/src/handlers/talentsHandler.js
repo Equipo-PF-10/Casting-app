@@ -28,15 +28,26 @@ const getTalentsHandler = async (req, res) => {
 const createTalentHandler = async (req, res) => {
   const {
     name,
+    dni,
     email,
     password,
+    available,
+    dateComeback,
     image,
+    portfolio,
     gender,
+    aboutMe,
     nationality,
     ubication,
     hability,
+    contexture,
+    ethnicOrigin,
     weight,
     height,
+    contact,
+    socialNetwork,
+    reviews,
+    reviewsCount,
   } = req.body;
 
   if (!email || !password) {
@@ -46,15 +57,26 @@ const createTalentHandler = async (req, res) => {
   try {
     await createTalentDb(
       name,
+      dni,
       email,
       password,
+      available,
+      dateComeback,
       image,
+      portfolio,
       gender,
+      aboutMe,
       nationality,
       ubication,
       hability,
+      contexture,
+      ethnicOrigin,
       weight,
-      height
+      height,
+      contact,
+      socialNetwork,
+      reviews,
+      reviewsCount
     );
 
     res.status(200).send("Se ha registrado correctamente");
@@ -99,15 +121,26 @@ const updateTalentHandler = async (req, res) => {
   const { id } = req.params;
   const {
     name,
+    dni,
     email,
     password,
+    available,
+    dateComeback,
     image,
+    portfolio,
     gender,
+    aboutMe,
     nationality,
     ubication,
     hability,
+    contexture,
+    ethnicOrigin,
     weight,
     height,
+    contact,
+    socialNetwork,
+    reviews,
+    reviewsCount,
   } = req.body;
 
   try {
@@ -118,15 +151,26 @@ const updateTalentHandler = async (req, res) => {
     if (talent) {
       const updatedData = {
         name,
+        dni,
         email,
         password,
+        available,
+        dateComeback,
         image,
+        portfolio,
         gender,
+        aboutMe,
         nationality,
         ubication,
         hability,
+        contexture,
+        ethnicOrigin,
         weight,
         height,
+        contact,
+        socialNetwork,
+        reviews,
+        reviewsCount,
       };
 
       await updateTalent(id, updatedData);

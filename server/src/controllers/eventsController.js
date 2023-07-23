@@ -1,4 +1,4 @@
-const { Evento } = require("../db");
+const { Evento, EventoEliminado } = require("../db");
 const { Op } = require("sequelize");
 
 // Función controller que retorna los eventos de la database.
@@ -45,10 +45,15 @@ const getEventById = async (id) => {
 const createEvent = async (
   name,
   image,
+  creationDate,
+  changeDate,
+  expirationDate,
+  shortDescription,
   detail,
   active,
   ubication,
   habilityRequired,
+  habilitySalary,
   contact
 ) => {
   try {
@@ -57,10 +62,15 @@ const createEvent = async (
       defaults: {
         name,
         image,
+        creationDate,
+        changeDate,
+        expirationDate,
+        shortDescription,
         detail,
         active,
         ubication,
         habilityRequired,
+        habilitySalary,
         contact,
       },
     });
@@ -78,15 +88,30 @@ const createEvent = async (
 // Función controller para eliminar un evento de la base de datos según el id pasado.
 const deleteEvent = async (id) => {
   try {
-    const deletedEvent = await Evento.destroy({
-      where: { id },
-    });
+    const eventToDelete = await Evento.findByPk(id);
 
-    if (deletedEvent === 0) {
-      throw new Error("No existe evento con ese ID para eliminar.");
+    if (!eventToDelete) {
+      throw new Error(`El Evento con ID ${id} no existe`);
     }
 
-    return deletedEvent;
+    await EventoEliminado.create({
+      name: eventToDelete.name,
+      image: eventToDelete.image,
+      creationDate: eventToDelete.creationDate,
+      changeDate: eventToDelete.changeDate,
+      expirationDate: eventToDelete.expirationDate,
+      shortDescription: eventToDelete.shortDescription,
+      detail: eventToDelete.detail,
+      active: eventToDelete.active,
+      ubication: eventToDelete.ubication,
+      habilityRequired: eventToDelete.habilityRequired,
+      habilitySalary: eventToDelete.habilitySalary,
+      contact: eventToDelete.contact,
+    });
+
+    await eventToDelete.destroy();
+
+    return eventToDelete;
   } catch (error) {
     throw new Error(error.message);
   }
