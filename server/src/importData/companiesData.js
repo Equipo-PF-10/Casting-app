@@ -14,6 +14,7 @@ const getCompaniesData = async () => {
     let companies = []; 
     const companiesMapeadas = response.companies.map((company) => {
     const comp = {};
+        let nameParaMail = company.name.trim().split(" ").join("").toLowerCase()
         comp.id = company.cca3,
         comp.name = company.name,
         comp.logo = company.logo,
@@ -25,8 +26,8 @@ const getCompaniesData = async () => {
         comp.twitter = company.socialNetworks.hasOwnProperty("twitter")?company.socialNetworks["twitter"]:null,  
         comp.linkedin = company.socialNetworks.hasOwnProperty("linkedin")?company.socialNetworks["linkedin"]:null,  
         comp.country = "Argentina", 
-        comp.email = `${company.name}@${company.domain}`,
-        comp.password = `${company.name}${company.id}`,
+        comp.email = `${nameParaMail}@${company.domain}`,
+        comp.password = `${nameParaMail}${company.id}`,
         companies.push(comp)
       }); 
     
