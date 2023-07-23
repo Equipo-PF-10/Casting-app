@@ -62,6 +62,7 @@ module.exports = (sequelize) => {
 
       ubication: {
         type: DataTypes.STRING,
+        
       },
 
       hability: {
