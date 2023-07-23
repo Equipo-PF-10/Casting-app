@@ -79,6 +79,12 @@ const Login = () => {
     );
   };
 
+  //--Le asigno el mensaje de error al inicio para que lo renderice en primer caso de error
+  //--El mensaje de error se setea a string vacio solo en caso de que el usuario se registre correctamente (No lo setea)
+  const [errorMessage, setErrorMessage] = useState(
+    "El email o contraseña no coinciden con un usuario registrado"
+  );
+
   let currentToastId = null;
   //Evita que se renderice mas de 1 toast
   const mensaje_error_Toast = () => {
@@ -105,41 +111,44 @@ const Login = () => {
       });
     }
   };
-  //--Le asigno el mensaje de error al inicio para que lo renderice en primer caso de error
-  //--El mensaje de error se setea a string vacio solo en caso de que el usuario se registre correctamente (No lo setea)
-  const [errorMessage, setErrorMessage] = useState("El email o contraseña no coinciden con un usuario registrado");
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const obj = await loginControler(input.email, input.password);
-      console.log(obj);
-      setInput({
-        email: "",
-        password: "",
-      });
-      //este navigate deberia ser para una ruta donde la data sea del talento por id
-      if (obj.access === 1) {
-        dispatch(id_user(obj.id));
-        setErrorMessage("");
-        navigate(`/model/search`);  //navigate(`/model/search/:${id}`);
-        
-      }
-      //este navigate deberia ser para una ruta donde la data sea de la empresa por id
-      if (obj.access === 2) {
-        dispatch(id_user(obj.id));
-        setErrorMessage("")
-        navigate(`/company/search`);
-      }
+
+    const obj = await loginControler(input.email, input.password);
+    setInput({
+      email: "",
+      password: "",
+    });
+    //este navigate deberia ser para una ruta donde la data sea del talento por id
+    if (obj.access === 1) {
+      dispatch(id_user(obj.id));
+      setErrorMessage("");
+      navigate(`/model/search`); //navigate(`/model/search/:${id}`);
+    }
+    //este navigate deberia ser para una ruta donde la data sea de la empresa por id
+    if (obj.access === 2) {
+      dispatch(id_user(obj.id));
+      setErrorMessage("");
+      navigate(`/company/search`);
+    }
+    if (
+      obj.access === 0 &&
+      input.email.length > 0 &&
+      input.password.length > 0
+    ) {
       //Este caso es cuando no consigue ningun match en la base de datos (Mostrar el mensaje de error por medio de Toastify)
-      if(errorMessage.length > 0) mensaje_error_Toast(); 
+      mensaje_error_Toast();
+    }
+    if (obj.error) {
+      //Cuando no es ni 0, 1, ni 2 es error de servidor desconectado.
+      setErrorMessage(`${obj.error}`);
+      console.log("Entro en error: " + errorMessage);
+      mensaje_error_Toast();
       document.getElementById("loginForm").reset();
-    } catch (error) {
-      alert(error.message);
     }
   };
- 
+
   const handler_click = () => {
     setErrorMessage("");
     const open = "isOpened";
@@ -276,7 +285,8 @@ const Login = () => {
                 </label>
                 <input
                   onChange={handleChange}
-                  type="text"
+                  type="password"
+                  autocomplete="off"
                   placeholder="Introduzca su contraseña"
                   name="password"
                   className={style.input}

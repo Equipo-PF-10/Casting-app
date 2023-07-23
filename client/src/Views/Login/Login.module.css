@@ -202,6 +202,13 @@
   border-radius: 5px;
   background: whitesmoke;
 }
+.inputContainer input[type="password"].input {
+  padding: 11px 10px;
+  font-size: 0.9rem;
+  border: 2px #429283 solid;
+  border-radius: 5px;
+  background: whitesmoke;
+}
 
 .inputContainer input[type="text"].input:focus {
   outline: none;

@@ -24,6 +24,7 @@ export const loginControler = async (email, password) => {
     const obj = { access: 0, id: null };
     return obj;
   } catch (error) {
-    return error.message;
+    const obj = {error: error.message}
+    return obj;
   }
 };
