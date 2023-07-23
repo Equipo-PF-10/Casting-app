@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   const Evento = sequelize.define(
-    "Evento",
+    "EventoEliminado",
     {
       id: {
         type: DataTypes.UUID,

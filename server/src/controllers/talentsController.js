@@ -1,4 +1,4 @@
-const { Talento } = require("../db");
+const { Talento, TalentoEliminado } = require("../db");
 const { Op } = require("sequelize");
 
 // Función controller que retorna los talentos de la database.
@@ -14,29 +14,51 @@ const getDbTalents = async () => {
 // Función controller que crea un nuevo talento en la database.
 const createTalentDb = async (
   name,
+  dni,
   email,
   password,
+  available,
+  dateComeback,
   image,
+  portfolio,
   gender,
+  aboutMe,
   nationality,
   ubication,
   hability,
+  contexture,
+  ethnicOrigin,
   weight,
-  height
+  height,
+  contact,
+  socialNetwork,
+  reviews,
+  reviewsCount
 ) => {
   const [talent, created] = await Talento.findOrCreate({
     where: { email },
     defaults: {
       name,
+      dni,
       email,
       password,
+      available,
+      dateComeback,
       image,
+      portfolio,
       gender,
+      aboutMe,
       nationality,
       ubication,
       hability,
+      contexture,
+      ethnicOrigin,
       weight,
       height,
+      contact,
+      socialNetwork,
+      reviews,
+      reviewsCount,
     },
   });
 
@@ -77,15 +99,39 @@ const getTalentById = async (id) => {
 // Función controller que elimina a un talento de la base de datos.
 const deleteTalent = async (id) => {
   try {
-    const deletedTalent = await Talento.destroy({
-      where: { id },
-    });
+    const talentToDelete = await Talento.findByPk(id);
 
-    if (deletedTalent === 0) {
-      throw new Error("No existe un usuario con ese ID para eliminar.");
+    if (!talentToDelete) {
+      throw new Error(`El Usuario con ID ${id} no existe`);
     }
 
-    return deletedTalent;
+    await TalentoEliminado.create({
+      name: talentToDelete.name,
+      dni: talentToDelete.dni,
+      email: talentToDelete.email,
+      password: talentToDelete.password,
+      available: talentToDelete.available,
+      dateComeback: talentToDelete.dateComeback,
+      image: talentToDelete.image,
+      portfolio: talentToDelete.portfolio,
+      gender: talentToDelete.gender,
+      aboutMe: talentToDelete.aboutMe,
+      nationality: talentToDelete.nationality,
+      ubication: talentToDelete.ubication,
+      hability: talentToDelete.hability,
+      contexture: talentToDelete.contexture,
+      ethnicOrigin: talentToDelete.ethnicOrigin,
+      weight: talentToDelete.weight,
+      height: talentToDelete.height,
+      contact: talentToDelete.contact,
+      socialNetwork: talentToDelete.socialNetwork,
+      reviews: talentToDelete.reviews,
+      reviewsCount: talentToDelete.reviewsCount,
+    });
+
+    await talentToDelete.destroy();
+
+    return talentToDelete;
   } catch (error) {
     throw new Error(error.message);
   }

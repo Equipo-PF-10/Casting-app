@@ -66,10 +66,15 @@ const createEventHandler = async (req, res) => {
   const createdEvent = await createEvent(
     name,
     image,
+    creationDate,
+    changeDate,
+    expirationDate,
+    shortDescription,
     detail,
     active,
     ubication,
     habilityRequired,
+    habilitySalary,
     contact
   );
 
@@ -109,10 +114,15 @@ const updateEventHandler = async (req, res) => {
     const updatedData = {
       name,
       image,
+      creationDate,
+      changeDate,
+      expirationDate,
+      shortDescription,
       detail,
       active,
       ubication,
       habilityRequired,
+      habilitySalary,
       contact,
     };
 

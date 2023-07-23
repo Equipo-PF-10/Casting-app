@@ -3,8 +3,12 @@
         {
             "name": "Deporte",
             "image": "https://www.unesco.org/sites/default/files/styles/best_image/public/deportepandemia-cover900.jpg?itok=VI2gkFsn",
-            "detail": "Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.",
-            "active": "false",
+            "shortDescription": "Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.",
+            "creationDate": "23-07.2023",
+            "expirationDate": "09-02.2024",
+            "changeDate": "null",
+            "detail": "Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables. Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.",
+            "active": "true",
             "ubication": "Argentina",
             "habilityRequired": [
                 "Bailarín/a",
@@ -13,13 +17,19 @@
             "contact": [
                 "3498408557",
                 "42251663"
-            ]
+            ],
+            "habilitySalary": "40000" ,
+            "idEmpresa": "null"
         },
         {
             "name": "Humor",
             "image": "https://www.shutterstock.com/shutterstock/photos/562827361/display_1500/stock-vector-caucasian-office-worker-laughing-office-worker-laughing-with-hands-on-his-head-office-worker-562827361.jpg",
-            "detail": "Noche de risas aseguradas: Humor ingenioso, comediantes talentosos y diversión sin límites.",
-            "active": "false",
+            "shortDescription": "Noche de risas aseguradas: Humor ingenioso, comediantes talentosos y diversión sin límites.",
+            "creationDate": "23-07.2023",
+            "expirationDate": "09-02.2024",
+            "changeDate": "null",
+            "detail": "Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.",
+            "active": "true",
             "ubication": "Argentina",
             "habilityRequired": [
                 "Animador/a",
@@ -29,13 +39,19 @@
             "contact": [
                 "3476508557",
                 "422251263"
-            ]
+            ],
+            "habilitySalary": "40000" ,
+            "idEmpresa": "null"
         },
         {
             "name": "Arte",
             "image": "https://png.pngtree.com/png-clipart/20220621/original/pngtree-office-worker-vector-analyzing-art-png-image_8167420.png",
-            "detail": "Exposición artística imperdible: Obras asombrosas, creatividad deslumbrante y expresiones cautivadoras.",
-            "active": "false",
+            "shortDescription": "Exposición artística imperdible: Obras asombrosas, creatividad deslumbrante y expresiones cautivadoras.",
+            "creationDate": "23-07.2023",
+            "expirationDate": "09-02.2024",
+            "changeDate": "null",
+            "detail": "Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.",
+            "active": "true",
             "ubication": "Argentina",
             "habilityRequired": [
                 "Bailarín/a",
@@ -45,14 +61,20 @@
             "contact": [
                 "3412408557",
                 "46751663"
-            ]
+            ],
+            "habilitySalary": "40000" ,
+            "idEmpresa": "null"
         },
 
         {
             "name": "Música",
             "image": "https://www.ciencuadras.com/blog/wp-content/uploads/2020/05/hombre-bailando-en-la-sala.jpg",
-            "detail": "Evento musical inolvidable: Ritmos envolventes, voces impresionantes y emociones compartidas.",
-            "active": "false",
+            "shortDescription": "Evento musical inolvidable: Ritmos envolventes, voces impresionantes y emociones compartidas.",
+            "creationDate": "23-07.2023",
+            "expirationDate": "09-02.2024",
+            "changeDate": "null",
+            "detail": "Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.",
+            "active": "true",
             "ubication": "Argentina",
             "habilityRequired": [
                 "Cantante",
@@ -62,14 +84,20 @@
             "contact": [
                 "3498415557",
                 "42251563"
-            ]
+            ],
+            "habilitySalary": "40000" ,
+            "idEmpresa": "null"
         },
 
         {
             "name": "Magia",
             "image": "https://media.istockphoto.com/id/1448416842/es/vector/l%C3%A1mpara-de-oficinista-m%C3%A1gica-del-genio-de-los-negocios-ilustraci%C3%B3n-del-concepto-de-elemento.jpg?s=612x612&w=0&k=20&c=LGJQUdmDz_xjKOYHsteTEImpk3LnMyrdj6OXiCG3Kas=",
-            "detail": "Espectáculo de magia asombroso: Trucos sorprendentes, ilusiones cautivadoras y misterio en el aire.",
-            "active": "false",
+            "shortDescription": "Espectáculo de magia asombroso: Trucos sorprendentes, ilusiones cautivadoras y misterio en el aire.",
+            "creationDate": "23-07.2023",
+            "expirationDate": "09-02.2024",
+            "changeDate": "null",
+            "detail": "Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.",
+            "active": "true",
             "ubication": "Argentina",
             "habilityRequired": [
                 "Mago/a"
@@ -77,14 +105,20 @@
             "contact": [
                 "34982548557",
                 "45551663"
-            ]
+            ],
+            "habilitySalary": "40000" ,
+            "idEmpresa": "null"
         },
         
         {
             "name": "Baile",
             "image": "https://media.istockphoto.com/id/686029774/es/vector/feliz-baile-oficinista.jpg?s=612x612&w=0&k=20&c=Rltohkhvf46_0_oIy3-Wak9ppduw8rgDPOnHirZIQR0=",
-            "detail": "Extravagante evento de baile: Pasión desbordante, movimientos fascinantes y ritmo contagioso.",
-            "active": "false",
+            "shortDescription": "Extravagante evento de baile: Pasión desbordante, movimientos fascinantes y ritmo contagioso.",
+            "creationDate": "23-07.2023",
+            "expirationDate": "09-02.2024",
+            "changeDate": "null",
+            "detail": "Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.",
+            "active": "true",
             "ubication": "Argentina",
             "habilityRequired": [
                 "Bailarín/a",
@@ -93,14 +127,20 @@
             "contact": [
                 "3428408557",
                 "42651663"
-            ]
+            ],
+            "habilitySalary": "40000" ,
+            "idEmpresa": "null"
         },
 
         {
             "name": "Animación",
             "image": "https://st2.depositphotos.com/1036149/7792/i/450/depositphotos_77927390-stock-photo-funny-cartoon-bee.jpg",
-            "detail": "Evento de animación sorprendente: Creatividad en movimiento, personajes encantadores y mundos imaginativos.",
-            "active": "false",
+            "shortDescription": "Evento de animación sorprendente: Creatividad en movimiento, personajes encantadores y mundos imaginativos.",
+            "creationDate": "23-07.2023",
+            "expirationDate": "09-02.2024",
+            "changeDate": "null",
+            "detail": "Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.Emocionante evento deportivo: Competencia feroz, atletismo increíble y momentos inolvidables.",
+            "active": "true",
             "ubication": "Argentina",
             "habilityRequired": [
                 "Animador/a",
@@ -109,7 +149,9 @@
             "contact": [
                 "3491408557",
                 "42551663"
-            ]
+            ],
+            "habilitySalary": "40000" ,
+            "idEmpresa": "null"
         }
     ]
    

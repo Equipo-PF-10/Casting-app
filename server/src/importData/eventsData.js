@@ -10,21 +10,25 @@ const getEvents = async () => {
         const {
           name,
           image,
+          shortDescription,
           detail,
           active,
           ubication,
           habilityRequired,
           contact,
+          habilitySalary,
         } = event;
 
         const createdEvent = await Evento.create({
           name,
           image,
+          shortDescription,
           detail,
           active,
           ubication,
           habilityRequired,
           contact,
+          habilitySalary,
         });
         return createdEvent;
       })

@@ -28,6 +28,19 @@ const getRandomHabilities = (habilities) => {
   return shuffledHabilities.slice(0, numberOfHabilities);
 };
 
+const getRandomDecimal = (min, max, precision) => {
+  const random = Math.random() * (max - min) + min;
+  return parseFloat(random.toFixed(precision));
+};
+
+const minWeight = 50;
+const maxWeight = 100;
+const weightPrecision = 2;
+
+const minHeight = 150;
+const maxHeight = 200;
+const heightPrecision = 2;
+
 const getApiTalents = async () => {
   try {
     const response = await axios("https://randomuser.me/api/?results=100");
@@ -43,9 +56,9 @@ const getApiTalents = async () => {
         const password = `${user.login.password}${user.dob.age}`;
         const image = user.picture.large;
         const contact = [user.phone, user.cell];
-        const weight = null;
-        const height = null;
-
+        const available = true;
+        const weight = getRandomDecimal(minWeight, maxWeight, weightPrecision);
+        const height = getRandomDecimal(minHeight, maxHeight, heightPrecision);
         const hability = getRandomHabilities(habilities);
 
         if (gender === "male") {
@@ -65,6 +78,7 @@ const getApiTalents = async () => {
           nationality,
           ubication,
           hability,
+          available,
           weight,
           height,
           contact,
