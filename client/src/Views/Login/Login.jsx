@@ -131,7 +131,7 @@ const Login = () => {
       }
       //Este caso es cuando no consigue ningun match en la base de datos (Mostrar el mensaje de error por medio de Toastify)
       mensaje_error_Toast(); 
-      document.getElementById("loginForm").reset();
+      //document.getElementById("loginForm").reset();
     } catch (error) {
       alert(error.message);
     }
