@@ -7,6 +7,8 @@ import Select from "react-select"
 
 const FormEmpresa = () => {
 
+    const URL = "http://localhost:3001/company/register"
+
     const optionshability = [
         { value: 'Actuación', label: 'Actuación' },
         { value: 'Animador/a', label: 'Animador/a' },
@@ -50,7 +52,7 @@ const FormEmpresa = () => {
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
-            await axios.post()
+            await axios.post(URL, input)
             setInput(initialState)
         } catch (error) {
             console.log({error: error.message})
