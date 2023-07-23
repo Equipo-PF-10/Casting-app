@@ -12,7 +12,10 @@ module.exports = (sequelize) => {
 
       date: {
         type: DataTypes.DATE,
-        allowNull: false,
+      },
+
+      changeDate: {
+        type: DataTypes.DATE,
       },
 
       active: {

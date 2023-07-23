@@ -1,8 +1,4 @@
 const { DataTypes } = require("sequelize");
-
-// Función twoWeeks() que retorna el valor de dos semanas en el futuro a partir de hoy.
-// const twoWeeks = () => new Date(Date.now() + 2 * 7 * 24 * 60 * 60 * 1000);
-
 module.exports = (sequelize) => {
   const Evento = sequelize.define(
     "Evento",
@@ -23,16 +19,21 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
 
-      detail: {
+      shortDescription: {
         type: DataTypes.STRING,
         validate: {
           len: [0, 130], // Permite valores entre 0 y 130 caracteres.
         },
       },
 
+      detail: {
+        type: DataTypes.STRING,
+      },
+
       active: {
         type: DataTypes.BOOLEAN,
         allowNull: true,
+        defaultValue: true,
       },
 
       ubication: {
@@ -45,9 +46,34 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
 
+      habilitySalary: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+      },
+
+      creationDate: {
+        type: DataTypes.DATE,
+      },
+
+      expirationDate: {
+        type: DataTypes.DATE,
+      },
+
+      changeDate: {
+        type: DataTypes.DATE,
+      },
+
       contact: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
+      },
+
+      idEmpresa: {
+        type: DataTypes.UUID,
+        references: {
+          model: "Empresa", // Nombre del modelo que será referenciado
+          key: "id", // Nombre de la columna que es la clave primaria del modelo referenciado
+        },
       },
     },
     { freezeTableName: true, timestamps: false }
@@ -55,19 +81,3 @@ module.exports = (sequelize) => {
 
   return Evento;
 };
-
-// castingDuration: {
-//   type: DataTypes.DATE,
-//   allowNull: false,
-//   defaultValue: twoWeeks(),
-// },
-
-// selectedEventTypes: {
-//   type: DataTypes.ARRAY(DataTypes.STRING),
-//   allowNull: false,
-// },
-
-// Hook de Sequelize para guardar los eventos seleccionados en un array de info.
-// Evento.beforeSave((evento, _options) => {
-//   evento.selectedEventTypes = evento.eventTypes;
-// });

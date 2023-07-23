@@ -1,4 +1,4 @@
-const { Talento } = require("../db");
+const { Talento, TalentoEliminado } = require("../db");
 const { Op } = require("sequelize");
 
 // Función controller que retorna los talentos de la database.
@@ -77,15 +77,30 @@ const getTalentById = async (id) => {
 // Función controller que elimina a un talento de la base de datos.
 const deleteTalent = async (id) => {
   try {
-    const deletedTalent = await Talento.destroy({
-      where: { id },
-    });
+    const talentToDelete = await Talento.findByPk(id);
 
-    if (deletedTalent === 0) {
-      throw new Error("No existe un usuario con ese ID para eliminar.");
+    if (!talentToDelete) {
+      throw new Error(`El Usuario con ID ${id} no existe`);
     }
 
-    return deletedTalent;
+    await TalentoEliminado.create({
+      id: talentToDelete.id,
+      email: talentToDelete.email,
+      name: talentToDelete.name,
+      dni: talentToDelete.dni,
+      password: talentToDelete.password,
+      image: talentToDelete.image,
+      gender: talentToDelete.gender,
+      nationality: talentToDelete.nationality,
+      ubication: talentToDelete.ubication,
+      hability: talentToDelete.hability,
+      weight: talentToDelete.weight,
+      height: talentToDelete.height,
+    });
+
+    await talentToDelete.destroy();
+
+    return talentToDelete;
   } catch (error) {
     throw new Error(error.message);
   }
