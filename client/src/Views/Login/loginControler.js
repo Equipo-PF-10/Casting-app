@@ -7,7 +7,7 @@ export const loginControler = async (email,password) => {
         for (const talent of isTalent) {
             if (talent.email === email && talent.password === password) {
                 access=1;
-                return access;
+                return {access: access, id: talent.id};
             }
         }
         //busqueda como empresa
@@ -15,7 +15,7 @@ export const loginControler = async (email,password) => {
         for (const company of isCompany) {
             if (company.email === email && company.password === password) {
                 access=2;
-                return access;
+                return {access: access, id: company.id};
             }
         }
      } catch (error) {
