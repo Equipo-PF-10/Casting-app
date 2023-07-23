@@ -43,13 +43,27 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Empresa, Evento, Talento, Mensaje, EmpresaDeshabilitada, EmpresaFavorita } = sequelize.models;
+const {
+  Empresa,
+  Evento,
+  Mensaje,
+  Talento,
+  Postulacion,
+  TalentoEliminado,
+  EventoEliminado,
+  TalentosFavoritos,
+  EmpresaDeshabilitada,
+  EmpresaFavorita
+} = sequelize.models;
+
 
 Empresa.belongsToMany(Talento, { through: "Talento/Empresa" });
 Talento.belongsToMany(Empresa, { through: "Talento/Empresa" });
-
-Empresa.hasMany(Evento); // 1 empresa puede tener muchos eventos
-Evento.belongsTo(Empresa); // 1 evento solo pertenece a una empresa
+Talento.belongsToMany(Postulacion, { through: "Talento/Postulacion" });
+Postulacion.belongsToMany(Talento, { through: "Talento/Postulacion" });
+Empresa.hasMany(Evento);
+Evento.belongsTo(Empresa);
+Evento.hasMany(Postulacion, { foreignKey: "idEvento" });
 
 // Empresa.belongsTo(EmpresaDeshabilitada, { through: "EmpresaDeshabilitada/Empresa" });
 // EmpresaDeshabilitada.belongsTo(Empresa, { through: "Talento/EmpresaDeshabilitada" });
@@ -61,4 +75,4 @@ EmpresaFavorita.belongsToMany(Talento, { through: "Talento/EmpresaFavorita" });
 module.exports = {
   ...sequelize.models,
   conn: sequelize,
- };
+};

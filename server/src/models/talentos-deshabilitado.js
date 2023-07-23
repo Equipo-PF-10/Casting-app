@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "Talento",
+    "TalentoEliminado",
     {
       id: {
         type: DataTypes.UUID,
@@ -62,7 +62,6 @@ module.exports = (sequelize) => {
 
       ubication: {
         type: DataTypes.STRING,
-        
       },
 
       hability: {

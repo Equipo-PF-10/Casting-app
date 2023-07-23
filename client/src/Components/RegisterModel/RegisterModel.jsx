@@ -9,7 +9,7 @@ import Navbar from "../Navbar/Navbar";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //import { useAuth0 } from "@auth0/auth0-react";
-import { clean_error, clean_message_register } from "../../redux/actions";
+import { clean_error } from "../../redux/actions";
 
 export default function RegisterModel() {
   // Ejemplo de cómo obtener el token después de autenticar al usuario con Auth0
@@ -120,34 +120,6 @@ auth.parseHash((err, authResult) => {
     !errExists ? setDisable(true) : setDisable(false);
   }, [errors, isChecked]);
 
-
-let currentToastIdSuccess = null;
-//Evita que se renderice mas de 1 toast
-const mensaje_success_Toast = () => {
-  if (currentToastIdSuccess) {
-    toast.update(currentToastIdSuccess, {
-      render: messageRegistered,
-      autoClose: 5000,
-    });
-  } else {
-    currentToastIdSuccess = toast.success(messageRegistered, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      toastId: "custom-toast-id",
-      style: {
-        marginTop: "120px",
-        width: "400px"
-      }, 
-    });
-  }
-};
-
   let currentToastId = null;
   //Evita que se renderice mas de 1 toast
   const mensaje_error_Toast = () => {
@@ -173,14 +145,12 @@ const mensaje_success_Toast = () => {
         },
       });
     }
-  };
-  //if(currentToastIdSuccess || currentToastId){ navigate('/login') } 
+  }; 
 
   //Mostrar mensajes que me devuelve el back mendiante el Toastify
+  //----- El mensaje success Se renderiza en Login
   if(Object.keys(messageRegistered).length > 0){
-    mensaje_success_Toast();
     navigate('/login');
-    dispatch(clean_message_register(""));
   }
   if(Object.keys(error).length > 0){
     mensaje_error_Toast();

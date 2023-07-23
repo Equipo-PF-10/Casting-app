@@ -28,8 +28,13 @@ const Detail = () => {
           <h4>Humor</h4>
         </div>
       </div>
-      <div className={style.conteinerConectar}>
-        <button className={style.conectar}>Conectar</button>
+      <div className={style.buttonsContainer}>
+        <div className={style.conteinerConectar}>
+          <button className={style.conectar}>Conectar</button>
+        </div>
+        <div className={style.conteinerRechazar}>
+          <button className={style.rechazar}>Rechazar</button>
+        </div>
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
-import { ERROR, REGISTER_MODEL_OR_COMPANY, MODAL_LOGIN } from "./actions.js";
+import { ERROR, REGISTER_MODEL_OR_COMPANY, MODAL_LOGIN, ID_USER } from "./actions.js";
 
 const initialState = {
   models: [],
+  idUser: "",
   messageRegistered: {},
   modalInLogin: false,
   errors: {},
@@ -28,6 +29,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
       break;
+
+    case ID_USER:
+      return {
+        ...state,
+        idUser: payload,
+      };
 
     case ERROR:
       return {

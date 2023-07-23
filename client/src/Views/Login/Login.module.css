@@ -22,7 +22,7 @@
   /*padding: 20px;
   margin: 20px;*/
   width: 500px;
-  height: 500px;
+  height: 550px;
 }
 .imagenLogin {
   background-image: radial-gradient(
@@ -42,7 +42,7 @@
   );
   /*max-width: 400px;*/
   width: 500px;
-  height: 500px;
+  height: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
