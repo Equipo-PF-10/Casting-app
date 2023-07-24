@@ -10,6 +10,8 @@ import {
   GET_ALL_POSTULATIONS,
   GET_TALENT_BY_ID,
   GET_ALL_TALENTS,
+  FILTER_BY_HABILITY,
+  FILTER_BY_GENDER
 } from "./actions.js";
 
 const initialState = {
@@ -94,6 +96,16 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         talentById: payload,
       };
+    case FILTER_BY_HABILITY:
+      return {
+        ...state,
+        talents: payload,
+      }
+    case FILTER_BY_GENDER:
+      return {
+        ...state,
+        talents: payload,
+      }
     case ERROR:
       return {
         ...state,

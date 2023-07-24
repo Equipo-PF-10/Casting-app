@@ -9,6 +9,8 @@ export const GET_COMPANY_BY_ID = "GET_COMPANY_BY_ID";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
 export const GET_ALL_TALENTS = "GET_ALL_TALENTS";
+export const FILTER_BY_HABILITY = "FILTER_BY_HABILITY";
+export const FILTER_BY_GENDER = "FILTER_BY_GENDER";
 import axios from 'axios';
 
 
@@ -188,10 +190,11 @@ export const get_talent_by_id = (id) => {
    };
 }
 
-export const getAllTalents=() => {
+export const getAllTalents= () => {
+   let endpoint = "http://localhost:3001/talents/";
    return async (dispatch) => {
       try {
-         const response = await axios.get("http://localhost:3001/talents/");
+         const response = await axios.get(endpoint);
          return dispatch({
             type: GET_ALL_TALENTS, 
             payload: response.data})
@@ -200,6 +203,67 @@ export const getAllTalents=() => {
            type: "ERROR",
            payload: "¡Ha ocurrido un error al obtener los talentos!",
          });
+      }
+   }
+}
+
+export const filterByTalent = (hability) => {
+   let endpoint = "http://localhost:3001/talents/";
+   return async function(dispatch) {
+      try {
+         const response = await axios.get(endpoint);
+         const data = response.data;
+
+         if(hability === "Todos"){
+         return dispatch({
+            type: FILTER_BY_HABILITY,
+            payload: data
+         });
+      } else {
+         const habilities = data.filter((talent) => 
+         talent.hability && talent.hability.includes(hability)
+         )
+      return dispatch({
+         type: FILTER_BY_HABILITY,
+         payload: habilities
+      })
+      
+      }
+      } catch (error) {
+         return dispatch({
+            type: "ERROR",
+            payload: "¡Ha ocurrido un error al filtrar por talentos!",
+          });
+      }
+   }
+}
+export const filterByGender = (gender) => {
+   let endpoint = "http://localhost:3001/talents/";
+   return async function(dispatch) {
+      try {
+         const response = await axios.get(endpoint);
+         const data = response.data;
+
+         if(gender === "Todos"){
+         return dispatch({
+            type: FILTER_BY_HABILITY,
+            payload: data
+         });
+      } else {
+         const habilities = data.filter((talent) => 
+         talent.gender && talent.gender.includes(gender)
+         )
+      return dispatch({
+         type: FILTER_BY_HABILITY,
+         payload: habilities
+      })
+      
+      }
+      } catch (error) {
+         return dispatch({
+            type: "ERROR",
+            payload: "¡Ha ocurrido un error al filtrar por talentos!",
+          });
       }
    }
 }

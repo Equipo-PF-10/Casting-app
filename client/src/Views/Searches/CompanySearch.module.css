@@ -1,5 +1,7 @@
 .containerG {
   background-color: whitesmoke;
+  margin-top: -20px;
+  height: 100vh;
 }
 
 .secciones{
@@ -34,8 +36,8 @@
 }
 
 .searchFil {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-block: 20px;
+  padding-block: 10px;
 }
 
 .detailCard{
@@ -49,7 +51,7 @@
 
 
 .navLateral{
-  margin-top: -72px;
+  margin-top: -4.4rem;
 }
 
 .pagination{
@@ -79,3 +81,4 @@
 .detail{
   width: 100px;
 }
+

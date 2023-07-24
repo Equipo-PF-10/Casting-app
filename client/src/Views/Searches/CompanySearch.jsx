@@ -74,10 +74,18 @@ const CompanySearch = () => {
     </li>
   ))
 
+  const ubication = talents.map((location) => {
+    return location.ubication
+  })
+
+  const singleLocation = ubication.filter((item, index) => {
+    return ubication.indexOf(item) === index;
+  });
+
   return (
     <div className={style.containerG}>
       <div className={style.searchFil}>
-        <Search/>
+        <Search ubication={singleLocation} setCurrentPage={setCurrentPage}/>
       </div>
       <div className={style.secciones}>
         <div className={style.navLateral}>
