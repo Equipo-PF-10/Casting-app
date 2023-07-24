@@ -4,10 +4,16 @@ import {
   MODAL_LOGIN,
   ID_USER,
   GET_EVENT_BY_ID,
+  GET_ALL_EVENTS,
+  GET_ALL_COMPANIES,
 } from "./actions.js";
 
 const initialState = {
   models: [],
+  allEvents: [],
+  getAllCompanies: [],
+  companiesFiltered: [],
+  eventsFiltered: [],
   eventDetail: {},
   idUser: "",
   messageRegistered: {},
@@ -47,6 +53,18 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         eventDetail: payload,
       };
+    case GET_ALL_EVENTS:
+      return {
+        ...state,
+        eventsFiltered: payload,
+        allEvents: payload,
+      };
+    case GET_ALL_COMPANIES:
+      return {
+        ...state,
+        companiesFiltered: payload,
+        getAllCompanies: payload,
+      }
     case ERROR:
       return {
         ...state,
