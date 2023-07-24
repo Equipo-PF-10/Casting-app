@@ -7,7 +7,7 @@ import Select from "react-select"
 
 const FormEmpresa = () => {
 
-    const URL = "http://localhost:3001/company/register"
+    const URL = "https://casting-app-test-back.onrender.com/company/register"
 
     const optionsindustryMain = [
         { value: 'Actuación', label: 'Actuación' },
