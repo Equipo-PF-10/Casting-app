@@ -2,7 +2,9 @@ export const REGISTER_MODEL_OR_COMPANY = "REGISTER_MODEL_OR_COMPANY";
 export const MODAL_LOGIN = "MODAL_LOGIN";
 export const ERROR = "ERROR";
 export const ID_USER = "ID_USER";
-export const GET_EVENT_BY_ID = "GET_EVENT_BY_ID";
+export const GET_EVENT_BY_ID="GET_EVENT_BY_ID";
+export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
+export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 import axios from 'axios';
 
 
@@ -99,6 +101,34 @@ export const get_event_by_id = (id) => {
          })
       }
    };
- }
+}
+ 
+export const getAllEvents=() => {
+   return async (dispatch) => {
+      try {
+         const response=await axios.get("http://localhost:3001/events");
+         return dispatch({type: GET_ALL_EVENTS, payload: response.data})
+      } catch (error) {
+         return dispatch({
+           type: "ERROR",
+           payload: "¡Ha ocurrido un error al obtener los eventos!",
+         });
+      }
+   }
+}
+
+export const getAllCompanies=() => {
+   return async (dispatch) => {
+      try {
+         const response=await axios.get("http://localhost:3001/companies");
+         return dispatch({type: GET_ALL_COMPANIES, payload: response.data})
+      } catch (error) {
+         return dispatch({
+           type: "ERROR",
+           payload: "¡Ha ocurrido un error al obtener las compañias!",
+         });
+      }
+   }
+}
 
 
