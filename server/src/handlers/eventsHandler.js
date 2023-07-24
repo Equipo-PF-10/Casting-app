@@ -51,22 +51,21 @@ const createEventHandler = async (req, res) => {
   const {
     name,
     image,
-    detail,
     active,
     ubication,
     habilityRequired,
-    habilitySalary,
+    salary,
     shortDescription,
     contact,
     expirationDate,
     idEmpresa,
   } = req.body;
 
-  if (!name || !image || !detail) {
+  if (!name || !image || !shortDescription) {
     res.status(400).send("Faltan datos obligatorios");
   }
 
-  if (detail.length > 130) {
+  if (shortDescription.length > 130) {
     res
       .status(400)
       .send(
@@ -79,11 +78,10 @@ const createEventHandler = async (req, res) => {
     image,
     expirationDate,
     shortDescription,
-    detail,
     active,
     ubication,
     habilityRequired,
-    habilitySalary,
+    salary,
     contact,
     idEmpresa
   );

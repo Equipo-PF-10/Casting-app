@@ -30,10 +30,10 @@ const EventForm = () => {
         date: "",
         ubication: "",
         image: "",
-        description: "",
-        brevDescription: "",
+        shortDescription: "",
         habilityRequired: [],
-        contact: "",
+        salary: "",
+        contact: [],
     }
 
     const [input, setInput] = useState(initialState)
@@ -66,7 +66,7 @@ const EventForm = () => {
     <div>
         <NavBarLateral/>
         <section className={styles.section}>
-            <div>
+            <div className={styles.formSection}>
                 <form action=""  method="POST" onSubmit={hanldeSubmit}>
                 <h1 className={styles.title}>Crea tu Evento</h1>
                     <section className={styles.inputs}>
@@ -101,26 +101,25 @@ const EventForm = () => {
                             </article>     
                             <article className={styles.coolinput}>
                                 <label htmlFor="image" className={styles.text} >Imagen promocional</label>
-                                <input type="file" value={input.image} name="image" id="image" onChange={handleChange}/>
+                                <input type="text" value={input.image} name="image" id="image" onChange={handleChange} placeholder="URL de la imagen del evento"/>
                             </article>        
                             <article className={styles.coolinput}>
                                 <label htmlFor="contact" className={styles.text}>Contacto</label>
-                                <input type="text" id="contact" name="contact" value={input.contact} onChange={handleChange}/>
-                                <p className={error.contact ? styles.error : ""}>{error.contact ? error.contact : null}</p>
+                                <input type="text" id="contact" name="contact" value={input.contact} onChange={handleChange} placeholder="Número de contacto"/>
                             </article>        
                         </div>
                     </section>
                     <section className={styles.inputsCont}>
                         <article className={styles.coolinput}>
                             <label htmlFor="" className={styles.text}>Descripción</label>
-                            <textarea name="description" id="" cols="30" rows="10" value={input.description} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
-                            <p className={error.description ? styles.error : ""}>{error.description ? error.description : null}</p>
+                            <textarea name="shortDescription" id="" cols="30" rows="10" value={input.shortDescription} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
+                            <p className={error.shortDescription ? styles.error : ""}>{error.shortDescription ? error.shortDescription : null}</p>
                         </article>
-                        <article className={styles.coolinput}>
-                            <label htmlFor="brevDescription" className={styles.text}>Descripción Breve</label>
-                            <textarea name="brevDescription" id="brevDescription" cols="30" rows="10" value={input.brevDescription} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
-                            <p className={error.brevDescription ? styles.error : ""}>{error.brevDescription ? error.brevDescription : null}</p>
-                        </article>
+                            <article className={styles.coolinput}>
+                                <label htmlFor="salary" className={styles.text}>Salario</label>
+                                <input type="text" id="salary" name="salary" value={input.salary} onChange={handleChange} placeholder="Salario estimado del evento"/>
+                            </article>  
+
                     </section>
                     <button type="submit" className={styles.btn}>Crear</button>
                 </form>

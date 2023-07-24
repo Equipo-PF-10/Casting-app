@@ -79,26 +79,15 @@ const FormEmpresa = () => {
                         <input type="text" name="name" id="name" value={input.name} onChange={handleChange} required/>
                         <p className={error.name ? Styles.error : ""}>{error.name ? error.name : null}</p>
                     </article>
-
                     <article className={Styles.coolinput}>
                         <label htmlFor="password" className={Styles.text}>Contraseña</label>
                         <input type="password" name="password" id="password" value={input.password} onChange={handleChange} required/>
                         <p className={error.password ? Styles.error : ""}>{error.password ? error.password : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="passwordConfirm" className={Styles.text}>Confirma Contraseña</label>
-                        <input type="password" name="passwordConfirm" id="passwordConfirm" onChange={handleChange} required/>
-                        <p className={error.passwordConfirm ? Styles.error : ""}>{error.passwordConfirm ? error.passwordConfirm: null}</p>
-                    </article>
-                    <article className={Styles.coolinput}>
                         <label htmlFor="email" className={Styles.text}>Email</label>
                         <input type="text" name="email" id="email" value={input.email} onChange={handleChange} required/>
                         <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null}</p>
-                    </article>
-                    <article className={Styles.coolinput}>
-                        <label htmlFor="emailConfirm" className={Styles.text}>Confirmar Email</label>
-                        <input type="text" name="emailConfirm" id="emailConfirm" onChange={handleChange} required/>
-                        <p className={error.emailConfirm ? Styles.error : ""}>{error.emailConfirm ? error.emailConfirm: null}</p>
                     </article>
                     <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Descripción</label>
@@ -137,7 +126,7 @@ const FormEmpresa = () => {
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="logo" className={Styles.text}>Subir Imágen</label>
-                            <input type="file" name="logo" id="logo" value={input.logo} required onChange={handleChange}/>
+                            <input type="text" name="logo" id="logo" value={input.logo} required onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
                                     <label htmlFor="" className={Styles.text}>Orientación artística</label>
