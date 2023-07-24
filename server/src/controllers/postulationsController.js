@@ -1,4 +1,4 @@
-const { Postulacion, Evento } = require("../db");
+const { Postulacion, Evento, TalentoPostulacion } = require("../db");
 
 // Función controller para obtener todas las postulaciones
 const getAllPostulations = async () => {
@@ -7,23 +7,23 @@ const getAllPostulations = async () => {
 };
 
 // Función controller para crear postulaciones
-const createPostulation = async (date, active, status, changeDate, idEvent) => {
+const createPostulation = async (EventoId, TalentoId) => {
   try {
     // Crear la postulación en la base de datos
     const postulacion = await Postulacion.create({
-      date,
-      active,
-      status,
-      changeDate,
+      TalentoId,
+      EventoId,
     });
 
-    // Asociar la postulación al evento correspondiente usando el idEvent recibido
-    const evento = await Evento.findByPk(idEvent);
-    if (!evento) {
-      throw new Error("No se encontró el evento con el id proporcionado.");
-    }
+    const findPostulacion = await Postulacion.findAll({where: {EventoId}})
 
-    await postulacion.setEvento(evento);
+  
+    const PostulacionId = findPostulacion[0].dataValues.id;
+
+    const intermedia = await TalentoPostulacion.create({
+        TalentoId,
+        PostulacionId
+      });
 
     return postulacion;
   } catch (error) {
