@@ -14,12 +14,12 @@ const mainRouter = Router();
 
 mainRouter.use("/talents", talentRouter);
 mainRouter.use("/events", eventRouter);
+mainRouter.use("/companies/favorites", talentsFavoriteRouter);
 mainRouter.use("/companies", companyRouter);
 
 mainRouter.use("/talents/favorites", companyFavoriteRouter);
 //! Esta ruta es para que una empresa pueda agregar talentos favoritos
 //! Esta ruta es para encontrar todos los talentos favoritos de una empresa
-mainRouter.use("/companies/favorites", talentsFavoriteRouter);
 
 
 mainRouter.use("/postulations", postulationRouter);
