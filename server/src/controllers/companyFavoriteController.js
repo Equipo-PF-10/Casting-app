@@ -13,7 +13,7 @@ const addFavoriteCompany = async (talentId, companyId) => {
       throw new Error("Empresa no encontrada.");
     }
     const empresaFavEncontrada = await EmpresaFavorita.create(empresaEncontrada.dataValues);  
-    console.log(empresaFavEncontrada.dataValues.id); 
+    
     const interTalentComp = await TalentoEmpresaFavorita.create({TalentoId: talentId, EmpresaFavoritumId: empresaFavEncontrada.dataValues.id });
     return empresaFavEncontrada;
   } catch (error) {
