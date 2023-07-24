@@ -64,6 +64,7 @@ Talento.belongsToMany(Postulacion, { through: "TalentoPostulacion" });
 Postulacion.belongsToMany(Talento, { through: "TalentoPostulacion" });
 
 
+
 Empresa.belongsToMany(Talento, { through: "Talento/Empresa" });
 Talento.belongsToMany(Empresa, { through: "Talento/Empresa" });
 Talento.belongsToMany(Postulacion, { through: "Talento/Postulacion" });
