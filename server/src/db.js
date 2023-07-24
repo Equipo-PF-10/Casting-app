@@ -57,29 +57,23 @@ const {
   EmpresaFavorita
 } = sequelize.models;
 
+Empresa.belongsToMany(Talento, { through: "TalentoEmpresa" });
+Talento.belongsToMany(Empresa, { through: "TalentoEmpresa" });
 
-Empresa.belongsToMany(Talento, { through: "Talento/Empresa" });
-Talento.belongsToMany(Empresa, { through: "Talento/Empresa" });
-Talento.belongsToMany(Postulacion, { through: "Talento/Postulacion" });
-Postulacion.belongsToMany(Talento, { through: "Talento/Postulacion" });
-Empresa.belongsToMany(TalentosFavoritos, { through: "Empresa/talentoFavorito"  });
-TalentosFavoritos.belongsToMany(Empresa, { through: "Empresa/talentoFavorito"  });
+Talento.belongsToMany(Postulacion, { through: "TalentoPostulacion" });
+Postulacion.belongsToMany(Talento, { through: "TalentoPostulacion" });
+
 Empresa.hasMany(Evento);
 Evento.belongsTo(Empresa);
-Evento.hasMany(Postulacion, { foreignKey: "idEvento" });
 
-
-Postulacion.belongsTo(Evento, { foreignKey: "idEvent" });
-Evento.hasMany(Postulacion, { as: "idEvent" });
+Postulacion.belongsTo(Evento, { foreignKey: "EventoId" });
+Evento.hasMany(Postulacion, { as: "EventoId" });
 
 Evento.belongsTo(Empresa, { foreignKey: "idEmpresa" });
 Empresa.hasMany(Evento, { as: "idEmpresa" });
 
-// Empresa.belongsTo(EmpresaDeshabilitada, { through: "EmpresaDeshabilitada/Empresa" });
-// EmpresaDeshabilitada.belongsTo(Empresa, { through: "Talento/EmpresaDeshabilitada" });
-
-Talento.belongsToMany(EmpresaFavorita, { through: "Talento/EmpresaFavorita" });
-EmpresaFavorita.belongsToMany(Talento, { through: "Talento/EmpresaFavorita" });
+Talento.belongsToMany(EmpresaFavorita, { through: "TalentoEmpresaFavorita" });
+EmpresaFavorita.belongsToMany(Talento, { through: "TalentoEmpresaFavorita" });
 
 module.exports = {
   ...sequelize.models,
