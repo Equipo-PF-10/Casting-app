@@ -1,9 +1,53 @@
 import style from "./Search.module.css";
-import { useSelector } from "react-redux";
+import { filterByTalent, filterByGender } from "../../../redux/actions";
+import {useDispatch} from "react-redux";
 
-const Search = () => {
+const Search = (props) => {
 
-  const talents = useSelector((state) => state.talents);
+  const {ubication, setCurrentPage} = props;
+
+  const dispatch = useDispatch()
+  
+
+  // Habilidades
+
+  const optionshabilityRequired = [
+    { value: 'Actuación', label: 'Actuación' },
+    { value: 'Animador/a', label: 'Animador/a' },
+    { value: 'Bailarín/a', label: 'Bailarín/a' },
+    { value: 'Blogger', label: 'Blogger' },
+    { value: 'Cantante', label: 'Cantante' },
+    { value: 'DJ', label: 'DJ' },
+    { value: 'Influencer', label: 'Influencer' },
+    { value: 'Locutor/a', label: 'Locutor/a' },
+    { value: 'Mago/a', label: 'Mago/a' },
+    { value: 'Músico/a', label: 'Músico/a' },
+    { value: 'Modelo', label: 'Modelo' },
+    { value: 'Presentador/a', label: 'Presentador/a' },
+    { value: 'Promotor/a', label: 'Promotor/a' },
+  ];
+
+  const optionTags = optionshabilityRequired.map((item) => {
+    return <option value={item.value} key={item.value}>{item.label}</option>;
+  });
+
+  // Ubicaciones
+  
+  const handleHabilities = (event) => {
+    dispatch(filterByTalent(event.target.value))
+    setCurrentPage(1)
+  }
+
+  const locationTags = ubication.map((item, index) => (
+    <option key={index} value={item}>{item}</option>
+  ))
+
+  // Género
+
+  const handleGenders = (event) => {
+    dispatch(filterByGender(event.target.value))
+    setCurrentPage(1)
+  }
 
   return (
     <div className={style.containerGe}>
@@ -23,17 +67,23 @@ const Search = () => {
         </button>
       </div>
       {/*selects filtros y ordenamientos*/}
-      <select className={style.selectFilter}>
-        <option value="">Talento</option>
+      <select className={style.selectFilter}  onChange={handleHabilities}>
+        <option value="Todos">Talentos</option>
+        {optionTags}
       </select>
       <select className={style.selectFilter}>
         <option value="">Edad</option>
       </select>
-      <select className={style.selectFilter}>
-        <option value="">Genero</option>
+      <select className={style.selectFilter}  onChange={handleGenders}>
+        <option value="Todos">Generos</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+        <option value="Otro">Otro</option>
       </select>
       <select className={style.selectFilter}>
-        <option value="">Nacionalidad</option>
+        <option value="">Ubicación</option>
+        <option value="Todos">Todas</option>
+        {locationTags}
       </select>
       {/*BOTON RECARGAR*/}
       <div>
