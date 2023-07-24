@@ -13,7 +13,7 @@ import axios from 'axios';
 
 
 export const register_model = (payload) => {
-   let endpoint = "http://localhost:3001/talents/register";
+   let endpoint = "https://casting-app-test-back.onrender.com/talents/register";
    //  let endpoint = "postgres.render.com/casting_app_db";
    //https://casting-app-server.onrender.com/talents/register 
     return async (dispatch) => {
@@ -33,7 +33,7 @@ export const register_model = (payload) => {
     };
  }
 export const register_company = (payload) => {
-   let endpoint = "http://localhost:3001/companies/register";
+   let endpoint = "https://casting-app-test-back.onrender.com/companies/register";
     return async (dispatch) => {
        try {
           const response = await axios.post(endpoint, payload);
@@ -88,7 +88,7 @@ export const id_user = (payload) => {
 }
 
 export const get_company_by_id = (id) => {
-   let endpoint = `http://localhost:3001/companies/${id}`; 
+   let endpoint = `https://casting-app-test-back.onrender.com/companies/${id}`; 
    return async (dispatch) => {
       try {
          const { data } = await axios.get(endpoint);
@@ -108,7 +108,7 @@ export const get_company_by_id = (id) => {
 }
 
 export const get_event_by_id = (id) => {
-   let endpoint = `http://localhost:3001/events/${id}`; 
+   let endpoint = `https://casting-app-test-back.onrender.com/events/${id}`; 
    return async (dispatch) => {
       try {
          const { data } = await axios.get(endpoint);
@@ -130,7 +130,7 @@ export const get_event_by_id = (id) => {
 export const getAllEvents=() => {
    return async (dispatch) => {
       try {
-         const response=await axios.get("http://localhost:3001/events");
+         const response=await axios.get("https://casting-app-test-back.onrender.com/events");
          return dispatch({type: GET_ALL_EVENTS, payload: response.data})
       } catch (error) {
          return dispatch({
@@ -144,7 +144,7 @@ export const getAllEvents=() => {
 export const getAllCompanies=() => {
    return async (dispatch) => {
       try {
-         const response=await axios.get("http://localhost:3001/companies");
+         const response=await axios.get("https://casting-app-test-back.onrender.com/companies");
          return dispatch({type: GET_ALL_COMPANIES, payload: response.data})
       } catch (error) {
          return dispatch({
@@ -158,7 +158,7 @@ export const getAllCompanies=() => {
 export const get_all_postulations=(pk) => {
    return async (dispatch) => {
       try {
-         const response=await axios.get(`http://localhost:3001/postulations/${pk}`);
+         const response=await axios.get(`https://casting-app-test-back.onrender.com/postulations/${pk}`);
          console.log(response.data);
          return dispatch({type: GET_ALL_POSTULATIONS, payload: response.data})
       } catch (error) {
@@ -171,7 +171,7 @@ export const get_all_postulations=(pk) => {
 }
 
 export const get_talent_by_id = (id) => {
-   let endpoint = `http://localhost:3001/talents/${id}`; 
+   let endpoint = `https://casting-app-test-back.onrender.com/talents/${id}`; 
    return async (dispatch) => {
       try {
          const { data } = await axios.get(endpoint);
@@ -191,7 +191,7 @@ export const get_talent_by_id = (id) => {
 export const getAllTalents=() => {
    return async (dispatch) => {
       try {
-         const response = await axios.get("http://localhost:3001/talents/");
+         const response = await axios.get("https://casting-app-test-back.onrender.com/talents/");
          return dispatch({
             type: GET_ALL_TALENTS, 
             payload: response.data})
