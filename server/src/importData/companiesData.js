@@ -3,7 +3,7 @@
 ////////////////////////
 const axios = require('axios');
 const { Empresa } = require('../db');
-const response = require ("../../utilsDataApi/api.json");
+const response = require ("../../utilsDataApi/api2.json");
 
 const getCompaniesData = async () => {
   try {
@@ -20,7 +20,9 @@ const getCompaniesData = async () => {
         comp.logo = company.logo,
         comp.domain = company.domain,
         comp.phoneNumber = company.phoneNumber,
-        comp.descriptionShort = company.descriptionShort[0],
+        comp.descriptionShort = company.descriptionShort, 
+        comp.description = company.description,
+        comp.industryMain = company.industryMain,
         comp.instagram = company.socialNetworks.hasOwnProperty("instagram")?company.socialNetworks["instagram"]:null,  
         comp.facebook = company.socialNetworks.hasOwnProperty("facebook")?company.socialNetworks["facebook"]:null,  
         comp.twitter = company.socialNetworks.hasOwnProperty("twitter")?company.socialNetworks["twitter"]:null,  
@@ -30,7 +32,8 @@ const getCompaniesData = async () => {
         comp.password = `${nameParaMail}${company.id}`,
         companies.push(comp)
       }); 
-    
+
+         
     const savedEmpresas = await Empresa.bulkCreate(companies);
   } catch (error) {
     console.error('Error en getCompaniesData', error);

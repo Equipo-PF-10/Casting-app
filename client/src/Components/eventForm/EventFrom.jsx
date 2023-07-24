@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Select from "react-select"
+import Select from "react-select";
 import styles from "./EventForm.module.css";
 import validation from "./validation";
 import axios from "axios";

@@ -40,12 +40,16 @@ export default function validationEmpresas(input){
         error.emailConfirm = "Deben ser iguales"
     }
 
-    if(!input.location){
-        error.location = "Debe ingresar una ubicación"
+    if(!input.country){
+        error.country = "Debe ingresar una ubicación"
     }
 
     if(!input.description){
         error.description = "Debe ingresar una descripción"
+    }
+
+    if(input.industryMain.length === 0){
+        error.industryMain = "Debe seleccionar una o más industrias"
     }
 
 

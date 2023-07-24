@@ -22,7 +22,7 @@
   /*padding: 20px;
   margin: 20px;*/
   width: 500px;
-  height: 500px;
+  height: 550px;
 }
 .imagenLogin {
   background-image: radial-gradient(
@@ -42,7 +42,7 @@
   );
   /*max-width: 400px;*/
   width: 500px;
-  height: 500px;
+  height: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,6 +196,13 @@
 }
 
 .inputContainer input[type="text"].input {
+  padding: 11px 10px;
+  font-size: 0.9rem;
+  border: 2px #429283 solid;
+  border-radius: 5px;
+  background: whitesmoke;
+}
+.inputContainer input[type="password"].input {
   padding: 11px 10px;
   font-size: 0.9rem;
   border: 2px #429283 solid;

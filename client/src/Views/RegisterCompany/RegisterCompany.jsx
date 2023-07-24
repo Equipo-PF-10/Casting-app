@@ -16,13 +16,11 @@ export default function RegisterCompany() {
   //const { loginWithRedirect } = useAuth0();
 
   const [input, setInput] = useState({
-    name: "",
     email: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({
-    name: "",
     email: "",
     password: "",
   });
