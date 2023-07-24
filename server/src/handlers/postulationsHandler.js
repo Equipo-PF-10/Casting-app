@@ -3,6 +3,7 @@ const {
   createPostulation,
   getPostulationById,
   deletePost,
+  getPostulationByfk
 } = require("../controllers/postulationsController");
 
 // Función handler para obtener todas las postulaciones
@@ -54,9 +55,22 @@ const deleteByIdHandler = async (req, res) => {
   }
 };
 
+const getByFkHandler = async (req, res) => {
+  const { fk } = req.params;
+
+  try {
+    const evento = await getPostulationByfk(fk);
+
+    res.status(200).json({evento});
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   getAllPostHandler,
   createPostHandler,
   getByIdHandler,
   deleteByIdHandler,
+  getByFkHandler
 };

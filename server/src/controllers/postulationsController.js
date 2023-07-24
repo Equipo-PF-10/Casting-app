@@ -61,9 +61,35 @@ const deletePost = async (id) => {
   }
 };
 
+const getPostulationByfk = async (fk) => {
+  const postulacion = await Postulacion.findAll({where: {EventoId:fk}});
+
+  if (!postulacion) {
+    throw new Error(`La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`);
+  }
+  const id = postulacion[0].dataValues.id;
+  const allPostulantes = await TalentoPostulacion.findAll({where:{PostulacionId:id} })
+  //console.log(allPostulantes[0].dataValues.TalentoId)
+
+  const postulantesIds=[];
+  
+  if (allPostulantes.length>0){
+    
+    for (const key in allPostulantes) {
+
+      postulantesIds.push(allPostulantes[key].dataValues.TalentoId)
+    }
+
+  }else throw new Error(`La postulación con ID del evento ${fk} no cuenta con postulantes aún.`);
+
+  return postulantesIds;
+};
+
+
 module.exports = {
   getAllPostulations,
   createPostulation,
   getPostulationById,
   deletePost,
+  getPostulationByfk
 };
