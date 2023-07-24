@@ -6,6 +6,7 @@ import {
   GET_EVENT_BY_ID,
   GET_ALL_EVENTS,
   GET_ALL_COMPANIES,
+  GET_COMPANY_BY_ID
 } from "./actions.js";
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   allEvents: [],
   getAllCompanies: [],
   companiesFiltered: [],
+  companyDetail: {},
   eventsFiltered: [],
   eventDetail: {},
   idUser: "",
@@ -52,6 +54,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         eventDetail: payload,
+      };
+    case GET_COMPANY_BY_ID:
+      return {
+        ...state,
+        companyDetail: payload,
       };
     case GET_ALL_EVENTS:
       return {
