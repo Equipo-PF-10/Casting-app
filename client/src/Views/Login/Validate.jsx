@@ -10,7 +10,7 @@ const validate=(input) => {
   if (input.email.length > 60) errors.email = "¡No ingrese mas de 60 caracteres!";
 
   // Validacion de Password
-  if (input.password.length === 0) errors.password = "¡Debe ingresar una contraseña!";
+  if (!input.password) errors.password = "¡Debe ingresar una contraseña!";
   
   return errors;
 };
