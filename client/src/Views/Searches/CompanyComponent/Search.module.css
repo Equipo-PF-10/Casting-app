@@ -60,9 +60,10 @@
 
 /*selects button*/
 .selectFilter{
-  width: auto;
+  width: 8rem;
   height: 30px;
   border: 1px solid #4B31A1;
+  padding-inline: 10px;
   border-radius: 45px;
   transition: all 0.3s;
   cursor: pointer;
@@ -72,6 +73,10 @@
   font-family: 'Montserrat', sans-serif;
   box-shadow: rgba(0, 0, 0, 0.1) 3px 8px 12px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 2px inset;
+}
+
+.selectFilter option{
+  padding-inline: 10px;
 }
 
 .selectFilter:hover {

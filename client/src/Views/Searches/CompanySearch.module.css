@@ -1,5 +1,5 @@
 .containerG {
-  background-color: rgb(255, 255, 255);
+  background-color: whitesmoke;
 }
 
 .secciones{
@@ -16,8 +16,21 @@
 }
 
 .cards {
-  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-inline: 4rem;
+  align-items: center;
   float: left;
+  gap: 2rem;
+  list-style: none;
+}
+
+.cards li{
+  transition: 0.5s;
+}
+
+.cards li:hover{
+  transform: scale(1.02);
 }
 
 .searchFil {
@@ -30,9 +43,39 @@
   margin-top: -50px;
   margin-right: 30px;
   margin-left: -40px;
+  width: 200px;
   /*position: fixed;*/
 }
 
+
 .navLateral{
   margin-top: -72px;
+}
+
+.pagination{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
+  margin-top: 5px;
+}
+
+.pagination li{
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.pagination li:hover{
+  color: #4B31A1;
+  transform: scale(1.1);
+}
+
+.active{
+  color: #4B31A1;
+  transform: scale(1.1);
+}
+
+.detail{
+  width: 100px;
 }

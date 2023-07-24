@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Card from "./CompanyComponent/Card";
 import style from "./CompanySearch.module.css";
 import Search from "./CompanyComponent/Search";
@@ -8,38 +8,49 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { get_all_postulations } from "../../redux/actions";
 import { get_talent_by_id } from "../../redux/actions";
+import { getAllTalents } from "../../redux/actions";
 
 const CompanySearch = () => {
-  //const {id_event} = useParams();
+  
+//  const idEvent = useParams();
   const dispatch = useDispatch();
 
   const postulations = useSelector((state) => state.postulationsByEvent);
-  // let postulaciones =
-  // [
-  //   "6b5b015e-add8-4616-b913-94ce9681bf3b",
-  //   "58ac00c1-dbbd-44ed-88ce-39cc8cd3747c",
-  //   "ffadbcb7-5a67-4157-86f9-13e1ecf6dbd4",
-  //   "afa8885a-b23e-4f5a-90e7-2a613f370061"
-  // ];
 
+  const talents = useSelector((state) => state.talents);
+
+  // Paginación
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const talentsPerPage = 8;
+
+  const lastIndex = currentPage * talentsPerPage;
+  const firstIndex = lastIndex - talentsPerPage;
+  const currentTalents = talents.slice(firstIndex, lastIndex);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const pageNumbers = Math.ceil(talents.length / talentsPerPage);
+  const pagination = Array.from({ length: pageNumbers }, (_, index) => index + 1);
+
+  //Dispatch
   
-  const talent = useSelector((state) => state.talentById);
-  
-  //console.log(postulaciones[0]); ////
-  
-  let id = "56eeca36-8b43-459b-969f-07713fb74e87";
   useEffect(() => {
-    dispatch(get_all_postulations(id));
-  }, [dispatch]);
+    dispatch(get_all_postulations(postulations));
+  }, [dispatch, postulations]);
   
   
   //Obtener el primer postulante, cuando se monta el componente y mostrarlo en el detail
   useEffect(() => {
-    dispatch(get_talent_by_id("6b5b015e-add8-4616-b913-94ce9681bf3b"));
-  }, []);
+    dispatch(get_talent_by_id());
+  }, [dispatch]);
   
-  console.log("postulaciones: " + postulations);
-  console.log(talent);
+  useEffect(() => {
+    dispatch(getAllTalents());
+  }, [dispatch])
+
   /*
   //Obtener todos los talentos a partir del arreglo de postulaciones
   let all_postulations = [];
@@ -48,10 +59,25 @@ const CompanySearch = () => {
   }, []);
   */
 
+  //Map Talentos
+
+  const listedTalents = currentTalents.map((talento) => (
+    <li key={talento.id}>
+      <Card
+      id={talento.id}
+      name={talento.name}
+      image={talento.image}
+      gender={talento.gender}
+      hability={talento.hability}
+
+      />
+    </li>
+  ))
+
   return (
     <div className={style.containerG}>
       <div className={style.searchFil}>
-        <Search />
+        <Search/>
       </div>
       <div className={style.secciones}>
         <div className={style.navLateral}>
@@ -59,15 +85,24 @@ const CompanySearch = () => {
         </div>
         <div className={style.grid}>
           <div className={style.cards}>
-            {/* {postulations?.map((postulation, index) => {
-              <Card postulation={postulation} key={index} />;
-            })} */}
+            {listedTalents}
           </div>
         </div>
         <div className={style.detailCard}>
-          <Detail talent={talent} />
+          <Detail talent={talents} className={style.detail}/>
         </div>
       </div>
+       <ul className={style.pagination}>
+        {pagination.map((number) => (
+          <li
+            key={number}
+            className={number === currentPage ? style.active : ""}
+            onClick={() => paginate(number)}
+          >
+            {number}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
