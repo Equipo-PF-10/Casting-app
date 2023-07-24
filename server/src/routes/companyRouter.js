@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { handleSearchByLocation, handleCreateCompany, handleAllCompanies, handleUpdateCompany, handleGetById, deleteCompanyHandler} = require("../handlers/companiesHandler");
+const { handleSearchByLocation, handleCreateCompany, handleAllCompanies, handleUpdateCompany, handleGetById, deleteCompanyHandler } = require("../handlers/companiesHandler");
 
 const companyRouter = Router();
 
