@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "Postulacion",
+    "Contactado",
     {
       id: {
         type: DataTypes.UUID,
@@ -12,7 +12,6 @@ module.exports = (sequelize) => {
 
       date: {
         type: DataTypes.DATE,
-        defaultValue: new Date(),
       },
 
       changeDate: {
@@ -25,8 +24,16 @@ module.exports = (sequelize) => {
       },
 
       status: {
-        type: DataTypes.ENUM("Contactado", "Rechazado", "Pendiente"),
-        defaultValue: "Pendiente",
+        type: DataTypes.ENUM("Contratado", "Rechazado", "Contactado"),
+        defaultValue: "Contactado",
+      },
+
+      idEvento: {
+        type: DataTypes.UUID,
+        references: {
+          model: "Evento", // Nombre del modelo que será referenciado
+          key: "id", // Nombre de la columna que es la clave primaria del modelo referenciado
+        },
       },
     },
     { freezeTableName: true, timestamps: false }

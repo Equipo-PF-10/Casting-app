@@ -1,4 +1,4 @@
-const app = require('./src/app'); //
+const app = require("./src/app"); //
 const { conn } = require("./src/db");
 const { PORT } = process.env;
 const getApiTalents = require("./src/importData/talentsData");
@@ -13,5 +13,5 @@ conn.sync({ force: true }).then(() => {
   });
   getCompaniesData();
   getApiTalents();
-  getEvents();
+  // getEvents();
 });

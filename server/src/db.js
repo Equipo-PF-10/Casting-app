@@ -52,6 +52,7 @@ const {
   TalentoEliminado,
   EventoEliminado,
   TalentosFavoritos,
+  Contactado,
   EmpresaDeshabilitada,
   EmpresaFavorita
 } = sequelize.models;
@@ -65,12 +66,18 @@ Empresa.hasMany(Evento);
 Evento.belongsTo(Empresa);
 Evento.hasMany(Postulacion, { foreignKey: "idEvento" });
 
+
+Postulacion.belongsTo(Evento, { foreignKey: "idEvent" });
+Evento.hasMany(Postulacion, { as: "idEvent" });
+
+Evento.belongsTo(Empresa, { foreignKey: "idEmpresa" });
+Empresa.hasMany(Evento, { as: "idEmpresa" });
+
 // Empresa.belongsTo(EmpresaDeshabilitada, { through: "EmpresaDeshabilitada/Empresa" });
 // EmpresaDeshabilitada.belongsTo(Empresa, { through: "Talento/EmpresaDeshabilitada" });
 
 Talento.belongsToMany(EmpresaFavorita, { through: "Talento/EmpresaFavorita" });
 EmpresaFavorita.belongsToMany(Talento, { through: "Talento/EmpresaFavorita" });
-
 
 module.exports = {
   ...sequelize.models,
