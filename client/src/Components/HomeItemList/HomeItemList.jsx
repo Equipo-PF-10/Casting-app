@@ -5,11 +5,11 @@ const HomeItemList = (props) => {
   return (
     <div className={styles.container}>
         <h1 className={styles.text}>{props.title}</h1>
-        <HomeItem title="Title" />
-        <HomeItem title="Title" />
-        <HomeItem title="Title" />
-        <HomeItem title="Title" />
-        <HomeItem title="Title" />
+        <HomeItem title={props.type === "talent" ? "Deporte" : "Aleksej Urošević"} />
+        <HomeItem title={props.type === "talent" ? "Humor" : "Simon Gagnon"} />
+        <HomeItem title={props.type === "talent" ? "Arte" : "Ronnie Mccoy"} />
+        <HomeItem title={props.type === "talent" ? "Baile" : "Carmelo Serrano"} />
+        <HomeItem title={props.type === "talent" ? "Magia" : "Jasmine Harris"} />
     </div>
   );
 };

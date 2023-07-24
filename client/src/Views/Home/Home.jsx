@@ -13,8 +13,11 @@ import { connect, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getAllEvents } from '../../redux/actions.js';
+import { useNavigate } from 'react-router-dom';
+
 
 const Home = (props) => {
+  const navigate = useNavigate();
   const dispatch=useDispatch();
   const [user, setUser] = useState({});
 
@@ -37,6 +40,9 @@ const Home = (props) => {
       <HomeSearchBar
         url={props.type === "talent" ? "model/search" : "company/search"}
       />
+      {props.type !== "talent" ? 
+        <button onClick={() => {navigate("/company/create")}} className={styles.navButton}>Add Event</button>
+      : null}
       <div className={styles.container}>
         {props.type === "talent" ?
           <HomeProfileCard
@@ -70,7 +76,9 @@ const Home = (props) => {
         />
         <HomeItemList title={
           props.type === "talent" ? "Tus Postulaciones" : "Tus Favoritos"
-        }/>
+          }
+          type={props.type}
+        />
         {
           props.type === "talent" ? 
           <SolicitudesDeEmpresas /> : <ChartsComponent />
