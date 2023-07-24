@@ -1,0 +1,198 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.containerGeneral {
+  background-color: rgb(255, 255, 255);
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+/*carta con foto y descripcion*/
+.cardContainer {
+  background-image: linear-gradient(
+    to bottom,
+    #d1d1d1,
+    #c3cbdd,
+    #a5cae6,
+    #76cbe5,
+    #3bccd5,
+    #1dc9c7,
+    #00c6b5,
+    #00c2a2,
+    #00bd9e,
+    #00b89a,
+    #00b496,
+    #00af92
+  );
+  width: 500px;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 20px;
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+}
+
+.image {
+  background-color: #a3a3a3;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  /*margin-top: 20px;*/
+  margin-bottom: 50px;
+}
+
+.textoCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.nombre {
+  margin-bottom: 30px;
+}
+
+/*carta de orientacion*/
+.orientacionCard {
+  width: 500px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+}
+
+.orientacionTexto {
+  margin-top: -50px;
+  font-weight: 700;
+}
+
+.habilidades {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.habilidad {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 20px;
+  background-color: #00c9a7;
+  border-radius: 20px;
+}
+
+.habilidad h4 {
+  color: whitesmoke;
+}
+
+/*carta de imagenes*/
+.imagenesCard {
+  background-color: #00c9a7;
+  width: 500px;
+  height: 600px;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+}
+
+/*carta de proyectos*/
+.proyectosCard {
+  width: 600px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+  padding-left: 30px;
+}
+
+.textoProyectos h3 {
+  /*margin-top: -160px;*/
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.pe {
+  margin-left: 30px;
+}
+
+/*carta de trabajos postulados*/
+.trabajosPostulados {
+  width: 600px;
+  height: 500px;
+  background-color: #7e7193;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+  padding-left: 30px;
+}
+
+.tituloTrabajos {
+  /*margin-top: -200px;*/
+  font-weight: 700;
+  color: whitesmoke;
+}
+
+.textoTrab {
+  margin-left: 30px;
+  margin-top: 30px;
+  color: whitesmoke;
+}
+
+/*carta de contacto*/
+.cardContactos {
+  width: 600px;
+  height: auto;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+  padding-left: 30px;
+}
+
+.contactos {
+  margin-bottom: 30px;
+}
+
+.svgIcono {
+  margin-right: 30px;
+}
+
+.svgIconoInst {
+  margin-right: 21px;
+}
