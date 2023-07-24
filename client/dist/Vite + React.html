@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:5173/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="module">
+import RefreshRuntime from "/@react-refresh"
+RefreshRuntime.injectIntoGlobalHook(window)
+window.$RefreshReg$ = () => {}
+window.$RefreshSig$ = () => (type) => type
+window.__vite_plugin_react_preamble_installed__ = true
+</script>
+
+    <script type="module" src="./Vite + React_files/client"></script>
+
+    
+    <link rel="icon" type="image/svg+xml" href="http://localhost:5173/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite + React</title>
+    <link href="./Vite + React_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style type="text/css" data-vite-dev-id="C:/Users/Janus/OneDrive/Escritorio/Casting-app/client/src/App.css"></style><style type="text/css" data-vite-dev-id="C:/Users/Janus/OneDrive/Escritorio/Casting-app/client/src/Components/Adss/AddsModule.css">.anuncio {
+    display:inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(227, 227, 227);
+    border-radius: 15px;
+    height: 40vh;
+    width: 16vw;
+    margin-top: 0.5vw;
+    margin-left: 2vH;
+    margin-right: 2vH;
+}
+.imagen-container,
+.info-container {
+    border:thin;
+    border-style: solid;
+    border-color: var(--color-alerta);
+    width: 16vw;
+    height: 19vh;
+}
+/* .resumen,
+.requeridos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border:thin;
+    border-style: solid;
+    border-color: var(--color-primario);
+    width: 10vw;
+    height: 20vh;
+
+}*/
+.postularte-button {
+    margin: 0;
+    height: 3vh;
+    width: 16vw;
+    border-radius: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/Janus/OneDrive/Escritorio/Casting-app/client/src/Components/Navbar/NavbarModule.css">  html {
+    box-sizing: border-box;
+  }
+  
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  nav {
+    background-color: var(--color-fondo);
+    box-shadow: 0px 2px var(--color-secundario);
+    width: 100%;
+    height: 13vh;
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+  }
+  nav section {
+    flex-wrap: wrap;
+    width: 60vw;
+    height: 13vH;
+  }
+  .logo-container,
+  .dropdown-container {
+    width: 10vw;
+    height: 13vH;
+  }
+  nav h1 {
+    display: inline;
+    position: relative;
+    top: 4vh;
+    left: -10vw;
+  }
+  nav button {
+    height: 3vh;
+    background-color:var(--color-fondo);
+    border-top: 1px;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-style: solid;
+    border-color: #DBCCF3;
+    border-radius: 5px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    margin-right: 2px;
+    width: 90px;
+  }
+  nav li{
+    list-style-type: none;
+  }
+  .dropdown {
+    margin-top: 1vh;
+    list-style-type: none;
+    color: var(--color-secundario);
+    font-weight: bold;
+    border-top: 1px;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-style: solid;
+    border-color: #DBCCF3;
+    border-radius: 70px;
+  }
+  nav a {
+    color: var(--color-secundario);
+    font-weight: bold;
+    text-decoration: none;
+  }
+.imagen-dorpdown {
+  width: 5vw;
+  height: 5vw;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/Janus/OneDrive/Escritorio/Casting-app/client/src/Views/Landing/LandingModule.css">  body {
+    margin: 0;
+    color: #608080;
+  }
+  
+  html {
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+  }
+  
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  main {
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  section {
+    height: 43vh;
+    text-align: center;
+  }
+/*! div introducción */
+  .introduccion,
+  .login {
+    width: 40vw;
+    display: inline-flex;
+    padding-left: 1vw;
+  }
+  .introduccion img {
+    width: 25vw;
+    height: 43vh;
+  }
+  .introduccion b {
+    color: var(--color-primario);
+  }
+  .introduccion p {
+    font-size: 2.9vw;
+    text-align: right;
+    padding-top: 4.3vw;
+  }
+/*! div login */  
+  .login img {
+    width: 17vw;
+    height: 17vw;
+  }
+  .login button {
+    top: 1vh;
+    margin: 0;
+    width: 10vw;
+  }
+  .login a{
+    color: var(--color-fondo);
+    text-decoration: none;
+  }
+  .login-talento,
+  .login-empresa {
+    background-color: var(--color-fondo);
+    width: 18vw;
+    height: 20vw;
+    border-radius: 15px;
+    box-shadow: 3px 5px lightgray;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 1vw;
+  }
+  .anuncios,
+  .blog, 
+  .contacto {
+    background-color: var(--color-fondo);
+  }
+  
+  .contacto p {
+    font-size: 35px;
+    padding-top: 1vw;
+  }
+  .contacto b {
+    color: var(--color-primario);
+  }
+  .contacto form {
+    background-color: rgb(227,227,227);
+    display: inline-block;
+    width: 23vw;
+    height: 15VW;
+    padding-top: 3px;
+    border-radius: 15px;
+    /* box-shadow: 2px 2px var(--color-primario); */
+    box-shadow: 3px 2px gray;
+  }
+  .contacto form input[type="text"]{
+    width: 20vw;
+    text-align: center;
+  }
+  .input-comentario {
+    width: 20vw;
+    height: 5vw;
+    text-align: start;
+  }
+  .paginado-button{
+    width: 2.5vw;
+  }</style><style type="text/css" data-vite-dev-id="C:/Users/Janus/OneDrive/Escritorio/Casting-app/client/src/Components/Login/Login.module.css">._container_1iuju_1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: rgb(227, 227, 227);
+  margin-top: 50px;
+}
+
+._containerImg_1iuju_21 {
+  display: flex;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+._login_1iuju_33 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*padding: 20px;
+  margin: 20px;*/
+  width: 500px;
+  height: 500px;
+}
+._imagenLogin_1iuju_53 {
+  background-image: radial-gradient(
+    circle,
+    #d1d1d1,
+    #c3cbdd,
+    #a5cae6,
+    #76cbe5,
+    #3bccd5,
+    #1dc9c7,
+    #00c6b5,
+    #00c2a2,
+    #00bd9e,
+    #00b89a,
+    #00b496,
+    #00af92
+  );
+  /*max-width: 400px;*/
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 20px 20px 0px;
+}
+._svgImagen_1iuju_101 {
+  width: 350px;
+}
+._logo_1iuju_107 {
+  color: #429283;
+  margin-bottom: 10px;
+}
+
+._formContainer_1iuju_117 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+._loginRegistro_1iuju_129 {
+  color: #429283;
+}
+
+/*BOTON GOOGLE*/
+._buttonGoogle_1iuju_139 {
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  height: 30px;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.8rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  gap: 0.75rem;
+  color: rgb(65, 63, 63);
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  margin-bottom: 20px;
+}
+
+._buttonGoogle_1iuju_139 svg {
+  height: 15px;
+}
+
+._buttonGoogle_1iuju_139:hover {
+  transform: scale(1.02);
+}
+
+/*BOTON ENVIAR*/
+._enviarButton_1iuju_203 {
+  width: 250px;
+  height: 30px;
+  appearance: none;
+  background-color: #4b31a1;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 16px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  /*padding: 6px 16px;*/
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+  margin-top: 20px;
+  margin-bottom: -5px;
+}
+
+._enviarButton_1iuju_203:hover {
+  background-color: #877aae;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+._enviarButton_1iuju_203:disabled {
+  background-color: #fafbfc;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959da5;
+  cursor: default;
+}
+
+._enviarButton_1iuju_203:active {
+  background-color: #edeff2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+._enviarButton_1iuju_203:focus {
+  outline: 1px transparent;
+}
+
+._enviarButton_1iuju_203:before {
+  display: none;
+}
+
+._enviarButton_1iuju_203:-webkit-details-marker {
+  display: none;
+}
+
+._buttonMantener_1iuju_329 {
+  display: flex;
+  margin-top: 5px;
+}
+
+._mantener_1iuju_339 {
+  margin-left: 10px;
+  color: #849ba2;
+  font-size: small;
+}
+
+/*INPUTS*/
+._inputContainer_1iuju_353 {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: static;
+  width: 255px;
+}
+
+._inputContainer_1iuju_353 label._text_1iuju_369 {
+  font-size: 0.75rem;
+  color: #429283;
+  font-weight: 700;
+  position: relative;
+  top: 0.5rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: whitesmoke;
+  width: fit-content;
+}
+
+._inputContainer_1iuju_353 input[type="text"]._input_1iuju_353 {
+  padding: 11px 10px;
+  font-size: 0.90rem;
+  border: 2px #429283 solid;
+  border-radius: 5px;
+  background: whitesmoke;
+}
+
+._inputContainer_1iuju_353 input[type="text"]._input_1iuju_353:focus {
+  outline: none;
+}
+
+/*PREGUNTA*/
+._pregunta_1iuju_419 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+._registrate_1iuju_429 {
+  text-decoration: none;
+  margin-left: 10px;
+  font-weight: 700;
+  color: #7965b8;
+}
+._noEstas_1iuju_441 {
+  font-weight: 700;
+  color: #324844;
+  margin-bottom: -1px;
+}
+
+/*CHECKBOX*/
+._checkbox_1iuju_455 {
+  --primary-color: #43655a;
+  --secondary-color: #fff;
+  --primary-hover-color: #43655a;
+  /* checkbox */
+  --checkbox-diameter: 20px;
+  --checkbox-border-radius: 5px;
+  --checkbox-border-color: #d9d9d9;
+  --checkbox-border-width: 1px;
+  --checkbox-border-style: solid;
+  /* checkmark */
+  --checkmark-size: 1.2;
+}
+
+._checkbox_1iuju_455,
+._checkbox_1iuju_455 *,
+._checkbox_1iuju_455 *::before,
+._checkbox_1iuju_455 *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+._checkbox_1iuju_455 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: var(--checkbox-diameter);
+  height: var(--checkbox-diameter);
+  border-radius: var(--checkbox-border-radius);
+  background: var(--secondary-color);
+  border: var(--checkbox-border-width) var(--checkbox-border-style)
+    var(--checkbox-border-color);
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+._checkbox_1iuju_455::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5)
+    var(--primary-color);
+  box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+  border-radius: inherit;
+  opacity: 0;
+  -webkit-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  -o-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+}
+
+._checkbox_1iuju_455::before {
+  top: 40%;
+  left: 50%;
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 7px;
+  border-right: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  -ms-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  opacity: 0;
+  -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),
+    opacity 0.1s;
+  -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+}
+
+/* actions */
+
+._checkbox_1iuju_455:hover {
+  border-color: var(--primary-color);
+}
+
+._checkbox_1iuju_455:checked {
+  background: var(--primary-color);
+  border-color: transparent;
+}
+
+._checkbox_1iuju_455:checked::before {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg)
+    scale(var(--checkmark-size));
+  -ms-transform: translate(-50%, -50%) rotate(45deg)
+    scale(var(--checkmark-size));
+  transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  -o-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+}
+
+._checkbox_1iuju_455:active:not(:checked)::after {
+  -webkit-transition: none;
+  -o-transition: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  transition: none;
+  opacity: 1;
+}
+
+._spanBo_1iuju_669 {
+  text-decoration: none;
+}
+
+._spanError_1iuju_677{
+  font-size: 12px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/Janus/OneDrive/Escritorio/Casting-app/client/src/Components/RegisterModel/RegisterModel.module.css">._container_1vffj_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 320px;
+    min-height: 86vh;
+    background-color: rgb(227, 227, 227)
+}
+
+._register_1vffj_19 {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 20px 20px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    width: 500px;
+    height: 650px;
+  }
+
+  ._separarGoogle_1vffj_43{
+    margin-top: -30px;
+  }
+  ._imagenRegister_1vffj_49 {
+    background-image: radial-gradient(
+      circle,
+      #d1d1d1,
+      #c3cbdd,
+      #a5cae6,
+      #76cbe5,
+      #3bccd5,
+      #1dc9c7,
+      #00c6b5,
+      #00c2a2,
+      #00bd9e,
+      #00b89a,
+      #00b496,
+      #00af92
+    );
+    width: 500px;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px 0px 0px 20px;
+  }
+
+  ._logo_1vffj_97 {
+    color: #429283;
+    margin-bottom: 60px;
+  }
+
+  ._formContainer_1vffj_107{
+    display: flex;
+    flex-direction: column;
+}
+
+._h3_1vffj_117 {
+    color: #429283;
+}
+._svgImagen_1vffj_123 {
+    width: 350px;
+  }
+
+/*BOTON GOOGLE*/
+._buttonGoogle_1vffj_133 {
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    height: 30px;
+    padding: 0.5rem 1.4rem;
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    gap: 0.75rem;
+    color: rgb(65, 63, 63);
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.6s ease;
+    margin-bottom: 20px;
+  }
+
+  ._buttonGoogle_1vffj_133 svg {
+    height: 15px;
+  }
+  
+  ._buttonGoogle_1vffj_133:hover {
+    transform: scale(1.02);
+  }
+
+  ._error_1vffj_195 {
+    color:  #e74c3c;
+    text-align: start;
+}
+
+  
+  /*BOTON REGISTRAR*/
+._enviarButton_1vffj_209 {
+    width: 250px;
+    height: 30px;
+    appearance: none;
+    background-color: #4B31A1;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 16px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+      rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    /*padding: 6px 16px;*/
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  
+  ._enviarButton_1vffj_209:hover {
+    background-color: #877aae;
+    text-decoration: none;
+    transition-duration: 0.1s;
+  }
+  
+  ._enviarButton_1vffj_209:disabled {
+    /* background-color: #fafbfc; */
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959da5;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  ._enviarButton_1vffj_209:active {
+    background-color: #edeff2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+  }
+  
+  ._enviarButton_1vffj_209:focus {
+    outline: 1px transparent;
+  }
+  
+  ._enviarButton_1vffj_209:before {
+    display: none;
+  }
+  
+  ._enviarButton_1vffj_209:-webkit-details-marker {
+    display: none;
+  }
+
+  ._buttonCheckbox_1vffj_337 {
+    display: flex;
+    margin-top: 5px;
+}
+._condiciones_1vffj_345 {
+    margin-left: 10px;
+  color: #849ba2;
+  font-size: small;
+}
+
+._spanError_1vffj_357{
+  font-size: 12px;
+}
+
+  /*PREGUNTA*/
+._pregunta_1vffj_367 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  ._registrate_1vffj_377 {
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: 700;
+    color: #4B31A1;
+  }
+  ._noEstas_1vffj_389 {
+    font-weight: 700;
+    color: #324844;
+  }
+
+  /*CHECKBOX*/
+._checkbox_1vffj_401 {
+    --primary-color: #43655a;
+    --secondary-color: #fff;
+    --primary-hover-color: #43655a;
+    /* checkbox */
+    --checkbox-diameter: 20px;
+    --checkbox-border-radius: 5px;
+    --checkbox-border-color: #d9d9d9;
+    --checkbox-border-width: 1px;
+    --checkbox-border-style: solid;
+    /* checkmark */
+    --checkmark-size: 1.2;
+  }
+  
+  ._checkbox_1vffj_401,
+  ._checkbox_1vffj_401 *,
+  ._checkbox_1vffj_401 *::before,
+  ._checkbox_1vffj_401 *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  ._checkbox_1vffj_401 {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: var(--checkbox-diameter);
+    height: var(--checkbox-diameter);
+    border-radius: var(--checkbox-border-radius);
+    background: var(--secondary-color);
+    border: var(--checkbox-border-width) var(--checkbox-border-style)
+      var(--checkbox-border-color);
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  ._checkbox_1vffj_401::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5)
+      var(--primary-color);
+    box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+    border-radius: inherit;
+    opacity: 0;
+    -webkit-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+    -o-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+    transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  }
+  
+  ._checkbox_1vffj_401::before {
+    top: 40%;
+    left: 50%;
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 7px;
+    border-right: 2px solid var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    -ms-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    opacity: 0;
+    -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),
+      opacity 0.1s;
+    -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+    transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+  }
+  
+  /* actions */
+  
+  ._checkbox_1vffj_401:hover {
+    border-color: var(--primary-color);
+  }
+  
+  ._checkbox_1vffj_401:checked {
+    background: var(--primary-color);
+    border-color: transparent;
+  }
+  
+  ._checkbox_1vffj_401:checked::before {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) rotate(45deg)
+      scale(var(--checkmark-size));
+    -ms-transform: translate(-50%, -50%) rotate(45deg)
+      scale(var(--checkmark-size));
+    transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+    -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+    -o-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+    transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  }
+  
+  ._checkbox_1vffj_401:active:not(:checked)::after {
+    -webkit-transition: none;
+    -o-transition: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition: none;
+    opacity: 1;
+  }
+
+  ._coolinput_1vffj_615 {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    position: static;
+    max-width: 240px;
+  }
+  
+  ._coolinput_1vffj_615 label._text_1vffj_631 {
+    font-size: 0.75rem;
+    color: #429283;
+    font-weight: 700;
+    position: relative;
+    top: 0.5rem;
+    margin: 0 0 0 7px;
+    padding: 0 3px;
+    background: whitesmoke;
+    width: fit-content;
+  }
+  
+  ._coolinput_1vffj_615 input[type=text]._input_1vffj_655 {
+    padding: 11px 10px;
+    font-size: 0.90rem;
+    border: 2px #429283 solid;
+    border-radius: 5px;
+    background: whitesmoke;
+    width: 250px;
+  }
+  ._coolinput_1vffj_615 input[type=password]._input_1vffj_655 {
+    padding: 11px 10px;
+    font-size: 0.90rem;
+    border: 2px #429283 solid;
+    border-radius: 5px;
+    background: whitesmoke;
+    width: 250px;
+  }
+  
+  ._coolinput_1vffj_615 input[type=text]._input_1vffj_655:focus {
+    outline: none;
+  }</style><style type="text/css" data-vite-dev-id="C:/Users/Janus/OneDrive/Escritorio/Casting-app/client/src/index.css">
+body {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: rgb(227, 227, 227);
+    --color-fondo: #f5f5f5;
+    --color-primario: #00c9a7;
+    --color-secundario: #7e7193;
+    --color-contraste: #f9eaff;
+    --color-detalle: #4b31a1;
+    --color-alerta: #e74c3c;
+    --color-error: #990004;
+    --color-success: #006b6f;
+    --color-texto: #324844;
+    color: #324844;
+  }
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: rgb(255, 255, 255);
+}
+
+button {
+  width: 250px;
+  height: 30px;
+  appearance: none;
+  background-color: #4b31a1;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 16px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  /*padding: 6px 16px;*/
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+button:hover {
+  background-color: #877aae;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+button:disabled {
+  background-color: #fafbfc;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959da5;
+  cursor: default;
+}
+
+button:active {
+  background-color: #edeff2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+button:focus {
+  outline: 1px transparent;
+}
+
+button:before {
+  display: none;
+}
+
+button:-webkit-details-marker {
+  display: none;
+}
+
+</style></head>
+  <body>
+    <div id="root"><nav><section class="logo-container"><svg width="100px" height="100px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#9eedef"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)"><path transform="translate(-2.4, -2.4), scale(1.7999999999999998)" fill="#00c9a7" d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z" strokewidth="0"></path></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#9eedef" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"><circle cx="9" cy="6" r="4" stroke="#f5f5f5" stroke-width="1.7280000000000002"></circle><path opacity="0.5" d="M12.5 4.3411C13.0375 3.53275 13.9565 3 15 3C16.6569 3 18 4.34315 18 6C18 7.65685 16.6569 9 15 9C13.9565 9 13.0375 8.46725 12.5 7.6589" stroke="#f5f5f5" stroke-width="1.7280000000000002"></path><ellipse cx="9" cy="17" rx="7" ry="4" stroke="#f5f5f5" stroke-width="1.7280000000000002"></ellipse><path opacity="0.5" d="M18 14C19.7542 14.3847 21 15.3589 21 16.5C21 17.5293 19.9863 18.4229 18.5 18.8704" stroke="#f5f5f5" stroke-width="1.7280000000000002" stroke-linecap="round"></path></g></svg></section><section class="buttons-container"><button class="button-login"><a href="http://localhost:5173/login">Ingresa</a></button><button class="button-servicios"><a href="http://localhost:5173/#servicios">Servicios</a></button><button class="button-blog"><a href="http://localhost:5173/#blog">Blog</a></button><button class="button-nosotros"><a href="http://localhost:5173/#nosotros">Nosotros</a></button><button class="button-contacto"><a href="http://localhost:5173/#contacto">Contacto</a></button></section><section class="dropdown-container"><li class="dropdown"><a class="nav-link dropdown-toggle" href="http://localhost:5173/" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="./Vite + React_files/coffe.svg" alt="Prueba" class="imagen-dorpdown"></a><ul class="dropdown-menu"><li><a class="dropdown-item" href="http://localhost:5173/login">Ingresa como Talento</a></li><br><li><a class="dropdown-item" href="http://localhost:5173/login">Ingresa como Empresa</a></li><br><li><a class="dropdown-item" href="http://localhost:5173/">Salir</a></li></ul></li></section></nav><main><section id="introduccion-login" class="introduccion"><div class="introduccion"><img src="./Vite + React_files/inicio.svg" alt="Inicio"><p>La mejor forma de encontrar <b>TALENTOS</b></p></div><div class="login"><article class="login-talento"><img src="./Vite + React_files/Vector - Talento.svg" alt="Talento"><button><a href="http://localhost:5173/model/register">Soy Talento</a></button></article><article class="login-empresa"><img src="./Vite + React_files/Vector - Reclutador.svg" alt="Reclutador"><button><a href="http://localhost:5173/company/register">Soy Reclutador</a></button></article></div></section><section id="anuncios" class="anuncios"><button class="paginado-button">&lt;</button><div class="anuncio"><div class="imagen-container"></div><div class="info-container"><div class="resumen"></div><div class="requeridos"></div></div><div class="button-container"><button class="postularte-button"><a href="http://localhost:5173/">Postulate</a></button></div></div><div class="anuncio"><div class="imagen-container"></div><div class="info-container"><div class="resumen"></div><div class="requeridos"></div></div><div class="button-container"><button class="postularte-button"><a href="http://localhost:5173/">Postulate</a></button></div></div><div class="anuncio"><div class="imagen-container"></div><div class="info-container"><div class="resumen"></div><div class="requeridos"></div></div><div class="button-container"><button class="postularte-button"><a href="http://localhost:5173/">Postulate</a></button></div></div><div class="anuncio"><div class="imagen-container"></div><div class="info-container"><div class="resumen"></div><div class="requeridos"></div></div><div class="button-container"><button class="postularte-button"><a href="http://localhost:5173/">Postulate</a></button></div></div><button class="paginado-button">&gt;</button></section><section id="servicios" class="servicios"><h3>Aqui está la seccioón servicios</h3></section><section id="blog" class="blog"><h3>Aqui está la seccioón blog</h3></section><section id="nosotros"><h3>Aqui está la seccioón nosotros</h3></section><section id="contacto" class="contacto"><p>!!! Tienes algo que quisieras contarnos...? <b>Contactanos</b></p><form action="mailto:castingapp.pf.10@gmail.com" method="post" enctype="text/plain" autocomplete="off">Nombre:<br><input type="text" name="nombre"><br>Correo electrónico:<br><input type="text" name="correo"><br>Comentario:<br><textarea type="text" name="comentario" size="50" class="input-comentario"></textarea><br><br><input type="submit" value="Enviar"><input type="reset" value="Borrar"></form></section></main><footer><h3>Aquí está el footer</h3></footer></div>
+    <script type="module" src="./Vite + React_files/main.jsx"></script>
+    <script src="./Vite + React_files/bootstrap.bundle.min.js.descarga" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  
+
+</body></html>
