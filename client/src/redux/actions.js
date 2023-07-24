@@ -2,6 +2,7 @@ export const REGISTER_MODEL_OR_COMPANY = "REGISTER_MODEL_OR_COMPANY";
 export const MODAL_LOGIN = "MODAL_LOGIN";
 export const ERROR = "ERROR";
 export const ID_USER = "ID_USER";
+export const GET_EVENT_BY_ID = "GET_EVENT_BY_ID";
 import axios from 'axios';
 
 
@@ -79,5 +80,25 @@ export const id_user = (payload) => {
       })
    }
 }
+
+export const get_event_by_id = (id) => {
+   let endpoint = `http://localhost:3001/events/${id}`; 
+   return async (dispatch) => {
+      try {
+         const { data } = await axios.get(endpoint);
+         console.log("evento obtenido de la preticion: " + data);
+         return dispatch({
+            type: GET_EVENT_BY_ID,
+            payload: data,
+         });
+      } catch (error) {
+         //window.alert(error.message); //"An error has occurred while getting a pokemon by ID!"
+         return dispatch({
+            type: "ERROR",
+            payload: "¡Ha ocurrido un error al obtener un evento por ID!"
+         })
+      }
+   };
+ }
 
 
