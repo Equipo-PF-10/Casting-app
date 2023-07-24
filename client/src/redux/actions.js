@@ -6,6 +6,8 @@ export const GET_EVENT_BY_ID="GET_EVENT_BY_ID";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 export const GET_COMPANY_BY_ID = "GET_COMPANY_BY_ID";
+export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
+export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
 import axios from 'axios';
 
 
@@ -152,4 +154,35 @@ export const getAllCompanies=() => {
    }
 }
 
+export const get_all_postulations=(pk) => {
+   return async (dispatch) => {
+      try {
+         const response=await axios.get(`http://localhost:3001/postulations/${pk}`);
+         console.log(response.data);
+         return dispatch({type: GET_ALL_POSTULATIONS, payload: response.data})
+      } catch (error) {
+         return dispatch({
+           type: "ERROR",
+           payload: "¡Ha ocurrido un error al obtener las postulaciones del evento!",
+         });
+      }
+   }
+}
 
+export const get_talent_by_id = (id) => {
+   let endpoint = `http://localhost:3001/talents/${id}`; 
+   return async (dispatch) => {
+      try {
+         const { data } = await axios.get(endpoint);
+         return dispatch({
+            type: GET_TALENT_BY_ID,
+            payload: data,
+         });
+      } catch (error) {
+         return dispatch({
+            type: "ERROR",
+            payload: "¡Ha ocurrido un error al obtener un talento por ID!"
+         })
+      }
+   };
+}

@@ -6,17 +6,22 @@ import {
   GET_EVENT_BY_ID,
   GET_ALL_EVENTS,
   GET_ALL_COMPANIES,
-  GET_COMPANY_BY_ID
+  GET_COMPANY_BY_ID,
+  GET_ALL_POSTULATIONS,
+  GET_TALENT_BY_ID,
 } from "./actions.js";
 
 const initialState = {
-  models: [],
+  talents: [],
+  talentById: {},
   allEvents: [],
   getAllCompanies: [],
   companiesFiltered: [],
   companyDetail: {},
   eventsFiltered: [],
   eventDetail: {},
+  postulationsByEvent: {},
+  postulationsByEventFiltered: {},
   idUser: "",
   messageRegistered: {},
   modalInLogin: false,
@@ -71,7 +76,18 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         companiesFiltered: payload,
         getAllCompanies: payload,
-      }
+      };
+    case GET_ALL_POSTULATIONS:
+      return {
+        ...state,
+        postulationsByEvent: payload,
+        postulationsByEventFiltered: payload,
+      };
+    case GET_TALENT_BY_ID:
+      return {
+        ...state,
+        talentById: payload,
+      };
     case ERROR:
       return {
         ...state,
