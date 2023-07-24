@@ -45,8 +45,6 @@ const getEventById = async (id) => {
 const createEvent = async (
   name,
   image,
-  creationDate,
-  changeDate,
   expirationDate,
   shortDescription,
   detail,
@@ -54,32 +52,24 @@ const createEvent = async (
   ubication,
   habilityRequired,
   habilitySalary,
-  contact
+  contact,
+  idEmpresa
 ) => {
   try {
-    const [event, created] = await Evento.findOrCreate({
-      where: { name },
-      defaults: {
-        name,
-        image,
-        creationDate,
-        changeDate,
-        expirationDate,
-        shortDescription,
-        detail,
-        active,
-        ubication,
-        habilityRequired,
-        habilitySalary,
-        contact,
-      },
+    const event = await Evento.create({
+      name,
+      image,
+      expirationDate,
+      shortDescription,
+      detail,
+      active,
+      ubication,
+      habilityRequired,
+      habilitySalary,
+      contact,
+      idEmpresa,
     });
-
-    // Verificar que no exista en la bdd.
-    if (!created)
-      throw new Error(
-        "Error! Ya existe un evento con ese nombre en la base de datos."
-      );
+    return event;
   } catch (error) {
     throw new Error(error.message);
   }

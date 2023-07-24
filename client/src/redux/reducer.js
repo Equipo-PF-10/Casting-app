@@ -1,7 +1,22 @@
-import { ERROR, REGISTER_MODEL_OR_COMPANY, MODAL_LOGIN, ID_USER } from "./actions.js";
+import {
+  ERROR,
+  REGISTER_MODEL_OR_COMPANY,
+  MODAL_LOGIN,
+  ID_USER,
+  GET_EVENT_BY_ID,
+  GET_ALL_EVENTS,
+  GET_ALL_COMPANIES,
+  GET_COMPANY_BY_ID
+} from "./actions.js";
 
 const initialState = {
   models: [],
+  allEvents: [],
+  getAllCompanies: [],
+  companiesFiltered: [],
+  companyDetail: {},
+  eventsFiltered: [],
+  eventDetail: {},
   idUser: "",
   messageRegistered: {},
   modalInLogin: false,
@@ -35,7 +50,28 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         idUser: payload,
       };
-
+    case GET_EVENT_BY_ID:
+      return {
+        ...state,
+        eventDetail: payload,
+      };
+    case GET_COMPANY_BY_ID:
+      return {
+        ...state,
+        companyDetail: payload,
+      };
+    case GET_ALL_EVENTS:
+      return {
+        ...state,
+        eventsFiltered: payload,
+        allEvents: payload,
+      };
+    case GET_ALL_COMPANIES:
+      return {
+        ...state,
+        companiesFiltered: payload,
+        getAllCompanies: payload,
+      }
     case ERROR:
       return {
         ...state,
