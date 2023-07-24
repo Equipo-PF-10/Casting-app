@@ -17,20 +17,14 @@ const getAllPostHandler = async (req, res) => {
 
 // Función handler para crear postulaciones
 const createPostHandler = async (req, res) => {
-  const { date, active, status, changeDate, idEvent } = req.body;
+  const { EventoId, TalentoId } = req.body;
 
   try {
-    const createdPost = await createPostulation(
-      date,
-      active,
-      status,
-      changeDate,
-      idEvent
-    );
+    const createdPost = await createPostulation(EventoId, TalentoId);
 
-    res.status(200).send("Se ha creado la postulación con éxito.");
+    res.status(200).json(createdPost);
   } catch (error) {
-    res.status(404).json("Ocurrió un error al crear la postulación: " + error);
+    res.status(404).json({ error: error.message });
   }
 };
 
