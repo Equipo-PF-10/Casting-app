@@ -55,6 +55,7 @@ const {
   TalentosFavoritos,
   Contactado,
   EmpresaDeshabilitada,
+  EmpresaTalentoFavorito,
   EmpresaFavorita,
 } = sequelize.models;
 
