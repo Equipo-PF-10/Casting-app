@@ -30,6 +30,13 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background-color: rgb(255, 255, 255);
-    margin-bottom: 40px;
+}
+
+.imagen img{
+  border-radius: 50%;
+}
+
+.navLink{
+  text-decoration: none;
+  color: #F5F5F5;
 }

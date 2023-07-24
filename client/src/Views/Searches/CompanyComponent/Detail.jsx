@@ -1,8 +1,9 @@
-import React from "react";
 import style from "./Detail.module.css";
 
 const Detail = ({talent}) => {
+
   const {name, aboutMe, ubication, hability} = talent;
+
   return (
     <div className={style.containerDetail}>
       <h2>{name}</h2>

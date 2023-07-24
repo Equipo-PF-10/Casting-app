@@ -9,6 +9,7 @@ import {
   GET_COMPANY_BY_ID,
   GET_ALL_POSTULATIONS,
   GET_TALENT_BY_ID,
+  GET_ALL_TALENTS,
 } from "./actions.js";
 
 const initialState = {
@@ -83,6 +84,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         postulationsByEvent: payload,
         postulationsByEventFiltered: payload,
       };
+    case GET_ALL_TALENTS:
+      return {
+        ...state,
+        talents: payload,
+      }
     case GET_TALENT_BY_ID:
       return {
         ...state,

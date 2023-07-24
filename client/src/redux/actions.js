@@ -8,6 +8,7 @@ export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 export const GET_COMPANY_BY_ID = "GET_COMPANY_BY_ID";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
+export const GET_ALL_TALENTS = "GET_ALL_TALENTS";
 import axios from 'axios';
 
 
@@ -185,4 +186,20 @@ export const get_talent_by_id = (id) => {
          })
       }
    };
+}
+
+export const getAllTalents=() => {
+   return async (dispatch) => {
+      try {
+         const response = await axios.get("http://localhost:3001/talents/");
+         return dispatch({
+            type: GET_ALL_TALENTS, 
+            payload: response.data})
+      } catch (error) {
+         return dispatch({
+           type: "ERROR",
+           payload: "¡Ha ocurrido un error al obtener los talentos!",
+         });
+      }
+   }
 }

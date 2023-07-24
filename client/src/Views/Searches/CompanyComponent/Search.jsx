@@ -1,7 +1,10 @@
-import React from "react";
 import style from "./Search.module.css";
+import { useSelector } from "react-redux";
 
 const Search = () => {
+
+  const talents = useSelector((state) => state.talents);
+
   return (
     <div className={style.containerGe}>
       {/*INPUT*/}
