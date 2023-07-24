@@ -63,6 +63,12 @@ Empresa.hasMany(Evento);
 Evento.belongsTo(Empresa);
 Evento.hasMany(Postulacion, { foreignKey: "idEvento" });
 
+Postulacion.belongsTo(Evento, { foreignKey: "idEvent" });
+Evento.hasMany(Postulacion, { as: "idEvent" });
+
+Evento.belongsTo(Empresa, { foreignKey: "idEmpresa" });
+Empresa.hasMany(Evento, { as: "idEmpresa" });
+
 module.exports = {
   ...sequelize.models,
   conn: sequelize,

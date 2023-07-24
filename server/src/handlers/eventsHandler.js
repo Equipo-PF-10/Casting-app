@@ -48,8 +48,19 @@ const getById = async (req, res) => {
 
 // Función handler para crear eventos.
 const createEventHandler = async (req, res) => {
-  const { name, image, detail, active, ubication, habilityRequired, contact } =
-    req.body;
+  const {
+    name,
+    image,
+    detail,
+    active,
+    ubication,
+    habilityRequired,
+    habilitySalary,
+    shortDescription,
+    contact,
+    expirationDate,
+    idEmpresa,
+  } = req.body;
 
   if (!name || !image || !detail) {
     res.status(400).send("Faltan datos obligatorios");
@@ -66,8 +77,6 @@ const createEventHandler = async (req, res) => {
   const createdEvent = await createEvent(
     name,
     image,
-    creationDate,
-    changeDate,
     expirationDate,
     shortDescription,
     detail,
@@ -75,7 +84,8 @@ const createEventHandler = async (req, res) => {
     ubication,
     habilityRequired,
     habilitySalary,
-    contact
+    contact,
+    idEmpresa
   );
 
   res.status(200).send("El evento ha sido creado con éxito.");
