@@ -97,5 +97,5 @@ module.exports = {
   updateCompany,
   getCompanyById,
   deleteCompany,
-  getRelacion
+  getRelacion  
 };

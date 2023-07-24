@@ -1,4 +1,4 @@
-const { allCompanies, searchByLocation, createCompanyDB,  getCompanyById, updateCompany, deleteCompany, getRelacion } = require("../controllers/companiesController");
+const { allCompanies, searchByLocation, createCompanyDB,  getCompanyById, updateCompany, deleteCompany, getRelacion  } = require("../controllers/companiesController");
 
 async function handleAllCompanies(req, res) {
   try {
@@ -36,8 +36,6 @@ const handleSearchByLocation = async (req, res) => {
     res.status(500).json({ error: "Error al buscar empresas por ubicación: " + error });
   }
 };
-
-
 
 const handleCreateCompany = async (req, res) => {
   const {
@@ -149,5 +147,5 @@ module.exports = {
   handleCreateCompany,
   handleUpdateCompany,
   handleGetById,
-  deleteCompanyHandler
+  deleteCompanyHandler  
 };
