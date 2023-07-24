@@ -63,6 +63,14 @@ Talento.belongsToMany(Empresa, { through: "TalentoEmpresa" });
 Talento.belongsToMany(Postulacion, { through: "TalentoPostulacion" });
 Postulacion.belongsToMany(Talento, { through: "TalentoPostulacion" });
 
+
+Empresa.belongsToMany(Talento, { through: "Talento/Empresa" });
+Talento.belongsToMany(Empresa, { through: "Talento/Empresa" });
+Talento.belongsToMany(Postulacion, { through: "Talento/Postulacion" });
+Postulacion.belongsToMany(Talento, { through: "Talento/Postulacion" });
+Empresa.belongsToMany(TalentosFavoritos, { through: "Empresa/talentoFavorito"  });
+TalentosFavoritos.belongsToMany(Empresa, { through: "Empresa/talentoFavorito"  });
+
 Empresa.hasMany(Evento);
 Evento.belongsTo(Empresa);
 
