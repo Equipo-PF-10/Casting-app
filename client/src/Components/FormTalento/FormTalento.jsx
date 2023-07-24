@@ -7,7 +7,7 @@ import {NavLink} from "react-router-dom"
 
 const FormTalento = () => {
 
-    const URL = "https://casting-app-test-back.onrender.com/talents/register"
+    const URL = "http://localhost:3001/talents/register"
 
     const optionshability = [
         { value: 'Actuación', label: 'Actuación' },

@@ -20,11 +20,11 @@ const Home = (props) => {
 
   useEffect(() => {
     if(props.type === "talent") {
-      axios(`https://casting-app-test-back.onrender.com/talents/${props.idUser}`).then(({ data }) => {
+      axios(`http://localhost:3001/talents/${props.idUser}`).then(({ data }) => {
         setUser(data);
       });
     } else {
-      axios(`https://casting-app-test-back.onrender.com/companies/${props.idUser}`).then(({ data }) => {
+      axios(`http://localhost:3001/companies/${props.idUser}`).then(({ data }) => {
         setUser(data);
       });
     }
