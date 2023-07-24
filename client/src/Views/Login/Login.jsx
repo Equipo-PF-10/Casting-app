@@ -124,13 +124,15 @@ const Login = () => {
     if (obj.access === 1) {
       dispatch(id_user(obj.id));
       setErrorMessage("");
-      navigate(`/model/search`); //navigate(`/model/search/:${id}`);
+      // navigate(`/model/search`); //navigate(`/model/search/:${id}`);
+      navigate(`/home/talent`);
     }
     //este navigate deberia ser para una ruta donde la data sea de la empresa por id
     if (obj.access === 2) {
       dispatch(id_user(obj.id));
       setErrorMessage("");
-      navigate(`/company/search`);
+      // navigate(`/company/search`);
+      navigate(`/home/company`);
     }
     if (
       obj.access === 0 &&
