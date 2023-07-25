@@ -15,8 +15,16 @@ const CompanySearch = () => {
 //  const idEvent = useParams();
   const dispatch = useDispatch();
 
-  const postulations = useSelector((state) => state.postulationsByEvent);
-
+  const idPostulations = useSelector((state) => state.postulationsByEvent);
+  /*
+  {
+    evento: [
+      ids
+    ]
+  }
+  */
+  console.log(idPostulations); // {}
+  const postulantes = useSelector((state) => {state.talentsById})  // [postulantes]
 
   // Paginación
 
@@ -25,20 +33,20 @@ const CompanySearch = () => {
 
   const lastIndex = currentPage * talentsPerPage;
   const firstIndex = lastIndex - talentsPerPage;
-  const currentTalents = postulations.slice(firstIndex, lastIndex);
+  //const currentTalents = idPostulations.slice(firstIndex, lastIndex);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const pageNumbers = Math.ceil(postulations.length / talentsPerPage);
+  const pageNumbers = Math.ceil(idPostulations.length / talentsPerPage);
   const pagination = Array.from({ length: pageNumbers }, (_, index) => index + 1);
 
   //Dispatch
   
   useEffect(() => {
-    dispatch(get_all_postulations(postulations));
-  }, [dispatch, postulations]);
+    dispatch(get_all_postulations(idPostulations));
+  }, [dispatch, idPostulations]);
   
   
   //Obtener el primer postulante, cuando se monta el componente y mostrarlo en el detail
@@ -50,14 +58,13 @@ const CompanySearch = () => {
     dispatch(getAllTalents());
   }, [dispatch])
 
-  /*
-  //Obtener todos los talentos a partir del arreglo de postulaciones
-  let all_postulations = [];
-  useEffect(() => {
-    dispatch(get_talent_by_id(postulations.evento[0]));
-  }, []);
-  */
-
+  
+  //Obtener todos los talentos a partir del arreglo de idPostulaciones
+  
+  for (let i = 0; i < idPostulations.evento.length; i++) {
+    //pushea el arreglo de postulantes
+    dispatch(get_talent_by_id(idPostulations.evento[i]));
+  }
   //Map Talentos
 
   const listedTalents = currentTalents.map((talento) => (
@@ -73,7 +80,7 @@ const CompanySearch = () => {
     </li>
   ))
 
-  const ubication = postulations.map((postulante) => {
+  const ubication = idPostulations.map((postulante) => {
     return postulante.ubication
   })
 
