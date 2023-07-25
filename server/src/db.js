@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-
+//! Pendiente revizar el tema del puerto para que tenga las dos opciones deploy y local
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DB_DEPLOY } =
   process.env;
 
@@ -17,7 +17,7 @@ const basename = path.basename(__filename);
 
 const modelDefiners = [];
 
-// Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
+//Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
 fs.readdirSync(path.join(__dirname, "/models"))
   .filter(
     (file) =>
@@ -38,37 +38,37 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 
 const {
-  Empresa,
-  Evento,
-  Mensaje,
-  Talento,
-  Postulacion,
-  TalentoEliminado,
-  EventoEliminado,
-  TalentosFavoritos,
-  Contactado,
-  EmpresaDeshabilitada,
-  EmpresaTalentoFavorito,
-  EmpresaFavorita,
+  Company,
+  Event,
+  Talent,
+  Applied,
+  TalentSelectedAsFav,
+  CompanySelectedAsFav,
+//   Mensaje,
+//   TalentoEliminado,
+//   EventoEliminado,
+//   Contactado,
+//   EmpresaDeshabilitada,
+//   EmpresaTalentoFavorito,
 } = sequelize.models;
 
-Talento.belongsToMany(Postulacion, { through: "TalentoPostulacion" });
-Postulacion.belongsToMany(Talento, { through: "TalentoPostulacion" });
+//* Relaciones de tablas de Empresas************************************************
+Company.hasMany(Event, { as: "idEmpresa" });
+Event.belongsTo(Company, { foreignKey: "idEmpresa" });
 
-Empresa.belongsToMany(Talento, { through: "TalentoEmpresa" });
-Talento.belongsToMany(Empresa, { through: "TalentoEmpresa" });
+Company.belongsToMany(TalentSelectedAsFav, { through: "CompanySelectTalentAsFav"  });
+TalentSelectedAsFav.belongsToMany(Company, { through: "CompanySelectTalentAsFav"  });
 
-Postulacion.belongsTo(Evento, { foreignKey: "EventoId" });
-Evento.hasMany(Postulacion, { as: "EventoId" });
+//? Relaciones de tablas de Talentos*************************************************
+Talent.belongsToMany(Applied, { through: "TalentApplied" });
+Applied.belongsToMany(Talent, { through: "TalentApplied" });
 
-Evento.belongsTo(Empresa, { foreignKey: "idEmpresa" });
-Empresa.hasMany(Evento, { as: "idEmpresa" });
+Talent.belongsToMany(CompanySelectedAsFav, { through: "TalentSelectCompanyAsFav" });
+CompanySelectedAsFav.belongsToMany(Talent, { through: "TalentSelectCompanyAsFav" });
 
-TalentosFavoritos.belongsToMany(Empresa, { through: "EmpresaTalentoFavorito"  });
-Empresa.belongsToMany(TalentosFavoritos, { through: "EmpresaTalentoFavorito"  });
-
-Talento.belongsToMany(EmpresaFavorita, { through: "TalentoEmpresaFavorita" });
-EmpresaFavorita.belongsToMany(Talento, { through: "TalentoEmpresaFavorita" });
+//! Relacion de tabla de Eventos con Postulaciones************************************
+Event.hasMany(Applied, { as: "EventoId" });
+Applied.belongsTo(Event, { foreignKey: "EventoId" });
 
 module.exports = {
   ...sequelize.models,

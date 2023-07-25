@@ -1,28 +1,23 @@
 const { Router } = require("express");
-const talentRouter = require("./talentRouter");
-const eventRouter = require("./eventRouter");
-const companyRouter = require("../routes/companyRouter");
-
-const companyFavoriteRouter = require("../routes/companyFavoriteRouter");
-const talentsFavoriteRouter = require("../routes/talentsFavoriteRouter");
-
-
-const postulationRouter = require("../routes/postulationRouter");
-const talentofavoritosRouter = require("./talentosFavoritosRouter");
+const talentRouter = require("./talents/talentRouter");
+const eventRouter = require("./events/eventRouter");
+const companyRouter = require("./companies/companyRouter");
+const companyFavoriteRouter = require("./talents/companyFavoriteRouter");
+const talentsFavoriteRouter = require("./companies/talentsFavoriteRouter");
+const postulationRouter = require("./talents/postulationRouter");
 
 const mainRouter = Router();
 
-mainRouter.use("/talents", talentRouter);
-mainRouter.use("/events", eventRouter);
+//* Rutas de Empresas
 mainRouter.use("/companies/favorites", talentsFavoriteRouter);
 mainRouter.use("/companies", companyRouter);
 
+//? Rutas de Talentos
 mainRouter.use("/talents/favorites", companyFavoriteRouter);
-//! Esta ruta es para que una empresa pueda agregar talentos favoritos
-//! Esta ruta es para encontrar todos los talentos favoritos de una empresa
+mainRouter.use("/talents/applied", postulationRouter);
+mainRouter.use("/talents", talentRouter);
 
-
-mainRouter.use("/postulations", postulationRouter);
-mainRouter.use("/favorites/Company" , talentofavoritosRouter);
+//! Rutas de Eventos
+mainRouter.use("/events", eventRouter);
 
 module.exports = mainRouter;
