@@ -28,23 +28,25 @@ const FormTalento = () => {
     const initialState = {
         email: "",
         name: "",
-        dni: "",
+        dni: 0,
         password: "",
         image: "",
         aboutMe: "",
         nacionality: "",
         ubication: "",
         contexture: "",
-        weight: "",
-        height: "",
+        weight: 0,
+        height: 0,
         gender: "",
         ethnicOrigin: "",
         socialNetwork: [],
-        contact: "",
+        contact: [],
         hability: []
     }
 
     const [input, setInput] = useState(initialState)
+
+    const [orientaciones, setOrientaciones] = useState([])
 
     const [error, setError] = useState({})
 
@@ -54,10 +56,27 @@ const FormTalento = () => {
         setError(validationTalentos({ ...input, [name]: value }))
     }
 
-    
     const handleChangeSelect = (selectedOptions) => {
-        setInput({ ...input, hability: selectedOptions });
+        setOrientaciones(selectedOptions);
       };
+
+      const handleSocialNetworkChange = (index, event) => {
+        const { value } = event.target;
+        setInput((prevInput) => {
+          const updatedSocialNetwork = [...prevInput.socialNetwork];
+          updatedSocialNetwork[index] = value;
+          return { ...prevInput, socialNetwork: updatedSocialNetwork };
+        });
+      };
+    
+    const handleContactChange = (index, event) => {
+        const {value} = event.target;
+        setInput((prevInput) => {
+            const updatedCOntact = [...prevInput.contact];
+            updatedCOntact[index] = value;
+            return {...prevInput, contact: updatedCOntact}
+        })
+    }
 
     const hanldeSubmit = async(event) => {
         event.preventDefault();
@@ -65,10 +84,15 @@ const FormTalento = () => {
             await axios.post(URL, input)
             setInput(initialState)
         } catch (error) {
-            console.log({error: error.message})
+            console.log({error})
         }
     }
 
+    const habilityValue = orientaciones.map(item => item.value);
+
+    input.hability = habilityValue;
+
+    console.log(input);
 
     return(
         <section className={Styles.section}>
@@ -81,13 +105,13 @@ const FormTalento = () => {
                 <h1>Registro</h1>
                     <article className={Styles.coolinput}>
                         <label htmlFor="name" className={Styles.text}>Nombre Completo</label>
-                        <input type="text" name="name" id="name" value={input.name} onChange={handleChange} required/>
+                        <input type="text" name="name" id="name" value={input.name} onChange={handleChange}/>
                         <p className={error.name ? Styles.error : ""}>{error.name ? error.name : null}</p>
                     </article>
 
                     <article className={Styles.coolinput}>
                         <label htmlFor="password" className={Styles.text}>Contraseña</label>
-                        <input type="password" name="password" id="password" value={input.password} onChange={handleChange} required/>
+                        <input type="password" name="password" id="password" value={input.password} onChange={handleChange} />
                         <p className={error.password ? Styles.error : ""}>{error.password ? error.password : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
@@ -132,7 +156,7 @@ const FormTalento = () => {
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Subir Imágen</label>
-                        <input type="text" name="image" value={input.image} required onChange={handleChange}/>
+                        <input type="text" name="image" value={input.image} onChange={handleChange}/>
                     </article>
                     <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Orientación artística</label>
@@ -140,31 +164,28 @@ const FormTalento = () => {
                                 isMulti 
                                 options={optionshability}
                                 className={Styles.select}
-                                value={input.hability}
+                                value={orientaciones}
                                 onChange={handleChangeSelect}
                                 name="hability"/>
                                 <p className={error.hability ? Styles.error : ""}>{error.hability ? error.hability : null}</p>
                     </article> 
                     <article className={Styles.charSec}>
                             <article className={Styles.coolinput}>
-                                <label htmlFor="" className={Styles.text}>Origen étnico</label>
-                                <input type="text" value={input.ethnicOrigin} className={Styles.etnic}/>
+                                <label htmlFor="ethnicOrigin" className={Styles.text}>Origen étnico</label>
+                                <input type="text" id="ethnicOrigin" name="ethnicOrigin" value={input.ethnicOrigin} onChange={handleChange}/>
                             </article>
                         <div className={Styles.char}>
-
-                        </div>  
-                        <div className={Styles.char}>
                             <article className={Styles.coolinput}>
-                                <label htmlFor="" className={Styles.text}>Altura</label>
-                                <input type="number" onChange={handleChange} value={input.height}/>
+                                <label htmlFor="height" className={Styles.text}>Altura</label>
+                                <input type="number" id="height" name="height" onChange={handleChange} value={input.height}/>
                             </article>
                             <article className={Styles.coolinput}>
-                                <label htmlFor="" className={Styles.text}>Peso</label>
-                                <input type="number" onChange={handleChange} value={input.weight} />
+                                <label htmlFor="weight" className={Styles.text}>Peso</label>
+                                <input type="number"  id="weight" name="weight" onChange={handleChange} value={input.weight} />
                             </article >
                             <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Contextura</label>
-                                <select name="contexture" id="" value={input.contexture}>
+                                <select name="contexture" id="" value={input.contexture} onChange={handleChange}>
                                     <option value="" disabled>Tipos</option>
                                     <option value="Ectomorfo" >Ectomorfo</option>
                                     <option value="Endomorfo" >Endomorfo</option>
@@ -175,11 +196,11 @@ const FormTalento = () => {
                         <div>
                             <article className={Styles.coolinput1}>
                                 <label htmlFor="gender" className={Styles.text}>Género</label>
-                                <select name="gender" id="gender" value={input.gender}>
+                                <select name="gender" id="gender" value={input.gender} onChange={handleChange}>
                                     <option value="" disabled>Género</option>
-                                    <option value="masculino">Masculino</option>
-                                    <option value="femenino">Femenino</option>
-                                    <option value="otro">Otro</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Otro">Otro</option>
                                 </select>
                             </article>
                             
@@ -200,35 +221,34 @@ const FormTalento = () => {
                         </svg>
                     </NavLink>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="contact" className={Styles.text}>Número Telefónico</label>
-                        <input type="text" name="contact" id="contact" value={input.contact} onChange={handleChange}/>
+                        <label htmlFor="contact" className={Styles.text}>Contacto</label>
+                        <input type="text" name="contact" id="contact" value={input.contact[0] || ""} onChange={(e) => handleContactChange(0, e)}/>
                     </article>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="" className={Styles.text}>Facebook</label>
-                        <input type="text" name="facebook" value={input.socialNetwork} onChange={handleChange}/>
+                    <label htmlFor="" className={Styles.text}>Facebook</label>
+                    <input type="text" name="facebook" value={input.socialNetwork[0] || ""} onChange={(e) => handleSocialNetworkChange(0, e)} />
                     </article>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="" className={Styles.text}>Instagram</label>
-                        <input type="text" name="instagram" value={input.socialNetwork}  onChange={handleChange}/>
+                    <label htmlFor="" className={Styles.text}>Instagram</label>
+                    <input type="text" name="instagram" value={input.socialNetwork[1] || ""} onChange={(e) => handleSocialNetworkChange(1, e)} />
                     </article>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="" className={Styles.text}>Twitter</label>
-                        <input type="text" name="twitter" value={input.socialNetwork} onChange={handleChange}/>
+                    <label htmlFor="twitter" className={Styles.text}>Twitter</label>
+                    <input type="text" name="twitter" id="twitter" value={input.socialNetwork[2] || ""} onChange={(e) => handleSocialNetworkChange(2, e)} />
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="ubication" className={Styles.text}>Ubicación</label>
-                        <input type="text" id="ubication" name="ubication" value={input.ubication} onChange={handleChange} required/>
+                        <input type="text" id="ubication" name="ubication" value={input.ubication} onChange={handleChange}/>
                         <p className={error.ubication ? Styles.error : ""}>{error.ubication ? error.ubication : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Nacionalidad</label>
-                        <input type="text"  name="nacionality" id="nacionality" value={input.nacionality} onChange={handleChange} required/>
+                        <input type="text"  name="nacionality" id="nacionality" value={input.nacionality} onChange={handleChange}/>
                         <p className={error.nacionality ? Styles.error : ""}>{error.nacionality ? error.nacionality : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="dni" className={Styles.text}>Documento de Identidad</label>
-                        <input type="text" name="dni" id="dni" value={input.dni} onChange={handleChange} required/>
-                        <p className={error.dni ? Styles.error : ""}>{error.dni ? error.dni : null}</p>
+                        <input type="text" name="dni" id="dni" value={input.dni} onChange={handleChange}/>
                     </article>
                 </div>
             </form>

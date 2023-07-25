@@ -32,7 +32,7 @@ const createTalentHandler = async (req, res) => {
     email,
     password,
     available,
-    dateComeback,
+    dateComeBack,
     image,
     portfolio,
     gender,
@@ -54,15 +54,19 @@ const createTalentHandler = async (req, res) => {
     return res.status(400).send("Faltan datos obligatorios");
   }
 
+
+  const dateVerification = dateComeBack instanceof Date ? dateComeBack : null;
+
   try {
     await createTalentDb(
       name,
-      dni,
+      isNaN(parsedDni) ? null : parsedDni,
       email,
       password,
       available,
-      dateComeback,
+      dateVerification,
       image,
+      dni,
       portfolio,
       gender,
       aboutMe,
