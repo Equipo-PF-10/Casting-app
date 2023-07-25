@@ -157,10 +157,10 @@ export const getAllCompanies=() => {
    }
 }
 
-export const get_all_postulations=(pk) => {
+export const get_all_postulations=(fk) => {
    return async (dispatch) => {
       try {
-         const response=await axios.get(`http://localhost:3001/postulations/${pk}`);
+         const response=await axios.get(`http://localhost:3001/postulations/${fk}`);
          console.log(response.data);
          return dispatch({type: GET_ALL_POSTULATIONS, payload: response.data})
       } catch (error) {

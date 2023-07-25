@@ -16,7 +16,7 @@ import {
 
 const initialState = {
   talents: [],
-  talentById: {},
+  talentsById: [],
   allEvents: [],
   getAllCompanies: [],
   companiesFiltered: [],
@@ -94,7 +94,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case GET_TALENT_BY_ID:
       return {
         ...state,
-        talentById: payload,
+        talentsById: [...talentsById, payload],
       };
     case FILTER_BY_HABILITY:
       return {
