@@ -6,15 +6,16 @@ import Detail from "./CompanyComponent/Detail";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { get_all_postulations } from "../../redux/actions";
+import { get_all_id_postulations } from "../../redux/actions";
 import { get_talent_by_id } from "../../redux/actions";
 import { getAllTalents } from "../../redux/actions";
 
 const CompanySearch = () => {
-  
-//  const idEvent = useParams();
-  const dispatch = useDispatch();
+  //  const id_event = useParams();
 
+  let [id, setId] = useState("");
+  let [talentSelected, setTalentSelected] = useState({});
+  const dispatch = useDispatch();
   const idPostulations = useSelector((state) => state.postulationsByEvent);
   /*
   {
@@ -24,7 +25,7 @@ const CompanySearch = () => {
   }
   */
   console.log(idPostulations); // {}
-  const postulantes = useSelector((state) => {state.talentsById})  // [postulantes]
+  const postulantes = useSelector((state) => { state.talentsById }); // [postulantes]
 
   // Paginación
 
@@ -33,56 +34,57 @@ const CompanySearch = () => {
 
   const lastIndex = currentPage * talentsPerPage;
   const firstIndex = lastIndex - talentsPerPage;
-  //const currentTalents = idPostulations.slice(firstIndex, lastIndex);
+  const currentTalents = postulantes.slice(firstIndex, lastIndex);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const pageNumbers = Math.ceil(idPostulations.length / talentsPerPage);
-  const pagination = Array.from({ length: pageNumbers }, (_, index) => index + 1);
+  const pageNumbers = Math.ceil(postulantes.length / talentsPerPage);
+  const pagination = Array.from(
+    { length: pageNumbers },
+    (_, index) => index + 1
+  );
 
   //Dispatch
-  
-  useEffect(() => {
-    dispatch(get_all_postulations(idPostulations));
-  }, [dispatch, idPostulations]);
-  
-  
-  //Obtener el primer postulante, cuando se monta el componente y mostrarlo en el detail
-  useEffect(() => {
-    dispatch(get_talent_by_id());
-  }, [dispatch]);
-  
-  useEffect(() => {
-    dispatch(getAllTalents());
-  }, [dispatch])
 
-  
+  let id_event = "21";
+  //Me devuelve los ids de los postulantes
+  useEffect(() => {
+    dispatch(get_all_id_postulations(id_event));
+  }, [dispatch, id_event]);
+
   //Obtener todos los talentos a partir del arreglo de idPostulaciones
-  
-  for (let i = 0; i < idPostulations.evento.length; i++) {
+  for (let i = 0; i < idPostulations.length; i++) {
     //pushea el arreglo de postulantes
     dispatch(get_talent_by_id(idPostulations.evento[i]));
   }
-  //Map Talentos
 
+  // Función para manejar el clic en la Card
+  const handleClick = (talentoId) => {
+    setId(talentoId);
+    setTalentSelected(postulantes.find((talent) => talent.id === id));
+  };
+
+  
+
+  //Map Talentos
   const listedTalents = currentTalents.map((talento) => (
     <li key={talento.id}>
       <Card
-      id={talento.id}
-      name={talento.name}
-      image={talento.image}
-      gender={talento.gender}
-      hability={talento.hability}
-
+        id={talento.id}
+        name={talento.name}
+        image={talento.image}
+        gender={talento.gender}
+        hability={talento.hability}
+        onClick={() => handleClick(talento.id)}
       />
     </li>
-  ))
+  ));
 
   const ubication = idPostulations.map((postulante) => {
-    return postulante.ubication
-  })
+    return postulante.ubication;
+  });
 
   // Evita ubicaciones repetidas
 
@@ -93,22 +95,30 @@ const CompanySearch = () => {
   return (
     <div className={style.containerG}>
       <div className={style.searchFil}>
-        <Search ubication={singleLocation} setCurrentPage={setCurrentPage}/>
+        <Search ubication={singleLocation} setCurrentPage={setCurrentPage} />
       </div>
       <div className={style.secciones}>
         <div className={style.navLateral}>
           <NavBarLateral />
         </div>
         <div className={style.grid}>
-          <div className={style.cards}>
-            {listedTalents}
-          </div>
+          <div className={style.cards}>{listedTalents}</div>
         </div>
         <div className={style.detailCard}>
-          <Detail className={style.detail}/>
+          {/* estado local .length === 0 le paso la info del primer postulante,
+              sino, al hacer click en una card se pasa el id de la card al estado local,
+              con ese id filtro el array de postulantes y luego le paso el postulante
+              filtrado a Detail
+          */}
+          {
+            id.length === 0 ?
+            <Detail className={style.detail} talent={postulantes[0]} />
+            :
+            <Detail className={style.detail} talent={talentSelected} />
+          }
         </div>
       </div>
-       <ul className={style.pagination}>
+      <ul className={style.pagination}>
         {pagination.map((number) => (
           <li
             key={number}

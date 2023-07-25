@@ -6,7 +6,7 @@ export const GET_EVENT_BY_ID="GET_EVENT_BY_ID";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 export const GET_COMPANY_BY_ID = "GET_COMPANY_BY_ID";
-export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
+export const GET_ALL_ID_POSTULATIONS = "GET_ALL_ID_POSTULATIONS";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
 export const GET_ALL_TALENTS = "GET_ALL_TALENTS";
 export const FILTER_BY_HABILITY = "FILTER_BY_HABILITY";
@@ -157,12 +157,12 @@ export const getAllCompanies=() => {
    }
 }
 
-export const get_all_postulations=(fk) => {
+export const get_all_id_postulations=(fk) => {
    return async (dispatch) => {
       try {
          const response=await axios.get(`http://localhost:3001/postulations/${fk}`);
          console.log(response.data);
-         return dispatch({type: GET_ALL_POSTULATIONS, payload: response.data})
+         return dispatch({type: GET_ALL_ID_POSTULATIONS, payload: response.data})
       } catch (error) {
          return dispatch({
            type: "ERROR",
