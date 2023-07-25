@@ -17,7 +17,7 @@ mainRouter.use("/talents/favorites", companyFavoriteRouter);
 mainRouter.use("/talents/applied", postulationRouter);
 mainRouter.use("/talents", talentRouter);
 
-//! Rutas de Eventos
+//todo: Rutas de Eventos
 mainRouter.use("/events", eventRouter);
 
 module.exports = mainRouter;
