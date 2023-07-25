@@ -18,6 +18,11 @@ const SearchComp=() => {
     dispatch(getAllEvents(name));
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(getAllEvents());
+  };
+
   return (
     <div className={style.containerGe}>
       {/*INPUT*/}
