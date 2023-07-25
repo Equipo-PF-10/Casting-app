@@ -6,9 +6,8 @@ import Detail from "./CompanyComponent/Detail";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { get_all_id_postulations } from "../../redux/actions";
-import { get_talent_by_id } from "../../redux/actions";
-import { getAllTalents } from "../../redux/actions";
+import { get_all_id_postulations, get_event_by_id, get_talent_by_id } from "../../redux/actions";
+
 
 const CompanySearch = () => {
   //  const id_event = useParams();
@@ -16,6 +15,7 @@ const CompanySearch = () => {
   let [id, setId] = useState("");
   let [talentSelected, setTalentSelected] = useState({});
   const dispatch = useDispatch();
+  const evento = useSelector((state) => state.eventDetail);
   const idPostulations = useSelector((state) => state.postulationsByEvent);
   /*
   {
@@ -24,9 +24,9 @@ const CompanySearch = () => {
     ]
   }
   */
-  console.log(idPostulations); // {}
-  const postulantes = useSelector((state) => { state.talentsById }); // [postulantes]
-
+  console.log(idPostulations); 
+  const postulantes = useSelector((state) =>  state.talentsById ); // [postulantes]
+ 
   // Paginación
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,9 +49,11 @@ const CompanySearch = () => {
   //Dispatch
 
   let id_event = "21";
-  //Me devuelve los ids de los postulantes
+  //Obtener el los id de los postulantes al evento
+  //Obtener el detalle del evento para renderizar el nombre del mismo como un Titulo
   useEffect(() => {
     dispatch(get_all_id_postulations(id_event));
+    dispatch(get_event_by_id(id_event))
   }, [dispatch, id_event]);
 
   //Obtener todos los talentos a partir del arreglo de idPostulaciones
@@ -82,7 +84,7 @@ const CompanySearch = () => {
     </li>
   ));
 
-  const ubication = idPostulations.map((postulante) => {
+  const ubication = postulantes.map((postulante) => {
     return postulante.ubication;
   });
 
@@ -95,12 +97,13 @@ const CompanySearch = () => {
   return (
     <div className={style.containerG}>
       <div className={style.searchFil}>
-        <Search ubication={singleLocation} setCurrentPage={setCurrentPage} />
+        <Search ubication={singleLocation} setCurrentPage={setCurrentPage} postulantes={postulantes} />
       </div>
       <div className={style.secciones}>
         <div className={style.navLateral}>
           <NavBarLateral />
         </div>
+        {/* <div><h2>Postulantes al Evento: {evento.name}</h2></div> */}
         <div className={style.grid}>
           <div className={style.cards}>{listedTalents}</div>
         </div>

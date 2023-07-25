@@ -5,9 +5,9 @@ import { getAllTalents } from "../../../redux/actions";
 
 const Search = (props) => {
 
-  const {ubication, setCurrentPage} = props;
+  const {ubication, setCurrentPage, postulantes} = props;
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   
 
   // Habilidades
