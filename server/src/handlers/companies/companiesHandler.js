@@ -1,6 +1,6 @@
-const { allCompanies, searchByLocation, createCompany,  getCompanyById, updateCompanyById, deleteCompanyById, getAllCompanies  } = require("../../controllers/companies/companiesController");
+const { searchByLocation, createCompany,  getCompanyById, updateCompanyById, deleteCompanyById, getAllCompanies  } = require("../../controllers/companies/companiesController");
 
-async function handleGetAllCompanies(req, res) {
+async function handlerGetAllCompanies(req, res) {
   try {
     const allCompanies = await getAllCompanies(); // Llamamos al handler para obtener los datos
     if (!allCompanies.length)
@@ -115,7 +115,7 @@ const handlerDeleteCompanyById = async (req, res) => {
 };
 
 module.exports = {
-  handleGetAllCompanies,
+  handlerGetAllCompanies,
   handleSearchByLocation,
   handleCreateCompany,
   handleUpdateCompanyById,

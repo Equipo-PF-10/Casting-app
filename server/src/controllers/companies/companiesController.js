@@ -1,36 +1,19 @@
-const { Company, Talento } = require("../../db");
-
-//!Probar el funcionamiento sin esta funcion, me parece que no esta siendo ejecutada en ningun lugar  
-// const allCompanies = async (name) => {
-  
-//   if (name) {
-//     const foundAtDb = await Company.findAll({ where: { name } });
-//         if (foundAtDb.length === 0) throw new Error(`Company ${name} was not found. Try again.`);
-//         return foundAtDb;
-//       } else {
-//         return await Company.findAll();
-//       }
-//   };
-
+const { Company } = require("../../db");
+ 
+  async function getAllCompanies() {
+    try {
+      const allCompanies = await Company.findAll();
+      return allCompanies;
+    } catch (error) {
+      throw new Error("Error al obtener datos");
+    }
+  }
 const searchByLocation = async (country) => {
   //! Falta el try catch
   const response = await Company.findAll({ where: { country: { $like: "%" + country + "%" } } });
   return response;
 };
 
-async function getAllCompanies() {
-  try {
-    const allCompanies = await Company.findAll({
-      include: {
-        model: Talento,
-        attributes: ["name"],
-      },
-    });
-    return allCompanies;
-  } catch (error) {
-    throw new Error("Error al obtener datos");
-  }
-}
 
 const createCompany = async (email, password) =>{
   //! Falta el try catch
@@ -87,7 +70,6 @@ const updateCompanyById = async (id, updatedData) => {
 };
 
 module.exports = {
-  //allCompanies,
   searchByLocation,
   createCompany,
   updateCompanyById,
