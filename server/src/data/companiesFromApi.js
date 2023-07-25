@@ -1,4 +1,4 @@
-const { Empresa } = require('../db');
+const { Company } = require('../db');
 const companiesFullData = require ("./companiesFromApi.json");
 
 const companiesFromApi = async () => {
@@ -26,7 +26,7 @@ const companiesFromApi = async () => {
       companies.push(comp)
     }); 
 
-    const savedEmpresas = await Empresa.bulkCreate(companies);
+    const savedEmpresas = await Company.bulkCreate(companies);
   } catch (error) {
 
     if (error.response && error.response.status === 404) {
