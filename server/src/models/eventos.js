@@ -8,7 +8,10 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
-
+      idEmpresa: {
+        type: DataTypes.UUID,
+        allowNull: false,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -25,11 +28,6 @@ module.exports = (sequelize) => {
           len: [0, 130], // Permite valores entre 0 y 130 caracteres.
         },
       },
-
-      detail: {
-        type: DataTypes.STRING,
-      },
-
       active: {
         type: DataTypes.BOOLEAN,
         allowNull: true,
@@ -38,16 +36,16 @@ module.exports = (sequelize) => {
 
       ubication: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
 
       habilityRequired: {
         type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: true,
+        allowNull: false,
       },
 
-      habilitySalary: {
-        type: DataTypes.ARRAY(DataTypes.FLOAT),
+      salary: {
+        type: DataTypes.STRING,
         allowNull: true,
         // validate: misma length que habilityRequried
       },

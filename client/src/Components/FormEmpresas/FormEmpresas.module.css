@@ -90,8 +90,10 @@
     border-radius: 5px;
     background: whitesmoke;
     width: 250px;
-    height: 150px;
+    height: 100px;
+    margin-bottom: 20px;
   }
+  
 .error{
     font-size: 12px;
     color: #990004;

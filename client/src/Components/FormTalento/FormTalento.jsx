@@ -26,24 +26,21 @@ const FormTalento = () => {
       ];
 
     const initialState = {
-        name: "",
-        password: "",
-        passwordConfirm: "",
         email: "",
-        emailConfirm: "",
+        name: "",
+        dni: "",
+        password: "",
         image: "",
-        piel: "",
-        contexture: "",
-        socialNetwork: [],
-        num: "",
+        aboutMe: "",
         nacionality: "",
         ubication: "",
-        dni: "",
-        aboutMe: "",
-        gender: "",
-        height: "",
+        contexture: "",
         weight: "",
+        height: "",
+        gender: "",
         ethnicOrigin: "",
+        socialNetwork: [],
+        contact: "",
         hability: []
     }
 
@@ -94,23 +91,13 @@ const FormTalento = () => {
                         <p className={error.password ? Styles.error : ""}>{error.password ? error.password : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="passwordConfirm" className={Styles.text}>Confirma Contraseña</label>
-                        <input type="password" name="passwordConfirm" id="passwordConfirm" onChange={handleChange} required/>
-                        <p className={error.passwordConfirm ? Styles.error : ""}>{error.passwordConfirm ? error.passwordConfirm: null}</p>
-                    </article>
-                    <article className={Styles.coolinput}>
                         <label htmlFor="email" className={Styles.text}>Email</label>
                         <input type="text" name="email" id="email" value={input.email} onChange={handleChange} required/>
                         <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="emailConfirm" className={Styles.text}>Confirmar Email</label>
-                        <input type="text" name="emailConfirm" id="emailConfirm" onChange={handleChange} required/>
-                        <p className={error.emailConfirm ? Styles.error : ""}>{error.emailConfirm ? error.emailConfirm: null}</p>
-                    </article>
-                    <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Descripción</label>
-                            <textarea name="aboutMe" id="" value={input.aboutMe} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
+                            <textarea name="aboutMe" id="" value={input.aboutMe} onChange={handleChange} placeholder="Descripción de tu perfil..."></textarea>
                             <p className={error.aboutMe ? Styles.error : ""}>{error.aboutMe ? error.aboutMe : null}</p>
                         </article>
 
@@ -145,7 +132,7 @@ const FormTalento = () => {
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Subir Imágen</label>
-                        <input type="file" name="image" value={input.image} required onChange={handleChange}/>
+                        <input type="text" name="image" value={input.image} required onChange={handleChange}/>
                     </article>
                     <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Orientación artística</label>
@@ -213,8 +200,8 @@ const FormTalento = () => {
                         </svg>
                     </NavLink>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="num" className={Styles.text}>Número Telefónico</label>
-                        <input type="text" name="num" id="num" value={input.num} onChange={handleChange}/>
+                        <label htmlFor="contact" className={Styles.text}>Número Telefónico</label>
+                        <input type="text" name="contact" id="contact" value={input.contact} onChange={handleChange}/>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Facebook</label>

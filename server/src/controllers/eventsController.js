@@ -47,11 +47,10 @@ const createEvent = async (
   image,
   expirationDate,
   shortDescription,
-  detail,
   active,
   ubication,
   habilityRequired,
-  habilitySalary,
+  salary,
   contact,
   idEmpresa
 ) => {
@@ -61,11 +60,10 @@ const createEvent = async (
       image,
       expirationDate,
       shortDescription,
-      detail,
       active,
       ubication,
       habilityRequired,
-      habilitySalary,
+      salary,
       contact,
       idEmpresa,
     });
