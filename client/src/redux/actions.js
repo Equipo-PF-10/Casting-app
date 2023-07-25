@@ -2,15 +2,17 @@ export const REGISTER_MODEL_OR_COMPANY = "REGISTER_MODEL_OR_COMPANY";
 export const MODAL_LOGIN = "MODAL_LOGIN";
 export const ERROR = "ERROR";
 export const ID_USER = "ID_USER";
+export const USER_TYPE = "USER_TYPE";
 export const GET_EVENT_BY_ID="GET_EVENT_BY_ID";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 export const GET_COMPANY_BY_ID = "GET_COMPANY_BY_ID";
-export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
+export const GET_ALL_ID_POSTULATIONS = "GET_ALL_ID_POSTULATIONS";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
 export const GET_ALL_TALENTS = "GET_ALL_TALENTS";
 export const FILTER_BY_HABILITY = "FILTER_BY_HABILITY";
-export const FILTER_BY_GENDER = "FILTER_BY_GENDER";
+export const FILTER_BY_GENDER="FILTER_BY_GENDER";
+export const CLEAR_DETAIL='CLEAR_DETAIL'
 import axios from 'axios';
 
 
@@ -88,6 +90,14 @@ export const id_user = (payload) => {
       })
    }
 }
+export const user_type = (payload) => {
+   return (dispatch) => {
+      return dispatch({
+        type: "USER_TYPE",
+        payload: payload
+      })
+   }
+}
 
 export const get_company_by_id = (id) => {
    let endpoint = `http://localhost:3001/companies/${id}`; 
@@ -132,7 +142,7 @@ export const get_event_by_id = (id) => {
 export const getAllEvents=() => {
    return async (dispatch) => {
       try {
-         const response=await axios.get("http://localhost:3001/events");
+         const response = await axios.get("http://localhost:3001/events");
          return dispatch({type: GET_ALL_EVENTS, payload: response.data})
       } catch (error) {
          return dispatch({
@@ -157,12 +167,12 @@ export const getAllCompanies=() => {
    }
 }
 
-export const get_all_postulations=(pk) => {
+export const get_all_id_postulations=(fk) => {
    return async (dispatch) => {
       try {
-         const response=await axios.get(`http://localhost:3001/postulations/${pk}`);
+         const response=await axios.get(`http://localhost:3001/postulations/${fk}`);
          console.log(response.data);
-         return dispatch({type: GET_ALL_POSTULATIONS, payload: response.data})
+         return dispatch({type: GET_ALL_ID_POSTULATIONS, payload: response.data})
       } catch (error) {
          return dispatch({
            type: "ERROR",
@@ -206,6 +216,13 @@ export const getAllTalents= () => {
       }
    }
 }
+
+export const clearDetail = () => {
+  return {
+    type: CLEAR_DETAIL,
+  };
+};
+
 
 export const filterByTalent = (hability) => {
    let endpoint = "http://localhost:3001/talents/";

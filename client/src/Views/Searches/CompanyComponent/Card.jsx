@@ -1,5 +1,4 @@
 import style from "./Card.module.css";
-import { NavLink, useParams } from "react-router-dom";
 
 const Card = (props) => {
 
@@ -8,7 +7,6 @@ const Card = (props) => {
   let habilidades = hability.join(", ");
 
   return (
-    <NavLink to={`/talents/${id}`} className={style.navLink}>
       <div className={style.containerCard}>
         <div className={style.imagen}>
           <img src={image} alt="" />
@@ -19,7 +17,6 @@ const Card = (props) => {
           <p>{gender}</p>
         </div>
       </div>
-    </NavLink>
   );
 };
 

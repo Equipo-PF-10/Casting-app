@@ -1,15 +1,28 @@
-import React from "react";
+import React, {useEffect} from "react";
 import style from "./ProfileCompany.module.css";
-import empresa from "../../../assets/PNG/facebook 1.png";
+import { get_company_by_id } from "../../redux/actions";
+import {useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
-const profileCompany = () => {
+
+const profileCompany=() => {
+  let {id}=useParams()
+  const dispatch=useDispatch()
+  
+  useEffect(() => {
+    dispatch(get_company_by_id(id))
+  },[])
+  
+  const detailCompany = useSelector((state) => state.companyDetail);
+
   return (
     <div className={style.containerGeneral}>
+      {/*{detailCompany.length > ?}*/}
       <div>
         {/*carta con foto y descripcion*/}
         <div className={style.cardContainer}>
           <div className={style.image}>
-            <img src='' alt="" />
+            <img src="" alt="" />
           </div>
           <div className={style.textoCard}>
             <h2 className={style.nombre}>Empresa</h2>
@@ -42,16 +55,28 @@ const profileCompany = () => {
         {/*carta de imagenes*/}
         <div className={style.imagenesCard}>
           <div className={style.contImg}>
-            <p className={style.imgs}>ImagenUno</p>
+            <div
+              className="grid-item wide"
+              //style="background-image: url(../img/fo.arq/bdl1.jpg);"
+            ></div>
           </div>
           <div className={style.contImg}>
-            <p className={style.imgs}>ImagenDos</p>
+            <div
+              className="grid-item"
+              //style="background-image: url(../img/fo.arq/bdl1.jpg);"
+            ></div>
           </div>
           <div className={style.contImg}>
-            <p className={style.imgs}>ImagenTres</p>
+            <div
+              className="grid-item wide"
+              //style="background-image: url(../img/fo.arq/bdl1.jpg);"
+            ></div>
           </div>
           <div className={style.contImg}>
-            <p className={style.imgs}>ImagenCuatro</p>
+            <div
+              className="grid-item"
+              //style="background-image: url(../img/fo.arq/bdl1.jpg);"
+            ></div>
           </div>
         </div>
       </div>

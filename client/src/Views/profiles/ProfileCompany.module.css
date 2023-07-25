@@ -121,6 +121,26 @@
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
+/*carta de imagenes con grid*/
+/*.imagenesCard{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-auto-rows: minmax(200px, auto);
+        gap: 20px;
+        padding: 20px;
+        grid-auto-flow: dense;
+}*/
+/*.grid-item{
+            background-color: lightblue;
+            border-radius: 4px;
+            transition: 0.3s ease-in-out;
+
+            &:hover{
+                filter: opacity(0.9);
+                transform: scale(1.04);
+            }
+}*/
+
 /*carta de proyectos*/
 .proyectosCard {
   width: 600px;

@@ -1,16 +1,17 @@
 import style from "./Detail.module.css";
 
-const Detail = ({talent}) => {
-
-  const {name, aboutMe, ubication, hability} = talent;
+const Detail = ({ talent }) => {
+  const { id, name, aboutMe, ubication, hability } = talent;
 
   return (
     <div className={style.containerDetail}>
+      <NavLink to={`/talents/${id}`} className={style.navLink}>
+        <button>Ver perfil del Postulante</button>
+      </NavLink>
+
       <h2>{name}</h2>
       <h5>{ubication}</h5>
-      <p className={style.textoDetail}>
-        {aboutMe}
-      </p>
+      <p className={style.textoDetail}>{aboutMe}</p>
       <div className={style.acomodarOrientacion}>
         <h3 className={style.orientacionArt}>Orientacion Artistica</h3>
       </div>
@@ -18,7 +19,7 @@ const Detail = ({talent}) => {
       <div className={style.habilidades}>
         <div className={style.habilidad}>
           {hability?.map((habilit) => {
-            <h4>{habilit}</h4>
+            <h4>{habilit}</h4>;
           })}
         </div>
       </div>

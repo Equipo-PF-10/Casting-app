@@ -3,29 +3,32 @@ import {
   REGISTER_MODEL_OR_COMPANY,
   MODAL_LOGIN,
   ID_USER,
+  USER_TYPE,
   GET_EVENT_BY_ID,
   GET_ALL_EVENTS,
   GET_ALL_COMPANIES,
   GET_COMPANY_BY_ID,
-  GET_ALL_POSTULATIONS,
+  GET_ALL_ID_POSTULATIONS,
   GET_TALENT_BY_ID,
   GET_ALL_TALENTS,
   FILTER_BY_HABILITY,
-  FILTER_BY_GENDER
+  FILTER_BY_GENDER,
+  CLEAR_DETAIL
 } from "./actions.js";
 
 const initialState = {
   talents: [],
-  talentById: {},
+  talentsById: [],
   allEvents: [],
   getAllCompanies: [],
   companiesFiltered: [],
-  companyDetail: {},
+  companyDetail: [],
   eventsFiltered: [],
   eventDetail: {},
   postulationsByEvent: {},
   postulationsByEventFiltered: {},
   idUser: "",
+  userType: "", //"1" === "talent", "2" === "company"
   messageRegistered: {},
   modalInLogin: false,
   errors: {},
@@ -58,6 +61,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         idUser: payload,
       };
+    case USER_TYPE:
+      return {
+        ...state,
+        userType: payload,
+      };
     case GET_EVENT_BY_ID:
       return {
         ...state,
@@ -80,7 +88,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         companiesFiltered: payload,
         getAllCompanies: payload,
       };
-    case GET_ALL_POSTULATIONS:
+    case GET_ALL_ID_POSTULATIONS:
       return {
         ...state,
         postulationsByEvent: payload,
@@ -90,22 +98,27 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         talents: payload,
-      }
+      };
     case GET_TALENT_BY_ID:
       return {
         ...state,
-        talentById: payload,
+        talentsById: [...talentsById, payload],
       };
     case FILTER_BY_HABILITY:
       return {
         ...state,
         talents: payload,
-      }
+      };
     case FILTER_BY_GENDER:
       return {
         ...state,
         talents: payload,
-      }
+      };
+    case CLEAR_DETAIL:
+      return {
+        ...state,
+        companyDetail: action.payload,
+      };
     case ERROR:
       return {
         ...state,

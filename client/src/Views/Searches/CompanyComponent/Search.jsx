@@ -1,12 +1,13 @@
 import style from "./Search.module.css";
 import { filterByTalent, filterByGender } from "../../../redux/actions";
 import {useDispatch} from "react-redux";
+import { getAllTalents } from "../../../redux/actions";
 
 const Search = (props) => {
 
-  const {ubication, setCurrentPage} = props;
+  const {ubication, setCurrentPage, postulantes} = props;
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   
 
   // Habilidades
@@ -49,6 +50,12 @@ const Search = (props) => {
     setCurrentPage(1)
   }
 
+
+  //Recargar Postulantes, ----Aplicarlo con los postulantes (No los talentos)
+  const handleClick = (event) => {
+    dispatch(getAllTalents());
+  }
+
   return (
     <div className={style.containerGe}>
       {/*INPUT*/}
@@ -88,8 +95,8 @@ const Search = (props) => {
       {/*BOTON RECARGAR*/}
       <div>
         <button
-          onClick={(e) => {
-            handleClick(e);
+          onClick={(event) => {
+            handleClick(event);
           }}
           className={style.recargar}
         >
