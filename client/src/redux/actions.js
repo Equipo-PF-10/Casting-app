@@ -10,7 +10,8 @@ export const GET_ALL_ID_POSTULATIONS = "GET_ALL_ID_POSTULATIONS";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
 export const GET_ALL_TALENTS = "GET_ALL_TALENTS";
 export const FILTER_BY_HABILITY = "FILTER_BY_HABILITY";
-export const FILTER_BY_GENDER = "FILTER_BY_GENDER";
+export const FILTER_BY_GENDER="FILTER_BY_GENDER";
+export const CLEAR_DETAIL='CLEAR_DETAIL'
 import axios from 'axios';
 
 
@@ -206,6 +207,13 @@ export const getAllTalents= () => {
       }
    }
 }
+
+export const clearDetail = () => {
+  return {
+    type: CLEAR_DETAIL,
+  };
+};
+
 
 export const filterByTalent = (hability) => {
    let endpoint = "http://localhost:3001/talents/";

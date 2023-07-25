@@ -11,7 +11,8 @@ import {
   GET_TALENT_BY_ID,
   GET_ALL_TALENTS,
   FILTER_BY_HABILITY,
-  FILTER_BY_GENDER
+  FILTER_BY_GENDER,
+  CLEAR_DETAIL
 } from "./actions.js";
 
 const initialState = {
@@ -90,7 +91,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         talents: payload,
-      }
+      };
     case GET_TALENT_BY_ID:
       return {
         ...state,
@@ -100,12 +101,17 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         talents: payload,
-      }
+      };
     case FILTER_BY_GENDER:
       return {
         ...state,
         talents: payload,
-      }
+      };
+    case CLEAR_DETAIL:
+      return {
+        ...state,
+        companyDetail: action.payload,
+      };
     case ERROR:
       return {
         ...state,
