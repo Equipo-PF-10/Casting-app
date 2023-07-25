@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from 'react-redux';
 import Select from "react-select";
 import styles from "./EventForm.module.css";
 import validation from "./validation";
@@ -6,10 +7,25 @@ import axios from "axios";
 import NavBarLateral from "../NavBarLateral/NavBarLateral";
 
 const EventForm = () => {
-
-    const idUser = useState((state) => state.idUser);
-
+    
     const URL = "localhost:3001/events/"
+
+    const idUser = useSelector((state) => state.idUser);
+
+    const initialState = {
+        name: "",
+        date: "",
+        ubication: "",
+        image: "",
+        shortDescription: "",
+        description: "",
+        habilityRequired: [],
+        salary: "",
+        contact: [],
+        idCompany: "",
+    }
+
+    initialState.idCompany = idUser
 
     const optionshabilityRequired = [
         { value: 'Actuación', label: 'Actuación' },
@@ -26,20 +42,7 @@ const EventForm = () => {
         { value: 'Presentador/a', label: 'Presentador/a' },
         { value: 'Promotor/a', label: 'Promotor/a' },
       ];
-
-    const initialState = {
-        name: "",
-        date: "",
-        ubication: "",
-        image: "",
-        shortDescription: "",
-        description: "",
-        habilityRequired: [],
-        salary: "",
-        contact: [],
-        idCompany: idUser,
-    }
-
+    
     const [input, setInput] = useState(initialState)
 
     const [error, setError] = useState({});
@@ -53,8 +56,6 @@ const EventForm = () => {
       const handleChangeSelect = (selectedOptions) => {
         setInput({ ...input, habilityRequired: selectedOptions });
       };
-      
-    console.log(input)
 
     const hanldeSubmit = async(event) => {
         event.preventDefault();
