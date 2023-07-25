@@ -3,6 +3,7 @@ import {
   REGISTER_MODEL_OR_COMPANY,
   MODAL_LOGIN,
   ID_USER,
+  USER_TYPE,
   GET_EVENT_BY_ID,
   GET_ALL_EVENTS,
   GET_ALL_COMPANIES,
@@ -27,6 +28,7 @@ const initialState = {
   postulationsByEvent: {},
   postulationsByEventFiltered: {},
   idUser: "",
+  userType: "", //"1" === "talent", "2" === "company"
   messageRegistered: {},
   modalInLogin: false,
   errors: {},
@@ -58,6 +60,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         idUser: payload,
+      };
+    case USER_TYPE:
+      return {
+        ...state,
+        userType: payload,
       };
     case GET_EVENT_BY_ID:
       return {

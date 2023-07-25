@@ -13,6 +13,10 @@
 .textoDetail {
   margin-top: 30px;
 }
+.navLink{
+  text-decoration: none;
+  color: #F5F5F5;
+}
 
 .acomodarOrientacion {
   display: flex;

@@ -21,8 +21,3 @@ const Card = (props) => {
 };
 
 export default Card;
-
-{/* 
-Colocar en el detail de la card
-<NavLink to={`/talents/${id}`} className={style.navLink}></NavLink> 
-*/}

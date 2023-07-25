@@ -2,6 +2,7 @@ export const REGISTER_MODEL_OR_COMPANY = "REGISTER_MODEL_OR_COMPANY";
 export const MODAL_LOGIN = "MODAL_LOGIN";
 export const ERROR = "ERROR";
 export const ID_USER = "ID_USER";
+export const USER_TYPE = "USER_TYPE";
 export const GET_EVENT_BY_ID="GET_EVENT_BY_ID";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
@@ -85,6 +86,14 @@ export const id_user = (payload) => {
    return (dispatch) => {
       return dispatch({
         type: "ID_USER",
+        payload: payload
+      })
+   }
+}
+export const user_type = (payload) => {
+   return (dispatch) => {
+      return dispatch({
+        type: "USER_TYPE",
         payload: payload
       })
    }

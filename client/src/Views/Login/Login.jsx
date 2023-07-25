@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginControler } from "./loginControler";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { clean_message_register, id_user } from "../../redux/actions";
+import { clean_message_register, id_user, user_type } from "../../redux/actions";
 
 const Login = () => {
   //const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
@@ -124,14 +124,14 @@ const Login = () => {
     if (obj.access === 1) {
       dispatch(id_user(obj.id));
       setErrorMessage("");
-      // navigate(`/model/search`); //navigate(`/model/search/:${id}`);
+      dispatch(user_type("1"));
       navigate(`/home/talent`);
     }
     //este navigate deberia ser para una ruta donde la data sea de la empresa por id
     if (obj.access === 2) {
       dispatch(id_user(obj.id));
       setErrorMessage("");
-      // navigate(`/company/search`);
+      dispatch(user_type("2"));
       navigate(`/home/company`);
     }
     if (
