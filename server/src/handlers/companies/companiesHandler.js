@@ -1,16 +1,24 @@
-const { searchByLocation, createCompany,  getCompanyById, updateCompanyById, deleteCompanyById, getAllCompanies  } = require("../../controllers/companies/companiesController");
+const { searchByLocation, createCompany,  getCompanyById, updateCompanyById, deleteCompanyById, getAllCompanies} = require("../../controllers/companies/companiesController");
 
 async function handlerGetAllCompanies(req, res) {
   try {
-    const allCompanies = await getAllCompanies(); // Llamamos al handler para obtener los datos
-    if (!allCompanies.length)
-      res.status(401).json({ message: "No hay mascotas en la BD" });
-    else
-      res.status(200).json(allCompanies);
+    const {name}=req.query
+    const allCompanies = await getAllCompanies(name); 
+    if (name === undefined) {
+      if (typeof allCompanies === 'string') return res.status(400).json({error:allCompanies});
+      return res.status(200).json(allCompanies);
+    }
+    if (typeof name === 'string' && name.length === 0) return res.status(400).json({error:'Falta ingresar el nombre de la compañia'})
+    else {
+      const nameLowerCase = name.toLowerCase();
+      const filtered = allCompanies.filter( ele => ele.name.toLowerCase().includes(nameLowerCase))
+      if (filtered.length !==0) return res.status(200).json(filtered);
+      else return res.status(400).json({error:`No se encontró ninguna empresa con el nombre ${name}`})
+    }  
   } catch (error) {
-    res.status(404).json({ message: "Error al obtener datos" });
-  }
-}
+      return res.status(404).json({error:error.message});        
+  }  
+};
 
 const handlerSearchByLocation = async (req, res) => {
   try {

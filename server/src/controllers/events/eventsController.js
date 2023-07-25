@@ -53,7 +53,7 @@ const createEvent = async (
   habilityRequired,
   salary,
   contact,
-  idCompany
+  CompanyId
 ) => {
   try {
     const event = await Event.create({
@@ -67,7 +67,7 @@ const createEvent = async (
       habilityRequired: habilityRequired,
       salary: salary,
       contact: contact,
-      idCompany: idCompany,
+      CompanyId: CompanyId,
     });
     return event;
   } catch (error) {

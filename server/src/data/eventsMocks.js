@@ -20,7 +20,7 @@ const eventsMocks = async () => {
           habilityRequired,
           contact,
           habilitySalary,
-          idEmpresa
+          CompanyId
         } = event;
 
         const createdEvent = await Evento.create({
@@ -36,7 +36,7 @@ const eventsMocks = async () => {
           habilityRequired,
           contact,
           habilitySalary,
-          idEmpresa
+          CompanyId
         });
         return createdEvent;
       })

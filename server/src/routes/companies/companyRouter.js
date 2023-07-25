@@ -2,6 +2,7 @@ const { Router } = require("express");
 const { handlerSearchByLocation, handlerCreateCompany, handlerGetAllCompanies, handlerUpdateCompanyById, handlerGetCompanyById, handlerDeleteCompanyById } = require("../../handlers/companies/companiesHandler");
 
 const companyRouter = Router();
+
 //* Esta ruta busca todas las empresas por una ubicación especifica.
 companyRouter.get("/location", handlerSearchByLocation);
 

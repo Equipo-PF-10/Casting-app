@@ -26,12 +26,8 @@ module.exports = (sequelize) => {
         defaultValue: "Contactado",
       },
 
-      idEvento: {
+      EventId: {
         type: DataTypes.UUID,
-        references: {
-          model: "Evento", // Nombre del modelo que será referenciado
-          key: "id", // Nombre de la columna que es la clave primaria del modelo referenciado
-        },
       },
     },
     { freezeTableName: true, timestamps: false }

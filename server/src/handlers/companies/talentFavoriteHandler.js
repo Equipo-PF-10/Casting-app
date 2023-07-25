@@ -13,8 +13,8 @@ const { createFavoriteTalent,getFavoritesTalentsById} = require("../../controlle
   };
   async function handleGetFavoritesTalentsById (req, res)  {
     try {
-      const { EmpresaId } = req.body;
-      const result = await getFavoritesTalentsById(EmpresaId);
+      const { CompanyId } = req.body;
+      const result = await getFavoritesTalentsById(CompanyId);
       res.status(200).json(result);
     } catch (error) { 
       res.status(400).json({ error: "Error al encontrar los talentos favorito." });

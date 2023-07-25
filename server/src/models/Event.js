@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const Company = require("./Company");
+//const Company = require("./Company");
 
 module.exports = (sequelize) => {
   sequelize.define("Event",{
@@ -9,10 +9,10 @@ module.exports = (sequelize) => {
         primaryKey: true,
       },
 
-      idCompany: {
-        type: DataTypes.UUID,
-        allowNull: false,
-      },
+      // CompanyId: {
+      //   type: DataTypes.UUID,
+      //   allowNull: false,
+      // },
 
       name: {
         type: DataTypes.STRING,
@@ -71,7 +71,7 @@ module.exports = (sequelize) => {
       },
 
       contact: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
       },
 

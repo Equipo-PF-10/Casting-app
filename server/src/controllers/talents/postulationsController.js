@@ -12,10 +12,10 @@ const createAdd = async (EventoId, TalentoId) => {
     // Crear la postulación en la base de datos
     const postulacion = await Applied.create({
       TalentoId,
-      EventoId,
+      EventId,
     });
 
-    const findPostulacion = await Applied.findAll({where: {EventoId}})
+    const findPostulacion = await Applied.findAll({where: {EventId}})
 
   
     const PostulacionId = findPostulacion[0].dataValues.id;
@@ -62,7 +62,7 @@ const deleteApplicantById = async (id) => {
 };
 
 const getAddByFk = async (fk) => {
-  const postulacion = await Applied.findAll({where: {EventoId:fk}});
+  const postulacion = await Applied.findAll({where: {EventId:fk}});
 
   if (!postulacion) {
     throw new Error(`La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`);

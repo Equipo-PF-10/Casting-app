@@ -1,13 +1,14 @@
 const { Company } = require("../../db");
  
-  async function getAllCompanies() {
+  async function getAllCompanies(name) {
     try {
       const allCompanies = await Company.findAll();
       return allCompanies;
     } catch (error) {
       throw new Error("Error al obtener datos");
     }
-  }
+}
+
 const searchByLocation = async (country) => {
   //! Falta el try catch
   const response = await Company.findAll({ where: { country: { $like: "%" + country + "%" } } });
@@ -17,13 +18,8 @@ const searchByLocation = async (country) => {
 
 const createCompany = async (email, password) =>{
   //! Falta el try catch
-  const created = await Company.create({
-    where: { email },
-    defaults: {
-      email,
-      password,
-    }
-  });
+  const created = await Company.create({email,password,});
+  
   if (!created) throw new Error("La empresa con el correo ingresado ya existe");
   return created;
 };   

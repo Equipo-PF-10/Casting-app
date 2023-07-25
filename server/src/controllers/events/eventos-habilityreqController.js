@@ -1,9 +1,9 @@
-const { Evento } = require("../../db");
+const { Event } = require("../../db");
 
 async function obtenerEventosConHabilidadRequerida() {
   try {
     // Realizar el findAll de los eventos con la propiedad habilityRequired
-    const eventos = await Evento.findAll({
+    const eventos = await Event.findAll({
       where: {
         habilityRequired: {
           // La propiedad habilityRequired no es nula (not null) y no está vacía

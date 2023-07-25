@@ -41,7 +41,7 @@ const getFavoritesTalentsById = async (EmpresaId) => {
 
 // async function obtenerTalentosFavoritosDeEmpresa(idEmpresa) {
 //   try {
-//     const empresa = await Empresa.findByPk(idEmpresa, {
+//     const empresa = await Company.findByPk(idEmpresa, {
 //       include: {
 //         model: TalentosFavoritos,
 //         attributes: ["description"],

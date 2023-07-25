@@ -39,24 +39,25 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 
 const {
-  Company,
-  Event,
-  Talent,
   Applied,
-  TalentSelectedAsFav,
+  Company,
+  CompanySelectTalentAsFav,
   CompanySelectedAsFav,
-//   Mensaje,
-//   TalentoEliminado,
-//   EventoEliminado,
-//   Contactado,
-//   EmpresaDeshabilitada,
-//   EmpresaTalentoFavorito,
+  DisableCompany,
+  DisableEvent,
+  Event,
+  Messenger,
+  Talent,
+  TalentApplied,
+  TalentSelectCompanyAsFav,
+  TalentSelectedAsFav,
+  ToContact
 } = sequelize.models;
 
 
 //* Relaciones de tablas de Empresas************************************************
-Company.hasMany(Event, { foreignKey: "idCompany", as: "events"});
-Event.belongsTo(Company, { foreignKey: "idCompany", as: "company" });
+Company.hasMany(Event, { foreignKey: "CompanyId" });
+Event.belongsTo(Company);
 
 Company.belongsToMany(TalentSelectedAsFav, { through: "CompanySelectTalentAsFav"  });
 TalentSelectedAsFav.belongsToMany(Company, { through: "CompanySelectTalentAsFav"  });
@@ -69,15 +70,15 @@ Talent.belongsToMany(CompanySelectedAsFav, { through: "TalentSelectCompanyAsFav"
 CompanySelectedAsFav.belongsToMany(Talent, { through: "TalentSelectCompanyAsFav" });
 
 //! Relacion de tabla de Eventos con Postulaciones************************************
-Event.hasMany(Applied, { as: "EventoId" });
-Applied.belongsTo(Event, { foreignKey: "EventoId" });
+Event.hasMany(Applied, { foreignKey : "EventId" });
+Applied.belongsTo(Event);
 
 
 
 async function syncDB(){
   try {
-    await sequelize.sync({force: false})
-    console.log("DB funcional")
+    await sequelize.sync({ force: false });
+    console.log("All models were synchronized successfully.");
   } catch (error) {
     console.log({error: error.message});
   }

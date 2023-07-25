@@ -59,7 +59,7 @@ const handlerCreateEvent = async (req, res) => {
     description,
     contact,
     expirationDate,
-    idCompany,
+    CompanyId,
   } = req.body;
 
   if (!name || !image || !shortDescription) {
@@ -74,11 +74,11 @@ const handlerCreateEvent = async (req, res) => {
       );
   }
 
-  // Transforma idCompany de String a UUID
+  // Transforma CompanyId de String a UUID
 
   const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-  if (!uuidPattern.test(idCompany)) {
-    return res.status(400).send("El valor proporcionado para idCompany no es un UUID válido.");
+  if (!uuidPattern.test(CompanyId)) {
+    return res.status(400).send("El valor proporcionado para CompanyId no es un UUID válido.");
   }
 
   const createdEvent = await createEvent(
@@ -92,7 +92,7 @@ const handlerCreateEvent = async (req, res) => {
     habilityRequired,
     salary,
     contact,
-    idCompany
+    CompanyId
   );
 
   res.status(200).json(createdEvent);
