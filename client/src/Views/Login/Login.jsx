@@ -146,7 +146,9 @@ const Login = () => {
       //Cuando no es ni 0, 1, ni 2 es error de servidor desconectado.
       setErrorMessage(`${obj.error}`);
       console.log("Entro en error: " + errorMessage);
-      mensaje_error_Toast();
+      if(errorMessage){  //----Solucion del bug cuando se muestra el Modal (aparecía un toast vacio)
+        mensaje_error_Toast();
+      }
       document.getElementById("loginForm").reset();
     }
   };
