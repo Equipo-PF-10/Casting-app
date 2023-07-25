@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize");
+const Company = require("./Company");
 
 module.exports = (sequelize) => {
   sequelize.define("Event",{
@@ -7,10 +8,12 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
-      idEmpresa: {
+
+      idCompany: {
         type: DataTypes.UUID,
         allowNull: false,
       },
+
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -27,6 +30,11 @@ module.exports = (sequelize) => {
           len: [0, 130], // Permite valores entre 0 y 130 caracteres.
         },
       },
+
+      description: {
+        type: DataTypes.STRING,
+      },
+
       active: {
         type: DataTypes.BOOLEAN,
         allowNull: true,
@@ -63,17 +71,10 @@ module.exports = (sequelize) => {
       },
 
       contact: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.STRING,
         allowNull: true,
       },
 
-      // idEmpresa: {
-      //   type: DataTypes.UUID,
-      //   references: {
-      //     model: "Empresa", // Nombre del modelo que será referenciado
-      //     key: "id", // Nombre de la columna que es la clave primaria del modelo referenciado
-      //   },
-      // },
     },
     { freezeTableName: true, timestamps: false }
   );

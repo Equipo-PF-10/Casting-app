@@ -12,7 +12,7 @@ async function handlerGetAllCompanies(req, res) {
   }
 }
 
-const handleSearchByLocation = async (req, res) => {
+const handlerSearchByLocation = async (req, res) => {
   try {
     const companies = await searchByLocation(req.query.country);
     res.status(200).json(companies);
@@ -21,7 +21,7 @@ const handleSearchByLocation = async (req, res) => {
   }
 };
 
-const handleCreateCompany = async (req, res) => {
+const handlerCreateCompany = async (req, res) => {
   const {
     email,
     password,
@@ -40,7 +40,7 @@ const handleCreateCompany = async (req, res) => {
 };
 
 // Función handler para obtener empresa por ID.
-const handleGetCompanyById = async (req, res) => {
+const handlerGetCompanyById = async (req, res) => {
   const {id} = req.params;
   try {
     const companies = await getCompanyById(id);
@@ -51,7 +51,7 @@ const handleGetCompanyById = async (req, res) => {
 };
 
 // Función handler para modificar una empresa mediante su ID.
-const handleUpdateCompanyById = async (req, res) => {
+const handlerUpdateCompanyById = async (req, res) => {
   const { id } = req.params;
   const {
     email,
@@ -116,9 +116,9 @@ const handlerDeleteCompanyById = async (req, res) => {
 
 module.exports = {
   handlerGetAllCompanies,
-  handleSearchByLocation,
-  handleCreateCompany,
-  handleUpdateCompanyById,
-  handleGetCompanyById,
+  handlerSearchByLocation,
+  handlerCreateCompany,
+  handlerUpdateCompanyById,
+  handlerGetCompanyById,
   handlerDeleteCompanyById  
 };

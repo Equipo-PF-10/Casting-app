@@ -17,7 +17,6 @@ const CompanySearch = () => {
 
   const postulations = useSelector((state) => state.postulationsByEvent);
 
-  const talents = useSelector((state) => state.talents);
 
   // Paginación
 
@@ -26,13 +25,13 @@ const CompanySearch = () => {
 
   const lastIndex = currentPage * talentsPerPage;
   const firstIndex = lastIndex - talentsPerPage;
-  const currentTalents = talents.slice(firstIndex, lastIndex);
+  const currentTalents = postulations.slice(firstIndex, lastIndex);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const pageNumbers = Math.ceil(talents.length / talentsPerPage);
+  const pageNumbers = Math.ceil(postulations.length / talentsPerPage);
   const pagination = Array.from({ length: pageNumbers }, (_, index) => index + 1);
 
   //Dispatch
@@ -74,9 +73,11 @@ const CompanySearch = () => {
     </li>
   ))
 
-  const ubication = talents.map((location) => {
-    return location.ubication
+  const ubication = postulations.map((postulante) => {
+    return postulante.ubication
   })
+
+  // Evita ubicaciones repetidas
 
   const singleLocation = ubication.filter((item, index) => {
     return ubication.indexOf(item) === index;
@@ -97,7 +98,7 @@ const CompanySearch = () => {
           </div>
         </div>
         <div className={style.detailCard}>
-          <Detail talent={talents} className={style.detail}/>
+          <Detail className={style.detail}/>
         </div>
       </div>
        <ul className={style.pagination}>
