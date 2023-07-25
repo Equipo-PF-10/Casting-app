@@ -132,7 +132,7 @@ export const get_event_by_id = (id) => {
 export const getAllEvents=() => {
    return async (dispatch) => {
       try {
-         const response=await axios.get("http://localhost:3001/events");
+         const response = await axios.get("http://localhost:3001/events");
          return dispatch({type: GET_ALL_EVENTS, payload: response.data})
       } catch (error) {
          return dispatch({

@@ -20,7 +20,7 @@ const initialState = {
   allEvents: [],
   getAllCompanies: [],
   companiesFiltered: [],
-  companyDetail: {},
+  companyDetail: [],
   eventsFiltered: [],
   eventDetail: {},
   postulationsByEvent: {},
