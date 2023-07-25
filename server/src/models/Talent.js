@@ -87,6 +87,7 @@ module.exports = (sequelize) => {
 
       dateComeBack: {
         type: DataTypes.DATE,
+        allowNull: true,
       },
 
       socialNetwork: {

@@ -45,6 +45,8 @@ const EventForm = () => {
     
     const [input, setInput] = useState(initialState)
 
+    const [orientaciones, setOrientaciones] = useState([])
+
     const [error, setError] = useState({});
 
     const handleChange = (event) => {
@@ -54,8 +56,9 @@ const EventForm = () => {
       };
 
       const handleChangeSelect = (selectedOptions) => {
-        setInput({ ...input, habilityRequired: selectedOptions });
+        setOrientaciones(selectedOptions);
       };
+
 
     const hanldeSubmit = async(event) => {
         event.preventDefault();
@@ -66,6 +69,10 @@ const EventForm = () => {
             console.log({error: error.message})
         }
     }
+
+    const habilityValue = orientaciones.map(item => item.value);
+
+    input.habilityRequired = habilityValue;
   
     return(
     <div>
@@ -99,7 +106,7 @@ const EventForm = () => {
                                 isMulti 
                                 options={optionshabilityRequired}
                                 className={styles.select}
-                                value={input.habilityRequired}
+                                value={orientaciones}
                                 onChange={handleChangeSelect}
                                 name="habilityRequired"/>
                                 <p className={error.habilityRequired ? styles.error : ""}>{error.habilityRequired ? error.habilityRequired : null}</p>
