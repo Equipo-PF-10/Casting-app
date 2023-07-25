@@ -7,6 +7,8 @@ import NavBarLateral from "../NavBarLateral/NavBarLateral";
 
 const EventForm = () => {
 
+    const idUser = useState((state) => state.idUser);
+
     const URL = "localhost:3001/events/"
 
     const optionshabilityRequired = [
@@ -31,9 +33,11 @@ const EventForm = () => {
         ubication: "",
         image: "",
         shortDescription: "",
+        description: "",
         habilityRequired: [],
         salary: "",
         contact: [],
+        idCompany: idUser,
     }
 
     const [input, setInput] = useState(initialState)
@@ -112,16 +116,23 @@ const EventForm = () => {
                     <section className={styles.inputsCont}>
                         <article className={styles.coolinput}>
                             <label htmlFor="" className={styles.text}>Descripción</label>
-                            <textarea name="shortDescription" id="" cols="30" rows="10" value={input.shortDescription} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
-                            <p className={error.shortDescription ? styles.error : ""}>{error.shortDescription ? error.shortDescription : null}</p>
+                            <textarea name="description" id="" cols="30" rows="10" value={input.description} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
+                            <p className={error.description ? styles.error : ""}>{error.description ? error.description : null}</p>
                         </article>
+                        <div>
                             <article className={styles.coolinput}>
                                 <label htmlFor="salary" className={styles.text}>Salario</label>
                                 <input type="text" id="salary" name="salary" value={input.salary} onChange={handleChange} placeholder="Salario estimado del evento"/>
-                            </article>  
+                            </article>
+                            <article className={styles.coolinput}>
+                                <label htmlFor="" className={styles.text}>Descripción Corta</label>
+                                <textarea name="shortDescription" id="" value={input.shortDescription} onChange={handleChange} placeholder="Descripción breve de tu evento..."></textarea>
+                                <p className={error.shortDescription ? styles.error : ""}>{error.shortDescription ? error.shortDescription : null}</p>
+                            </article> 
+                        </div>
 
                     </section>
-                    <button type="submit" className={styles.btn}>Crear</button>
+                    <button type="submit" className={styles.btn}>Crear Evento</button>
                 </form>
             </div>
             <svg className={styles.img} width="567" height="624" viewBox="0 0 567 624" fill="none" xmlns="http://www.w3.org/2000/svg">

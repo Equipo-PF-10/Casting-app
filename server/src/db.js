@@ -2,6 +2,7 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
+const { log } = require("console");
 //! Pendiente revizar el tema del puerto para que tenga las dos opciones deploy y local
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DB_DEPLOY } =
   process.env;
@@ -52,9 +53,10 @@ const {
 //   EmpresaTalentoFavorito,
 } = sequelize.models;
 
+
 //* Relaciones de tablas de Empresas************************************************
-Company.hasMany(Event, { as: "idEmpresa" });
-Event.belongsTo(Company, { foreignKey: "idEmpresa" });
+Company.hasMany(Event, { foreignKey: "idCompany", as: "events"});
+Event.belongsTo(Company, { foreignKey: "idCompany", as: "company" });
 
 Company.belongsToMany(TalentSelectedAsFav, { through: "CompanySelectTalentAsFav"  });
 TalentSelectedAsFav.belongsToMany(Company, { through: "CompanySelectTalentAsFav"  });
@@ -69,6 +71,19 @@ CompanySelectedAsFav.belongsToMany(Talent, { through: "TalentSelectCompanyAsFav"
 //! Relacion de tabla de Eventos con Postulaciones************************************
 Event.hasMany(Applied, { as: "EventoId" });
 Applied.belongsTo(Event, { foreignKey: "EventoId" });
+
+
+
+async function syncDB(){
+  try {
+    await sequelize.sync({force: false})
+    console.log("DB funcional")
+  } catch (error) {
+    console.log({error: error.message});
+  }
+}
+
+syncDB();
 
 module.exports = {
   ...sequelize.models,

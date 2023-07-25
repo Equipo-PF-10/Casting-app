@@ -47,25 +47,27 @@ const createEvent = async (
   image,
   expirationDate,
   shortDescription,
+  description,
   active,
   ubication,
   habilityRequired,
   salary,
   contact,
-  idEmpresa
+  idCompany
 ) => {
   try {
     const event = await Event.create({
-      name,
-      image,
+      name: name,
+      image: image,
       expirationDate,
-      shortDescription,
+      shortDescription: shortDescription,
+      description: description,
       active,
-      ubication,
-      habilityRequired,
-      salary,
-      contact,
-      idEmpresa,
+      ubication: ubication,
+      habilityRequired: habilityRequired,
+      salary: salary,
+      contact: contact,
+      idCompany: idCompany,
     });
     return event;
   } catch (error) {
