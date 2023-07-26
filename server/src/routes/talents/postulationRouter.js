@@ -1,27 +1,28 @@
 const { Router } = require("express");
 const {
-  handlerGetAllAdds,
-  handlerCreateAdd,
+  handlerGetAllApplied,
+  handlerCreateApplied,
   handlerGetApplicantById,
   handlerDeleteApplicantById,
-  handlerGetAddByFk,
+  handlerGetApplicantsForEventByFk,
 } = require("../../handlers/talents/postulationsHandler");
 
 const postulationRouter = Router();
 
-//? Esta ruta busca un aplicante por su id.
+//? Esta ruta busca una postulacion por su id.
 postulationRouter.get("/:id", handlerGetApplicantById);
 
-//? Esta ruta elimina un aplicante por su id.
+//? Esta ruta elimina una postulacion por su id.
+//!Pendiente definir si vas hacer o no el borrado lógico
 postulationRouter.delete("/:id", handlerDeleteApplicantById);
 
-//? Esta ruta busca un anuncio por su empresa.
-postulationRouter.get("/:fk", handlerGetAddByFk);
+//? Esta ruta busca todos los aplicantes a un anuncio.
+postulationRouter.get("/event/:fk", handlerGetApplicantsForEventByFk);
 
-//? Esta ruta crea un anuncio.
-postulationRouter.post("/", handlerCreateAdd);
+//? Esta ruta crea una nueva postulación.
+postulationRouter.post("/", handlerCreateApplied);
 
-//? Esta ruta busca todos los anuncios.
-postulationRouter.get("/", handlerGetAllAdds);
+//? Esta ruta busca todos las postulaciones.
+postulationRouter.get("/", handlerGetAllApplied);
 
 module.exports = postulationRouter;

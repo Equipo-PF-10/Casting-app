@@ -8,6 +8,7 @@ const {
 } = require("../../handlers/talents/talentsHandler");
 
 const talentRouter = Router();
+
 //? Esta ruta obtiene un talento por id.
 talentRouter.get("/:id", talentByIdHandler);
 

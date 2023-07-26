@@ -14,10 +14,15 @@ mainRouter.use("/companies", companyRouter);
 
 //? Rutas de Talentos
 mainRouter.use("/talents/favorites", companyFavoriteRouter);
-mainRouter.use("/talents/applied", postulationRouter);
 mainRouter.use("/talents", talentRouter);
 
 //todo: Rutas de Eventos
 mainRouter.use("/events", eventRouter);
+
+//todo: Rutas de Postulaciones
+mainRouter.use("/applied", postulationRouter);
+
+
+
 
 module.exports = mainRouter;

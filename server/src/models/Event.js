@@ -9,11 +9,6 @@ module.exports = (sequelize) => {
         primaryKey: true,
       },
 
-      // CompanyId: {
-      //   type: DataTypes.UUID,
-      //   allowNull: false,
-      // },
-
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -52,9 +47,8 @@ module.exports = (sequelize) => {
       },
 
       salary: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
-        // validate: misma length que habilityRequried
       },
 
       creationDate: {
