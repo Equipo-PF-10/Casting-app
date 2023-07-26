@@ -3,7 +3,7 @@ import "./App.css";
 import Landing from "./Views/Landing/Landing.jsx";
 import Login from "./Views/Login/Login.jsx";
 import RegisterModel from "./Components/RegisterModel/RegisterModel";
-import ProfileCompany from "./Views/profiles/profileCompany";
+import ProfileCompany from './Views/Profiles/ProfileCompany'
 import ProfileModel from "./Views/profiles/ProfileModel";
 import EventForm from "./Components/EventForm/EventFrom";
 import NavBarLateral from "./Components/NavBarLateral/NavBarLateral";

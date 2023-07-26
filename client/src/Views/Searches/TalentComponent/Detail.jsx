@@ -5,7 +5,6 @@ const Detail = ({ details }) => {
   const { name, country, description, expirationDate, industryMain } = details;
   //console.log(name);
   
-
   return (
     <div className={style.containerDetail}>
       <h2>{name}</h2>
