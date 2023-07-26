@@ -5,20 +5,23 @@ import CardJobs from "./TalentComponent/CardJobs";
 import SearchComp from "./TalentComponent/SearchComp";
 import Detail from "./TalentComponent/Detail";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllEvents, get_company_by_id } from "../../redux/actions";
+import { getAllEvents} from "../../redux/actions";
 
 const TalentSearch = () => {
-  const dispatch = useDispatch();
+  const dispatch=useDispatch();
+  
+  let [id, setId] = useState("");
+  let [eventSelected, setEventSelected] = useState({});
 
-  const events = useSelector((state) => state.allEvents);
-  const details = useSelector((state) => state.companyDetail);
+  const events=useSelector((state) => state.allEvents);
+  //const details = useSelector((state) => state.eventDetail);
+  //const details = useSelector((state) => state.companyDetail);
   //console.log(events); //detalles de los eventos
   //console.log(details); //
 
   // Paginación
-
   const [currentPage, setCurrentPage] = useState(1);
-  const eventsPerPage = 4;
+  const eventsPerPage = 3;
 
   const lastIndex = currentPage * eventsPerPage;
   const firstIndex = lastIndex - eventsPerPage;
@@ -34,18 +37,24 @@ const TalentSearch = () => {
     (_, index) => index + 1
   );
 
+  const handleClick = (eventId) => {
+    setId(eventId);
+    setEventSelected(events.find((event) => event.id === id));
+  };
+
   const listedEvents = currentEvents.map((event) => (
     <div key={event}>
       <CardJobs
         event={event}
-      />
+        onClick={() => handleClick(event.id)} />
     </div>
   ));
 
   useEffect(() => {
     dispatch(getAllEvents());
-    dispatch(get_company_by_id())
-  }, [dispatch]);
+  },[dispatch]);
+  
+  //console.log(events[0]);
 
   return (
     <div className={style.containerGralTalent}>
@@ -58,7 +67,13 @@ const TalentSearch = () => {
         </div>
         <div className={style.cardJobsStyle}>{listedEvents}</div>
         <div className={style.detailStyle}>
-          <Detail details={details} />
+          {/*<Detail events={events} />*/}
+
+          {id.length === 0 ? (
+            <Detail events={events[0]} />
+          ) : (
+            <Detail events={eventSelected} />
+          )}
         </div>
       </div>
       <ul className={style.pagination}>
