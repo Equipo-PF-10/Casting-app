@@ -10,8 +10,18 @@ import { loginControler } from "./loginControler";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { clean_message_register, id_user, user_type } from "../../redux/actions";
+import { saveData } from "./LocalStorageUserData";
 
 const Login = () => {
+
+  useEffect(() => {
+    if(localStorage.getItem("logged") === "true") {
+      dispatch(id_user(localStorage.getItem("id")));
+      if (localStorage.getItem("type") === "talent") navigate(`/home/talent`);
+      if (localStorage.getItem("type") === "company") navigate(`/home/company`);
+    }
+  }, [])
+
   //const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
 
@@ -116,22 +126,29 @@ const Login = () => {
     e.preventDefault();
 
     const obj = await loginControler(input.email, input.password);
-    setInput({
-      email: "",
-      password: "",
-    });
+    
     //este navigate deberia ser para una ruta donde la data sea del talento por id
     if (obj.access === 1) {
+      saveData("talent", obj.id, input.email, input.password);
       dispatch(id_user(obj.id));
       setErrorMessage("");
       dispatch(user_type("1"));
+      setInput({
+        email: "",
+        password: "",
+      });
       navigate(`/home/talent`);
     }
     //este navigate deberia ser para una ruta donde la data sea de la empresa por id
     if (obj.access === 2) {
+      saveData("company", obj.id, input.email, input.password);
       dispatch(id_user(obj.id));
       setErrorMessage("");
       dispatch(user_type("2"));
+      setInput({
+        email: "",
+        password: "",
+      });
       navigate(`/home/company`);
     }
     if (

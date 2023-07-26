@@ -13,18 +13,21 @@ import { connect, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getAllEvents } from '../../redux/actions.js';
+import { handleLogout } from '../Login/LocalStorageUserData.js';
+import { useNavigate } from 'react-router-dom';
 
 const Home = (props) => {
+  const navigate = useNavigate();
   const dispatch=useDispatch();
   const [user, setUser] = useState({});
 
   useEffect(() => {
     if(props.type === "talent") {
-      axios(`http://localhost:3001/talents/${props.idUser}`).then(({ data }) => {
+      axios(`http://localhost:3001/talents/${localStorage.getItem("id")}`).then(({ data }) => {
         setUser(data);
       });
     } else {
-      axios(`http://localhost:3001/companies/${props.idUser}`).then(({ data }) => {
+      axios(`http://localhost:3001/companies/${localStorage.getItem("id")}`).then(({ data }) => {
         setUser(data);
       });
     }
@@ -76,6 +79,10 @@ const Home = (props) => {
           <SolicitudesDeEmpresas /> : <ChartsComponent />
         }
         
+        <button onClick={() => {
+          handleLogout();
+          navigate("/");
+        }}>Logout</button>
         
       </div>
     </div>
