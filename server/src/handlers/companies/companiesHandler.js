@@ -1,46 +1,61 @@
-const { searchByLocation, createCompany,  getCompanyById, updateCompanyById, deleteCompanyById, getAllCompanies} = require("../../controllers/companies/companiesController");
+const {
+  searchByLocation,
+  createCompany,
+  getCompanyById,
+  updateCompanyById,
+  deleteCompanyById,
+  getAllCompanies,
+} = require("../../controllers/companies/companiesController");
 
 async function handlerGetAllCompanies(req, res) {
   try {
-    const {name}=req.query
-    const allCompanies = await getAllCompanies(name); 
+    const { name } = req.query;
+    const allCompanies = await getAllCompanies(name);
     if (name === undefined) {
-      if (typeof allCompanies === 'string') return res.status(400).json({error:allCompanies});
+      if (typeof allCompanies === "string")
+        return res.status(400).json({ error: allCompanies });
       return res.status(200).json(allCompanies);
     }
-    if (typeof name === 'string' && name.length === 0) return res.status(400).json({error:'Falta ingresar el nombre de la compañia'})
+    if (typeof name === "string" && name.length === 0)
+      return res
+        .status(400)
+        .json({ error: "Falta ingresar el nombre de la compañia" });
     else {
       const nameLowerCase = name.toLowerCase();
-      const filtered = allCompanies.filter( ele => ele.name.toLowerCase().includes(nameLowerCase))
-      if (filtered.length !==0) return res.status(200).json(filtered);
-      else return res.status(400).json({error:`No se encontró ninguna empresa con el nombre ${name}`})
-    }  
+      const filtered = allCompanies.filter((ele) =>
+        ele.name.toLowerCase().includes(nameLowerCase)
+      );
+      if (filtered.length !== 0) return res.status(200).json(filtered);
+      else
+        return res.status(400).json({
+          error: `No se encontró ninguna empresa con el nombre ${name}`,
+        });
+    }
   } catch (error) {
-      return res.status(404).json({error:error.message});        
-  }  
-};
+    return res.status(404).json({ error: error.message });
+  }
+}
 
 const handlerSearchByLocation = async (req, res) => {
   try {
     const companies = await searchByLocation(req.query.country);
     res.status(200).json(companies);
   } catch (error) {
-    res.status(500).json({ error: "Error al buscar empresas por ubicación: " + error });
+    res
+      .status(500)
+      .json({ error: "Error al buscar empresas por ubicación: " + error });
   }
 };
 
 const handlerCreateCompany = async (req, res) => {
-  const {
-    email,
-    password,
-  } = req.body;
+  const { email, password } = req.body;
 
   if (!email || !password) {
     return res.status(400).send("Faltan datos obligatorios");
   }
 
   try {
-    const created= await createCompany (email,password);
+    const created = await createCompany(email, password);
     res.status(200).json(created);
   } catch (error) {
     res.status(400).json(error.message);
@@ -49,12 +64,14 @@ const handlerCreateCompany = async (req, res) => {
 
 // Función handler para obtener empresa por ID.
 const handlerGetCompanyById = async (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   try {
     const companies = await getCompanyById(id);
     res.status(200).json(companies);
   } catch (error) {
-    res.status(400).json({ error: "Error al buscar empresas por id: " + error });
+    res
+      .status(400)
+      .json({ error: "Error al buscar empresas por id: " + error });
   }
 };
 
@@ -64,16 +81,17 @@ const handlerUpdateCompanyById = async (req, res) => {
   const {
     email,
     name,
-    logo,   
+    logo,
     country,
-    domain,    
+    domain,
     password,
-    descriptionShort,      
+    descriptionShort,
     instagram,
     facebook,
     linkedin,
     twitter,
-    phoneNumber } = req.body;
+    phoneNumber,
+  } = req.body;
 
   try {
     // Verificar primero si el usuario companies existe antes de intentar actualizarlo
@@ -84,22 +102,21 @@ const handlerUpdateCompanyById = async (req, res) => {
       const updatedData = {
         email,
         name,
-        logo,   
+        logo,
         country,
-        domain,    
+        domain,
         password,
-        descriptionShort,      
+        descriptionShort,
         instagram,
         facebook,
         linkedin,
         twitter,
-        phoneNumber
+        phoneNumber,
       };
 
       const updatedCompany = await updateCompanyById(id, updatedData);
 
-      res
-        .status(200).json(updatedCompany);
+      res.status(200).json(updatedCompany);
     }
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -113,7 +130,7 @@ const handlerDeleteCompanyById = async (req, res) => {
   try {
     const company = await getCompanyById(id);
     if (company) {
-      const deletedCompany = await deleteCompanyById(deletedCompany.id);
+      const deletedCompany = await deleteCompanyById(id);
       return res.status(200).json(deletedCompany);
     }
     throw new Error("No existe una empresa con ese ID para eliminar.");
@@ -128,5 +145,5 @@ module.exports = {
   handlerCreateCompany,
   handlerUpdateCompanyById,
   handlerGetCompanyById,
-  handlerDeleteCompanyById  
+  handlerDeleteCompanyById,
 };
