@@ -48,16 +48,12 @@ export default function validationTalentos(input){
         error.nacionality = "Debe ingresar una nacionalidad"
     }
 
-    if(!input.dni){
-        error.dni = "Debe ingresar un Número de documento"
-    }
-
     if(input.hability.length === 0){
         error.hability = "Debe ingresar una o más orientaciones"
     }
 
-    if(!input.description){
-        error.description = "Debe ingresar una descripción"
+    if(!input.aboutMe){
+        error.aboutMe = "Debe ingresar una descripción"
     }
 
     return error
