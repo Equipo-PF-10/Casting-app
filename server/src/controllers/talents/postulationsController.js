@@ -1,9 +1,27 @@
-const { Applied, TalentApplied } = require("../../db");
+const { Applied, TalentApplied, Talent } = require("../../db");
+const { Op } = require("sequelize");
 
 // Función controller para obtener todas las postulaciones
 const getAllAdds = async () => {
   const allPost = await Applied.findAll();
   return allPost;
+};
+
+const getApplicantByName = async (name) => {
+  try {
+    const foundInDb = await TalentApplied.findOne({
+      where: { name: { [Op.iLike]: `%${name}%` } },
+    });
+
+    if (!foundInDb) {
+      throw new Error(
+        `El nombre ${name} no se ha encontrado. Intenta de nuevo.`
+      );
+    }
+    return foundInDb;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
 
 // Función controller para crear postulaciones
@@ -15,15 +33,14 @@ const createAdd = async (EventId, TalentId) => {
       EventId,
     });
 
-    const findPostulacion = await Applied.findAll({where: {EventId}})
+    const findPostulacion = await Applied.findAll({ where: { EventId } });
 
-  
-    const  AppliedId = findPostulacion[0].dataValues.id;
+    const AppliedId = findPostulacion[0].dataValues.id;
 
     const intermedia = await TalentApplied.create({
-        TalentId,
-        AppliedId
-      });
+      TalentId,
+      AppliedId: postulacion.id,
+    });
 
     return postulacion;
   } catch (error) {
@@ -62,34 +79,38 @@ const deleteApplicantById = async (id) => {
 };
 
 const getAddByFk = async (fk) => {
-  const postulacion = await Applied.findAll({where: {EventId:fk}});
+  const postulacion = await Applied.findAll({ where: { EventId: fk } });
 
   if (!postulacion) {
-    throw new Error(`La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`);
+    throw new Error(
+      `La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`
+    );
   }
   const id = postulacion[0].dataValues.id;
-  const allPostulantes = await TalentApplied.findAll({where:{PostulacionId:id} })
+  const allPostulantes = await TalentApplied.findAll({
+    where: { PostulacionId: id },
+  });
   //console.log(allPostulantes[0].dataValues.TalentoId)
 
-  const postulantesIds=[];
-  
-  if (allPostulantes.length>0){
-    
+  const postulantesIds = [];
+
+  if (allPostulantes.length > 0) {
     for (const key in allPostulantes) {
-
-      postulantesIds.push(allPostulantes[key].dataValues.TalentoId)
+      postulantesIds.push(allPostulantes[key].dataValues.TalentoId);
     }
-
-  }else throw new Error(`La postulación con ID del evento ${fk} no cuenta con postulantes aún.`);
+  } else
+    throw new Error(
+      `La postulación con ID del evento ${fk} no cuenta con postulantes aún.`
+    );
 
   return postulantesIds;
 };
-
 
 module.exports = {
   getAllAdds,
   createAdd,
   getApplicantsById,
   deleteApplicantById,
-  getAddByFk
+  getAddByFk,
+  getApplicantByName,
 };
