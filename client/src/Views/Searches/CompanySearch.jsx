@@ -144,6 +144,7 @@ const CompanySearch = () => {
   let [id, setId] = useState("");
   let [talentSelected, setTalentSelected] = useState({});
   const dispatch = useDispatch();
+  const error = useSelector((state)=> state.errors)
   const evento = useSelector((state) => state.eventDetail);
   const postulantes = useSelector((state) =>  state.postulatedTalentsByEvent ); // [postulantes]
   const postulantesCopy = useSelector((state) =>  state.postulatedTalentsByEventFiltered ); // [postulantes]
@@ -185,6 +186,7 @@ const CompanySearch = () => {
   };
 
   //Map Talentos
+  // { filters ? <Card allPostulants={postulantesCopy}/> : <Card allPostulants={postulantes}/>}
   const listedTalents = currentTalents.map((talento) => (
     <li key={talento.id}>
       <Card
@@ -217,9 +219,14 @@ const CompanySearch = () => {
           <NavBarLateral />
         </div>
         <div><h2>Postulantes al Evento: {evento.name}</h2></div>
+        {
+          error ?
+          <h2>{error}</h2>
+          :
         <div className={style.grid}>
           <div className={style.cards}>{listedTalents}</div>
         </div>
+        }
         <div className={style.detailCard}>
           {/* estado local .length === 0 le paso la info del primer postulante,
               sino, al hacer click en una card se pasa el id de la card al estado local,
