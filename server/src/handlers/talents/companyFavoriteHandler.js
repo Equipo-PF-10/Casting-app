@@ -3,16 +3,17 @@ const {
   createFavoriteCompany,
 } = require("../../controllers/talents/companyFavoriteController");
 
-// talento agregua una empresa como favorita
+// Talento agrega una company como favorita
 async function handleCreateFavoriteCompany(req, res) {
+  const { talentId, companyId } = req.body;
+
   try {
-    const { talentId, companyId } = req.body;
     const result = await createFavoriteCompany(talentId, companyId);
     res.status(200).json(result);
   } catch (error) {
-    res
-      .status(400)
-      .json({ error: "Error al agregar la empresa como favorita." });
+    res.status(400).json({
+      error: error.message,
+    });
   }
 }
 

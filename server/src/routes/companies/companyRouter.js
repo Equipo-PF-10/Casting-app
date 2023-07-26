@@ -1,5 +1,12 @@
 const { Router } = require("express");
-const { handlerSearchByLocation, handlerCreateCompany, handlerGetAllCompanies, handlerUpdateCompanyById, handlerGetCompanyById, handlerDeleteCompanyById } = require("../../handlers/companies/companiesHandler");
+const {
+  handlerSearchByLocation,
+  handlerCreateCompany,
+  handlerGetAllCompanies,
+  handlerUpdateCompanyById,
+  handlerGetCompanyById,
+  handlerDeleteCompanyById,
+} = require("../../handlers/companies/companiesHandler");
 
 const companyRouter = Router();
 
@@ -16,7 +23,6 @@ companyRouter.get("/:id", handlerGetCompanyById);
 companyRouter.put("/:id", handlerUpdateCompanyById);
 
 //* Esta ruta elimina por completo una compañia por id en la base de datos.
-//! debemos modificar para ejecutar el borrado logico
 companyRouter.delete("/:id", handlerDeleteCompanyById);
 
 //* Esta ruta elimina por completo una compañia por id en la base de datos.

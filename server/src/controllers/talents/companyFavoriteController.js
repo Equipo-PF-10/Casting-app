@@ -16,17 +16,19 @@ const createFavoriteCompany = async (talentId, companyId) => {
     if (!empresaEncontrada) {
       throw new Error("Empresa no encontrada.");
     }
-    const empresaFavEncontrada = await CompanySelectedAsFav.create(
+    const favoriteCompany = await CompanySelectedAsFav.create(
       empresaEncontrada.dataValues
     );
 
     const interTalentComp = await TalentSelectCompanyAsFav.create({
-      TalentoId: talentId,
-      EmpresaFavoritumId: empresaFavEncontrada.id,
+      TalentId: talentId,
+      CompanySelectedAsFavId: favoriteCompany.id,
     });
-    return empresaFavEncontrada;
+    return favoriteCompany;
   } catch (error) {
-    throw new Error("Error al agregar la empresa como favorita al talent.");
+    throw new Error(
+      "Error. La empresa no ha podido ser agregada como favorita."
+    );
   }
 };
 
