@@ -1,17 +1,27 @@
 import style from "./Search.module.css";
 import { filterByTalent, filterByGender } from "../../../redux/actions";
 import {useDispatch} from "react-redux";
-import { getAllTalents } from "../../../redux/actions";
+import { get_all_postulations, get_postulant_by_name } from "../../../redux/actions";
 
 const Search = (props) => {
 
-  const {ubication, setCurrentPage, postulantes} = props;
-
+  const {ubication, setCurrentPage, id_event} = props;
   const dispatch = useDispatch();
+
+  //Buscar por nombre
+  const [name, setName] = useState("");
+
+  const handleInputChange = (event) => {
+    setName(event.target.value);
+  };
   
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(get_postulant_by_name(id_event, name));
+    setName("");
+  };
 
   // Habilidades
-
   const optionshabilityRequired = [
     { value: 'Actuación', label: 'Actuación' },
     { value: 'Animador/a', label: 'Animador/a' },
@@ -33,7 +43,6 @@ const Search = (props) => {
   });
 
   // Ubicaciones
-  
   const handleHabilities = (event) => {
     dispatch(filterByTalent(event.target.value))
     setCurrentPage(1)
@@ -44,28 +53,36 @@ const Search = (props) => {
   ))
 
   // Género
-
   const handleGenders = (event) => {
-    dispatch(filterByGender(event.target.value))
+    dispatch(filterByGender(event.target.value));
     setCurrentPage(1)
   }
 
+  // Contextura fisica
+  const handleContexture = (event) => {
+    dispatch(filterByContexture(event.target.value));
+    setCurrentPage(1)
+  }
 
-  //Recargar Postulantes, ----Aplicarlo con los postulantes (No los talentos)
+  //Recargar Postulantes
   const handleClick = (event) => {
-    dispatch(getAllTalents());
+    dispatch(get_all_postulations(id_event));
   }
 
   return (
     <div className={style.containerGe}>
       {/*INPUT*/}
       <div className={style.searchI}>
-        <input
+        <input 
           type="text"
           placeholder="Buscar talentos.."
+          name="search"
+          id="search"
+          value={name}
           className={style.inputTalent}
+          onChange={event => handleInputChange(event)}
         />
-        <button className={style.lupaButton}>
+        <button className={style.lupaButton} type="submit" onClick={event => handleSubmit(event)}>
           <svg className={style.lupa} aria-hidden="true" viewBox="0 0 24 24">
             <g>
               <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
@@ -79,7 +96,10 @@ const Search = (props) => {
         {optionTags}
       </select>
       <select className={style.selectFilter}>
-        <option value="">Edad</option>
+        <option defaultChecked value="">Contextura</option>
+        <option value="Ectomorfo">Ectomorfo</option>
+        <option value="Endomorfo">Endomorfo</option>
+        <option value="Mesomorfo">Mesomorfo</option>
       </select>
       <select className={style.selectFilter}  onChange={handleGenders}>
         <option value="Todos">Generos</option>
@@ -88,7 +108,7 @@ const Search = (props) => {
         <option value="Otro">Otro</option>
       </select>
       <select className={style.selectFilter}>
-        <option value="">Ubicación</option>
+        <option defaultChecked value="">Ubicación</option>
         <option value="Todos">Todas</option>
         {locationTags}
       </select>
