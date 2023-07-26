@@ -245,63 +245,20 @@ export const clearDetail = () => {
 
 
 export const filterByTalent = (hability) => {
-   let endpoint = "http://localhost:3001/talents/";
    return async function(dispatch) {
-      try {
-         const response = await axios.get(endpoint);
-         const data = response.data;
-
-         if(hability === "Todos"){
-         return dispatch({
-            type: FILTER_BY_HABILITY,
-            payload: data
-         });
-      } else {
-         const habilities = data.filter((talent) => 
-         talent.hability && talent.hability.includes(hability)
-         )
       return dispatch({
          type: FILTER_BY_HABILITY,
-         payload: habilities
+         payload: hability
       })
-      
-      }
-      } catch (error) {
-         return dispatch({
-            type: "ERROR",
-            payload: "¡Ha ocurrido un error al filtrar por talentos!",
-          });
-      }
    }
-}
-export const filterByGender = (gender) => {
-   let endpoint = "http://localhost:3001/talents/";
-   return async function(dispatch) {
-      try {
-         const response = await axios.get(endpoint);
-         const data = response.data;
+} 
 
-         if(gender === "Todos"){
-         return dispatch({
-            type: FILTER_BY_HABILITY,
-            payload: data
-         });
-      } else {
-         const habilities = data.filter((talent) => 
-         talent.gender && talent.gender.includes(gender)
-         )
+export const filterByGender = (gender) => {
+   return (dispatch) => {
       return dispatch({
          type: FILTER_BY_HABILITY,
-         payload: habilities
+         payload: gender
       })
-      
-      }
-      } catch (error) {
-         return dispatch({
-            type: "ERROR",
-            payload: "¡Ha ocurrido un error al filtrar por talentos!",
-          });
-      }
    }
 }
 
