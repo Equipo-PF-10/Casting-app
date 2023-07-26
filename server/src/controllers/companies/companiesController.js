@@ -1,28 +1,29 @@
-const { Company } = require("../../db");
- 
-  async function getAllCompanies(name) {
-    try {
-      const allCompanies = await Company.findAll();
-      return allCompanies;
-    } catch (error) {
-      throw new Error("Error al obtener datos");
-    }
+const { Company, DisableCompany } = require("../../db");
+
+async function getAllCompanies(name) {
+  try {
+    const allCompanies = await Company.findAll();
+    return allCompanies;
+  } catch (error) {
+    throw new Error("Error al obtener datos");
+  }
 }
 
 const searchByLocation = async (country) => {
   //! Falta el try catch
-  const response = await Company.findAll({ where: { country: { $like: "%" + country + "%" } } });
+  const response = await Company.findAll({
+    where: { country: { $like: "%" + country + "%" } },
+  });
   return response;
 };
 
-
-const createCompany = async (email, password) =>{
+const createCompany = async (email, password) => {
   //! Falta el try catch
-  const created = await Company.create({email,password,});
-  
+  const created = await Company.create({ email, password });
+
   if (!created) throw new Error("La empresa con el correo ingresado ya existe");
   return created;
-};   
+};
 
 // Función controller que devuele el talent según el Id recibido por parámetro.
 const getCompanyById = async (id) => {
@@ -39,10 +40,38 @@ const getCompanyById = async (id) => {
 // Función controller que elimina a un empresa de la base de datos.
 const deleteCompanyById = async (id) => {
   try {
-    const deletedCompany = await Company.destroy({
-      where: { id },
+    const companyToDelete = await Company.findByPk(id);
+
+    if (!companyToDelete) {
+      throw new Error(`La empresa con ID ${id} no existe`);
+    }
+
+    await DisableCompany.create({
+      name: companyToDelete.name,
+      logo: companyToDelete.logo,
+      country: companyToDelete.country,
+      available: companyToDelete.available,
+      domain: companyToDelete.domain,
+      descriptionShort: companyToDelete.descriptionShort,
+      instagram: companyToDelete.instagram,
+      facebook: companyToDelete.facebook,
+      linkedin: companyToDelete.linkedin,
+      twitter: companyToDelete.twitter,
+      password: companyToDelete.password,
+      email: companyToDelete.email,
+      industryMain: companyToDelete.industryMain,
+      description: companyToDelete.description,
+      phoneNumber: companyToDelete.phoneNumber,
+      plan: companyToDelete.plan,
+      conditionPlan: companyToDelete.conditionPlan,
+      creationDate: companyToDelete.creationDate,
+      expirationDate: companyToDelete.expirationDate,
+      reviews: companyToDelete.reviews,
+      reviewsCount: companyToDelete.reviewsCount,
     });
-    return deletedCompany;
+    await companyToDelete.destroy();
+
+    return companyToDelete;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -71,5 +100,5 @@ module.exports = {
   updateCompanyById,
   getCompanyById,
   deleteCompanyById,
-  getAllCompanies  
+  getAllCompanies,
 };
