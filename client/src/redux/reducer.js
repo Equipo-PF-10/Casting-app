@@ -8,25 +8,27 @@ import {
   GET_ALL_EVENTS,
   GET_ALL_COMPANIES,
   GET_COMPANY_BY_ID,
-  GET_ALL_ID_POSTULATIONS,
+  GET_ALL_POSTULATIONS,
+  GET_POSTULANTS_BY_NAME,
   GET_TALENT_BY_ID,
   GET_ALL_TALENTS,
   FILTER_BY_HABILITY,
   FILTER_BY_GENDER,
-  CLEAR_DETAIL
+  FILTER_BY_CONTEXTURE,
+  CLEAR_DETAIL,
 } from "./actions.js";
 
 const initialState = {
   talents: [],
-  talentsById: [],
+  talentById: {},
+  postulatedTalentsByEvent: [],
+  postulatedTalentsByEventFiltered: [],
   allEvents: [],
   getAllCompanies: [],
   companiesFiltered: [],
   companyDetail: [],
   eventsFiltered: [],
   eventDetail: {},
-  postulationsByEvent: {},
-  postulationsByEventFiltered: {},
   idUser: "",
   userType: "", //"1" === "talent", "2" === "company"
   messageRegistered: {},
@@ -88,12 +90,18 @@ const rootReducer = (state = initialState, { type, payload }) => {
         companiesFiltered: payload,
         getAllCompanies: payload,
       };
-    case GET_ALL_ID_POSTULATIONS:
+    case GET_ALL_POSTULATIONS:
       return {
         ...state,
-        postulationsByEvent: payload,
-        postulationsByEventFiltered: payload,
+        postulatedTalentsByEvent: payload,
+        postulatedTalentsByEventFiltered: payload,
       };
+      case GET_POSTULANTS_BY_NAME:
+        return {
+            ...state,
+            //filters: true,
+            postulatedTalentsByEventFiltered: payload,  
+        }
     case GET_ALL_TALENTS:
       return {
         ...state,
@@ -102,17 +110,23 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case GET_TALENT_BY_ID:
       return {
         ...state,
-        talentsById: [...talentsById, payload],
+        talentById: payload,
       };
     case FILTER_BY_HABILITY:
       return {
         ...state,
-        talents: payload,
+        postulatedTalentsByEventFiltered: payload,
       };
     case FILTER_BY_GENDER:
       return {
         ...state,
-        talents: payload,
+        postulatedTalentsByEventFiltered: payload,
+      };
+    case FILTER_BY_CONTEXTURE:
+      let talents = [...state.postulatedTalentsByEvent].filter((talent) => talent.contexture.includes(payload));
+      return {
+        ...state,
+        postulatedTalentsByEventFiltered: talents,
       };
     case CLEAR_DETAIL:
       return {
