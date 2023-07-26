@@ -117,7 +117,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case CLEAR_DETAIL:
       return {
         ...state,
-        companyDetail: action.payload,
+        companyDetail: payload,
       };
     case ERROR:
       return {
