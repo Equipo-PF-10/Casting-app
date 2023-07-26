@@ -32,16 +32,23 @@ const createFavoriteCompany = async (talentId, companyId) => {
   }
 };
 
-//companies favoritas de un talento
-async function getAllFavoritesCompaniesOfTalent(talentId) {
+// Favorites Companies de un Talento.
+async function getAllFavoritesCompaniesOfTalent(id) {
   try {
-    const talent = await Talent.findByPk(talentId);
+    const talent = await Talent.findByPk(id);
     if (!talent) {
       throw new Error("Talento no encontrado.");
     }
-    return talent.CompanySelectedAsFav;
+
+    const favCompanys = TalentSelectCompanyAsFav.findAll({
+      where: { TalentId: id },
+    });
+
+    return favCompanys;
   } catch (error) {
-    throw new Error("Error al buscar las compañías favoritas del talent.");
+    throw new Error(
+      `Error. No se ha podido encontrar las companías favoritas del Talento con ID ${id}`
+    );
   }
 }
 

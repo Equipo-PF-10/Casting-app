@@ -17,16 +17,15 @@ async function handleCreateFavoriteCompany(req, res) {
   }
 }
 
-//companies favoritas de "un" Talento
+// Favorites Companies de un Talento
 async function handleGetAllFavoritesCompaniesOfTalent(req, res) {
+  const { id } = req.params;
+
   try {
-    const { talentId } = req.params;
-    const favoriteCompanies = await getAllFavoritesCompaniesOfTalent(talentId);
+    const favoriteCompanies = await getAllFavoritesCompaniesOfTalent(id);
     res.status(200).json(favoriteCompanies);
   } catch (error) {
-    res
-      .status(404)
-      .json({ error: "Error al buscar las compañías favoritas del talento." });
+    res.status(404).json({ error: error.message });
   }
 }
 
