@@ -4,10 +4,13 @@ import axios from "axios"
 import validationEmpresas from "./validationEmpresas"
 import {NavLink} from "react-router-dom"
 import Select from "react-select"
+import { useSelector } from "react-redux"
 
 const FormEmpresa = () => {
 
-    const URL = "http://localhost:3001/company/register"
+    const userID = useSelector((state) => state.userID) 
+
+    const URL = `http://localhost:3001/company/${userID}`
 
     const optionsindustryMain = [
         { value: 'Actuación', label: 'Actuación' },
@@ -28,13 +31,12 @@ const FormEmpresa = () => {
     const initialState = {
         name: "",
         password: "",
-        passwordConfirm: "",
         email: "",
-        emailConfirm: "",
         logo: "",
         facebook: "",
         twitter: "",
         instagram: "",
+        linkedin: "",
         num: "",
         country: "",
         domain: "",
@@ -42,6 +44,9 @@ const FormEmpresa = () => {
     }
 
     const [input, setInput] = useState(initialState)
+
+    const [orientaciones, setOrientaciones] = useState([])
+
     const [error, setError] = useState({})
 
     const handleChange = (event) => {
@@ -53,7 +58,7 @@ const FormEmpresa = () => {
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
-            await axios.post(URL, input)
+            await axios.put(URL, input)
             setInput(initialState)
         } catch (error) {
             console.log({error: error.message})
@@ -61,8 +66,14 @@ const FormEmpresa = () => {
     }
 
     const handleChangeSelect = (selectedOptions) => {
-        setInput({ ...input, industryMain: selectedOptions });
+        setOrientaciones(selectedOptions);
       };
+
+      const habilityValue = orientaciones.map(item => item.value);
+
+      input.industryMain = habilityValue.join(", ");
+  
+      console.log(input.industryMain);
 
 
     return(
@@ -76,8 +87,7 @@ const FormEmpresa = () => {
                 <h1>Registro</h1>
                     <article className={Styles.coolinput}>
                         <label htmlFor="name" className={Styles.text}>Nombre Completo</label>
-                        <input type="text" name="name" id="name" value={input.name} onChange={handleChange} required/>
-                        <p className={error.name ? Styles.error : ""}>{error.name ? error.name : null}</p>
+                        <input type="text" name="name" id="name" value={input.name} onChange={handleChange}/>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="password" className={Styles.text}>Contraseña</label>
@@ -92,7 +102,6 @@ const FormEmpresa = () => {
                     <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Descripción</label>
                             <textarea name="description" id="" value={input.description} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
-                            <p className={error.description ? Styles.error : ""}>{error.description ? error.description : null}</p>
                         </article>
                 </div>
                 <div className={Styles.div}>
@@ -134,10 +143,9 @@ const FormEmpresa = () => {
                                     isMulti 
                                     options={optionsindustryMain}
                                     className={Styles.select}
-                                    value={input.industryMain}
+                                    value={orientaciones}
                                     onChange={handleChangeSelect}
                                     name="industryMain"/>
-                                    <p className={error.industryMain ? Styles.error : ""}>{error.industryMain ? error.industryMain : null}</p>
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="logo" className={Styles.text}>Página Web</label>
@@ -181,7 +189,6 @@ const FormEmpresa = () => {
                     <article className={Styles.coolinput}>
                         <label htmlFor="country" className={Styles.text}>Ubicación</label>
                         <input type="text" id="country" name="country" value={input.country} onChange={handleChange} required/>
-                        <p className={error.country ? Styles.error : ""}>{error.country ? error.country : null}</p>
                     </article>
                 </div>
             </form>

@@ -109,7 +109,6 @@ const FormTalento = () => {
                     <article className={Styles.coolinput}>
                         <label htmlFor="name" className={Styles.text}>Nombre Completo</label>
                         <input type="text" name="name" id="name" value={input.name} onChange={handleChange}/>
-                        <p className={error.name ? Styles.error : ""}>{error.name ? error.name : null}</p>
                     </article>
 
                     <article className={Styles.coolinput}>
@@ -119,13 +118,11 @@ const FormTalento = () => {
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="email" className={Styles.text}>Email</label>
-                        <input type="text" name="email" id="email" value={input.email} onChange={handleChange} required/>
-                        <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null}</p>
+                        <input type="text" name="email" id="email" value={input.email} onChange={handleChange}/>
                     </article>
                     <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Descripción</label>
                             <textarea name="aboutMe" id="" value={input.aboutMe} onChange={handleChange} placeholder="Descripción de tu perfil..."></textarea>
-                            <p className={error.aboutMe ? Styles.error : ""}>{error.aboutMe ? error.aboutMe : null}</p>
                         </article>
 
                 </div>
@@ -170,7 +167,6 @@ const FormTalento = () => {
                                 value={orientaciones}
                                 onChange={handleChangeSelect}
                                 name="hability"/>
-                                <p className={error.hability ? Styles.error : ""}>{error.hability ? error.hability : null}</p>
                     </article> 
                     <article className={Styles.charSec}>
                             <article className={Styles.coolinput}>
@@ -242,12 +238,10 @@ const FormTalento = () => {
                     <article className={Styles.coolinput}>
                         <label htmlFor="ubication" className={Styles.text}>Ubicación</label>
                         <input type="text" id="ubication" name="ubication" value={input.ubication} onChange={handleChange}/>
-                        <p className={error.ubication ? Styles.error : ""}>{error.ubication ? error.ubication : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Nacionalidad</label>
                         <input type="text"  name="nacionality" id="nacionality" value={input.nacionality} onChange={handleChange}/>
-                        <p className={error.nacionality ? Styles.error : ""}>{error.nacionality ? error.nacionality : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="dni" className={Styles.text}>Documento de Identidad</label>
