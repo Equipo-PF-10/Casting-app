@@ -8,24 +8,55 @@ const {
 } = require("../../controllers/events/eventsController");
 
 // Función handler para obtener los eventos.
-const handlerGetAllEvents = async (req, res) => {
-  const { name } = req.query;
+
+async function handlerGetAllEvents(req, res) {
   try {
-    if (name) {
-      const found = await getEventsByName(name);
-
-      if (!found) {
-        res.status(400).send("No se ha encontrado el evento con ese nombre.");
-      }
-      res.status(200).json(found);
+    const { name } = req.query;
+    const allEvents = await getAllEvents(name);
+    if (name === undefined) {
+      if (typeof allEvents === "string")
+        return res.status(400).json({ error: allEvents });
+      return res.status(200).json(allEvents);
     }
-
-    const events = await getAllEvents();
-    res.status(200).json(events);
+    if (typeof name === "string" && name.length === 0)
+      return res
+        .status(400)
+        .json({ error: "Falta ingresar el nombre del Evento." });
+    else {
+      const nameLowerCase = name.toLowerCase();
+      const filtered = allEvents.filter((ele) =>
+        ele.name.toLowerCase().includes(nameLowerCase)
+      );
+      if (filtered.length !== 0) return res.status(200).json(filtered);
+      else
+        return res.status(400).json({
+          error: `No se encontró ningún evento con el nombre ${name}`,
+        });
+    }
   } catch (error) {
-    res.status(400).json(error.message);
+    return res.status(404).json({ error: error.message });
   }
-};
+}
+
+
+// const handlerGetAllEvents = async (req, res) => {
+//   const { name } = req.query;
+//   try {
+//     if (name) {
+//       const found = await getEventsByName(name);
+
+//       if (!found) {
+//         res.status(400).send("No se ha encontrado el evento con ese nombre.");
+//       }
+//       res.status(200).json(found);
+//     }
+
+//     const events = await getAllEvents();
+//     res.status(200).json(events);
+//   } catch (error) {
+//     res.status(400).json(error.message);
+//   }
+// };
 
 // Función handler para obtener eventos por ID.
 const handlerGetEventById = async (req, res) => {
