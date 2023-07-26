@@ -7,22 +7,22 @@ const getAllAdds = async () => {
 };
 
 // Función controller para crear postulaciones
-const createAdd = async (EventoId, TalentoId) => {
+const createAdd = async (EventId, TalentId) => {
   try {
     // Crear la postulación en la base de datos
     const postulacion = await Applied.create({
-      TalentoId,
+      TalentId,
       EventId,
     });
 
     const findPostulacion = await Applied.findAll({where: {EventId}})
 
   
-    const PostulacionId = findPostulacion[0].dataValues.id;
+    const  AppliedId = findPostulacion[0].dataValues.id;
 
     const intermedia = await TalentApplied.create({
-        TalentoId,
-        PostulacionId
+        TalentId,
+        AppliedId
       });
 
     return postulacion;

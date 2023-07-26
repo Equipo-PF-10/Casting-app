@@ -18,10 +18,10 @@ const handlerGetAllAdds = async (req, res) => {
 
 // Función handler para crear postulaciones
 const handlerCreateAdd = async (req, res) => {
-  const { EventId, TalentoId } = req.body;
+  const { EventId, TalentId } = req.body;
 
   try {
-    const createdPost = await createAdd(EventId, TalentoId);
+    const createdPost = await createAdd(EventId, TalentId);
 
     res.status(200).json(createdPost);
   } catch (error) {
