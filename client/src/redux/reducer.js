@@ -112,22 +112,43 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         talentById: payload,
       };
-    case FILTER_BY_HABILITY:
-      return {
-        ...state,
-        postulatedTalentsByEventFiltered: payload,
-      };
-    case FILTER_BY_GENDER:
-      return {
-        ...state,
-        postulatedTalentsByEventFiltered: payload,
-      };
-    case FILTER_BY_CONTEXTURE:
+    case FILTER_BY_HABILITY:{
+
+      if(payload === "Todos"){
+        return {
+          ...state,
+          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent]
+        }
+      } else {
+        const hability = [...state.postulatedTalentsByEvent].filter((talent) => talent.hability.includes(payload))
+        return {
+          ...state,
+          postulatedTalentsByEventFiltered: hability,
+        };
+      }
+    }
+    case FILTER_BY_GENDER:{
+
+      if(payload === "Todos"){
+        return {
+          ...state,
+          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent]
+        }
+      } else {
+        const gender = [...state.postulatedTalentsByEvent].filter((talent) => talent.gender.includes(payload))
+        return {
+          ...state,
+          postulatedTalentsByEventFiltered: gender,
+        };
+      }
+    }
+    case FILTER_BY_CONTEXTURE:{
       let talents = [...state.postulatedTalentsByEvent].filter((talent) => talent.contexture.includes(payload));
       return {
         ...state,
         postulatedTalentsByEventFiltered: talents,
       };
+    }
     case CLEAR_DETAIL:
       return {
         ...state,
