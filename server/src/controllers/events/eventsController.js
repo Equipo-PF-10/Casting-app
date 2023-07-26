@@ -76,6 +76,8 @@ const createEvent = async (
 };
 
 // Función controller para eliminar un evento de la base de datos según el id pasado.
+//! No llega el company id al borrado logico
+//! Pierdo el id del evento, porque me asigna un id de deshabilitación
 const deleteEventById = async (id) => {
   try {
     const eventToDelete = await Event.findByPk(id);
@@ -108,18 +110,33 @@ const deleteEventById = async (id) => {
 };
 
 // Función controller para actualizar un evento
+//! Falta poner a funcionar las actualizaciones de los datos de tipo array 
+//! Falta poner a funcionar las fecha de actualización 
 const updateEventById = async (id, updatedData) => {
   try {
     const eventToUpdate = await Event.findByPk(id);
 
     if (!eventToUpdate) {
-      throw new Error(`El Usuario con ID ${id} no existe`);
+      throw new Error(`El Evento con ID ${id} no existe`);
     }
-
-    // Actualizar los campos del talento con los datos proporcionados
-    await eventToUpdate.update(updatedData);
-
-    return eventToUpdate;
+    
+    const updated =await Event.update({"name": `${updatedData.name}`,
+    "image": `${updatedData.image}`,
+    "shortDescription": `${updatedData.shortDescription}`,
+    "description": `${updatedData.description}`,
+    "active": `${updatedData.active}`,
+    "ubication": `${updatedData.ubication}`,
+    //"habilityRequired": `${updatedData.habilityRequired}`,
+    //"salary": `${updatedData.salary}`,
+    "expirationDate": `${updatedData.expirationDate}`,
+    //"contact": `${updatedData.contact}`,
+  }, {
+    where: {
+      id: `${id}`
+    }
+  });
+  
+    return updated;
   } catch (error) {
     throw new Error(error.message);
   }

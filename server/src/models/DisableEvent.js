@@ -46,7 +46,7 @@ module.exports = (sequelize) => {
       },
 
       habilitySalary: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
       },
 

@@ -118,9 +118,11 @@ const handlerDeleteEventById = async (req, res) => {
 };
 
 // Función handler para modificar un evento
+//! Falta poner a funcionar las actualizaciones de los datos de tipo array 
+//! Falta poner a funcionar las fecha de actualización 
 const handlerUpdateEventById = async (req, res) => {
   const { id } = req.params;
-  const { name, image, detail, active, ubication, habilityRequired, contact } =
+  const { name, image, detail, active, ubication, habilityRequired, contact,shortDescription,description,salary,expirationDate } =
     req.body;
 
   try {
@@ -131,18 +133,19 @@ const handlerUpdateEventById = async (req, res) => {
     const updatedData = {
       name,
       image,
-      creationDate,
-      changeDate,
       expirationDate,
       shortDescription,
       detail,
+      description,
       active,
       ubication,
       habilityRequired,
-      habilitySalary,
+      salary,
       contact,
     };
 
+//! No llega el company id al borrado logico
+//! Pierdo el id del evento, porque me asigna un id de deshabilitación
     const eventUpdated=await updateEventById(id, updatedData);
 
     res

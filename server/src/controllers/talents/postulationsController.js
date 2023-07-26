@@ -1,31 +1,13 @@
 const { Applied, TalentApplied, Talent } = require("../../db");
-const { Op } = require("sequelize");
 
 // Función controller para obtener todas las postulaciones
-const getAllAdds = async () => {
+const getAllApplied = async () => {
   const allPost = await Applied.findAll();
   return allPost;
 };
 
-const getApplicantByName = async (name) => {
-  try {
-    const foundInDb = await TalentApplied.findOne({
-      where: { name: { [Op.iLike]: `%${name}%` } },
-    });
-
-    if (!foundInDb) {
-      throw new Error(
-        `El nombre ${name} no se ha encontrado. Intenta de nuevo.`
-      );
-    }
-    return foundInDb;
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
-
 // Función controller para crear postulaciones
-const createAdd = async (EventId, TalentId) => {
+const createApplied = async (EventId, TalentId) => {
   try {
     // Crear la postulación en la base de datos
     const postulacion = await Applied.create({
@@ -49,7 +31,7 @@ const createAdd = async (EventId, TalentId) => {
 };
 
 // Función controller para obtener para ID
-const getApplicantsById = async (id) => {
+const getApplicantById = async (id) => {
   const postDb = await Applied.findByPk(id);
 
   if (!postDb) {
@@ -58,8 +40,8 @@ const getApplicantsById = async (id) => {
 
   return postDb;
 };
-
 // Función controller para borrar una postulación
+//!Pendiente definir si vas hacer o no el borrado lógico
 const deleteApplicantById = async (id) => {
   try {
     const postulacion = await Applied.findByPk(id);
@@ -70,47 +52,56 @@ const deleteApplicantById = async (id) => {
       );
     }
 
-    await Applied.destroy();
+    const deleted = await Applied.destroy({
+      where: {
+        id: id
+      }
+    });
 
     return postulacion;
   } catch (error) {
     throw new Error(error.message);
   }
+
 };
 
-const getAddByFk = async (fk) => {
-  const postulacion = await Applied.findAll({ where: { EventId: fk } });
-
-  if (!postulacion) {
-    throw new Error(
-      `La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`
-    );
-  }
-  const id = postulacion[0].dataValues.id;
-  const allPostulantes = await TalentApplied.findAll({
-    where: { PostulacionId: id },
-  });
-  //console.log(allPostulantes[0].dataValues.TalentoId)
-
-  const postulantesIds = [];
-
-  if (allPostulantes.length > 0) {
-    for (const key in allPostulantes) {
-      postulantesIds.push(allPostulantes[key].dataValues.TalentoId);
+const getApplicantsForEventByFk = async (fk) => {
+  try {
+    const postulacion = await Applied.findAll({ where: { EventId: fk } });
+    let postulacionesIds = [];
+    let talentsIds = [];
+    let talents = [];
+    if (!postulacion) {
+      throw new Error(`La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`);
     }
-  } else
-    throw new Error(
-      `La postulación con ID del evento ${fk} no cuenta con postulantes aún.`
-    );
-
-  return postulantesIds;
+  
+    for (let i=0 ; i<postulacion.length;i++){
+      postulacionesIds.push(postulacion[i].dataValues.id)
+    } 
+    console.log(postulacionesIds)//[dos ids de postulaciones]
+    for (let i = 0; i < postulacionesIds.length; i++) {
+      let postulante = await TalentApplied.findAll({
+        where: {  AppliedId: `${postulacionesIds[i]}` },
+      });
+      talentsIds.push(postulante[0].dataValues.TalentId)
+      console.log(talentsIds);// tengo el id de los talentos
+    }
+    for (let i=0; i<talentsIds.length;i++){
+      let postulante = await Talent.findByPk(`${talentsIds[i]}`);
+      console.log(postulante);
+      talents.push(postulante.dataValues)
+    }
+    return talents;
+    
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
 
 module.exports = {
-  getAllAdds,
-  createAdd,
-  getApplicantsById,
+  getAllApplied,
+  createApplied,
+  getApplicantById,
   deleteApplicantById,
-  getAddByFk,
-  getApplicantByName,
+  getApplicantsForEventByFk,
 };
