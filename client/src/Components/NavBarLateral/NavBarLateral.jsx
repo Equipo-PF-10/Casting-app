@@ -1,7 +1,33 @@
 import styles from "./NavBarLateral.module.css"
 import {NavLink} from "react-router-dom"
+import { useSelector } from "react-redux";
 
 const NavBarLateral = () => {
+
+    const root = useSelector((state) => state.userType)
+
+    
+    //Home
+    
+    let homePath = "";
+
+    if(root === "1"){
+        homePath = "/home/talent"
+    } else if (root === "2"){
+        homePath = "/home/company"
+    }
+
+    //Perfil
+
+    let perfilPath = "";
+
+    if(root === "1"){
+        perfilPath = "/model/profile"
+    } else if (root === "2"){
+        perfilPath = "/company/profile"
+    }
+
+
 
     return(
         <section className={styles.section} >
@@ -20,7 +46,7 @@ const NavBarLateral = () => {
             </NavLink>
             <div className={styles.icons} >
                 <article>
-                    <NavLink to="/" className={styles.link}>
+                    <NavLink to={homePath} className={styles.link}>
                         <div className={styles.icons2}>
                             <svg width="30" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M35.3879 45.9499H10.6121C4.74977 45.9499 0 41.1787 0 35.3164V19.4624C0 16.5526 1.79721 12.894 4.10791 11.0968L15.64 2.11072C19.106 -0.585083 24.6474 -0.713454 28.2419 1.81119L41.4642 11.0754C44.0102 12.8512 46 16.6596 46 19.762V35.3378C46 41.1787 41.2502 45.9499 35.3879 45.9499ZM17.6084 4.63537L6.07628 13.6214C4.55721 14.8196 3.2093 17.5368 3.2093 19.4624V35.3164C3.2093 39.4029 6.52558 42.7406 10.6121 42.7406H35.3879C39.4744 42.7406 42.7907 39.4243 42.7907 35.3378V19.762C42.7907 17.7079 41.3144 14.8624 39.6242 13.707L26.4019 4.44282C23.9628 2.73119 19.9405 2.81677 17.6084 4.63537Z" fill="#4B31A1"/>
@@ -38,7 +64,7 @@ const NavBarLateral = () => {
                             <h4>Buscar</h4>
                         </div>
                     </NavLink>
-                    <NavLink to="/" className={styles.link}>
+                    <NavLink to={perfilPath} className={styles.link}>
                         <div className={styles.icons2}>  
                             <svg width="30" height="56" viewBox="0 0 49 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M24.2541 27.9056C31.4077 27.9056 37.2069 22.1065 37.2069 14.9528C37.2069 7.79918 31.4077 2 24.2541 2C17.1005 2 11.3013 7.79918 11.3013 14.9528C11.3013 22.1065 17.1005 27.9056 24.2541 27.9056Z" stroke="#4B31A1" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
