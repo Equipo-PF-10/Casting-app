@@ -56,7 +56,7 @@ const handlerCreateCompany = async (req, res) => {
 
   try {
     const created = await createCompany(email, password);
-    res.status(200).json(created);
+    res.status(200).send("Se ha registrado correctamente");
   } catch (error) {
     res.status(400).json(error.message);
   }
