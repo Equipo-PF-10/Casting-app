@@ -90,40 +90,45 @@ const Login = () => {
   };
 
   //--Le asigno el mensaje de error al inicio para que lo renderice en primer caso de error
-  //--El mensaje de error se setea a string vacio solo en caso de que el usuario se registre correctamente (No lo setea)
+  //--El mensaje de error se setea a string vacio solo en caso de que el usuario se registre correctamente 
   const [errorMessage, setErrorMessage] = useState(
     "El email o contraseña no coinciden con un usuario registrado"
   );
 
+  const [showErrorMessage, setShowErrorMessage] = useState(true);
+
   let currentToastId = null;
   //Evita que se renderice mas de 1 toast
   const mensaje_error_Toast = () => {
-    if (currentToastId) {
-      toast.update(currentToastId, {
-        render: errorMessage,
-        autoClose: 5000,
-      });
-    } else {
-      currentToastId = toast.error(errorMessage, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        toastId: "custom-toast-id",
-        style: {
-          marginTop: "120px",
-          width: "400px",
-        },
-      });
+    if (showErrorMessage) {
+      if (currentToastId) {
+        toast.update(currentToastId, {
+          render: errorMessage,
+          autoClose: 5000,
+        });
+      } else {
+        currentToastId = toast.error(errorMessage, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          toastId: "custom-toast-id",
+          style: {
+            marginTop: "120px",
+            width: "400px",
+          },
+        });
+      }
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShowErrorMessage(true);
 
     const obj = await loginControler(input.email, input.password);
     
@@ -162,18 +167,16 @@ const Login = () => {
     if (obj.error) {
       //Cuando no es ni 0, 1, ni 2 es error de servidor desconectado.
       setErrorMessage(`${obj.error}`);
-      console.log("Entro en error: " + errorMessage);
-      if(errorMessage){  //----Solucion del bug cuando se muestra el Modal (aparecía un toast vacio)
-        mensaje_error_Toast();
-      }
+      mensaje_error_Toast();
       document.getElementById("loginForm").reset();
+      setShowErrorMessage(true);
     }
   };
 
   const handler_click = () => {
-    setErrorMessage("");
     const open = "isOpened";
     dispatch(modal_login(open));
+    setShowErrorMessage(false); // Establecer en false para evitar que aparezca el toast de error
   };
 
   const handler_click_talent = () => {
