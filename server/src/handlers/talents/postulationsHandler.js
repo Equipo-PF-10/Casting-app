@@ -1,14 +1,22 @@
 const {
-  getAllPostulations,
+  getAllAdds,
   createAdd,
   getApplicantsById,
   deleteApplicantById,
-  getAddByFk
+  getAddByFk,
+  getApplicantByName,
 } = require("../../controllers/talents/postulationsController");
 
 // Función handler para obtener todas las postulaciones
 const handlerGetAllAdds = async (req, res) => {
+  const { name } = req.query;
+
   try {
+    if (name) {
+      const postByName = await getApplicantByName(name);
+      return res.status(200).json(postByName);
+    }
+
     const response = await getAllAdds();
     res.status(200).json(response);
   } catch (error) {
@@ -61,7 +69,7 @@ const handlerGetAddByFk = async (req, res) => {
   try {
     const evento = await getAddByFk(fk);
 
-    res.status(200).json({evento});
+    res.status(200).json({ evento });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -72,5 +80,5 @@ module.exports = {
   handlerCreateAdd,
   handlerGetApplicantById,
   handlerDeleteApplicantById,
-  handlerGetAddByFk
+  handlerGetAddByFk,
 };
