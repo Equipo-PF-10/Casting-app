@@ -1,15 +1,27 @@
 const { Event, DisableEvent } = require("../../db");
 const { Op } = require("sequelize");
 
+
 // Función controller que retorna los eventos de la database.
-const getAllEvents = async () => {
+
+async function getAllEvents(name) {
   try {
     const allEvents = await Event.findAll();
     return allEvents;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error("Error al obtener datos");
   }
-};
+}
+
+
+// const getAllEvents = async () => {
+//   try {
+//     const allEvents = await Event.findAll();
+//     return allEvents;
+//   } catch (error) {
+//     throw new Error(error.message);
+//   }
+// };
 
 const getEventsByName = async (name) => {
   try {
