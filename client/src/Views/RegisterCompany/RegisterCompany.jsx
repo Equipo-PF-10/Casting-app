@@ -1,5 +1,5 @@
 import styles from "./RegisterCompany.module.css";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import validationInputs from "../../Components/RegisterModel/validationInputs.js";
@@ -539,7 +539,7 @@ export default function RegisterCompany() {
               </div> */}
 
               <div className={styles.coolinput}>
-                <label for="input" className={styles.text}>
+                <label htmlFor="input" className={styles.text}>
                   Correo
                 </label>
                 <input
@@ -562,7 +562,7 @@ export default function RegisterCompany() {
                 )}
               </div>
               <div className={styles.coolinput}>
-                <label for="input" className={styles.text}>
+                <label htmlFor="input" className={styles.text}>
                   Contraseña
                 </label>
                 <input

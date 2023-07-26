@@ -1,4 +1,5 @@
 import { useState } from "react"
+import {useSelector} from "react-redux"
 import Select from "react-select"
 import Styles from "./FormTalento.module.css"
 import axios from "axios"
@@ -7,7 +8,9 @@ import {NavLink} from "react-router-dom"
 
 const FormTalento = () => {
 
-    const URL = "http://localhost:3001/talents/register"
+    const id= useSelector((state) => state.userID)
+
+    const URL = `http://localhost:3001/talents/${id}`
 
     const optionshability = [
         { value: 'Actuación', label: 'Actuación' },
@@ -81,7 +84,7 @@ const FormTalento = () => {
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
-            await axios.post(URL, input)
+            await axios.put(URL, input)
             setInput(initialState)
         } catch (error) {
             console.log({error})

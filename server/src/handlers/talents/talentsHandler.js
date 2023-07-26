@@ -60,7 +60,7 @@ const createTalentHandler = async (req, res) => {
   try {
     await createTalentDb(
       name,
-      isNaN(parsedDni) ? null : parsedDni,
+      dni,
       email,
       password,
       available,
