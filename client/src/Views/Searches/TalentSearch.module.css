@@ -29,3 +29,27 @@
 .detailStyle{
   margin-left: 20px;
 }
+
+.pagination{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
+  margin-top: 5px;
+}
+
+.pagination li{
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.pagination li:hover{
+  color: #4B31A1;
+  transform: scale(1.1);
+}
+
+.active{
+  color: #4B31A1;
+  transform: scale(1.1);
+}

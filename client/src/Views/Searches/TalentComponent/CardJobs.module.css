@@ -1,8 +1,10 @@
 .containerCardJobs {
   width: 100%;
   border-radius: 20px;
-  background-color: transparent;
+  background-color: rgb(224, 224, 224);
   transition: 0.5s ease-in-out;
+  margin-bottom: 30px;
+  padding: 20px;
 }
 
 .containerCardJobs:hover {

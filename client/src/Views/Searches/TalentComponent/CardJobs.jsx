@@ -1,21 +1,20 @@
 import React, { useEffect } from "react";
 //import style from '../TalentSearch.module.css'
 import styleCard from "./CardJobs.module.css";
-import {get_company_by_id} from "../../../redux/actions";
+import { get_company_by_id } from "../../../redux/actions";
 //import { get_event_by_id } from "../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const CardJobs=({event}) => {
-  
-  const idCompany = event.idEmpresa;
-  //console.log(event);
+const CardJobs = ({event}) => {
+  //const idCompany = event.CompanyId;
+  //console.log(name);
   const companyData = useSelector((state) => state.companyDetail);
   //console.log(companyData);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(get_company_by_id(idCompany));
-  }, [dispatch, idCompany]);
+    dispatch(get_company_by_id(event));
+  }, [dispatch, event]);
 
   return (
     <div className={styleCard.containerCardJobs}>

@@ -5,19 +5,20 @@ import CardJobs from "./TalentComponent/CardJobs";
 import SearchComp from "./TalentComponent/SearchComp";
 import Detail from "./TalentComponent/Detail";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllEvents } from "../../redux/actions";
+import { getAllEvents, get_company_by_id } from "../../redux/actions";
 
 const TalentSearch = () => {
   const dispatch = useDispatch();
 
   const events = useSelector((state) => state.allEvents);
   const details = useSelector((state) => state.companyDetail);
-  //console.log(details);
+  //console.log(events); //detalles de los eventos
+  //console.log(details); //
 
   // Paginación
 
   const [currentPage, setCurrentPage] = useState(1);
-  const eventsPerPage = 8;
+  const eventsPerPage = 4;
 
   const lastIndex = currentPage * eventsPerPage;
   const firstIndex = lastIndex - eventsPerPage;
@@ -34,15 +35,16 @@ const TalentSearch = () => {
   );
 
   const listedEvents = currentEvents.map((event) => (
-    <li key={event.idEmpresa}>
+    <div key={event}>
       <CardJobs
-        event = {event}
+        event={event}
       />
-    </li>
+    </div>
   ));
 
   useEffect(() => {
     dispatch(getAllEvents());
+    dispatch(get_company_by_id())
   }, [dispatch]);
 
   return (
@@ -58,18 +60,18 @@ const TalentSearch = () => {
         <div className={style.detailStyle}>
           <Detail details={details} />
         </div>
-        <ul>
-          {pagination.map((number) => (
-            <li
-              key={number}
-              className={number === currentPage ? style.active : ""}
-              onClick={() => paginate(number)}
-            >
-              {number}
-            </li>
-          ))}
-        </ul>
       </div>
+      <ul className={style.pagination}>
+        {pagination.map((number) => (
+          <li
+            key={number}
+            className={number === currentPage ? style.active : ""}
+            onClick={() => paginate(number)}
+          >
+            {number}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
