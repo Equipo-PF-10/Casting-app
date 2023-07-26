@@ -33,6 +33,7 @@ const initialState = {
   userType: "", //"1" === "talent", "2" === "company"
   messageRegistered: {},
   modalInLogin: false,
+  filters: false,
   errors: {},
 };
 
@@ -99,7 +100,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       case GET_POSTULANTS_BY_NAME:
         return {
             ...state,
-            //filters: true,
+            filters: true,
             postulatedTalentsByEventFiltered: payload,  
         }
     case GET_ALL_TALENTS:
@@ -117,12 +118,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
       if(payload === "Todos"){
         return {
           ...state,
+          filters: true,
           postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent]
         }
       } else {
         const hability = [...state.postulatedTalentsByEvent].filter((talent) => talent.hability.includes(payload))
         return {
           ...state,
+          filters: true,
           postulatedTalentsByEventFiltered: hability,
         };
       }
@@ -132,12 +135,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
       if(payload === "Todos"){
         return {
           ...state,
+          filters: true,
           postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent]
         }
       } else {
         const gender = [...state.postulatedTalentsByEvent].filter((talent) => talent.gender.includes(payload))
         return {
           ...state,
+          filters: true,
           postulatedTalentsByEventFiltered: gender,
         };
       }
@@ -146,6 +151,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       let talents = [...state.postulatedTalentsByEvent].filter((talent) => talent.contexture.includes(payload));
       return {
         ...state,
+        filters: true,
         postulatedTalentsByEventFiltered: talents,
       };
     }

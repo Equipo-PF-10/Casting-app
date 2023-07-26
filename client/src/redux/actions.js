@@ -25,7 +25,6 @@ export const register_model = (payload) => {
     return async (dispatch) => {
        try {
           const response = await axios.post(endpoint, payload);
-          //console.log(response.data);
           return dispatch({
              type: "REGISTER_MODEL_OR_COMPANY",
              payload: response.data
@@ -33,7 +32,7 @@ export const register_model = (payload) => {
        } catch (error) {
           return dispatch({
              type: "ERROR",
-             payload: error.message, //"Ya existe un usuario con el email ingresado."
+             payload: "Ya existe un usuario con el email ingresado."
           })
        }
     };
@@ -43,7 +42,6 @@ export const register_company = (payload) => {
     return async (dispatch) => {
        try {
           const response = await axios.post(endpoint, payload);
-          //console.log(response.data);
           return dispatch({
              type: "REGISTER_MODEL_OR_COMPANY",
              payload: response.data
@@ -51,7 +49,7 @@ export const register_company = (payload) => {
        } catch (error) {
           return dispatch({
              type: "ERROR",
-             payload: error.message, //"Ya existe un usuario con el email ingresado."
+             payload: "Ya existe un usuario con el email ingresado."
           })
        }
     };
@@ -172,7 +170,7 @@ export const getAllCompanies=() => {
 export const get_all_postulations=(fk) => {
    return async (dispatch) => {
       try {
-         const response=await axios.get(`http://localhost:3001/talents/applied/${fk}`);
+         const response=await axios.get(`http://localhost:3001/applied/event/${fk}`);
          console.log(response.data);
          return dispatch({type: GET_ALL_POSTULATIONS, payload: response.data})
       } catch (error) {
