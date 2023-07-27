@@ -13,4 +13,7 @@ companyRouter.post("/", handleCreateFavoriteTalent);
 companyRouter.get("/", handleGetFavoritesTalentsById);
 
 
+//! Pendiente Una ruta para buscar los favoritos de una compañia por name
+
+
 module.exports = companyRouter;

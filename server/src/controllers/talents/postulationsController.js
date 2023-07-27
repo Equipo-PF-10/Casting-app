@@ -67,7 +67,10 @@ const deleteApplicantById = async (id) => {
 
 const getApplicantsForEventByFk = async (fk) => {
   try {
-    const postulacion = await Applied.findAll({ where: { EventId: fk } });
+    const postulacion = await Applied.findAll({ where: { 
+      EventId: fk,
+      status:"Pendiente"
+    } });
     let postulacionesIds = [];
     let talentsIds = [];
     let talents = [];
@@ -78,7 +81,7 @@ const getApplicantsForEventByFk = async (fk) => {
     for (let i=0 ; i<postulacion.length;i++){
       postulacionesIds.push(postulacion[i].dataValues.id)
     } 
-    console.log(postulacionesIds)//[dos ids de postulaciones]
+
     for (let i = 0; i < postulacionesIds.length; i++) {
       let postulante = await TalentApplied.findAll({
         where: {  AppliedId: `${postulacionesIds[i]}` },

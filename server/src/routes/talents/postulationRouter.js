@@ -12,7 +12,7 @@ const postulationRouter = Router();
 //? Esta ruta busca una postulacion por su id.
 postulationRouter.get("/:id", handlerGetApplicantById);
 
-//? Esta ruta elimina una postulacion por su id.
+//? Esta ruta elimina una postulacion por el id de la postulación.
 //!Pendiente definir si vas hacer o no el borrado lógico
 postulationRouter.delete("/:id", handlerDeleteApplicantById);
 
