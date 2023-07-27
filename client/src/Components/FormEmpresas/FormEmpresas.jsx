@@ -12,6 +12,11 @@ const FormEmpresa = () => {
 
     const URL = `http://localhost:3001/company/${userID}`
 
+    const uploadPreset = "casting_app"
+    const cloudName = "dntrnqcxe";
+
+    const URLCloud = `https://api.cloudinary.com/v1_1/${cloudName}/upload`
+
     const optionsindustryMain = [
         { value: 'Actuación', label: 'Actuación' },
         { value: 'Animador/a', label: 'Animador/a' },
@@ -58,6 +63,9 @@ const FormEmpresa = () => {
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
+            if(input.image){
+                await submitImage();
+            }
             await axios.put(URL, input)
             setInput(initialState)
         } catch (error) {
@@ -72,9 +80,25 @@ const FormEmpresa = () => {
       const habilityValue = orientaciones.map(item => item.value);
 
       input.industryMain = habilityValue.join(", ");
-  
-      console.log(input.industryMain);
 
+    //Cloudinary
+
+    const submitImage = async () => {
+        const formData = new FormData();
+        formData.append("file", input.image);
+        formData.append("upload_preset", uploadPreset);
+        formData.append("cloud_name", cloudName);
+        
+        try {
+          const response = await axios.post(URLCloud, formData);
+          const responseData = response.data;
+          console.log(responseData);
+          console.log(responseData.url)
+          setInput({...input, image: responseData.url})
+        } catch (error) {
+          console.log({ error });
+        }
+    };
 
     return(
         <section className={Styles.section}>
@@ -91,12 +115,12 @@ const FormEmpresa = () => {
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="password" className={Styles.text}>Contraseña</label>
-                        <input type="password" name="password" id="password" value={input.password} onChange={handleChange} required/>
+                        <input type="password" name="password" id="password" value={input.password} onChange={handleChange}/>
                         <p className={error.password ? Styles.error : ""}>{error.password ? error.password : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="email" className={Styles.text}>Email</label>
-                        <input type="text" name="email" id="email" value={input.email} onChange={handleChange} required/>
+                        <input type="text" name="email" id="email" value={input.email} onChange={handleChange}/>
                         <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
@@ -135,7 +159,7 @@ const FormEmpresa = () => {
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="logo" className={Styles.text}>Subir Imágen</label>
-                            <input type="text" name="logo" id="logo" value={input.logo} required onChange={handleChange}/>
+                            <input type="text" name="logo" id="logo" value={input.image} onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
                                     <label htmlFor="" className={Styles.text}>Orientación artística</label>
@@ -149,7 +173,8 @@ const FormEmpresa = () => {
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="logo" className={Styles.text}>Página Web</label>
-                            <input type="text" name="domain" id="domain" value={input.domain} required onChange={handleChange}/>
+                            <input type="text" name="domain" id="domain" value={input.domain}  onChange={handleChange}/>
+
                         </article>
                     <button type="submit" className={Styles.btn}>Enviar Datos</button>
                     </section>
@@ -188,7 +213,7 @@ const FormEmpresa = () => {
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="country" className={Styles.text}>Ubicación</label>
-                        <input type="text" id="country" name="country" value={input.country} onChange={handleChange} required/>
+                        <input type="text" id="country" name="country" value={input.country} onChange={handleChange} />
                     </article>
                 </div>
             </form>

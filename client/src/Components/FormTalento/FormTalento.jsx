@@ -12,6 +12,11 @@ const FormTalento = () => {
 
     const URL = `http://localhost:3001/talents/${id}`
 
+    const uploadPreset = "casting_app"
+    const cloudName = "dntrnqcxe";
+
+    const URLCloud = `https://api.cloudinary.com/v1_1/${cloudName}/upload`
+
     const optionshability = [
         { value: 'Actuación', label: 'Actuación' },
         { value: 'Animador/a', label: 'Animador/a' },
@@ -47,13 +52,18 @@ const FormTalento = () => {
         hability: []
     }
 
+    // States
+
     const [input, setInput] = useState(initialState)
 
     const [orientaciones, setOrientaciones] = useState([])
 
     const [error, setError] = useState({})
 
+    // Handles
+
     const handleChange = (event) => {
+        event.preventDefault()
         const {name, value} = event.target;
         setInput({...input, [name]: value})
         setError(validationTalentos({ ...input, [name]: value }))
@@ -84,6 +94,9 @@ const FormTalento = () => {
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
+            if(input.image){
+                await submitImage();
+            }
             await axios.put(URL, input)
             setInput(initialState)
         } catch (error) {
@@ -95,7 +108,26 @@ const FormTalento = () => {
 
     input.hability = habilityValue;
 
-    console.log(input);
+    // Cloudinary
+
+    const submitImage = async () => {
+        const formData = new FormData();
+        formData.append("file", input.image);
+        formData.append("upload_preset", uploadPreset);
+        formData.append("cloud_name", cloudName);
+        
+        try {
+            const response = await axios.post(URLCloud, formData);
+            const responseData = response.data;
+            console.log(responseData);
+            console.log(responseData.url);
+            setInput({ ...input, image: responseData.url });
+        } catch (error) {
+            console.log("Error uploading image:", error);
+        }
+    }
+    
+    console.log(input.image)
 
     return(
         <section className={Styles.section}>
@@ -103,12 +135,13 @@ const FormTalento = () => {
             <path d="M276.775 -48.0724L345 -66L-57 -57.4216V202C17.4227 78.335 137.182 -11.3914 276.775 -48.0724Z" fill="#7E7193"/>
             </svg>
             
-            <form action="" className={Styles.form} method="POST" onSubmit={hanldeSubmit}>
+            <form action="" className={Styles.form} method="POST" onSubmit={hanldeSubmit} encType="multipart/form-data">
                 <div className={Styles.div}>
                 <h1>Registro</h1>
                     <article className={Styles.coolinput}>
                         <label htmlFor="name" className={Styles.text}>Nombre Completo</label>
                         <input type="text" name="name" id="name" value={input.name} onChange={handleChange}/>
+                        <p className={error.name ? Styles.error : ""}>{error.name ? error.name : null}</p>
                     </article>
 
                     <article className={Styles.coolinput}>
@@ -119,10 +152,12 @@ const FormTalento = () => {
                     <article className={Styles.coolinput}>
                         <label htmlFor="email" className={Styles.text}>Email</label>
                         <input type="text" name="email" id="email" value={input.email} onChange={handleChange}/>
+                        <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Descripción</label>
                             <textarea name="aboutMe" id="" value={input.aboutMe} onChange={handleChange} placeholder="Descripción de tu perfil..."></textarea>
+                            <p className={error.aboutMe ? Styles.error : ""}>{error.aboutMe ? error.aboutMe : null}</p>
                         </article>
 
                 </div>
@@ -156,7 +191,7 @@ const FormTalento = () => {
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Subir Imágen</label>
-                        <input type="text" name="image" value={input.image} onChange={handleChange}/>
+                        <input type="file"name="image" value={input.image} onChange={handleChange}/>
                     </article>
                     <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Orientación artística</label>
@@ -167,6 +202,7 @@ const FormTalento = () => {
                                 value={orientaciones}
                                 onChange={handleChangeSelect}
                                 name="hability"/>
+                                <p className={error.hability ? Styles.error : ""}>{error.hability ? error.hability : null}</p>
                     </article> 
                     <article className={Styles.charSec}>
                             <article className={Styles.coolinput}>
@@ -238,10 +274,12 @@ const FormTalento = () => {
                     <article className={Styles.coolinput}>
                         <label htmlFor="ubication" className={Styles.text}>Ubicación</label>
                         <input type="text" id="ubication" name="ubication" value={input.ubication} onChange={handleChange}/>
+                        <p className={error.ubication ? Styles.error : ""}>{error.ubication ? error.ubication : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Nacionalidad</label>
                         <input type="text"  name="nacionality" id="nacionality" value={input.nacionality} onChange={handleChange}/>
+                        <p className={error.nacionality ? Styles.error : ""}>{error.nacionality ? error.nacionality : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="dni" className={Styles.text}>Documento de Identidad</label>
