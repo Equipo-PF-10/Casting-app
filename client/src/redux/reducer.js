@@ -11,6 +11,7 @@ import {
   GET_COMPANY_BY_ID,
   GET_ALL_POSTULATIONS,
   GET_POSTULANTS_BY_NAME,
+  DELETE_POSTULANT_BY_ID,
   GET_TALENT_BY_ID,
   GET_ALL_TALENTS,
   FILTER_BY_HABILITY,
@@ -37,8 +38,9 @@ const initialState = {
   companyDetail: [],
   idUser: "", //id del usuario al logearse
   idCard: "",  //id de una card (postulante o evento)
-  userType: "", //"1" === "talent", "2" === "company"
+  userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
   messageRegistered: {},
+  messagePostulantDeleted: "",
   modalInLogin: false,
   modalInSearchCompany: false,
   filters: false,
@@ -124,6 +126,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         filters: true,
         postulatedTalentsByEventFiltered: payload,
+      };
+    case DELETE_POSTULANT_BY_ID:
+      return {
+        ...state,
+        messagePostulantDeleted: payload
       };
     case GET_ALL_TALENTS:
       return {

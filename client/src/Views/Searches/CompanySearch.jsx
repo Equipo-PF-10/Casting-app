@@ -19,7 +19,8 @@ const CompanySearch = () => {
   const talent = useSelector((state) =>  state.talentById);
   const filters = useSelector((state) =>  state.filters);
   const modal = useSelector((state) =>  state.modalInSearchCompany);
-  console.log(modal);
+  
+  //Verificar si cuando se elimina un postulante se actualiza la lista (si no lo hace, buscar la forma)
 
   
   let [id, setId] = useState("");
@@ -129,7 +130,8 @@ useEffect(()=>{
          
           filters ?
           <div className={style.grid}>
-           <div><h2>Postulantes al Evento: {evento.name}</h2></div>
+           <div><h2>Postulantes al Evento: {evento.name}</h2><hr /></div>
+           
           <div className={style.cards}>{listedTalentsCopy}</div>
         </div>
           :
@@ -139,16 +141,11 @@ useEffect(()=>{
         </div>
         }
         <div className={style.detailCard}>
-          {/* estado local .length === 0 le paso la info del primer postulante,
-              sino, al hacer click en una card se pasa el id de la card al estado local,
-              con ese id filtro el array de postulantes y luego le paso el postulante
-              filtrado a Detail
-          */}
            {
             idCard.length === 0 ?
-            <Detail className={style.detail} talent={postulantes[0]} />
+            <Detail className={style.detail} talent={postulantes[0]} id_event={id_event}/>
             :
-            <Detail className={style.detail} talent={talent} key={talent.id}/>
+            <Detail className={style.detail} talent={talent} key={talent.id} id_event={id_event}/>
           } 
         </div>
       </div>
@@ -208,11 +205,6 @@ useEffect(()=>{
         </div>  
       }
       {/* ---------------------------------------------------------- */}
-
-
-
-
-
     </div>
   );
 };

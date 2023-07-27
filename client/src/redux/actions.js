@@ -10,6 +10,7 @@ export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 export const GET_COMPANY_BY_ID = "GET_COMPANY_BY_ID";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
+export const DELETE_POSTULANT_BY_ID = "DELETE_POSTULANT_BY_ID";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
 export const GET_ALL_TALENTS = "GET_ALL_TALENTS";
 export const FILTER_BY_HABILITY = "FILTER_BY_HABILITY";
@@ -127,7 +128,7 @@ export const get_company_by_id = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
-      console.log("Compañía obtenida de la preticion: " + data);
+      //console.log("Compañía obtenida de la preticion: " + data);
       return dispatch({
         type: GET_COMPANY_BY_ID,
         payload: data,
@@ -219,7 +220,28 @@ export const get_postulant_by_name = (fk, name) => {
     } catch (error) {
       return dispatch({
         type: "ERROR",
-        payload: "Postulante no encontrado. Intentelo de nuevo...",
+        payload: "No se encontró ningun postulante con el nombre ingresado.",
+      });
+    }
+  };
+};
+
+//VERIFICAR COMO ENVIAR DOS IDS EN EL ENDPOINT
+//Deberia retornar un mensaje
+export const delete_postulant_by_id = (fk, id_talent) => {
+  let endpoint = `http://localhost:3001/talents/applied/${fk}/${id_talent}`;
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.delete(endpoint);
+
+      return dispatch({
+        type: DELETE_POSTULANT_BY_ID,
+        payload: data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "Ocurrió un error al intentar eliminar el postulante de la lista.",
       });
     }
   };

@@ -3,13 +3,19 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { open_modal_search_compnay } from "../../../redux/actions";
 
-const Detail = ({ talent }) => {
+const Detail = (props) => {
   
   //const { id, name, aboutMe, ubication, hability } = talent;
+  const {talent, id_event} = props;
   const dispatch = useDispatch();
+  
   const handlerClick = () => {
     const open = "isOpened";
     dispatch(open_modal_search_compnay(open));
+  }
+
+  const handlerClickDelete = (id_talent) => {
+    dispatch(delete_postulant_by_id(id_event, id_talent));
   }
 
   return (
@@ -45,7 +51,7 @@ const Detail = ({ talent }) => {
           <button className={style.conectar} onClick={handlerClick}>Conectar</button>
         </div>
         <div className={style.conteinerRechazar}>
-          <button className={style.rechazar}>Rechazar</button>
+          <button className={style.rechazar} onClick={handlerClickDelete(talent?.id)}>Rechazar</button>
         </div>
       </div>
     </div>
