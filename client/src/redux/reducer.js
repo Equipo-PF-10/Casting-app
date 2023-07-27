@@ -13,6 +13,7 @@ import {
   GET_TALENT_BY_ID,
   GET_ALL_TALENTS,
   FILTER_BY_HABILITY,
+  FILTER_BY_EVENT_HABILITY,
   FILTER_BY_GENDER,
   FILTER_BY_CONTEXTURE,
   FILTER_BY_UBICATION,
@@ -27,11 +28,11 @@ const initialState = {
   postulatedTalentsByEvent: [],
   postulatedTalentsByEventFiltered: [],
   allEvents: [],
+  eventsFiltered: [],
+  eventDetail: {},
   getAllCompanies: [],
   companiesFiltered: [],
   companyDetail: [],
-  eventsFiltered: [],
-  eventDetail: {},
   idUser: "", //id del usuario al logearse
   idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company"
@@ -135,6 +136,25 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
+    case FILTER_BY_EVENT_HABILITY: {
+      if (payload === "Todos") {
+        return {
+          ...state,
+          filters: true,
+          eventsFiltered: [...state.allEvents],
+        };
+      } else {
+        const hability = [...state.allEvents].filter((event) =>
+          event.hability.includes(payload)
+        );
+        return {
+          ...state,
+          filters: true,
+          eventsFiltered: hability,
+        };
+      }
+    }
+      
     case FILTER_BY_GENDER: {
       if (payload === "Todos") {
         return {
