@@ -10,7 +10,7 @@ import {
 
 const SearchComp = (props) => {
   //console.log(props);
-  const { ubication, setCurrentPage } = props;
+  const { ubication, setCurrentPage, eventFilter } = props;
   const dispatch = useDispatch();
 
   //buscar por nombre

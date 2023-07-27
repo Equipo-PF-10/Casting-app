@@ -1,14 +1,8 @@
 import React from "react";
 import style from "./DetailComp.module.css";
-import {useDispatch} from "react-redux";
+//import {useDispatch} from "react-redux";
 
 const Detail = ({ detail }) => {
-  //const { name, country, description, expirationDate, industryMain } = events?.events;
-  //const {events} = events
-  //const dispatch=useDispatch()
-  //console.log(detail);
-
-
 
   return (
     <div className={style.containerDetail}>
