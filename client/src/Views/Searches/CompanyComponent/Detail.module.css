@@ -3,11 +3,14 @@
   position: relative;
   padding: 30px;
   width: 400px;
-  height: 90vh;
+  height: 80vh;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+}
+.containerDetail h5 {
+ margin-top: 35px;
 }
  .head {
   display: flex;

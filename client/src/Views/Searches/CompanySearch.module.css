@@ -42,11 +42,11 @@
   float: left;
   gap: 2rem;
   list-style: none;
-  cursor: pointer;
 }
 
 .cards li{
   transition: 0.5s;
+  cursor: pointer;
 }
 
 .cards li:hover{
@@ -60,7 +60,7 @@
 
 .detailCard{
   margin: 0 auto;
-  margin-top: -50px;
+  margin-top: 40px;
   margin-right: 30px;
   margin-left: -40px;
   width: 200px;
@@ -91,7 +91,7 @@
   transform: scale(1.1);
 }
 .pagination p {
-  margin-right: 100px;
+  margin-right: 600px;
 }
 
 .active{
