@@ -1,27 +1,71 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import style from './SearchComp.module.css'
 import {useDispatch} from 'react-redux';
-import { getAllEvents } from '../../../redux/actions';
+import { filterByTalent, getAllEvents, getEventsByName} from '../../../redux/actions';
 
-const SearchComp=() => {
-  const dispatch=useDispatch()
+const SearchComp=(props) => {
+  //console.log(props);
+  const { ubication, setCurrentPage } = props;
+  const dispatch = useDispatch();
+
+  //buscar por nombre
   const [name, setName] = useState("");
-  
+
+  //busqueda por nombre
   const handleInputChange = (event) => {
     setName(event.target.value);
-    //console.log(name);
+    //console.log(event.target.value);
   };
 
-  const handleSubmit=(event) => {
-    console.log(name);
+  const handleSubmit = (event) => {
+    //console.log(name); //nombre submitiedo
     event.preventDefault();
-    dispatch(getAllEvents(name));
+    dispatch(getEventsByName(name));
+    setName("");
   };
 
+  //recargar postulantes
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(getAllEvents());
   };
+
+  // Habilidades
+  const optionshabilityRequired = [
+    { value: "Actuación", label: "Actuación" },
+    { value: "Animador/a", label: "Animador/a" },
+    { value: "Bailarín/a", label: "Bailarín/a" },
+    { value: "Blogger", label: "Blogger" },
+    { value: "Cantante", label: "Cantante" },
+    { value: "DJ", label: "DJ" },
+    { value: "Influencer", label: "Influencer" },
+    { value: "Locutor/a", label: "Locutor/a" },
+    { value: "Mago/a", label: "Mago/a" },
+    { value: "Músico/a", label: "Músico/a" },
+    { value: "Modelo", label: "Modelo" },
+    { value: "Presentador/a", label: "Presentador/a" },
+    { value: "Promotor/a", label: "Promotor/a" },
+  ];
+
+  const optionTags = optionshabilityRequired.map((item) => {
+    return (
+      <option value={item.value} key={item.value}>
+        {item.label}
+      </option>
+    );
+  });
+
+  // Ubicaciones
+  const handleHabilities = (event) => {
+    dispatch(filterByTalent(event.target.value));
+    setCurrentPage(1);
+  };
+
+  const locationTags = ubication.map((item, index) => (
+    <option key={index} value={item}>
+      {item}
+    </option>
+  ));
 
   return (
     <div className={style.containerGe}>
@@ -30,10 +74,17 @@ const SearchComp=() => {
         <input
           type="text"
           placeholder="Buscar eventos.."
+          name="search"
+          id="search"
+          value={name}
           onChange={(event) => handleInputChange(event)}
           className={style.inputTalent}
         />
-        <button type='submit' className={style.lupaButton} onClick={(event) => handleSubmit(event)}>
+        <button
+          type="submit"
+          className={style.lupaButton}
+          onClick={(event) => handleSubmit(event)}
+        >
           <svg className={style.lupa} aria-hidden="true" viewBox="0 0 24 24">
             <g>
               <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
@@ -43,13 +94,15 @@ const SearchComp=() => {
       </div>
       {/*selects filtros y ordenamientos*/}
       <select className={style.selectFilter}>
-        <option value="">Empresa</option>
-      </select>
-      <select className={style.selectFilter}>
         <option value="">Eventos</option>
+        {optionTags}
       </select>
       <select className={style.selectFilter}>
-        <option value="">Ubicación</option>
+        <option defaultChecked value="">
+          Ubicación
+        </option>
+        <option value="Todos">Todas</option>
+        {locationTags}
       </select>
       {/*BOTON RECARGAR*/}
       <div>
