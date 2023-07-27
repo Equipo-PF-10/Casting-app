@@ -36,7 +36,7 @@
   align-items: flex-end;
   list-style: none;
   gap: 2rem;
-  margin-top: 100px;
+  /*margin-top: 10px;*/
 }
 
 .pagination li{
