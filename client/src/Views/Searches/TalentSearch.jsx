@@ -14,11 +14,11 @@ import {
 const TalentSearch = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.allEvents);
-  const evento=useSelector((state) => state.eventDetail);
-  const eventFilter = useSelector((state) => state.eventFiltered)
-  //console.log(evento);
+  const evento = useSelector((state) => state.eventDetail);
+  const eventFilter = useSelector((state) => state.eventsFiltered);
+  //console.log(eventFilter);
 
-  let [id, setId] = useState('');
+  let [id, setId] = useState("");
   //let [eventSelected, setEventSelected] = useState({});
   //console.log(id); //id cambian segun carta
 
@@ -26,7 +26,7 @@ const TalentSearch = () => {
   //console.log(idCard);
   //console.log(evento[0] + 'soy evento');
   //const eventsCopy = useSelector((state) => state.);
-  //const filters = useSelector((state) => state.filters)
+  const filters = useSelector((state) => state.filtersEvent);
   //const eventDet = useSelector((state) => state.eventDetail);
   //const details = useSelector((state) => state.companyDetail);
   //console.log(events); //detalles de los eventos
@@ -39,7 +39,7 @@ const TalentSearch = () => {
   const lastIndex = currentPage * eventsPerPage;
   const firstIndex = lastIndex - eventsPerPage;
   const currentEvents = events.slice(firstIndex, lastIndex);
-  //const currentEventsCopy = eventsCopy.slice(firstIndex, lastIndex);
+  const currentEventsFilter = eventFilter.slice(firstIndex, lastIndex);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -58,6 +58,17 @@ const TalentSearch = () => {
   };
 
   const listedEvents = currentEvents.map((event) => (
+    <div key={event.id}>
+      <CardJobs
+        setId={setId}
+        name={event.name}
+        event={event}
+        onClick={() => handleClick(event.id)}
+      />
+    </div>
+  ));
+  //copia
+  const listedEventsFilter = currentEventsFilter.map((event) => (
     <div key={event.id}>
       <CardJobs
         setId={setId}
@@ -102,7 +113,11 @@ const TalentSearch = () => {
         <div className={style.navLateral}>
           <NavBarLateral />
         </div>
-        <div className={style.cardJobsStyle}>{listedEvents}</div>
+        {filters ? (
+          <div className={style.cardJobsStyle}>{listedEventsFilter}</div>
+        ) : (
+          <div className={style.cardJobsStyle}>{listedEvents}</div>
+        )}
         <div className={style.detailStyle}>
           {/*<Detail events={events} />*/}
           {id.length === 0 ? (

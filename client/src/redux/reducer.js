@@ -45,6 +45,7 @@ const initialState = {
   modalInLogin: false,
   modalInSearchCompany: false,
   filters: false,
+  filtersEvent: false,
   errors: {},
 };
 
@@ -162,23 +163,41 @@ const rootReducer = (state = initialState, { type, payload }) => {
       }
     }
     case FILTER_BY_EVENT_HABILITY: {
-      if (payload !== "Todos") {
-        const hability = [...state.allEvents].filter((event) =>
+      if (payload === "Todos") {
+        return {
+          ...state,
+          filtersEvent: true,
+          eventsFiltered: [...state.allEvents],
+        };
+      } else {
+        const hability = [...state.eventsFiltered].filter((event) =>
           event.habilityRequired.includes(payload)
         );
         return {
           ...state,
-          filters: true,
+          filtersEvent: true,
           eventsFiltered: hability,
-        };
-      } else {
-        return {
-          ...state,
-          filters: true,
-          eventsFiltered: [...state.allEvents],
         };
       }
     }
+    //case FILTER_BY_EVENT_HABILITY: {
+    //  if (payload !== "Todos") {
+    //    const hability = [...state.eventsFiltered].filter((event) =>
+    //      event.habilityRequired.includes(payload)
+    //    );
+    //    return {
+    //      ...state,
+    //      filters: true,
+    //      eventsFiltered: hability,
+    //    };
+    //  } else {
+    //    return {
+    //      ...state,
+    //      filters: true,
+    //      eventsFiltered: [...state.allEvents],
+    //    };
+    //  }
+    //}
 
     case FILTER_BY_GENDER: {
       if (payload === "Todos") {
