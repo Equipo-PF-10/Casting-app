@@ -16,6 +16,7 @@ export const FILTER_BY_GENDER="FILTER_BY_GENDER";
 export const FILTER_BY_CONTEXTURE="FILTER_BY_CONTEXTURE";
 export const CLEAR_DETAIL='CLEAR_DETAIL';
 export const SEND_ID_OF_CARD='SEND_ID_OF_CARD';
+export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
 import axios from 'axios';
 
 
@@ -276,4 +277,23 @@ export const send_id_of_card = (id) => {
         payload: id
       })
    }
-}
+};
+
+export const getEventsByName = (name) => {
+  return async (dispatch) => {
+    try {
+      let response = await axios.get(
+        "http://localhost:3001/events?name=" + name
+      );
+      return dispatch({
+        type: GET_NAME_EVENTS,
+        payload: response.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "Ha ocurrido un error al obtener los eventos por nombre",
+      });
+    }
+  };
+};

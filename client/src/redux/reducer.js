@@ -17,6 +17,7 @@ import {
   FILTER_BY_CONTEXTURE,
   CLEAR_DETAIL,
   SEND_ID_OF_CARD,
+  GET_NAME_EVENTS,
 } from "./actions.js";
 
 const initialState = {
@@ -99,12 +100,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
         postulatedTalentsByEvent: payload,
         postulatedTalentsByEventFiltered: payload,
       };
-      case GET_POSTULANTS_BY_NAME:
-        return {
-            ...state,
-            filters: true,
-            postulatedTalentsByEventFiltered: payload,  
-        }
+    case GET_POSTULANTS_BY_NAME:
+      return {
+        ...state,
+        filters: true,
+        postulatedTalentsByEventFiltered: payload,
+      };
     case GET_ALL_TALENTS:
       return {
         ...state,
@@ -115,16 +116,17 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         talentById: payload,
       };
-    case FILTER_BY_HABILITY:{
-
-      if(payload === "Todos"){
+    case FILTER_BY_HABILITY: {
+      if (payload === "Todos") {
         return {
           ...state,
           filters: true,
-          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent]
-        }
+          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
+        };
       } else {
-        const hability = [...state.postulatedTalentsByEvent].filter((talent) => talent.hability.includes(payload))
+        const hability = [...state.postulatedTalentsByEvent].filter((talent) =>
+          talent.hability.includes(payload)
+        );
         return {
           ...state,
           filters: true,
@@ -132,16 +134,17 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
-    case FILTER_BY_GENDER:{
-
-      if(payload === "Todos"){
+    case FILTER_BY_GENDER: {
+      if (payload === "Todos") {
         return {
           ...state,
           filters: true,
-          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent]
-        }
+          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
+        };
       } else {
-        const gender = [...state.postulatedTalentsByEvent].filter((talent) => talent.gender.includes(payload))
+        const gender = [...state.postulatedTalentsByEvent].filter((talent) =>
+          talent.gender.includes(payload)
+        );
         return {
           ...state,
           filters: true,
@@ -149,8 +152,10 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
-    case FILTER_BY_CONTEXTURE:{
-      let talents = [...state.postulatedTalentsByEvent].filter((talent) => talent.contexture.includes(payload));
+    case FILTER_BY_CONTEXTURE: {
+      let talents = [...state.postulatedTalentsByEvent].filter((talent) =>
+        talent.contexture.includes(payload)
+      );
       return {
         ...state,
         filters: true,
@@ -166,6 +171,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         companyDetail: payload,
+      };
+    case GET_NAME_EVENTS:
+      return {
+        ...state,
+        allEvents: payload,
       };
     case ERROR:
       return {
