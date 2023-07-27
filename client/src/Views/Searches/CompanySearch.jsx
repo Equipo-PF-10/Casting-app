@@ -109,7 +109,7 @@ useEffect(()=>{
     const close = "isClosed";
     dispatch(close_modal_search_compnay(close));
   }
-  
+  console.log(postulantesCopy);
   return (
     <div className={style.containerG}>
       <div className={style.searchFil}>
@@ -143,6 +143,9 @@ useEffect(()=>{
         <div className={style.detailCard}>
            {
             idCard.length === 0 ?
+            filters ?
+            <Detail className={style.detail} talent={postulantesCopy[0]} id_event={id_event}/>
+            :
             <Detail className={style.detail} talent={postulantes[0]} id_event={id_event}/>
             :
             <Detail className={style.detail} talent={talent} key={talent.id} id_event={id_event}/>

@@ -22,6 +22,7 @@ import {
   FILTER_BY_UBICATION_EVENT,
   CLEAR_DETAIL,
   SEND_ID_OF_CARD,
+  CLEAR_ID_OF_CARD,
   GET_NAME_EVENTS,
 } from "./actions.js";
 
@@ -244,6 +245,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
     }
     case SEND_ID_OF_CARD:
+      return {
+        ...state,
+        idCard: payload,
+      };
+    case CLEAR_ID_OF_CARD:
       return {
         ...state,
         idCard: payload,
