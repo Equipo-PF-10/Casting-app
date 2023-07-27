@@ -5,16 +5,25 @@ import CardJobs from "./TalentComponent/CardJobs";
 import SearchComp from "./TalentComponent/SearchComp";
 import Detail from "./TalentComponent/Detail";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllEvents } from "../../redux/actions";
+import {
+  getAllEvents,
+  filterByEvent,
+  get_event_by_id,
+} from "../../redux/actions";
 
 const TalentSearch = () => {
   const dispatch = useDispatch();
 
   let [id, setId] = useState("");
-  let [eventSelected, setEventSelected] = useState({});
+  //let [eventSelected, setEventSelected] = useState({});
 
   const events = useSelector((state) => state.allEvents);
-  //const error = useSelector((state) => state.errors);
+  const idCard = useSelector((state) => state.idCard);
+  //console.log(idCard);
+  const evento = useSelector((state) => state.eventDetail);
+  //console.log(evento[0] + 'soy evento');
+  //const eventsCopy = useSelector((state) => state.);
+  //const filters = useSelector((state) => state.filters)
   //const eventDet = useSelector((state) => state.eventDetail);
   //const details = useSelector((state) => state.companyDetail);
   //console.log(events); //detalles de los eventos
@@ -27,6 +36,7 @@ const TalentSearch = () => {
   const lastIndex = currentPage * eventsPerPage;
   const firstIndex = lastIndex - eventsPerPage;
   const currentEvents = events.slice(firstIndex, lastIndex);
+  //const currentEventsCopy = eventsCopy.slice(firstIndex, lastIndex);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -38,8 +48,7 @@ const TalentSearch = () => {
     (_, index) => index + 1
   );
 
-  
-  const handleClick=(eventId) => {
+  const handleClick = (eventId) => {
     console.log(eventId);
     setId(eventId);
     setEventSelected(events.find((event) => event.id === id));
@@ -52,9 +61,18 @@ const TalentSearch = () => {
         event={event}
         onClick={() => handleClick(event.id)}
       />
-      {/*<CardJobs event={event} onClick={() =>console.log('jesus')} />*/}
     </div>
   ));
+  //const listedEventsCopy = currentEventsCopy.map((event) => (
+  //  <div key={event.id}>
+  //    <CardJobs
+  //      name={event.name}
+  //      event={event}
+  //      //onClick={() => handleClick(event.id)}
+  //      handlerClick={handleClick}
+  //    />
+  //  </div>
+  //));
 
   const ubication = events.map((e) => {
     return e.ubication;
@@ -67,8 +85,12 @@ const TalentSearch = () => {
 
   useEffect(() => {
     dispatch(getAllEvents());
-    //dispatch(get_event_by_id())
+    dispatch(filterByEvent());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(get_event_by_id(idCard));
+  }, [idCard]);
 
   //console.log(id.length === 0, 'condicion');
   //console.log(eventSelected);
@@ -88,10 +110,10 @@ const TalentSearch = () => {
         <div className={style.cardJobsStyle}>{listedEvents}</div>
         <div className={style.detailStyle}>
           {/*<Detail events={events} />*/}
-          {id.length === 0 ? (
+          {idCard.length === 0 ? (
             <Detail events={events[0]} />
           ) : (
-            <Detail events={eventSelected} />
+            <Detail evento={evento} />
           )}
         </div>
       </div>
