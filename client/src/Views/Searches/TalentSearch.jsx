@@ -13,14 +13,17 @@ import {
 
 const TalentSearch = () => {
   const dispatch = useDispatch();
-
-  let [id, setId] = useState("");
-  //let [eventSelected, setEventSelected] = useState({});
-
   const events = useSelector((state) => state.allEvents);
-  const idCard = useSelector((state) => state.idCard);
+  const evento=useSelector((state) => state.eventDetail);
+  const eventFilter = useSelector((state) => state.eventFiltered)
+  //console.log(evento);
+
+  let [id, setId] = useState('');
+  //let [eventSelected, setEventSelected] = useState({});
+  //console.log(id); //id cambian segun carta
+
+  //const idCard = useSelector((state) => state.idCard);
   //console.log(idCard);
-  const evento = useSelector((state) => state.eventDetail);
   //console.log(evento[0] + 'soy evento');
   //const eventsCopy = useSelector((state) => state.);
   //const filters = useSelector((state) => state.filters)
@@ -49,7 +52,7 @@ const TalentSearch = () => {
   );
 
   const handleClick = (eventId) => {
-    console.log(eventId);
+    //console.log(eventId);
     setId(eventId);
     setEventSelected(events.find((event) => event.id === id));
   };
@@ -57,22 +60,13 @@ const TalentSearch = () => {
   const listedEvents = currentEvents.map((event) => (
     <div key={event.id}>
       <CardJobs
+        setId={setId}
         name={event.name}
         event={event}
         onClick={() => handleClick(event.id)}
       />
     </div>
   ));
-  //const listedEventsCopy = currentEventsCopy.map((event) => (
-  //  <div key={event.id}>
-  //    <CardJobs
-  //      name={event.name}
-  //      event={event}
-  //      //onClick={() => handleClick(event.id)}
-  //      handlerClick={handleClick}
-  //    />
-  //  </div>
-  //));
 
   const ubication = events.map((e) => {
     return e.ubication;
@@ -88,9 +82,9 @@ const TalentSearch = () => {
     dispatch(filterByEvent());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(get_event_by_id(idCard));
-  }, [idCard]);
+  //useEffect(() => {
+  //  dispatch(get_event_by_id(id));
+  //}, [id]);
 
   //console.log(id.length === 0, 'condicion');
   //console.log(eventSelected);
@@ -101,6 +95,7 @@ const TalentSearch = () => {
         <SearchComp
           ubication={singleLocation}
           setCurrentPage={setCurrentPage}
+          eventFilter={eventFilter}
         />
       </div>
       <div className={style.secciones}>
@@ -110,10 +105,10 @@ const TalentSearch = () => {
         <div className={style.cardJobsStyle}>{listedEvents}</div>
         <div className={style.detailStyle}>
           {/*<Detail events={events} />*/}
-          {idCard.length === 0 ? (
-            <Detail events={events[0]} />
+          {id.length === 0 ? (
+            <Detail detail={events[0]} />
           ) : (
-            <Detail evento={evento} />
+            <Detail detail={evento} />
           )}
         </div>
       </div>
