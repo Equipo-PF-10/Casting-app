@@ -1,7 +1,7 @@
 import style from "./Search.module.css";
 import { filterByTalent, filterByGender, filterByUbication } from "../../../redux/actions";
+import { get_all_postulations, get_postulant_by_name, clear_id_sent_from_card } from "../../../redux/actions";
 import {useDispatch} from "react-redux";
-import { get_all_postulations, get_postulant_by_name } from "../../../redux/actions";
 import { useState } from "react";
 
 const Search = (props) => {
@@ -19,6 +19,7 @@ const Search = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(get_postulant_by_name(id_event, name));
+    dispatch(clear_id_sent_from_card(""));
     setName("");
   };
 
@@ -45,12 +46,14 @@ const Search = (props) => {
 
   
   const handleHabilities = (event) => {
-    dispatch(filterByTalent(event.target.value))
-    setCurrentPage(1)
+    dispatch(filterByTalent(event.target.value));
+    dispatch(clear_id_sent_from_card(""));
+    setCurrentPage(1);
   }
   // Ubicaciones
   const handleUbications = (event) => {
-    dispatch(filterByUbication(event.target.value))
+    dispatch(filterByUbication(event.target.value));
+    dispatch(clear_id_sent_from_card(""));
     setCurrentPage(1)
   }
 
@@ -61,18 +64,21 @@ const Search = (props) => {
   // Género
   const handleGenders = (event) => {
     dispatch(filterByGender(event.target.value));
-    setCurrentPage(1)
+    dispatch(clear_id_sent_from_card(""));
+    setCurrentPage(1);
   }
 
   // Contextura fisica
   const handleContexture = (event) => {
     dispatch(filterByContexture(event.target.value));
-    setCurrentPage(1)
+    dispatch(clear_id_sent_from_card(""));
+    setCurrentPage(1);
   }
 
   //Recargar Postulantes
   const handleClick = (event) => {
     dispatch(get_all_postulations(id_event));
+    dispatch(clear_id_sent_from_card(""));
   }
 
   return (

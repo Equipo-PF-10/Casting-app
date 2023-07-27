@@ -21,6 +21,7 @@ export const FILTER_BY_UBICATION_EVENT = "FILTER_BY_UBICATION_EVENT";
 export const FILTER_BY_EVENT_HABILITY = "FILTER_BY_EVENT_HABILITY";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const SEND_ID_OF_CARD = "SEND_ID_OF_CARD";
+export const CLEAR_ID_OF_CARD = "CLEAR_ID_OF_CARD";
 export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
 import axios from "axios";
 
@@ -229,7 +230,7 @@ export const get_postulant_by_name = (fk, name) => {
 //VERIFICAR COMO ENVIAR DOS IDS EN EL ENDPOINT
 //Deberia retornar un mensaje
 export const delete_postulant_by_id = (fk, id_talent) => {
-  let endpoint = `http://localhost:3001/talents/applied/${fk}/${id_talent}`;
+  //let endpoint = `http://localhost:3001/talents/applied/${fk}/${id_talent}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.delete(endpoint);
@@ -347,6 +348,15 @@ export const send_id_of_card = (id) => {
     return dispatch({
       type: SEND_ID_OF_CARD,
       payload: id,
+    });
+  };
+};
+
+export const clear_id_sent_from_card = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: CLEAR_ID_OF_CARD,
+      payload: payload,
     });
   };
 };
