@@ -11,20 +11,17 @@ import { get_all_postulations , get_event_by_id, get_talent_by_id } from "../../
 const CompanySearch = () => {
   //  const id_event = useParams();
 
-  let [id, setId] = useState("");
-  let [talentSelected, setTalentSelected] = useState({});
   const dispatch = useDispatch();
-
-  console.log("id en search: " + id);
-  
   const evento = useSelector((state) => state.eventDetail);
-  const postulantes = useSelector((state) =>  state.postulatedTalentsByEvent ); // [postulantes]
-  const postulantesCopy = useSelector((state) =>  state.postulatedTalentsByEventFiltered ); // [postulantes]
+  const postulantes = useSelector((state) =>  state.postulatedTalentsByEvent ); 
+  const postulantesCopy = useSelector((state) =>  state.postulatedTalentsByEventFiltered ); 
   const idCard = useSelector((state) =>  state.idCard); 
-  const talent = useSelector((state) =>  state.talentById);   
-  //console.log(postulantes);
- 
+  const talent = useSelector((state) =>  state.talentById);
+  const filters = useSelector((state) =>  state.filters);
 
+  
+  let [id, setId] = useState("");
+  
 
   // Paginación
 
@@ -34,11 +31,13 @@ const CompanySearch = () => {
   const lastIndex = currentPage * talentsPerPage;
   const firstIndex = lastIndex - talentsPerPage;
   const currentTalents = postulantes.slice(firstIndex, lastIndex);
+  const currentTalentsCopy = postulantesCopy.slice(firstIndex, lastIndex);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+  const pageNumbersCopy = Math.ceil(postulantesCopy.length / talentsPerPage);
   const pageNumbers = Math.ceil(postulantes.length / talentsPerPage);
   const pagination = Array.from(
     { length: pageNumbers },
@@ -76,7 +75,18 @@ useEffect(()=>{
         image={talento.image}
         gender={talento.gender}
         hability={talento.hability}
-        // onClick={() => handleClick(talento.id)}
+        handlerClick={handleClick}
+      />
+    </li>
+  ));
+  const listedTalentsCopy = currentTalentsCopy.map((talento) => (
+    <li key={talento.id}>
+      <Card
+        id={talento.id}
+        name={talento.name}
+        image={talento.image}
+        gender={talento.gender}
+        hability={talento.hability}
         handlerClick={handleClick}
       />
     </li>
@@ -90,7 +100,6 @@ useEffect(()=>{
   const singleLocation = ubication.filter((item, index) => {
     return ubication.indexOf(item) === index;
   });
-  console.log(postulantes[0]);
   
   return (
     <div className={style.containerG}>
@@ -109,7 +118,14 @@ useEffect(()=>{
            <h3>No se han encontrado postulantes con el nombre ingresado.</h3>
            </div>
           :
-        <div className={style.grid}>
+         
+          filters ?
+          <div className={style.grid}>
+           <div><h2>Postulantes al Evento: {evento.name}</h2></div>
+          <div className={style.cards}>{listedTalentsCopy}</div>
+        </div>
+          :
+          <div className={style.grid}>
            <div><h2>Postulantes al Evento: {evento.name}</h2></div>
           <div className={style.cards}>{listedTalents}</div>
         </div>
