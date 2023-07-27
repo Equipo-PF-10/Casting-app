@@ -56,15 +56,12 @@ const handlerGetApplicantById = async (req, res) => {
   }
 };
 
-// Función handler para borrar postulación por Id
-//!Pendiente definir si vas hacer o no el borrado lógico
+// Función handler para borrar postulación por Id de Talento y por Id de Evento.
 const handlerDeleteApplicantById = async (req, res) => {
-  const { id } = req.params;
+  const { TalentId, EventId } = req.body;
   try {
-    const deletedPost = await deleteApplicantById(id);
-    res
-      .status(200)
-      .send(`La postulación con ID ${id} ha sido borrada con éxito.`);
+    const deletedPost = await deleteApplicantById(TalentId, EventId);
+    res.status(200).json(deletedPost);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

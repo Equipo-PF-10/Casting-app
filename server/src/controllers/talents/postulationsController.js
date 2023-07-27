@@ -42,23 +42,55 @@ const getApplicantById = async (id) => {
 };
 // Función controller para borrar una postulación
 //!Pendiente definir si vas hacer o no el borrado lógico
-const deleteApplicantById = async (id) => {
-  try {
-    const postulacion = await Applied.findByPk(id);
+// Simple UPDATE queries
+// Update queries also accept the where option, just like the read queries shown above.
+// Change everyone without a last name to "Doe"
 
-    if (!postulacion) {
-      throw new Error(
-        `La postulación con ID ${id} no existe. Intenta de nuevo.`
-      );
+// await User.update({ lastName: "Doe" }, {
+//   where: {
+//     lastName: null
+//   }
+// });
+
+const deleteApplicantById = async (TalentId, EventId) => {
+  try {
+    // const postulaciones = await Applied.update(
+    //   {status: "Rechazado"}, {where: {id}}
+    // );
+
+    // if (!postulacion) {
+    //   throw new Error(
+    //     `La postulación con ID ${id} no existe. Intenta de nuevo.`
+    //   );
+    // }
+
+    const postulations = await Applied.findAll({ where: { EventId } });
+    const idPostulations = await TalentApplied.findAll({ where: { TalentId } });
+
+    console.log(postulations);
+    console.log(idPostulations);
+
+    for (let i = 0; i < postulations.length; i++) {
+      let idPostulation = postulations[i].dataValues.id;
+
+      for (let j = 0; j < idPostulations.length; j++) {
+        let idPostulationInter = idPostulations[j].dataValues.AppliedId;
+
+        if (idPostulationInter === idPostulation) {
+          const postulationDeleted = await Applied.update(
+            { status: "Rechazado" },
+            {
+              where: {
+                id: idPostulationInter,
+              },
+            }
+          );
+          return postulationDeleted;
+        }
+      }
     }
 
-    const deleted = await Applied.destroy({
-      where: {
-        id: id,
-      },
-    });
-
-    return postulacion;
+    return "El talento con ese ID no ha aplicado a ese evento.";
   } catch (error) {
     throw new Error(error.message);
   }
