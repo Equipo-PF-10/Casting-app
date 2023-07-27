@@ -54,48 +54,69 @@ const deleteApplicantById = async (id) => {
 
     const deleted = await Applied.destroy({
       where: {
-        id: id
-      }
+        id: id,
+      },
     });
 
     return postulacion;
   } catch (error) {
     throw new Error(error.message);
   }
-
 };
 
 const getApplicantsForEventByFk = async (fk) => {
   try {
-    const postulacion = await Applied.findAll({ where: { 
-      EventId: fk,
-      status:"Pendiente"
-    } });
+    const postulacion = await Applied.findAll({
+      where: {
+        EventId: fk,
+        status: "Pendiente",
+      },
+    });
     let postulacionesIds = [];
     let talentsIds = [];
     let talents = [];
     if (!postulacion) {
-      throw new Error(`La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`);
+      throw new Error(
+        `La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`
+      );
     }
-  
-    for (let i=0 ; i<postulacion.length;i++){
-      postulacionesIds.push(postulacion[i].dataValues.id)
-    } 
+
+    for (let i = 0; i < postulacion.length; i++) {
+      postulacionesIds.push(postulacion[i].dataValues.id);
+    }
 
     for (let i = 0; i < postulacionesIds.length; i++) {
       let postulante = await TalentApplied.findAll({
-        where: {  AppliedId: `${postulacionesIds[i]}` },
+        where: { AppliedId: `${postulacionesIds[i]}` },
       });
-      talentsIds.push(postulante[0].dataValues.TalentId)
-      console.log(talentsIds);// tengo el id de los talentos
+      talentsIds.push(postulante[0].dataValues.TalentId);
+      console.log(talentsIds); // tengo el id de los talentos
     }
-    for (let i=0; i<talentsIds.length;i++){
+    for (let i = 0; i < talentsIds.length; i++) {
       let postulante = await Talent.findByPk(`${talentsIds[i]}`);
       console.log(postulante);
-      talents.push(postulante.dataValues)
+      talents.push(postulante.dataValues);
     }
     return talents;
-    
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const getApplicantByName = async (fk, name) => {
+  try {
+    const nameToLower = name.toLowerCase();
+
+    const applicants = await getApplicantsForEventByFk(fk);
+
+    const applicantsByName = applicants.filter((applicant) =>
+      applicant.name.toLowerCase().includes(nameToLower)
+    );
+
+    if (applicantsByName.length === 0)
+      return "No hubo coincidencias con el nombre ingresado.";
+
+    return applicantsByName;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -107,4 +128,5 @@ module.exports = {
   getApplicantById,
   deleteApplicantById,
   getApplicantsForEventByFk,
+  getApplicantByName,
 };
