@@ -90,6 +90,9 @@
   color: #4B31A1;
   transform: scale(1.1);
 }
+.pagination p {
+  margin-right: 100px;
+}
 
 .active{
   color: #4B31A1;

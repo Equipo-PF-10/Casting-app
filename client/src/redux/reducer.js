@@ -158,7 +158,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       let talents = [...state.postulatedTalentsByEvent].filter((talent) =>
         talent.contexture.includes(payload)
       );
-
+    }
     case FILTER_BY_UBICATION:{
       if(payload === "Todos"){
         return {
