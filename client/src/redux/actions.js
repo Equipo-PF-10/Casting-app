@@ -1,5 +1,6 @@
 export const REGISTER_MODEL_OR_COMPANY = "REGISTER_MODEL_OR_COMPANY";
 export const MODAL_LOGIN = "MODAL_LOGIN";
+export const MODAL_SEARCH_COMPANY = "MODAL_SEARCH_COMPANY";
 export const ERROR = "ERROR";
 export const ID_USER = "ID_USER";
 export const USER_TYPE = "USER_TYPE";
@@ -81,6 +82,24 @@ export const modal_login = (payload) => {
    return (dispatch) => {
       return dispatch({
         type: "MODAL_LOGIN",
+        payload: payload
+      })
+   }
+}
+
+export const open_modal_search_compnay = (payload) => {
+   return (dispatch) => {
+      return dispatch({
+        type: "MODAL_SEARCH_COMPANY",
+        payload: payload
+      })
+   }
+}
+
+export const close_modal_search_compnay = (payload) => {
+   return (dispatch) => {
+      return dispatch({
+        type: "MODAL_SEARCH_COMPANY",
         payload: payload
       })
    }

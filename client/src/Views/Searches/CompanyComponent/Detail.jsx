@@ -1,26 +1,33 @@
 import style from "./Detail.module.css";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { open_modal_search_compnay } from "../../../redux/actions";
 
 const Detail = ({ talent }) => {
-  console.log("talento en Detail: " + talent);
-  const { id, name, aboutMe, ubication, hability } = talent; //.dataValues
-  console.log(hability);
+  
+  //const { id, name, aboutMe, ubication, hability } = talent;
+  const dispatch = useDispatch();
+  const handlerClick = () => {
+    const open = "isOpened";
+    dispatch(open_modal_search_compnay(open));
+  }
 
   return (
     <div className={style.containerDetail}>
       <div className={style.head}>
-        <NavLink to={`/model/profile/${id}`} className={style.navLink}>
+        <NavLink to={`/model/profile/${talent?.id}`} className={style.navLink}>
           <button>Ver perfil del Postulante</button>
         </NavLink>
       </div>
 
-      <h2>{name}</h2>
-      <h5>{ubication}</h5>
+      <h2>{talent?.name}</h2>
+      <h5>Ubicación: {talent?.ubication}</h5>
+      <h5>Resumen del perfil:</h5>
       {
-        aboutMe === null ?
-        <p className={style.textoDetail}>El postulante no ha escrito su información personal.</p>
+        talent?.aboutMe === null ?
+        <p className={style.textoDetail}>El postulante aún no ha escrito su información personal.</p>
         :
-      <p className={style.textoDetail}>{aboutMe}</p>
+      <p className={style.textoDetail}>{talent?.aboutMe}</p>
       }
       <div className={style.acomodarOrientacion}>
         <h3 className={style.orientacionArt}>Orientacion Artistica</h3>
@@ -28,14 +35,14 @@ const Detail = ({ talent }) => {
       {/*carta de orientacion*/}
       <div className={style.habilidades}>
         <div className={style.habilidad}>
-          {hability?.map((habilit) => 
-            (<button>{habilit}</button>)
+          {talent?.hability?.map((habilit, key) => 
+            (<button key={key}>{habilit}</button>)
           )}
         </div>
       </div>
       <div className={style.buttonsContainer}>
         <div className={style.conteinerConectar}>
-          <button className={style.conectar}>Conectar</button>
+          <button className={style.conectar} onClick={handlerClick}>Conectar</button>
         </div>
         <div className={style.conteinerRechazar}>
           <button className={style.rechazar}>Rechazar</button>

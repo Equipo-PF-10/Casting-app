@@ -6,7 +6,7 @@ import Detail from "./CompanyComponent/Detail";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { get_all_postulations , get_event_by_id, get_talent_by_id } from "../../redux/actions";
+import { get_all_postulations , get_event_by_id, get_talent_by_id, close_modal_search_compnay } from "../../redux/actions";
 
 const CompanySearch = () => {
   //  const id_event = useParams();
@@ -18,6 +18,8 @@ const CompanySearch = () => {
   const idCard = useSelector((state) =>  state.idCard); 
   const talent = useSelector((state) =>  state.talentById);
   const filters = useSelector((state) =>  state.filters);
+  const modal = useSelector((state) =>  state.modalInSearchCompany);
+  console.log(modal);
 
   
   let [id, setId] = useState("");
@@ -100,6 +102,12 @@ useEffect(()=>{
   const singleLocation = ubication.filter((item, index) => {
     return ubication.indexOf(item) === index;
   });
+
+  //Funcion para cerrar el modal
+  const onClickClose = () => {
+    const close = "isClosed";
+    dispatch(close_modal_search_compnay(close));
+  }
   
   return (
     <div className={style.containerG}>
@@ -155,6 +163,56 @@ useEffect(()=>{
           </li>
         ))}
       </ul>
+
+{/* -------MODAL PARA ENVIAR UN MAIL AL POSTULANTE ------------*/}
+{
+        modal ?
+        <div className= {style.containerModalOpened}>
+            <div className={style.modalOpened}>
+              <button onClick={onClickClose} className={style.delete} >X</button>
+              <p>Contacta al postulante: <b>Nombre del postulante</b></p>
+
+                <div>
+                  <form action="mailto:castingapp.pf.10@gmail.com" method="post" encType="text/plain" autoComplete='off'>
+                    <div>
+                    De: Correo electrónico de la Empresa<br/>
+                    <input type="text" name="nombre"/><br/>
+
+                    Para: Correo electrónico del postulante<br/>
+                    <input type="text" name="titulo"/><br/>
+                    </div>
+
+                    Título: Postulacion al evento Nombre del evento<br/>
+                    <input type="text" name="correo"/><br/>
+                    Contenido del mensaje:<br/>
+                    <textarea type="text" name="comentario" size="100" className={style.input_comentario}/><br/><br/>
+
+                    <div>
+                      <input type="submit" value="Enviar"/>
+                      <input type="reset" value="Borrar"/>
+                    </div>
+
+                  </form>
+                </div>
+            
+          </div>
+        </div>
+        :
+        <div className= {style.containerModalClosed}>
+            <div className={style.modalClosed}>
+              <button onClick={onClickClose} className={style.delete} >X</button>
+              <div>
+                <h1>Enviar mail</h1>
+              </div>
+          </div>
+        </div>  
+      }
+      {/* ---------------------------------------------------------- */}
+
+
+
+
+
     </div>
   );
 };

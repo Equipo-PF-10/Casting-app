@@ -2,6 +2,7 @@ import {
   ERROR,
   REGISTER_MODEL_OR_COMPANY,
   MODAL_LOGIN,
+  MODAL_SEARCH_COMPANY,
   ID_USER,
   USER_TYPE,
   GET_EVENT_BY_ID,
@@ -38,6 +39,7 @@ const initialState = {
   userType: "", //"1" === "talent", "2" === "company"
   messageRegistered: {},
   modalInLogin: false,
+  modalInSearchCompany: false,
   filters: false,
   errors: {},
 };
@@ -60,6 +62,20 @@ const rootReducer = (state = initialState, { type, payload }) => {
         return {
           ...state,
           modalInLogin: false,
+        };
+      }
+      break;
+    case MODAL_SEARCH_COMPANY:
+      if (payload === "isOpened") {
+        return {
+          ...state,
+          modalInSearchCompany: true,
+        };
+      }
+      if (payload === "isClosed") {
+        return {
+          ...state,
+          modalInSearchCompany: false,
         };
       }
       break;
