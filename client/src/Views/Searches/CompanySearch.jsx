@@ -151,7 +151,7 @@ useEffect(()=>{
             className={number === currentPage ? style.active : ""}
             onClick={() => paginate(number)}
           >
-            {number}
+            <p>{number}</p>
           </li>
         ))}
       </ul>
