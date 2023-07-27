@@ -14,6 +14,7 @@ import CompanySearch from "./Views/Searches/CompanySearch";
 import TalentSearch from "./Views/Searches/TalentSearch";
 import PaymentPlans from "./Views/PaymentPlans/PaymentPlans";
 import Home from "./Views/Home/Home";
+import Cloudinary from "./Components/Cloudinary/Cloudinary";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/NavBarLateral" element={<NavBarLateral />} />
         <Route path="/home/talent" element={<Home type="talent"/>} />
         <Route path="/home/company" element={<Home type="company"/>} />
+        <Route path="/cloud" element={<Cloudinary/>}/>
       </Routes>
     </>
   );
