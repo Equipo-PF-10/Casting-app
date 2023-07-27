@@ -42,60 +42,113 @@ const getApplicantById = async (id) => {
 };
 // Función controller para borrar una postulación
 //!Pendiente definir si vas hacer o no el borrado lógico
-const deleteApplicantById = async (id) => {
-  try {
-    const postulacion = await Applied.findByPk(id);
+// Simple UPDATE queries
+// Update queries also accept the where option, just like the read queries shown above.
+// Change everyone without a last name to "Doe"
 
-    if (!postulacion) {
-      throw new Error(
-        `La postulación con ID ${id} no existe. Intenta de nuevo.`
-      );
+// await User.update({ lastName: "Doe" }, {
+//   where: {
+//     lastName: null
+//   }
+// });
+
+const deleteApplicantById = async (TalentId, EventId) => {
+  try {
+    // const postulaciones = await Applied.update(
+    //   {status: "Rechazado"}, {where: {id}}
+    // );
+
+    // if (!postulacion) {
+    //   throw new Error(
+    //     `La postulación con ID ${id} no existe. Intenta de nuevo.`
+    //   );
+    // }
+
+    const postulations = await Applied.findAll({ where: { EventId } });
+    const idPostulations = await TalentApplied.findAll({ where: { TalentId } });
+
+    console.log(postulations);
+    console.log(idPostulations);
+
+    for (let i = 0; i < postulations.length; i++) {
+      let idPostulation = postulations[i].dataValues.id;
+
+      for (let j = 0; j < idPostulations.length; j++) {
+        let idPostulationInter = idPostulations[j].dataValues.AppliedId;
+
+        if (idPostulationInter === idPostulation) {
+          const postulationDeleted = await Applied.update(
+            { status: "Rechazado" },
+            {
+              where: {
+                id: idPostulationInter,
+              },
+            }
+          );
+          return postulationDeleted;
+        }
+      }
     }
 
-    const deleted = await Applied.destroy({
-      where: {
-        id: id
-      }
-    });
-
-    return postulacion;
+    return "El talento con ese ID no ha aplicado a ese evento.";
   } catch (error) {
     throw new Error(error.message);
   }
-
 };
 
 const getApplicantsForEventByFk = async (fk) => {
   try {
-    const postulacion = await Applied.findAll({ where: { 
-      EventId: fk,
-      status:"Pendiente"
-    } });
+    const postulacion = await Applied.findAll({
+      where: {
+        EventId: fk,
+        status: "Pendiente",
+      },
+    });
     let postulacionesIds = [];
     let talentsIds = [];
     let talents = [];
     if (!postulacion) {
-      throw new Error(`La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`);
+      throw new Error(
+        `La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`
+      );
     }
-  
-    for (let i=0 ; i<postulacion.length;i++){
-      postulacionesIds.push(postulacion[i].dataValues.id)
-    } 
+
+    for (let i = 0; i < postulacion.length; i++) {
+      postulacionesIds.push(postulacion[i].dataValues.id);
+    }
 
     for (let i = 0; i < postulacionesIds.length; i++) {
       let postulante = await TalentApplied.findAll({
-        where: {  AppliedId: `${postulacionesIds[i]}` },
+        where: { AppliedId: `${postulacionesIds[i]}` },
       });
-      talentsIds.push(postulante[0].dataValues.TalentId)
-      console.log(talentsIds);// tengo el id de los talentos
+      talentsIds.push(postulante[0].dataValues.TalentId);
+      console.log(talentsIds); // tengo el id de los talentos
     }
-    for (let i=0; i<talentsIds.length;i++){
+    for (let i = 0; i < talentsIds.length; i++) {
       let postulante = await Talent.findByPk(`${talentsIds[i]}`);
       console.log(postulante);
-      talents.push(postulante.dataValues)
+      talents.push(postulante.dataValues);
     }
     return talents;
-    
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const getApplicantByName = async (fk, name) => {
+  try {
+    const nameToLower = name.toLowerCase();
+
+    const applicants = await getApplicantsForEventByFk(fk);
+
+    const applicantsByName = applicants.filter((applicant) =>
+      applicant.name.toLowerCase().includes(nameToLower)
+    );
+
+    if (applicantsByName.length === 0)
+      return "No hubo coincidencias con el nombre ingresado.";
+
+    return applicantsByName;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -107,4 +160,5 @@ module.exports = {
   getApplicantById,
   deleteApplicantById,
   getApplicantsForEventByFk,
+  getApplicantByName,
 };
