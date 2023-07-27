@@ -9,7 +9,11 @@
   box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
-
+ .head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
 .textoDetail {
   margin-top: 30px;
 }
@@ -31,16 +35,30 @@
 /*carta de orientacion*/
 .habilidades {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: nowrap;
+  justify-content:space-around;
+  align-items: center;
+  height: 9vh;
+  /* align-content: center;  */
 }
 
-.habilidad {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: 20px;
+.habilidad button {
+  width: 10vh;
+  margin: 10px 5px 0px 10px;
+  cursor:inherit;
   background-color: #00c9a7;
-  border-radius: 20px;
+  border-radius: 2px;
 }
+
+.habilidad button:active {
+    background-color: #edeff200;
+}
+
+.habilidad button:hover {
+  text-decoration: none;
+  background-color: #00c9a7
+}
+
 
 .habilidad h4 {
   color: whitesmoke;
@@ -64,6 +82,13 @@
   font-size: medium;
   margin: 0;
   margin-top: 40px;
+  background-color: rgb(55, 201, 19);
+}
+
+.conectar:hover {
+  text-decoration: none;
+  background-color: rgb(55, 201, 19);
+  box-shadow: 0 2px 2px black;
 }
 
 .conteinerRechazar {
@@ -78,5 +103,11 @@
   margin: 0;
   margin-top: 40px;
   background-color: red
+}
+
+.rechazar:hover {
+  text-decoration: none;
+  background-color: red;
+  box-shadow: 0 2px 2px black;
 }
 
