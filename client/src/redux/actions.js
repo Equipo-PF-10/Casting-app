@@ -15,9 +15,10 @@ export const FILTER_BY_HABILITY = "FILTER_BY_HABILITY";
 export const FILTER_BY_GENDER="FILTER_BY_GENDER";
 export const FILTER_BY_CONTEXTURE="FILTER_BY_CONTEXTURE";
 export const FILTER_BY_UBICATION="FILTER_BY_UBICATION";
+export const FILTER_BY_EVENT_HABILITY = "FILTER_BY_EVENT_HABILITY";
 export const CLEAR_DETAIL='CLEAR_DETAIL';
 export const SEND_ID_OF_CARD='SEND_ID_OF_CARD';
-export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
+export const GET_NAME_EVENTS="GET_NAME_EVENTS";
 import axios from 'axios';
 
 
@@ -248,6 +249,15 @@ export const filterByTalent = (hability) => {
    return async function(dispatch) {
       return dispatch({
          type: FILTER_BY_HABILITY,
+         payload: hability
+      })
+   }
+} 
+
+export const filterByEvent = (hability) => {
+   return async function(dispatch) {
+      return dispatch({
+         type: FILTER_BY_EVENT_HABILITY,
          payload: hability
       })
    }
