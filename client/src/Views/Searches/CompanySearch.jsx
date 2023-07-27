@@ -119,15 +119,12 @@ useEffect(()=>{
         <div className={style.navLateral}>
           <NavBarLateral />
         </div>
-       
-        
         {
           postulantesCopy.length === 0 ?
           <div  className={style.text}>
-           <h3>No se han encontrado postulantes con el nombre ingresado.</h3>
+           <h3>No se han encontrado resultados con los filtros aplicados.</h3>
            </div>
           :
-         
           filters ?
           <div className={style.grid}>
            <div><h2>Postulantes al Evento: {evento.name}</h2><hr /></div>
