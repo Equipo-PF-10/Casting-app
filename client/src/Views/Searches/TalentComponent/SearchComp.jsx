@@ -1,9 +1,14 @@
-import React, {useEffect, useState} from 'react'
-import style from './SearchComp.module.css'
-import {useDispatch} from 'react-redux';
-import { filterByEvent, getAllEvents, getEventsByName} from '../../../redux/actions';
+import React, { useEffect, useState } from "react";
+import style from "./SearchComp.module.css";
+import { useDispatch } from "react-redux";
+import {
+  filterByEvent,
+  filterByUbication,
+  getAllEvents,
+  getEventsByName,
+} from "../../../redux/actions";
 
-const SearchComp=(props) => {
+const SearchComp = (props) => {
   //console.log(props);
   const { ubication, setCurrentPage } = props;
   const dispatch = useDispatch();
@@ -11,15 +16,15 @@ const SearchComp=(props) => {
   //buscar por nombre
   const [name, setName] = useState("");
 
-  //busqueda por nombre
   const handleInputChange = (event) => {
     setName(event.target.value);
     //console.log(event.target.value);
   };
 
   const handleSubmit = (event) => {
-    //console.log(name); //nombre submitiedo
+    //console.log(name); //nombre submitiado
     event.preventDefault();
+    //console.log(name);
     dispatch(getEventsByName(name));
     setName("");
   };
@@ -55,9 +60,14 @@ const SearchComp=(props) => {
     );
   });
 
-  // Ubicaciones
   const handleHabilities = (event) => {
     dispatch(filterByEvent(event.target.value));
+    setCurrentPage(1);
+  };
+
+  // Ubicaciones
+  const handleUbications = (event) => {
+    dispatch(filterByUbication(event.target.value));
     setCurrentPage(1);
   };
 
@@ -77,7 +87,7 @@ const SearchComp=(props) => {
           name="search"
           id="search"
           value={name}
-          onChange={event => handleInputChange(event)}
+          onChange={(event) => handleInputChange(event)}
           className={style.inputTalent}
         />
         <button
@@ -94,11 +104,13 @@ const SearchComp=(props) => {
       </div>
       {/*selects filtros y ordenamientos*/}
       <select className={style.selectFilter} onChange={handleHabilities}>
-        <option defaultChecked value="" >Eventos</option>
-        <option value="Todos" >Todos</option>
+        <option defaultChecked value="">
+          Eventos
+        </option>
+        <option value="Todos">Todos</option>
         {optionTags}
       </select>
-      <select className={style.selectFilter}>
+      <select className={style.selectFilter} onChange={handleUbications}>
         <option defaultChecked value="">
           Ubicación
         </option>
@@ -132,6 +144,6 @@ const SearchComp=(props) => {
       </div>
     </div>
   );
-}
+};
 
-export default SearchComp
+export default SearchComp;

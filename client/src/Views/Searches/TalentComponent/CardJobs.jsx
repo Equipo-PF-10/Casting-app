@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styleCard from "./CardJobs.module.css";
-import { get_company_by_id } from "../../../redux/actions";
+import { get_company_by_id, send_id_of_card } from "../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const CardJobs = ({event}) => {
@@ -10,7 +10,11 @@ const CardJobs = ({event}) => {
   //console.log(companyData);
   //const eventsD = useSelector((state) => state.eventDetail);
   //console.log(companyData);
-  //const dispatch = useDispatch();
+  const dispatch=useDispatch();
+  
+  const handleClick = (id) => {
+    dispatch(send_id_of_card(id));
+  };
 
   //useEffect(() => {
   //  dispatch(get_company_by_id(event.id));
@@ -21,7 +25,10 @@ const CardJobs = ({event}) => {
   //}, [dispatch, event]);
 
   return (
-    <div className={styleCard.containerCardJobs}>
+    <div
+      className={styleCard.containerCardJobs}
+      onClick={() => handleClick(event.id)}
+    >
       <h2>{event.name}</h2>
       <p>{event.ubication}</p>
       <h5>{event.habilityRequired}</h5>
