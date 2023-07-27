@@ -15,6 +15,7 @@ export const FILTER_BY_HABILITY = "FILTER_BY_HABILITY";
 export const FILTER_BY_GENDER="FILTER_BY_GENDER";
 export const FILTER_BY_CONTEXTURE="FILTER_BY_CONTEXTURE";
 export const CLEAR_DETAIL='CLEAR_DETAIL';
+export const SEND_ID_OF_CARD='SEND_ID_OF_CARD';
 import axios from 'axios';
 
 
@@ -171,7 +172,6 @@ export const get_all_postulations=(fk) => {
    return async (dispatch) => {
       try {
          const response=await axios.get(`http://localhost:3001/applied/event/${fk}`);
-         console.log(response.data);
          return dispatch({type: GET_ALL_POSTULATIONS, payload: response.data})
       } catch (error) {
          return dispatch({
@@ -265,6 +265,15 @@ export const filterByContexture = (contexture) => {
       return dispatch({
         type: FILTER_BY_CONTEXTURE,
         payload: contexture
+      })
+   }
+}
+
+export const send_id_of_card = (id) => {
+   return (dispatch) => {
+      return dispatch({
+        type: SEND_ID_OF_CARD,
+        payload: id
       })
    }
 }

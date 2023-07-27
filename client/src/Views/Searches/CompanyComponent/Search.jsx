@@ -2,6 +2,7 @@ import style from "./Search.module.css";
 import { filterByTalent, filterByGender } from "../../../redux/actions";
 import {useDispatch} from "react-redux";
 import { get_all_postulations, get_postulant_by_name } from "../../../redux/actions";
+import { useState } from "react";
 
 const Search = (props) => {
 

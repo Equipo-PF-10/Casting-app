@@ -16,6 +16,7 @@ import {
   FILTER_BY_GENDER,
   FILTER_BY_CONTEXTURE,
   CLEAR_DETAIL,
+  SEND_ID_OF_CARD,
 } from "./actions.js";
 
 const initialState = {
@@ -29,7 +30,8 @@ const initialState = {
   companyDetail: [],
   eventsFiltered: [],
   eventDetail: {},
-  idUser: "",
+  idUser: "", //id del usuario al logearse
+  idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company"
   messageRegistered: {},
   modalInLogin: false,
@@ -155,6 +157,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         postulatedTalentsByEventFiltered: talents,
       };
     }
+    case SEND_ID_OF_CARD:
+      return {
+        ...state,
+        idCard: payload,
+      };
     case CLEAR_DETAIL:
       return {
         ...state,
