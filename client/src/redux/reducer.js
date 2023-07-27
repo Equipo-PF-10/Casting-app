@@ -131,7 +131,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case DELETE_POSTULANT_BY_ID:
       return {
         ...state,
-        messagePostulantDeleted: payload
+        messagePostulantDeleted: payload,
       };
     case GET_ALL_TALENTS:
       return {
@@ -151,8 +151,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
           postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
         };
       } else {
-        const hability = [...state.postulatedTalentsByEventFiltered].filter((talent) =>
-          talent.hability.includes(payload)
+        const hability = [...state.postulatedTalentsByEventFiltered].filter(
+          (talent) => talent.hability.includes(payload)
         );
         return {
           ...state,
@@ -162,24 +162,24 @@ const rootReducer = (state = initialState, { type, payload }) => {
       }
     }
     case FILTER_BY_EVENT_HABILITY: {
-      if (payload === "Todos") {
-        return {
-          ...state,
-          filters: true,
-          eventsFiltered: [...state.allEvents],
-        };
-      } else {
-        const hability = [...state.allEvents].filter(
-          (event) => event.hability.includes(payload)
+      if (payload !== "Todos") {
+        const hability = [...state.allEvents].filter((event) =>
+          event.habilityRequired.includes(payload)
         );
         return {
           ...state,
           filters: true,
           eventsFiltered: hability,
         };
+      } else {
+        return {
+          ...state,
+          filters: true,
+          eventsFiltered: [...state.allEvents],
+        };
       }
     }
-      
+
     case FILTER_BY_GENDER: {
       if (payload === "Todos") {
         return {
@@ -188,8 +188,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
           postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
         };
       } else {
-        const gender = [...state.postulatedTalentsByEventFiltered].filter((talent) =>
-          talent.gender.includes(payload)
+        const gender = [...state.postulatedTalentsByEventFiltered].filter(
+          (talent) => talent.gender.includes(payload)
         );
         return {
           ...state,
@@ -198,15 +198,17 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
-    case FILTER_BY_CONTEXTURE:{
-      if(payload === "Todos"){
+    case FILTER_BY_CONTEXTURE: {
+      if (payload === "Todos") {
         return {
           ...state,
           filters: true,
-          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent]
-        }
+          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
+        };
       } else {
-        let contexture = [...state.postulatedTalentsByEventFiltered].filter((talent) => talent.contexture.includes(payload));
+        let contexture = [...state.postulatedTalentsByEventFiltered].filter(
+          (talent) => talent.contexture.includes(payload)
+        );
         return {
           ...state,
           filters: true,
@@ -214,15 +216,17 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
-    case FILTER_BY_UBICATION:{
-      if(payload === "Todos"){
+    case FILTER_BY_UBICATION: {
+      if (payload === "Todos") {
         return {
           ...state,
           filters: true,
-          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent]
-        }
+          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
+        };
       } else {
-        const ubication = [...state.postulatedTalentsByEventFiltered].filter((talent) => talent.ubication.includes(payload))
+        const ubication = [...state.postulatedTalentsByEventFiltered].filter(
+          (talent) => talent.ubication.includes(payload)
+        );
         return {
           ...state,
           filters: true,
@@ -230,15 +234,17 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
-    case FILTER_BY_UBICATION_EVENT:{
-      if(payload === "Todos"){
+    case FILTER_BY_UBICATION_EVENT: {
+      if (payload === "Todos") {
         return {
           ...state,
           filters: true,
-          eventsFiltered: [...state.allEvents]
-        }
+          eventsFiltered: [...state.allEvents],
+        };
       } else {
-        const ubication = [...state.allEvents].filter((event) => event.ubication.includes(payload))
+        const ubication = [...state.allEvents].filter((event) =>
+          event.ubication.includes(payload)
+        );
         return {
           ...state,
           filters: true,
@@ -264,7 +270,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case GET_NAME_EVENTS:
       return {
         ...state,
-        allEvents: payload
+        allEvents: payload,
       };
     case ERROR:
       return {
