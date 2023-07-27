@@ -1,10 +1,17 @@
 import style from "./Detail.module.css";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { open_modal_search_compnay } from "../../../redux/actions";
 
 const Detail = ({ talent }) => {
   
   //const { id, name, aboutMe, ubication, hability } = talent;
- 
+  const dispatch = useDispatch();
+  const handlerClick = () => {
+    const open = "isOpened";
+    dispatch(open_modal_search_compnay(open));
+  }
+
   return (
     <div className={style.containerDetail}>
       <div className={style.head}>
@@ -15,6 +22,7 @@ const Detail = ({ talent }) => {
 
       <h2>{talent?.name}</h2>
       <h5>Ubicación: {talent?.ubication}</h5>
+      <h5>Resumen del perfil:</h5>
       {
         talent?.aboutMe === null ?
         <p className={style.textoDetail}>El postulante aún no ha escrito su información personal.</p>
@@ -34,7 +42,7 @@ const Detail = ({ talent }) => {
       </div>
       <div className={style.buttonsContainer}>
         <div className={style.conteinerConectar}>
-          <button className={style.conectar}>Conectar</button>
+          <button className={style.conectar} onClick={handlerClick}>Conectar</button>
         </div>
         <div className={style.conteinerRechazar}>
           <button className={style.rechazar}>Rechazar</button>
