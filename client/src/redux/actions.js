@@ -14,6 +14,7 @@ export const GET_ALL_TALENTS = "GET_ALL_TALENTS";
 export const FILTER_BY_HABILITY = "FILTER_BY_HABILITY";
 export const FILTER_BY_GENDER="FILTER_BY_GENDER";
 export const FILTER_BY_CONTEXTURE="FILTER_BY_CONTEXTURE";
+export const FILTER_BY_UBICATION="FILTER_BY_UBICATION";
 export const CLEAR_DETAIL='CLEAR_DETAIL';
 export const SEND_ID_OF_CARD='SEND_ID_OF_CARD';
 import axios from 'axios';
@@ -254,7 +255,7 @@ export const filterByTalent = (hability) => {
 export const filterByGender = (gender) => {
    return (dispatch) => {
       return dispatch({
-         type: FILTER_BY_HABILITY,
+         type: FILTER_BY_GENDER,
          payload: gender
       })
    }
@@ -265,6 +266,14 @@ export const filterByContexture = (contexture) => {
       return dispatch({
         type: FILTER_BY_CONTEXTURE,
         payload: contexture
+      })
+   }
+}
+export const filterByUbication = (ubication) => {
+   return (dispatch) => {
+      return dispatch({
+        type: FILTER_BY_UBICATION,
+        payload: ubication
       })
    }
 }
