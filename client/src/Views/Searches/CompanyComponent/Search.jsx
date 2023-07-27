@@ -1,5 +1,5 @@
 import style from "./Search.module.css";
-import { filterByTalent, filterByGender } from "../../../redux/actions";
+import { filterByTalent, filterByGender, filterByUbication } from "../../../redux/actions";
 import {useDispatch} from "react-redux";
 import { get_all_postulations, get_postulant_by_name } from "../../../redux/actions";
 import { useState } from "react";
@@ -43,9 +43,14 @@ const Search = (props) => {
     return <option value={item.value} key={item.value}>{item.label}</option>;
   });
 
-  // Ubicaciones
+  
   const handleHabilities = (event) => {
     dispatch(filterByTalent(event.target.value))
+    setCurrentPage(1)
+  }
+  // Ubicaciones
+  const handleUbications = (event) => {
+    dispatch(filterByUbication(event.target.value))
     setCurrentPage(1)
   }
 
@@ -93,7 +98,8 @@ const Search = (props) => {
       </div>
       {/*selects filtros y ordenamientos*/}
       <select className={style.selectFilter}  onChange={handleHabilities}>
-        <option value="Todos">Talentos</option>
+        <option defaultChecked value="">Talentos</option>
+        <option value="Todos">Todos</option>
         {optionTags}
       </select>
       <select className={style.selectFilter}>
@@ -103,12 +109,13 @@ const Search = (props) => {
         <option value="Mesomorfo">Mesomorfo</option>
       </select>
       <select className={style.selectFilter}  onChange={handleGenders}>
-        <option value="Todos">Generos</option>
+        <option defaultChecked value="">Generos</option>
+        <option value="Todos">Todos</option>
         <option value="Masculino">Masculino</option>
         <option value="Femenino">Femenino</option>
         <option value="Otro">Otro</option>
       </select>
-      <select className={style.selectFilter}>
+      <select className={style.selectFilter} onChange={handleUbications}>
         <option defaultChecked value="">Ubicación</option>
         <option value="Todos">Todas</option>
         {locationTags}

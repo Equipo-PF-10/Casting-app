@@ -15,6 +15,7 @@ import {
   FILTER_BY_HABILITY,
   FILTER_BY_GENDER,
   FILTER_BY_CONTEXTURE,
+  FILTER_BY_UBICATION,
   CLEAR_DETAIL,
   SEND_ID_OF_CARD,
   GET_NAME_EVENTS,
@@ -152,14 +153,34 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
+
     case FILTER_BY_CONTEXTURE: {
       let talents = [...state.postulatedTalentsByEvent].filter((talent) =>
         talent.contexture.includes(payload)
       );
+
+    case FILTER_BY_UBICATION:{
+      if(payload === "Todos"){
+        return {
+          ...state,
+          filters: true,
+          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent]
+        }
+      } else {
+        const ubication = [...state.postulatedTalentsByEvent].filter((talent) => talent.ubication.includes(payload))
+        return {
+          ...state,
+          filters: true,
+          postulatedTalentsByEventFiltered: ubication,
+        };
+      }
+    }
+    case FILTER_BY_CONTEXTURE:{
+      let contexture = [...state.postulatedTalentsByEvent].filter((talent) => talent.contexture.includes(payload));
       return {
         ...state,
         filters: true,
-        postulatedTalentsByEventFiltered: talents,
+        postulatedTalentsByEventFiltered: contexture,
       };
     }
     case SEND_ID_OF_CARD:
