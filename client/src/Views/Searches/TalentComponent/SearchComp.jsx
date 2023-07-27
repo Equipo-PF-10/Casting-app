@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import style from './SearchComp.module.css'
 import {useDispatch} from 'react-redux';
-import { filterByTalent, getAllEvents, getEventsByName} from '../../../redux/actions';
+import { filterByEvent, getAllEvents, getEventsByName} from '../../../redux/actions';
 
 const SearchComp=(props) => {
   //console.log(props);
@@ -57,7 +57,7 @@ const SearchComp=(props) => {
 
   // Ubicaciones
   const handleHabilities = (event) => {
-    dispatch(filterByTalent(event.target.value));
+    dispatch(filterByEvent(event.target.value));
     setCurrentPage(1);
   };
 
@@ -77,7 +77,7 @@ const SearchComp=(props) => {
           name="search"
           id="search"
           value={name}
-          onChange={(event) => handleInputChange(event)}
+          onChange={event => handleInputChange(event)}
           className={style.inputTalent}
         />
         <button
@@ -93,8 +93,9 @@ const SearchComp=(props) => {
         </button>
       </div>
       {/*selects filtros y ordenamientos*/}
-      <select className={style.selectFilter}>
-        <option value="">Eventos</option>
+      <select className={style.selectFilter} onChange={handleHabilities}>
+        <option defaultChecked value="" >Eventos</option>
+        <option value="Todos" >Todos</option>
         {optionTags}
       </select>
       <select className={style.selectFilter}>
