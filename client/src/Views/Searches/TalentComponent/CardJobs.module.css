@@ -1,7 +1,22 @@
 .containerCardJobs {
   width: 100%;
   border-radius: 20px;
-  background-color: rgb(224, 224, 224);
+  /*background-color: rgb(224, 224, 224);*/
+  background-image: linear-gradient(
+    to bottom,
+    #d1d1d1,
+    #c3cbdd,
+    #a5cae6,
+    #76cbe5,
+    #3bccd5,
+    #1dc9c7,
+    #00c6b5,
+    #00c2a2,
+    #00bd9e,
+    #00b89a,
+    #00b496,
+    #00af92
+  );
   transition: 0.5s ease-in-out;
   margin-bottom: 30px;
   padding: 20px;
