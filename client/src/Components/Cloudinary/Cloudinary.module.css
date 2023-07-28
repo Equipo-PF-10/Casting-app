@@ -1,0 +1,17 @@
+.section{
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2rem;
+}
+
+.section button{
+margin-top: -2px;
+width:46.5px;
+height: 46.5px;
+background-color:transparent;
+border: none;
+}
+
+.section input{
+    height: 46.5px;
+}

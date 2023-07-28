@@ -100,17 +100,11 @@
 
 .btn{
   margin-top: 2rem;
-  justify-content: center;
-  align-items: center;
+  margin-left: -7rem;
+  width: 10rem;
 }
 
-.btnContainer{
-  margin-top: 1rem;
-  width: 10rem;
-  flex-wrap: wrap;
-  display: flex;
-  gap: 1px;
-}
+
 
 .select{
   width: 30rem;

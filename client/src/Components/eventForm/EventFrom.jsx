@@ -5,27 +5,31 @@ import styles from "./EventForm.module.css";
 import validation from "./validation";
 import axios from "axios";
 import NavBarLateral from "../NavBarLateral/NavBarLateral";
+import Cloudinary from "../Cloudinary/Cloudinary";
 
 const EventForm = () => {
     
-    const URL = "localhost:3001/events/"
+    const root = useSelector((state) => state.userType)
+
+    const URL = "http://localhost:3001/events/";
 
     const idUser = useSelector((state) => state.idUser);
+    const imageURl = useSelector((state) => state.imageUrl)
 
     const initialState = {
         name: "",
         date: "",
         ubication: "",
-        image: "",
+        image: imageURl,
         shortDescription: "",
         description: "",
         habilityRequired: [],
         salary: "",
         contact: [],
-        idCompany: "",
+        email: "",
+        num: "",
+        idCompany: idUser,
     }
-
-    initialState.idCompany = idUser
 
     const optionshabilityRequired = [
         { value: 'Actuación', label: 'Actuación' },
@@ -43,55 +47,113 @@ const EventForm = () => {
         { value: 'Promotor/a', label: 'Promotor/a' },
       ];
     
+    // Estados
+
     const [input, setInput] = useState(initialState)
 
     const [orientaciones, setOrientaciones] = useState([])
 
     const [error, setError] = useState({});
 
+    initialState.idCompany = idUser;
+    initialState.image = imageURl;
+
+    input.idCompany = idUser;
+    input.image = imageURl;
+
+    // Hability
+
+    const habilityValue = orientaciones.map(item => item.value);
+
+    input.habilityRequired = habilityValue;
+
+    // Cloudinary 
+
+        const uploadPreset = "casting_app"
+        const cloudName = "dntrnqcxe";
+    
+        const URLCloud = `https://api.cloudinary.com/v1_1/${cloudName}/upload`
+    
+        const submitImage = async () => {
+            if (input.imageFile) {
+              const formData = new FormData();
+              formData.append('file', input.imageFile);
+              formData.append('upload_preset', uploadPreset);
+              formData.append('cloud_name', cloudName);
+          
+              try {
+                const response = await axios.post(URLCloud, formData);
+                const responseData = response.data;
+                console.log(responseData);
+                console.log(responseData.url);
+                console.log("Imagen subida con éxito")
+                setInput({ ...input, image: responseData.url });
+              } catch (error) {
+                console.log({ error });
+              }
+            } else {
+              console.log("No se ha seleccionado ninguna imagen.");
+            }
+          };
+    
+    if(input.imageFile) submitImage();
+          
+    // Handles
+
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setInput({ ...input, [name]: value });
-        setError(validation({ ...input, [name]: value }));
+        if (name === "image") {
+          setInput({ ...input, image: event.target.files[0] });
+        } else {
+          setInput((prevInput) => ({
+            ...prevInput,
+            [name]: value,
+          }));
+          setError(validation({ ...input, [name]: value }));
+        }
+      };
+      
+      const handleAddContact = () => {
+        setInput((prevInput) => ({
+          ...prevInput,
+          contact: [input.email, input.num], 
+        }));
       };
 
       const handleChangeSelect = (selectedOptions) => {
         setOrientaciones(selectedOptions);
       };
-
-
-    const hanldeSubmit = async(event) => {
+    
+      const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post(URL, input)
-            setInput(initialState)
+          await axios.post(URL, input);
+          console.log("Evento Creado con éxito")
+          setInput(initialState);
         } catch (error) {
-            console.log({error: error.message})
+          console.log({ error });
         }
-    }
+      };
+    
+    console.log("URL Imágen",input.image)
 
-    const habilityValue = orientaciones.map(item => item.value);
-
-    input.habilityRequired = habilityValue;
-  
     return(
     <div>
-        <NavBarLateral/>
+        <NavBarLateral root={root}/>
         <section className={styles.section}>
             <div className={styles.formSection}>
-                <form action=""  method="POST" onSubmit={hanldeSubmit}>
+                <form action=""  method="POST" onSubmit={handleSubmit}>
                 <h1 className={styles.title}>Crea tu Evento</h1>
                     <section className={styles.inputs}>
                         <div className={styles.div}>
                             <article  className={styles.coolinput}>
-                <label className={styles.text}> Nombre del evento</label>
+                                <label className={styles.text}> Nombre del evento</label>
                                 <input type="text" name="name" value={input.name} onChange={handleChange} placeholder="Nombre de tu evento..."/>
                                 <p className={error.name ? styles.error : ""}>{error.name ? error.name : null}</p>
                             </article>
                             <article  className={styles.coolinput}>
                                 <label className={styles.text}>Fecha del evento</label>
                                 <input type="date" name="date" value={input.date} onChange={handleChange}/>
-                                <p className={error.date ? styles.error : ""}>{error.date ? error.date : null}</p>
                             </article>
                             <article className={styles.coolinput}>
                                 <label className={styles.text}> Locación del evento</label>
@@ -113,20 +175,25 @@ const EventForm = () => {
                             </article>     
                             <article className={styles.coolinput}>
                                 <label htmlFor="image" className={styles.text} >Imagen promocional</label>
-                                <input type="text" value={input.image} name="image" id="image" onChange={handleChange} placeholder="URL de la imagen del evento"/>
+                                <Cloudinary/>
                             </article>        
                             <article className={styles.coolinput}>
-                                <label htmlFor="contact" className={styles.text}>Contacto</label>
-                                <input type="text" id="contact" name="contact" value={input.contact} onChange={handleChange} placeholder="Número de contacto"/>
-                            </article>        
+                                <label htmlFor="num" className={styles.text}>Número telefónico</label>
+                                <input type="text" id="num" name="num" value={input.num} onChange={handleChange} onBlur={handleAddContact} placeholder="Número de contacto"/>
+                            </article>              
                         </div>
                     </section>
                     <section className={styles.inputsCont}>
-                        <article className={styles.coolinput}>
-                            <label htmlFor="" className={styles.text}>Descripción</label>
-                            <textarea name="description" id="" cols="30" rows="10" value={input.description} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
-                            <p className={error.description ? styles.error : ""}>{error.description ? error.description : null}</p>
-                        </article>
+                        <div>
+                            <article className={styles.coolinput}>
+                                    <label htmlFor="email" className={styles.text}>Email</label>
+                                    <input type="text" id="email" name="email" value={input.email} onChange={handleChange} onBlur={handleAddContact} placeholder="Email de contacto"/>
+                            </article>   
+                            <article className={styles.coolinput}>
+                                <label htmlFor="" className={styles.text}>Descripción</label>
+                                <textarea name="description" id="" cols="30" rows="10" value={input.description} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
+                            </article>
+                        </div>
                         <div>
                             <article className={styles.coolinput}>
                                 <label htmlFor="salary" className={styles.text}>Salario</label>
@@ -137,10 +204,11 @@ const EventForm = () => {
                                 <textarea name="shortDescription" id="" value={input.shortDescription} onChange={handleChange} placeholder="Descripción breve de tu evento..."></textarea>
                                 <p className={error.shortDescription ? styles.error : ""}>{error.shortDescription ? error.shortDescription : null}</p>
                             </article> 
+                            <button type="submit" className={styles.btn}>Crear Evento</button>
                         </div>
 
                     </section>
-                    <button type="submit" className={styles.btn}>Crear Evento</button>
+
                 </form>
             </div>
             <svg className={styles.img} width="567" height="624" viewBox="0 0 567 624" fill="none" xmlns="http://www.w3.org/2000/svg">

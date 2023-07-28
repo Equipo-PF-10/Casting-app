@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from "./HomeSearchBar.module.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 
 export const HomeSearchBar = (props) => {
     const navigate = useNavigate();
@@ -19,7 +19,11 @@ export const HomeSearchBar = (props) => {
                 <button onClick={handleClick} className={styles.searchButton} disabled={!input.length}>
                     Search
                 </button>
-            
+            </div>
+            <div>
+                <NavLink to="/company/create">
+                    <button>Crear Evento</button>
+                </NavLink>
             </div>
             
             

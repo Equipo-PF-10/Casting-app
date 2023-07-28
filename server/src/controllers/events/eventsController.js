@@ -83,7 +83,7 @@ const createEvent = async (
     });
     return event;
   } catch (error) {
-    throw new Error(error.message);
+    console.log({error: error.message})
   }
 };
 

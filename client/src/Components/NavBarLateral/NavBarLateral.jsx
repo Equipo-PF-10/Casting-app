@@ -1,12 +1,10 @@
 import styles from "./NavBarLateral.module.css"
 import {NavLink} from "react-router-dom"
-import { useSelector } from "react-redux";
 
-const NavBarLateral = () => {
+const NavBarLateral = (props) => {
 
-    const root = useSelector((state) => state.userType)
+    const {root} = props
 
-    
     //Home
     
     let homePath = "";
@@ -31,7 +29,7 @@ const NavBarLateral = () => {
 
     return(
         <section className={styles.section} >
-            <NavLink>
+            <NavLink to="/">
                 <article className={styles.logo}>
                     <svg width="200" height="100" viewBox="0 0 1541 731" fill="none" xmlns="http://www.w3.org/2000/svg" >
                     <rect width="1541" height="730.171" fill="url(#pattern0)"/>
