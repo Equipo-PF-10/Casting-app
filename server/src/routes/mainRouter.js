@@ -5,6 +5,7 @@ const companyRouter = require("./companies/companyRouter");
 const companyFavoriteRouter = require("./talents/companyFavoriteRouter");
 const talentsFavoriteRouter = require("./companies/talentsFavoriteRouter");
 const postulationRouter = require("./talents/postulationRouter");
+const emailRouter = require("./emails/emailRouter");
 
 const mainRouter = Router();
 
@@ -22,7 +23,7 @@ mainRouter.use("/events", eventRouter);
 //todo: Rutas de Postulaciones
 mainRouter.use("/applied", postulationRouter);
 
-
-
+//todo: Rutas de Emails
+mainRouter.use("/email", emailRouter);
 
 module.exports = mainRouter;
