@@ -1,8 +1,16 @@
 import React from "react";
 import style from "./DetailComp.module.css";
-//import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
+import { create_postulant } from "../../../redux/actions";
 
-const Detail = ({ detail }) => {
+const Detail = (props) => {
+  const { detail , idTalent, idEvent} = props;
+  console.log("en detail... idUsuario:  "+idTalent+"   idEvento:  "+ idEvent ); 
+  const dispatch = useDispatch();
+
+  const handlerClickCreate = () => {
+    dispatch(create_postulant(idEvent, idTalent));
+  }
 
   return (
     <div className={style.containerDetail}>
@@ -14,7 +22,7 @@ const Detail = ({ detail }) => {
       <p>Fecha de expiración: {detail?.expirationDate}</p>
       <p className={style.textoDetail}>{detail?.description}</p>
       <div className={style.conteinerConectar}>
-        <button className={style.postularme}>Postularme</button>
+        <button className={style.postularme} onClick={() => handlerClickCreate()}>Postularme</button>
       </div>
     </div>
   );

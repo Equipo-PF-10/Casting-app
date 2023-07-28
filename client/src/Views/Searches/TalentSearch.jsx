@@ -17,7 +17,11 @@ const TalentSearch=() => {
   const events = useSelector((state) => state.allEvents);
   const evento = useSelector((state) => state.eventDetail);
   const eventFilter = useSelector((state) => state.eventsFiltered);
-  //console.log(eventFilter);
+  const idUser = useSelector((state) => state.idUser);
+  //Se mantiene el idTalent excepto si refrescan la pagina
+  let idTalent;
+  //Mantengo guardado el id del usuario (talento)
+  if(idUser.length > 0) idTalent=idUser;
 
   let [id, setId] = useState("");
   //let [eventSelected, setEventSelected] = useState({});
@@ -122,9 +126,9 @@ const TalentSearch=() => {
         <div className={style.detailStyle}>
           {/*<Detail events={events} />*/}
           {id.length === 0 ? (
-            <Detail detail={events[0]} />
+            <Detail detail={events[0]} idTalent={idTalent} idEvent={id} />
           ) : (
-            <Detail detail={evento} />
+            <Detail detail={evento} idTalent={idTalent} idEvent={id} />
           )}
         </div>
       </div>

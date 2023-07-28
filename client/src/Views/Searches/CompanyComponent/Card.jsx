@@ -6,7 +6,7 @@ const Card = (props) => {
   const {id, name, image, gender, hability, handlerClick} = props;
   const dispatch = useDispatch();
 
-  let habilidades = hability.join(", ");
+  let habilidades = hability?.join(", ");
 
   const handleClick = (id)=> {
     dispatch(send_id_of_card(id))
