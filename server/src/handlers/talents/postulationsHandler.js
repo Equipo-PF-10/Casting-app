@@ -61,9 +61,13 @@ const handlerDeleteApplicantById = async (req, res) => {
   const { TalentId, EventId } = req.body;
   try {
     const deletedPost = await deleteApplicantById(TalentId, EventId);
-    res.status(200).json(deletedPost);
+    res.status(200).send("El postulante ha sido rechazado correctamente.");
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res
+      .status(400)
+      .send(
+        "El postulante que ha ingresado no existe o no está postulado al evento."
+      );
   }
 };
 
