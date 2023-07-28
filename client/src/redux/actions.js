@@ -209,7 +209,7 @@ export const get_all_postulations = (fk) => {
   };
 };
 export const get_postulant_by_name = (fk, name) => {
-  let endpoint = `http://localhost:3001/talents/applied/${fk}/?name=${name}`;
+  let endpoint = `http://localhost:3001/applied/${fk}/?name=${name}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -227,14 +227,20 @@ export const get_postulant_by_name = (fk, name) => {
   };
 };
 
-//VERIFICAR COMO ENVIAR DOS IDS EN EL ENDPOINT
+
 //Deberia retornar un mensaje
-export const delete_postulant_by_id = (fk, id_talent) => {
-  //let endpoint = `http://localhost:3001/talents/applied/${fk}/${id_talent}`;
+export const delete_postulant_by_id = (id_evento, id_talent) => {
+  let endpoint = "http://localhost:3001/applied";
   return async (dispatch) => {
     try {
-      const { data } = await axios.delete(endpoint);
-
+      //const { data } = await axios.delete(endpoint, {EventId: id_evento, TalentId: id_talent}); //(endpoint, {EventId:id_evento, TalentId:id_talent})
+      const { data } = await axios.delete(endpoint, {
+        data: { EventId: id_evento, TalentId: id_talent }, 
+        headers: {
+          "Content-Type": "application/json", // Asegúrate de establecer el encabezado 'Content-Type' a 'application/json'
+        },
+      });
+      console.log(data);
       return dispatch({
         type: DELETE_POSTULANT_BY_ID,
         payload: data,
@@ -242,9 +248,18 @@ export const delete_postulant_by_id = (fk, id_talent) => {
     } catch (error) {
       return dispatch({
         type: "ERROR",
-        payload: "Ocurrió un error al intentar eliminar el postulante de la lista.",
+        payload: "Ocurrió un error al intentar rechazar al postulante.",
       });
     }
+  };
+};
+
+export const clear_message_deleted = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: DELETE_POSTULANT_BY_ID,
+      payload: payload,
+    });
   };
 };
 
