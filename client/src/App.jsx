@@ -27,7 +27,7 @@ function App() {
         <Route path="/model/search" element={<TalentSearch />} />
         <Route path="/company/register" element={<RegisterCompany />} />
         <Route path="/company/profile" element={<ProfileCompany />} />
-        <Route path="/company/search/:input" element={<CompanySearch />} />
+        <Route path="/company/search/:id" element={<CompanySearch />} />
         <Route path="/company/plans" element={<PaymentPlans />} />
         <Route path="/company/create" element={<EventForm />} />
         <Route path="/form/company" element={<FormEmpresa />} />
