@@ -11,7 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const CompanySearch = () => {
-  const id_event = useParams();
+  const {id} = useParams();
 
   const dispatch = useDispatch();
   const evento = useSelector((state) => state.eventDetail);
@@ -27,7 +27,7 @@ const CompanySearch = () => {
   //Verificar si cuando se elimina un postulante se actualiza la lista (si no lo hace, buscar la forma)
 
   
-  let [id, setId] = useState("");
+  let [idTalent, setIdTalent] = useState("");
   
 
   // Paginación
@@ -58,13 +58,13 @@ const CompanySearch = () => {
 
   //Dispatch
 
-  //let id_event = "fb615033-e4ec-4213-b65b-af21fb1a3599";
+  //let id = "fb615033-e4ec-4213-b65b-af21fb1a3599";
   //Obtener todos los postulantes en base al id del evento
   //Obtener el detalle del evento para renderizar el nombre del mismo como un Titulo
   useEffect(() => {
-    dispatch(get_all_postulations(id_event));
-    dispatch(get_event_by_id(id_event));
-  }, [dispatch, id_event]);
+    dispatch(get_all_postulations(id));
+    dispatch(get_event_by_id(id));
+  }, [dispatch, id]);
 
 //Funcion para traerme el detail de un postulante, muestra el detail de un talento al hacer click en la Card
 useEffect(()=>{
@@ -73,8 +73,8 @@ useEffect(()=>{
 
   // Función que muestra el detail de un talento al hacer click en la Card
   const handleClick = (talentoId) => {
-    setId(talentoId);
-    setTalentSelected(postulantes.find((talent) => talent.id === id));
+    setIdTalent(talentoId);
+    setTalentSelected(postulantes.find((talent) => talent.id === idTalent));
   };
 
   //Map Talentos
@@ -154,7 +154,7 @@ useEffect(()=>{
   return (
     <div className={style.containerG}>
       <div className={style.searchFil}>
-        <Search ubication={singleLocation} setCurrentPage={setCurrentPage} id_event={id_event} />
+        <Search ubication={singleLocation} setCurrentPage={setCurrentPage} id={id} />
       </div>
       <div>
         <ToastContainer />
@@ -185,11 +185,11 @@ useEffect(()=>{
            {
             idCard.length === 0 ?
             filters ?
-            <Detail className={style.detail} talent={postulantesCopy[0]} id_event={id_event}/>
+            <Detail className={style.detail} talent={postulantesCopy[0]} id={id}/>
             :
-            <Detail className={style.detail} talent={postulantes[0]} id_event={id_event}/>
+            <Detail className={style.detail} talent={postulantes[0]} id={id}/>
             :
-            <Detail className={style.detail} talent={talent} key={talent.id} id_event={id_event}/>
+            <Detail className={style.detail} talent={talent} key={talent.id} id={id}/>
           } 
         </div>
       </div>

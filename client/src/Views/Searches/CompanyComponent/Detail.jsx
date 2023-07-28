@@ -9,8 +9,6 @@ const Detail = (props) => {
   const {talent, id_event} = props;
   const dispatch = useDispatch();
   
-  const postulantesCopy = useSelector((state) =>  state.postulatedTalentsByEventFiltered );
-
   
   const handlerClick = () => {
     const open = "isOpened";
