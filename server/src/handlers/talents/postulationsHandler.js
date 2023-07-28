@@ -5,6 +5,7 @@ const {
   deleteApplicantById,
   getApplicantsForEventByFk,
   getApplicantByName,
+  applicantToContact,
 } = require("../../controllers/talents/postulationsController");
 
 // Función handler para obtener todas las postulaciones
@@ -22,22 +23,31 @@ const handlerCreateApplied = async (req, res) => {
 };
 const handlerGetAllApplied = async (req, res) => {
   try {
-    const { fk } = req.params;
-    const { name } = req.query;
+    const allApplied = await getAllApplied();
 
-    if (name.length === 0)
+    res.status(200).json(allApplied);
+  } catch (error) {
+    return res.status(404).json({ error: error.message });
+  }
+};
+
+const handlerGetApplicantsByName = async (req, res) => {
+  try {
+    const { EventId, name } = req.body;
+
+    if (!name) {
       return res
         .status(400)
         .send("Debes ingresar un nombre para aplicar la búsqueda.");
-
-    if (name) {
-      const talentByName = await getApplicantByName(fk, name);
-
-      if (typeof talentByName === "string")
-        return res.status(400).json({ error: talentByName });
-
-      return res.status(200).json(talentByName);
     }
+
+    const applicantsByName = await getApplicantByName(fk, name);
+
+    if (typeof applicantsByName === "string") {
+      return res.status(404).json({ error: applicantsByName });
+    }
+
+    return res.status(200).json(applicantsByName);
   } catch (error) {
     return res.status(404).json({ error: error.message });
   }
@@ -73,6 +83,13 @@ const handlerDeleteApplicantById = async (req, res) => {
 
 const handlerGetApplicantsForEventByFk = async (req, res) => {
   const { fk } = req.params;
+  const { name } = req.query;
+
+  if (name) {
+    const applicant = await getApplicantByName(fk, name);
+
+    res.status(200).json(applicant);
+  }
 
   try {
     const evento = await getApplicantsForEventByFk(fk);
@@ -83,13 +100,17 @@ const handlerGetApplicantsForEventByFk = async (req, res) => {
   }
 };
 
-const handlerGetApplicantByName = (req, res) => {
-  const { name } = req.query;
+const handlerToContact = async (req, res) => {
+  const { TalentId, EventId } = req.body;
   try {
-    const talent = getApplicantByName(name);
-    res.status(200).json(talent);
+    const toContact = await applicantToContact(TalentId, EventId);
+    res
+      .status(200)
+      .send("El postulante ha sido seleccionado para contactar correctamente.");
   } catch (error) {
-    res.status(400).send("No se encontró el postulado con ese nombre");
+    res
+      .status(400)
+      .send("El postulante no ha podido ser aceptado para contactar.");
   }
 };
 
@@ -99,4 +120,6 @@ module.exports = {
   handlerGetApplicantById,
   handlerDeleteApplicantById,
   handlerGetApplicantsForEventByFk,
+  handlerGetApplicantsByName,
+  handlerToContact,
 };

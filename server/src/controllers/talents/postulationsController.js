@@ -1,4 +1,4 @@
-const { Applied, TalentApplied, Talent } = require("../../db");
+const { Applied, TalentApplied, Talent, ToContact } = require("../../db");
 
 // Función controller para obtener todas las postulaciones
 const getAllApplied = async () => {
@@ -30,7 +30,7 @@ const createApplied = async (EventId, TalentId) => {
   }
 };
 
-// Función controller para obtener para ID
+// Función controller para obtener por ID
 const getApplicantById = async (id) => {
   const postDb = await Applied.findByPk(id);
 
@@ -40,35 +40,12 @@ const getApplicantById = async (id) => {
 
   return postDb;
 };
-// Función controller para borrar una postulación
-//!Pendiente definir si vas hacer o no el borrado lógico
-// Simple UPDATE queries
-// Update queries also accept the where option, just like the read queries shown above.
-// Change everyone without a last name to "Doe"
 
-// await User.update({ lastName: "Doe" }, {
-//   where: {
-//     lastName: null
-//   }
-// });
-
+// Función controller para rechazar aplicante.
 const deleteApplicantById = async (TalentId, EventId) => {
   try {
-    // const postulaciones = await Applied.update(
-    //   {status: "Rechazado"}, {where: {id}}
-    // );
-
-    // if (!postulacion) {
-    //   throw new Error(
-    //     `La postulación con ID ${id} no existe. Intenta de nuevo.`
-    //   );
-    // }
-
     const postulations = await Applied.findAll({ where: { EventId } });
     const idPostulations = await TalentApplied.findAll({ where: { TalentId } });
-
-    console.log(postulations);
-    console.log(idPostulations);
 
     for (let i = 0; i < postulations.length; i++) {
       let idPostulation = postulations[i].dataValues.id;
@@ -96,6 +73,7 @@ const deleteApplicantById = async (TalentId, EventId) => {
   }
 };
 
+// Obtener aplicantes por id de evento.
 const getApplicantsForEventByFk = async (fk) => {
   try {
     const postulacion = await Applied.findAll({
@@ -135,6 +113,7 @@ const getApplicantsForEventByFk = async (fk) => {
   }
 };
 
+// Obtener aplicantes por name.
 const getApplicantByName = async (fk, name) => {
   try {
     const nameToLower = name.toLowerCase();
@@ -154,6 +133,39 @@ const getApplicantByName = async (fk, name) => {
   }
 };
 
+// Función controller para cambiar el status a Contactado.
+const applicantToContact = async (TalentId, EventId) => {
+  try {
+    const postulations = await Applied.findAll({ where: { EventId } });
+    const idPostulations = await TalentApplied.findAll({ where: { TalentId } });
+
+    for (let i = 0; i < postulations.length; i++) {
+      let idPostulation = postulations[i].dataValues.id;
+
+      for (let j = 0; j < idPostulations.length; j++) {
+        let idPostulationInter = idPostulations[j].dataValues.AppliedId;
+
+        if (idPostulationInter === idPostulation) {
+          const postulationToContact = await Applied.update(
+            {
+              status: "Contactado",
+            },
+            {
+              where: {
+                id: idPostulationInter,
+              },
+            }
+          );
+          return postulationToContact;
+        }
+      }
+    }
+    return "No ha sido posible seleccionar al aspirante a contactar.";
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getAllApplied,
   createApplied,
@@ -161,4 +173,5 @@ module.exports = {
   deleteApplicantById,
   getApplicantsForEventByFk,
   getApplicantByName,
+  applicantToContact,
 };
