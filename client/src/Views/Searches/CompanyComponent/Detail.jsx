@@ -1,7 +1,7 @@
 import style from "./Detail.module.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { open_modal_search_compnay, delete_postulant_by_id, } from "../../../redux/actions";
+import { open_modal_search_compnay, delete_postulant_by_id, get_all_postulations } from "../../../redux/actions";
 
 const Detail = (props) => {
   
@@ -17,7 +17,7 @@ const Detail = (props) => {
 
   const handlerClickDelete = (id_talent) => {
     dispatch(delete_postulant_by_id(id_event, id_talent));
-    dispatch(get_all_postulations(id_event));
+    //dispatch(get_all_postulations(id_event));
   }
 
   return (

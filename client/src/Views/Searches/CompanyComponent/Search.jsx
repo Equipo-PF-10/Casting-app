@@ -108,8 +108,9 @@ const Search = (props) => {
         <option value="Todos">Todos</option>
         {optionTags}
       </select>
-      <select className={style.selectFilter}>
+      <select className={style.selectFilter} onChange={handleContexture}>
         <option defaultChecked value="">Contextura</option>
+        <option value="Todos">Todas</option>
         <option value="Ectomorfo">Ectomorfo</option>
         <option value="Endomorfo">Endomorfo</option>
         <option value="Mesomorfo">Mesomorfo</option>

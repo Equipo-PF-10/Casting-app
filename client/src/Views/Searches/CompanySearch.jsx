@@ -154,7 +154,7 @@ useEffect(()=>{
   return (
     <div className={style.containerG}>
       <div className={style.searchFil}>
-        <Search ubication={singleLocation} setCurrentPage={setCurrentPage} id={id} />
+        <Search ubication={singleLocation} setCurrentPage={setCurrentPage} id_event={id} />
       </div>
       <div>
         <ToastContainer />
@@ -185,11 +185,11 @@ useEffect(()=>{
            {
             idCard.length === 0 ?
             filters ?
-            <Detail className={style.detail} talent={postulantesCopy[0]} id={id}/>
+            <Detail className={style.detail} talent={postulantesCopy[0]} id_event={id}/>
             :
-            <Detail className={style.detail} talent={postulantes[0]} id={id}/>
+            <Detail className={style.detail} talent={postulantes[0]} id_event={id}/>
             :
-            <Detail className={style.detail} talent={talent} key={talent.id} id={id}/>
+            <Detail className={style.detail} talent={talent} key={talent.id} id_event={id}/>
           } 
         </div>
       </div>
