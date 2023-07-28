@@ -7,6 +7,7 @@ const talentsFavoriteRouter = require("./companies/talentsFavoriteRouter");
 const postulationRouter = require("./talents/postulationRouter");
 const talentFormRouter = require("../routes/forms/talentFormRouter");
 const companyFormRouter = require("./forms/companyFormRouter");
+const eventFormRouter = require("../routes/forms/eventFormRouter");
 
 const mainRouter = Router();
 
@@ -27,5 +28,6 @@ mainRouter.use("/applied", postulationRouter);
 //!Ruta de Formularios
 mainRouter.use("/forms/talents", talentFormRouter);
 mainRouter.use("/forms/companies", companyFormRouter);
+mainRouter.use("/forms/events", eventFormRouter);
 
 module.exports = mainRouter;
