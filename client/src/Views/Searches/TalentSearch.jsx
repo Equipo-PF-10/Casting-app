@@ -11,7 +11,8 @@ import {
   get_event_by_id,
 } from "../../redux/actions";
 
-const TalentSearch = () => {
+const TalentSearch=() => {
+
   const dispatch = useDispatch();
   const events = useSelector((state) => state.allEvents);
   const evento = useSelector((state) => state.eventDetail);
@@ -22,15 +23,9 @@ const TalentSearch = () => {
   //let [eventSelected, setEventSelected] = useState({});
   //console.log(id); //id cambian segun carta
 
-  //const idCard = useSelector((state) => state.idCard);
-  //console.log(idCard);
-  //console.log(evento[0] + 'soy evento');
-  //const eventsCopy = useSelector((state) => state.);
+
   const filters = useSelector((state) => state.filtersEvent);
-  //const eventDet = useSelector((state) => state.eventDetail);
-  //const details = useSelector((state) => state.companyDetail);
-  //console.log(events); //detalles de los eventos
-  //console.log(eventDet); //
+
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
@@ -113,11 +108,17 @@ const TalentSearch = () => {
         <div className={style.navLateral}>
           <NavBarLateral />
         </div>
-        {filters ? (
+        {listedEventsFilter.length===0? 
+        <div  className={style.text}>
+           <h3>No se han encontrado resultados.</h3>
+        </div>
+          :
+        filters ? (
           <div className={style.cardJobsStyle}>{listedEventsFilter}</div>
         ) : (
           <div className={style.cardJobsStyle}>{listedEvents}</div>
-        )}
+        )
+        }
         <div className={style.detailStyle}>
           {/*<Detail events={events} />*/}
           {id.length === 0 ? (

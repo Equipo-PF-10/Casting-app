@@ -182,24 +182,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
-    //case FILTER_BY_EVENT_HABILITY: {
-    //  if (payload !== "Todos") {
-    //    const hability = [...state.eventsFiltered].filter((event) =>
-    //      event.habilityRequired.includes(payload)
-    //    );
-    //    return {
-    //      ...state,
-    //      filters: true,
-    //      eventsFiltered: hability,
-    //    };
-    //  } else {
-    //    return {
-    //      ...state,
-    //      filters: true,
-    //      eventsFiltered: [...state.allEvents],
-    //    };
-    //  }
-    //}
 
     case FILTER_BY_GENDER: {
       if (payload === "Todos") {
@@ -259,16 +241,16 @@ const rootReducer = (state = initialState, { type, payload }) => {
       if (payload === "Todos") {
         return {
           ...state,
-          filters: true,
+          filtersEvent: true,
           eventsFiltered: [...state.allEvents],
         };
       } else {
-        const ubication = [...state.allEvents].filter((event) =>
+        const ubication = [...state.eventsFiltered].filter((event) =>
           event.ubication.includes(payload)
         );
         return {
           ...state,
-          filters: true,
+          filtersEvent: true,
           eventsFiltered: ubication,
         };
       }

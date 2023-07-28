@@ -39,6 +39,12 @@
   /*margin-top: 10px;*/
 }
 
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .pagination li{
   cursor: pointer;
   transition: 0.4s;
