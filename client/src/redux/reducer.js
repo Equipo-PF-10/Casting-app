@@ -24,6 +24,7 @@ import {
   SEND_ID_OF_CARD,
   CLEAR_ID_OF_CARD,
   GET_NAME_EVENTS,
+  IMAGE_URL,
 } from "./actions.js";
 
 const initialState = {
@@ -47,6 +48,7 @@ const initialState = {
   filters: false,
   filtersEvent: false,
   errors: {},
+  imageUrl: "",
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -291,6 +293,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         allEvents: payload,
       };
+    case IMAGE_URL:
+      return{
+        ...state,
+        imageUrl: payload,
+      }
     case ERROR:
       return {
         ...state,

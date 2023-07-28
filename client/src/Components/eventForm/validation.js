@@ -6,10 +6,6 @@ export default function validation(input){
         error.name = "Debe ingresar un nombre"
     } 
 
-    if(!input.date){
-        error.date = "Debe ingresar una fecha para el evento"
-    }
-
     if(!input.ubication){
         error.ubication = "Debe ingresar una locación para el evento"
     }
@@ -18,13 +14,7 @@ export default function validation(input){
         error.shortDescription= "Debe ser menor a 130 caractéres"
     }
 
-    if(!input.description){
-        error.description = "Debe ingresar una descripción del evento"
-    } else if(input.description.length < 20){
-        error.description = "Debe ingresar una descripción mayor a 20 caractéres"
-    }
-
-    if(input.habilityRequired.length === 0){
+    if(input.habilityRequired  === []){
         error.habilityRequired = "Debe seleccionar una o más orientaciones"
     }
 

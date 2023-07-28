@@ -23,6 +23,7 @@ export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const SEND_ID_OF_CARD = "SEND_ID_OF_CARD";
 export const CLEAR_ID_OF_CARD = "CLEAR_ID_OF_CARD";
 export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
+export const IMAGE_URL = "IMAGE_URL";
 import axios from "axios";
 
 export const register_model = (payload) => {
@@ -378,5 +379,14 @@ export const getEventsByName = (name) => {
         payload: "Ha ocurrido un error al obtener los eventos por nombre",
       });
     }
+  };
+};
+
+export const getUrlImage = (url) => {
+  return (dispatch) => {
+    return dispatch({
+      type: IMAGE_URL,
+      payload: url,
+    });
   };
 };
