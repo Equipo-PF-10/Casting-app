@@ -1,13 +1,16 @@
 import style from "./Detail.module.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { open_modal_search_compnay, delete_postulant_by_id } from "../../../redux/actions";
+import { open_modal_search_compnay, delete_postulant_by_id, } from "../../../redux/actions";
 
 const Detail = (props) => {
   
   //const { id, name, aboutMe, ubication, hability } = talent;
   const {talent, id_event} = props;
   const dispatch = useDispatch();
+  
+  const postulantesCopy = useSelector((state) =>  state.postulatedTalentsByEventFiltered );
+
   
   const handlerClick = () => {
     const open = "isOpened";
@@ -16,6 +19,7 @@ const Detail = (props) => {
 
   const handlerClickDelete = (id_talent) => {
     dispatch(delete_postulant_by_id(id_event, id_talent));
+    dispatch(get_all_postulations(id_event));
   }
 
   return (
@@ -51,7 +55,7 @@ const Detail = (props) => {
           <button className={style.conectar} onClick={handlerClick}>Conectar</button>
         </div>
         <div className={style.conteinerRechazar}>
-          <button className={style.rechazar} onClick={handlerClickDelete(talent?.id)}>Rechazar</button>
+          <button className={style.rechazar} onClick={() => handlerClickDelete(talent?.id)}>Rechazar</button>
         </div>
       </div>
     </div>

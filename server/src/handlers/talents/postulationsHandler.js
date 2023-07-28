@@ -61,7 +61,7 @@ const handlerDeleteApplicantById = async (req, res) => {
   const { TalentId, EventId } = req.body;
   try {
     const deletedPost = await deleteApplicantById(TalentId, EventId);
-    res.status(200).send("El postulante ha sido rechazado correctamente.");
+    res.status(200).send("El postulante ha sido rechazado correctamente. Actualice la lista para ver los cambios.");
   } catch (error) {
     res
       .status(400)

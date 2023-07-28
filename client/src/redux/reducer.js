@@ -42,7 +42,7 @@ const initialState = {
   idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
   messageRegistered: {},
-  messagePostulantDeleted: "",
+  messagePostulantDeleted: {},
   modalInLogin: false,
   modalInSearchCompany: false,
   filters: false,

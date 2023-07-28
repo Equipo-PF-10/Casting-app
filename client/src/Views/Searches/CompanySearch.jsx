@@ -6,10 +6,12 @@ import Detail from "./CompanyComponent/Detail";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { get_all_postulations , get_event_by_id, get_talent_by_id, close_modal_search_compnay } from "../../redux/actions";
+import { get_all_postulations , get_event_by_id, get_talent_by_id, close_modal_search_compnay, clear_message_deleted } from "../../redux/actions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CompanySearch = () => {
-  //  const id_event = useParams();
+  const id_event = useParams();
 
   const dispatch = useDispatch();
   const evento = useSelector((state) => state.eventDetail);
@@ -19,7 +21,9 @@ const CompanySearch = () => {
   const talent = useSelector((state) =>  state.talentById);
   const filters = useSelector((state) =>  state.filters);
   const modal = useSelector((state) =>  state.modalInSearchCompany);
+  let messageDeleted = useSelector((state) =>  state.messagePostulantDeleted );
   
+
   //Verificar si cuando se elimina un postulante se actualiza la lista (si no lo hace, buscar la forma)
 
   
@@ -40,16 +44,21 @@ const CompanySearch = () => {
     setCurrentPage(pageNumber);
   };
 
-  const pageNumbersCopy = Math.ceil(postulantesCopy.length / talentsPerPage);
+  
   const pageNumbers = Math.ceil(postulantes.length / talentsPerPage);
   const pagination = Array.from(
     { length: pageNumbers },
     (_, index) => index + 1
   );
+  const pageNumbersCopy = Math.ceil(postulantesCopy.length / talentsPerPage);
+  const paginationCopy = Array.from(
+    { length: pageNumbersCopy },
+    (_, index) => index + 1
+  );
 
   //Dispatch
 
-  let id_event = "fb615033-e4ec-4213-b65b-af21fb1a3599";
+  //let id_event = "fb615033-e4ec-4213-b65b-af21fb1a3599";
   //Obtener todos los postulantes en base al id del evento
   //Obtener el detalle del evento para renderizar el nombre del mismo como un Titulo
   useEffect(() => {
@@ -69,7 +78,6 @@ useEffect(()=>{
   };
 
   //Map Talentos
-  // { filters ? <Card allPostulants={postulantesCopy}/> : <Card allPostulants={postulantes}/>}
   const listedTalents = currentTalents.map((talento) => (
     <li key={talento.id}>
       <Card
@@ -109,11 +117,47 @@ useEffect(()=>{
     const close = "isClosed";
     dispatch(close_modal_search_compnay(close));
   }
-  console.log(postulantesCopy);
+
+  //Mostrar mensaje cuando se elimina un postulante
+  let currentToastIdSuccess = null;
+  const mensaje_success_Toast = () => {
+    if (currentToastIdSuccess) {
+      toast.update(currentToastIdSuccess, {
+        render: messageDeleted,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastIdSuccess = toast.success(messageDeleted, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "500px",
+        },
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (Object.keys(messageDeleted).length > 0) {
+      mensaje_success_Toast();
+      dispatch(clear_message_deleted(""));
+    }
+  }, [messageDeleted]);
+
   return (
     <div className={style.containerG}>
       <div className={style.searchFil}>
         <Search ubication={singleLocation} setCurrentPage={setCurrentPage} id_event={id_event} />
+      </div>
+      <div>
+        <ToastContainer />
       </div>
       <div className={style.secciones}>
         <div className={style.navLateral}>
@@ -122,7 +166,7 @@ useEffect(()=>{
         {
           postulantesCopy.length === 0 ?
           <div  className={style.text}>
-           <h3>No se han encontrado resultados con los filtros aplicados.</h3>
+           <h3>No se han encontrado resultados.</h3>
            </div>
           :
           filters ?
@@ -149,6 +193,20 @@ useEffect(()=>{
           } 
         </div>
       </div>
+      {
+        filters ?
+        <ul className={style.pagination}>
+        {paginationCopy.map((number) => (
+          <li
+            key={number}
+            className={number === currentPage ? style.active : ""}
+            onClick={() => paginate(number)}
+          >
+            <p>{number}</p>
+          </li>
+        ))}
+      </ul>
+      :
       <ul className={style.pagination}>
         {pagination.map((number) => (
           <li
@@ -160,6 +218,7 @@ useEffect(()=>{
           </li>
         ))}
       </ul>
+      }
 
 {/* -------MODAL PARA ENVIAR UN MAIL AL POSTULANTE ------------*/}
 {
