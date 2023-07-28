@@ -5,10 +5,13 @@ import CardJobs from "./TalentComponent/CardJobs";
 import SearchComp from "./TalentComponent/SearchComp";
 import Detail from "./TalentComponent/Detail";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   getAllEvents,
   filterByEvent,
   get_event_by_id,
+  clear_message_postulated
 } from "../../redux/actions";
 
 const TalentSearch=() => {
@@ -17,15 +20,26 @@ const TalentSearch=() => {
   const events = useSelector((state) => state.allEvents);
   const evento = useSelector((state) => state.eventDetail);
   const eventFilter = useSelector((state) => state.eventsFiltered);
+  const postulantCreated = useSelector((state) => state.postulantCreated);
+  //console.log(postulantCreated);
+  let messagePostulated;
+  if(postulantCreated?.status === "Pendiente") messagePostulated = "Se ha postulado corectamente al evento."
+  /*
+  EventId:"ad470678-9a47-4784-a732-3581a3da605b"
+  active: true
+  changeDate: null
+  date: "2023-07-28"
+  id: "8f1e8364-e28a-4527-99ec-856b7fa82fb7"
+  status: "Pendiente"
+*/
+  
   const idUser = useSelector((state) => state.idUser);
-  //Se mantiene el idTalent excepto si refrescan la pagina
-  let idTalent;
-  //Mantengo guardado el id del usuario (talento)
-  if(idUser.length > 0) idTalent=idUser;
+  
+  let idTalent; //Se mantiene el idTalent excepto si refrescan la pagina
+  if(idUser.length > 0) idTalent=idUser; //Mantengo guardado el id del usuario (talento)
 
-  let [id, setId] = useState("");
+  let [id, setId] = useState(""); //id cambian segun carta
   //let [eventSelected, setEventSelected] = useState({});
-  //console.log(id); //id cambian segun carta
 
 
   const filters = useSelector((state) => state.filtersEvent);
@@ -96,11 +110,46 @@ const TalentSearch=() => {
   //  dispatch(get_event_by_id(id));
   //}, [id]);
 
-  //console.log(id.length === 0, 'condicion');
-  //console.log(eventSelected);
+  let currentToastIdSuccess = null;
+  //Evita que se renderice mas de 1 toast
+  const mensaje_success_Toast = () => {
+    if (currentToastIdSuccess) {
+      toast.update(currentToastIdSuccess, {
+        render: messagePostulated,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastIdSuccess = toast.success(messagePostulated, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "400px",
+        },
+      });
+    }
+  };
+
+  //-------------Mensaje Success Toast que viene de los registros (Talento o Empresa)
+  useEffect(() => {
+    if (messagePostulated) {
+      mensaje_success_Toast();
+      dispatch(clear_message_postulated({}));
+    }
+  }, [messagePostulated]);
+
 
   return (
     <div className={style.containerGralTalent}>
+      <div>
+        <ToastContainer />
+      </div>
       <div className={style.searchFil}>
         <SearchComp
           ubication={singleLocation}

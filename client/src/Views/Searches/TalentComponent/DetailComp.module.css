@@ -2,7 +2,8 @@
   /*margin-right: 20px;*/
   position: fixed;
   padding: 30px;
-  width: 800px;
+  /* width: 800px; */
+  min-width: 800px;
   background-color: rgba(79, 153, 203, 0.226);
   border-radius: 20px;
   margin-top: 21px;
@@ -15,6 +16,28 @@
   margin-top: 30px;
 }
 
+.message {
+  background-color: rgba(0, 128, 0, 0.47);
+  width: 40vh;
+  /* height: 5vh; */
+  height: 30px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-left: 180px;
+  
+  margin: 0;
+  
+  color: white;
+}
+
+.message h6 {
+  padding-top: 5px;
+}
+
+
 /*boton postular*/
 .Postularme {
   /*width: 200px;*/
@@ -24,4 +47,8 @@
   font-size: larger;
   margin: 0;
   margin-top: 40px;
+}
+.conectar{
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
