@@ -43,7 +43,7 @@ const initialState = {
   idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
   messageRegistered: {},
-  messagePostulantCreated: {},
+  postulantCreated: {},
   messagePostulantDeleted: {},
   modalInLogin: false,
   modalInSearchCompany: false,
@@ -136,7 +136,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case CREATE_POSTULANT:
       return {
         ...state,
-        messagePostulantCreated: payload,
+        postulantCreated: payload,
       };
     case DELETE_POSTULANT_BY_ID:
       return {

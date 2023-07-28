@@ -200,6 +200,7 @@ export const get_all_postulations = (fk) => {
       const response = await axios.get(
         `http://localhost:3001/applied/event/${fk}`
       );
+      console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULATIONS, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -283,6 +284,15 @@ export const create_postulant = (idEvent, idTalent) => {
         payload: "Ocurrió un error al intentar postularte.",
       });
     }
+  };
+};
+
+export const clear_message_postulated = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: CREATE_POSTULANT,
+      payload: payload,
+    });
   };
 };
 
