@@ -17,11 +17,11 @@ postulationRouter.get("/:id", handlerGetApplicantById);
 //? Esta ruta busca todos los aplicantes a un anuncio.
 postulationRouter.get("/event/:fk", handlerGetApplicantsForEventByFk);
 
-//? Esta ruta rechaza una postulacion por el id de la postulación.
-postulationRouter.delete("/", handlerDeleteApplicantById);
-
 //? Esta ruta acepta una postulacion por el id de la postulación.
 postulationRouter.post("/contact", handlerToContact);
+
+//? Esta ruta rechaza una postulacion por el id de la postulación.
+postulationRouter.delete("/", handlerDeleteApplicantById);
 
 //? Esta ruta crea una nueva postulación.
 postulationRouter.post("/", handlerCreateApplied);

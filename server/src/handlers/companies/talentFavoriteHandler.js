@@ -1,27 +1,33 @@
-const { createFavoriteTalent,getFavoritesTalentsById} = require("../../controllers/companies/talentFavoriteController");
+const {
+  createFavoriteTalent,
+  getFavoritesTalentsById,
+} = require("../../controllers/companies/talentFavoriteController");
 
+// Empresa agrega talento como favorito
+async function handleCreateFavoriteTalent(req, res) {
+  try {
+    const { TalentId, CompanyId } = req.body;
+    const result = await createFavoriteTalent(TalentId, CompanyId);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
 
-  // talento agregua una empresa como favorita  
-  async function handleCreateFavoriteTalent (req, res)  {
-    try {
-      const { talentId, companyId } = req.body;
-      const result = await createFavoriteTalent(talentId, companyId);
-      res.status(200).json(result);
-    } catch (error) { 
-      res.status(400).json({ error: "Error al agregar el talento como favorito." });
-    }
-  };
-  async function handleGetFavoritesTalentsById (req, res)  {
-    try {
-      const { CompanyId } = req.body;
-      const result = await getFavoritesTalentsById(CompanyId);
-      res.status(200).json(result);
-    } catch (error) { 
-      res.status(400).json({ error: "Error al encontrar los talentos favorito." });
-    }
-  };
+// Función que devuelve todos los talentos favoritos de una empresa.
+async function handleGetFavoritesTalentsById(req, res) {
+  try {
+    const { CompanyId } = req.body;
+    const result = await getFavoritesTalentsById(CompanyId);
+    res.status(200).json(result);
+  } catch (error) {
+    res
+      .status(400)
+      .json({ error: "Error al encontrar los talentos favorito." });
+  }
+}
 
-  module.exports = {
-    handleCreateFavoriteTalent,
-    handleGetFavoritesTalentsById
-  };
+module.exports = {
+  handleCreateFavoriteTalent,
+  handleGetFavoritesTalentsById,
+};
