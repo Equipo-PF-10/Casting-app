@@ -12,12 +12,11 @@ const postulationRouter = Router();
 //? Esta ruta busca una postulacion por su id.
 postulationRouter.get("/:id", handlerGetApplicantById);
 
-//? Esta ruta elimina una postulacion por el id de la postulación.
-//!Pendiente definir si vas hacer o no el borrado lógico
-postulationRouter.delete("/", handlerDeleteApplicantById);
-
 //? Esta ruta busca todos los aplicantes a un anuncio.
 postulationRouter.get("/event/:fk", handlerGetApplicantsForEventByFk);
+
+//? Esta ruta elimina una postulacion por el id de la postulación.
+postulationRouter.delete("/", handlerDeleteApplicantById);
 
 //? Esta ruta crea una nueva postulación.
 postulationRouter.post("/", handlerCreateApplied);
