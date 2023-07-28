@@ -8,6 +8,7 @@ export const GET_EVENT_BY_ID = "GET_EVENT_BY_ID";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 export const GET_COMPANY_BY_ID = "GET_COMPANY_BY_ID";
+export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
 export const DELETE_POSTULANT_BY_ID = "DELETE_POSTULANT_BY_ID";
@@ -238,10 +239,9 @@ export const delete_postulant_by_id = (id_evento, id_talent) => {
       const { data } = await axios.delete(endpoint, {
         data: { EventId: id_evento, TalentId: id_talent }, 
         headers: {
-          "Content-Type": "application/json", // Asegúrate de establecer el encabezado 'Content-Type' a 'application/json'
+          "Content-Type": "application/json", 
         },
       });
-      console.log(data);
       return dispatch({
         type: DELETE_POSTULANT_BY_ID,
         payload: data,
@@ -261,6 +261,28 @@ export const clear_message_deleted = (payload) => {
       type: DELETE_POSTULANT_BY_ID,
       payload: payload,
     });
+  };
+};
+
+export const create_postulant = (idEvent, idTalent) => {
+  let endpoint = "http://localhost:3001/applied";
+  console.log("id evento en action: " + idEvent);
+  return async (dispatch) => {
+    try {
+      const { data } =  await axios.post(endpoint, {
+          EventId: idEvent, TalentId: idTalent  
+      });
+        console.log(data)
+      return dispatch({
+        type: CREATE_POSTULANT,
+        payload: data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "Ocurrió un error al intentar postularte.",
+      });
+    }
   };
 };
 
