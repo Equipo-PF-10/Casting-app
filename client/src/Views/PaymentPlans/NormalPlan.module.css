@@ -6,13 +6,76 @@
 .headSection {
     background-color: blue;
     height: 10vh;
+    width: 199.1vh;
 }
 .bodySection {
-    background-color: red;
     height: 90vh;
     display: grid;
     grid-template-columns: 40% 40% 20%; 
 }
 .bodyLeft {
+    background-color: green;
+    width: 80vh;
+    display: grid;
+    grid-template-rows: 7% 93%; 
+}
+.bodyLeftText {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: pink;
+}
+
+.bodyLeftPlans {
+    background-color: fuchsia;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;   
+}
+.bodyLeftMp {
+    background-color: white;   
+}
+.bodyLeftPaypal {
+    background-color: brown;   
+}
+
+.card {
+    width: 300px;
+    height: 50vh;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
     background-color: white;
+    margin: 00px 20px 0px 20px;
+    padding: 15px;
+    text-align: justify;
+    border: 3px solid var(--color-primario);
+    display: grid;
+    grid-template-rows: 20% 5% 70% 5%;
+    justify-items: center;
+    /* cursor: pointer; */
+    transition: border-color 0.3s ease;
+  }
+.card hr {
+  color: var(--color-primario);
+  width: 25vh;
+  margin: auto;
+  border-top: 4px solid;
+}
+.card button {
+    font-size: 20px;
+}
+.card p {
+   margin-top: 30px;
+}
+
+.bodyCenter {
+    background-color: red;
+    width: 80vh;
+}
+.bodyRight {
+    background-color: yellow;
+    width: 39.4vh;
 }
