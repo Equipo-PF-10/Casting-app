@@ -30,6 +30,22 @@ const createFavoriteTalent = async (TalentId, CompanyId) => {
   }
 };
 
+// Función controller para borrar talento favorito.
+const deleteFavoriteTalent = async (TalentId, CompanyId) => {
+  try {
+    const deletedTalent = await CompanySelectTalentAsFav.destroy({
+      where: {
+        TalentSelectedAsFavId: TalentId,
+        CompanyId: CompanyId,
+      },
+    });
+
+    return deletedTalent;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 // Función controller que devuelve todos los talentos favoritos de una empresa.
 const getFavoritesTalentsById = async (id) => {
   try {
@@ -58,18 +74,23 @@ const getFavoritesTalentsById = async (id) => {
 
 // Función controller para obtener Talento Favorito por nombre.
 const getByName = async (name, id) => {
-  const nameToLower = name.toLowerCase();
-  const favTalents = await getFavoritesTalentsById(id);
+  try {
+    const nameToLower = name.toLowerCase();
+    const favTalents = await getFavoritesTalentsById(id);
 
-  const filteredTalents = await favTalents.filter((talent) =>
-    talent.name.toLowerCase().includes(nameToLower)
-  );
+    const filteredTalents = await favTalents.filter((talent) =>
+      talent.name.toLowerCase().includes(nameToLower)
+    );
 
-  return filteredTalents;
+    return filteredTalents;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
 
 module.exports = {
   createFavoriteTalent,
   getFavoritesTalentsById,
   getByName,
+  deleteFavoriteTalent,
 };
