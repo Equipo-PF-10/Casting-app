@@ -9,8 +9,10 @@ import {
   GET_ALL_EVENTS,
   GET_ALL_COMPANIES,
   GET_COMPANY_BY_ID,
+  CREATE_POSTULANT,
   GET_ALL_POSTULATIONS,
   GET_POSTULANTS_BY_NAME,
+  DELETE_POSTULANT_BY_ID,
   GET_TALENT_BY_ID,
   GET_ALL_TALENTS,
   FILTER_BY_HABILITY,
@@ -21,7 +23,9 @@ import {
   FILTER_BY_UBICATION_EVENT,
   CLEAR_DETAIL,
   SEND_ID_OF_CARD,
+  CLEAR_ID_OF_CARD,
   GET_NAME_EVENTS,
+  IMAGE_URL,
 } from "./actions.js";
 
 const initialState = {
@@ -37,12 +41,16 @@ const initialState = {
   companyDetail: [],
   idUser: "", //id del usuario al logearse
   idCard: "",  //id de una card (postulante o evento)
-  userType: "", //"1" === "talent", "2" === "company"
+  userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
   messageRegistered: {},
+  postulantCreated: {},
+  messagePostulantDeleted: {},
   modalInLogin: false,
   modalInSearchCompany: false,
   filters: false,
+  filtersEvent: false,
   errors: {},
+  imageUrl: "",
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -125,6 +133,16 @@ const rootReducer = (state = initialState, { type, payload }) => {
         filters: true,
         postulatedTalentsByEventFiltered: payload,
       };
+    case CREATE_POSTULANT:
+      return {
+        ...state,
+        postulantCreated: payload,
+      };
+    case DELETE_POSTULANT_BY_ID:
+      return {
+        ...state,
+        messagePostulantDeleted: payload,
+      };
     case GET_ALL_TALENTS:
       return {
         ...state,
@@ -143,8 +161,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
           postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
         };
       } else {
-        const hability = [...state.postulatedTalentsByEvent].filter((talent) =>
-          talent.hability.includes(payload)
+        const hability = [...state.postulatedTalentsByEventFiltered].filter(
+          (talent) => talent.hability.includes(payload)
         );
         return {
           ...state,
@@ -157,21 +175,21 @@ const rootReducer = (state = initialState, { type, payload }) => {
       if (payload === "Todos") {
         return {
           ...state,
-          filters: true,
+          filtersEvent: true,
           eventsFiltered: [...state.allEvents],
         };
       } else {
-        const hability = [...state.allEvents].filter(
-          (event) => event.hability.includes(payload)
+        const hability = [...state.eventsFiltered].filter((event) =>
+          event.habilityRequired.includes(payload)
         );
         return {
           ...state,
-          filters: true,
+          filtersEvent: true,
           eventsFiltered: hability,
         };
       }
     }
-      
+
     case FILTER_BY_GENDER: {
       if (payload === "Todos") {
         return {
@@ -180,8 +198,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
           postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
         };
       } else {
-        const gender = [...state.postulatedTalentsByEvent].filter((talent) =>
-          talent.gender.includes(payload)
+        const gender = [...state.postulatedTalentsByEventFiltered].filter(
+          (talent) => talent.gender.includes(payload)
         );
         return {
           ...state,
@@ -190,21 +208,35 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
-
     case FILTER_BY_CONTEXTURE: {
-      let talents = [...state.postulatedTalentsByEvent].filter((talent) =>
-        talent.contexture.includes(payload)
-      );
-    }
-    case FILTER_BY_UBICATION:{
-      if(payload === "Todos"){
+      if (payload === "Todos") {
         return {
           ...state,
           filters: true,
-          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent]
-        }
+          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
+        };
       } else {
-        const ubication = [...state.postulatedTalentsByEvent].filter((talent) => talent.ubication.includes(payload))
+        let contexture = [...state.postulatedTalentsByEventFiltered].filter(
+          (talent) => talent.contexture.includes(payload)
+        );
+        return {
+          ...state,
+          filters: true,
+          postulatedTalentsByEventFiltered: contexture,
+        };
+      }
+    }
+    case FILTER_BY_UBICATION: {
+      if (payload === "Todos") {
+        return {
+          ...state,
+          filters: true,
+          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
+        };
+      } else {
+        const ubication = [...state.postulatedTalentsByEventFiltered].filter(
+          (talent) => talent.ubication.includes(payload)
+        );
         return {
           ...state,
           filters: true,
@@ -212,31 +244,30 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
-    case FILTER_BY_UBICATION_EVENT:{
-      if(payload === "Todos"){
+    case FILTER_BY_UBICATION_EVENT: {
+      if (payload === "Todos") {
         return {
           ...state,
-          filters: true,
-          eventsFiltered: [...state.allEvents]
-        }
+          filtersEvent: true,
+          eventsFiltered: [...state.allEvents],
+        };
       } else {
-        const ubication = [...state.allEvents].filter((event) => event.ubication.includes(payload))
+        const ubication = [...state.eventsFiltered].filter((event) =>
+          event.ubication.includes(payload)
+        );
         return {
           ...state,
-          filters: true,
+          filtersEvent: true,
           eventsFiltered: ubication,
         };
       }
     }
-    case FILTER_BY_CONTEXTURE:{
-      let contexture = [...state.postulatedTalentsByEvent].filter((talent) => talent.contexture.includes(payload));
+    case SEND_ID_OF_CARD:
       return {
         ...state,
-        filters: true,
-        postulatedTalentsByEventFiltered: contexture,
+        idCard: payload,
       };
-    }
-    case SEND_ID_OF_CARD:
+    case CLEAR_ID_OF_CARD:
       return {
         ...state,
         idCard: payload,
@@ -249,8 +280,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case GET_NAME_EVENTS:
       return {
         ...state,
-        allEvents: payload
+        allEvents: payload,
       };
+    case IMAGE_URL:
+      return{
+        ...state,
+        imageUrl: payload,
+      }
     case ERROR:
       return {
         ...state,

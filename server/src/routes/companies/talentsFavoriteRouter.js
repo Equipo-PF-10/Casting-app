@@ -1,5 +1,8 @@
 const { Router } = require("express");
-const { handleCreateFavoriteTalent,handleGetFavoritesTalentsById } = require("../../handlers/companies/talentFavoriteHandler");
+const {
+  handleCreateFavoriteTalent,
+  handleGetFavoritesTalentsById,
+} = require("../../handlers/companies/talentFavoriteHandler");
 
 const companyRouter = Router();
 
@@ -7,13 +10,9 @@ const companyRouter = Router();
 companyRouter.post("/", handleCreateFavoriteTalent);
 
 //? Esta ruta es para encontrar todos los talentos favoritos de una empresa por Id
-//! *****************************************************************************************
-//! Julio Tiene Pendiente terminar esta ruta*************************************************
-//! *****************************************************************************************
+
 companyRouter.get("/", handleGetFavoritesTalentsById);
 
-
 //! Pendiente Una ruta para buscar los favoritos de una compañia por name
-
 
 module.exports = companyRouter;

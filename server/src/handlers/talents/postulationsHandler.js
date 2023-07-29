@@ -4,6 +4,8 @@ const {
   getApplicantById,
   deleteApplicantById,
   getApplicantsForEventByFk,
+  getApplicantByName,
+  applicantToContact,
 } = require("../../controllers/talents/postulationsController");
 
 // Función handler para obtener todas las postulaciones
@@ -21,28 +23,31 @@ const handlerCreateApplied = async (req, res) => {
 };
 const handlerGetAllApplied = async (req, res) => {
   try {
-    const { name } = req.query;
-    const allAdds = await getAllApplied();
-    if (name === undefined) {
-      if (typeof allAdds === "string")
-        return res.status(400).json({ error: allAdds });
-      return res.status(200).json(allAdds);
-    }
-    if (typeof name === "string" && name.length === 0)
+    const allApplied = await getAllApplied();
+
+    res.status(200).json(allApplied);
+  } catch (error) {
+    return res.status(404).json({ error: error.message });
+  }
+};
+
+const handlerGetApplicantsByName = async (req, res) => {
+  try {
+    const { EventId, name } = req.body;
+
+    if (!name) {
       return res
         .status(400)
-        .json({ error: "Falta ingresar el nombre del Evento " });
-    else {
-      const nameLowerCase = name.toLowerCase();
-      const filtered = allAdds.filter((ele) =>
-        ele.name.toLowerCase().includes(nameLowerCase)
-      );
-      if (filtered.length !== 0) return res.status(200).json(filtered);
-      else
-        return res.status(400).json({
-          error: `No se encontró ninguna empresa con el nombre ${name}`,
-        });
+        .send("Debes ingresar un nombre para aplicar la búsqueda.");
     }
+
+    const applicantsByName = await getApplicantByName(fk, name);
+
+    if (typeof applicantsByName === "string") {
+      return res.status(404).json({ error: applicantsByName });
+    }
+
+    return res.status(200).json(applicantsByName);
   } catch (error) {
     return res.status(404).json({ error: error.message });
   }
@@ -61,22 +66,30 @@ const handlerGetApplicantById = async (req, res) => {
   }
 };
 
-// Función handler para borrar postulación por Id
-//!Pendiente definir si vas hacer o no el borrado lógico
+// Función handler para borrar postulación por Id de Talento y por Id de Evento.
 const handlerDeleteApplicantById = async (req, res) => {
-  const { id } = req.params;
+  const { TalentId, EventId } = req.body;
   try {
-    const deletedPost = await deleteApplicantById(id);
-    res
-      .status(200)
-      .send(`La postulación con ID ${id} ha sido borrada con éxito.`);
+    const deletedPost = await deleteApplicantById(TalentId, EventId);
+    res.status(200).send("El postulante ha sido rechazado correctamente. Actualice la lista para ver los cambios.");
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res
+      .status(400)
+      .send(
+        "El postulante que ha ingresado no existe o no está postulado al evento."
+      );
   }
 };
 
 const handlerGetApplicantsForEventByFk = async (req, res) => {
   const { fk } = req.params;
+  const { name } = req.query;
+
+  if (name) {
+    const applicant = await getApplicantByName(fk, name);
+
+    res.status(200).json(applicant);
+  }
 
   try {
     const evento = await getApplicantsForEventByFk(fk);
@@ -87,10 +100,26 @@ const handlerGetApplicantsForEventByFk = async (req, res) => {
   }
 };
 
+const handlerToContact = async (req, res) => {
+  const { TalentId, EventId } = req.body;
+  try {
+    const toContact = await applicantToContact(TalentId, EventId);
+    res
+      .status(200)
+      .send("El postulante ha sido seleccionado para contactar correctamente.");
+  } catch (error) {
+    res
+      .status(400)
+      .send("El postulante no ha podido ser aceptado para contactar.");
+  }
+};
+
 module.exports = {
   handlerGetAllApplied,
   handlerCreateApplied,
   handlerGetApplicantById,
   handlerDeleteApplicantById,
   handlerGetApplicantsForEventByFk,
+  handlerGetApplicantsByName,
+  handlerToContact,
 };

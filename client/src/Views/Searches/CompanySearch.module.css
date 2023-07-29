@@ -29,9 +29,11 @@
   grid-template-rows: 10% 30% 30% 30%;
   margin: 0 auto;
   margin-left: 20px;
-  /*display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
-    justify-content: flex-start;*/
+}
+.grid hr {
+  color: var(--color-primario);
+  width: 110vh;
+  border-top: 4px solid;
 }
 
 .cards {
@@ -91,7 +93,7 @@
   transform: scale(1.1);
 }
 .pagination p {
-  margin-right: 600px;
+  margin-right: 450px;
 }
 
 .active{

@@ -1,28 +1,19 @@
 import React, { useEffect } from "react";
 import styleCard from "./CardJobs.module.css";
-import { get_company_by_id, send_id_of_card } from "../../../redux/actions";
+import { get_company_by_id, get_event_by_id, send_id_of_card } from "../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const CardJobs = ({event}) => {
-  //const idCompany = event.CompanyId;
-  //console.log(idCompany);
-  //const companyData=useSelector((state) => state.companyDetail);
-  //console.log(companyData);
-  //const eventsD = useSelector((state) => state.eventDetail);
-  //console.log(companyData);
-  const dispatch=useDispatch();
+const CardJobs=({event,setId}) => {
   
-  const handleClick = (id) => {
-    dispatch(send_id_of_card(id));
-  };
+  const dispatch=useDispatch()
+  
+  const handleClick=(id) => {
+    dispatch(get_event_by_id(id));
+    setId(id);
+  }
 
-  //useEffect(() => {
-  //  dispatch(get_company_by_id(event.id));
-  //},[dispatch,event.id]);
-  
-  //useEffect(() => {
-  //  dispatch(get_event_by_id(event));
-  //}, [dispatch, event]);
+  //console.log(event); // eventos dublicados
+
 
   return (
     <div

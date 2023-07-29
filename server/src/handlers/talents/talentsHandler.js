@@ -54,7 +54,6 @@ const createTalentHandler = async (req, res) => {
     return res.status(400).send("Faltan datos obligatorios");
   }
 
-
   const dateVerification = dateComeBack instanceof Date ? dateComeBack : null;
 
   try {
@@ -66,7 +65,6 @@ const createTalentHandler = async (req, res) => {
       available,
       dateVerification,
       image,
-      dni,
       portfolio,
       gender,
       aboutMe,

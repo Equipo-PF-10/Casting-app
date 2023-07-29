@@ -8,8 +8,10 @@ export const GET_EVENT_BY_ID = "GET_EVENT_BY_ID";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 export const GET_COMPANY_BY_ID = "GET_COMPANY_BY_ID";
+export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
+export const DELETE_POSTULANT_BY_ID = "DELETE_POSTULANT_BY_ID";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
 export const GET_ALL_TALENTS = "GET_ALL_TALENTS";
 export const FILTER_BY_HABILITY = "FILTER_BY_HABILITY";
@@ -20,7 +22,9 @@ export const FILTER_BY_UBICATION_EVENT = "FILTER_BY_UBICATION_EVENT";
 export const FILTER_BY_EVENT_HABILITY = "FILTER_BY_EVENT_HABILITY";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const SEND_ID_OF_CARD = "SEND_ID_OF_CARD";
+export const CLEAR_ID_OF_CARD = "CLEAR_ID_OF_CARD";
 export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
+export const IMAGE_URL = "IMAGE_URL";
 import axios from "axios";
 
 export const register_model = (payload) => {
@@ -127,7 +131,7 @@ export const get_company_by_id = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
-      console.log("Compañía obtenida de la preticion: " + data);
+      //console.log("Compañía obtenida de la preticion: " + data);
       return dispatch({
         type: GET_COMPANY_BY_ID,
         payload: data,
@@ -196,6 +200,7 @@ export const get_all_postulations = (fk) => {
       const response = await axios.get(
         `http://localhost:3001/applied/event/${fk}`
       );
+      console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULATIONS, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -207,7 +212,7 @@ export const get_all_postulations = (fk) => {
   };
 };
 export const get_postulant_by_name = (fk, name) => {
-  let endpoint = `http://localhost:3001/talents/applied/${fk}/?name=${name}`;
+  let endpoint = `http://localhost:3001/applied/${fk}/?name=${name}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -219,9 +224,75 @@ export const get_postulant_by_name = (fk, name) => {
     } catch (error) {
       return dispatch({
         type: "ERROR",
-        payload: "Postulante no encontrado. Intentelo de nuevo...",
+        payload: "No se encontró ningun postulante con el nombre ingresado.",
       });
     }
+  };
+};
+
+
+//Deberia retornar un mensaje
+export const delete_postulant_by_id = (id_evento, id_talent) => {
+  let endpoint = "http://localhost:3001/applied";
+  return async (dispatch) => {
+    try {
+      //const { data } = await axios.delete(endpoint, {EventId: id_evento, TalentId: id_talent}); //(endpoint, {EventId:id_evento, TalentId:id_talent})
+      const { data } = await axios.delete(endpoint, {
+        data: { EventId: id_evento, TalentId: id_talent }, 
+        headers: {
+          "Content-Type": "application/json", 
+        },
+      });
+      return dispatch({
+        type: DELETE_POSTULANT_BY_ID,
+        payload: data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "Ocurrió un error al intentar rechazar al postulante.",
+      });
+    }
+  };
+};
+
+export const clear_message_deleted = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: DELETE_POSTULANT_BY_ID,
+      payload: payload,
+    });
+  };
+};
+
+export const create_postulant = (idEvent, idTalent) => {
+  let endpoint = "http://localhost:3001/applied";
+  console.log("id evento en action: " + idEvent);
+  return async (dispatch) => {
+    try {
+      const { data } =  await axios.post(endpoint, {
+          EventId: idEvent, TalentId: idTalent  
+      });
+        console.log(data)
+      return dispatch({
+        type: CREATE_POSTULANT,
+        payload: data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "Ocurrió un error al intentar postularte.",
+      });
+    }
+  };
+};
+
+export const clear_message_postulated = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: CREATE_POSTULANT,
+      payload: payload,
+    });
   };
 };
 
@@ -329,6 +400,15 @@ export const send_id_of_card = (id) => {
   };
 };
 
+export const clear_id_sent_from_card = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: CLEAR_ID_OF_CARD,
+      payload: payload,
+    });
+  };
+};
+
 export const getEventsByName = (name) => {
   return async (dispatch) => {
     try {
@@ -346,5 +426,14 @@ export const getEventsByName = (name) => {
         payload: "Ha ocurrido un error al obtener los eventos por nombre",
       });
     }
+  };
+};
+
+export const getUrlImage = (url) => {
+  return (dispatch) => {
+    return dispatch({
+      type: IMAGE_URL,
+      payload: url,
+    });
   };
 };

@@ -5,6 +5,8 @@ const {
   handlerGetApplicantById,
   handlerDeleteApplicantById,
   handlerGetApplicantsForEventByFk,
+  handlerGetApplicantsByName,
+  handlerToContact,
 } = require("../../handlers/talents/postulationsHandler");
 
 const postulationRouter = Router();
@@ -12,12 +14,14 @@ const postulationRouter = Router();
 //? Esta ruta busca una postulacion por su id.
 postulationRouter.get("/:id", handlerGetApplicantById);
 
-//? Esta ruta elimina una postulacion por el id de la postulación.
-//!Pendiente definir si vas hacer o no el borrado lógico
-postulationRouter.delete("/:id", handlerDeleteApplicantById);
-
 //? Esta ruta busca todos los aplicantes a un anuncio.
 postulationRouter.get("/event/:fk", handlerGetApplicantsForEventByFk);
+
+//? Esta ruta rechaza una postulacion por el id de la postulación.
+postulationRouter.delete("/", handlerDeleteApplicantById);
+
+//? Esta ruta acepta una postulacion por el id de la postulación.
+postulationRouter.post("/contact", handlerToContact);
 
 //? Esta ruta crea una nueva postulación.
 postulationRouter.post("/", handlerCreateApplied);

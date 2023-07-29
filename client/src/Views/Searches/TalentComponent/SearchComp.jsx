@@ -3,14 +3,14 @@ import style from "./SearchComp.module.css";
 import { useDispatch } from "react-redux";
 import {
   filterByEvent,
-  filterByUbication,
+  filterByUbicationEvent,
   getAllEvents,
   getEventsByName,
 } from "../../../redux/actions";
 
 const SearchComp = (props) => {
   //console.log(props);
-  const { ubication, setCurrentPage } = props;
+  const { ubication, setCurrentPage, eventFilter } = props;
   const dispatch = useDispatch();
 
   //buscar por nombre
@@ -66,8 +66,8 @@ const SearchComp = (props) => {
   };
 
   // Ubicaciones
-  const handleUbications = (event) => {
-    dispatch(filterByUbication(event.target.value));
+  const handleUbicationsEvent = (event) => {
+    dispatch(filterByUbicationEvent(event.target.value));
     setCurrentPage(1);
   };
 
@@ -110,7 +110,7 @@ const SearchComp = (props) => {
         <option value="Todos">Todos</option>
         {optionTags}
       </select>
-      <select className={style.selectFilter} onChange={handleUbications}>
+      <select className={style.selectFilter} onChange={handleUbicationsEvent}>
         <option defaultChecked value="">
           Ubicación
         </option>
