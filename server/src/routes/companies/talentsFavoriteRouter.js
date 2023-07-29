@@ -6,12 +6,10 @@ const {
 
 const companyRouter = Router();
 
-//? Esta ruta es para que una empresa pueda agregar talentos favoritos
-companyRouter.post("/", handleCreateFavoriteTalent);
-
-//? Esta ruta es para encontrar todos los talentos favoritos de una empresa por Id
+//? Esta ruta es para encontrar todos los talentos favoritos de una empresa por Id. También se puede buscar por name mediante query.
 companyRouter.get("/:id", handleGetFavoritesTalentsById);
 
-//! Pendiente Una ruta para buscar los favoritos de una compania por name
+//? Esta ruta es para que una empresa pueda agregar talentos favoritos
+companyRouter.post("/", handleCreateFavoriteTalent);
 
 module.exports = companyRouter;

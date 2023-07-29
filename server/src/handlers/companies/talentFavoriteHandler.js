@@ -1,6 +1,7 @@
 const {
   createFavoriteTalent,
   getFavoritesTalentsById,
+  getByName,
 } = require("../../controllers/companies/talentFavoriteController");
 
 // Empresa agrega talento como favorito
@@ -16,8 +17,15 @@ async function handleCreateFavoriteTalent(req, res) {
 
 // Función que devuelve todos los talentos favoritos de una empresa.
 async function handleGetFavoritesTalentsById(req, res) {
+  const { name } = req.query;
+  const { id } = req.params;
+
   try {
-    const { id } = req.params;
+    if (name) {
+      const searchByName = await getByName(name, id);
+      return res.status(200).json(searchByName);
+    }
+
     const result = await getFavoritesTalentsById(id);
     res.status(200).json(result);
   } catch (error) {

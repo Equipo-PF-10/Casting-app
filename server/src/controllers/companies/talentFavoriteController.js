@@ -56,7 +56,20 @@ const getFavoritesTalentsById = async (id) => {
   }
 };
 
+// Función controller para obtener Talento Favorito por nombre.
+const getByName = async (name, id) => {
+  const nameToLower = name.toLowerCase();
+  const favTalents = await getFavoritesTalentsById(id);
+
+  const filteredTalents = await favTalents.filter((talent) =>
+    talent.name.toLowerCase().includes(nameToLower)
+  );
+
+  return filteredTalents;
+};
+
 module.exports = {
   createFavoriteTalent,
   getFavoritesTalentsById,
+  getByName,
 };
