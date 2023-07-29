@@ -5,17 +5,16 @@ import Styles from "./FormTalento.module.css"
 import axios from "axios"
 import validationTalentos from "./validationTalentos"
 import {NavLink} from "react-router-dom"
+import Cloudinary from "../Cloudinary/Cloudinary"
 
 const FormTalento = () => {
 
-    const id= useSelector((state) => state.userID)
+    const URL = `http://localhost:3001/forms/talents`
 
-    const URL = `http://localhost:3001/talents/${id}`
+    const idUser = useSelector((state) => state.idUser);
 
-    const uploadPreset = "casting_app"
-    const cloudName = "dntrnqcxe";
+    const imageURl = useSelector((state) => state.imageUrl)
 
-    const URLCloud = `https://api.cloudinary.com/v1_1/${cloudName}/upload`
 
     const optionshability = [
         { value: 'Actuación', label: 'Actuación' },
@@ -33,14 +32,15 @@ const FormTalento = () => {
         { value: 'Promotor/a', label: 'Promotor/a' },
       ];
 
-    const initialState = {
+      const initialState = {
+        id: "",
         email: "",
         name: "",
         dni: 0,
         password: "",
         image: "",
         aboutMe: "",
-        nacionality: "",
+        nationality: "", 
         ubication: "",
         contexture: "",
         weight: 0,
@@ -49,8 +49,9 @@ const FormTalento = () => {
         ethnicOrigin: "",
         socialNetwork: [],
         contact: [],
-        hability: []
-    }
+        hability: [],
+      };
+      
 
     // States
 
@@ -94,13 +95,11 @@ const FormTalento = () => {
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
-            if(input.image){
-                await submitImage();
-            }
-            await axios.put(URL, input)
+            await axios.patch(URL, input)
+            console.log("Datos actualizados correctamente")
             setInput(initialState)
         } catch (error) {
-            console.log({error})
+            console.log({error: error.message})
         }
     }
 
@@ -108,26 +107,9 @@ const FormTalento = () => {
 
     input.hability = habilityValue;
 
-    // Cloudinary
+    input.image = imageURl;
 
-    const submitImage = async () => {
-        const formData = new FormData();
-        formData.append("file", input.image);
-        formData.append("upload_preset", uploadPreset);
-        formData.append("cloud_name", cloudName);
-        
-        try {
-            const response = await axios.post(URLCloud, formData);
-            const responseData = response.data;
-            console.log(responseData);
-            console.log(responseData.url);
-            setInput({ ...input, image: responseData.url });
-        } catch (error) {
-            console.log("Error uploading image:", error);
-        }
-    }
-    
-    console.log(input.image)
+    input.id = idUser;
 
     return(
         <section className={Styles.section}>
@@ -137,11 +119,9 @@ const FormTalento = () => {
             
             <form action="" className={Styles.form} method="POST" onSubmit={hanldeSubmit} encType="multipart/form-data">
                 <div className={Styles.div}>
-                <h1>Registro</h1>
                     <article className={Styles.coolinput}>
                         <label htmlFor="name" className={Styles.text}>Nombre Completo</label>
                         <input type="text" name="name" id="name" value={input.name} onChange={handleChange}/>
-                        <p className={error.name ? Styles.error : ""}>{error.name ? error.name : null}</p>
                     </article>
 
                     <article className={Styles.coolinput}>
@@ -157,13 +137,12 @@ const FormTalento = () => {
                     <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Descripción</label>
                             <textarea name="aboutMe" id="" value={input.aboutMe} onChange={handleChange} placeholder="Descripción de tu perfil..."></textarea>
-                            <p className={error.aboutMe ? Styles.error : ""}>{error.aboutMe ? error.aboutMe : null}</p>
                         </article>
 
                 </div>
                 <div className={Styles.div}>
                     <article className={Styles.img}>
-                            <svg width="187" height="187" viewBox="0 0 187 187" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            {input.image ? <img src={imageURl} alt="Foto de Perfil" /> : <svg width="187" height="187" viewBox="0 0 187 187" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_d_497_36)">
                             <g clipPath="url(#clip0_497_36)">
                             <rect x="3" y="1" width="181" height="181" rx="90.5" fill="#F5F5F5"/>
@@ -187,11 +166,11 @@ const FormTalento = () => {
                             <rect x="3" y="1" width="181" height="181" rx="90.5" fill="white"/>
                             </clipPath>
                             </defs>
-                            </svg>
+                            </svg>}
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Subir Imágen</label>
-                        <input type="file"name="image" value={input.image} onChange={handleChange}/>
+                        <Cloudinary/>
                     </article>
                     <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Orientación artística</label>
@@ -202,7 +181,6 @@ const FormTalento = () => {
                                 value={orientaciones}
                                 onChange={handleChangeSelect}
                                 name="hability"/>
-                                <p className={error.hability ? Styles.error : ""}>{error.hability ? error.hability : null}</p>
                     </article> 
                     <article className={Styles.charSec}>
                             <article className={Styles.coolinput}>
@@ -260,16 +238,16 @@ const FormTalento = () => {
                         <input type="text" name="contact" id="contact" value={input.contact[0] || ""} onChange={(e) => handleContactChange(0, e)}/>
                     </article>
                     <article className={Styles.coolinput}>
-                    <label htmlFor="" className={Styles.text}>Facebook</label>
-                    <input type="text" name="facebook" value={input.socialNetwork[0] || ""} onChange={(e) => handleSocialNetworkChange(0, e)} />
+                        <label htmlFor="" className={Styles.text}>Facebook</label>
+                        <input type="text" name="facebook" value={input.socialNetwork[0] || ""} onChange={(e) => handleSocialNetworkChange(0, e)} />
+                        </article>
+                    <article className={Styles.coolinput}>
+                        <label htmlFor="" className={Styles.text}>Instagram</label>
+                        <input type="text" name="instagram" value={input.socialNetwork[1] || ""} onChange={(e) => handleSocialNetworkChange(1, e)} />
                     </article>
                     <article className={Styles.coolinput}>
-                    <label htmlFor="" className={Styles.text}>Instagram</label>
-                    <input type="text" name="instagram" value={input.socialNetwork[1] || ""} onChange={(e) => handleSocialNetworkChange(1, e)} />
-                    </article>
-                    <article className={Styles.coolinput}>
-                    <label htmlFor="twitter" className={Styles.text}>Twitter</label>
-                    <input type="text" name="twitter" id="twitter" value={input.socialNetwork[2] || ""} onChange={(e) => handleSocialNetworkChange(2, e)} />
+                        <label htmlFor="twitter" className={Styles.text}>Twitter</label>
+                        <input type="text" name="twitter" id="twitter" value={input.socialNetwork[2] || ""} onChange={(e) => handleSocialNetworkChange(2, e)} />
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="ubication" className={Styles.text}>Ubicación</label>
@@ -277,9 +255,9 @@ const FormTalento = () => {
                         <p className={error.ubication ? Styles.error : ""}>{error.ubication ? error.ubication : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="" className={Styles.text}>Nacionalidad</label>
-                        <input type="text"  name="nacionality" id="nacionality" value={input.nacionality} onChange={handleChange}/>
-                        <p className={error.nacionality ? Styles.error : ""}>{error.nacionality ? error.nacionality : null}</p>
+                        <label htmlFor="nationality" className={Styles.text}>Nacionalidad</label>
+                        <input type="text"  name="nationality" id="nationality" value={input.nationality} onChange={handleChange}/>
+
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="dni" className={Styles.text}>Documento de Identidad</label>
@@ -288,7 +266,7 @@ const FormTalento = () => {
                 </div>
             </form>
             <svg width="345" height="202" viewBox="0 0 345 202" fill="none" xmlns="http://www.w3.org/2000/svg" className={Styles.svg2}>
-            <path d="M276.775 -48.0724L345 -66L-57 -57.4216V202C17.4227 78.335 137.182 -11.3914 276.775 -48.0724Z" fill="#7E7193"/>
+                <path d="M276.775 -48.0724L345 -66L-57 -57.4216V202C17.4227 78.335 137.182 -11.3914 276.775 -48.0724Z" fill="#7E7193"/>
             </svg>
         </section>
     )
