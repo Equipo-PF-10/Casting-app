@@ -4,9 +4,14 @@
   box-sizing: border-box;
 }
 
+.fondo{
+  background-color: rgb(255, 255, 255);
+}
+
 .containerGeneral {
   background-color: rgb(255, 255, 255);
   padding: 30px;
+  margin-left: 50px;
   display: flex;
   justify-content: center;
 }
@@ -226,3 +231,7 @@
 .datosSvg{
   font-size:x-large;
 }
+
+/*.navLateral{
+  
+}*/
