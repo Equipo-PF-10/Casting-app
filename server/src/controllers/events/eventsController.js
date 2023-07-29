@@ -68,6 +68,10 @@ const createEvent = async (data) => {
         "Has alcanzado el límite de eventos que puedes crear con tu plan actual."
       );
     }
+    // Añadimos la fecha de creación y expiración al objeto data.
+    data.creationDate = new Date();
+    data.expirationDate = new Date(data.creationDate);
+    data.expirationDate.setFullYear(data.expirationDate.getFullYear() + 1);
 
     const event = await Event.create(data);
     company.numberPosts += 1;
