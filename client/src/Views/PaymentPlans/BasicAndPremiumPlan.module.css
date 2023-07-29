@@ -134,11 +134,14 @@
     justify-content: center;
 }
 .bodyRight button{
-    background-color: white;
+    background-color: rgba(79, 153, 203, 0.226);
     color: black;
     font-size: 20px;
     width: 20vh;
     margin-left: 100px;
+    &:hover{
+        background-color: white;
+    }
 }
 .bodyRight img{
     margin-top: 160px;

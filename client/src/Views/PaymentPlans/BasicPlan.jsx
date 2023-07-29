@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./NormalPlan.module.css";
+import styles from "./BasicAndPremiumPlan.module.css";
 import { Link } from "react-router-dom";
 import CardMP from "./CardMP";
 import CardPaypal from "./CardPaypal";
 import vector from "../../../assets/PNG/PagoVector.png";
 
-export default function NormalPlan () {
+export default function BasicPlan () {
   const text_card_mp = {
     text: "¡Hacer tu pago es rápido y seguro con Mercado Pago! Con Mercado Pago, podrás realizar transacciones de forma sencilla y protegida, garantizando una experiencia de pago confiable en nuestra plataforma. ¡Empieza a aprovechar al máximo nuestra app y desbloquea un mundo de talento y oportunidades!"
   }
@@ -66,12 +66,12 @@ export default function NormalPlan () {
                 </div>
                 <div className={styles.bodyCenter}>
                   <div className={styles.bodyCenterPlan}>
-                    <h2>Plan Seleccionado: <span>Plan Normal</span></h2>
+                    <h2>Plan Seleccionado: <span>Plan Básico</span></h2>
                   </div>
                   <hr />
                   <div className={styles.bodyCenterIntro}>
-                    <p>Nuestro Plan Normal es una opción intermedia que ofrece una experiencia enriquecedora para las empresas que buscan talentos emergentes. Con un enfoque en la eficiencia y la calidad, este plan brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
-                    <p>Caracteristicas del Plan Normal: </p>
+                    <p>Nuestro Plan Básico es una opción intermedia que ofrece una experiencia enriquecedora para las empresas que buscan talentos emergentes. Este plan brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
+                    <p>Caracteristicas del Plan Básico: </p>
                   </div>
                   <div className={styles.bodyCenterFeatures}>
                     <ul>

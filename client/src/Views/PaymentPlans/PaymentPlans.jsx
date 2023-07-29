@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styles from "./PaymentPlans.module.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function PaymentPlans() {
+  const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState("");
   
   // Función para manejar el clic en una card
@@ -14,16 +16,18 @@ export default function PaymentPlans() {
     // Redirigir a una URL específica para cada plan.
     switch (selectedPlan) {
       case 'Free':
-        // Lógica para el plan Free
+        // Lógica para el plan Free (Mostrar el modal donde se pueda adquirir el plan)
+        
         break;
       case 'Básico':
         // Lógica para el plan Básico
+        navigate("/company/plans/basico");
         break;
       case 'Premium':
         // Lógica para el plan Premium
+        navigate("/company/plans/premium");
         break;
       default:
-        // Lógica por defecto si no se ha seleccionado ningún plan
         break;
     }
   };
@@ -32,7 +36,6 @@ export default function PaymentPlans() {
     <div className={styles.container}>
       <div className={styles.topSection}>
         <div className={styles.logo}>
-          <Link to={"/"}>
             <svg
               width="200"
               height="100"
@@ -62,11 +65,15 @@ export default function PaymentPlans() {
                 />
               </defs>
             </svg>
-          </Link>
         </div>
         <div className={styles.head}>
           <h3>Escoge uno de nuestros planes para tu Empresa</h3>
           <hr />
+        </div>
+        <div className={styles.buttonBack}>
+        <Link to={"/home/company"}>
+          <button>Regresar</button>
+        </Link>
         </div>
       </div>
       <div className={styles.middleSection}>

@@ -6,7 +6,7 @@
 .topSection {
   height: 10vh;
   display: grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 10% 70% 20%;
   justify-items: center;
   align-items: center;
 }
@@ -18,14 +18,14 @@
 }
 .head {
   min-width: 600px;
-  margin-right: 150px;
+  margin-left: 150px;
 }
 .head hr{
   color: var(--color-primario);
   width: 100vh;
   margin: auto;
   border-top: 4px solid;
-  margin-right: 30px;
+  margin-left: 30px;
 }
 .middleSection {
   height: 35vh;
@@ -51,7 +51,6 @@
     margin-bottom: 20px; 
 }
 
-
 .text {
   height: 8vh;
   grid-template-rows: 50% 50%;
@@ -72,11 +71,12 @@
 }
 .titles {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 27% 27% 27%;
   justify-items: center;
+  justify-content: center;
   align-items: center;
   height: 5vh;
-  margin-left: 20px;
+  margin-right: 20px;
   font-size: 30px;
   letter-spacing: 5px;
 }
@@ -84,11 +84,13 @@
 .bottomSection {
   height: 42vh;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 27% 27% 27%;
   justify-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .text_margin{
-    margin-left: 40px;
+    margin-left: 20px;
 }
 .card {
   width: 300px;
@@ -165,14 +167,31 @@
 }
 
 .bottom button {
-  height: 35px;
-  font-size: 20px;
+  height: 40px;
+  font-size: 23px;
   text-align: center;
   padding-bottom: 3px;
   background-color: var(--color-success);
+  margin-bottom: 10px;
   &:hover{
     color: var(--color-success);
     background-color: white;
     border: 1px solid var(--color-success);
+  }
+}
+
+.buttonBack {
+  display: flex;
+  justify-content: end;
+}
+
+.buttonBack button {
+  background-color: rgba(79, 153, 203, 0.226);
+  color: black;
+  font-size: 20px;
+  width: 20vh;
+  margin-left: 100px;
+  &:hover{
+      background-color: white;
   }
 }
