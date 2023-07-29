@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("DisableEvent",{
+  return sequelize.define("DisableEvent",{
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,

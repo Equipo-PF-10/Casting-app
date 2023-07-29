@@ -19,26 +19,34 @@ const basename = path.basename(__filename);
 
 const modelDefiners = [];
 
-//Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
+// Leemos todos los archivos de la carpeta Models, los requerimos y agregamos las funciones al arreglo modelDefiners
 fs.readdirSync(path.join(__dirname, "/models"))
   .filter(
     (file) =>
       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
   )
   .forEach((file) => {
-    modelDefiners.push(require(path.join(__dirname, "/models", file)));
+    const modelDefiner = require(path.join(__dirname, "/models", file));
+    modelDefiners.push(modelDefiner(sequelize)); // Invocamos el constructor del modelo con sequelize
   });
 
-// Injectamos la conexion (sequelize) a todos los modelos
-modelDefiners.forEach((model) => model(sequelize));
+// Creamos un objeto para almacenar los modelos y sus asociaciones
+const models = {};
+
+// Injectamos la conexion (sequelize) a todos los modelos llamando a las funciones en el arreglo modelDefiners
+modelDefiners.forEach((model) => {
+  models[model.name] = model;
+});
+
 // Capitalizamos los nombres de los modelos ie: product => Product
-let entries = Object.entries(sequelize.models);
+let entries = Object.entries(models);
 let capsEntries = entries.map((entry) => [
   entry[0][0].toUpperCase() + entry[0].slice(1),
   entry[1],
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
+// Asociaciones entre modelos
 const {
   Applied,
   Company,
@@ -51,7 +59,11 @@ const {
   Talent,
   TalentSelectedAsFav,
   ToContact,
-} = sequelize.models;
+  Payment
+} = models;
+
+
+
 
 //* Relaciones de tablas de Empresas************************************************
 Company.hasMany(Event, { foreignKey: "CompanyId" });
@@ -80,6 +92,6 @@ Event.hasMany(Applied, { foreignKey: "EventId" });
 Applied.belongsTo(Event);
 
 module.exports = {
-  ...sequelize.models,
+  ...models,
   conn: sequelize,
 };

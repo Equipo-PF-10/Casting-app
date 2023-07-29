@@ -1,4 +1,4 @@
-const { Event, DisableEvent } = require("../../db");
+const { Event, DisableEvent, Company } = require("../../db");
 const { Op } = require("sequelize");
 
 // Función controller que retorna los eventos de la database.
@@ -42,39 +42,66 @@ const getEventById = async (id) => {
   }
 };
 
-// Función controller que crea un nuevo evento en la database.
-const createEvent = async (
-  name,
-  image,
-  expirationDate,
-  shortDescription,
-  description,
-  active,
-  ubication,
-  habilityRequired,
-  salary,
-  contact,
-  CompanyId
-) => {
+const createEvent = async (data) => {
   try {
-    const event = await Event.create({
-      name: name,
-      image: image,
-      expirationDate,
-      shortDescription: shortDescription,
-      description: description,
-      active,
-      ubication: ubication,
-      habilityRequired: habilityRequired,
-      salary: salary,
-      contact: contact,
-      CompanyId: CompanyId,
-    });
+    // Obtener la compañía asociada al evento
+    const company = await Company.findByPk(data.CompanyId);
+
+    if (!company) {
+      throw new Error('La compañía asociada al evento no existe.');
+    }
+
+    // Verificar si el planCondition es mayor que 0
+    if (company.planCondition <= 0) {
+      throw new Error('No tienes publicaciones disponibles en tu plan.');
+    }
+    
+    // Restar 1 a las publicaciones permitidas del planCondition de la compañía
+    company.planCondition -= 1;
+    await company.save();
+
+    // Crear el evento
+    const event = await Event.create(data);
     return event;
   } catch (error) {
-    console.log({ error: error.message });
+
+    throw new Error(error.message);
+
   }
 };
+// // Función controller que crea un nuevo evento en la database.
+// const createEvent = async (
+//   name,
+//   image,
+//   expirationDate,
+//   shortDescription,
+//   description,
+//   active,
+//   ubication,
+//   habilityRequired,
+//   salary,
+//   contact,
+//   CompanyId
+// ) => {
+//   try {
+//     const event = await Event.create({
+//       name: name,
+//       image: image,
+//       expirationDate,
+//       shortDescription: shortDescription,
+//       description: description,
+//       active,
+//       ubication: ubication,
+//       habilityRequired: habilityRequired,
+//       salary: salary,
+//       contact: contact,
+//       CompanyId: CompanyId,
+//     });
+//     return event;
+//   } catch (error) {
+//     console.log({error: error.message})
+//   }
+// };
 
 // Función controller para eliminar un evento de la base de datos según el id pasado.
 const deleteEventById = async (id) => {

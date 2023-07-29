@@ -15,6 +15,7 @@ const mainRouter = Router();
 //* Rutas de Empresas
 mainRouter.use("/companies/favorites", talentsFavoriteRouter);
 mainRouter.use("/companies", companyRouter);
+mainRouter.use("/:companyId/updatePlan", companyRouter);
 
 //? Rutas de Talentos
 mainRouter.use("/talents/favorites", companyFavoriteRouter);

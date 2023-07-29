@@ -1,5 +1,14 @@
 const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
+
+  return sequelize.define("Company",{
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+      allowNull: false,
+    },
+
   sequelize.define(
     "Company",
     {
@@ -16,6 +25,7 @@ module.exports = (sequelize) => {
           return `${this.email}`;
         },
       },
+
 
       logo: {
         type: DataTypes.STRING,
@@ -54,6 +64,23 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
 
+
+    phoneNumber: {                    
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    
+    numberPosts: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    plan: {
+      type: DataTypes.ENUM("BASIC", "PREMIUM", "PRO"),   
+      allowNull: true,
+      defaultValue: "BASIC",
+    },
+
       linkedin: {
         type: DataTypes.STRING,
         allowNull: true,
@@ -63,6 +90,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+
 
       password: {
         type: DataTypes.STRING,
