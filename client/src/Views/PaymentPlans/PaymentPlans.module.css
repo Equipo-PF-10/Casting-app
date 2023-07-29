@@ -80,6 +80,7 @@
   font-size: 30px;
   letter-spacing: 5px;
 }
+
 .bottomSection {
   height: 42vh;
   display: grid;
@@ -87,7 +88,7 @@
   justify-items: center;
 }
 .text_margin{
-    margin-left: 35px;
+    margin-left: 40px;
 }
 .card {
   width: 300px;
@@ -123,6 +124,7 @@
   color: var(--color-success);
   font-size: 28px;
   border-bottom: 3px solid var(--color-success);
+  
 }
 
 .gratis {
