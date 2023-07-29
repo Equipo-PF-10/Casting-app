@@ -1,30 +1,25 @@
 import styles from "./NavBarLateral.module.css"
 import {NavLink} from "react-router-dom"
+import {useSelector} from "react-redux"
 
-const NavBarLateral = (props) => {
+const NavBarLateral = () => {
 
-    const {root} = props
+    const root = useSelector((state) => state. userType)
 
-    //Home
     
     let homePath = "";
+    let perfilPath = "";
+    let formPath = "";
 
     if(root === "1"){
         homePath = "/home/talent"
+        perfilPath = "/model/profile"
+        formPath= "/form/talent"
     } else if (root === "2"){
         homePath = "/home/company"
-    }
-
-    //Perfil
-
-    let perfilPath = "";
-
-    if(root === "1"){
-        perfilPath = "/model/profile"
-    } else if (root === "2"){
         perfilPath = "/company/profile"
+        formPath = "/form/company"
     }
-
 
 
     return(
@@ -72,7 +67,7 @@ const NavBarLateral = (props) => {
                         </div>
                     </NavLink>
                 </article>
-                <NavLink to="/" className={styles.link}>
+                <NavLink to={formPath} className={styles.link}>
                     <article className={styles.icons1}>
                         <svg width="30" height="55" viewBox="0 0 58 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M28.9731 37.5653C23.3941 37.5653 18.8662 33.0374 18.8662 27.4584C18.8662 21.8794 23.3941 17.3516 28.9731 17.3516C34.5521 17.3516 39.08 21.8794 39.08 27.4584C39.08 33.0374 34.5521 37.5653 28.9731 37.5653ZM28.9731 21.3943C25.6311 21.3943 22.909 24.1164 22.909 27.4584C22.909 30.8004 25.6311 33.5226 28.9731 33.5226C32.3151 33.5226 35.0372 30.8004 35.0372 27.4584C35.0372 24.1164 32.3151 21.3943 28.9731 21.3943Z" fill="#4B31A1"/>
