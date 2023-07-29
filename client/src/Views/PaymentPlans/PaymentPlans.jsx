@@ -129,7 +129,7 @@ export default function PaymentPlans() {
           }`} onClick={() => handleCardClick('Básico')}>
           <p>El plan Normal brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
           <ul>
-            <li>Publica hasta 30 eventos.</li>
+            <li>Publica hasta 20 eventos.</li>
             <li>Recibe notificaciones en tiempo real cuando nuevos talentos postulen a tus vacantes.</li>
           </ul>
           <div className={styles.precios}>
