@@ -3,37 +3,19 @@ import Styles from "./FormEmpresas.module.css"
 import axios from "axios"
 import validationEmpresas from "./validationEmpresas"
 import {NavLink} from "react-router-dom"
-import Select from "react-select"
 import { useSelector } from "react-redux"
+import Cloudinary from "../Cloudinary/Cloudinary"
 
 const FormEmpresa = () => {
 
-    const userID = useSelector((state) => state.userID) 
+    const idUser = useSelector((state) => state.idUser);
 
-    const URL = `http://localhost:3001/company/${userID}`
+    const imageURL = useSelector((state) => state.imageUrl)
 
-    const uploadPreset = "casting_app"
-    const cloudName = "dntrnqcxe";
-
-    const URLCloud = `https://api.cloudinary.com/v1_1/${cloudName}/upload`
-
-    const optionsindustryMain = [
-        { value: 'Actuación', label: 'Actuación' },
-        { value: 'Animador/a', label: 'Animador/a' },
-        { value: 'Bailarín/a', label: 'Bailarín/a' },
-        { value: 'Blogger', label: 'Blogger' },
-        { value: 'Cantante', label: 'Cantante' },
-        { value: 'DJ', label: 'DJ' },
-        { value: 'Influencer', label: 'Influencer' },
-        { value: 'Locutor/a', label: 'Locutor/a' },
-        { value: 'Mago/a', label: 'Mago/a' },
-        { value: 'Músico/a', label: 'Músico/a' },
-        { value: 'Modelo', label: 'Modelo' },
-        { value: 'Presentador/a', label: 'Presentador/a' },
-        { value: 'Promotor/a', label: 'Promotor/a' },
-      ];
+    const URL = "http://localhost:3001/forms/companies"
 
     const initialState = {
+        id: "",
         name: "",
         password: "",
         email: "",
@@ -42,15 +24,13 @@ const FormEmpresa = () => {
         twitter: "",
         instagram: "",
         linkedin: "",
-        num: "",
+        phoneNumber: "",
         country: "",
         domain: "",
-        industryMain: [],
+        industryMain: "",
     }
 
     const [input, setInput] = useState(initialState)
-
-    const [orientaciones, setOrientaciones] = useState([])
 
     const [error, setError] = useState({})
 
@@ -63,42 +43,16 @@ const FormEmpresa = () => {
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
-            if(input.image){
-                await submitImage();
-            }
-            await axios.put(URL, input)
+            await axios.patch(URL, input)
             setInput(initialState)
         } catch (error) {
             console.log({error: error.message})
         }
     }
+    
+    input.id = idUser;
 
-    const handleChangeSelect = (selectedOptions) => {
-        setOrientaciones(selectedOptions);
-      };
-
-      const habilityValue = orientaciones.map(item => item.value);
-
-      input.industryMain = habilityValue.join(", ");
-
-    //Cloudinary
-
-    const submitImage = async () => {
-        const formData = new FormData();
-        formData.append("file", input.image);
-        formData.append("upload_preset", uploadPreset);
-        formData.append("cloud_name", cloudName);
-        
-        try {
-          const response = await axios.post(URLCloud, formData);
-          const responseData = response.data;
-          console.log(responseData);
-          console.log(responseData.url)
-          setInput({...input, image: responseData.url})
-        } catch (error) {
-          console.log({ error });
-        }
-    };
+    input.logo = imageURL;
 
     return(
         <section className={Styles.section}>
@@ -131,7 +85,7 @@ const FormEmpresa = () => {
                 <div className={Styles.div}>
                     <section className={Styles.chart}>
                         <article className={Styles.img}>
-                                <svg width="187" height="187" viewBox="0 0 187 187" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                {input.logo ? <img src={imageURL} alt="Foto de Perfil" /> : <svg width="187" height="187" viewBox="0 0 187 187" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g filter="url(#filter0_d_497_36)">
                                 <g clipPath="url(#clip0_497_36)">
                                 <rect x="3" y="1" width="181" height="181" rx="90.5" fill="#F5F5F5"/>
@@ -155,26 +109,19 @@ const FormEmpresa = () => {
                                 <rect x="3" y="1" width="181" height="181" rx="90.5" fill="white"/>
                                 </clipPath>
                                 </defs>
-                                </svg>
+                                </svg>}
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="logo" className={Styles.text}>Subir Imágen</label>
-                            <input type="text" name="logo" id="logo" value={input.image} onChange={handleChange}/>
+                            <Cloudinary/>
                         </article>
                         <article className={Styles.coolinput}>
-                                    <label htmlFor="" className={Styles.text}>Orientación artística</label>
-                                    <Select
-                                    isMulti 
-                                    options={optionsindustryMain}
-                                    className={Styles.select}
-                                    value={orientaciones}
-                                    onChange={handleChangeSelect}
-                                    name="industryMain"/>
+                            <label htmlFor="industryMain" className={Styles.text}>Industria Principal</label>
+                            <input type="text" name="industryMain" id="industryMain" value={input.industryMain}  onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="logo" className={Styles.text}>Página Web</label>
                             <input type="text" name="domain" id="domain" value={input.domain}  onChange={handleChange}/>
-
                         </article>
                     <button type="submit" className={Styles.btn}>Enviar Datos</button>
                     </section>
@@ -192,8 +139,8 @@ const FormEmpresa = () => {
                         </svg>
                     </NavLink>
                 <article className={Styles.coolinput}>
-                        <label htmlFor="num" className={Styles.text}>Número Telefónico</label>
-                        <input type="text" name="num" id="num" value={input.num} onChange={handleChange}/>
+                        <label htmlFor="phoneNumber" className={Styles.text}>Número Telefónico</label>
+                        <input type="text" name="phoneNumber" id="phoneNumber" value={input.phoneNumber} onChange={handleChange}/>
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="" className={Styles.text}>Facebook</label>
