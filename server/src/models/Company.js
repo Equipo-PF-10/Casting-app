@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 //const sequelize = new Sequelize();
 module.exports = (sequelize) => {
-  sequelize.define("Company",{
+  return sequelize.define("Company",{
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -88,7 +88,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-
+    
+    numberPosts: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
     plan: {
       type: DataTypes.ENUM("BASIC", "PREMIUM", "PRO"),   
       allowNull: true,

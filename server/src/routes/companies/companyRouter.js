@@ -7,8 +7,8 @@ const {
   handlerGetCompanyById,
   handlerDeleteCompanyById,
 } = require("../../handlers/companies/companiesHandler");
-
 const companyRouter = Router();
+const { updateCompanyConditionPlan } = require('../../handlers/companies/conditionPlanHandler');
 
 //* Esta ruta busca todas las empresas por una ubicación especifica.
 companyRouter.get("/location", handlerSearchByLocation);
@@ -27,5 +27,8 @@ companyRouter.delete("/:id", handlerDeleteCompanyById);
 
 //* Esta ruta elimina por completo una compañia por id en la base de datos.
 companyRouter.get("/", handlerGetAllCompanies);
+
+//* Ruta para actualizar el conditionPlan de la compañía
+companyRouter.put('/:companyId/updatePlan', updateCompanyConditionPlan);
 
 module.exports = companyRouter;

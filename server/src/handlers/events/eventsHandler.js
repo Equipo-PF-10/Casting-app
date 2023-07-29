@@ -100,8 +100,9 @@ const handlerCreateEvent = async (req, res) => {
   }
 
   // Transforma CompanyId de String a UUID
-
-  const createdEvent = await createEvent(
+try {
+  
+  const createdEvent = await createEvent({
     name,
     image,
     expirationDate,
@@ -113,9 +114,13 @@ const handlerCreateEvent = async (req, res) => {
     salary,
     contact,
     CompanyId
-  );
+  });
 
   res.status(200).json(createdEvent);
+
+} catch (error) {
+  res.status(500).json({ error: error.message });
+}
 };
 
 // Función handler para borrar un evento.
