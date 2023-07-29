@@ -7,7 +7,8 @@ const { log } = require("console");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DB_DEPLOY } =
   process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
   {
     logging: false,
     native: false,
@@ -41,50 +42,42 @@ sequelize.models = Object.fromEntries(capsEntries);
 const {
   Applied,
   Company,
-  CompanySelectTalentAsFav,
   CompanySelectedAsFav,
   DisableCompany,
   DisableEvent,
+  DisableTalent,
   Event,
   Messenger,
   Talent,
-  TalentApplied,
-  TalentSelectCompanyAsFav,
   TalentSelectedAsFav,
-  ToContact
+  ToContact,
 } = sequelize.models;
-
 
 //* Relaciones de tablas de Empresas************************************************
 Company.hasMany(Event, { foreignKey: "CompanyId" });
 Event.belongsTo(Company);
 
-Company.belongsToMany(TalentSelectedAsFav, { through: "CompanySelectTalentAsFav"  });
-TalentSelectedAsFav.belongsToMany(Company, { through: "CompanySelectTalentAsFav"  });
+Company.belongsToMany(TalentSelectedAsFav, {
+  through: "CompanySelectTalentAsFav",
+});
+TalentSelectedAsFav.belongsToMany(Company, {
+  through: "CompanySelectTalentAsFav",
+});
 
 //? Relaciones de tablas de Talentos*************************************************
 Talent.belongsToMany(Applied, { through: "TalentApplied" });
 Applied.belongsToMany(Talent, { through: "TalentApplied" });
 
-Talent.belongsToMany(CompanySelectedAsFav, { through: "TalentSelectCompanyAsFav" });
-CompanySelectedAsFav.belongsToMany(Talent, { through: "TalentSelectCompanyAsFav" });
+Talent.belongsToMany(CompanySelectedAsFav, {
+  through: "TalentSelectCompanyAsFav",
+});
+CompanySelectedAsFav.belongsToMany(Talent, {
+  through: "TalentSelectCompanyAsFav",
+});
 
 //! Relacion de tabla de Eventos con Postulaciones************************************
-Event.hasMany(Applied, { foreignKey : "EventId" });
+Event.hasMany(Applied, { foreignKey: "EventId" });
 Applied.belongsTo(Event);
-
-
-
-async function syncDB(){
-  try {
-    await sequelize.sync({ force: false });
-    console.log("All models were synchronized successfully.");
-  } catch (error) {
-    console.log({error: error.message});
-  }
-}
-
-syncDB();
 
 module.exports = {
   ...sequelize.models,

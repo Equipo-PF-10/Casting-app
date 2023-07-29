@@ -1,66 +1,96 @@
-const { Talent, Company, CompanySelectTalentAsFav,TalentSelectedAsFav } = require("../../db");
+const {
+  Talent,
+  Company,
+  CompanySelectTalentAsFav,
+  TalentSelectedAsFav,
+} = require("../../db");
 
-
-// talento agrega una empresa como favorita
-const createFavoriteTalent = async (talentId, companyId) => {
+// Empresa agrega a un talento como favorito.
+const createFavoriteTalent = async (TalentId, CompanyId) => {
   try {
-    const company = await Company.findByPk(companyId);
+    const company = await Company.findByPk(CompanyId);
     if (!company) {
-      throw new Error("Compañia no encontrada.");
+      throw new Error(error.message);
     }
-    const talentoEncontrado = await Talent.findByPk(talentId);
+    const talentoEncontrado = await Talent.findByPk(TalentId);
     if (!talentoEncontrado) {
       throw new Error("Empresa no encontrada.");
     }
-    const talentoFavCreado = await TalentSelectedAsFav.create(talentoEncontrado.dataValues);  
-        
-    const interCompañiaTale = await CompanySelectTalentAsFav.create({TalentosFavoritoId: talentoFavCreado.dataValues.id, EmpresaId:companyId });
+    const talentoFavCreado = await TalentSelectedAsFav.create(
+      talentoEncontrado.dataValues
+    );
+
+    const interCompanyTale = await CompanySelectTalentAsFav.create({
+      TalentSelectedAsFavId: talentoFavCreado.dataValues.id,
+      CompanyId: CompanyId,
+    });
     return talentoFavCreado;
   } catch (error) {
-    throw new Error("Error al agregar la empresa como favorita al talento.");
+    throw new Error(error.message);
   }
 };
 
-//! *****************************************************************************************
-//! Julio Tiene Pendiente terminar esta ruta*************************************************
-//! *****************************************************************************************
-const getFavoritesTalentsById = async (EmpresaId) => {
+// Función controller para borrar talento favorito.
+const deleteFavoriteTalent = async (TalentId, CompanyId) => {
   try {
+    const deletedTalent = await CompanySelectTalentAsFav.destroy({
+      where: {
+        TalentSelectedAsFavId: TalentId,
+        CompanyId: CompanyId,
+      },
+    });
 
-    const julio = await TalentSelectedAsFav.findAll();
-    console.log(julio);
-    if (!julio) {
-      throw new Error("Compañia no encontrada.");
+    return deletedTalent;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller que devuelve todos los talentos favoritos de una empresa.
+const getFavoritesTalentsById = async (id) => {
+  try {
+    const company = await Company.findByPk(id);
+
+    if (!company) {
+      throw new Error("Empresa no encontrada.");
     }
-    
-      } catch (error) {
-        throw new Error("Error al agregar la empresa como favorita al talento.");
-      }
-    };
 
+    const favTalents = await CompanySelectTalentAsFav.findAll({
+      where: { CompanyId: id },
+    });
 
-// async function obtenerTalentosFavoritosDeEmpresa(idEmpresa) {
-//   try {
-//     const empresa = await Company.findByPk(idEmpresa, {
-//       include: {
-//         model: TalentosFavoritos,
-//         attributes: ["description"],
-//       },
-//     });
+    const talentIds = favTalents.map(
+      (favTalent) => favTalent.TalentSelectedAsFavId
+    );
+    const talents = await Promise.all(
+      talentIds.map((talentId) => Talent.findByPk(talentId))
+    );
 
-//     if (!empresa) {
-//       throw new Error('Empresa no encontrada');
-//     }
+    return talents;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
-//     return empresa.TalentosFavoritos;
-//   } catch (error) {
-//     throw new Error('Error al obtener talentos favoritos de la empresa: ' + error.message);
-//   }
-// }
+// Función controller para obtener Talento Favorito por nombre.
+const getByName = async (name, id) => {
+  try {
+    const nameToLower = name.toLowerCase();
+    const favTalents = await getFavoritesTalentsById(id);
 
+    const filteredTalents = await favTalents.filter((talent) =>
+      talent.name.toLowerCase().includes(nameToLower)
+    );
 
+    return filteredTalents;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 module.exports = {
   createFavoriteTalent,
-  getFavoritesTalentsById
+  getFavoritesTalentsById,
+  getByName,
+  deleteFavoriteTalent,
 };
