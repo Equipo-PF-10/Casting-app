@@ -23,10 +23,10 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/model/register" element={<RegisterModel />} />
-        <Route path="/model/profile" element={<ProfileModel />} />
+        <Route path="/model/profile/:id" element={<ProfileModel />} />
         <Route path="/model/search/:id" element={<TalentSearch />} />
         <Route path="/company/register" element={<RegisterCompany />} />
-        <Route path="/company/profile" element={<ProfileCompany />} />
+        <Route path="/company/profile/:id" element={<ProfileCompany />} />
         <Route path="/company/search/:id" element={<CompanySearch />} />
         <Route path="/company/plans" element={<PaymentPlans />} />
         <Route path="/company/create" element={<EventForm />} />

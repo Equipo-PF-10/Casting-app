@@ -1,30 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import style from "./ProfileCompany.module.css";
-import { clearDetail, get_company_by_id } from "../../redux/actions";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+
+
+
 
 const profileCompany = () => {
-  let { id } = useParams();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(get_company_by_id(id));
-    return () => dispatch(clearDetail());
-  }, []);
-
-  const detailCompany=useSelector((state) => state.companyDetail);
-  //console.log(detailCompany);
-
   return (
     <div className={style.containerGeneral}>
-      {detailCompany.length > 0 ? (
         <div>
           <div className={style.divIzquierdo}>
             {/*carta con foto y descripcion*/}
             <div className={style.cardContainer}>
               <div className={style.image}>
-                <img src={detailCompany.image} alt={detailCompany.name} />
+                <img src='' alt='' />
               </div>
               <div className={style.textoCard}>
                 <h2 className={style.nombre}>Empresa</h2>
@@ -221,9 +209,6 @@ const profileCompany = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <div>Loading</div>
-      )}
     </div>
   );
 };
