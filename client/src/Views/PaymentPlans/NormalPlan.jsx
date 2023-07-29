@@ -1,12 +1,21 @@
 import React from "react";
 import styles from "./NormalPlan.module.css";
 import { Link } from "react-router-dom";
+import CardMP from "./CardMP";
+import CardPaypal from "./CardPaypal";
+import vector from "../../../assets/PNG/PagoVector.png";
 
 export default function NormalPlan () {
+  const text_card_mp = {
+    text: "¡Hacer tu pago es rápido y seguro con Mercado Pago! Con Mercado Pago, podrás realizar transacciones de forma sencilla y protegida, garantizando una experiencia de pago confiable en nuestra plataforma. ¡Empieza a aprovechar al máximo nuestra app y desbloquea un mundo de talento y oportunidades!"
+  }
+  const text_card_paypal = {
+    text: "Sigue los sencillos pasos de pago a través de Paypal, una plataforma segura y confiable. Simplemente elige tu plan, inicia sesión en tu cuenta Paypal y completa la transacción en unos pocos clics. ¡Comienza a descubrir talentos excepcionales hoy mismo y lleva tu proyecto al siguiente nivel con facilidad y comodidad!"
+  }
     return (
         <div className={styles.container}>
             <div className={styles.headSection}>
-            <Link to={"/"}>
+            <Link to={"/home/company"}>
             <svg
               width="200"
               height="100"
@@ -46,36 +55,41 @@ export default function NormalPlan () {
                     </div>
                     <div className={styles.bodyLeftPlans}>
                     <div className={styles.bodyLeftMp}>
-                        <div className={styles.card}>
-                            <div>
-                                <h3>MERCADO PAGO</h3>
-                            </div>
-                            <hr />
-                            <p>
-                            ¡Hacer tu pago es rápido y seguro con Mercado Pago!
-                            Con Mercado Pago, podrás realizar transacciones de forma sencilla y protegida, garantizando una experiencia de pago confiable en nuestra plataforma. ¡Empieza a aprovechar al máximo nuestra app y desbloquea un mundo de talento y oportunidades!
-                            </p>
-                            <button>Pagar</button>
-                        </div>
+                      <CardMP text_card_mp={text_card_mp}/>
                     </div>
                     <div className={styles.bodyLeftPaypal}>
                     <div className={styles.bodyLeftMp}>
-                    <div className={styles.card}>
-                            <div>
-                                <h3>PAYPAL</h3>
-                            </div>
-                            <hr />
-                            <p>
-                            Sigue los sencillos pasos de pago a través de Paypal, una plataforma segura y confiable. Simplemente elige tu plan, inicia sesión en tu cuenta Paypal y completa la transacción en unos pocos clics. ¡Comienza a descubrir talentos excepcionales hoy mismo y lleva tu proyecto al siguiente nivel con facilidad y comodidad!
-                            </p>
-                            <button>Pagar</button>
-                        </div>
+                      <CardPaypal text_card_paypal={text_card_paypal}/>
                     </div>
                     </div>
                     </div>
                 </div>
-                <div className={styles.bodyCenter}></div>
-                <div className={styles.bodyRight}></div>
+                <div className={styles.bodyCenter}>
+                  <div className={styles.bodyCenterPlan}>
+                    <h2>Plan Seleccionado: <span>Plan Normal</span></h2>
+                  </div>
+                  <hr />
+                  <div className={styles.bodyCenterIntro}>
+                    <p>Nuestro Plan Normal es una opción intermedia que ofrece una experiencia enriquecedora para las empresas que buscan talentos emergentes. Con un enfoque en la eficiencia y la calidad, este plan brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
+                    <p>Caracteristicas del Plan Normal: </p>
+                  </div>
+                  <div className={styles.bodyCenterFeatures}>
+                    <ul>
+                      <li>Tiene la posibilidad de publicar hasta 20 oportunidades laborales para empezar a dar a conocer tu Empresa.</li>
+                      <li>Recibe alertas por correo electrónico cuando se postulen candidatos a tus empleos.</li>
+                      <li>Explora una variada y creciente base de datos de talentos emergentes, lo que les permite encontrar perfiles que se ajusten a sus requisitos específicos.</li>
+                    </ul>
+                  </div>
+                  <div className={styles.bodyCenterCost}>
+                    <h2>Costo: <span>$52.999</span></h2>
+                  </div>
+                </div>
+                <div className={styles.bodyRight}>
+                  <Link to={"/company/plans"}>
+                    <button>Regresar</button>
+                  </Link>
+                <img style={{ width: '300px'}} src={vector} alt="Vector Img" />
+                </div>
             </div>
 
         </div>
