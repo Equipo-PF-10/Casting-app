@@ -1,4 +1,6 @@
-// import React from 'react';
+import React from 'react';
+ import './sendContactTalentModule.css'
+
 
 const sendPersonalized = () => {
   const handleSubmit = async (event) => {
@@ -14,7 +16,7 @@ const sendPersonalized = () => {
 
     if (response.ok) {
       event.target.reset();
-      alert('Gracias por contactarte con CastingAPP, te responderemos a la brevedad');
+      alert('Mensaje enviado!!');
     }
   };
 
