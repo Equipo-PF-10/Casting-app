@@ -1,9 +1,7 @@
 const { Event, DisableEvent } = require("../../db");
 const { Op } = require("sequelize");
 
-
 // Función controller que retorna los eventos de la database.
-
 async function getAllEvents(name) {
   try {
     const allEvents = await Event.findAll();
@@ -13,16 +11,7 @@ async function getAllEvents(name) {
   }
 }
 
-
-// const getAllEvents = async () => {
-//   try {
-//     const allEvents = await Event.findAll();
-//     return allEvents;
-//   } catch (error) {
-//     throw new Error(error.message);
-//   }
-// };
-
+// Función controller que retorna evento por nombre.
 const getEventsByName = async (name) => {
   try {
     const foundInDb = await Event.findOne({
@@ -83,13 +72,11 @@ const createEvent = async (
     });
     return event;
   } catch (error) {
-    console.log({error: error.message})
+    console.log({ error: error.message });
   }
 };
 
 // Función controller para eliminar un evento de la base de datos según el id pasado.
-//! No llega el company id al borrado logico
-//! Pierdo el id del evento, porque me asigna un id de deshabilitación
 const deleteEventById = async (id) => {
   try {
     const eventToDelete = await Event.findByPk(id);
@@ -111,6 +98,8 @@ const deleteEventById = async (id) => {
       habilityRequired: eventToDelete.habilityRequired,
       habilitySalary: eventToDelete.habilitySalary,
       contact: eventToDelete.contact,
+      id: eventToDelete.id,
+      CompanyId: eventToDelete.CompanyId,
     });
 
     await eventToDelete.destroy();
@@ -122,8 +111,6 @@ const deleteEventById = async (id) => {
 };
 
 // Función controller para actualizar un evento
-//! Falta poner a funcionar las actualizaciones de los datos de tipo array 
-//! Falta poner a funcionar las fecha de actualización 
 const updateEventById = async (id, updatedData) => {
   try {
     const eventToUpdate = await Event.findByPk(id);
@@ -131,23 +118,28 @@ const updateEventById = async (id, updatedData) => {
     if (!eventToUpdate) {
       throw new Error(`El Evento con ID ${id} no existe`);
     }
-    
-    const updated =await Event.update({"name": `${updatedData.name}`,
-    "image": `${updatedData.image}`,
-    "shortDescription": `${updatedData.shortDescription}`,
-    "description": `${updatedData.description}`,
-    "active": `${updatedData.active}`,
-    "ubication": `${updatedData.ubication}`,
-    //"habilityRequired": `${updatedData.habilityRequired}`,
-    //"salary": `${updatedData.salary}`,
-    "expirationDate": `${updatedData.expirationDate}`,
-    //"contact": `${updatedData.contact}`,
-  }, {
-    where: {
-      id: `${id}`
-    }
-  });
-  
+
+    const updated = await Event.update(
+      {
+        name: `${updatedData.name}`,
+        image: `${updatedData.image}`,
+        shortDescription: `${updatedData.shortDescription}`,
+        description: `${updatedData.description}`,
+        active: `${updatedData.active}`,
+        ubication: `${updatedData.ubication}`,
+        habilityRequired: updatedData.habilityRequired,
+        salary: updatedData.salary,
+        expirationDate: `${updatedData.expirationDate}`,
+        contact: updatedData.contact,
+        updateAt: Date.now(),
+      },
+      {
+        where: {
+          id: `${id}`,
+        },
+      }
+    );
+
     return updated;
   } catch (error) {
     throw new Error(error.message);

@@ -8,7 +8,6 @@ const {
 } = require("../../controllers/events/eventsController");
 
 // Función handler para obtener los eventos.
-
 async function handlerGetAllEvents(req, res) {
   try {
     const { name } = req.query;
@@ -37,26 +36,6 @@ async function handlerGetAllEvents(req, res) {
     return res.status(404).json({ error: error.message });
   }
 }
-
-
-// const handlerGetAllEvents = async (req, res) => {
-//   const { name } = req.query;
-//   try {
-//     if (name) {
-//       const found = await getEventsByName(name);
-
-//       if (!found) {
-//         res.status(400).send("No se ha encontrado el evento con ese nombre.");
-//       }
-//       res.status(200).json(found);
-//     }
-
-//     const events = await getAllEvents();
-//     res.status(200).json(events);
-//   } catch (error) {
-//     res.status(400).json(error.message);
-//   }
-// };
 
 // Función handler para obtener eventos por ID.
 const handlerGetEventById = async (req, res) => {
@@ -93,14 +72,13 @@ const handlerCreateEvent = async (req, res) => {
     CompanyId,
   } = req.body;
 
-  console.log("Body: ", req.body)
+  console.log("Body: ", req.body);
 
   if (!name || !image || !ubication || !habilityRequired) {
     return res.status(400).send("Faltan datos obligatorios");
   }
 
   // Transforma CompanyId de String a UUID
-
   const createdEvent = await createEvent(
     name,
     image,
@@ -138,12 +116,21 @@ const handlerDeleteEventById = async (req, res) => {
 };
 
 // Función handler para modificar un evento
-//! Falta poner a funcionar las actualizaciones de los datos de tipo array 
-//! Falta poner a funcionar las fecha de actualización 
 const handlerUpdateEventById = async (req, res) => {
   const { id } = req.params;
-  const { name, image, detail, active, ubication, habilityRequired, contact,shortDescription,description,salary,expirationDate } =
-    req.body;
+  const {
+    name,
+    image,
+    detail,
+    active,
+    ubication,
+    habilityRequired,
+    contact,
+    shortDescription,
+    description,
+    salary,
+    expirationDate,
+  } = req.body;
 
   try {
     // Verificar primero si el usuario talento existe antes de intentar actualizarlo
@@ -163,14 +150,9 @@ const handlerUpdateEventById = async (req, res) => {
       salary,
       contact,
     };
+    const eventUpdated = await updateEventById(id, updatedData);
 
-//! No llega el company id al borrado logico
-//! Pierdo el id del evento, porque me asigna un id de deshabilitación
-    const eventUpdated=await updateEventById(id, updatedData);
-
-    res
-      .status(200)
-      .send(eventUpdated);
+    res.status(200).send(eventUpdated);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
