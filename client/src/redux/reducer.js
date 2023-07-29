@@ -9,6 +9,7 @@ import {
   GET_ALL_EVENTS,
   GET_ALL_COMPANIES,
   GET_COMPANY_BY_ID,
+  GET_COMPANY_ID,
   CREATE_POSTULANT,
   GET_ALL_POSTULATIONS,
   GET_POSTULANTS_BY_NAME,
@@ -39,6 +40,7 @@ const initialState = {
   getAllCompanies: [],
   companiesFiltered: [],
   companyDetail: [],
+  companyById: {},
   idUser: "", //id del usuario al logearse
   idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
@@ -108,6 +110,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         companyDetail: payload,
+      };
+    case GET_COMPANY_ID:
+      return {
+        ...state,
+        companyById: payload,
       };
     case GET_ALL_EVENTS:
       return {

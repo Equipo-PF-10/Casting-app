@@ -1,13 +1,32 @@
-import React from "react";
+import React, {useEffect} from "react";
 import style from "./ProfileCompany.module.css";
+import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
+import {useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import { get_company_id } from "../../redux/actions";
 
 
 
 
-const profileCompany = () => {
+const profileCompany=() => {
+  const {id}=useParams()
+  //console.log(id);
+  
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(get_company_id(id))
+  },[dispatch])
+  
+  const companyId=useSelector((state) => state.companyById)
+  console.log(companyId);
+
   return (
-    <div className={style.containerGeneral}>
-        <div>
+    <div className={style.fondo}>
+      <div className={style.navLateral}>
+          <NavBarLateral />
+      </div>
+        <div className={style.containerGeneral}>
           <div className={style.divIzquierdo}>
             {/*carta con foto y descripcion*/}
             <div className={style.cardContainer}>
