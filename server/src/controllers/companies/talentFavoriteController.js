@@ -30,39 +30,31 @@ const createFavoriteTalent = async (TalentId, CompanyId) => {
   }
 };
 
-//! *****************************************************************************************
-//! Julio Tiene Pendiente terminar esta ruta*************************************************
-//! *****************************************************************************************
-const getFavoritesTalentsById = async (EmpresaId) => {
+// Función controller que devuelve todos los talentos favoritos de una empresa.
+const getFavoritesTalentsById = async (id) => {
   try {
-    const julio = await TalentSelectedAsFav.findAll();
-    console.log(julio);
-    if (!julio) {
-      throw new Error("Compañia no encontrada.");
+    const company = await Company.findByPk(id);
+
+    if (!company) {
+      throw new Error("Empresa no encontrada.");
     }
+
+    const favTalents = await CompanySelectTalentAsFav.findAll({
+      where: { CompanyId: id },
+    });
+
+    const talentIds = favTalents.map(
+      (favTalent) => favTalent.TalentSelectedAsFavId
+    );
+    const talents = await Promise.all(
+      talentIds.map((talentId) => Talent.findByPk(talentId))
+    );
+
+    return talents;
   } catch (error) {
-    throw new Error("Error al agregar la empresa como favorita al talento.");
+    throw new Error(error.message);
   }
 };
-
-// async function obtenerTalentosFavoritosDeEmpresa(idEmpresa) {
-//   try {
-//     const empresa = await Company.findByPk(idEmpresa, {
-//       include: {
-//         model: TalentosFavoritos,
-//         attributes: ["description"],
-//       },
-//     });
-
-//     if (!empresa) {
-//       throw new Error('Empresa no encontrada');
-//     }
-
-//     return empresa.TalentosFavoritos;
-//   } catch (error) {
-//     throw new Error('Error al obtener talentos favoritos de la empresa: ' + error.message);
-//   }
-// }
 
 module.exports = {
   createFavoriteTalent,

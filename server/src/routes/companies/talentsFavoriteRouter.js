@@ -10,7 +10,7 @@ const companyRouter = Router();
 companyRouter.post("/", handleCreateFavoriteTalent);
 
 //? Esta ruta es para encontrar todos los talentos favoritos de una empresa por Id
-companyRouter.get("/", handleGetFavoritesTalentsById);
+companyRouter.get("/:id", handleGetFavoritesTalentsById);
 
 //! Pendiente Una ruta para buscar los favoritos de una compania por name
 

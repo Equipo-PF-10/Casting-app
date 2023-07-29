@@ -17,13 +17,11 @@ async function handleCreateFavoriteTalent(req, res) {
 // Función que devuelve todos los talentos favoritos de una empresa.
 async function handleGetFavoritesTalentsById(req, res) {
   try {
-    const { CompanyId } = req.body;
-    const result = await getFavoritesTalentsById(CompanyId);
+    const { id } = req.params;
+    const result = await getFavoritesTalentsById(id);
     res.status(200).json(result);
   } catch (error) {
-    res
-      .status(400)
-      .json({ error: "Error al encontrar los talentos favorito." });
+    res.status(400).json({ error: error.message });
   }
 }
 
