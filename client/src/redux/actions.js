@@ -300,7 +300,8 @@ export const get_talent_by_id = (id) => {
   let endpoint = `http://localhost:3001/talents/${id}`;
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(endpoint);
+      const {data}=await axios.get(endpoint);
+      //console.log(data);
       return dispatch({
         type: GET_TALENT_BY_ID,
         payload: data,
