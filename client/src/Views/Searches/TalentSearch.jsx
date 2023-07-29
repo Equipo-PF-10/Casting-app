@@ -21,18 +21,9 @@ const TalentSearch=() => {
   const evento = useSelector((state) => state.eventDetail);
   const eventFilter = useSelector((state) => state.eventsFiltered);
   const postulantCreated = useSelector((state) => state.postulantCreated);
-  //console.log(postulantCreated);
   let messagePostulated;
   if(postulantCreated?.status === "Pendiente") messagePostulated = "Se ha postulado corectamente al evento."
-  /*
-  EventId:"ad470678-9a47-4784-a732-3581a3da605b"
-  active: true
-  changeDate: null
-  date: "2023-07-28"
-  id: "8f1e8364-e28a-4527-99ec-856b7fa82fb7"
-  status: "Pendiente"
-*/
-  
+ 
   const idUser = useSelector((state) => state.idUser);
   
   let idTalent; //Se mantiene el idTalent excepto si refrescan la pagina
