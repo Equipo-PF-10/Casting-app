@@ -7,7 +7,8 @@ export const USER_TYPE = "USER_TYPE";
 export const GET_EVENT_BY_ID = "GET_EVENT_BY_ID";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
-export const GET_COMPANY_BY_ID = "GET_COMPANY_BY_ID";
+export const GET_COMPANY_BY_ID="GET_COMPANY_BY_ID";
+export const GET_COMPANY_ID="GET_COMPANY_ID";
 export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
@@ -146,6 +147,25 @@ export const get_company_by_id = (id) => {
   };
 };
 
+export const get_company_id = (id) => {
+  let endpoint = `http://localhost:3001/companies/${id}`;
+  return async (dispatch) => {
+    try {
+      const {data}=await axios.get(endpoint);
+      //console.log(data + 'soy actions');
+      return dispatch({
+        type: GET_COMPANY_ID,
+        payload: data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al obtener un compañia por ID!",
+      });
+    }
+  };
+};
+
 export const get_event_by_id = (id) => {
   let endpoint = `http://localhost:3001/events/${id}`;
   return async (dispatch) => {
@@ -200,6 +220,7 @@ export const get_all_postulations = (fk) => {
       const response = await axios.get(
         `http://localhost:3001/applied/event/${fk}`
       );
+      console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULATIONS, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -286,11 +307,21 @@ export const create_postulant = (idEvent, idTalent) => {
   };
 };
 
+export const clear_message_postulated = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: CREATE_POSTULANT,
+      payload: payload,
+    });
+  };
+};
+
 export const get_talent_by_id = (id) => {
   let endpoint = `http://localhost:3001/talents/${id}`;
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(endpoint);
+      const {data}=await axios.get(endpoint);
+      //console.log(data);
       return dispatch({
         type: GET_TALENT_BY_ID,
         payload: data,

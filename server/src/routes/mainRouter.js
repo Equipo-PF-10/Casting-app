@@ -5,9 +5,11 @@ const companyRouter = require("./companies/companyRouter");
 const companyFavoriteRouter = require("./talents/companyFavoriteRouter");
 const talentsFavoriteRouter = require("./companies/talentsFavoriteRouter");
 const postulationRouter = require("./talents/postulationRouter");
+const emailRouter = require("./emails/emailRouter");
 const talentFormRouter = require("../routes/forms/talentFormRouter");
-// const companyFormRouter = require("../routes/forms/companyFormRouter");
+const companyFormRouter = require("./forms/companyFormRouter");
 const eventFormRouter = require("../routes/forms/eventFormRouter");
+
 const mainRouter = Router();
 
 //* Rutas de Empresas
@@ -25,8 +27,12 @@ mainRouter.use("/events", eventRouter);
 //todo: Rutas de Postulaciones
 mainRouter.use("/applied", postulationRouter);
 
+//todo: Rutas de Emails
+mainRouter.use("/email", emailRouter);
+
 //!Ruta de Formularios
 mainRouter.use("/forms/talents", talentFormRouter);
-// mainRouter.use("/forms/companies", companyFormRouter);
+mainRouter.use("/forms/companies", companyFormRouter);
 mainRouter.use("/forms/events", eventFormRouter);
+
 module.exports = mainRouter;

@@ -15,6 +15,8 @@ import TalentSearch from "./Views/Searches/TalentSearch";
 import PaymentPlans from "./Views/PaymentPlans/PaymentPlans";
 import Home from "./Views/Home/Home";
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
+import NormalPlan from "./Views/PaymentPlans/NormalPlan";
+import PremiumPlan from "./Views/PaymentPlans/PremiumPlan";
 
 function App() {
   return (
@@ -23,12 +25,14 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/model/register" element={<RegisterModel />} />
-        <Route path="/model/profile" element={<ProfileModel />} />
+        <Route path="/model/profile/:id" element={<ProfileModel />} />
         <Route path="/model/search/:id" element={<TalentSearch />} />
         <Route path="/company/register" element={<RegisterCompany />} />
-        <Route path="/company/profile" element={<ProfileCompany />} />
+        <Route path="/company/profile/:id" element={<ProfileCompany />} />
         <Route path="/company/search/:id" element={<CompanySearch />} />
         <Route path="/company/plans" element={<PaymentPlans />} />
+        <Route path="/company/plans/normal" element={<NormalPlan />} />
+        <Route path="/company/plans/premium" element={<PremiumPlan />} />
         <Route path="/company/create" element={<EventForm />} />
         <Route path="/form/company" element={<FormEmpresa />} />
         <Route path="/form/talent" element={<FormTalento />} />

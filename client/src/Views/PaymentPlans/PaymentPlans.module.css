@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-rows: 10% 35% 8% 5% 42%;
+  grid-template-rows: 6% 28.5% 7% 5% 35% 10%;
   background-color: var(--color-fondo);
 }
 .topSection {
@@ -20,6 +20,13 @@
   min-width: 600px;
   margin-right: 150px;
 }
+.head hr{
+  color: var(--color-primario);
+  width: 100vh;
+  margin: auto;
+  border-top: 4px solid;
+  margin-right: 30px;
+}
 .middleSection {
   height: 35vh;
   display: grid;
@@ -29,17 +36,22 @@
   align-items: center;
 }
 .intro {
-  width: 600px;
-  height: 320px;
+  display: grid;
+  grid-template-rows: 10% 15% 80%;
+  width: 900px;
+  height: 270px;
   border-radius: 20px;
   background-color: white;
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
   text-align:justify;
-  padding: 30px;
+  padding: 20px 40px 40px 40px;
 }
 .intro h4 {
-    margin-left: 200px;
+    text-align: center;
+    margin-bottom: 20px; 
 }
+
+
 .text {
   height: 8vh;
   grid-template-rows: 50% 50%;
@@ -68,6 +80,7 @@
   font-size: 30px;
   letter-spacing: 5px;
 }
+
 .bottomSection {
   height: 42vh;
   display: grid;
@@ -75,23 +88,68 @@
   justify-items: center;
 }
 .text_margin{
-    margin-left: 35px;
+    margin-left: 40px;
 }
 .card {
   width: 300px;
   height: 370px;
   border-radius: 20px;
-  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
   background-color: white;
   margin: 0px 20px 20px 20px;
   padding: 15px;
   text-align: justify;
   border: 3px solid var(--color-primario);
   display: grid;
-  grid-template-rows: 30% 63% 7%;
-  /* justify-items: center;*/
-    
-    justify-items: center;
+  grid-template-rows: 30% 38% 25% 7%;
+  justify-items: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.card h1 {
+  margin-top: 20px;
+}
+
+/* Estilo para resaltar la card seleccionada */
+.selected {
+  border-color: #007bff;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
+  &:hover{
+    border-color: 1px solid var(--color-success);
+  }
+}
+
+.selectedh4{
+  color: var(--color-success);
+  font-size: 28px;
+  border-bottom: 3px solid var(--color-success);
+  
+}
+
+.gratis {
+  color: var(--color-success);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 30px;
+}
+
+.precios {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-left: 20px;
+
+}
+
+.antes {
+  color: var(--color-error);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 25px;
+}
+
+.ahora {
+  color: var(--color-success);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 30px;
 }
 
 .card button {
@@ -99,3 +157,22 @@
   letter-spacing: 3px;
 }
 
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.bottom button {
+  height: 35px;
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 3px;
+  background-color: var(--color-success);
+  &:hover{
+    color: var(--color-success);
+    background-color: white;
+    border: 1px solid var(--color-success);
+  }
+}

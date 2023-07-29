@@ -13,7 +13,7 @@ export default function validationTalentos(input){
     }
 
 
-    if(input.email.length > 5 && isValidEmail(input.email) === false){
+    if(input.email && isValidEmail(input.email) === false){
         error.email = "El email debe ser válido"
     }
 

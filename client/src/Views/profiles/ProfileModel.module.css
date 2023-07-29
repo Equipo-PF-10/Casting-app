@@ -4,9 +4,14 @@
   box-sizing: border-box;
 }
 
+.fondo{
+  background-color: rgb(255, 255, 255);
+}
+
 .containerGeneral {
   background-color: rgb(255, 255, 255);
   padding: 30px;
+  margin-left: 50px;
   display: flex;
   justify-content: center;
 }
@@ -29,7 +34,7 @@
     #00af92
   );
   width: 500px;
-  height: 700px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,13 +45,14 @@
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
-.image {
+.image img{
   background-color: #a3a3a3;
-  width: 300px;
-  height: 300px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   /*margin-top: 20px;*/
   margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 .textoCard {
@@ -66,7 +72,7 @@
 /*carta de orientacion*/
 .orientacionCard {
   width: 500px;
-  height: 300px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,22 +85,28 @@
 }
 
 .orientacionTexto {
-  margin-top: -50px;
+  margin-top: -10px;
   font-weight: 700;
 }
 
 .habilidades {
   display: flex;
   justify-content: space-around;
-  margin-top: 50px;
+  margin-top: 10px;
+  
 }
 
 .habilidad {
   padding-left: 10px;
   padding-right: 10px;
   margin: 20px;
+  padding: 7px;
   background-color: #00c9a7;
-  border-radius: 20px;
+  border-radius: 30px;
+  color: whitesmoke;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(190, 190, 190),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    
 }
 
 .habilidad h4 {
@@ -105,7 +117,8 @@
 .imagenesCard {
   background-color: #00c9a7;
   width: 500px;
-  height: 600px;
+  height: 378px;
+  max-height: 600px;
   border-radius: 20px;
   margin: 20px;
   padding: 10px;
@@ -113,16 +126,17 @@
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
-/*carta de proyectos*/
+/*carta de datos*/
 .proyectosCard {
   width: 600px;
-  height: 300px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   border-radius: 20px;
   margin: 20px;
+  padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
@@ -137,12 +151,15 @@
 
 .pe {
   margin-left: 30px;
+  font-weight: 700;
+  font-size: large;
+  color: #00927a;
 }
 
 /*carta de trabajos postulados*/
 .trabajosPostulados {
   width: 600px;
-  height: 500px;
+  height: 400px;
   background-color: #7e7193;
   display: flex;
   justify-content: center;
@@ -163,9 +180,23 @@
 }
 
 .textoTrab {
-  margin-left: 30px;
-  margin-top: 30px;
+  background-color: #00b496;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
+  padding-right: 20px;
   color: whitesmoke;
+  font-size:larger;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(190, 190, 190),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.textoTrab span{
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size:large;
+  font-weight: 700;
+  color: rgb(72, 72, 72);
 }
 
 /*carta de contacto*/
@@ -174,7 +205,7 @@
   height: auto;
   padding: 20px;
   border-radius: 20px;
-  margin: 30px;
+  margin: 20px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -196,3 +227,11 @@
 .svgIconoInst {
   margin-right: 21px;
 }
+
+.datosSvg{
+  font-size:x-large;
+}
+
+/*.navLateral{
+  
+}*/

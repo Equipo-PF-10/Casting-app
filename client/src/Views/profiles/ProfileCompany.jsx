@@ -1,30 +1,37 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import style from "./ProfileCompany.module.css";
-import { clearDetail, get_company_by_id } from "../../redux/actions";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
+import {useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import { get_company_id } from "../../redux/actions";
 
-const profileCompany = () => {
-  let { id } = useParams();
-  const dispatch = useDispatch();
+
+
+
+const profileCompany=() => {
+  const {id}=useParams()
+  //console.log(id);
+  
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(get_company_by_id(id));
-    return () => dispatch(clearDetail());
-  }, []);
-
-  const detailCompany=useSelector((state) => state.companyDetail);
-  //console.log(detailCompany);
+    dispatch(get_company_id(id))
+  },[dispatch])
+  
+  const companyId=useSelector((state) => state.companyById)
+  console.log(companyId);
 
   return (
-    <div className={style.containerGeneral}>
-      {detailCompany.length > 0 ? (
-        <div>
+    <div className={style.fondo}>
+      <div className={style.navLateral}>
+          <NavBarLateral />
+      </div>
+        <div className={style.containerGeneral}>
           <div className={style.divIzquierdo}>
             {/*carta con foto y descripcion*/}
             <div className={style.cardContainer}>
               <div className={style.image}>
-                <img src={detailCompany.image} alt={detailCompany.name} />
+                <img src='' alt='' />
               </div>
               <div className={style.textoCard}>
                 <h2 className={style.nombre}>Empresa</h2>
@@ -221,9 +228,6 @@ const profileCompany = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <div>Loading</div>
-      )}
     </div>
   );
 };
