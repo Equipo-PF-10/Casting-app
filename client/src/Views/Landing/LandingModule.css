@@ -20,7 +20,7 @@
   }
   
   section {
-    height: 43vh;
+    height: 80vh;
     text-align: center;
   }
 /*! div introducción */
@@ -81,7 +81,7 @@
 
   }
   .contacto p {
-    font-size: 35px;
+    font-size: 5px;
     padding-top: 1vw;
   }
   .contacto b {
@@ -90,21 +90,50 @@
   .contacto form {
     background-color: rgb(227,227,227);
     display: inline-block;
-    width: 23vw;
-    height: 15VW;
-    padding-top: 3px;
+    width: 35vw;
+    height: 22VW;
+    padding-top: 13px;
     border-radius: 15px;
-    box-shadow: 3px 2px gray;
+    box-shadow: 3px 2px rgb(128, 128, 128);
   }
-  .contacto form input[type="text"]{
-    width: 20vw;
-    text-align: center;
+  .contacto form input[type="text"]{    
+    text-align: lefft;
   }
   .input-comentario {
-    width: 20vw;
+    width: 30vw;
     height: 5vw;
     text-align: start;
   }
+
+  
+  .btn-primary {
+    background-color: #429283;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; 
+    line-height: 0; 
+  }
+  
+  .btn-primary:hover {
+    background-color: #11b6b6;
+  }
+
+  .form-control {
+    margin: 10px;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left; /* Alinea el texto a la izquierda */
+    width: 95%;
+    box-sizing: border-box;
+  }
+  
   .paginado-button{
     display: inline-block;
     width: 4vw;

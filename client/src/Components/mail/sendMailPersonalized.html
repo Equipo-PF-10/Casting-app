@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./sendMailPersonalized.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>Formulario de contacto</title>
 </head>
 <body>
     <div class="container p-5">
+
+        
         <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-8 col-lg-6">
+            <div class="col-sm-12 col-md-8 col-lg-90">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h1>Formulario de contacto</h1>
+                        <h1 class="loginRegistro">Contactando Talento</h1>
                     </div>
                     <div class="card-body">
                         <form action="https://formspree.io/f/xoqovoyp" method="POST">
                             <div class="mb-3">
                                 <input type="text"
                                        name="Name"
-                                       placeholder="Name" 
+                                       placeholder="Tu nombre" 
                                        class="form-control"
                                 />   
                             </div>
@@ -27,7 +30,7 @@
                             <div class="mb-3">
                                 <input type="text"
                                        name="email"
-                                       placeholder="Email" 
+                                       placeholder="Direccion de Email al que quieras que te contacten" 
                                        class="form-control"
                                 />   
                             </div>
@@ -35,12 +38,12 @@
                             <div class="mb-3">
                                 <input type="text"
                                        name="phone"
-                                       placeholder="Phone" 
+                                       placeholder="Tu telefono" 
                                        class="form-control"
                                 />   
                             </div>
                             <div class="mb-3">
-                                <textarea class="form-control" name="message" rows="6" placeholder="Message"></textarea>
+                                <textarea class="form-control" name="message" rows="6" placeholder="Mensaje"></textarea>
                             </div>
                             <div class="text-center">
                                 <button class="btn btn-primary w-100">Send</button>
