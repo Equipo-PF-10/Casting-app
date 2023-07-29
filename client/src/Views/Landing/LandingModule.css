@@ -1,190 +1,220 @@
-  body {
-    margin: 0;
-    color: #608080;
-  }
-  
-  html {
-    box-sizing: border-box;
-    background-color: #f5f5f5;
-  }
-  
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-  
-  main {
-    width: 80vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  section {
-    height: 43vh;
-    text-align: center;
-  }
+
+body {
+  margin: 0;
+  color: #608080;
+}
+
+html {
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+main {
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section {
+  height: 80vh;
+  text-align: center;
+}
 /*! div introducción */
-  .introduccion,
-  .login {
-    width: 40vw;
-    display: inline-flex;
-    padding-left: 1vw;
-  }
-  .introduccion img {
-    width: 25vw;
-    height: 43vh;
-  }
-  .introduccion b {
-    color: var(--color-primario);
-  }
-  .introduccion p {
-    font-size: 2.9vw;
-    text-align: right;
-    padding-top: 4.3vw;
-  }
+.introduccion,
+.login {
+  width: 40vw;
+  display: inline-flex;
+  padding-left: 1vw;
+}
+.introduccion img {
+  width: 25vw;
+  height: 43vh;
+}
+.introduccion b {
+  color: var(--color-primario);
+}
+.introduccion p {
+  font-size: 2.9vw;
+  text-align: right;
+  padding-top: 4.3vw;
+}
 /*! div login */  
-  .login img {
-    width: 17vw;
-    height: 17vw;
-  }
-  .login button {
-    top: 1vh;
-    margin: 0;
-    width: 10vw;
-  }
-  .login a{
-    color: var(--color-fondo);
-    text-decoration: none;
-  }
-  .login-talento,
-  .login-empresa {
-    background-color: var(--color-fondo);
-    width: 18vw;
-    height: 18vw;
-    border-radius: 15px;
-    box-shadow: 3px 5px lightgray;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: 1vw;
+.login img {
+  width: 17vw;
+  height: 17vw;
+}
+.login button {
+  top: 1vh;
+  margin: 0;
+  width: 10vw;
+}
+.login a{
+  color: var(--color-fondo);
+  text-decoration: none;
+}
+.login-talento,
+.login-empresa {
+  background-color: var(--color-fondo);
+  width: 18vw;
+  height: 18vw;
+  border-radius: 15px;
+  box-shadow: 3px 5px lightgray;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 1vw;
 
-  }
-  .anuncios,
-  .blog, 
-  .contacto {
-    background-color: var(--color-fondo);
-  }
-  .anuncios {
-    margin-top: 1vw;
-    height: 46vH;
-    display: inline-flexbox;
-    position: relative;
-
-  }
-  .contacto p {
-    font-size: 35px;
-    padding-top: 1vw;
-  }
-  .contacto b {
-    color: var(--color-primario);
-  }
-  .contacto form {
-    background-color: rgb(227,227,227);
-    display: inline-block;
-    width: 23vw;
-    height: 15VW;
-    padding-top: 3px;
-    border-radius: 15px;
-    box-shadow: 3px 2px gray;
-  }
-  .contacto form input[type="text"]{
-    width: 20vw;
-    text-align: center;
-  }
-  .input-comentario {
-    width: 20vw;
-    height: 5vw;
-    text-align: start;
-  }
-  .paginado-button{
-    display: inline-block;
-    width: 4vw;
-    height: 4vW;
-    top: 12vh;;
-    background-color: var(--color-fondo);
-  }
-  .servicios {
-    display: flex;
-    justify-content: center;
-  }
-
-  /* From uiverse.io by @FrM-bot */
-.card-servicios-empresa {
-  width: 420px;
-  margin-left: 10px;
-  margin-right: 10px;
-  height: min-content;
-  transition: all .3s;
+}
+.anuncios,
+.blog, 
+.contacto {
+  background-color: var(--color-fondo);
+}
+.anuncios {
+  margin-top: 1vw;
+  height: 46vH;
+  display: inline-flexbox;
   position: relative;
-  top: 12vh;
-  border-radius: .5rem 2rem;
-  box-shadow: 0px 15px 20px -5px rgba(0, 0, 0, 0.5);
+
+}
+.contacto p {
+  font-size: 5px;
+  padding-top: 1vw;
+}
+.contacto b {
+  color: var(--color-primario);
+}
+.contacto form {
+  background-color: rgb(227,227,227);
+  display: inline-block;
+  width: 35vw;
+  height: 22VW;
+  padding-top: 13px;
+  border-radius: 15px;
+  box-shadow: 3px 2px rgb(128, 128, 128);
+}
+.contacto form input[type="text"]{    
+  text-align: lefft;
+}
+.input-comentario {
+  width: 30vw;
+  height: 5vw;
+  text-align: start;
+}
+
+
+.btn-primary {
+  background-color: #429283;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center; 
+  line-height: 0; 
+}
+
+.btn-primary:hover {
+  background-color: #11b6b6;
+}
+
+.form-control {
+  margin: 10px;
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: left; /* Alinea el texto a la izquierda */
+  width: 95%;
+  box-sizing: border-box;
+}
+
+.paginado-button{
+  display: inline-block;
+  width: 4vw;
+  height: 4vW;
+  top: 12vh;;
+  background-color: var(--color-fondo);
+}
+.servicios {
+  display: flex;
+  justify-content: center;
+}
+
+/* From uiverse.io by @FrM-bot */
+.card-servicios-empresa {
+width: 420px;
+margin-left: 10px;
+margin-right: 10px;
+height: min-content;
+transition: all .3s;
+position: relative;
+top: 12vh;
+border-radius: .5rem 2rem;
+box-shadow: 0px 15px 20px -5px rgba(0, 0, 0, 0.5);
 }
 .card-servicios-empresa:hover {
-  transform: scale(1.03);
+transform: scale(1.03);
 }
 .img-empresa,
 .img-representado {
-  transition: all .3s;
-  background: var(--color-fondo);
-  background: -webkit-linear-gradient(to right, var(--color-detalle), var(--color-detalle));
-  background: linear-gradient(to right, var(--color-detalle), var(--color-detalle));
-  width: 100%;
+transition: all .3s;
+background: var(--color-fondo);
+background: -webkit-linear-gradient(to right, var(--color-detalle), var(--color-detalle));
+background: linear-gradient(to right, var(--color-detalle), var(--color-detalle));
+width: 100%;
 }
 .img-talento {
-  transition: all .3s;
-  background: var(--color-fondo);
-  background: -webkit-linear-gradient(to right, var(--color-primario), var(--color-primario));
-  background: linear-gradient(to right, var(--color-primario), var(--color-primario));
-  width: 100%;
+transition: all .3s;
+background: var(--color-fondo);
+background: -webkit-linear-gradient(to right, var(--color-primario), var(--color-primario));
+background: linear-gradient(to right, var(--color-primario), var(--color-primario));
+width: 100%;
 }
 
 .img-container {
-  display: grid;
-  border-radius: .5rem 2rem;
-  height: 270px;
-  overflow: hidden;
+display: grid;
+border-radius: .5rem 2rem;
+height: 270px;
+overflow: hidden;
 }
 
 .description {
-  position: absolute;
-  bottom: .5rem;
-  left: .5rem;
-  text-align: start;
-  padding: .5rem 1em;
-  width: 90%;
-  transition: all 0.5s ease;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  backdrop-filter: blur(.1rem);
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: .5rem 2rem;
+position: absolute;
+bottom: .5rem;
+left: .5rem;
+text-align: start;
+padding: .5rem 1em;
+width: 90%;
+transition: all 0.5s ease;
+text-overflow: ellipsis;
+white-space: nowrap;
+backdrop-filter: blur(.1rem);
+background-color: rgba(0, 0, 0, 0.2);
+border-radius: .5rem 2rem;
 }
 
 .description:hover {
-  transform: perspective(100px) translateX(7px) rotateX(3deg) rotateY(3deg) scale(1);
-  box-shadow: none;
+transform: perspective(100px) translateX(7px) rotateX(3deg) rotateY(3deg) scale(1);
+box-shadow: none;
 }
 
 .title {
-  color: var(--color-fondo);
-  font-size: x-large;
+color: var(--color-fondo);
+font-size: x-large;
 }
 .img-representado span,
 .img-talento span,
 .img-empresa span {
-  color: var(--color-fondo);
-  font-size: medium;
+color: var(--color-fondo);
+font-size: medium;
 }
 .servicios h3 {
-  position: absolute;
+position: absolute;
 }
