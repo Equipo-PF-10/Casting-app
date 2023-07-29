@@ -7,6 +7,8 @@ const { handlerRegisterTalent,
         handlerCompanynewEvent,
         handlerNewPostulant,
         handlerTalentContact,
+        handlerExpirationSuscription,
+        handlerStopAdd
      } = require("../../handlers/emails/emailsHandler");
 
 const emailRouter = Router();
@@ -25,5 +27,13 @@ emailRouter.post("/newPostulante/:email", handlerNewPostulant)
 
 // Ruta que envia email a Talent que hace sido contactado.
 emailRouter.post("/talentContac/:email", handlerTalentContact)
+
+// Ruta que envia email a Company dando aviso de que en 15 días vence su suscripción.
+emailRouter.post("/expirationSuscription/:email", handlerExpirationSuscription)
+
+// Ruta que envia email a Company de que se han agotado sus publicaciones.
+emailRouter.post("/stopAdd/:email", handlerStopAdd)
+
+
 
 module.exports = emailRouter;
