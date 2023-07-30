@@ -9,65 +9,111 @@
 
   nav {
     background-color: var(--color-fondo);
-    box-shadow: 0px 2px var(--color-secundario);
+    box-shadow: 0px 1px var(--color-secundario);
     width: 100%;
-    height: 9vh;
+    height: 10vh;
     z-index: 999;
     position: sticky;
     top: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
-
   }
+
   nav section {
     flex-wrap: wrap;
-    width: 60vw;
+    width: 70vw;
     height: 9vH;
   }
   .logo-container,
   .dropdown-container {
-    width: 10vw;
-    height: 9vH;
+    width: 20vw;
   }
 
   nav button {
-    height: 3vh;
-    background-color:var(--color-fondo);
-    border-top: 0;
-    border-left: 0;
+    height: 10vh;
+    border-top: -5;
+    border-left: 0px;
     border-right: 0;
     border-bottom: 0;
-    /* border-style: solid;
-    border-color: #DBCCF3;
-    border-radius: 5px; */
     margin-top: 5vh;
     margin-bottom: 5vh;
-    margin-right: 5px;
+    margin-right: 25px;
     margin-left: 5px;
     width: 90px;
   }
-  nav li{
-    list-style-type: none;
+
+  .buttonsPrincipalNavBar {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100%;
+    margin-top: -2.5%;
   }
+
+  .buttonNavBar {
+    background-color: whitesmoke;
+    border: #fbfbfc;
+    box-shadow: #ffffff00;
+  }
+
+  .buttonNavBar:hover {
+    background-color: #00c9a700;
+    color: rgb(207, 218, 228);
+    border: #dbccf300;
+  }
+
+  nav a {
+    color: rgb(78, 78, 78);
+  }
+
+  nav a:hover {
+    color:#00c9a7;
+  }
+
+  nav li{
+    font-size: 12px;
+  }
+
+
+  .dropdown-menu {
+    background-color: #00c9a7;
+  }
+
+  nav li_hover{
+    font-size: 12px;
+    color: #00c9a700;
+  }
+
+  .dropdown-item:hover{
+    background-color: #e3f8e39d;
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100%;
+    margin-top: -1%;
+  }
+ 
+
   .dropdown {
-    margin-top: 1vh;
+    margin-top: 5%;
     list-style-type: none;
-    color: var(--color-secundario);
+    color: var(--color-prinario);
     font-weight: bold;
-    border-top: 1px;
+    border-top: 0px;
     border-left: 0;
     border-right: 0;
     border-bottom: 0;
     border-style: solid;
-    border-color: #DBCCF3;
-    border-radius: 70px;
+    border-color: #dbccf300;
+    border-radius: 0px;
+    font-size: 25px;
+    font-family: sans-serif;
   }
-  nav a {
-    color: var(--color-secundario);
-    font-weight: bold;
-    text-decoration: none;
-  }
+   
 .imagen-dorpdown {
   width: 5vw;
   height: 3.5vw;

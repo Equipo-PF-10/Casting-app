@@ -27,23 +27,27 @@ const Landing = () => {
   return (
     <>
     <Navbar/>
-      <main>
-        <section id="introduccion-login" className='introduccion'>
+      <main>        
           <div className='introduccion'>
             <img src="inicio.svg" alt="Inicio" />
-            <p>La mejor forma de encontrar <b>TALENTOS</b></p>
+            <p>La mejor forma de encontrar <br /><b>TALENTOS</b></p>
           </div>
+          <br />
+
+          <section id="introduccion-login" className='introduccion2'>
           <div className='login'>
             <article className='login-talento'>
               <img src="Vector - Talento.svg" alt="Talento" />
-              <button><a href="/model/register">Soy Talento</a></button>
+              <button className='SoyTalent'><a href="/model/register">Soy Talento</a></button>
             </article>
             <article className='login-empresa'>
               <img src="Vector - Reclutador.svg" alt="Reclutador" />
-              <button><a href="/company/register">Soy Reclutador</a></button>
+              <button className='SoyReclutador'><a href="/company/register">Soy Reclutador</a></button>
             </article>
           </div>
         </section>
+
+        
         <section id="anuncios" className='anuncios'>
           <button className='paginado-button'><img src="/prev.svg" alt="" /></button>
           <Adds/>
@@ -52,7 +56,24 @@ const Landing = () => {
           <button className='paginado-button'><img src="/next.svg" alt="" /></button>
         </section>
         <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        
+        
+
         <section id="servicios" className='servicios'>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+
         <h3>Conoce nuestros servicios</h3>
         <div class="card-servicios-empresa">
           <div class="img-container">
@@ -98,25 +119,36 @@ const Landing = () => {
               <span class="title">
                 ...tus hijos son menores de edad?
               </span>
-
             </div>
           </div>
         </div>
-
         </section>
+        <br />
+          <br />
+          <br />
+          <br />
+          <br />
+
+        
         <section id="blog" className='blog'>
-          <h3 >Aqui está la seccioón blog</h3>
+          <h3 >Aqui está la sección blog</h3>
           {/* <ChartComponent/> */}
         </section>
+
+      <br />
+      <br />
+      <br />
+      <br />
         <section id="nosotros" className='nosotros'>
-          <h3 >Aqui está la seccioón nosotros</h3>
+          
+          <h3 >Aqui está la sección nosotros</h3>
           <div class="card-nosotros"></div>
-        </section>
-        
+        </section>        
 
         <section id="contacto" className='contacto'>
-        
-        <div className="container p-5">
+          
+          <br />
+            <div className="container p-5">
               <div className="row justify-content-center">
                 <div className="col-sm-12 col-md-8 col-lg-6">
                   <div className="cardMail">
@@ -158,7 +190,7 @@ const Landing = () => {
                         </div>
 
                         <div className="text-center">
-                          <button className="btn btn-primary w-100">Enviar</button>
+                          <button className="btn btn-primary w-60">Enviar</button>
                         </div>
                       </form>
                     </div>

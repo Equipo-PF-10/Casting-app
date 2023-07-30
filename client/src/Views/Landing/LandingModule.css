@@ -14,7 +14,7 @@
   }
   
   main {
-    width: 80vw;
+    width: 90vw;
     margin-left: auto;
     margin-right: auto;
   }
@@ -26,13 +26,20 @@
 /*! div introducción */
   .introduccion,
   .login {
-    width: 40vw;
-    display: inline-flex;
+    margin-top: 10%;
+    width: 90vw;
+    display: flex;
+    padding-left: 10vw;
+  }
+
+  .introduccion2,
+  .login {
     padding-left: 1vw;
+    margin-bottom: 8%;
   }
   .introduccion img {
-    width: 25vw;
-    height: 43vh;
+    width: 35vw;
+    height: 53vh;
   }
   .introduccion b {
     color: var(--color-primario);
@@ -44,8 +51,8 @@
   }
 /*! div login */  
   .login img {
-    width: 17vw;
-    height: 17vw;
+    width: 20vw;
+    height: 27vw;
   }
   .login button {
     top: 1vh;
@@ -56,17 +63,20 @@
     color: var(--color-fondo);
     text-decoration: none;
   }
+
+  
   .login-talento,
   .login-empresa {
     background-color: var(--color-fondo);
-    width: 18vw;
-    height: 18vw;
-    border-radius: 15px;
+    width: 80vh;
+    height: 70%;
+    border-radius: 10px;
     box-shadow: 3px 5px lightgray;
     margin-top: auto;
     margin-bottom: auto;
-    margin-right: 1vw;
-
+    margin-right: 10vw;
+    margin-left: 4vh;
+    
   }
   .anuncios,
   .blog, 
@@ -75,7 +85,7 @@
   }
   .anuncios {
     margin-top: 1vw;
-    height: 46vH;
+    height: 80vH;
     display: inline-flexbox;
     position: relative;
 
@@ -87,6 +97,22 @@
   .contacto b {
     color: var(--color-primario);
   }
+
+    .SoyTalent {
+  background-color: #11b6b6;
+  width: 200px;
+  height: 65px;  
+  }
+
+  
+
+  .SoyReclutador {
+    background-color: #11b6b6;
+    width: 200px;
+    height: 65px;
+    }
+
+  
   .contacto form {
     background-color: rgb(227,227,227);
     display: inline-block;
@@ -107,7 +133,7 @@
 
   
   .btn-primary {
-    background-color: #429283;
+    background-color: #00c9a7;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -119,7 +145,7 @@
   }
   
   .btn-primary:hover {
-    background-color: #11b6b6;
+    background-color: #877aae;
   }
 
   .form-control {
@@ -136,11 +162,30 @@
   
   .paginado-button{
     display: inline-block;
-    width: 4vw;
-    height: 4vW;
+    width: 2vw;
+    height: 2vW;
     top: 12vh;;
     background-color: var(--color-fondo);
+    border: #f5f5f500;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 120px;
+
   }
+
+  .paginado-button:hover{
+    display: inline-block;
+    width: 2vw;
+    height: 2vW;
+    top: 12vh;;
+    background-color: rgba(245, 222, 179, 0);
+    border: #f5f5f500;
+    transform: scale(.8);
+    
+  }
+
+
+
   .servicios {
     display: flex;
     justify-content: center;
@@ -206,7 +251,7 @@
 
 .title {
   color: var(--color-fondo);
-  font-size: x-large;
+  font-size:larger; 
 }
 .img-representado span,
 .img-talento span,
