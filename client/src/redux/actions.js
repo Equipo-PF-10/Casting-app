@@ -1,8 +1,8 @@
 export const REGISTER_MODEL_OR_COMPANY = "REGISTER_MODEL_OR_COMPANY";
 export const MODAL_LOGIN = "MODAL_LOGIN";
 export const MODAL_SEARCH_COMPANY = "MODAL_SEARCH_COMPANY";
+export const MODAL_REFUSE_POSTULATE = "MODAL_REFUSE_POSTULATE";
 export const ERROR = "ERROR";
-export const ID_USER = "ID_USER";
 export const USER_TYPE = "USER_TYPE";
 export const GET_EVENT_BY_ID = "GET_EVENT_BY_ID";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
@@ -110,15 +110,24 @@ export const close_modal_search_compnay = (payload) => {
     });
   };
 };
-
-export const id_user = (payload) => {
+export const open_modal_refuse_postulate = (payload) => {
   return (dispatch) => {
     return dispatch({
-      type: "ID_USER",
+      type: "MODAL_REFUSE_POSTULATE",
       payload: payload,
     });
   };
 };
+
+export const close_modal_refuse_postulate = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: "MODAL_REFUSE_POSTULATE",
+      payload: payload,
+    });
+  };
+};
+
 export const user_type = (payload) => {
   return (dispatch) => {
     return dispatch({

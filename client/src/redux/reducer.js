@@ -3,6 +3,7 @@ import {
   REGISTER_MODEL_OR_COMPANY,
   MODAL_LOGIN,
   MODAL_SEARCH_COMPANY,
+  MODAL_REFUSE_POSTULATE,
   ID_USER,
   USER_TYPE,
   GET_EVENT_BY_ID,
@@ -42,7 +43,6 @@ const initialState = {
   companiesFiltered: [],
   companyDetail: [],
   companyById: {},
-  idUser: "", //id del usuario al logearse
   idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
   messageRegistered: {},
@@ -50,6 +50,7 @@ const initialState = {
   messagePostulantDeleted: {},
   modalInLogin: false,
   modalInSearchCompany: false,
+  modalTalentRefused: false,
   filters: false,
   filtersEvent: false,
   errorPostulate: {},
@@ -92,12 +93,20 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
       break;
-
-    case ID_USER:
-      return {
-        ...state,
-        idUser: payload,
-      };
+    case MODAL_REFUSE_POSTULATE:
+      if (payload === "isOpened") {
+        return {
+          ...state,
+          modalTalentRefused: true,
+        };
+      }
+      if (payload === "isClosed") {
+        return {
+          ...state,
+          modalTalentRefused: false,
+        };
+      }
+      break;
     case USER_TYPE:
       return {
         ...state,

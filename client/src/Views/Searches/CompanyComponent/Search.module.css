@@ -15,15 +15,14 @@
   border-radius: 45px;
   font-size: 0.9rem;
   line-height: 2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
   text-align: center;
-  /*margin-right: 0.5rem;*/
   display: inline-flex;
   align-items: center;
-  width: 150px;
+  width: auto;
   margin-top: 1px;
   margin-bottom: 1px;
   border: none;
@@ -33,7 +32,7 @@
 }
 
 .recargar:hover {
-  background-color: #7769a7;
+  background-color: #7869a700;
 }
 
 .recargar svg {

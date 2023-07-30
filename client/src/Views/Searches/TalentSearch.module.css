@@ -21,9 +21,11 @@
 }
 
 .cardJobsStyle{
+
   margin-bottom: 40px;
   margin-right: 20px;
   margin-top: 20px;
+  /* background-color: red; */
 }
 
 .detailStyle{
@@ -37,6 +39,7 @@
   list-style: none;
   gap: 2rem;
   /*margin-top: 10px;*/
+  margin-right: 50px;
 }
 
 .text {
