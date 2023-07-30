@@ -9,6 +9,18 @@ async function getAllCompanies(name) {
   }
 }
 
+// Función controller que devuele el talent según el Id recibido por parámetro.
+const getCompanyByEmail = async (email) => {
+  try {
+    const foundTalent = await Company.findAll({where : {email:email}});
+
+    if (!foundTalent) throw new Error(`El Usuario con Email ${email} no existe`);
+    return foundTalent;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 const searchByLocation = async (country) => {
   //! Falta el try catch
   const response = await Company.findAll({
@@ -101,4 +113,5 @@ module.exports = {
   getCompanyById,
   deleteCompanyById,
   getAllCompanies,
+  getCompanyByEmail
 };

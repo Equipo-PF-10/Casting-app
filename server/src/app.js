@@ -5,7 +5,6 @@ const app = express();
 const mainRouter = require("./routes/mainRouter");
 
 app.use(morgan("dev"));
-
 app.use(express.json());
 app.use(cors());
 app.use((req, res, next) => {

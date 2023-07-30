@@ -2,6 +2,7 @@ const {
   createTalentDb,
   getTalentByName,
   getTalentById,
+  getTalentByEmail,
   getDbTalents,
   deleteTalent,
   updateTalent,
@@ -50,7 +51,7 @@ const createTalentHandler = async (req, res) => {
     reviewsCount,
   } = req.body;
 
-  if (!email || !password) {
+  if (!email ) {
     return res.status(400).send("Faltan datos obligatorios");
   }
 
@@ -94,6 +95,19 @@ const talentByIdHandler = async (req, res) => {
   try {
     const talentById = await getTalentById(id);
     res.status(200).json(talentById);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Función handler para obtener talento por ID.
+const talentByEmailHandler = async (req, res) => {
+  console.log(req.params)
+  const { email } = req.params;
+
+  try {
+    const talentByEmail = await getTalentByEmail(email);
+    res.status(200).json(talentByEmail);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -190,6 +204,7 @@ module.exports = {
   getTalentsHandler,
   createTalentHandler,
   talentByIdHandler,
+  talentByEmailHandler,
   deleteTalentHandler,
   updateTalentHandler,
 };

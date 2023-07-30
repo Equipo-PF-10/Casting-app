@@ -96,6 +96,18 @@ const getTalentById = async (id) => {
   }
 };
 
+// Función controller que devuele el talent según el Id recibido por parámetro.
+const getTalentByEmail = async (email) => {
+  try {
+    const foundTalent = await Talent.findAll({where : {email:email}});
+
+    if (!foundTalent) throw new Error(`El Usuario con Email ${email} no existe`);
+    return foundTalent;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 // Función controller que elimina a un talento de la base de datos.
 const deleteTalent = async (id) => {
   try {
@@ -160,6 +172,7 @@ module.exports = {
   createTalentDb,
   getTalentByName,
   getTalentById,
+  getTalentByEmail,
   deleteTalent,
   updateTalent,
 };

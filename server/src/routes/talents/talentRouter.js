@@ -3,6 +3,7 @@ const {
   getTalentsHandler,
   createTalentHandler,
   talentByIdHandler,
+  talentByEmailHandler,
   deleteTalentHandler,
   updateTalentHandler,
 } = require("../../handlers/talents/talentsHandler");
@@ -11,6 +12,9 @@ const talentRouter = Router();
 
 //? Esta ruta registra un nuevo talento.
 talentRouter.post("/register", createTalentHandler);
+
+//? Esta ruta obtiene un talento por email.
+talentRouter.get("/email/:email", talentByEmailHandler);
 
 //? Esta ruta obtiene un talento por id.
 talentRouter.get("/:id", talentByIdHandler);

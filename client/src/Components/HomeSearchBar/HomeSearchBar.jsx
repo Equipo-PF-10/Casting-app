@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from "./HomeSearchBar.module.css";
 import { useNavigate, NavLink } from 'react-router-dom';
 
+
 export const HomeSearchBar = (props) => {
     const navigate = useNavigate();
     const [input, setInput] = useState("");
@@ -24,9 +25,7 @@ export const HomeSearchBar = (props) => {
                 <NavLink to="/company/create">
                     <button>Crear Evento</button>
                 </NavLink>
-            </div>
-            
-            
+            </div>            
         </div>
     );
 }

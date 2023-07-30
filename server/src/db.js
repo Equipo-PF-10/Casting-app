@@ -73,19 +73,6 @@ CompanySelectedAsFav.belongsToMany(Talent, { through: "TalentSelectCompanyAsFav"
 Event.hasMany(Applied, { foreignKey : "EventId" });
 Applied.belongsTo(Event);
 
-
-
-async function syncDB(){
-  try {
-    await sequelize.sync({ force: false });
-    console.log("All models were synchronized successfully.");
-  } catch (error) {
-    console.log({error: error.message});
-  }
-}
-
-syncDB();
-
 module.exports = {
   ...sequelize.models,
   conn: sequelize,
