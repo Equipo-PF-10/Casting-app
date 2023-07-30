@@ -15,27 +15,29 @@ import axios from 'axios';
 import { getAllEvents } from '../../redux/actions.js';
 import { handleLogout } from '../Login/LocalStorageUserData.js';
 import { useNavigate } from 'react-router-dom';
+import LogoutButton from '../../Components/LogoutButton/LogoutButton.jsx';
 
 const Home = (props) => {
   const navigate = useNavigate();
   const dispatch=useDispatch();
   const [user, setUser] = useState({});
 
-  useEffect(() => {
-    if(props.type === "talent") {
-      axios(`http://localhost:3001/talents/${localStorage.getItem("id")}`).then(({ data }) => {
-        setUser(data);
-      });
-    } else {
-      axios(`http://localhost:3001/companies/${localStorage.getItem("id")}`).then(({ data }) => {
-        setUser(data);
-      });
-    }
-    dispatch(getAllEvents());
-  }, []);
+  // useEffect(() => {
+  //   if(props.type === "talent") {
+  //     axios(`http://localhost:3001/talents/${localStorage.getItem("id")}`).then(({ data }) => {
+  //       setUser(data);
+  //     });
+  //   } else {
+  //     axios(`http://localhost:3001/companies/${localStorage.getItem("id")}`).then(({ data }) => {
+  //       setUser(data);
+  //     });
+  //   }
+  //   dispatch(getAllEvents());
+  // }, []);
 
   return (
     <div className={styles.background}>
+      <LogoutButton/>
       <NavBarLateral />
       <HomeSearchBar
         url={props.type === "talent" ? "model/search" : "company/search"}

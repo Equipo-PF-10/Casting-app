@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import style from "./Login.module.css";
-import { Link, useNavigate } from "react-router-dom";
-import validate from "./Validate.jsx";
-import Navbar from "../../Components/Navbar/Navbar";
-//import { useAuth0 } from "@auth0/auth0-react";
-import { modal_login } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { loginControler } from "./loginControler";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { clean_message_register, id_user, user_type } from "../../redux/actions";
 import { saveData } from "./LocalStorageUserData";
+import { clean_message_register, id_user, user_type } from "../../redux/actions";
+import { modal_login } from "../../redux/actions";
+import Navbar from "../../Components/Navbar/Navbar";
+import validate from "./Validate.jsx";
+import { loginControler } from "./loginControler";
+import style from "./Login.module.css";
 
 const Login = () => {
 

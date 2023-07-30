@@ -1,5 +1,6 @@
 const {
   searchByLocation,
+  getCompanyByEmail,
   createCompany,
   getCompanyById,
   updateCompanyById,
@@ -35,6 +36,18 @@ async function handlerGetAllCompanies(req, res) {
     return res.status(404).json({ error: error.message });
   }
 }
+
+// Función handler para obtener talento por ID.
+const handlerGetCompanyByEmail = async (req, res) => {
+  const { email } = req.params;
+
+  try {
+    const talentByEmail = await getCompanyByEmail(email);
+    res.status(200).json(talentByEmail);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 const handlerSearchByLocation = async (req, res) => {
   try {
@@ -145,5 +158,6 @@ module.exports = {
   handlerCreateCompany,
   handlerUpdateCompanyById,
   handlerGetCompanyById,
+  handlerGetCompanyByEmail,
   handlerDeleteCompanyById,
 };

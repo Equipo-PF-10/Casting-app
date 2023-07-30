@@ -4,6 +4,7 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
+
 export const HomeSearchBar = (props) => {
 
     const id = useSelector((state) => state.idUser)
@@ -37,7 +38,7 @@ export const HomeSearchBar = (props) => {
                     Search
                 </button>
             </div>
-            <div>
+            <div>         
             {isCompanyRoute && (
                 <div>
                     <NavLink to={path}>
@@ -46,8 +47,6 @@ export const HomeSearchBar = (props) => {
                 </div>
             )}
             </div>
-            
-            
         </div>
     );
 }

@@ -2,6 +2,7 @@ const { Router } = require("express");
 const {
   handlerSearchByLocation,
   handlerCreateCompany,
+  handlerGetCompanyByEmail,
   handlerGetAllCompanies,
   handlerUpdateCompanyById,
   handlerGetCompanyById,
@@ -15,6 +16,9 @@ companyRouter.get("/location", handlerSearchByLocation);
 
 //* Esta ruta registra una nueva compañia en la base de datos.
 companyRouter.post("/register", handlerCreateCompany);
+
+//* Esta ruta busca una compañia por id en la base de datos.
+companyRouter.get("/email/:email", handlerGetCompanyByEmail);
 
 //* Esta ruta busca una compañia por id en la base de datos.
 companyRouter.get("/:id", handlerGetCompanyById);

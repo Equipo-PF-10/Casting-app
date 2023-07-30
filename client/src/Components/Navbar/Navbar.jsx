@@ -1,3 +1,5 @@
+import LoginButton from '../LoginButton/LoginButton';
+import LogoutButton from '../LogoutButton/LogoutButton';
 import './NavbarModule.css'
 import {Link} from 'react-router-dom'; 
 
@@ -10,13 +12,15 @@ return (
         </Link>
       </section>
       <section className='buttons-container'>
-        <button className='button-login'><a href="/login">Ingresa</a></button>
+        <LoginButton className='button-login'/>
+        {/* <button className='button-login'><a href="/login">Ingresa</a></button> */}
         <button className='button-servicios'><a href="#servicios">Servicios</a></button>
         <button className='button-blog'><a href="#blog">Blog</a></button>
         <button className='button-nosotros'><a href="#nosotros">Nosotros</a></button>
         <button className='button-contacto'><a href="#contacto">Contacto</a></button>
+        <LogoutButton/>
       </section>
-      <section className='dropdown-container'>
+      {/* <section className='dropdown-container'>
       <li class="nav-item dropdown" className='dropdown'>
           <a class="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="/coffe.svg" alt="Prueba" className='imagen-dorpdown'/>
@@ -29,7 +33,7 @@ return (
             <li><a class="dropdown-item" href="/">Salir</a></li>
           </ul>
         </li>
-      </section> 
+      </section>  */}
 
     </nav>
     )

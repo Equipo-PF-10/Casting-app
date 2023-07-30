@@ -1,11 +1,109 @@
-import React from 'react';
-// import ChartComponent from '../../Components/graficos/chart.jsx';
+import React, { useEffect } from "react";
+import { useDispatch} from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from 'react-router-dom';
 import Adds from '../../Components/Adss/Adds.jsx';
 import Navbar from '../../Components/Navbar/Navbar.jsx';
- import './LandingModule.css'
-
+import './LandingModule.css'
+import axios from "axios";
 
 const Landing = () => {
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  let userType = localStorage.getItem("userType")
+  useEffect(() => {
+    if (userType === "talent" && isAuthenticated){
+      const getUserMetadata = async () => {
+        const domain = "dev-btf5b41eu5m4dqh0.us.auth0.com";
+    
+        try {
+          const accessToken = await getAccessTokenSilently({
+            authorizationParams: {
+              audience: `https://${domain}/api/v2/`,
+              scope: "read:current_user",
+            },
+          });
+    
+          const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+  
+          const metadataResponse = await fetch(userDetailsByIdUrl, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+    
+          const data = await metadataResponse.json();
+          console.log(data)
+          localStorage.setItem("user_email", `${data.email}`)
+          localStorage.setItem("user_name", `${data.name}`)
+          localStorage.setItem("user_image", `${data.picture}`)
+
+        } catch (e) {
+          console.log(e.message);
+        }
+      };
+    
+      getUserMetadata();
+
+      let email = localStorage.getItem("user_email")
+      let name = localStorage.getItem("user_name")
+      let image = localStorage.getItem("user_image")
+      const register = axios.post('http://localhost:3001/talents/register', {email,name,image})
+      .then(res => console.log(res.data))
+      .then(res =>{
+        const getByEmail = axios(`http://localhost:3001/talents/email/${email}`)
+        .then(res => localStorage.setItem("user_id", `${res.data[0].id}`))
+      })
+      .catch(error => console.log(error.response.data))
+      navigate("/home/talent")
+    }
+    if (userType === "company" && isAuthenticated){
+      const getUserMetadata = async () => {
+        const domain = "dev-btf5b41eu5m4dqh0.us.auth0.com";
+    
+        try {
+          const accessToken = await getAccessTokenSilently({
+            authorizationParams: {
+              audience: `https://${domain}/api/v2/`,
+              scope: "read:current_user",
+            },
+          });
+    
+          const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+  
+          const metadataResponse = await fetch(userDetailsByIdUrl, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+    
+          const data = await metadataResponse.json();
+          console.log(data)
+          localStorage.setItem("user_email", `${data.email}`)
+          localStorage.setItem("user_name", `${data.name}`)
+          localStorage.setItem("user_image", `${data.picture}`)
+
+        } catch (e) {
+          console.log(e.message);
+        }
+      };
+    
+      getUserMetadata();
+
+      let email = localStorage.getItem("user_email")
+      let name = localStorage.getItem("user_name")
+      let image = localStorage.getItem("user_image")
+      const register = axios.post('http://localhost:3001/companies/register', {email,name,image})
+      .then(res => console.log(res.data))
+      .then(res =>{
+        const getByEmail = axios(`http://localhost:3001/companies/companies/${email}`)
+        .then(res => localStorage.setItem("user_id", `${res.data[0].id}`))
+      })
+      .catch(error => console.log(error.response.data))
+      navigate("/home/company")
+    }
+  }, [isAuthenticated,getAccessTokenSilently, user?.sub]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,11 +134,13 @@ const Landing = () => {
           <div className='login'>
             <article className='login-talento'>
               <img src="Vector - Talento.svg" alt="Talento" />
-              <button><a href="/model/register">Soy Talento</a></button>
+              {/* <LoginButton type="talent"/> */}
+              {/* <button><a href="/model/register">Soy Talento</a></button> */}
             </article>
             <article className='login-empresa'>
               <img src="Vector - Reclutador.svg" alt="Reclutador" />
-              <button><a href="/company/register">Soy Reclutador</a></button>
+              {/* <LoginButton type="company"/> */}
+              {/* <button><a href="/company/register">Soy Reclutador</a></button> */}
             </article>
           </div>
         </section>
