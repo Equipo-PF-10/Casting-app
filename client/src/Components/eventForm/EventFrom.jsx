@@ -67,37 +67,6 @@ const EventForm = () => {
     const habilityValue = orientaciones.map(item => item.value);
 
     input.habilityRequired = habilityValue;
-
-    // Cloudinary 
-
-        const uploadPreset = "casting_app"
-        const cloudName = "dntrnqcxe";
-    
-        const URLCloud = `https://api.cloudinary.com/v1_1/${cloudName}/upload`
-    
-        const submitImage = async () => {
-            if (input.imageFile) {
-              const formData = new FormData();
-              formData.append('file', input.imageFile);
-              formData.append('upload_preset', uploadPreset);
-              formData.append('cloud_name', cloudName);
-          
-              try {
-                const response = await axios.post(URLCloud, formData);
-                const responseData = response.data;
-                console.log(responseData);
-                console.log(responseData.url);
-                console.log("Imagen subida con éxito")
-                setInput({ ...input, image: responseData.url });
-              } catch (error) {
-                console.log({ error });
-              }
-            } else {
-              console.log("No se ha seleccionado ninguna imagen.");
-            }
-          };
-    
-    if(input.imageFile) submitImage();
           
     // Handles
 
@@ -136,8 +105,6 @@ const EventForm = () => {
           console.log({ error });
         }
       };
-    
-    console.log("URL Imágen",input.image)
 
     return(
     <div>

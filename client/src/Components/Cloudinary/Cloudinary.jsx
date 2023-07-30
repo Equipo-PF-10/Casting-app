@@ -25,7 +25,6 @@ const Cloudinary = () => {
           const responseData = response.data;
           const imageUrl = responseData.url;
           dispapatch(getUrlImage(imageUrl))
-          console.log(imageUrl)
         } catch (error) {
           console.log({ error });
         }
