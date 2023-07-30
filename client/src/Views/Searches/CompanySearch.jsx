@@ -6,13 +6,13 @@ import Detail from "./CompanyComponent/Detail";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { get_all_postulations , get_event_by_id, get_talent_by_id, close_modal_search_compnay, clear_message_deleted } from "../../redux/actions";
+import { get_all_postulations , get_event_by_id, get_talent_by_id, close_modal_search_compnay, clear_message_deleted, close_modal_refuse_postulate } from "../../redux/actions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const CompanySearch = () => {
   const {id} = useParams();
-
+  const MESSAGE_SEND_EMAIL = "Se ha enviado correctamente un email de contacto al postulante seleccionado.";
   const dispatch = useDispatch();
   const evento = useSelector((state) => state.eventDetail);
   const postulantes = useSelector((state) =>  state.postulatedTalentsByEvent ); 
@@ -29,6 +29,22 @@ const CompanySearch = () => {
   
   let [idTalent, setIdTalent] = useState("");
   
+  //Fucnion para controlar el modal de Contactar
+  const onClickCloseModalConfirmation = () => {
+    const close = "isClosed";
+    dispatch(close_modal_search_compnay(close));
+  };
+  const onClickSendEmail = () => {
+    const close = "isClosed";
+    dispatch(close_modal_search_compnay(close));
+    //PEDRO ----Agregar logica de envio de email
+
+    //Agregar mensaje por toastify
+    mensaje_success_Toast_send_mail();
+  };
+
+  
+
 
   // Paginación
 
@@ -112,11 +128,7 @@ useEffect(()=>{
     return ubication.indexOf(item) === index;
   });
 
-  //Funcion para cerrar el modal
-  const onClickClose = () => {
-    const close = "isClosed";
-    dispatch(close_modal_search_compnay(close));
-  }
+  
 
   //Mostrar mensaje cuando se elimina un postulante
   let currentToastIdSuccess = null;
@@ -144,10 +156,37 @@ useEffect(()=>{
     }
   };
 
+  //Mostrar mensaje cuando se envie un mail de contacto al Postulante
+  let currentToastIdSendMail = null;
+  const mensaje_success_Toast_send_mail = () => {
+    if (currentToastIdSendMail) {
+      toast.update(currentToastIdSendMail, {
+        render: MESSAGE_SEND_EMAIL,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastIdSendMail = toast.success(MESSAGE_SEND_EMAIL, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "450px",
+        },
+      });
+    }
+  };
+
   useEffect(() => {
     if (Object.keys(messageDeleted).length > 0) {
       mensaje_success_Toast();
       dispatch(clear_message_deleted(""));
+      //PEDRO aplicar logica para enviar mensaje al talento cuando una empresa rechaza su postulacion
     }
   }, [messageDeleted]);
 
@@ -224,46 +263,26 @@ useEffect(()=>{
 {
         modal ?
         <div className= {style.containerModalOpened}>
-            <div className={style.modalOpened}>
-              <button onClick={onClickClose} className={style.delete} >X</button>
-              <p>Contacta al postulante: <b>Nombre del postulante</b></p>
-
-                <div>
-                  <form action="mailto:castingapp.pf.10@gmail.com" method="post" encType="text/plain" autoComplete='off'>
-                    <div>
-                    De: Correo electrónico de la Empresa<br/>
-                    <input type="text" name="nombre"/><br/>
-
-                    Para: Correo electrónico del postulante<br/>
-                    <input type="text" name="titulo"/><br/>
-                    </div>
-
-                    Título: Postulacion al evento Nombre del evento<br/>
-                    <input type="text" name="correo"/><br/>
-                    Contenido del mensaje:<br/>
-                    <textarea type="text" name="comentario" size="100" className={style.input_comentario}/><br/><br/>
-
-                    <div>
-                      <input type="submit" value="Enviar"/>
-                      <input type="reset" value="Borrar"/>
-                    </div>
-
-                  </form>
-                </div>
-            
+            <div className={style.modalConfirmationOpened}>
+              <div className={style.head3}>
+                <h4>¿Está seguro/a de enviar un mail de conacto al Postulante?</h4>
+                <hr />
+              </div>
+              
+              <div className={style.bottom3}>
+                <button className={style.buttonConfirmar} onClick={onClickSendEmail}>Confirmar</button>
+                <button className={style.buttonRegresar} onClick={onClickCloseModalConfirmation}>Regresar</button>
+              </div>
           </div>
         </div>
         :
         <div className= {style.containerModalClosed}>
             <div className={style.modalClosed}>
-              <button onClick={onClickClose} className={style.delete} >X</button>
-              <div>
-                <h1>Enviar mail</h1>
-              </div>
+              
+              
           </div>
-        </div>  
+        </div>
       }
-      {/* ---------------------------------------------------------- */}
     </div>
   );
 };

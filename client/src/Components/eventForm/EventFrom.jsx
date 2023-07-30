@@ -34,89 +34,61 @@ const EventForm = () => {
     CompanyId: idUser,
   };
 
-    const optionshabilityRequired = [
-        { value: 'Actuación', label: 'Actuación' },
-        { value: 'Animador/a', label: 'Animador/a' },
-        { value: 'Bailarín/a', label: 'Bailarín/a' },
-        { value: 'Blogger', label: 'Blogger' },
-        { value: 'Cantante', label: 'Cantante' },
-        { value: 'DJ', label: 'DJ' },
-        { value: 'Influencer', label: 'Influencer' },
-        { value: 'Locutor/a', label: 'Locutor/a' },
-        { value: 'Mago/a', label: 'Mago/a' },
-        { value: 'Músico/a', label: 'Músico/a' },
-        { value: 'Modelo', label: 'Modelo' },
-        { value: 'Presentador/a', label: 'Presentador/a' },
-        { value: 'Promotor/a', label: 'Promotor/a' },
-      ];
     
-    // Estados
+    // // Estados
 
-    const [input, setInput] = useState(initialState)
+    // const [input, setInput] = useState(initialState)
 
-    const [orientaciones, setOrientaciones] = useState([])
+    // const [orientaciones, setOrientaciones] = useState([])
 
-    const [error, setError] = useState({});
+    // const [error, setError] = useState({});
 
-    const [bnt, setBtn] = useState(false)
+    // input.idCompany = idUser;
+    // input.image = imageURl;
 
-    if(company.plan === "FREE" && company.numberPosts === 2){
-      setBtn(true)
-  } else if(company.plan === "BASICO" && company.numberPosts === 20){
-      setBtn(true)
-  } else if(company.plan === "PREMIUM"){
-      setBtn(false)
-  }
+    // // Hability
 
-    initialState.idCompany = idUser;
-    initialState.image = imageURl;
+    // const habilityValue = orientaciones.map(item => item.value);
 
-    input.idCompany = idUser;
-    input.image = imageURl;
-
-    // Hability
-
-    const habilityValue = orientaciones.map(item => item.value);
-
-    input.habilityRequired = habilityValue;
+    // input.habilityRequired = habilityValue;
           
-    // Handles
+    // // Handles
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        if (name === "image") {
-          setInput({ ...input, image: event.target.files[0] });
-        } else {
-          setInput((prevInput) => ({
-            ...prevInput,
-            [name]: value,
-          }));
-          setError(validation({ ...input, [name]: value }));
-        }
-      };
+    // const handleChange = (event) => {
+    //     const { name, value } = event.target;
+    //     if (name === "image") {
+    //       setInput({ ...input, image: event.target.files[0] });
+    //     } else {
+    //       setInput((prevInput) => ({
+    //         ...prevInput,
+    //         [name]: value,
+    //       }));
+    //       setError(validation({ ...input, [name]: value }));
+    //     }
+    //   };
       
-      const handleAddContact = () => {
-        setInput((prevInput) => ({
-          ...prevInput,
-          contact: [input.email, input.num], 
-        }));
-      };
+    //   const handleAddContact = () => {
+    //     setInput((prevInput) => ({
+    //       ...prevInput,
+    //       contact: [input.email, input.num], 
+    //     }));
+    //   };
 
-      const handleChangeSelect = (selectedOptions) => {
-        setOrientaciones(selectedOptions);
-      };
+    //   const handleChangeSelect = (selectedOptions) => {
+    //     setOrientaciones(selectedOptions);
+    //   };
     
-      const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-          console.log(input);
-          await axios.post(URL, input);
-          console.log("Evento Creado con éxito")
-          setInput(initialState);
-        } catch (error) {
-          console.log({ error });
-        }
-      };
+    //   const handleSubmit = async (event) => {
+    //     event.preventDefault();
+    //     try {
+    //       console.log(input);
+    //       await axios.post(URL, input);
+    //       console.log("Evento Creado con éxito")
+    //       setInput(initialState);
+    //     } catch (error) {
+    //       console.log({ error });
+    //     }
+    //   };
 
     return(
 
