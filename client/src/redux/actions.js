@@ -26,6 +26,7 @@ export const SEND_ID_OF_CARD = "SEND_ID_OF_CARD";
 export const CLEAR_ID_OF_CARD = "CLEAR_ID_OF_CARD";
 export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
 export const IMAGE_URL = "IMAGE_URL";
+export const ERROR_POSTULATE = "ERROR_POSTULATE";
 import axios from "axios";
 
 export const register_model = (payload) => {
@@ -455,6 +456,15 @@ export const getUrlImage = (url) => {
     return dispatch({
       type: IMAGE_URL,
       payload: url,
+    });
+  };
+};
+
+export const message_error_postulate  = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: ERROR_POSTULATE,
+      payload: payload,
     });
   };
 };

@@ -27,6 +27,7 @@ import {
   CLEAR_ID_OF_CARD,
   GET_NAME_EVENTS,
   IMAGE_URL,
+  ERROR_POSTULATE,
 } from "./actions.js";
 
 const initialState = {
@@ -51,6 +52,7 @@ const initialState = {
   modalInSearchCompany: false,
   filters: false,
   filtersEvent: false,
+  errorPostulate: {},
   errors: {},
   imageUrl: "",
 };
@@ -294,6 +296,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         imageUrl: payload,
       }
+    case ERROR_POSTULATE:
+      return {
+        ...state,
+        errorPostulate: payload,
+      };
     case ERROR:
       return {
         ...state,
