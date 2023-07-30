@@ -12,7 +12,6 @@ const FormTalento = () => {
 
     const URL = `http://localhost:3001/forms/talents`
 
-    //const idUser = useSelector((state) => state.idUser);
     const idUser = localStorage.getItem("user_id")
 
     const imageURl = useSelector((state) => state.imageUrl)

@@ -8,12 +8,11 @@ import NavBarLateral from "../NavBarLateral/NavBarLateral";
 import Cloudinary from "../Cloudinary/Cloudinary";
 
 const EventForm = () => {
+
   const root = useSelector((state) => state.userType);
 
   const URL = "http://localhost:3001/events/";
 
-
-  //const idUser = useSelector((state) => state.idUser);
   const idUser = localStorage.getItem("user_id");
   const imageURl = useSelector((state) => state.imageUrl);
 
