@@ -13,7 +13,8 @@ const EventForm = () => {
 
     const URL = "http://localhost:3001/events/";
 
-    const idUser = useSelector((state) => state.idUser);
+    //const idUser = useSelector((state) => state.idUser);
+    const idUser = localStorage.getItem("user_id");
     const imageURl = useSelector((state) => state.imageUrl)
 
     const initialState = {
@@ -127,6 +128,7 @@ const EventForm = () => {
       const handleSubmit = async (event) => {
         event.preventDefault();
         try {
+          console.log(input);
           await axios.post(URL, input);
           console.log("Evento Creado con éxito")
           setInput(initialState);
