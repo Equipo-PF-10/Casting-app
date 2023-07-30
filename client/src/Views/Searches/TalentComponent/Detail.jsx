@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import style from "./DetailComp.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { create_postulant, get_all_postulations } from "../../../redux/actions";
+import { create_postulant, get_all_postulations, get_talent_by_id, message_error_postulate } from "../../../redux/actions";
 
 const Detail = (props) => {
-  const { detail , idTalent, idEvent} = props;
+  const { detail , idTalent, idEvent} = props;  
   console.log("en detail... idUsuario:  "+idTalent+"   idEvento:  "+ idEvent ); 
+  
   const dispatch = useDispatch();
-  const allPostulants = useSelector((state) =>  state.postulatedTalentsByEvent );
-  console.log(allPostulants);
+  const allPostulants = useSelector((state) =>  state.postulatedTalentsByEvent );//console.log(allPostulants);
+  const talent = useSelector((state) =>  state.talentById);
+  
   const [isPostulated, setIsPostulated] = useState("");
 
   // Verificar si el idTalent se encuentra en allPostulants
@@ -17,9 +19,15 @@ const Detail = (props) => {
     setIsPostulated(isTalentPostulated ? 'Yes' : 'No');
   }, [allPostulants, idTalent]);
 
-
+  //Verificar que el talento haya ingresado los datos minimos en su perfil antes de postularse a un evento
   const handlerClickCreate = () => {
-    dispatch(create_postulant(idEvent, idTalent));
+    dispatch(get_talent_by_id(idTalent));
+    console.log(talent);
+    if(talent.id === "" || talent.image === null || talent.hability === null){
+        dispatch(message_error_postulate("Para postularse antes debe completar los datos principales de su perfil."));
+    }else {
+      dispatch(create_postulant(idEvent, idTalent));
+    }
   }
 
   useEffect(() => {

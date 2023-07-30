@@ -11,7 +11,8 @@ import {
   getAllEvents,
   filterByEvent,
   get_event_by_id,
-  clear_message_postulated
+  clear_message_postulated,
+  message_error_postulate
 } from "../../redux/actions";
 
 const TalentSearch=() => {
@@ -21,20 +22,17 @@ const TalentSearch=() => {
   const evento = useSelector((state) => state.eventDetail);
   const eventFilter = useSelector((state) => state.eventsFiltered);
   const postulantCreated = useSelector((state) => state.postulantCreated);
+  const filters = useSelector((state) => state.filtersEvent);
+  const errorPostulate = useSelector((state) => state.errorPostulate);
   let messagePostulated;
   if(postulantCreated?.status === "Pendiente") messagePostulated = "Se ha postulado corectamente al evento."
  
-  const idUser = useSelector((state) => state.idUser);
+  //const idUser = useSelector((state) => state.idUser);
+  const idTalent = localStorage.getItem("id");
+  console.log(idTalent);
   
-  let idTalent; //Se mantiene el idTalent excepto si refrescan la pagina
-  if(idUser.length > 0) idTalent=idUser; //Mantengo guardado el id del usuario (talento)
-
   let [id, setId] = useState(""); //id cambian segun carta
   //let [eventSelected, setEventSelected] = useState({});
-
-
-  const filters = useSelector((state) => state.filtersEvent);
-
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
@@ -127,13 +125,50 @@ const TalentSearch=() => {
     }
   };
 
-  //-------------Mensaje Success Toast que viene de los registros (Talento o Empresa)
+
+  //Error Toast --------------------
+  let currentToastId = null;
+  //Evita que se renderice mas de 1 toast
+  const mensaje_error_Toast = () => {
+    if (currentToastId) {
+      toast.update(currentToastId, {
+        render: errorPostulate,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastId = toast.error(errorPostulate, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          // marginTop: "120px",
+          width: "500px",
+        },
+      });
+    }
+  };
+
+  //-------------Mensaje Success Toast 
   useEffect(() => {
     if (messagePostulated) {
       mensaje_success_Toast();
       dispatch(clear_message_postulated({}));
     }
   }, [messagePostulated]);
+
+  //-------------Mensaje Error Toast 
+  useEffect(() => {
+    if (Object.keys(errorPostulate).length > 0) {
+      mensaje_error_Toast();
+      dispatch(message_error_postulate({}));//Limpio el estado global
+    }
+  }, [errorPostulate]);
 
 
   return (
