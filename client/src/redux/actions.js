@@ -7,7 +7,8 @@ export const USER_TYPE = "USER_TYPE";
 export const GET_EVENT_BY_ID = "GET_EVENT_BY_ID";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
-export const GET_COMPANY_BY_ID = "GET_COMPANY_BY_ID";
+export const GET_COMPANY_BY_ID="GET_COMPANY_BY_ID";
+export const GET_COMPANY_ID="GET_COMPANY_ID";
 export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
@@ -138,6 +139,25 @@ export const get_company_by_id = (id) => {
       });
     } catch (error) {
       //window.alert(error.message); //"An error has occurred while getting a pokemon by ID!"
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al obtener un compañia por ID!",
+      });
+    }
+  };
+};
+
+export const get_company_id = (id) => {
+  let endpoint = `http://localhost:3001/companies/${id}`;
+  return async (dispatch) => {
+    try {
+      const {data}=await axios.get(endpoint);
+      //console.log(data + 'soy actions');
+      return dispatch({
+        type: GET_COMPANY_ID,
+        payload: data,
+      });
+    } catch (error) {
       return dispatch({
         type: "ERROR",
         payload: "¡Ha ocurrido un error al obtener un compañia por ID!",

@@ -23,7 +23,7 @@ const CompanySearch = () => {
   const modal = useSelector((state) =>  state.modalInSearchCompany);
   let messageDeleted = useSelector((state) =>  state.messagePostulantDeleted );
   
-
+  //localStorage.getItem("id");
   //Verificar si cuando se elimina un postulante se actualiza la lista (si no lo hace, buscar la forma)
 
   
@@ -163,7 +163,7 @@ useEffect(()=>{
         <div className={style.navLateral}>
           <NavBarLateral />
         </div>
-        {
+        {      
           postulantesCopy.length === 0 ?
           <div  className={style.text}>
            <h3>No se han encontrado resultados.</h3>
@@ -183,7 +183,7 @@ useEffect(()=>{
         }
         <div className={style.detailCard}>
            {
-            idCard.length === 0 ?
+            idCard.length === 0  ?
             filters ?
             <Detail className={style.detail} talent={postulantesCopy[0]} id_event={id}/>
             :

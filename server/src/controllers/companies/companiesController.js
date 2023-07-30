@@ -30,11 +30,15 @@ const searchByLocation = async (country) => {
 };
 
 const createCompany = async (email, password) => {
-  //! Falta el try catch
-  const created = await Company.create({ email, password });
+  const [company, created] = await Company.findOrCreate({
+    where: { email },
+    defaults: {
+      email,
+      password,
+    },
+  });
 
   if (!created) throw new Error("La empresa con el correo ingresado ya existe");
-  return created;
 };
 
 // Función controller que devuele el talent según el Id recibido por parámetro.

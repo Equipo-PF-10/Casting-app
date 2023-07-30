@@ -1,54 +1,21 @@
-import React, { useState } from "react";
-import styles from "./PaymentPlans.module.css";
+import React from "react";
+import styles from "./BasicAndPremiumPlan.module.css";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import CardMP from "./CardMP";
+import CardPaypal from "./CardPaypal";
+import vector from "../../../assets/PNG/PagoVector.png";
 
-export default function PaymentPlans() {
-  const navigate = useNavigate();
-  const [selectedPlan, setSelectedPlan] = useState("");
-  const [modalPlanFree, setModalPlanFree] = useState(false);
-  const [modalConfirmation, setModalConfirmation] = useState(false);
-  
-  //Fucniones para controlar los Modales
-  const onClickCloseModal = () => {
-    setModalPlanFree(false);
-  };
-  const onClickOpenConfirmation = () => {
-    setModalConfirmation(true);
-  };
-  const onClickCloseModalConfirmation = () => {
-    setModalConfirmation(false);
-  };
-
-  // Función para manejar el click en una card
-  const handleCardClick = (plan) => {
-    setSelectedPlan(plan);
-  };
-
-  const handleContinueClick = () => {
-    // Redirigir a una URL específica para cada plan.
-    switch (selectedPlan) {
-      case 'Free':
-        // Lógica para el plan Free (Mostrar el modal donde se pueda adquirir el plan)
-        setModalPlanFree(true);
-        break;
-      case 'Básico':
-        // Lógica para el plan Básico
-        navigate("/company/plans/basico");
-        break;
-      case 'Premium':
-        // Lógica para el plan Premium
-        navigate("/company/plans/premium");
-        break;
-      default:
-        break;
-    }
-  };
-
-  return (
-    <div className={styles.container}>
-      <div className={styles.topSection}>
-        <div className={styles.logo}>
+export default function BasicPlan () {
+  const text_card_mp = {
+    text: "¡Hacer tu pago es rápido y seguro con Mercado Pago! Con Mercado Pago, podrás realizar transacciones de forma sencilla y protegida, garantizando una experiencia de pago confiable en nuestra plataforma. ¡Empieza a aprovechar al máximo nuestra app y desbloquea un mundo de talento y oportunidades!"
+  }
+  const text_card_paypal = {
+    text: "Sigue los sencillos pasos de pago a través de Paypal, una plataforma segura y confiable. Simplemente elige tu plan, inicia sesión en tu cuenta Paypal y completa la transacción en unos pocos clics. ¡Comienza a descubrir talentos excepcionales hoy mismo y lleva tu proyecto al siguiente nivel con facilidad y comodidad!"
+  }
+    return (
+        <div className={styles.container}>
+            <div className={styles.headSection}>
+            <Link to={"/home/company"}>
             <svg
               width="200"
               height="100"
@@ -78,179 +45,53 @@ export default function PaymentPlans() {
                 />
               </defs>
             </svg>
-        </div>
-        <div className={styles.head}>
-          <h3>Escoge uno de nuestros planes para tu Empresa</h3>
-          <hr />
-        </div>
-        <div className={styles.buttonBack}>
-        <Link to={"/home/company"}>
-          <button>Regresar</button>
-        </Link>
-        </div>
-      </div>
-      {/* IMPLEMENTACION DE MODAL PARA PLAN FREE */}
-      {
-        modalPlanFree ?
-        <div className= {styles.containerModalOpened}>
-            <div className={styles.modalOpened}>
-              <div className={styles.cerrar}>
-              <button onClick={onClickCloseModal} className={styles.delete}><span>X</span></button>
-              </div>
-              <div className={styles.head2}>
-                <h2>Plan Seleccionado: <span>Plan Básico</span></h2>
-                <hr />
-              </div>
-              <div className={styles.infoPlan}>
-              <p>El plan Free es la opción perfecta para aquellos que desean descubrir las funcionalidades básicas de nuestra plataforma sin costo alguno; es la puerta de entrada a nuestra comunidad, brindando una experiencia básica pero efectiva para empresas interesadas en descubrir nuevos talentos.</p>
-              </div>
-              <p className={styles.text2}>Caracteristicas del Plan Free: </p>
-              <div className={styles.features}>
-                <ul>
-                  <li>Tiene la posibilidad de publicar hasta 2 oportunidades laborales de forma gratuita para empezar a dar a conocer tu Empresa.</li>
-                  <li>Recibe alertas por correo electrónico cuando se postulen candidatos a tus empleos.</li>
-                  <li>Explora nuestra plataforma y conoce todas las funcionalidades de la misma.</li>
-                </ul>
-              </div>
-              <div className={styles.cost}>
-                <h2>Costo: 0<span>Plan Gratuito</span></h2>
-              </div>
-              <div className={styles.bottom2}>
-                <button onClick={onClickOpenConfirmation}>Adquirir Plan</button>
-              </div>
-          </div>
-        </div>
-        :
-        <div className= {styles.containerModalClosed}>
-            <div className={styles.modalClosed}>
-              <button  className={styles.delete} >X</button>
-              <div>
-                <h1>ERROR!</h1>
-                <hr />
-                <h2>Error</h2>
-              </div>
-          </div>
-        </div>
-      }
-      {/* IMPLEMENTACION DE MODAL PARA MOSTRAR MENSAJE DE CONFIRMACIÓN */}
-      {
-        modalConfirmation ?
-        <div className= {styles.containerModalOpened}>
-            <div className={styles.modalConfirmationOpened}>
-              <div className={styles.head3}>
-                <h4>¿Está seguro/a de adquirir el Plan Free?</h4>
-                <hr />
-              </div>
-              
-              <div className={styles.bottom3}>
-                {/* APLICAR LOGICA (en el handleClick ---- Muestro mensaje*/}
-                <button className={styles.buttonConfirmar}>Confirmar</button>
-                <button className={styles.buttonRegresar} onClick={onClickCloseModalConfirmation}>Regresar</button>
-              </div>
-          </div>
-        </div>
-        :
-        <div className= {styles.containerModalClosed}>
-            <div className={styles.modalClosed}>
-              <button className={styles.delete} >X</button>
-              <div>
-                <h1>ERROR!</h1>
-                <hr />
-                <h2>Error</h2>
-              </div>
-          </div>
-        </div>
+          </Link>
+            </div>
+            <div className={styles.bodySection}>
+                
+                <div className={styles.bodyLeft}>
+                    <div className={styles.bodyLeftText}>
+                        <h1>Metodos de Pago</h1>
+                    </div>
+                    <div className={styles.bodyLeftPlans}>
+                    <div className={styles.bodyLeftMp}>
+                      <CardMP text_card_mp={text_card_mp}/>
+                    </div>
+                    <div className={styles.bodyLeftPaypal}>
+                    <div className={styles.bodyLeftMp}>
+                      <CardPaypal text_card_paypal={text_card_paypal}/>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <div className={styles.bodyCenter}>
+                  <div className={styles.bodyCenterPlan}>
+                    <h2>Plan Seleccionado: <span>Plan Básico</span></h2>
+                  </div>
+                  <hr />
+                  <div className={styles.bodyCenterIntro}>
+                    <p>Nuestro Plan Básico es una opción intermedia que ofrece una experiencia enriquecedora para las empresas que buscan talentos emergentes. Este plan brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
+                    <p>Caracteristicas del Plan Básico: </p>
+                  </div>
+                  <div className={styles.bodyCenterFeatures}>
+                    <ul>
+                      <li>Tiene la posibilidad de publicar hasta 20 oportunidades laborales para empezar a dar a conocer tu Empresa.</li>
+                      <li>Recibe alertas por correo electrónico cuando se postulen candidatos a tus empleos.</li>
+                      <li>Explora una variada y creciente base de datos de talentos emergentes, lo que les permite encontrar perfiles que se ajusten a sus requisitos específicos.</li>
+                    </ul>
+                  </div>
+                  <div className={styles.bodyCenterCost}>
+                    <h2>Costo: <span>$52.999</span></h2>
+                  </div>
+                </div>
+                <div className={styles.bodyRight}>
+                  <Link to={"/company/plans"}>
+                    <button>Regresar</button>
+                  </Link>
+                <img style={{ width: '300px'}} src={vector} alt="Vector Img" />
+                </div>
+            </div>
 
-      }
-    
-
-      <div className={styles.middleSection}>
-        <div className={styles.intro}>
-          <h4>Información </h4>
-          <hr />
-          <p>
-            Casting App ofrece a las empresas tres planes de pago: Free, Básico
-            y Premium, para adaptarse a sus necesidades y presupuestos
-            específicos. El plan Free es ideal para aquellos que desean explorar
-            las funcionalidades básicas de la plataforma sin costo alguno. Con
-            el plan Básico, las empresas obtienen acceso a características
-            adicionales. Por otro lado, el plan Premium brinda una experiencia completa, con
-            herramientas avanzadas de búsqueda y filtrado, destacando sus
-            vacantes y una mayor visibilidad para atraer talentos de alto nivel.
-            Nuestros planes permiten a las empresas personalizar su experiencia
-            y aprovechar al máximo nuestra plataforma, encontrando el talento
-            perfecto de manera eficiente y a un precio justo.
-          </p>
         </div>
-      </div>
-      <div className={styles.text}>
-        <h1>Planes</h1>
-        <hr />
-      </div>
-      <div className={styles.titles}>
-        <h4 
-          className={selectedPlan === 'Free' ? styles.selectedh4 : ''}
-          >
-        Free
-        </h4>
-        {/* className={styles.text_margin} */}
-        <h4 
-        className={`${styles.text_margin} ${
-          selectedPlan === 'Básico' ? styles.selectedh4 : ''
-        }`}
-        >
-        Básico
-        </h4>
-        <h4
-        className={selectedPlan === 'Premium' ? styles.selectedh4 : ''}
-        >
-        Premium
-        </h4>
-      </div>
-      <div className={styles.bottomSection}>
-        <div className={`${styles.card} ${
-            selectedPlan === 'Free' ? styles.selected : ''
-          }`} onClick={() => handleCardClick('Free')}>
-          <p>El plan Free es la opción perfecta para aquellos que desean descubrir las funcionalidades básicas de nuestra plataforma sin costo alguno.</p>
-          <ul>
-            <li>Publica hasta 2 eventos para empezar a dar a conocer tu Empresa.</li>
-            <li>Recibe alertas por correo electrónico.</li>
-          </ul>
-          <h1>$0 <span className={styles.gratis}>GRATIS</span></h1>
-          <button>Escoger</button>
-        </div>
-        <div className={`${styles.card} ${
-            selectedPlan === 'Básico' ? styles.selected : ''
-          }`} onClick={() => handleCardClick('Básico')}>
-          <p>El plan Normal brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
-          <ul>
-            <li>Publica hasta 20 eventos.</li>
-            <li>Recibe notificaciones en tiempo real cuando nuevos talentos postulen a tus vacantes.</li>
-          </ul>
-          <div className={styles.precios}>
-          <h3><s className={styles.antes}>Antes</s> $59.999</h3>
-          <h3><span className={styles.ahora}>Ahora</span> $52.999</h3>
-          </div>
-          <button>Escoger</button>
-        </div>
-        <div className={`${styles.card} ${
-            selectedPlan === 'Premium' ? styles.selected : ''
-          }`} onClick={() => handleCardClick('Premium')}>
-          <p>Nuestro exclusivo Plan Premium está diseñado para llevar la experiencia de búsqueda de talento al siguiente nivel. </p>
-          <ul>
-            <li>Publica oportunidades laborales de forma ilimitada.</li>
-            <li>Obten una mayor visibilidad al resaltar sus eventos en la pagina principal.</li>
-          </ul>
-          <div className={styles.precios}>
-          <h3><s className={styles.antes}>Antes</s> $99.999</h3>
-          <h3><span className={styles.ahora}>Ahora</span> $89.999</h3>
-          </div>
-          <button>Escoger</button>
-        </div>
-      </div>
-        <div className={styles.bottom}>
-          <button onClick={handleContinueClick} >Continuar</button>
-        </div>
-    </div>
-  );
+    )
 }

@@ -9,14 +9,19 @@ const emailRouter = require("./emails/emailRouter");
 const talentFormRouter = require("../routes/forms/talentFormRouter");
 const companyFormRouter = require("./forms/companyFormRouter");
 const eventFormRouter = require("../routes/forms/eventFormRouter");
+
 //const loginSignupRouter = require("./login-sigup/loginSignupRouter");
 //const accessApiRouter = require("./access/accessApiRouter");
 //const ensureToken = require("../handlers/token/tokenValidator");
+
+const conditionPlanRouter = require("./companies/conditionPlanRouter");
+
 
 const mainRouter = Router();
 
 //* Rutas de Empresas
 mainRouter.use("/companies/favorites", talentsFavoriteRouter);
+mainRouter.use("/companies/plan", conditionPlanRouter);
 mainRouter.use("/companies", companyRouter);
 
 //? Rutas de Talentos

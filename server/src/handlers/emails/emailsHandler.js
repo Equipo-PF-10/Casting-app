@@ -98,9 +98,50 @@ const  handlerTalentContact = async (req, res) => {
     }    
 }
 
+const  handlerExpirationSuscription = async (req, res) => {
+    const { email } = req.params
+    try {
+        const result = await transporter.sendMail({
+            from: "henry38b10@gmail.com",
+            to:email,
+            subject:"Suscripción CastingApp .",
+            text:"¡Atención! Su suscripción anual vence en 15 días. Asegúrese de renovarla para continuar disfrutando de nuestros servicios sin interrupciones. ¡Gracias por ser parte de nuestra comunidad!    Atentamente,        El equipo de CastingApp",   
+        },(err, info) => {
+            console.log(info.envelope);
+            console.log(info.messageId);
+        })
+        res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
+    } catch (error) {
+
+        console.log(error.message)
+    }    
+}
+
+const  handlerStopAdd = async (req, res) => {
+    const { email } = req.params
+    try {
+        const result = await transporter.sendMail({
+            from: "henry38b10@gmail.com",
+            to:email,
+            subject:"Límite de creación de eventos.",
+            text:"¡Importante aviso! Ha alcanzado el límite de creación de eventos en su plan actual. Le invitamos a suscribirse a nuestro plan premium para disfrutar de publicar eventos de forma ilimitada. ¡No se pierda esta gran oportunidad de ampliar sus posibilidades!   Pronto recibirás más detalles sobre los siguientes pasos. ¡Esperamos que tengas una experiencia increíble en este proyecto!  ¡Mucho éxito!    Atentamente,        El equipo de CastingApp",   
+        },(err, info) => {
+            console.log(info.envelope);
+            console.log(info.messageId);
+        })
+        res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
+    } catch (error) {
+
+        console.log(error.message)
+    }    
+}
+
+
   module.exports = { handlerRegisterTalent,
                      handlerRegisterCompany,
                      handlerCompanynewEvent,
                      handlerNewPostulant,
-                     handlerTalentContact
+                     handlerTalentContact,
+                     handlerExpirationSuscription,
+                     handlerStopAdd
                     };

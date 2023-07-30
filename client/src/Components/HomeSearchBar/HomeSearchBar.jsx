@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import styles from "./HomeSearchBar.module.css";
 import { useNavigate, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 
 export const HomeSearchBar = (props) => {
+
+    const id = useSelector((state) => state.idUser)
+
+    const company = `http://localhost:3001/companies/${id}`
+
     const navigate = useNavigate();
     const [input, setInput] = useState("");
 
@@ -12,6 +19,16 @@ export const HomeSearchBar = (props) => {
     const handleClick = (event) => {
         navigate(`/${props.url}/${input}`);
     }
+
+    const isCompanyRoute = location.pathname === '/home/company';
+
+    let path = "";
+    
+    if(company.plan === ""){
+        path = "/company/plans"
+    } else(
+        path = "/company/create"
+    )
    
     return (
         <div className={styles.container}>
@@ -21,11 +38,15 @@ export const HomeSearchBar = (props) => {
                     Search
                 </button>
             </div>
-            <div>
-                <NavLink to="/company/create">
-                    <button>Crear Evento</button>
-                </NavLink>
-            </div>            
+            <div>         
+            {isCompanyRoute && (
+                <div>
+                    <NavLink to={path}>
+                        <button>Crear Evento</button>
+                    </NavLink>
+                </div>
+            )}
+            </div>
         </div>
     );
 }

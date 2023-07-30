@@ -1,4 +1,4 @@
-const { Event, DisableEvent } = require("../../db");
+const { Event, DisableEvent, Company } = require("../../db");
 const { Op } = require("sequelize");
 
 // Función controller que retorna los eventos de la database.
@@ -42,37 +42,44 @@ const getEventById = async (id) => {
   }
 };
 
-// Función controller que crea un nuevo evento en la database.
-const createEvent = async (
-  name,
-  image,
-  expirationDate,
-  shortDescription,
-  description,
-  active,
-  ubication,
-  habilityRequired,
-  salary,
-  contact,
-  CompanyId
-) => {
+const createEvent = async (data) => {
   try {
-    const event = await Event.create({
-      name: name,
-      image: image,
-      expirationDate,
-      shortDescription: shortDescription,
-      description: description,
-      active,
-      ubication: ubication,
-      habilityRequired: habilityRequired,
-      salary: salary,
-      contact: contact,
-      CompanyId: CompanyId,
-    });
+    let allowedPosts = 0;
+    const company = await Company.findByPk(data.CompanyId);
+
+    if (!company) {
+      throw new Error("La compañía asociada al evento no existe.");
+    }
+
+    if (company.plan === "BASIC") {
+      allowedPosts = 3;
+    } else if ((company.plan = "PREMIUM")) {
+      allowedPosts = 30;
+    } else if ((company.plan = "PRO")) {
+      allowedPosts = Infinity;
+    } else if ((company.plan = "PENDIENTE")) {
+      throw new Error(
+        "¡Debes seleccionar un plan para poder crear eventos! Elige entre: BASIC - PREMIUM - PRO"
+      );
+    }
+
+    if (company.numberPosts >= allowedPosts) {
+      throw new Error(
+        "Has alcanzado el límite de eventos que puedes crear con tu plan actual."
+      );
+    }
+    // Añadimos la fecha de creación y expiración al objeto data.
+    data.creationDate = new Date();
+    data.expirationDate = new Date(data.creationDate);
+    data.expirationDate.setFullYear(data.expirationDate.getFullYear() + 1);
+
+    const event = await Event.create(data);
+    company.numberPosts += 1;
+    await company.save();
+
     return event;
   } catch (error) {
-    console.log({ error: error.message });
+    throw new Error(error.message);
   }
 };
 
