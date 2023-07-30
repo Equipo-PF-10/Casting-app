@@ -12,9 +12,12 @@ const EventForm = () => {
 
   const URL = "http://localhost:3001/events/";
 
+
   //const idUser = useSelector((state) => state.idUser);
   const idUser = localStorage.getItem("user_id");
   const imageURl = useSelector((state) => state.imageUrl);
+
+  const company = `http://localhost:3001/companies/${idUser}`
 
   const initialState = {
     name: "",
@@ -30,114 +33,6 @@ const EventForm = () => {
     num: "",
     CompanyId: idUser,
   };
-
-  const optionshabilityRequired = [
-    { value: "Actuación", label: "Actuación" },
-    { value: "Animador/a", label: "Animador/a" },
-    { value: "Bailarín/a", label: "Bailarín/a" },
-    { value: "Blogger", label: "Blogger" },
-    { value: "Cantante", label: "Cantante" },
-    { value: "DJ", label: "DJ" },
-    { value: "Influencer", label: "Influencer" },
-    { value: "Locutor/a", label: "Locutor/a" },
-    { value: "Mago/a", label: "Mago/a" },
-    { value: "Músico/a", label: "Músico/a" },
-    { value: "Modelo", label: "Modelo" },
-    { value: "Presentador/a", label: "Presentador/a" },
-    { value: "Promotor/a", label: "Promotor/a" },
-  ];
-
-  // Estados
-
-  const [input, setInput] = useState(initialState);
-
-  const [orientaciones, setOrientaciones] = useState([]);
-
-  const [error, setError] = useState({});
-
-  initialState.CompanyId = idUser;
-  initialState.image = imageURl;
-
-  input.CompanyId = idUser;
-  input.image = imageURl;
-
-  // Hability
-
-  const habilityValue = orientaciones.map((item) => item.value);
-
-  input.habilityRequired = habilityValue;
-
-  // Cloudinary
-
-  const uploadPreset = "casting_app";
-  const cloudName = "dntrnqcxe";
-
-  const URLCloud = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
-
-  const submitImage = async () => {
-    if (input.imageFile) {
-      const formData = new FormData();
-      formData.append("file", input.imageFile);
-      formData.append("upload_preset", uploadPreset);
-      formData.append("cloud_name", cloudName);
-
-      try {
-        const response = await axios.post(URLCloud, formData);
-        const responseData = response.data;
-        console.log(responseData);
-        console.log(responseData.url);
-        console.log("Imagen subida con éxito");
-        setInput({ ...input, image: responseData.url });
-      } catch (error) {
-        console.log({ error });
-      }
-    } else {
-      console.log("No se ha seleccionado ninguna imagen.");
-    }
-  };
-
-  if (input.imageFile) submitImage();
-
-  // Handles
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    if (name === "image") {
-      setInput({ ...input, image: event.target.files[0] });
-    } else {
-      setInput((prevInput) => ({
-        ...prevInput,
-        [name]: value,
-      }));
-      setError(validation({ ...input, [name]: value }));
-    }
-  };
-
-  const handleAddContact = () => {
-    setInput((prevInput) => ({
-      ...prevInput,
-      contact: [input.email, input.num],
-    }));
-  };
-
-  const handleChangeSelect = (selectedOptions) => {
-    setOrientaciones(selectedOptions);
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      console.log(input);
-      await axios.post(URL, input);
-      console.log("Evento Creado con éxito");
-      setInput(initialState);
-    } catch (error) {
-      console.log({ error });
-    }
-  };
-
-  console.log("URL Imágen", input.image);
-
 
     const optionshabilityRequired = [
         { value: 'Actuación', label: 'Actuación' },
@@ -162,6 +57,16 @@ const EventForm = () => {
     const [orientaciones, setOrientaciones] = useState([])
 
     const [error, setError] = useState({});
+
+    const [bnt, setBtn] = useState(false)
+
+    if(company.plan === "FREE" && company.numberPosts === 2){
+      setBtn(true)
+  } else if(company.plan === "BASICO" && company.numberPosts === 20){
+      setBtn(true)
+  } else if(company.plan === "PREMIUM"){
+      setBtn(false)
+  }
 
     initialState.idCompany = idUser;
     initialState.image = imageURl;
@@ -358,7 +263,7 @@ const EventForm = () => {
                     {error.shortDescription ? error.shortDescription : null}
                   </p>
                 </article>
-                <button type="submit" className={styles.btn}>
+                <button type="submit" className={styles.btn} disabled={bnt}>
                   Crear Evento
                 </button>
               </div>

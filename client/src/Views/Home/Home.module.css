@@ -13,3 +13,11 @@
     /* padding: 90px; */
     padding-left: 100px;
 }
+
+.divContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28rem;
+    height: fit-content;
+    align-items: center;
+}

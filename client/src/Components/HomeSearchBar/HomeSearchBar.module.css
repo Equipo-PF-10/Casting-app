@@ -1,17 +1,16 @@
 .container {
     margin-left: 115px;
-    padding-top: 20px;
-    padding-bottom: 20px;
     background-color: #f5f5f5;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 10rem;
+    height: fit-content;
+    width: fit-content;
 }
 
 .searchBarContainer {
     width: 300px;
-    height: 40px;
     background-color: white;
     border-radius: 100px;
     border: none;
