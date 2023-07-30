@@ -6,7 +6,7 @@
 .topSection {
   height: 10vh;
   display: grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 10% 70% 20%;
   justify-items: center;
   align-items: center;
 }
@@ -18,14 +18,14 @@
 }
 .head {
   min-width: 600px;
-  margin-right: 150px;
+  margin-left: 150px;
 }
 .head hr{
   color: var(--color-primario);
   width: 100vh;
   margin: auto;
   border-top: 4px solid;
-  margin-right: 30px;
+  margin-left: 30px;
 }
 .middleSection {
   height: 35vh;
@@ -51,7 +51,6 @@
     margin-bottom: 20px; 
 }
 
-
 .text {
   height: 8vh;
   grid-template-rows: 50% 50%;
@@ -72,11 +71,12 @@
 }
 .titles {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 27% 27% 27%;
   justify-items: center;
+  justify-content: center;
   align-items: center;
   height: 5vh;
-  margin-left: 20px;
+  margin-right: 20px;
   font-size: 30px;
   letter-spacing: 5px;
 }
@@ -84,11 +84,13 @@
 .bottomSection {
   height: 42vh;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 27% 27% 27%;
   justify-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .text_margin{
-    margin-left: 40px;
+    margin-left: 20px;
 }
 .card {
   width: 300px;
@@ -165,14 +167,274 @@
 }
 
 .bottom button {
-  height: 35px;
-  font-size: 20px;
+  height: 40px;
+  font-size: 23px;
   text-align: center;
   padding-bottom: 3px;
   background-color: var(--color-success);
+  margin-bottom: 10px;
   &:hover{
     color: var(--color-success);
     background-color: white;
     border: 1px solid var(--color-success);
+  }
+}
+
+.buttonBack {
+  display: flex;
+  justify-content: end;
+}
+
+.buttonBack button {
+  background-color: rgba(79, 153, 203, 0.226);
+  color: black;
+  font-size: 20px;
+  width: 20vh;
+  margin-left: 100px;
+  &:hover{
+      background-color: white;
+  }
+}
+
+
+/* MODAL */
+.containerModalOpened {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modalOpened {
+  width: 40%;
+  height: 70%;
+  background-color: whitesmoke;
+  border-radius: 20px;    
+  display: grid;
+  grid-template-rows: 7.5% 8.5% 26% 5% 28% 10% 5%;
+  align-items: center;
+  text-align: center; 
+  position: relative;
+  border: 1px solid black;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.599);
+  &:hover {
+      border: 1px solid blue;
+  }
+  transition: transform 1s;
+  transform: translateY(0%);
+}
+.cerrar {
+  /* background-color:  white; */
+  height: 5vh;
+  width: 75vh;
+  display: flex;
+  justify-content: end;
+  /* align-items: end; */
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+.delete {
+   /* position: absolute; */
+  /* top: 10px;
+  right: 10px;  */
+  height: 2.5vh;
+  width: 2.5vh;
+  border-radius: 3px;
+  color: white;
+  background-color: red;
+  box-shadow: 0 3px 3px black;
+  &:hover {
+      color: red;
+      background-color: white;
+      box-shadow: 0 3px 3px red;
+  }
+}
+.cerrar span {
+  font-size: 15px;
+}
+.head2 {
+  height: 10vh;
+  text-align: center;
+}
+.head2 h2 {
+  margin-top: 10px;
+}
+.head2 span {
+  color: var(--color-success)
+}
+.head2 hr {  
+color: var(--color-primario);
+width: 50vh;
+margin: auto;
+border-top: 4px solid;
+margin-top: 10px;
+}
+
+.infoPlan {
+  height: 20vh;
+  padding: 0px 20px 0px 20px; 
+  display: flex;
+  justify-content: center;
+  
+}
+.infoPlan p {
+  text-align: justify;
+  font-size: 22px;
+}
+.text2 {
+  height: 10vh;
+  padding-left: 20px;
+  padding-top: 20px;
+  font-size: 22px;
+  text-align: start;
+}
+.features {
+  height: 20vh;
+  padding: 0px 20px 0px 20px; 
+  text-align: justify;
+}
+.features li {
+  font-size: 22px;
+}
+.cost {
+  height: 10vh;
+  font-size: 22px;
+  padding: 20px;
+  text-align: start;
+  margin-top: 30px;
+}
+.cost span{
+  color: var(--color-success);
+  margin-left: 30px;
+}
+.bottom2 {
+  height: 5vh;
+  margin-top: 30px;
+}
+.bottom2 button {
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 3px;
+  background-color: var(--color-success);
+  margin-bottom: 10px;
+  &:hover{
+    color: var(--color-success);
+    background-color: white;
+    border: 1px solid var(--color-success);
+  }
+}
+
+/* Modal Closed */
+
+.containerModalClosed {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalClosed {
+  width: 40%;
+  height: 52%;
+  background-image: linear-gradient(to bottom right, red, yellow);
+  border-radius: 10px;    
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  border: 3px solid black;
+  &:hover {
+      box-shadow: 0 0 10px black;
+  }
+  transition: transform 1s;
+  transform: translateY(-200%);
+}
+
+/* MODAL DE CONFIRMACION */
+.modalConfirmationOpened {
+  width: 30%;
+  height: 25%;
+  background-color: whitesmoke;
+  border-radius: 20px;    
+  display: grid;
+  grid-template-rows: 40% 60%;
+  align-items: center;
+  text-align: center; 
+  position: relative;
+  border: 1px solid black;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.599);
+  &:hover {
+      border: 1px solid blue;
+  }
+  /* transition: transform 1s; */
+  transform: translateY(0%);
+}
+
+.head3 {
+  height: 10vh;
+  text-align: center;
+}
+.head3 h4 {
+  margin-top: 40px;
+}
+.head3 span {
+  color: var(--color-success)
+}
+.head3 hr {  
+color: var(--color-primario);
+width: 50vh;
+margin: auto;
+border-top: 4px solid;
+margin-top: 10px;
+}
+
+.bottom3 {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-left: 60px;
+}
+.bottom3 button {
+  width: 20vh;
+  height: 3.4vh;
+  font-size: 20px;
+}
+
+.buttonConfirmar {
+  background-color: var(--color-success);
+  color: white;
+  font-size: 20px;
+  width: 20vh;
+  &:hover{
+    border: solid 1px black;
+    background-color: white;
+    color: var(--color-success);
+  }
+}
+.buttonRegresar {
+  background-color: var(--color-error);
+  color: white;
+  font-size: 20px;
+  width: 20vh;
+  &:hover{
+    border: solid 1px black;
+    background-color: white;
+    color: var(--color-error);
   }
 }
