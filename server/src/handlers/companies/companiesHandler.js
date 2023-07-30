@@ -63,7 +63,7 @@ const handlerSearchByLocation = async (req, res) => {
 const handlerCreateCompany = async (req, res) => {
   const { email, password } = req.body;
 
-  if (!email || !password) {
+  if (!email) {
     return res.status(400).send("Faltan datos obligatorios");
   }
 

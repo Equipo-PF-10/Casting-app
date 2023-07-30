@@ -28,7 +28,7 @@ const TalentSearch=() => {
   if(postulantCreated?.status === "Pendiente") messagePostulated = "Se ha postulado corectamente al evento."
  
   //const idUser = useSelector((state) => state.idUser);
-  const idTalent = localStorage.getItem("id");
+  const idTalent = localStorage.getItem("user_id");
   console.log(idTalent);
   
   let [id, setId] = useState(""); //id cambian segun carta

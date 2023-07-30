@@ -15,7 +15,7 @@ const Login = () => {
 
   useEffect(() => {
     if(localStorage.getItem("logged") === "true") {
-      dispatch(id_user(localStorage.getItem("id")));
+      dispatch(id_user(localStorage.getItem("user_id")));
       if (localStorage.getItem("type") === "talent") navigate(`/home/talent`);
       if (localStorage.getItem("type") === "company") navigate(`/home/company`);
     }
