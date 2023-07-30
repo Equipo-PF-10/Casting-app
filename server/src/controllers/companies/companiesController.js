@@ -12,9 +12,10 @@ async function getAllCompanies(name) {
 // Función controller que devuele el talent según el Id recibido por parámetro.
 const getCompanyByEmail = async (email) => {
   try {
-    const foundTalent = await Company.findAll({where : {email:email}});
+    const foundTalent = await Company.findAll({ where: { email: email } });
 
-    if (!foundTalent) throw new Error(`El Usuario con Email ${email} no existe`);
+    if (!foundTalent)
+      throw new Error(`El Usuario con Email ${email} no existe`);
     return foundTalent;
   } catch (error) {
     throw new Error(error.message);
@@ -29,12 +30,14 @@ const searchByLocation = async (country) => {
   return response;
 };
 
-const createCompany = async (email, password) => {
+// Función controller para crear company.
+const createCompany = async (email, name, image) => {
   const [company, created] = await Company.findOrCreate({
     where: { email },
     defaults: {
       email,
-      password,
+      name,
+      image,
     },
   });
 
@@ -117,5 +120,5 @@ module.exports = {
   getCompanyById,
   deleteCompanyById,
   getAllCompanies,
-  getCompanyByEmail
+  getCompanyByEmail,
 };

@@ -61,14 +61,14 @@ const handlerSearchByLocation = async (req, res) => {
 };
 
 const handlerCreateCompany = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, name, image } = req.body;
 
   if (!email) {
     return res.status(400).send("Faltan datos obligatorios");
   }
 
   try {
-    const created = await createCompany(email, password);
+    const created = await createCompany(email, name, image);
     res.status(200).send("Se ha registrado correctamente");
   } catch (error) {
     res.status(400).json(error.message);

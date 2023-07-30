@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
         },
       },
 
-      logo: {
+      image: {
         type: DataTypes.STRING,
         defaultValue: "default_logo.png",
       },
