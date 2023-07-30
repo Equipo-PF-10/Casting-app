@@ -9,7 +9,7 @@ import NavBarLateral from "../NavBarLateral/NavBarLateral"
 
 const FormEmpresa = () => {
 
-    const idUser = useSelector((state) => state.idUser);
+    const idUser = localStorage.getItem("user_id");
 
     const imageURL = useSelector((state) => state.imageUrl)
 
