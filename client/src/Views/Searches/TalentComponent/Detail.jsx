@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import style from "./DetailComp.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { create_postulant, get_all_postulations, get_talent_by_id, message_error_postulate } from "../../../redux/actions";
+/* import { handlerNewPostulant } from "../../../../../server/src/handlers/emails/emailsHandler.js"; */
 
 const Detail = (props) => {
   const { detail , idTalent, idEvent} = props;  
@@ -27,6 +29,23 @@ const Detail = (props) => {
         dispatch(message_error_postulate("Para postularse antes debe completar los datos principales de su perfil."));
     }else {
       dispatch(create_postulant(idEvent, idTalent));
+      const CompanyId = axios.get(`http://localhost:3001/events/${idEvent}`)
+      .then((resp) => resp.data.CompanyId)
+      .catch((error) => console.log(error))
+
+      const CompanyEmail = axios.get(`http://localhost:3001/companies/${CompanyId}`)
+      .then((resp) => resp.data.email)
+      .catch((error) => console.log(error))
+
+      const emailToCompany = axios.post(`http://localhost:3001/email/newPostulante/${CompanyEmail}`)
+      .then((resp) => console.log(resp.data))
+      .catch((error) => console.log(error))
+
+      let userEmail = localStorage.getItem("user_email");
+
+      const emailToTalent = axios.post(`http://localhost:3001/email/talentContac/${emailToTalent}`)
+      .then((resp) => console.log(resp.data))
+      .catch((error) => console.log(error))
     }
   }
 
