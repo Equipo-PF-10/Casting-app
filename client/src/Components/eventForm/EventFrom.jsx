@@ -138,7 +138,83 @@ const EventForm = () => {
 
   console.log("URL Imágen", input.image);
 
-  return (
+
+    const optionshabilityRequired = [
+        { value: 'Actuación', label: 'Actuación' },
+        { value: 'Animador/a', label: 'Animador/a' },
+        { value: 'Bailarín/a', label: 'Bailarín/a' },
+        { value: 'Blogger', label: 'Blogger' },
+        { value: 'Cantante', label: 'Cantante' },
+        { value: 'DJ', label: 'DJ' },
+        { value: 'Influencer', label: 'Influencer' },
+        { value: 'Locutor/a', label: 'Locutor/a' },
+        { value: 'Mago/a', label: 'Mago/a' },
+        { value: 'Músico/a', label: 'Músico/a' },
+        { value: 'Modelo', label: 'Modelo' },
+        { value: 'Presentador/a', label: 'Presentador/a' },
+        { value: 'Promotor/a', label: 'Promotor/a' },
+      ];
+    
+    // Estados
+
+    const [input, setInput] = useState(initialState)
+
+    const [orientaciones, setOrientaciones] = useState([])
+
+    const [error, setError] = useState({});
+
+    initialState.idCompany = idUser;
+    initialState.image = imageURl;
+
+    input.idCompany = idUser;
+    input.image = imageURl;
+
+    // Hability
+
+    const habilityValue = orientaciones.map(item => item.value);
+
+    input.habilityRequired = habilityValue;
+          
+    // Handles
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        if (name === "image") {
+          setInput({ ...input, image: event.target.files[0] });
+        } else {
+          setInput((prevInput) => ({
+            ...prevInput,
+            [name]: value,
+          }));
+          setError(validation({ ...input, [name]: value }));
+        }
+      };
+      
+      const handleAddContact = () => {
+        setInput((prevInput) => ({
+          ...prevInput,
+          contact: [input.email, input.num], 
+        }));
+      };
+
+      const handleChangeSelect = (selectedOptions) => {
+        setOrientaciones(selectedOptions);
+      };
+    
+      const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+          console.log(input);
+          await axios.post(URL, input);
+          console.log("Evento Creado con éxito")
+          setInput(initialState);
+        } catch (error) {
+          console.log({ error });
+        }
+      };
+
+    return(
+
     <div>
       <NavBarLateral root={root} />
       <section className={styles.section}>

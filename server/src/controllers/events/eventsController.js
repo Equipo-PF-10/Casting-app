@@ -51,15 +51,15 @@ const createEvent = async (data) => {
       throw new Error("La compañía asociada al evento no existe.");
     }
 
-    if (company.plan === "BASIC") {
-      allowedPosts = 3;
-    } else if ((company.plan = "PREMIUM")) {
-      allowedPosts = 30;
-    } else if ((company.plan = "PRO")) {
+    if (company.plan === "FREE") {
+      allowedPosts = 2;
+    } else if ((company.plan === "BASICO")) {
+      allowedPosts = 20;
+    } else if ((company.plan === "PREMIUM")) {
       allowedPosts = Infinity;
     } else if ((company.plan = "PENDIENTE")) {
       throw new Error(
-        "¡Debes seleccionar un plan para poder crear eventos! Elige entre: BASIC - PREMIUM - PRO"
+        "¡Para crear un evento antes debes adquirir un plan!"
       );
     }
 
