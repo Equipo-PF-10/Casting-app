@@ -92,14 +92,24 @@ const FormTalento = () => {
         })
     }
 
+
+
     const hanldeSubmit = async(event) => {
         event.preventDefault();
+
+        const filledFields = {};
+        for (const [key, value] of Object.entries(input)) {
+            if (value !== "" && value !== 0 && value.length !== 0) {
+              filledFields[key] = value;
+            }
+          }
+          
         try {
-            await axios.patch(URL, input)
+            await axios.patch(URL, filledFields)
             console.log("Datos actualizados correctamente")
             setInput(initialState)
         } catch (error) {
-            console.log({error: error.message})
+            console.log(error)
         }
     }
 
@@ -107,7 +117,9 @@ const FormTalento = () => {
 
     input.hability = habilityValue;
 
-    input.image = imageURl;
+    if(imageURl){
+        input.image = imageURl;
+    }
 
     input.id = idUser;
 
@@ -120,17 +132,16 @@ const FormTalento = () => {
             <form action="" className={Styles.form} method="POST" onSubmit={hanldeSubmit} encType="multipart/form-data">
                 <div className={Styles.div}>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="name" className={Styles.text}>Nombre Completo</label>
+                        <label htmlFor="name" className={Styles.text}>Cambiar Nombre</label>
                         <input type="text" name="name" id="name" value={input.name} onChange={handleChange}/>
                     </article>
 
                     <article className={Styles.coolinput}>
-                        <label htmlFor="password" className={Styles.text}>Contraseña</label>
+                        <label htmlFor="password" className={Styles.text}>Nueva Contraseña</label>
                         <input type="password" name="password" id="password" value={input.password} onChange={handleChange} />
-                        <p className={error.password ? Styles.error : ""}>{error.password ? error.password : null}</p>
                     </article>
                     <article className={Styles.coolinput}>
-                        <label htmlFor="email" className={Styles.text}>Email</label>
+                        <label htmlFor="email" className={Styles.text}>Nuevo Email</label>
                         <input type="text" name="email" id="email" value={input.email} onChange={handleChange}/>
                         <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null}</p>
                     </article>
@@ -200,9 +211,9 @@ const FormTalento = () => {
                                 <label htmlFor="" className={Styles.text}>Contextura</label>
                                 <select name="contexture" id="" value={input.contexture} onChange={handleChange}>
                                     <option value="" disabled>Tipos</option>
-                                    <option value="Ectomorfo" >Ectomorfo</option>
-                                    <option value="Endomorfo" >Endomorfo</option>
-                                    <option value="Mesomorfo" >Mesomorfo</option>
+                                    <option value="Ectomorfo">Ectomorfo</option>
+                                    <option value="Endomorfo">Endomorfo</option>
+                                    <option value="Mesomorfo">Mesomorfo</option>
                                 </select>
                             </article>
                         </div>
@@ -261,7 +272,8 @@ const FormTalento = () => {
                     </article>
                     <article className={Styles.coolinput}>
                         <label htmlFor="dni" className={Styles.text}>Documento de Identidad</label>
-                        <input type="text" name="dni" id="dni" value={input.dni} onChange={handleChange}/>
+                        <input type="text" name="dni" id="dni" value={input.dni} onChange={handleChange} maxLength="8"/>
+                        <p className={error.dni ? Styles.error : ""}>{error.dni ? error.dni : null}</p>
                     </article>
                 </div>
             </form>

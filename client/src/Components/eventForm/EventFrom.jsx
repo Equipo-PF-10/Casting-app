@@ -28,7 +28,7 @@ const EventForm = () => {
         contact: [],
         email: "",
         num: "",
-        idCompany: idUser,
+        idCompany: "",
     }
 
     const optionshabilityRequired = [
@@ -135,8 +135,6 @@ const EventForm = () => {
         }
       };
     
-    console.log("URL Imágen",input.image)
-
     return(
     <div>
         <NavBarLateral root={root}/>

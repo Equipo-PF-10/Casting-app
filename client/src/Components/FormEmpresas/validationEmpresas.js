@@ -8,7 +8,7 @@ export default function validationEmpresas(input){
         return emailRegex.test(email);
       }
 
-    if(input.password.length < 8){
+    if(input.password && input.password.length < 8){
         error.password = "Debe ser mayor a 8 caracteres"
     }
 
@@ -17,6 +17,5 @@ export default function validationEmpresas(input){
         error.email = "El email debe ser válido"
     }
 
-  
     return error
 }

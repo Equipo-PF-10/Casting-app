@@ -1,57 +1,9 @@
 const { Talent } = require('../../db');
 
-const updateFormTalent = async (
-  id,
-  name,
-  email,
-  password,
-  dni,
-  available,
-  dateComeBack,
-  image,
-  portfolio,
-  gender,
-  aboutMe,
-  nationality,
-  ubication,
-  hability,
-  contexture,
-  ethnicOrigin,
-  weight,
-  height,
-  contact,
-  socialNetwork,
-  reviews,
-  reviewsCount
-) => {
-  const [rowsUpdated] = await Talent.update(
-    {
-      name,
-      dni,
-      email,
-      password,
-      available,
-      dateComeBack,
-      image,
-      portfolio,
-      gender,
-      aboutMe,
-      nationality,
-      ubication,
-      hability,
-      contexture,
-      ethnicOrigin,
-      weight,
-      height,
-      contact,
-      socialNetwork,
-      reviews,
-      reviewsCount,
-    },
-    {
-      where: { id },
-    }
-  );
+const updateFormTalent = async (id, updatedFields) => {
+  const [rowsUpdated] = await Talent.update(updatedFields, {
+    where: { id },
+  });
 
   // Verifica si se encontró el talento y se actualizó correctamente
   if (rowsUpdated === 0) {
@@ -64,6 +16,7 @@ const updateFormTalent = async (
 };
 
 module.exports = { updateFormTalent };
+
 
 // const {Talent} = require('../../db');
 // const createFormTalent = async (id, name, email, password, dni, available, dateComeBack, image,

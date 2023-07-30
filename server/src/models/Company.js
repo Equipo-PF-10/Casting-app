@@ -88,7 +88,6 @@ module.exports = (sequelize) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      isEmail: true,
     },
 
     industryMain: {

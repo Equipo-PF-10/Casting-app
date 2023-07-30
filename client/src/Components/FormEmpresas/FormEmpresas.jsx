@@ -42,8 +42,14 @@ const FormEmpresa = () => {
 
     const hanldeSubmit = async(event) => {
         event.preventDefault();
+        const filledFields = {};
+        for (const [key, value] of Object.entries(input)) {
+            if (value !== "" && value !== 0 && value.length !== 0) {
+              filledFields[key] = value;
+            }
+          }
         try {
-            await axios.patch(URL, input)
+            await axios.patch(URL, filledFields)
             setInput(initialState)
         } catch (error) {
             console.log({error: error.message})
