@@ -9,13 +9,14 @@ const emailRouter = require("./emails/emailRouter");
 const talentFormRouter = require("../routes/forms/talentFormRouter");
 const companyFormRouter = require("./forms/companyFormRouter");
 const eventFormRouter = require("../routes/forms/eventFormRouter");
+const conditionPlanRouter = require("./companies/conditionPlanRouter");
 
 const mainRouter = Router();
 
 //* Rutas de Empresas
 mainRouter.use("/companies/favorites", talentsFavoriteRouter);
+mainRouter.use("/companies/plan", conditionPlanRouter);
 mainRouter.use("/companies", companyRouter);
-mainRouter.use("/:companyId/updatePlan", companyRouter);
 
 //? Rutas de Talentos
 mainRouter.use("/talents/favorites", companyFavoriteRouter);

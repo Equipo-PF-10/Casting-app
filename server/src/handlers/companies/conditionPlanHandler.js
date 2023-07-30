@@ -1,12 +1,28 @@
-const { updateConditionPlan } = require('../../controllers/companies/conditionPlanController');
+const {
+  updateConditionPlan,
+} = require("../../controllers/companies/conditionPlanController");
 
 const updateCompanyConditionPlan = async (req, res) => {
   const { companyId } = req.params;
   const { newConditionPlan } = req.body;
 
   try {
-    // Aquí hace la llamada al controlador para actualizar el plan de la compañía
-    const updatedCompany = await updateConditionPlan(companyId, newConditionPlan);
+    if (
+      newConditionPlan !== "BASIC" &&
+      newConditionPlan !== "PREMIUM" &&
+      newConditionPlan !== "PRO"
+    ) {
+      return res
+        .status(400)
+        .send(
+          "¡Error! Debes proporcionar un modelo de plan válido: BASIC | PREMIUM | PRO"
+        );
+    }
+
+    const updatedCompany = await updateConditionPlan(
+      companyId,
+      newConditionPlan
+    );
     return res.status(200).json(updatedCompany);
   } catch (error) {
     return res.status(500).json({ error: error.message });

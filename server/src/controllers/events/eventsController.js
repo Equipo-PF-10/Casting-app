@@ -44,64 +44,44 @@ const getEventById = async (id) => {
 
 const createEvent = async (data) => {
   try {
-    // Obtener la compañía asociada al evento
+    let allowedPosts = 0;
     const company = await Company.findByPk(data.CompanyId);
 
     if (!company) {
-      throw new Error('La compañía asociada al evento no existe.');
+      throw new Error("La compañía asociada al evento no existe.");
     }
 
-    // Verificar si el planCondition es mayor que 0
-    if (company.planCondition <= 0) {
-      throw new Error('No tienes publicaciones disponibles en tu plan.');
+    if (company.plan === "BASIC") {
+      allowedPosts = 3;
+    } else if ((company.plan = "PREMIUM")) {
+      allowedPosts = 30;
+    } else if ((company.plan = "PRO")) {
+      allowedPosts = Infinity;
+    } else if ((company.plan = "PENDIENTE")) {
+      throw new Error(
+        "¡Debes seleccionar un plan para poder crear eventos! Elige entre: BASIC - PREMIUM - PRO"
+      );
     }
-    
-    // Restar 1 a las publicaciones permitidas del planCondition de la compañía
-    company.planCondition -= 1;
+
+    if (company.numberPosts >= allowedPosts) {
+      throw new Error(
+        "Has alcanzado el límite de eventos que puedes crear con tu plan actual."
+      );
+    }
+    // Añadimos la fecha de creación y expiración al objeto data.
+    data.creationDate = new Date();
+    data.expirationDate = new Date(data.creationDate);
+    data.expirationDate.setFullYear(data.expirationDate.getFullYear() + 1);
+
+    const event = await Event.create(data);
+    company.numberPosts += 1;
     await company.save();
 
-    // Crear el evento
-    const event = await Event.create(data);
     return event;
   } catch (error) {
-
     throw new Error(error.message);
-
   }
 };
-// // Función controller que crea un nuevo evento en la database.
-// const createEvent = async (
-//   name,
-//   image,
-//   expirationDate,
-//   shortDescription,
-//   description,
-//   active,
-//   ubication,
-//   habilityRequired,
-//   salary,
-//   contact,
-//   CompanyId
-// ) => {
-//   try {
-//     const event = await Event.create({
-//       name: name,
-//       image: image,
-//       expirationDate,
-//       shortDescription: shortDescription,
-//       description: description,
-//       active,
-//       ubication: ubication,
-//       habilityRequired: habilityRequired,
-//       salary: salary,
-//       contact: contact,
-//       CompanyId: CompanyId,
-//     });
-//     return event;
-//   } catch (error) {
-//     console.log({error: error.message})
-//   }
-// };
 
 // Función controller para eliminar un evento de la base de datos según el id pasado.
 const deleteEventById = async (id) => {

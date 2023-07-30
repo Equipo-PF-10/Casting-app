@@ -72,38 +72,29 @@ const handlerCreateEvent = async (req, res) => {
     CompanyId,
   } = req.body;
 
-  console.log("Body: ", req.body);
-
   if (!name || !image || !ubication || !habilityRequired) {
     return res.status(400).send("Faltan datos obligatorios");
   }
 
-  // Transforma CompanyId de String a UUID
+  try {
+    const createdEvent = await createEvent({
+      name,
+      image,
+      active,
+      ubication,
+      habilityRequired,
+      salary,
+      shortDescription,
+      description,
+      contact,
+      expirationDate,
+      CompanyId,
+    });
 
-try {
-  
-  const createdEvent = await createEvent({
-
-
-
-    name,
-    image,
-    expirationDate,
-    shortDescription,
-    description,
-    active,
-    ubication,
-    habilityRequired,
-    salary,
-    contact,
-    CompanyId
-  });
-
-  res.status(200).json(createdEvent);
-
-} catch (error) {
-  res.status(500).json({ error: error.message });
-}
+    res.status(200).json(createdEvent);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 // Función handler para borrar un evento.
