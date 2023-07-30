@@ -6,8 +6,21 @@ import { useNavigate } from "react-router-dom";
 export default function PaymentPlans() {
   const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState("");
+  const [modalPlanFree, setModalPlanFree] = useState(false);
+  const [modalConfirmation, setModalConfirmation] = useState(false);
   
-  // Función para manejar el clic en una card
+  //Fucniones para controlar los Modales
+  const onClickCloseModal = () => {
+    setModalPlanFree(false);
+  };
+  const onClickOpenConfirmation = () => {
+    setModalConfirmation(true);
+  };
+  const onClickCloseModalConfirmation = () => {
+    setModalConfirmation(false);
+  };
+
+  // Función para manejar el click en una card
   const handleCardClick = (plan) => {
     setSelectedPlan(plan);
   };
@@ -17,7 +30,7 @@ export default function PaymentPlans() {
     switch (selectedPlan) {
       case 'Free':
         // Lógica para el plan Free (Mostrar el modal donde se pueda adquirir el plan)
-        
+        setModalPlanFree(true);
         break;
       case 'Básico':
         // Lógica para el plan Básico
@@ -76,6 +89,81 @@ export default function PaymentPlans() {
         </Link>
         </div>
       </div>
+      {/* IMPLEMENTACION DE MODAL PARA PLAN FREE */}
+      {
+        modalPlanFree ?
+        <div className= {styles.containerModalOpened}>
+            <div className={styles.modalOpened}>
+              <div className={styles.cerrar}>
+              <button onClick={onClickCloseModal} className={styles.delete}><span>X</span></button>
+              </div>
+              <div className={styles.head2}>
+                <h2>Plan Seleccionado: <span>Plan Básico</span></h2>
+                <hr />
+              </div>
+              <div className={styles.infoPlan}>
+              <p>El plan Free es la opción perfecta para aquellos que desean descubrir las funcionalidades básicas de nuestra plataforma sin costo alguno; es la puerta de entrada a nuestra comunidad, brindando una experiencia básica pero efectiva para empresas interesadas en descubrir nuevos talentos.</p>
+              </div>
+              <p className={styles.text2}>Caracteristicas del Plan Free: </p>
+              <div className={styles.features}>
+                <ul>
+                  <li>Tiene la posibilidad de publicar hasta 2 oportunidades laborales de forma gratuita para empezar a dar a conocer tu Empresa.</li>
+                  <li>Recibe alertas por correo electrónico cuando se postulen candidatos a tus empleos.</li>
+                  <li>Explora nuestra plataforma y conoce todas las funcionalidades de la misma.</li>
+                </ul>
+              </div>
+              <div className={styles.cost}>
+                <h2>Costo: 0<span>Plan Gratuito</span></h2>
+              </div>
+              <div className={styles.bottom2}>
+                <button onClick={onClickOpenConfirmation}>Adquirir Plan</button>
+              </div>
+          </div>
+        </div>
+        :
+        <div className= {styles.containerModalClosed}>
+            <div className={styles.modalClosed}>
+              <button  className={styles.delete} >X</button>
+              <div>
+                <h1>ERROR!</h1>
+                <hr />
+                <h2>Error</h2>
+              </div>
+          </div>
+        </div>
+      }
+      {/* IMPLEMENTACION DE MODAL PARA MOSTRAR MENSAJE DE CONFIRMACIÓN */}
+      {
+        modalConfirmation ?
+        <div className= {styles.containerModalOpened}>
+            <div className={styles.modalConfirmationOpened}>
+              <div className={styles.head3}>
+                <h4>¿Está seguro/a de adquirir el Plan Free?</h4>
+                <hr />
+              </div>
+              
+              <div className={styles.bottom3}>
+                {/* APLICAR LOGICA (en el handleClick ---- Muestro mensaje*/}
+                <button className={styles.buttonConfirmar}>Confirmar</button>
+                <button className={styles.buttonRegresar} onClick={onClickCloseModalConfirmation}>Regresar</button>
+              </div>
+          </div>
+        </div>
+        :
+        <div className= {styles.containerModalClosed}>
+            <div className={styles.modalClosed}>
+              <button className={styles.delete} >X</button>
+              <div>
+                <h1>ERROR!</h1>
+                <hr />
+                <h2>Error</h2>
+              </div>
+          </div>
+        </div>
+
+      }
+    
+
       <div className={styles.middleSection}>
         <div className={styles.intro}>
           <h4>Información </h4>
