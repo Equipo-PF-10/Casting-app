@@ -37,11 +37,13 @@ const Home = (props) => {
 
   return (
     <div className={styles.background}>
-      <LogoutButton/>
       <NavBarLateral />
+      <div  className={styles.divContainer}>
       <HomeSearchBar
         url={props.type === "talent" ? "model/search" : "company/search"}
-      />
+        />
+      <LogoutButton/>
+      </div>
       <div className={styles.container}>
         {props.type === "talent" ?
           <HomeProfileCard
