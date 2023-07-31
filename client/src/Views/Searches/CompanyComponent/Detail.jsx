@@ -1,3 +1,4 @@
+import axios from "axios";
 import style from "./Detail.module.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -27,6 +28,10 @@ const Detail = (props) => {
   const onClickRefuseTalent = (id_talent) => {
     dispatch(delete_postulant_by_id(id_event, id_talent));
     setModalRefused(false);
+    const emailToCompany = axios.post("http://localhost:3001/email/talentContacRefused/pedrocavataio@gmail.com")
+    .then((resp) => console.log(resp.data))
+    .catch((error) => console.log(error))
+
   };
 
 
@@ -38,6 +43,7 @@ const Detail = (props) => {
         <NavLink to={`/model/profile/${talent?.id}`} className={style.navLink}>
           <button>Ver perfil completo</button>
         </NavLink>
+        
       </div>
       <h5>Ubicación: {talent?.ubication}</h5>
       <h5>Resumen del perfil:</h5>
@@ -68,6 +74,7 @@ const Detail = (props) => {
           <button className={style.conectar} onClick={handlerClick}>Conectar</button>
         </div>
         <div className={style.conteinerRechazar}>
+          
           <button className={style.rechazar} onClick={() => handlerClickDelete()}>Rechazar</button>
         </div>
         </div>
