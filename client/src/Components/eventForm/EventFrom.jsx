@@ -6,6 +6,8 @@ import validation from "./validation";
 import axios from "axios";
 import NavBarLateral from "../NavBarLateral/NavBarLateral";
 import Cloudinary from "../Cloudinary/Cloudinary";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EventForm = () => {
 
@@ -104,23 +106,84 @@ const EventForm = () => {
       const handleChangeSelect = (selectedOptions) => {
         setOrientaciones(selectedOptions);
       };
-    
+      
+      let messageEventCreated = "Se ha creado el evento con éxito.";
       const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          console.log(input);
-          await axios.post(URL, input);
-          console.log("Evento Creado con éxito")
+          console.log(input.image);
+          const response = (await axios.post(URL, input)).data;
+          console.log(response) //
+          if(response.id){
+            mensaje_success_Toast();
+          } else{
+            mensaje_error_Toast();
+          }
+
           setInput(initialState);
         } catch (error) {
           console.log({ error });
         }
       };
 
+  //Mostrar mensaje cuando crea un evento
+  let currentToastIdSuccess = null;
+  const mensaje_success_Toast = () => {
+    if (currentToastIdSuccess) {
+      toast.update(currentToastIdSuccess, {
+        render: messageEventCreated,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastIdSuccess = toast.success(messageEventCreated, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "500px",
+        },
+      });
+    }
+  };
+  let errorMessage = "Ha ocurrido un error al crear un evento."
+  let currentToastId = null;
+  const mensaje_error_Toast = () => {
+      if (currentToastId) {
+        toast.update(currentToastId, {
+          render: errorMessage,
+          autoClose: 5000,
+        });
+      } else {
+        currentToastId = toast.error(errorMessage, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          toastId: "custom-toast-id",
+          style: {
+            width: "500px",
+          },
+        });
+      }
+  };
+
     return(
 
     <div>
       <NavBarLateral root={root} />
+      <div>
+        <ToastContainer />
+      </div>
       <section className={styles.section}>
         <div className={styles.formSection}>
           <form action="" method="POST" onSubmit={handleSubmit}>
