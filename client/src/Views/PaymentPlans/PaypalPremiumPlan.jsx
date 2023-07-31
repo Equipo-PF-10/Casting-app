@@ -1,17 +1,14 @@
 import React from "react";
-import styles from "./BasicAndPremiumPlan.module.css";
+import styles from "./PaypalBasicAndPremiumPlan.module.css";
 import { Link } from "react-router-dom";
 import CardMP from "./CardMP";
 import CardPaypal from "./CardPaypal";
 import vector from "../../../assets/PNG/PagoVector.png";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import PaypalPayments from "../../Components/PaypalPayments/PaypalPayments";
 
-export default function BasicPlan () {
-  const text_card_mp = {
-    text: "¡Hacer tu pago es rápido y seguro con Mercado Pago! Con Mercado Pago, podrás realizar transacciones de forma sencilla y protegida, garantizando una experiencia de pago confiable en nuestra plataforma. ¡Empieza a aprovechar al máximo nuestra app y desbloquea un mundo de talento y oportunidades!"
-  }
-  const text_card_paypal = {
-    text: "Sigue los sencillos pasos de pago a través de Paypal, una plataforma segura y confiable. Simplemente elige tu plan, inicia sesión en tu cuenta Paypal y completa la transacción en unos pocos clics. ¡Comienza a descubrir talentos excepcionales hoy mismo y lleva tu proyecto al siguiente nivel con facilidad y comodidad!"
-  }
+export default function PaypalPremiumPlan () {
+    
     return (
         <div className={styles.container}>
             <div className={styles.headSection}>
@@ -51,37 +48,39 @@ export default function BasicPlan () {
                 
                 <div className={styles.bodyLeft}>
                     <div className={styles.bodyLeftText}>
-                        <h1>Metodos de Pago</h1>
+                        <h1>Pago con Paypal</h1>
                     </div>
                     <div className={styles.bodyLeftPlans}>
-                    <div className={styles.bodyLeftMp}>
-                      <CardMP text_card_mp={text_card_mp}/>
-                    </div>
-                    <div className={styles.bodyLeftPaypal}>
-                    <div className={styles.bodyLeftMp}>
-                      <CardPaypal text_card_paypal={text_card_paypal}/>
-                    </div>
-                    </div>
+                    <PayPalScriptProvider
+                        options={{ clientId: "AS7RL4AmRax713sfBMi1wJbQpF_mTfqoSCHHJI_-GNLfLdV2jYV3aYAdsT-VNxkgUwzOtGCZt6qbgHfD",
+                        components: "buttons",
+                        intent: "subscription",
+                        vault: true, }}
+                    >
+                        <PaypalPayments  type="subscription" plan_id="P-3YJ63100N5151460SMTB35DQ"
+                        subs="pro"
+                        />
+                    </PayPalScriptProvider>
                     </div>
                 </div>
                 <div className={styles.bodyCenter}>
                   <div className={styles.bodyCenterPlan}>
-                    <h2>Plan Seleccionado: <span>Plan Premium</span></h2>
+                    <h2>Plan Seleccionado: <span>Plan PRO</span></h2>
                   </div>
                   <hr />
                   <div className={styles.bodyCenterIntro}>
-                    <p>Nuestro Plan Premium es una opción intermedia que ofrece una experiencia enriquecedora para las empresas que buscan talentos emergentes. Este plan brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
-                    <p>Caracteristicas del Plan Premium: </p>
+                    <p>Nuestro exclusivo Plan PRO está diseñado para ofrecer un conjunto completo de herramientas avanzadas y privilegios especiales para satisfacer las necesidades de las empresas más exigentes en el mundo del entretenimiento y la publicidad.</p>
+                    <p>Caracteristicas del Plan PRO: </p>
                   </div>
                   <div className={styles.bodyCenterFeatures}>
                     <ul>
-                      <li>Tiene la posibilidad de publicar hasta 20 oportunidades laborales para empezar a dar a conocer tu Empresa.</li>
-                      <li>Recibe alertas por correo electrónico cuando se postulen candidatos a tus empleos.</li>
-                      <li>Explora una variada y creciente base de datos de talentos emergentes, lo que les permite encontrar perfiles que se ajusten a sus requisitos específicos.</li>
+                      <li>Publica oportunidades laborales de forma ilimitada para que tu Empresa sea renocida por la comunidad.</li>
+                      <li>Obten una mayor visibilidad al resaltar sus vacantes y atrae mas talentos al estar presentes en nuestra ventana principal.</li>
+                      <li>Recibe asistencia atendiendo cualquier consulta o necesidad relacionada con la plataforma, brindando una experiencia premium y atención individualizada.</li>
                     </ul>
                   </div>
                   <div className={styles.bodyCenterCost}>
-                    <h2>Costo: <span>$100.00</span></h2>
+                    <h2>Costo: <span>$200.00</span></h2>
                   </div>
                 </div>
                 <div className={styles.bodyRight}>
@@ -91,7 +90,6 @@ export default function BasicPlan () {
                 <img style={{ width: '300px'}} src={vector} alt="Vector Img" />
                 </div>
             </div>
-
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from "./HomeSearchBar.module.css";
 import { useNavigate, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -7,9 +7,15 @@ import axios from 'axios';
 
 export const HomeSearchBar = (props) => {
 
-    const id = useSelector((state) => state.idUser)
-
-    const company = `http://localhost:3001/companies/${id}`
+    const id = localStorage.getItem("id");
+    console.log(id);
+    const [company, setCompany] = useState({});
+    
+    useEffect(() => {
+        axios(`http://localhost:3001/companies/${id}`).then(({ data }) => {
+            setCompany(data);
+          });
+      }, []);
 
     const navigate = useNavigate();
 
@@ -24,7 +30,6 @@ export const HomeSearchBar = (props) => {
     const isCompanyRoute = location.pathname === '/home/company';
 
     let path = "";
-
 
 
     if(company.plan === "PENDIENTE"){
@@ -44,11 +49,14 @@ export const HomeSearchBar = (props) => {
             </div>
             <div>         
             {isCompanyRoute && (
-                <div>
-                    <NavLink to={path}>
+                    <NavLink to="/company/create">
                         <button >Crear Evento</button>
                     </NavLink>
-                </div>
+            )}
+            {isCompanyRoute && (
+                    <NavLink to="/company/plans">
+                        <button >Mejorar Plan</button>
+                    </NavLink>
             )}
             </div>
         </div>

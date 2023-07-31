@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./CardPaypal.module.css";
 import paypalLogo from "../../../assets/PNG/paypal.png";
-
+import { useNavigate } from 'react-router-dom';
  
 export default function CardPaypal (props) {
+    const navigate = useNavigate();
     const {text_card_paypal} = props;
     return (
         <div>
@@ -15,7 +16,7 @@ export default function CardPaypal (props) {
                 <p>
                 {text_card_paypal.text}
                 </p>
-                <button>Pagar</button>
+                <button onClick={() => window.location.replace(`${window.location.href}/paypal`)}>Pagar</button>
             </div> 
         </div>
     )

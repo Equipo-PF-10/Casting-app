@@ -34,11 +34,11 @@ export default function PaymentPlans() {
         break;
       case 'Básico':
         // Lógica para el plan Básico
-        navigate("/company/plans/basico");
+        navigate("/company/plans/premium");
         break;
       case 'Premium':
         // Lógica para el plan Premium
-        navigate("/company/plans/premium");
+        navigate("/company/plans/pro");
         break;
       default:
         break;
@@ -199,12 +199,12 @@ export default function PaymentPlans() {
           selectedPlan === 'Básico' ? styles.selectedh4 : ''
         }`}
         >
-        Básico
+        Premium
         </h4>
         <h4
         className={selectedPlan === 'Premium' ? styles.selectedh4 : ''}
         >
-        Premium
+        PRO
         </h4>
       </div>
       <div className={styles.bottomSection}>
@@ -222,28 +222,28 @@ export default function PaymentPlans() {
         <div className={`${styles.card} ${
             selectedPlan === 'Básico' ? styles.selected : ''
           }`} onClick={() => handleCardClick('Básico')}>
-          <p>El plan Normal brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
+          <p>El plan Premium brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
           <ul>
             <li>Publica hasta 20 eventos.</li>
             <li>Recibe notificaciones en tiempo real cuando nuevos talentos postulen a tus vacantes.</li>
           </ul>
           <div className={styles.precios}>
-          <h3><s className={styles.antes}>Antes</s> $59.999</h3>
-          <h3><span className={styles.ahora}>Ahora</span> $52.999</h3>
+          <h3><s className={styles.antes}>Antes</s> $110.00</h3>
+          <h3><span className={styles.ahora}>Ahora</span> $100.00</h3>
           </div>
           <button>Escoger</button>
         </div>
         <div className={`${styles.card} ${
             selectedPlan === 'Premium' ? styles.selected : ''
           }`} onClick={() => handleCardClick('Premium')}>
-          <p>Nuestro exclusivo Plan Premium está diseñado para llevar la experiencia de búsqueda de talento al siguiente nivel. </p>
+          <p>Nuestro exclusivo Plan PRO está diseñado para llevar la experiencia de búsqueda de talento al siguiente nivel. </p>
           <ul>
             <li>Publica oportunidades laborales de forma ilimitada.</li>
             <li>Obten una mayor visibilidad al resaltar sus eventos en la pagina principal.</li>
           </ul>
           <div className={styles.precios}>
-          <h3><s className={styles.antes}>Antes</s> $99.999</h3>
-          <h3><span className={styles.ahora}>Ahora</span> $89.999</h3>
+          <h3><s className={styles.antes}>Antes</s> $210.00</h3>
+          <h3><span className={styles.ahora}>Ahora</span> $200.00</h3>
           </div>
           <button>Escoger</button>
         </div>

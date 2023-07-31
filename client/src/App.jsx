@@ -17,6 +17,8 @@ import Home from "./Views/Home/Home";
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
 import BasicPlan from "./Views/PaymentPlans/BasicPlan";
 import PremiumPlan from "./Views/PaymentPlans/PremiumPlan";
+import PaypalPremiumPlan from "./Views/PaymentPlans/PaypalPremiumPlan";
+import PaypalBasicPlan from "./Views/PaymentPlans/PaypalBasicPlan";
 
 function App() {
   return (
@@ -31,8 +33,10 @@ function App() {
         <Route path="/company/profile/:id" element={<ProfileCompany />} />
         <Route path="/company/search/:id" element={<CompanySearch />} />
         <Route path="/company/plans" element={<PaymentPlans />} />
-        <Route path="/company/plans/basico" element={<BasicPlan />} />
-        <Route path="/company/plans/premium" element={<PremiumPlan />} />
+        <Route path="/company/plans/premium" element={<BasicPlan />} />
+        <Route path="/company/plans/pro" element={<PremiumPlan />} />
+        <Route path="/company/plans/premium/paypal" element={<PaypalBasicPlan />} />
+        <Route path="/company/plans/pro/paypal" element={<PaypalPremiumPlan />} />
         <Route path="/company/create" element={<EventForm />} />
         <Route path="/form/company" element={<FormEmpresa />} />
         <Route path="/form/talent" element={<FormTalento />} />

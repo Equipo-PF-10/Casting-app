@@ -1,17 +1,14 @@
 import React from "react";
-import styles from "./BasicAndPremiumPlan.module.css";
+import styles from "./PaypalBasicAndPremiumPlan.module.css";
 import { Link } from "react-router-dom";
 import CardMP from "./CardMP";
 import CardPaypal from "./CardPaypal";
 import vector from "../../../assets/PNG/PagoVector.png";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import PaypalPayments from "../../Components/PaypalPayments/PaypalPayments";
 
-export default function BasicPlan () {
-  const text_card_mp = {
-    text: "¡Hacer tu pago es rápido y seguro con Mercado Pago! Con Mercado Pago, podrás realizar transacciones de forma sencilla y protegida, garantizando una experiencia de pago confiable en nuestra plataforma. ¡Empieza a aprovechar al máximo nuestra app y desbloquea un mundo de talento y oportunidades!"
-  }
-  const text_card_paypal = {
-    text: "Sigue los sencillos pasos de pago a través de Paypal, una plataforma segura y confiable. Simplemente elige tu plan, inicia sesión en tu cuenta Paypal y completa la transacción en unos pocos clics. ¡Comienza a descubrir talentos excepcionales hoy mismo y lleva tu proyecto al siguiente nivel con facilidad y comodidad!"
-  }
+export default function PaypalBasicPlan () {
+  
     return (
         <div className={styles.container}>
             <div className={styles.headSection}>
@@ -54,14 +51,16 @@ export default function BasicPlan () {
                         <h1>Metodos de Pago</h1>
                     </div>
                     <div className={styles.bodyLeftPlans}>
-                    <div className={styles.bodyLeftMp}>
-                      <CardMP text_card_mp={text_card_mp}/>
-                    </div>
-                    <div className={styles.bodyLeftPaypal}>
-                    <div className={styles.bodyLeftMp}>
-                      <CardPaypal text_card_paypal={text_card_paypal}/>
-                    </div>
-                    </div>
+                    <PayPalScriptProvider
+                        options={{ clientId: "AS7RL4AmRax713sfBMi1wJbQpF_mTfqoSCHHJI_-GNLfLdV2jYV3aYAdsT-VNxkgUwzOtGCZt6qbgHfD",
+                        components: "buttons",
+                        intent: "subscription",
+                        vault: true, }}
+                    >
+                        <PaypalPayments  type="subscription" plan_id="P-1VL54030GR7632215MTBY6QI"
+                        subs="premium"
+                        />
+                    </PayPalScriptProvider>
                     </div>
                 </div>
                 <div className={styles.bodyCenter}>
