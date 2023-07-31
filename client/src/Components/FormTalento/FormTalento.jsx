@@ -123,6 +123,8 @@ const FormTalento = () => {
         }
     }
 
+    console.log(idUser)
+
     return(
         <div>
             <NavBarLateral/>
