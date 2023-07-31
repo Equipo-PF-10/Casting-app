@@ -6,9 +6,9 @@ const LogoutButton = () => {
 
   return (
     <div className={Styles.btn}>
-      <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+      <div onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
         Log Out
-      </button>
+      </div>
     </div>
   );
 };
