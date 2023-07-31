@@ -81,7 +81,7 @@ const Detail = (props) => {
         :
         <div className={style.buttonsContainer}>
         <div className={style.conteinerConectar}>
-          <button disabled className={style.conectar} onClick={handlerClick}>Conectar</button>
+          <button disabled className={style.conectar} onClick={handlerClick}>Contactar</button>
         </div>
         <div className={style.conteinerRechazar}>
           <button disabled className={style.rechazar} onClick={() => handlerClickDelete()}>Rechazar</button>

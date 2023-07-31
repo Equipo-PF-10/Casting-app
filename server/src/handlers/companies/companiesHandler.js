@@ -129,7 +129,7 @@ const handlerUpdateCompanyById = async (req, res) => {
 
       const updatedCompany = await updateCompanyById(id, updatedData);
 
-      res.status(200).json(updatedCompany);
+      res.status(200).send("Se ha actualizado el perfil correctamente."); //json(updatedCompany);
     }
   } catch (error) {
     res.status(400).json({ error: error.message });

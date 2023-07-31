@@ -20,38 +20,54 @@
   }
   
   section {
-    height: 80vh;
+    height: 45vh;
     text-align: center;
   }
 /*! div introducción */
-  .introduccion,
+  /*.introduccion,
   .login {
     width: 40vw;
     display: inline-flex;
     padding-left: 1vw;
-  }
+  }*/
   .introduccion img {
     width: 25vw;
     height: 43vh;
   }
   .introduccion b {
     color: var(--color-primario);
+    font-size:larger;
   }
   .introduccion p {
     font-size: 2.9vw;
     text-align: right;
-    padding-top: 4.3vw;
+    padding-top: 6vw;
+    padding-left: 2vw;
   }
+  .introduccion{
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .imagenIntro{
+    max-width: 600px;
+  }
+  .textoTalentos{
+    max-width: 600px;
+  }
+
 /*! div login */  
-  .login img {
+  /*.login img {
     width: 17vw;
     height: 17vw;
-  }
-  .login button {
+  }*/
+  /*.login button {
     top: 1vh;
     margin: 0;
     width: 10vw;
-  }
+  }*/
   .login a{
     color: var(--color-fondo);
     text-decoration: none;
@@ -68,17 +84,37 @@
     margin-right: 1vw;
 
   }
+
+  /*.containerBlogs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }*/
+
   .anuncios,
   .blog, 
   .contacto {
     background-color: var(--color-fondo);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .anuncios{
+    margin-top: 30px;
+  }
+
+  .blog{
+    border-radius: 15px;
+    margin-top: 50px;
+    padding: 0 30px 0 30px;
+    display: flex;
+    justify-content: space-around;
   }
   .anuncios {
-    margin-top: 1vw;
+    /*margin-top: 1vw;*/
     height: 46vH;
-    display: inline-flexbox;
-    position: relative;
-
+    border-radius: 20px;
   }
   .contacto p {
     font-size: 5px;
@@ -105,7 +141,6 @@
     text-align: start;
   }
 
-  
   .btn-primary {
     background-color: #429283;
     color: #fff;
@@ -138,12 +173,13 @@
     display: inline-block;
     width: 4vw;
     height: 4vW;
-    top: 12vh;;
+    /*top: 12vh;;*/
     background-color: var(--color-fondo);
   }
   .servicios {
     display: flex;
     justify-content: center;
+    margin-top: 30px;
   }
 
   /* From uiverse.io by @FrM-bot */
@@ -154,7 +190,7 @@
   height: min-content;
   transition: all .3s;
   position: relative;
-  top: 12vh;
+  top: 5vh;
   border-radius: .5rem 2rem;
   box-shadow: 0px 15px 20px -5px rgba(0, 0, 0, 0.5);
 }
@@ -206,7 +242,7 @@
 
 .title {
   color: var(--color-fondo);
-  font-size: x-large;
+  font-size: large;
 }
 .img-representado span,
 .img-talento span,
@@ -216,4 +252,6 @@
 }
 .servicios h3 {
   position: absolute;
+  font-size: x-large;
+  color: #019f85;
 }
