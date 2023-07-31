@@ -72,7 +72,7 @@ const handlerCreateEvent = async (req, res) => {
     CompanyId,
   } = req.body;
 
-  if (!name || !image || !ubication || !habilityRequired) {
+  if (!name || !ubication || !habilityRequired) { //|| !image 
     return res.status(400).send("Faltan datos obligatorios");
   }
 

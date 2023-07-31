@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { saveData } from "./LocalStorageUserData";
-import { clean_message_register, id_user, user_type } from "../../redux/actions";
+import { clean_message_register, user_type } from "../../redux/actions"; //id_user
 import { modal_login } from "../../redux/actions";
 import Navbar from "../../Components/Navbar/Navbar";
 import validate from "./Validate.jsx";
@@ -15,7 +15,7 @@ const Login = () => {
 
   useEffect(() => {
     if(localStorage.getItem("logged") === "true") {
-      dispatch(id_user(localStorage.getItem("id")));
+      //dispatch(id_user(localStorage.getItem("user_id")));
       if (localStorage.getItem("type") === "talent") navigate(`/home/talent`);
       if (localStorage.getItem("type") === "company") navigate(`/home/company`);
     }

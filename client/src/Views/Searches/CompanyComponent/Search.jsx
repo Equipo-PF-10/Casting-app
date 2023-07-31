@@ -149,7 +149,7 @@ const Search = (props) => {
               fillRule="evenodd"
             ></path>
           </svg>
-          Recargar
+          Limpiar Filtros
         </button>
       </div>
     </div>

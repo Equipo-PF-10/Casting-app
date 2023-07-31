@@ -112,7 +112,8 @@
   text-align: start;
 }
 
-/* IMPLEMENTACION DE MODAL */
+
+/* MODAL */
 .containerModalOpened {
   position: fixed;
   z-index: 1000;
@@ -126,14 +127,13 @@
   align-items: center;
 }
 
-
-.modalOpened {
-  width: 30%;
-  height: 60%;
+.modalConfirmationOpened {
+  width: 35%;
+  height: 25%;
   background-color: whitesmoke;
   border-radius: 20px;    
   display: grid;
-  grid-template-rows: 40% 30% 10% 10%;
+  grid-template-rows: 40% 60%;
   align-items: center;
   text-align: center; 
   position: relative;
@@ -142,59 +142,59 @@
   &:hover {
       border: 1px solid blue;
   }
-  transition: transform 1s;
+  /* transition: transform 1s; */
   transform: translateY(0%);
 }
 
-/* Modal Closed */
 
-.containerModalClosed {
-    opacity: 0;
-    visibility: hidden;
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.head3 {
+  height: 10vh;
+  text-align: center;
+}
+.head3 h4 {
+  margin-top: 40px;
+}
+.head3 span {
+  color: var(--color-success)
+}
+.head3 hr {  
+color: var(--color-primario);
+width: 67vh;
+margin: auto;
+border-top: 4px solid;
+margin-top: 10px;
 }
 
-.modalClosed {
-    width: 40%;
-    height: 52%;
-    background-image: linear-gradient(to bottom right, red, yellow);
-    border-radius: 10px;    
-    text-align: start;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    position: relative;
-    border: 3px solid black;
-    &:hover {
-        box-shadow: 0 0 10px black;
-    }
-    transition: transform 1s;
-    transform: translateY(-200%);
+.bottom3 {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-left: 90px;
+}
+.bottom3 button {
+  width: 20vh;
+  height: 3.4vh;
+  font-size: 20px;
 }
 
-/* Others */
-
-.delete {
-  position: absolute;
-  width: 3vh;
-  top: 1px;
-  right: 15px;
-  border-radius: 3px;
-  background-color: red;
+.buttonConfirmar {
+  background-color: var(--color-success);
   color: white;
-  box-shadow: 0 3px 3px black;
-  &:hover {
-      color: red;
-      background-color: white;
-      box-shadow: 0 3px 3px red;
+  font-size: 20px;
+  width: 20vh;
+  &:hover{
+    border: solid 1px black;
+    background-color: white;
+    color: var(--color-success);
+  }
+}
+.buttonRegresar {
+  background-color: var(--color-error);
+  color: white;
+  font-size: 20px;
+  width: 20vh;
+  &:hover{
+    border: solid 1px black;
+    background-color: white;
+    color: var(--color-error);
   }
 }

@@ -1,21 +1,19 @@
 import styles from "./NavBarLateral.module.css"
 import {NavLink} from "react-router-dom"
-import {useSelector} from "react-redux"
 
 const NavBarLateral = () => {
 
-    const root = useSelector((state) => state. userType)
-
+    const root = localStorage.getItem("userType")
     
     let homePath = "";
     let perfilPath = "";
     let formPath = "";
 
-    if(root === "1"){
+    if(root === "talent"){
         homePath = "/home/talent"
         perfilPath = "/model/profile"
         formPath= "/form/talent"
-    } else if (root === "2"){
+    } else if (root === "company"){
         homePath = "/home/company"
         perfilPath = "/company/profile"
         formPath = "/form/company"
@@ -48,7 +46,7 @@ const NavBarLateral = () => {
                             <h4>Home</h4>
                         </div>
                     </NavLink>
-                    <NavLink to="/" className={styles.link}>
+                    <NavLink to="" className={styles.link}>
                         <div className={styles.icons2}>
                             <svg width="30" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19.3285 38.6569C8.67423 38.6569 0 29.9827 0 19.3285C0 8.67423 8.67423 0 19.3285 0C29.9827 0 38.6569 8.67423 38.6569 19.3285C38.6569 29.9827 29.9827 38.6569 19.3285 38.6569ZM19.3285 2.82855C10.2205 2.82855 2.82855 10.2394 2.82855 19.3285C2.82855 28.4175 10.2205 35.8284 19.3285 35.8284C28.4364 35.8284 35.8284 28.4175 35.8284 19.3285C35.8284 10.2394 28.4364 2.82855 19.3285 2.82855Z" fill="#4B31A1"/>

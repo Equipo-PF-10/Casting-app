@@ -2,7 +2,9 @@ const { DataTypes } = require("sequelize");
 //const Company = require("./Company");
 
 module.exports = (sequelize) => {
-  return sequelize.define("Event",{
+  return sequelize.define(
+    "Event",
+    {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -16,7 +18,6 @@ module.exports = (sequelize) => {
 
       image: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
 
       shortDescription: {
@@ -68,7 +69,6 @@ module.exports = (sequelize) => {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
       },
-
     },
     { freezeTableName: true, timestamps: false }
   );

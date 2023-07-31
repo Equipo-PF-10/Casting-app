@@ -28,7 +28,7 @@ const TalentSearch=() => {
   if(postulantCreated?.status === "Pendiente") messagePostulated = "Se ha postulado corectamente al evento."
  
   //const idUser = useSelector((state) => state.idUser);
-  const idTalent = localStorage.getItem("id");
+  const idTalent = localStorage.getItem("user_id");
   console.log(idTalent);
   
   let [id, setId] = useState(""); //id cambian segun carta
@@ -193,9 +193,35 @@ const TalentSearch=() => {
         </div>
           :
         filters ? (
-          <div className={style.cardJobsStyle}>{listedEventsFilter}</div>
+          <div className={style.cardJobsStyle}>
+            {listedEventsFilter}
+            <ul className={style.pagination}>
+        {pagination.map((number, index) => (
+          <li
+            key={index}
+            className={number === currentPage ? style.active : ""}
+            onClick={() => paginate(number)}
+          >
+            {number}
+          </li>
+        ))}
+      </ul>
+            </div>
         ) : (
-          <div className={style.cardJobsStyle}>{listedEvents}</div>
+          <div className={style.cardJobsStyle}>
+            {listedEvents}
+            <ul className={style.pagination}>
+        {pagination.map((number, index) => (
+          <li
+            key={index}
+            className={number === currentPage ? style.active : ""}
+            onClick={() => paginate(number)}
+          >
+            {number}
+          </li>
+        ))}
+      </ul>
+            </div>
         )
         }
         <div className={style.detailStyle}>
@@ -207,7 +233,7 @@ const TalentSearch=() => {
           )}
         </div>
       </div>
-      <ul className={style.pagination}>
+      {/* <ul className={style.pagination}>
         {pagination.map((number, index) => (
           <li
             key={index}
@@ -217,7 +243,7 @@ const TalentSearch=() => {
             {number}
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };

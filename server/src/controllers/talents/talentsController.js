@@ -12,53 +12,13 @@ const getDbTalents = async () => {
 };
 
 // Función controller que crea un nuevo talento en la database.
-const createTalentDb = async (
-  name,
-  dni,
-  email,
-  password,
-  available,
-  dateComeBack,
-  image,
-  portfolio,
-  gender,
-  aboutMe,
-  nationality,
-  ubication,
-  hability,
-  contexture,
-  ethnicOrigin,
-  weight,
-  height,
-  contact,
-  socialNetwork,
-  reviews,
-  reviewsCount
-) => {
+const createTalentDb = async (email, name, image) => {
   const [talent, created] = await Talent.findOrCreate({
     where: { email },
     defaults: {
-      name,
-      dni,
       email,
-      password,
-      available,
-      dateComeBack,
+      name,
       image,
-      portfolio,
-      gender,
-      aboutMe,
-      nationality,
-      ubication,
-      hability,
-      contexture,
-      ethnicOrigin,
-      weight,
-      height,
-      contact,
-      socialNetwork,
-      reviews,
-      reviewsCount,
     },
   });
 
@@ -99,9 +59,10 @@ const getTalentById = async (id) => {
 // Función controller que devuele el talent según el Id recibido por parámetro.
 const getTalentByEmail = async (email) => {
   try {
-    const foundTalent = await Talent.findAll({where : {email:email}});
+    const foundTalent = await Talent.findAll({ where: { email: email } });
 
-    if (!foundTalent) throw new Error(`El Usuario con Email ${email} no existe`);
+    if (!foundTalent)
+      throw new Error(`El Usuario con Email ${email} no existe`);
     return foundTalent;
   } catch (error) {
     throw new Error(error.message);

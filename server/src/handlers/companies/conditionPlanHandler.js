@@ -8,14 +8,14 @@ const updateCompanyConditionPlan = async (req, res) => {
 
   try {
     if (
-      newConditionPlan !== "BASIC" &&
-      newConditionPlan !== "PREMIUM" &&
-      newConditionPlan !== "PRO"
+      newConditionPlan !== "FREE" &&
+      newConditionPlan !== "BASICO" &&
+      newConditionPlan !== "PREMIUM"
     ) {
       return res
         .status(400)
         .send(
-          "¡Error! Debes proporcionar un modelo de plan válido: BASIC | PREMIUM | PRO"
+          "¡Error! Debes proporcionar un modelo de plan válido: FREE | BASICO | PREMIUM"
         );
     }
 

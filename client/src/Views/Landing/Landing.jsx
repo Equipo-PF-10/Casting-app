@@ -7,6 +7,7 @@ import Navbar from "../../Components/Navbar/Navbar.jsx";
 import Blog from "../../Components/Blog/Blog.jsx";
 import "./LandingModule.css";
 import axios from "axios";
+import LogoutButton from "../../Components/LogoutButton/LogoutButton.jsx";
 
 const Landing = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -49,16 +50,44 @@ const Landing = () => {
       let email = localStorage.getItem("user_email");
       let name = localStorage.getItem("user_name");
       let image = localStorage.getItem("user_image");
-      const register = axios
-        .post("http://localhost:3001/talents/register", { email, name, image })
-        .then((res) => console.log(res.data))
-        .then((res) => {
-          const getByEmail = axios(
-            `http://localhost:3001/talents/email/${email}`
-          ).then((res) => localStorage.setItem("user_id", `${res.data[0].id}`));
-        })
-        .catch((error) => console.log(error.response.data));
-      navigate("/home/talent");
+      let busquedaEmail = false;
+      if (isAuthenticated) {
+        const validation = axios
+          .get(`http://localhost:3001/companies/email/${email}`)
+          .then((res) => {
+            if (res.data.length > 0) {
+              busquedaEmail = true; // Incluir un modal de aviso al usuario
+              return alert(
+                "Este email está siendo utilizado como usuario empresa."
+              );
+            }
+          })
+          .catch((error) => console.log(error));
+      }
+
+      if (busquedaEmail === "false") {
+        const register = axios
+          .post("http://localhost:3001/talents/register", {
+            email,
+            name,
+            image,
+          })
+          .then((res) => console.log(res.data))
+          .then((res) => {
+            const getByEmail = axios(
+              `http://localhost:3001/talents/email/${email}`
+            ).then((res) =>
+              localStorage.setItem("user_id", `${res.data[0].id}`)
+            );
+          })
+          .catch((error) => console.log(error.response.data));
+        navigate("/home/talent");
+      } else {
+        //! Pendiente desloguear usuario.
+        // const { logout } = useAuth0();
+        // logout({ logoutParams: { returnTo: window.location.origin } });
+        // logout();
+      }
     }
     if (userType === "company" && isAuthenticated) {
       const getUserMetadata = async () => {
@@ -95,20 +124,62 @@ const Landing = () => {
       let email = localStorage.getItem("user_email");
       let name = localStorage.getItem("user_name");
       let image = localStorage.getItem("user_image");
-      const register = axios
-        .post("http://localhost:3001/companies/register", {
-          email,
-          name,
-          image,
-        })
-        .then((res) => console.log(res.data))
-        .then((res) => {
-          const getByEmail = axios(
-            `http://localhost:3001/companies/companies/${email}`
-          ).then((res) => localStorage.setItem("user_id", `${res.data[0].id}`));
-        })
-        .catch((error) => console.log(error.response.data));
-      navigate("/home/company");
+      let busquedaEmail = false;
+      if (isAuthenticated) {
+        const validation = axios
+          .get(`http://localhost:3001/talents/email/${email}`)
+          .then((res) => {
+            if (res.data.length > 0) {
+              busquedaEmail = true; // Incluir un modal de aviso al usuario
+              return alert(
+                "Este email está siendo utilizado como usuario talento."
+              );
+            }
+          })
+          .catch((error) => console.log(error));
+      }
+      if (!busquedaEmail) {
+        console.log(busquedaEmail);
+        const register = axios
+          .post("http://localhost:3001/companies/register", {
+            email,
+            name,
+            image,
+          })
+          .then((res) => console.log(res.data))
+          .then((res) => {
+            const getByEmail = axios(
+              `http://localhost:3001/companies/email/${email}`
+            ).then((res) =>
+              localStorage.setItem("user_id", `${res.data[0].id}`)
+            );
+          })
+          .catch((error) => console.log(error.response.data));
+        navigate("/home/company");
+      } else {
+        //! Pendiente desloguear usuario.
+        // const { logout } = useAuth0();
+        // logout({ logoutParams: { returnTo: window.location.origin } });
+        // logout();
+      }
+
+      //   let email = localStorage.getItem("user_email");
+      //   let name = localStorage.getItem("user_name");
+      //   let image = localStorage.getItem("user_image");
+      //   const register = axios
+      //     .post("http://localhost:3001/companies/register", {
+      //       email,
+      //       name,
+      //       image,
+      //     })
+      //     .then((res) => console.log(res.data))
+      //     .then((res) => {
+      //       const getByEmail = axios(
+      //         `http://localhost:3001/companies/companies/${email}`
+      //       ).then((res) => localStorage.setItem("user_id", `${res.data[0].id}`));
+      //     })
+      //     .catch((error) => console.log(error.response.data));
+      //   navigate("/home/company");
     }
   }, [isAuthenticated, getAccessTokenSilently, user?.sub]);
 

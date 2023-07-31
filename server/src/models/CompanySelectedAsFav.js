@@ -90,9 +90,9 @@ module.exports = (sequelize) => {
       },
 
       plan: {
-        type: DataTypes.ENUM("BASIC", "PREMIUM", "PRO"),   
+        type: DataTypes.ENUM("FREE", "BASICO", "PREMIUM"),   
         allowNull: true,
-        defaultValue: "BASIC",
+        defaultValue: "FREE",
       },
 
       conditionPlan: {

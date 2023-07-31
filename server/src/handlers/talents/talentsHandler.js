@@ -27,60 +27,16 @@ const getTalentsHandler = async (req, res) => {
 
 // Función handler que crea los talentos.
 const createTalentHandler = async (req, res) => {
-  const {
-    name,
-    dni,
-    email,
-    password,
-    available,
-    dateComeBack,
-    image,
-    portfolio,
-    gender,
-    aboutMe,
-    nationality,
-    ubication,
-    hability,
-    contexture,
-    ethnicOrigin,
-    weight,
-    height,
-    contact,
-    socialNetwork,
-    reviews,
-    reviewsCount,
-  } = req.body;
+  const { name, email, image } = req.body;
 
-  if (!email ) {
+  if (!email) {
     return res.status(400).send("Faltan datos obligatorios");
   }
 
-  const dateVerification = dateComeBack instanceof Date ? dateComeBack : null;
+  // const dateVerification = dateComeBack instanceof Date ? dateComeBack : null;
 
   try {
-    await createTalentDb(
-      name,
-      dni,
-      email,
-      password,
-      available,
-      dateVerification,
-      image,
-      portfolio,
-      gender,
-      aboutMe,
-      nationality,
-      ubication,
-      hability,
-      contexture,
-      ethnicOrigin,
-      weight,
-      height,
-      contact,
-      socialNetwork,
-      reviews,
-      reviewsCount
-    );
+    await createTalentDb(name, email, image);
 
     res.status(200).send("Se ha registrado correctamente");
   } catch (error) {
@@ -102,7 +58,7 @@ const talentByIdHandler = async (req, res) => {
 
 // Función handler para obtener talento por ID.
 const talentByEmailHandler = async (req, res) => {
-  console.log(req.params)
+  console.log(req.params);
   const { email } = req.params;
 
   try {
