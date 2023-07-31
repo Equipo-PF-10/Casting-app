@@ -4,7 +4,7 @@ html {
 
 *::before,
 *::after {
-  box-sizing: inherit;
+  /*box-sizing: inherit;*/
 }
 
 nav {
@@ -17,16 +17,16 @@ nav {
   height: 9vh;
   z-index: 999;
   position: sticky;
-  top: 0;
+  /*top: 0;*/
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding-left: 40px;
+  padding-left: 10px;
 }
 
 nav section {
   flex-wrap: wrap;
-  margin-left: 50px;
+  margin-left: 10px;
   height: 9vh;
 }
 
@@ -86,7 +86,22 @@ nav a {
   margin-left: 50px;
 }
 
-.imgLogo{
+.button-logout{
+  margin-top: -22px;
+}
+
+/*.imgLogo{
   margin-right: 50px;
   padding-right: 50px;
+}*/
+
+/*.buttonsContainer{
+display: flex;
+justify-content: center;
+flex-direction: row;
 }
+.containerButtonNav{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}*/

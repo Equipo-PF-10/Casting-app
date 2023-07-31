@@ -164,10 +164,11 @@
 }
 
 .pTexto {
-  font-size: x-large;
-  padding: 10px;
+  font-size: large;
+  padding: 40px;
 }
 
 .pTextoA{
     color: whitesmoke;
+    padding: 10px;
 }

@@ -52,10 +52,10 @@ const Blog = () => {
             <div className={style.content3}>
               <p className={style.heading3}>Tips</p>
               <p className={style.pTextoA}>
-                Lorem ipsum dolor sit amet, consectetur adipii voluptas ten
-                mollitia pariatur odit, ab minus ratione adipisci accusamus vel
-                est excepturi laboriosam magnam necessitatibus dignissimos
-                molestias.
+                Llegaste a la plataforma que te las opciones que estás buscando,
+                ya que en Casting App tenemos las herramientas para que filtres
+                nuestro talento lo máximo posible y así llegar a esa persona que
+                estás buscando.
               </p>
             </div>
           </div>

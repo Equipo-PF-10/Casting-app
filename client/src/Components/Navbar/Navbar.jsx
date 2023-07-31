@@ -1,7 +1,8 @@
 import LoginButton from "../LoginButton/LoginButton";
 import LogoutButton from "../LogoutButton/LogoutButton";
 //import './NavbarModule.css'
-import style from "./Navbar.Module.css";
+//import style from "./Navbar.Module.css";
+import style from "./NavBar.Module.css?";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -13,29 +14,33 @@ function Navbar() {
         </Link>
       </section>
       <section className={style.buttonsContainer}>
-        <LoginButton className={style.buttonNav} />
-        {/* <button className='button-login'><a href="/login">Ingresa</a></button> */}
-        <button>
-          <a className={style.buttonNav} href="#servicios">
-            Servicios
-          </a>
-        </button>
-        <button className="button-blog">
-          <a href="#blog" className={style.buttonNav}>
-            Blog
-          </a>
-        </button>
-        <button className="button-nosotros">
-          <a href="#nosotros" className={style.buttonNav}>
-            Nosotros
-          </a>
-        </button>
-        <button className="button-contacto">
-          <a href="#contacto" className={style.buttonNav}>
-            Contacto
-          </a>
-        </button>
-        <LogoutButton />
+        <div className={style.containerButtonNav}>
+          <LoginButton className={style.buttonNav} />
+          {/* <button className='button-login'><a href="/login">Ingresa</a></button> */}
+          <button>
+            <a className={style.buttonNav} href="#servicios">
+              Servicios
+            </a>
+          </button>
+          <button className="button-blog">
+            <a href="#blog" className={style.buttonNav}>
+              Blog
+            </a>
+          </button>
+          <button className="button-nosotros">
+            <a href="#nosotros" className={style.buttonNav}>
+              Nosotros
+            </a>
+          </button>
+          <button className="button-contacto">
+            <a href="#contacto" className={style.buttonNav}>
+              Contacto
+            </a>
+          </button>
+          <button className="button-logout">
+            <LogoutButton className={style.buttonNav} />
+          </button>
+        </div>
       </section>
       {/* <section className='dropdown-container'>
       <li class="nav-item dropdown" className='dropdown'>
