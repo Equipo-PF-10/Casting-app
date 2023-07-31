@@ -2,7 +2,7 @@ import LoginButton from "../LoginButton/LoginButton";
 import LogoutButton from "../LogoutButton/LogoutButton";
 //import './NavbarModule.css'
 //import style from "./Navbar.Module.css";
-import style from "./NavBar.Module.css?";
+import style from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 
 function Navbar() {
