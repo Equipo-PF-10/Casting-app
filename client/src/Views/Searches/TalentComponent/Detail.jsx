@@ -3,7 +3,7 @@ import axios from "axios";
 import style from "./DetailComp.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { create_postulant, get_all_postulations, get_talent_by_id, message_error_postulate } from "../../../redux/actions";
-/* import { handlerNewPostulant } from "../../../../../server/src/handlers/emails/emailsHandler.js"; */
+
 
 const Detail = (props) => {
   const { detail , idTalent, idEvent} = props;  
@@ -37,13 +37,13 @@ const Detail = (props) => {
       .then((resp) => resp.data.email)
       .catch((error) => console.log(error))
 
-      const emailToCompany = axios.post(`http://localhost:3001/email/newPostulante/${CompanyEmail}`)
+      const emailToCompany = axios.post("http://localhost:3001/email/newPostulante/pedrocavataio@gmail.com")
       .then((resp) => console.log(resp.data))
       .catch((error) => console.log(error))
 
       let userEmail = localStorage.getItem("user_email");
 
-      const emailToTalent = axios.post(`http://localhost:3001/email/talentContac/${emailToTalent}`)
+      const emailToTalent = axios.post("http://localhost:3001/email/postulationEvent/pedrocavataio@gmail.com")
       .then((resp) => console.log(resp.data))
       .catch((error) => console.log(error))
     }

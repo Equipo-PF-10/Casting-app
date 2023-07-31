@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "./CompanyComponent/Card";
 import style from "./CompanySearch.module.css";
@@ -37,13 +38,13 @@ const CompanySearch = () => {
   const onClickSendEmail = () => {
     const close = "isClosed";
     dispatch(close_modal_search_compnay(close));
-    //PEDRO ----Agregar logica de envio de email
+    const emailToCompany = axios.post("http://localhost:3001/email/talentContac/pedrocavataio@gmail.com")
+    .then((resp) => console.log(resp.data))
+    .catch((error) => console.log(error))
 
     //Agregar mensaje por toastify
     mensaje_success_Toast_send_mail();
-  };
-
-  
+  };  
 
 
   // Paginación
@@ -186,7 +187,7 @@ useEffect(()=>{
     if (Object.keys(messageDeleted).length > 0) {
       mensaje_success_Toast();
       dispatch(clear_message_deleted(""));
-      //PEDRO aplicar logica para enviar mensaje al talento cuando una empresa rechaza su postulacion
+          
     }
   }, [messageDeleted]);
 
@@ -196,10 +197,14 @@ useEffect(()=>{
         <Search ubication={singleLocation} setCurrentPage={setCurrentPage} id_event={id} />
       </div>
       <div>
-        <ToastContainer />
+
+       <ToastContainer />
+
       </div>
       <div className={style.secciones}>
-        <div className={style.navLateral}>
+       
+
+     <div className={style.navLateral}>
           <NavBarLateral />
         </div>
         {      
