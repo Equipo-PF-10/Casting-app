@@ -1,0 +1,56 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.links {
+  display: flex;
+  justify-content: space-evenly;
+  width: 150px;
+  align-items: center;
+  /*margin-bottom: 7px;
+  margin-left: 20px;*/
+}
+
+.iconsSocialMedia {
+  align-items: center;
+  margin-top: 10px;
+  padding: 5px;
+  width: 40px;
+  cursor: pointer !important;
+  transition: 300ms all ease-in-out;
+  position: relative;
+}
+
+.iconsSocialMedia:hover {
+  translate: -0px -10px;
+}
+
+#linkedin,
+#gmail,
+#github {
+  transition: 300ms all ease-in-out;
+  clip-path: circle(65%);
+}
+
+#linkedin:hover {
+  background-color: rgb(221, 157, 189);
+}
+
+#gmail {
+  height: 35px;
+}
+
+#gmail:hover {
+  background-color: rgb(241, 96, 96);
+}
+
+#github:hover {
+  background-color: rgb(196, 143, 245);
+}
+
+.pText{
+    margin-bottom: -15px;
+}

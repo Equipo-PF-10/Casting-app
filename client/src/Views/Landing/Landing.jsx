@@ -8,6 +8,7 @@ import Blog from "../../Components/Blog/Blog.jsx";
 import "./LandingModule.css";
 import axios from "axios";
 import LogoutButton from "../../Components/LogoutButton/LogoutButton.jsx";
+import Footer from "../../Components/Footer/Footer.jsx";
 
 const Landing = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -326,8 +327,8 @@ const Landing = () => {
           </div>
         </section>
         <section id="nosotros" className="nosotros">
-          <h3>Aqui está la seccioón nosotros</h3>
-          <div class="card-nosotros"></div>
+          {/*<h3>Aqui está la seccioón nosotros</h3>
+          <div class="card-nosotros"></div>*/}
         </section>
 
         <section id="contacto" className="contacto">
@@ -381,7 +382,7 @@ const Landing = () => {
                       </div>
 
                       <div className="text-center">
-                        <button className="btn btn-primary w-100">
+                        <button className="btn btn-primary w-50">
                           Enviar
                         </button>
                       </div>
@@ -397,17 +398,9 @@ const Landing = () => {
         <br />
         <br />
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
       </main>
-      <footer>
-        <h3>Aquí está el footer</h3>
+      <footer className='footerE'>
+        <Footer/>
       </footer>
     </>
   );
