@@ -85,12 +85,6 @@
 
   }
 
-  /*.containerBlogs{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }*/
-
   .anuncios,
   .blog, 
   .contacto {
@@ -110,6 +104,7 @@
     padding: 0 30px 0 30px;
     display: flex;
     justify-content: space-around;
+    height: 50vh;
   }
   .anuncios {
     /*margin-top: 1vw;*/
@@ -254,4 +249,18 @@
   position: absolute;
   font-size: x-large;
   color: #019f85;
+}
+
+.nosotros{
+  height: 10vh;
+}
+
+.contacto{
+  height: 65vh;
+  border-radius: 20px;
+}
+
+.footerE{
+  width: 80%;
+  margin: auto;
 }
