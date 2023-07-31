@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import CardMP from "./CardMP";
 import CardPaypal from "./CardPaypal";
 import vector from "../../../assets/PNG/PagoVector.png";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import PaypalPayments from "../../Components/PaypalPayments/PaypalPayments";
 
 export default function PaypalBasicPlan () {
   
@@ -55,7 +57,9 @@ export default function PaypalBasicPlan () {
                         intent: "subscription",
                         vault: true, }}
                     >
-                        <PaypalPayments  type="subscription" plan_id="P-1VL54030GR7632215MTBY6QI"/>
+                        <PaypalPayments  type="subscription" plan_id="P-1VL54030GR7632215MTBY6QI"
+                        subs="premium"
+                        />
                     </PayPalScriptProvider>
                     </div>
                 </div>

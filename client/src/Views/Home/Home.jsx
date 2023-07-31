@@ -63,7 +63,7 @@ const Home = (props) => {
           events={props.allEvents}
           url={props.type === "talent" ? "model/search" : "company/search"}
           />
-        <HomeEventsCard
+        {/* <HomeEventsCard
           title={props.type === "talent" ? "Publicaciones de Interes" : "Contactados"}
           events={props.allEvents ? props.allEvents.filter(event => {
             if(user.hability) {
@@ -74,19 +74,19 @@ const Home = (props) => {
             
           })
         :null}
-        />
-        <HomeItemList title={
+        /> */}
+        {/* <HomeItemList title={
           props.type === "talent" ? "Tus Postulaciones" : "Tus Favoritos"
         }/>
         {
           props.type === "talent" ? 
           <SolicitudesDeEmpresas /> : <ChartsComponent />
-        }
+        } */}
         
-        <button onClick={() => {
+        {/* <button onClick={() => {
           handleLogout();
           navigate("/");
-        }}>Logout</button>
+        }}>Logout</button> */}
         
       </div>
     </div>

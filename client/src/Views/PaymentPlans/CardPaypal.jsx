@@ -16,7 +16,7 @@ export default function CardPaypal (props) {
                 <p>
                 {text_card_paypal.text}
                 </p>
-                <button onClick={() => navigate("/paypal")}>Pagar</button>
+                <button onClick={() => window.location.replace(`${window.location.href}/paypal`)}>Pagar</button>
             </div> 
         </div>
     )
