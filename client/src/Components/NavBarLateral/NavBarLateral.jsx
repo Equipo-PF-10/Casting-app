@@ -1,20 +1,19 @@
 import styles from "./NavBarLateral.module.css"
 import {NavLink} from "react-router-dom"
-import {useSelector} from "react-redux"
 
 const NavBarLateral = () => {
 
-    const root = useSelector((state) => state. userType)
+    const root = localStorage.getItem("userType")
     
     let homePath = "";
     let perfilPath = "";
     let formPath = "";
 
-    if(root === "1"){
+    if(root === "talent"){
         homePath = "/home/talent"
         perfilPath = "/model/profile"
         formPath= "/form/talent"
-    } else if (root === "2"){
+    } else if (root === "company"){
         homePath = "/home/company"
         perfilPath = "/company/profile"
         formPath = "/form/company"
