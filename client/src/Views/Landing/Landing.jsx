@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import Adds from "../../Components/Adss/Adds.jsx";
 import Navbar from "../../Components/Navbar/Navbar.jsx";
+import Blog from "../../Components/Blog/Blog.jsx";
 import "./LandingModule.css";
 import axios from "axios";
 import LogoutButton from "../../Components/LogoutButton/LogoutButton.jsx";
@@ -207,23 +208,27 @@ const Landing = () => {
       <main>
         <section id="introduccion-login" className="introduccion">
           <div className="introduccion">
-            <img src="inicio.svg" alt="Inicio" />
-            <p>
-              La mejor forma de encontrar <b>TALENTOS</b>
-            </p>
+            <div className="imagenIntro">
+              <img src="inicio.svg" alt="Inicio" />
+            </div>
+            <div className="textoTalentos">
+              <p>
+                La mejor forma de encontrar <b>TALENTOS</b>
+              </p>
+            </div>
           </div>
-          <div className="login">
-            <article className="login-talento">
-              <img src="Vector - Talento.svg" alt="Talento" />
-              {/* <LoginButton type="talent"/> */}
-              {/* <button><a href="/model/register">Soy Talento</a></button> */}
-            </article>
-            <article className="login-empresa">
-              <img src="Vector - Reclutador.svg" alt="Reclutador" />
-              {/* <LoginButton type="company"/> */}
-              {/* <button><a href="/company/register">Soy Reclutador</a></button> */}
-            </article>
-          </div>
+          {/*<div className='login'>*/}
+          {/*<article className='login-talento'>*/}
+          {/*<img src="Vector - Talento.svg" alt="Talento" />*/}
+          {/* <LoginButton type="talent"/> */}
+          {/* <button><a href="/model/register">Soy Talento</a></button> */}
+          {/*</article>*/}
+          {/*<article className='login-empresa'>*/}
+          {/*<img src="Vector - Reclutador.svg" alt="Reclutador" />*/}
+          {/* <LoginButton type="company"/> */}
+          {/* <button><a href="/company/register">Soy Reclutador</a></button> */}
+          {/*</article>*/}
+          {/*</div>*/}
         </section>
         <section id="anuncios" className="anuncios">
           <button className="paginado-button">
@@ -239,9 +244,9 @@ const Landing = () => {
         <br />
         <section id="servicios" className="servicios">
           <h3>Conoce nuestros servicios</h3>
-          <div class="card-servicios-empresa">
-            <div class="img-container">
-              <div class="img-empresa">
+          <div className="card-servicios-empresa">
+            <div className="img-container">
+              <div className="img-empresa">
                 <br />
                 <span>
                   <b>En Casting App encontras:</b>
@@ -257,14 +262,14 @@ const Landing = () => {
                 <span>3.- Te asistimos en todo el proceso.</span>
                 <br />
               </div>
-              <div class="description card">
-                <span class="title">...Buscas un Talento?</span>
+              <div className="description card">
+                <span className="title">...Buscas un Talento?</span>
               </div>
             </div>
           </div>
-          <div class="card-servicios-empresa">
-            <div class="img-container">
-              <div class="img-talento">
+          <div className="card-servicios-empresa">
+            <div className="img-container">
+              <div className="img-talento">
                 <br />
                 <span>
                   <b>Crea tu perfil y:</b>
@@ -286,14 +291,14 @@ const Landing = () => {
                 </span>
                 <br />
               </div>
-              <div class="description card">
-                <span class="title">...Eres un talento artistico?</span>
+              <div className="description card">
+                <span className="title">...Eres un talento artistico?</span>
               </div>
             </div>
           </div>
-          <div class="card-servicios-empresa">
-            <div class="img-container">
-              <div class="img-representado">
+          <div className="card-servicios-empresa">
+            <div className="img-container">
+              <div className="img-representado">
                 <br />
                 <span>
                   <b>Dentro de tu perfil:</b>
@@ -308,15 +313,17 @@ const Landing = () => {
                 </span>
                 <br />
               </div>
-              <div class="description card">
-                <span class="title">...tus hijos son menores de edad?</span>
+              <div className="description card">
+                <span className="title">...tus hijos son menores de edad?</span>
               </div>
             </div>
           </div>
         </section>
+        <br />
         <section id="blog" className="blog">
-          <h3>Aqui está la seccioón blog</h3>
-          {/* <ChartComponent/> */}
+          <div className="containerBlogs">
+            <Blog />
+          </div>
         </section>
         <section id="nosotros" className="nosotros">
           <h3>Aqui está la seccioón nosotros</h3>

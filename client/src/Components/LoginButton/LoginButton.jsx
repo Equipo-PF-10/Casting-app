@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { modal_login } from "../../redux/actions";
 import style from "../../Views/Login/Login.module.css";
+import style2 from "../Navbar/Navbar.Module.css";
 
 const LoginButton = (props) => {
   const { loginWithRedirect } = useAuth0();
@@ -32,39 +33,38 @@ const LoginButton = (props) => {
 
   return (
     <>
-    {/* <button onClick={() => loginWithRedirect()} >{props.type==='talent'?`Soy Talento`:`Soy Reclutador`}</button> */}
-    <button onClick={handleClick} >Ingresa</button>
-    {modal ? (
-      <div className={style.containerModalOpened}>
-        <div className={style.modalOpened}>
-          <button
-            onClick={handler_click_close}
-            className={style.delete}
-          >
-            {" "}
-            X{" "}
-          </button>
+      {/* <button onClick={() => loginWithRedirect()} >{props.type==='talent'?`Soy Talento`:`Soy Reclutador`}</button> */}
+      <button onClick={handleClick} className={style2.buttonNav}>
+        Ingresa
+      </button>
+      {modal ? (
+        <div className={style.containerModalOpened}>
+          <div className={style.modalOpened}>
+            <button onClick={handler_click_close} className={style.delete}>
+              {" "}
+              X{" "}
+            </button>
 
-          <h3>Selecciona un tipo de Registro</h3>
+            <h3>Selecciona un tipo de Registro</h3>
 
-          <button onClick={handler_click_talent}>Talento</button>
-          <button
-            onClick={handler_click_company}
-            className={style.buttonCompany}
-          >
-            Empresa
-          </button>
+            <button onClick={handler_click_talent}>Talento</button>
+            <button
+              onClick={handler_click_company}
+              className={style.buttonCompany}
+            >
+              Empresa
+            </button>
+          </div>
         </div>
-      </div>
-    ) : (
-      <div className={style.containerModalClosed}>
-        <div className={style.modalClosed}>
-          <h2>Selecciona un tipo de Registro</h2>
+      ) : (
+        <div className={style.containerModalClosed}>
+          <div className={style.modalClosed}>
+            <h2>Selecciona un tipo de Registro</h2>
+          </div>
         </div>
-      </div>
-    )}
-  </>
-  )
+      )}
+    </>
+  );
 };
 
 export default LoginButton;

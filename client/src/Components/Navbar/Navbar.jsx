@@ -1,24 +1,41 @@
-import LoginButton from '../LoginButton/LoginButton';
-import LogoutButton from '../LogoutButton/LogoutButton';
-import './NavbarModule.css'
-import {Link} from 'react-router-dom'; 
+import LoginButton from "../LoginButton/LoginButton";
+import LogoutButton from "../LogoutButton/LogoutButton";
+//import './NavbarModule.css'
+import style from "./Navbar.Module.css";
+import { Link } from "react-router-dom";
 
 function Navbar() {
-return (
+  return (
     <nav>
-      <section className='logo-container'>
+      <section className={style.logoContainer}>
         <Link to={"/"}>
-          <img src="/Logo con Letras.svg" alt="" />
+          <img src="/Logo con Letras.svg" alt="" className={style.imgLogo} />
         </Link>
       </section>
-      <section className='buttons-container'>
-        <LoginButton className='button-login'/>
+      <section className={style.buttonsContainer}>
+        <LoginButton className={style.buttonNav} />
         {/* <button className='button-login'><a href="/login">Ingresa</a></button> */}
-        <button className='button-servicios'><a href="#servicios">Servicios</a></button>
-        <button className='button-blog'><a href="#blog">Blog</a></button>
-        <button className='button-nosotros'><a href="#nosotros">Nosotros</a></button>
-        <button className='button-contacto'><a href="#contacto">Contacto</a></button>
-        <LogoutButton/>
+        <button>
+          <a className={style.buttonNav} href="#servicios">
+            Servicios
+          </a>
+        </button>
+        <button className="button-blog">
+          <a href="#blog" className={style.buttonNav}>
+            Blog
+          </a>
+        </button>
+        <button className="button-nosotros">
+          <a href="#nosotros" className={style.buttonNav}>
+            Nosotros
+          </a>
+        </button>
+        <button className="button-contacto">
+          <a href="#contacto" className={style.buttonNav}>
+            Contacto
+          </a>
+        </button>
+        <LogoutButton />
       </section>
       {/* <section className='dropdown-container'>
       <li class="nav-item dropdown" className='dropdown'>
@@ -34,9 +51,8 @@ return (
           </ul>
         </li>
       </section>  */}
-
     </nav>
-    )
-};
+  );
+}
 
 export default Navbar;
