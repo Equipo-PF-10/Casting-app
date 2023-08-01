@@ -11,6 +11,7 @@ import Footer from "../../Components/Footer/Footer.jsx";
 const Landing = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
+  const { logout } = useAuth0();
   let userType = localStorage.getItem("userType");
   //let user_type = localStorage.getItem("user_type");
   
@@ -56,8 +57,8 @@ const Landing = () => {
             if (validation.data.length > 0) {
               // Incluir un modal de aviso al usuario
               localStorage.clear();
+              logout({ logoutParams: { returnTo: window.location.origin } })
               return alert("Este email está siendo utilizado como usuario talento.");
-              //! Pendiente desloguear usuario.
             //? 3.2) si el mail no existe en la base de datos de talentos crea o encuentra en BD de compañias
             }else{
               const register = await axios.post("http://localhost:3001/talents/register", {email,name,image})
@@ -115,8 +116,8 @@ const Landing = () => {
             if (validation.data.length > 0) {
               // Incluir un modal de aviso al usuario
               localStorage.clear();
+              logout({ logoutParams: { returnTo: window.location.origin } })
               return alert("Este email está siendo utilizado como usuario talento.");
-              //! Pendiente desloguear usuario.
             //? 3.2) si el mail no existe en la base de datos de talentos crea o encuentra en BD de compañias
             }else{
               const register = await axios.post("http://localhost:3001/companies/register", {email,name,image,})
