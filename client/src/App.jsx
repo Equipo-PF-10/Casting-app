@@ -18,8 +18,12 @@ import BasicPlan from "./Views/PaymentPlans/BasicPlan";
 import PremiumPlan from "./Views/PaymentPlans/PremiumPlan";
 import PaypalPremiumPlan from "./Views/PaymentPlans/PaypalPremiumPlan";
 import PaypalBasicPlan from "./Views/PaymentPlans/PaypalBasicPlan";
+import SendPersonalized from "./Components/mail/sendContactTalent";
+
+
 import Admin from "./Views/Admin/Admin";
 import Review from "./Views/Review/Review"
+
 
 function App() {
   return (
@@ -44,8 +48,11 @@ function App() {
         <Route path="/NavBarLateral" element={<NavBarLateral />} />
         <Route path="/home/talent" element={<Home type="talent"/>} />
         <Route path="/home/company" element={<Home type="company"/>} />
-         <Route path="/review" element={<Review/>}/>
+        <Route path="/cloud" element={<Cloudinary/>}/>
+        <Route path="/contact" element={<SendPersonalized/>} />
+        <Route path="/review" element={<Review/>}/>
         <Route path="/admin" element={<Admin/>}/>
+
       </Routes>
     </>
   );
