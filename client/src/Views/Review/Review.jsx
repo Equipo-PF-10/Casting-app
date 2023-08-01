@@ -3,38 +3,70 @@ import {FaStar} from "react-icons/fa"
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral"
 import Styles from "./Review.module.css"
 import axios from "axios"
+import Validation from "./validation";
 
 const Review = () => {
-
-    const initialState ={
-        id: "",
-        description: "",
-        rating: 0,
-    }
-
-    const [input, setInput] = useState(initialState)
 
     const userId  = localStorage.getItem("user_id");
 
     const userType = localStorage.getItem("userType")
 
-    const URLTalent = `http://localhost:3001/talents/${userId}`
+    const userReview = ""
 
-    const URLCompany = `http://localhost:3001/companies/${userId}`
+    // Rutas Talentos
 
-    input.id = userId;
+    const URLTalent = `http://localhost:3001/talents/${userReview}`
 
-    // UserName
+    const TalentReview = "http://localhost:3001/talents/reviews"
+
+    // Rutas Compañias 
+
+    const URLCompany = `http://localhost:3001/companies/${userReview}`
+
+    const CompanyReview = "http://localhost:3001/companies/reviews"
+
+    // Estados 
+
+    let initialState = {
+        text: "",
+        rating: 0,
+        CompanyId: "",
+        TalentId: ""
+    }
+
+    const [input, setInput] = useState(initialState);
+
+    const [error, setError] = useState({})
+
+    if(userType === "talent"){
+        input.TalentId = userId;
+    } else {
+        input.CompanyId = userId
+    }
+
+    //userName
 
     let userName = "";
 
-/*     if(userType === "talent"){
-        const response = axios.get(URLTalent).data
-        userName = response.name
-    } else{
-        const response = axios.get(URLCompany).data
-        userName = response.name
-    } */
+    const getUserData = async () => {
+        try {
+          if (userType === "talent") {
+            const response = await axios.get(URLCompany);
+            if (response) {
+              userName = response.data.name;
+            }
+          } else {
+            const response = await axios.get(URLTalent);
+            if (response) {
+              userName = response.data.name;
+            }
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      (async () => {await getUserData()})();
 
     // Estrellas
 
@@ -56,12 +88,22 @@ const Review = () => {
     const handlerChage = (event) => {
         const {name, value} = event.target;
         setInput({...input, [name]: value})
+        setError(Validation({ ...input, [name]: value }))
     }
 
     const submitHandler = async (event) => {
         event.preventDefault();
+
+        let endpoint = "";
+
+        if(userType === "talent"){
+            endpoint = TalentReview
+        } else if (userType === "company"){
+            endpoint = CompanyReview
+        }
+
         try {
-            axios.post()
+            axios.post(endpoint, input)
         } catch (error) {
             console.log({error})
         }
@@ -79,10 +121,13 @@ const Review = () => {
                             <div className={Styles.stars}>
                                 {stars}
                             </div>
+                            <p className={error.name ? Styles.error : ""}>
+                    {error.name ? error.name : null}
+                  </p>
                         </article>
                         <article className={Styles.input}>
-                            <label htmlFor="description">Coméntanos sobre su experiencia</label>
-                            <textarea style={{ padding: '10px' }} name="description" id="description" value={input.description} onChange={handlerChage}></textarea>
+                            <label htmlFor="text">Coméntanos sobre su experiencia</label>
+                            <textarea style={{ padding: '10px' }} name="text" id="text" value={input.text} onChange={handlerChage}></textarea>
                         </article>
                         <button type="submit">Enviar Reseña</button>
                     </form>
