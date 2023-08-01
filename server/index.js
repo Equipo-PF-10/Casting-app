@@ -11,13 +11,13 @@ const syncDB = async () => {
   try {
     await conn.sync({ force: true });
     console.log("Database synchronized successfully.");
-    
+
     // Primero crear empresas
-    //await companiesFromApi();
-    
+    // await companiesFromApi();
+
     // Luego crear talentos
-    //await talentsFromApi();
-    
+    // await talentsFromApi();
+
     // Finalmente, crear eventos
     //await eventsMocks();
 

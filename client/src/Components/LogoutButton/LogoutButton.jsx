@@ -1,5 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import Styles from "./LogOut.module.css"
+import style2 from "../Navbar/Navbar.module.css";
 
 const LogoutButton = () => {
   const { logout } = useAuth0();
@@ -9,11 +10,11 @@ const LogoutButton = () => {
   }
 
   return (
-    <div className={Styles.btn}>
-      <button onClick={handlerClick}>
+    <>
+      <button onClick={handlerClick} className={style2.buttonNav}>
         Log Out
       </button>
-    </div>
+    </>
   );
 };
 
