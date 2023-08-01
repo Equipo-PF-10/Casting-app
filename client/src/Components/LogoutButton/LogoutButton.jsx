@@ -3,10 +3,15 @@ import Styles from "./LogOut.module.css"
 
 const LogoutButton = () => {
   const { logout } = useAuth0();
+  const handlerClick = ()=>{
+    localStorage.clear();
+    logout({ logoutParams: { returnTo: window.location.origin } })
+  }
 
   return (
     <div className={Styles.btn}>
-      <div onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+      <button onClick={handlerClick}>
+
         Log Out
       </div>
     </div>

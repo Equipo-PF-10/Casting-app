@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import Adds from "../../Components/Adss/Adds.jsx";
@@ -7,14 +6,14 @@ import Navbar from "../../Components/Navbar/Navbar.jsx";
 import Blog from "../../Components/Blog/Blog.jsx";
 import "./LandingModule.css";
 import axios from "axios";
-import LogoutButton from "../../Components/LogoutButton/LogoutButton.jsx";
 import Footer from "../../Components/Footer/Footer.jsx";
 
 const Landing = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   let userType = localStorage.getItem("userType");
+  //let user_type = localStorage.getItem("user_type");
+  
   useEffect(() => {
     if (userType === "talent" && isAuthenticated) {
       const getUserMetadata = async () => {
@@ -36,59 +35,44 @@ const Landing = () => {
             },
           });
 
-          const data = await metadataResponse.json();
-          console.log(data);
-          localStorage.setItem("user_email", `${data.email}`);
-          localStorage.setItem("user_name", `${data.name}`);
-          localStorage.setItem("user_image", `${data.picture}`);
+          const response = await metadataResponse.json();
+
+          //? 1)guardo datos en local storage
+          localStorage.setItem("user_email", `${response.email}`);
+          localStorage.setItem("user_name", `${response.name}`);
+          localStorage.setItem("user_image", `${response.picture}`);
+
+          //? 2) Guardar en variables la información del Local storage
+          let email = response.email
+          let name = response.name
+          let image = response.picture
+
+          //? 3) comparo si este email esta siendo utilizado como talento        
+          if (isAuthenticated) {
+ 
+            const validation = await axios.get(`http://localhost:3001/companies/email/${email}`)
+
+            //? 3.1) si el email existe en la base de datos de compañias envia un error y no deberia dejar loguear
+            if (validation.data.length > 0) {
+              // Incluir un modal de aviso al usuario
+              localStorage.clear();
+              return alert("Este email está siendo utilizado como usuario talento.");
+              //! Pendiente desloguear usuario.
+            //? 3.2) si el mail no existe en la base de datos de talentos crea o encuentra en BD de compañias
+            }else{
+              const register = await axios.post("http://localhost:3001/talents/register", {email,name,image})
+              localStorage.setItem("user_id", `${register.data.id}`);
+              navigate("/home/company");
+            }
+          }
+
         } catch (e) {
           console.log(e.message);
         }
       };
+      
+      getUserMetadata()
 
-      getUserMetadata();
-
-      let email = localStorage.getItem("user_email");
-      let name = localStorage.getItem("user_name");
-      let image = localStorage.getItem("user_image");
-      let busquedaEmail = false;
-      if (isAuthenticated) {
-        const validation = axios
-          .get(`http://localhost:3001/companies/email/${email}`)
-          .then((res) => {
-            if (res.data.length > 0) {
-              busquedaEmail = true; // Incluir un modal de aviso al usuario
-              return alert(
-                "Este email está siendo utilizado como usuario empresa."
-              );
-            }
-          })
-          .catch((error) => console.log(error));
-      }
-
-      if (busquedaEmail === "false") {
-        const register = axios
-          .post("http://localhost:3001/talents/register", {
-            email,
-            name,
-            image,
-          })
-          .then((res) => console.log(res.data))
-          .then((res) => {
-            const getByEmail = axios(
-              `http://localhost:3001/talents/email/${email}`
-            ).then((res) =>
-              localStorage.setItem("user_id", `${res.data[0].id}`)
-            );
-          })
-          .catch((error) => console.log(error.response.data));
-        navigate("/home/talent");
-      } else {
-        //! Pendiente desloguear usuario.
-        // const { logout } = useAuth0();
-        // logout({ logoutParams: { returnTo: window.location.origin } });
-        // logout();
-      }
     }
     if (userType === "company" && isAuthenticated) {
       const getUserMetadata = async () => {
@@ -110,77 +94,44 @@ const Landing = () => {
             },
           });
 
-          const data = await metadataResponse.json();
-          console.log(data);
-          localStorage.setItem("user_email", `${data.email}`);
-          localStorage.setItem("user_name", `${data.name}`);
-          localStorage.setItem("user_image", `${data.picture}`);
+          const response = await metadataResponse.json();
+
+          //? 1)guardo datos en local storage
+          localStorage.setItem("user_email", `${response.email}`);
+          localStorage.setItem("user_name", `${response.name}`);
+          localStorage.setItem("user_image", `${response.picture}`);
+
+          //? 2) Guardar en variables la información del Local storage
+          let email = response.email
+          let name = response.name
+          let image = response.picture
+
+          //? 3) comparo si este email esta siendo utilizado como talento        
+          if (isAuthenticated) {
+    
+            const validation = await axios.get(`http://localhost:3001/talents/email/${email}`)
+            
+            //? 3.1) si el email existe en la base de datos de talentos envia un error y no deberia dejar loguear
+            if (validation.data.length > 0) {
+              // Incluir un modal de aviso al usuario
+              localStorage.clear();
+              return alert("Este email está siendo utilizado como usuario talento.");
+              //! Pendiente desloguear usuario.
+            //? 3.2) si el mail no existe en la base de datos de talentos crea o encuentra en BD de compañias
+            }else{
+              const register = await axios.post("http://localhost:3001/companies/register", {email,name,image,})
+              localStorage.setItem("user_id", `${register.data.id}`);
+              navigate("/home/company");
+            }
+          }
+
         } catch (e) {
           console.log(e.message);
         }
       };
+      
+      getUserMetadata()
 
-      getUserMetadata();
-
-      let email = localStorage.getItem("user_email");
-      let name = localStorage.getItem("user_name");
-      let image = localStorage.getItem("user_image");
-      let busquedaEmail = false;
-      if (isAuthenticated) {
-        const validation = axios
-          .get(`http://localhost:3001/talents/email/${email}`)
-          .then((res) => {
-            if (res.data.length > 0) {
-              busquedaEmail = true; // Incluir un modal de aviso al usuario
-              return alert(
-                "Este email está siendo utilizado como usuario talento."
-              );
-            }
-          })
-          .catch((error) => console.log(error));
-      }
-      if (!busquedaEmail) {
-        console.log(busquedaEmail);
-        const register = axios
-          .post("http://localhost:3001/companies/register", {
-            email,
-            name,
-            image,
-          })
-          .then((res) => console.log(res.data))
-          .then((res) => {
-            const getByEmail = axios(
-              `http://localhost:3001/companies/email/${email}`
-            ).then((res) =>
-              localStorage.setItem("user_id", `${res.data[0].id}`)
-            );
-          })
-          .catch((error) => console.log(error.response.data));
-        navigate("/home/company");
-      } else {
-        //! Pendiente desloguear usuario.
-        // const { logout } = useAuth0();
-        // logout({ logoutParams: { returnTo: window.location.origin } });
-        // logout();
-      }
-
-      //   let email = localStorage.getItem("user_email");
-      //   let name = localStorage.getItem("user_name");
-      //   let image = localStorage.getItem("user_image");
-      //   const register = axios
-      //     .post("http://localhost:3001/companies/register", {
-      //       email,
-      //       name,
-      //       image,
-      //     })
-      //     .then((res) => console.log(res.data))
-      //     .then((res) => {
-      //       const getByEmail = axios(
-      //         `http://localhost:3001/companies/companies/${email}`
-      //       ).then((res) => localStorage.setItem("user_id", `${res.data[0].id}`));
-      //     })
-      //     .catch((error) => console.log(error.response.data));
-      //   navigate("/home/company");
     }
   }, [isAuthenticated, getAccessTokenSilently, user?.sub]);
 

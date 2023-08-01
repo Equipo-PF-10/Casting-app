@@ -7,8 +7,7 @@ import axios from 'axios';
 
 export const HomeSearchBar = (props) => {
 
-    const id = localStorage.getItem("id");
-    console.log(id);
+    const id = localStorage.getItem("user_id");
     const [company, setCompany] = useState({});
     
     useEffect(() => {
