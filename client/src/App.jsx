@@ -19,6 +19,7 @@ import BasicPlan from "./Views/PaymentPlans/BasicPlan";
 import PremiumPlan from "./Views/PaymentPlans/PremiumPlan";
 import PaypalPremiumPlan from "./Views/PaymentPlans/PaypalPremiumPlan";
 import PaypalBasicPlan from "./Views/PaymentPlans/PaypalBasicPlan";
+import Admin from "./Views/Admin/Admin";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="/home/talent" element={<Home type="talent"/>} />
         <Route path="/home/company" element={<Home type="company"/>} />
         <Route path="/cloud" element={<Cloudinary/>}/>
+        <Route path="/admin" element={<Admin/>}/>
       </Routes>
     </>
   );
