@@ -4,7 +4,7 @@ html {
 
 *::before,
 *::after {
-  /*box-sizing: inherit;*/
+  box-sizing: inherit;
 }
 
 nav {
@@ -40,7 +40,7 @@ nav button {
   border-right: 0;
   border-bottom: 0;
   width: 100px;
-  margin-left: 5px;
+  
 }
 
 .dropdown {
@@ -67,14 +67,14 @@ nav button {
 }
 
 .buttonNav {
-  background-color: var(--color-fondo);
+  /*background-color: var(--color-fondo);*/
   color: #3b8678;
 }
 
-.buttonNav:hover{
+/*.buttonNav:hover{
   color: whitesmoke;
   transition-duration: 0.1s;
-}
+}*/
 
 nav a {
   color: #3b8678;
@@ -86,8 +86,8 @@ nav a {
   margin-left: 50px;
 }
 
-.button-logout{
-  margin-top: -22px;
+.buttonLogout{
+  margin-bottom: 29px;
 }
 
 /*.imgLogo{
