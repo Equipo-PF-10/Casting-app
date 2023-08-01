@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { modal_login } from "../../redux/actions";
 import style from "../../Views/Login/Login.module.css";
-import style2 from "../Navbar/Navbar.Module.css";
+import style2 from "../Navbar/Navbar.module.css";
 
 const LoginButton = (props) => {
   const { loginWithRedirect } = useAuth0();

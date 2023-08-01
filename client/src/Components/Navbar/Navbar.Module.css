@@ -87,7 +87,14 @@ nav a {
 }
 
 .buttonLogout{
-  margin-bottom: 29px;
+  /*margin-bottom: 29px;*/
+  margin-top: -20px;
+}
+
+.buttonLogout:hover{
+  background-color: transparent;
+  text-decoration: none;
+  transition-duration: 0.1s;
 }
 
 /*.imgLogo{
