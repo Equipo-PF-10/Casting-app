@@ -8,22 +8,37 @@ module.exports = (sequelize) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
-      },
-
-      rating: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0,
-        validate: {
-          min: 0,
-          max: 5,
-        },
+        allowNull: false,
       },
 
       text: {
         type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      rating: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      CompanyId: {
+        type: DataTypes.UUID,
         allowNull: true,
+        references: {
+          model: "Company",
+          key: "id",
+        },
+      },
+      TalentId: {
+        type: DataTypes.UUID,
+        allowNull: true,
+        references: {
+          model: "Talent",
+          key: "id",
+        },
       },
     },
-    { freezeTableName: true, timestamps: false }
+    {
+      freezeTableName: false,
+      timestamps: false,
+    }
   );
 };
