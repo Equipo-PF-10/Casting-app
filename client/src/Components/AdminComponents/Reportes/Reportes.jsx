@@ -1,9 +1,13 @@
 import React from 'react'
+import style from './Reportes.module.css'
 
-const Reportes = () => {
+const Reportes=() => {
+  
+
+  
   return (
-    <div>
-      
+    <div className={style.containerReportes}>
+      Reportes
     </div>
   )
 }

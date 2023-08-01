@@ -37,9 +37,7 @@ function Navbar() {
               Contacto
             </a>
           </button>
-          <button className={style.buttonLogout}>
-              <LogoutButton />
-          </button>
+          <LogoutButton className={style.buttonNav} />
         </div>
       </section>
       {/* <section className='dropdown-container'>

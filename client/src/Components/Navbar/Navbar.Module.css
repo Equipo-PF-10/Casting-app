@@ -85,30 +85,3 @@ nav a {
 .buttonsContainer{
   margin-left: 50px;
 }
-
-.buttonLogout{
-  /*margin-bottom: 29px;*/
-  margin-top: -20px;
-}
-
-.buttonLogout:hover{
-  background-color: transparent;
-  text-decoration: none;
-  transition-duration: 0.1s;
-}
-
-/*.imgLogo{
-  margin-right: 50px;
-  padding-right: 50px;
-}*/
-
-/*.buttonsContainer{
-display: flex;
-justify-content: center;
-flex-direction: row;
-}
-.containerButtonNav{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-}*/
