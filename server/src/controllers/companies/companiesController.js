@@ -41,7 +41,8 @@ const createCompany = async (email, name, image) => {
     },
   });
 
-  if (!created) throw new Error("La empresa con el correo ingresado ya existe");
+  //if (!created) throw new Error("La empresa con el correo ingresado ya existe");
+  return company;
 };
 
 // Función controller que devuele el talent según el Id recibido por parámetro.

@@ -12,7 +12,7 @@ const getDbTalents = async () => {
 };
 
 // Función controller que crea un nuevo talento en la database.
-const createTalentDb = async (email, name, image) => {
+const createTalentDb = async (email,name,image) => {
   const [talent, created] = await Talent.findOrCreate({
     where: { email },
     defaults: {
@@ -23,7 +23,8 @@ const createTalentDb = async (email, name, image) => {
   });
 
   // Verificar que no exista en la bdd.
-  if (!created) throw new Error("El usuario con el correo ingresado ya existe");
+  //if (!created) throw new Error("El usuario con el correo ingresado ya existe");
+  return talent;
 };
 
 // Función controller para obtener talentos por nombre.

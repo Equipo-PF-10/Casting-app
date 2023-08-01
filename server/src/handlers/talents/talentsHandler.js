@@ -36,9 +36,9 @@ const createTalentHandler = async (req, res) => {
   // const dateVerification = dateComeBack instanceof Date ? dateComeBack : null;
 
   try {
-    await createTalentDb(name, email, image);
+    const register = await createTalentDb(email,name,image);
 
-    res.status(200).send("Se ha registrado correctamente");
+    res.status(200).json(register);
   } catch (error) {
     res.status(400).json(error.message);
   }
