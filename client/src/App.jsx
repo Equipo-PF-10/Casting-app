@@ -14,6 +14,7 @@ import CompanySearch from "./Views/Searches/CompanySearch";
 import TalentSearch from "./Views/Searches/TalentSearch";
 import PaymentPlans from "./Views/PaymentPlans/PaymentPlans";
 import Home from "./Views/Home/Home";
+import HomeCompany from "./Views/Home/HomeCompany";
 import BasicPlan from "./Views/PaymentPlans/BasicPlan";
 import PremiumPlan from "./Views/PaymentPlans/PremiumPlan";
 import PaypalPremiumPlan from "./Views/PaymentPlans/PaypalPremiumPlan";
@@ -48,7 +49,8 @@ function App() {
         <Route path="/form/talent" element={<FormTalento />} />
         <Route path="/NavBarLateral" element={<NavBarLateral />} />
         <Route path="/home/talent" element={<Home type="talent"/>} />
-        <Route path="/home/company" element={<Home type="company"/>} />
+        {/* <Route path="/home/company" element={<Home type="company"/>} /> */}
+        <Route path="/home/company" element={<HomeCompany/>} />
         <Route path="/cloud" element={<Cloudinary/>}/>
         <Route path="/contact" element={<SendPersonalized/>} />
         <Route path="/review" element={<Review/>}/>
