@@ -14,11 +14,11 @@ import CompanySearch from "./Views/Searches/CompanySearch";
 import TalentSearch from "./Views/Searches/TalentSearch";
 import PaymentPlans from "./Views/PaymentPlans/PaymentPlans";
 import Home from "./Views/Home/Home";
-import Cloudinary from "./Components/Cloudinary/Cloudinary";
 import BasicPlan from "./Views/PaymentPlans/BasicPlan";
 import PremiumPlan from "./Views/PaymentPlans/PremiumPlan";
 import PaypalPremiumPlan from "./Views/PaymentPlans/PaypalPremiumPlan";
 import PaypalBasicPlan from "./Views/PaymentPlans/PaypalBasicPlan";
+import Review from "./Views/Review/Review";
 
 function App() {
   return (
@@ -43,7 +43,8 @@ function App() {
         <Route path="/NavBarLateral" element={<NavBarLateral />} />
         <Route path="/home/talent" element={<Home type="talent"/>} />
         <Route path="/home/company" element={<Home type="company"/>} />
-        <Route path="/cloud" element={<Cloudinary/>}/>
+        <Route path="/review" element={<Review/>}/>
+
       </Routes>
     </>
   );
