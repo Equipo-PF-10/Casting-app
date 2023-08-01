@@ -59,11 +59,9 @@ const {
   Talent,
   TalentSelectedAsFav,
   ToContact,
-  Payment
+  Payment,
+  Review,
 } = models;
-
-
-
 
 //* Relaciones de tablas de Empresas************************************************
 Company.hasMany(Event, { foreignKey: "CompanyId" });
@@ -90,6 +88,13 @@ CompanySelectedAsFav.belongsToMany(Talent, {
 //! Relacion de tabla de Eventos con Postulaciones************************************
 Event.hasMany(Applied, { foreignKey: "EventId" });
 Applied.belongsTo(Event);
+
+//* Relaciones de tablas de reviews************************************************
+Company.hasMany(Review, { foreignKey: "CompanyId" });
+Review.belongsTo(Company);
+
+Talent.hasMany(Review, { foreignKey: "TalentId" });
+Review.belongsTo(Talent);
 
 module.exports = {
   ...models,
