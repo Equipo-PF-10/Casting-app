@@ -1,5 +1,6 @@
 const { Company, DisableCompany } = require("../../db");
 
+// Función controller para traer todas las empresas.
 async function getAllCompanies(name) {
   try {
     const allCompanies = await Company.findAll();
@@ -22,12 +23,16 @@ const getCompanyByEmail = async (email) => {
   }
 };
 
+// Función controller para traer todas las empresas por location.
 const searchByLocation = async (country) => {
-  //! Falta el try catch
-  const response = await Company.findAll({
-    where: { country: { $like: "%" + country + "%" } },
-  });
-  return response;
+  try {
+    const response = await Company.findAll({
+      where: { country: { $like: "%" + country + "%" } },
+    });
+    return response;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
 
 // Función controller para crear company.
@@ -105,10 +110,25 @@ const updateCompanyById = async (id, updatedData) => {
     if (!companyToUpdate) {
       throw new Error(`El Usuario con ID ${id} no existe`);
     }
-    // Actualizar los campos de la empresa con los datos proporcionados
+
     await companyToUpdate.update(updatedData);
 
     return companyToUpdate;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller para obtener las empresas por plan.
+const getCompaniesByPlan = async (plan) => {
+  try {
+    const companies = await Company.findAll({ where: { plan: plan } });
+
+    if (!companies) {
+      throw new Error(`No se encontraron empresas con el plan ${plan}`);
+    }
+
+    return companies;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -122,4 +142,5 @@ module.exports = {
   deleteCompanyById,
   getAllCompanies,
   getCompanyByEmail,
+  getCompaniesByPlan,
 };
