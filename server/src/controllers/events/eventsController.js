@@ -1,4 +1,7 @@
 const { Event, DisableEvent, Company } = require("../../db");
+const {
+  getCompaniesByPlan,
+} = require("../../controllers/companies/companiesController");
 const { Op } = require("sequelize");
 
 // Función controller que retorna los eventos de la database.
@@ -29,19 +32,6 @@ const getEventsByName = async (name) => {
   }
 };
 
-// Función controller que devuelve un evento que coincida con el ID pasado por params.
-const getEventById = async (id) => {
-  try {
-    const foundInDb = await Event.findByPk(id);
-
-    if (!foundInDb) throw new Error("No existe evento con ese ID.");
-
-    return foundInDb;
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
-
 const createEvent = async (data) => {
   try {
     let allowedPosts = 0;
@@ -53,14 +43,12 @@ const createEvent = async (data) => {
 
     if (company.plan === "FREE") {
       allowedPosts = 2;
-    } else if ((company.plan === "BASICO")) {
+    } else if (company.plan === "BASICO") {
       allowedPosts = 20;
-    } else if ((company.plan === "PREMIUM")) {
+    } else if (company.plan === "PREMIUM") {
       allowedPosts = Infinity;
     } else if ((company.plan = "PENDIENTE")) {
-      throw new Error(
-        "¡Para crear un evento antes debes adquirir un plan!"
-      );
+      throw new Error("¡Para crear un evento antes debes adquirir un plan!");
     }
 
     if (company.numberPosts >= allowedPosts) {
@@ -153,6 +141,43 @@ const updateEventById = async (id, updatedData) => {
   }
 };
 
+// Función controller que devuelve un evento que coincida con el ID pasado por params.
+const getEventById = async (id) => {
+  try {
+    const foundInDb = await Event.findAll({
+      where: {
+        CompanyId: id,
+      },
+    });
+
+    if (!foundInDb)
+      throw new Error(
+        "No existe empresa con ese ID que haya creado un evento."
+      );
+
+    return foundInDb;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const getPremiumEvents = async () => {
+  try {
+    const premiumCompanies = await getCompaniesByPlan("PREMIUM");
+    let allPremiumEvents = [];
+
+    for (let company of premiumCompanies) {
+      const events = await getEventById(company.id);
+
+      allPremiumEvents = allPremiumEvents.concat(events);
+    }
+
+    return allPremiumEvents;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getAllEvents,
   getEventById,
@@ -160,4 +185,5 @@ module.exports = {
   createEvent,
   deleteEventById,
   updateEventById,
+  getPremiumEvents,
 };
