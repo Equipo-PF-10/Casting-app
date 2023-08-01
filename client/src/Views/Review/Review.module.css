@@ -1,0 +1,48 @@
+.section{
+    height: 100vh;
+    background-color: whitesmoke;
+    position: relative;
+    color: #324844;
+}
+
+.vector{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.form{
+    display: grid;
+    margin: 0 auto;
+    width: 30rem;
+    gap: 3rem;
+}
+
+.form button{
+    margin: auto;
+}
+
+.inputSection{
+    margin: 0 auto;
+    padding-top: 5rem;
+}
+
+.input{
+    display: grid;
+}
+
+.input label{
+    font-size: 1.5rem;
+}
+
+.input textarea{
+    border-radius: 30px;
+    background: #F5F5F5;
+    box-shadow: 0px 5px 10px 4px rgba(0, 0, 0, 0.25);
+    height: 10rem;
+    
+}
+
+.stars{
+    margin-top: 2rem;
+}
