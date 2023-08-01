@@ -12,11 +12,10 @@ import {
   filterByEvent,
   get_event_by_id,
   clear_message_postulated,
-  message_error_postulate
+  message_error_postulate,
 } from "../../redux/actions";
 
-const TalentSearch=() => {
-
+const TalentSearch = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.allEvents);
   const evento = useSelector((state) => state.eventDetail);
@@ -25,12 +24,13 @@ const TalentSearch=() => {
   const filters = useSelector((state) => state.filtersEvent);
   const errorPostulate = useSelector((state) => state.errorPostulate);
   let messagePostulated;
-  if(postulantCreated?.status === "Pendiente") messagePostulated = "Se ha postulado corectamente al evento."
- 
+  if (postulantCreated?.status === "Pendiente")
+    messagePostulated = "Se ha postulado corectamente al evento.";
+
   //const idUser = useSelector((state) => state.idUser);
   const idTalent = localStorage.getItem("user_id");
   console.log(idTalent);
-  
+
   let [id, setId] = useState(""); //id cambian segun carta
   //let [eventSelected, setEventSelected] = useState({});
 
@@ -125,7 +125,6 @@ const TalentSearch=() => {
     }
   };
 
-
   //Error Toast --------------------
   let currentToastId = null;
   //Evita que se renderice mas de 1 toast
@@ -154,7 +153,7 @@ const TalentSearch=() => {
     }
   };
 
-  //-------------Mensaje Success Toast 
+  //-------------Mensaje Success Toast
   useEffect(() => {
     if (messagePostulated) {
       mensaje_success_Toast();
@@ -162,14 +161,13 @@ const TalentSearch=() => {
     }
   }, [messagePostulated]);
 
-  //-------------Mensaje Error Toast 
+  //-------------Mensaje Error Toast
   useEffect(() => {
     if (Object.keys(errorPostulate).length > 0) {
       mensaje_error_Toast();
-      dispatch(message_error_postulate({}));//Limpio el estado global
+      dispatch(message_error_postulate({})); //Limpio el estado global
     }
   }, [errorPostulate]);
-
 
   return (
     <div className={style.containerGralTalent}>
@@ -187,43 +185,41 @@ const TalentSearch=() => {
         <div className={style.navLateral}>
           <NavBarLateral />
         </div>
-        {listedEventsFilter.length===0? 
-        <div  className={style.text}>
-           <h3>No se han encontrado resultados.</h3>
-        </div>
-          :
-        filters ? (
+        {listedEventsFilter.length === 0 ? (
+          <div className={style.text}>
+            <h3>No se han encontrado resultados.</h3>
+          </div>
+        ) : filters ? (
           <div className={style.cardJobsStyle}>
             {listedEventsFilter}
             <ul className={style.pagination}>
-        {pagination.map((number, index) => (
-          <li
-            key={index}
-            className={number === currentPage ? style.active : ""}
-            onClick={() => paginate(number)}
-          >
-            {number}
-          </li>
-        ))}
-      </ul>
-            </div>
+              {pagination.map((number, index) => (
+                <li
+                  key={index}
+                  className={number === currentPage ? style.active : ""}
+                  onClick={() => paginate(number)}
+                >
+                  {number}
+                </li>
+              ))}
+            </ul>
+          </div>
         ) : (
           <div className={style.cardJobsStyle}>
             {listedEvents}
             <ul className={style.pagination}>
-        {pagination.map((number, index) => (
-          <li
-            key={index}
-            className={number === currentPage ? style.active : ""}
-            onClick={() => paginate(number)}
-          >
-            {number}
-          </li>
-        ))}
-      </ul>
-            </div>
-        )
-        }
+              {pagination.map((number, index) => (
+                <li
+                  key={index}
+                  className={number === currentPage ? style.active : ""}
+                  onClick={() => paginate(number)}
+                >
+                  {number}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className={style.detailStyle}>
           {/*<Detail events={events} />*/}
           {id.length === 0 ? (

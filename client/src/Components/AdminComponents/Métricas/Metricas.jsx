@@ -1,9 +1,13 @@
 import React from 'react'
+import style from './Metricas.module.css'
 
-const Metricas = () => {
+const Metricas=() => {
+  
+
+  
   return (
-    <div>
-      
+    <div className={style.containerMetricas}>
+      Metricas
     </div>
   )
 }
