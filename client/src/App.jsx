@@ -23,6 +23,7 @@ import SendPersonalized from "./Components/mail/sendContactTalent";
 
 import Admin from "./Views/Admin/Admin";
 import Review from "./Views/Review/Review"
+import Cloudinary from "./Components/Cloudinary/Cloudinary";
 
 
 function App() {
