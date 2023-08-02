@@ -63,7 +63,7 @@ const Landing = () => {
             }else{
               const register = await axios.post("http://localhost:3001/talents/register", {email,name,image})
               localStorage.setItem("user_id", `${register.data.id}`);
-              navigate("/home/talent");
+              //navigate("/home/talent");
             }
           }
 
@@ -122,7 +122,7 @@ const Landing = () => {
             }else{
               const register = await axios.post("http://localhost:3001/companies/register", {email,name,image,})
               localStorage.setItem("user_id", `${register.data.id}`);
-              navigate("/home/company");
+              //navigate("/home/company");
             }
           }
 
@@ -184,15 +184,7 @@ const Landing = () => {
           {/*</div>*/}
         </section>
         <section id="anuncios" className="anuncios">
-          <button className="paginado-button">
-            <img src="/prev.svg" alt="" />
-          </button>
           <Adds />
-          <Adds />
-          <Adds />
-          <button className="paginado-button">
-            <img src="/next.svg" alt="" />
-          </button>
         </section>
         <br />
         <section id="servicios" className="servicios">

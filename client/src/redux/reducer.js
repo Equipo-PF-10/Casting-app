@@ -7,6 +7,7 @@ import {
   USER_TYPE,
   GET_EVENT_BY_ID,
   GET_ALL_EVENTS,
+  GET_EVENTS_PREMIUM,
   GET_ALL_COMPANIES,
   GET_COMPANY_BY_ID,
   GET_COMPANY_ID,
@@ -26,6 +27,7 @@ import {
   SEND_ID_OF_CARD,
   CLEAR_ID_OF_CARD,
   GET_NAME_EVENTS,
+  GET_POSTULANT_FAV_BY_NAME,
   IMAGE_URL,
   ERROR_POSTULATE,
 } from "./actions.js";
@@ -36,12 +38,15 @@ const initialState = {
   postulatedTalentsByEvent: [],
   postulatedTalentsByEventFiltered: [],
   allEvents: [],
+  eventsPremium: {},
   eventsFiltered: [],
   eventDetail: {},
   getAllCompanies: [],
   companiesFiltered: [],
   companyDetail: [],
   companyById: {},
+  allFavoritePostulants: [],
+  allFavoritePostulantsFiltered: [],
   idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
   messageRegistered: {},
@@ -52,6 +57,7 @@ const initialState = {
   modalTalentRefused: false,
   filters: false,
   filtersEvent: false,
+  filtersFavoritePostulants: false,
   errorPostulate: {},
   errors: {},
   imageUrl: "",
@@ -131,6 +137,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         eventsFiltered: payload,
         allEvents: payload,
+      };
+    case GET_EVENTS_PREMIUM:
+      return {
+        ...state,
+        eventsFiltered: payload,
+        eventsPremium: payload,
       };
     case GET_ALL_COMPANIES:
       return {
@@ -304,6 +316,18 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         imageUrl: payload,
       }
+    // case GET_ALL_POSTULANT_FAV:   Falta hacer la ruta
+    //   return {
+    //     ...state,
+    //     allFavoritePostulants: payload,
+    //     allFavoritePostulantsFiltered: payload,
+    //   };
+    case GET_POSTULANT_FAV_BY_NAME:
+      return {
+        ...state,
+        filtersFavoritePostulants: true,
+        allFavoritePostulantsFiltered: payload,
+      };
     case ERROR_POSTULATE:
       return {
         ...state,

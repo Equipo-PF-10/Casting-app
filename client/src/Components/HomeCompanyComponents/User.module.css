@@ -1,0 +1,39 @@
+
+/* .container{
+    margin: 0 auto; 
+    padding-top: 10rem;
+    padding-inline: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.card{
+    margin-top: 100px;
+    margin-right: 20px;
+    border-radius: 30px;
+    background-color: #00C9A7;
+    width: 20rem;
+    height: 10rem; 
+    /* position: relative; */
+    
+    /* gap: 1rem;
+    padding-top: 2.5rem;
+    padding-left: 4.5rem; */
+}
+
+.image{
+    position: absolute; 
+    
+    top: 0.1;
+    bottom: 10;
+    right: 0.5;
+    left: 0;
+}
+
+.image img{
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+}
+ 

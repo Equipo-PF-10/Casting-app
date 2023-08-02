@@ -3,34 +3,44 @@
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  width: 20vw;
-  border-radius: 0.7rem;
+  width: 18vw;
+  border-radius: 30px;
   height: auto;
   /*margin-top: 2.3vh;*/
   margin-left: 10px;
   margin-right: 10px;
-  padding: 0.8em;
-  background: rgba(227, 227, 227);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  /*padding: 0.8em;*/
+  /*padding-bottom: 10px;*/
+  /*background: rgba(227, 227, 227);*/
+  background-color: rgb(240, 239, 239);
   position: relative;
   overflow: visible;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.52),
-    0 1px 4px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 10px 10px,
+    rgba(0, 0, 0, 0.1) 1px 1px 5px 1px, rgba(0, 0, 0, 0.1) 0px -1px 1px inset;
 }
 
 .card-img {
   /* background-color: var(--color-contraste); */
-  height: 40%;
+  height: auto;
   width: 100%;
   border-radius: 0.5rem;
   transition: 0.3s ease;
+  margin-bottom: 15px;
 }
 .card-img img {
-  height: 100%;
+  height: auto;
   width: 60%;
   border-radius: 0.5rem;
   transition: 0.3s ease;
 }
+
+/*.divDescr{
+  background-color: #93ddc38a;
+  width: 100%;
+}*/
 
 .card-info {
   padding-top: 5%;
@@ -44,17 +54,18 @@
 .card-footer {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: top;
   border-top: 1px solid #ddd;
 }
 
 /*Text*/
 .text-title {
-  font-weight: 900;
-  font-size: 1.2em;
+  font-weight: 700;
+  font-size: 25px;
   line-height: 1.5;
-  margin-bottom: 5%;
+  /*margin-bottom: 5%;*/
+  color: #137c57;
 }
 
 .text-body {
@@ -72,12 +83,12 @@
 }
 
 /*Hover*/
-.card-img:hover {
+/*.card-img:hover {
   transform: translateY(-10%);
   box-shadow:
     rgba(128, 152, 41, 0.25) 0px 13px 47px -5px,
     rgba(50, 126, 50, 0.3) 0px 8px 16px -8px;
-}
+}*/
 
 .card-button:hover {
   border: 1px solid #ffcaa6;
@@ -87,7 +98,7 @@
   height: 25px;
   width: auto;
   appearance: none;
-  background-color: #d1d2d3;
+  background-color: #b9ebd8;
   border-radius: 20px;
   box-sizing: border-box;
   color: var(--color-texto);
@@ -105,6 +116,8 @@
   vertical-align: middle;
   white-space: nowrap;
   word-wrap: break-word;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  margin-top: 10px;
 }
 
 .talento-label:hover {
@@ -113,7 +126,7 @@
   transition-duration: 0.1s;
 }
 
-.boton-postulate {
+/*.boton-postulate {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,9 +136,68 @@
   margin: 0;
   height: 3vh;
   width: 230px;
-  /*width: 100%;*/
   margin-top: 2.5px;
+}*/
+
+.boton-postulate{
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  border: none;
+  border-top: 2px solid #b2b2b2;
+  background-color: #02b079;
+  color: #bb6c74;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 0px 0px 30px 30px;
+  transition: 0.2s;
 }
+
+.boton-postulate:hover {
+  background-color: #447ec1;
+  border-top: 2px solid transparent;
+  color: #111111;
+}
+
+.talento-button{
+  /*margin-top: 10px;
+  margin-bottom: 20px;*/
+  background-color: transparent;
+  border: 0;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 0px 0,
+    rgba(255, 255, 255, 0.25) 0 0px 0 inset;
+  border: transparent;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+.talento-button:hover{
+  background-color: transparent;
+  text-decoration: none;
+  transition-duration: 0s;
+}
+
+/*.talento-button{
+  width: 100%;
+  margin-top: 19px;
+  padding: 15px;
+  border: none;
+  border-top: 2px solid #bb6c74;
+  background-color: #131313;
+  color: #bb6c74;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 0px 0px 38px 38px;
+  transition: 0.2s;
+}
+
+.talento-button:hover {
+  background-color: #bb6c74;
+  border-top: 2px solid transparent;
+  color: #111111;
+}*/
 
 /* 
    .talento-label:disabled {

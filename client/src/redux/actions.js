@@ -26,7 +26,9 @@ export const SEND_ID_OF_CARD = "SEND_ID_OF_CARD";
 export const CLEAR_ID_OF_CARD = "CLEAR_ID_OF_CARD";
 export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
 export const IMAGE_URL = "IMAGE_URL";
-export const ERROR_POSTULATE = "ERROR_POSTULATE";
+export const ERROR_POSTULATE="ERROR_POSTULATE";
+export const GET_EVENTS_PREMIUM = "GET_EVENTS_PREMIUM";
+export const GET_POSTULANT_FAV_BY_NAME = "GET_POSTULANT_FAV_BY_NAME";
 import axios from "axios";
 
 export const register_model = (payload) => {
@@ -48,6 +50,7 @@ export const register_model = (payload) => {
     }
   };
 };
+
 export const register_company = (payload) => {
   let endpoint = "http://localhost:3001/companies/register";
   return async (dispatch) => {
@@ -201,6 +204,20 @@ export const getAllEvents = () => {
     try {
       const response = await axios.get("http://localhost:3001/events");
       return dispatch({ type: GET_ALL_EVENTS, payload: response.data });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al obtener los eventos!",
+      });
+    }
+  };
+};
+
+export const getEventsPremium = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get("http://localhost:3001/events/premium");
+      return dispatch({ type: GET_EVENTS_PREMIUM, payload: response.data });
     } catch (error) {
       return dispatch({
         type: "ERROR",
@@ -477,3 +494,56 @@ export const message_error_postulate  = (payload) => {
     });
   };
 };
+/*   FALTA LA RUTA
+export const get_all_favorite_postulant = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get("http://localhost:3001/companies/favorites");
+      return dispatch({ type: GET_ALL_POSTULANT_FAV, payload: response.data });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al obtener los postulantes favoritos!",
+      });
+    }
+  };
+};
+*/
+export const get_favorite_postulant_by_name = (name) => {
+  return async (dispatch) => {
+    try {                    //PROBAR LA RUTA
+      let response = await axios.get("http://localhost:3001/companies/favorites/?name=" + name);
+      //console.log(response + 'estoy en action');
+      return dispatch({
+        type: GET_POSTULANT_FAV_BY_NAME,
+        payload: response.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "Ha ocurrido un error al buscar un postulante por su nombre.",
+      });
+    }
+  };
+};
+
+/* PROBAR RUTA EN EL BACK
+export const delete_favorite_postulant = () => {
+  let endpoint = "http://localhost:3001/companies/favorites";
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.delete(endpoint);
+      // return dispatch({
+      //   type: DELETE_POSTULANT_FAV,
+      //   payload: data,
+      // });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "Ocurrió un error al intentar rechazar al postulante.",
+      });
+    }
+  };
+};
+
+*/
