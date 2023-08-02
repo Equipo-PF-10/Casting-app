@@ -2,6 +2,47 @@
     margin: 15px;
     transition: 0.5s;
     padding: 10px;
+    /* background-color: red; */
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.fonts {
+    /* background-color: blue; */
+    width: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.options {
+    /* background-color: white; */
+    width: 20vh;
+    border-left: 3px solid black;
+}
+
+.options button {
+    width: 150px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.buttonClose {
+    background-color: var(--color-error);
+    color: white;
+    margin-left: 20px;
+    &:hover {
+        background-color: white ;
+    color:var(--color-error);
+    }
+}
+.buttonEdit {
+    background-color: var(--color-success);
+    color: white;
+    margin-left: 20px;
+    &:hover {
+        background-color: white ;
+    color:var(--color-success);
+    }
 }
 
 .container:hover {

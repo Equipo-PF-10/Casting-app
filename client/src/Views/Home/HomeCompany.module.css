@@ -1,0 +1,82 @@
+.container {
+    display: grid;
+    grid-template-columns: 4.2% 95.8%;
+    /* background-color: var(--color-fondo); */
+}
+
+.navbarLat {
+    width: 5vh;
+    height: 100vh;
+}
+
+.view {
+    /* background-color: red; */
+    width: 191vh;
+    height: 98vh;
+    display: grid;
+    grid-template-rows: 6% auto auto;
+}
+
+.navBar {
+    /* background-color: white; */
+    height: 6vh;
+}
+
+.middleSection {
+    /* background-color: pink; */
+    height: 47vh;
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+.middleSectionUser {
+    background-color: red;
+    width: 50vh;
+    /* height: 47vh; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.middleSectionEvents {
+    /* background-color: white; */
+    width: 152.2.1vh;
+    /* height: 47vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottomSection {
+    /* background-color: violet; */
+    height: 45vh;
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.favs{
+    /* background-color: white; */
+    width: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.metricas{
+    /* background-color: yellow; */
+    width: 142.2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: center; */
+}
+
+.metricas h1{
+    margin-top: 20px;
+}
+
+.metricas hr{
+    color: var(--color-primario);
+  width: 110vh;
+  margin-left: 56px;
+  border-top: 4px solid;
+}

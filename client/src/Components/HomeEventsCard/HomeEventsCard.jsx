@@ -5,7 +5,9 @@ const HomeEventsCard = (props) => {
   return (
     <div className={styles.container}>
         <h1>{props.title}</h1>
+        <hr />
         {props.events ? props.events.map((event, index) => {
+
           return (
             <HomeEvent 
               key = {index}
