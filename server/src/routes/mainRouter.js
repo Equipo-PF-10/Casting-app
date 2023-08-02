@@ -11,6 +11,7 @@ const companyFormRouter = require("./forms/companyFormRouter");
 const eventFormRouter = require("../routes/forms/eventFormRouter");
 const companyReviewRouter = require("./talents/companyReviewRouter");
 const talentReviewRouter = require("./companies/talentReviewRouter");
+const companyTalentContact = require("./companies/companyTalentRouter");
 
 //const loginSignupRouter = require("./login-sigup/loginSignupRouter");
 //const accessApiRouter = require("./access/accessApiRouter");
@@ -24,6 +25,7 @@ const mainRouter = Router();
 mainRouter.use("/companies/favorites", talentsFavoriteRouter);
 mainRouter.use("/companies/plan", conditionPlanRouter);
 mainRouter.use("/companies/reviews", talentReviewRouter);
+mainRouter.use("/companies/contact", companyTalentContact);
 mainRouter.use("/companies", companyRouter);
 
 //? Rutas de Talentos
