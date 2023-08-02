@@ -5,11 +5,13 @@
     /* background-color: red; */
     display: grid;
     grid-template-columns: 80% 20%;
+    border-radius: 10px;
+    border: 1px solid black;
 }
 
 .fonts {
     /* background-color: blue; */
-    width: 85vh;
+    width: 75vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,6 +51,7 @@
     box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
     border-radius: 10px;
     background-color: #00c9a7;
+    border:  black;
 }
 
 .text {

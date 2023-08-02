@@ -532,11 +532,16 @@ export const delete_favorite_postulant = () => {
   let endpoint = "http://localhost:3001/companies/favorites";
   return async (dispatch) => {
     try {
-      const { data } = await axios.delete(endpoint);
-      // return dispatch({
-      //   type: DELETE_POSTULANT_FAV,
-      //   payload: data,
-      // });
+      const { data } = await axios.delete(endpoint, {
+        data: { TalentId:id_evento, CompanyId:id_talent }, 
+        headers: {
+          "Content-Type": "application/json", 
+        },
+      });
+      return dispatch({
+        type: DELETE_POSTULANT_FAV,
+        payload: data,
+      });
     } catch (error) {
       return dispatch({
         type: "ERROR",
