@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
                 allowNull: false
             },
             report:{
-                type: DataTypes.ENUM(),
+                type: DataTypes.ENUM("Pagos", "Mal Comportamiento"), 
                 allowNull: false
             },
             
