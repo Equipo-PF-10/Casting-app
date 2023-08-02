@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Styles from "./FormEmpresas.module.css"
 import axios from "axios"
 import validationEmpresas from "./validationEmpresas"
@@ -15,18 +15,6 @@ const FormEmpresa = () => {
 
     const imageURL = useSelector((state) => state.imageUrl)
 
-    // Company Data
-
-    const [company, setCompany] = useState({})
-
-    const getCompany = async () => {
-        const response = await axios.get(`http://localhost:3001/companies/${idUser}`)
-        setCompany(response.data)
-    }
-
-    useEffect(() => {
-        getCompany();
-    })
 
     const URL = "http://localhost:3001/forms/companies"
 
@@ -60,7 +48,7 @@ const FormEmpresa = () => {
     const handleChange = (event) => {
         const {name, value} = event.target;
         setInput({...input, [name]: value})
-        setError(validationEmpresas({...input, [name]: value}, company))
+        setError(validationEmpresas({...input, [name]: value}))
     }
 
     const filledFields = Object.keys(input).reduce((acc, key) => {
