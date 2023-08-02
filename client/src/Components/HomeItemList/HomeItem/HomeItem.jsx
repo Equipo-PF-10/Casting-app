@@ -1,6 +1,12 @@
 import styles from "./HomeItem.module.css";
+import { useDispatch } from "react-redux";
 
 const HomeItem = (props) => {
+  const dispatch = useDispatch();
+  
+  const handleClickDelete = () => {
+    //dispatch(delete_favorite_postulant()) verificar si le paso el id del postulante
+  }
   return (
     <div className={styles.container}>
       <div className={styles.text}>
@@ -8,12 +14,15 @@ const HomeItem = (props) => {
         <h3 className={styles.text}>Orientacion Artistica</h3>
         {/* {props.title} */}
       </div>
+      <div className={styles.options}>
+
+      
       <div className={styles.mail}>
         {/* AGREGAR FUNCIONALIDAD DE ENVIAR UN MAIL, MOSTRAR MODADL DE CONFIRMACION */}
         <button>
           <svg
-            width="40"
-            height="40"
+            width="30"
+            height="30"
             viewBox="0 0 63 46"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -26,12 +35,22 @@ const HomeItem = (props) => {
         </button>
       </div>
       <div className={styles.delete}>
-        <button>
-          <h1>X</h1>
+        <button onClick={handleClickDelete}>
+          <h2>X</h2>
         </button>
+      </div>
       </div>
     </div>
   );
 };
 
 export default HomeItem;
+
+
+/*
+
+mainRouter.use("/companies/favorites", talentsFavoriteRouter);
+? Esta ruta es para que una empresa pueda borrar talentos favoritos.
+companyRouter.delete("/", handleDeleteFavoriteTalent);
+
+*/

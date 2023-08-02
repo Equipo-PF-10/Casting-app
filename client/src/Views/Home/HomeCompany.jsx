@@ -17,6 +17,7 @@ useEffect(() => {
     dispatch(getAllEvents());
 },[])
 
+
 return (
     <div className={styles.container}>
         <div className={styles.navbarLat}> <NavBarLateral/></div>
