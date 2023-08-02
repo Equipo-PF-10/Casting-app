@@ -61,6 +61,7 @@ const {
   ToContact,
   Payment,
   Review,
+  SubscriptionPayment
 } = models;
 
 //* Relaciones de tablas de Empresas************************************************
@@ -95,6 +96,12 @@ Review.belongsTo(Company);
 
 Talent.hasMany(Review, { foreignKey: "TalentId" });
 Review.belongsTo(Talent);
+
+Company.hasMany(SubscriptionPayment, { as: "payments" });
+SubscriptionPayment.belongsTo(Company, {
+  foreignKey: "CompanyId",
+  as: "company",
+});
 
 module.exports = {
   ...models,
