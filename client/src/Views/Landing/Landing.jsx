@@ -184,13 +184,7 @@ const Landing = () => {
           {/*</div>*/}
         </section>
         <section id="anuncios" className="anuncios">
-          <button className="paginado-button">
-            <img src="/prev.svg" alt="" />
-          </button>
           <Adds />
-          <button className="paginado-button">
-            <img src="/next.svg" alt="" />
-          </button>
         </section>
         <br />
         <section id="servicios" className="servicios">
