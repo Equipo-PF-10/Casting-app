@@ -1,4 +1,4 @@
-export default function validationEmpresas(input){
+export default function validationEmpresas(input, company){
 
     let error ={};
 
@@ -17,6 +17,17 @@ export default function validationEmpresas(input){
         error.email = "El email debe ser válido"
     }
 
+    if(!company.name){
+        error.name = "La compañia debe tener un nombre"
+    }
   
+    if(!company.country){
+        error.country = "La compañia debe selecionar un país"
+    }
+
+    if(!company.descriptionShort){
+        error.descriptionShort = "La compañia debe tener una descripción corta"
+    }
+
     return error
 }

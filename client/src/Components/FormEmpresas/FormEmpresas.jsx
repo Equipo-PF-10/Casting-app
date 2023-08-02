@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Styles from "./FormEmpresas.module.css"
 import axios from "axios"
 import validationEmpresas from "./validationEmpresas"
@@ -15,10 +15,25 @@ const FormEmpresa = () => {
 
     const imageURL = useSelector((state) => state.imageUrl)
 
+    // Company Data
+
+    const [company, setCompany] = useState({})
+
+    const getCompany = async () => {
+        const response = await axios.get(`http://localhost:3001/companies/${idUser}`)
+        setCompany(response.data)
+    }
+
+    useEffect(() => {
+        getCompany();
+    })
+
     const URL = "http://localhost:3001/forms/companies"
 
     const initialState = {
         id: "",
+        description: "",
+        descriptionShort: "",
         name: "",
         password: "",
         email: "",
@@ -45,7 +60,7 @@ const FormEmpresa = () => {
     const handleChange = (event) => {
         const {name, value} = event.target;
         setInput({...input, [name]: value})
-        setError(validationEmpresas({...input, [name]: value}))
+        setError(validationEmpresas({...input, [name]: value}, company))
     }
 
     const filledFields = Object.keys(input).reduce((acc, key) => {
@@ -110,7 +125,6 @@ const FormEmpresa = () => {
                 
                 <form action="" className={Styles.form} method="POST" onSubmit={hanldeSubmit} >
                     <div className={Styles.div}>
-                    <h1>Registro</h1>
                         <article className={Styles.coolinput}>
                             <label htmlFor="name" className={Styles.text}>Nombre Completo</label>
                             <input type="text" name="name" id="name" value={input.name} onChange={handleChange}/>
@@ -126,9 +140,15 @@ const FormEmpresa = () => {
                             <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null}</p>
                         </article>
                         <article className={Styles.coolinput}>
-                                <label htmlFor="" className={Styles.text}>Descripción</label>
-                                <textarea name="description" id="" value={input.description} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
+                                <label htmlFor="logo" className={Styles.text}>Página Web</label>
+                                <input type="text" name="domain" id="domain" value={input.domain}  onChange={handleChange}/>
                             </article>
+                        <article className={Styles.coolinput}>
+                                <label htmlFor="description" className={Styles.text}>Descripción</label>
+                                <textarea name="description" id="description" value={input.description} onChange={handleChange} placeholder="Descripción de tu empresa..."></textarea>
+                        </article>
+
+
                     </div>
                     <div className={Styles.div}>
                         <section className={Styles.chart}>
@@ -167,10 +187,11 @@ const FormEmpresa = () => {
                                 <label htmlFor="industryMain" className={Styles.text}>Industria Principal</label>
                                 <input type="text" name="industryMain" id="industryMain" value={input.industryMain}  onChange={handleChange}/>
                             </article>
+
                             <article className={Styles.coolinput}>
-                                <label htmlFor="logo" className={Styles.text}>Página Web</label>
-                                <input type="text" name="domain" id="domain" value={input.domain}  onChange={handleChange}/>
-                            </article>
+                                <label htmlFor="descriptionShort" className={Styles.text}>Descripción Corta</label>
+                                <textarea name="descriptionShort" id="descriptionShort" value={input.descriptionShort} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
+                        </article>
                         <button type="submit" className={Styles.btn}>Enviar Datos</button>
                         </section>
                     </div>
