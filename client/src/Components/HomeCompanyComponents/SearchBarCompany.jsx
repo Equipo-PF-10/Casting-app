@@ -5,8 +5,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch, useSelector } from "react-redux";
+import { send_email_message } from "../../redux/actions";
+
 
 export default function SearchBarCompany() {
+
+  const modalMailMessage = useSelector((state) => state.modalMailMessage);
+  const dispatch = useDispatch();
 
   const { logout } = useAuth0();
   const handlerClick = () => {
@@ -46,7 +52,6 @@ export default function SearchBarCompany() {
     }
   }
 
- 
   let currentToastId = null;
   //Evita que se renderice mas de 1 toast
   const mensaje_error_Toast = () => {
@@ -69,6 +74,40 @@ export default function SearchBarCompany() {
         style: {
           marginTop: "50px",
           width: "340px",
+        },
+      });
+    }
+  };
+
+  useEffect(()=>{
+    if(modalMailMessage.length > 0){
+        mensaje_success_Toast_send_mail();
+        dispatch(send_email_message(""));
+    }
+},[modalMailMessage])
+
+  //Mostrar mensaje cuando se envie un mail de contacto al Postulante
+  let currentToastIdSendMail = null;
+  const mensaje_success_Toast_send_mail = () => {
+    if (currentToastIdSendMail) {
+      toast.update(currentToastIdSendMail, {
+        render: modalMailMessage,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastIdSendMail = toast.success(modalMailMessage, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          marginTop: "50px",
+          width: "450px",
         },
       });
     }

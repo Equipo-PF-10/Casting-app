@@ -29,6 +29,7 @@ import {
   GET_NAME_EVENTS,
   GET_POSTULANT_FAV_BY_NAME,
   IMAGE_URL,
+  SEND_EMAIL_MESSAGE,
   ERROR_POSTULATE,
 } from "./actions.js";
 
@@ -52,6 +53,7 @@ const initialState = {
   messageRegistered: {},
   postulantCreated: {},
   messagePostulantDeleted: {},
+  modalMailMessage: "",
   modalInLogin: false,
   modalInSearchCompany: false,
   modalTalentRefused: false,
@@ -116,6 +118,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         userType: payload,
+      };
+    case SEND_EMAIL_MESSAGE:
+      return {
+        ...state,
+        modalMailMessage: payload,
       };
     case GET_EVENT_BY_ID:
       return {
