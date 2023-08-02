@@ -4,9 +4,9 @@ const {
 
 // Función que trae todas las empresas premium creadas a partir del mes initialMonth.
 const handlerGetPremiumCompanies = async (req, res) => {
-  const { initialMonth } = req.params;
+  const { plan, initialMonth } = req.params;
   try {
-    const companies = await getCompaniesByMonth(initialMonth);
+    const companies = await getCompaniesByMonth(plan, initialMonth);
 
     res.status(200).json(companies);
   } catch (error) {
