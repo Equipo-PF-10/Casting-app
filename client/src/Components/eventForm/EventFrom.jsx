@@ -106,8 +106,6 @@ const EventForm = () => {
       const handleChangeSelect = (selectedOptions) => {
         setOrientaciones(selectedOptions);
       };
-
-      console.log(input.image);
       
       let messageEventCreated = "Se ha creado el evento con éxito.";
       const handleSubmit = async (event) => {

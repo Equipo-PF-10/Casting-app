@@ -20,7 +20,7 @@ import PremiumPlan from "./Views/PaymentPlans/PremiumPlan";
 import PaypalPremiumPlan from "./Views/PaymentPlans/PaypalPremiumPlan";
 import PaypalBasicPlan from "./Views/PaymentPlans/PaypalBasicPlan";
 import SendPersonalized from "./Components/mail/sendContactTalent";
-
+import Report from "./Views/Report/Report";
 
 import Admin from "./Views/Admin/Admin";
 import Review from "./Views/Review/Review"
@@ -57,6 +57,7 @@ function App() {
         <Route path="/review" element={<Review/>}/>
         <Route path="/admin" element={<Admin/>}/>
         <Route path="/home/talento" element={<HomeTalento/>}/>
+        <Route path="/report" element={<Report/>}/>
       </Routes>
     </>
   );

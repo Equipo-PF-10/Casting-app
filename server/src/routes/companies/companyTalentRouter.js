@@ -4,7 +4,7 @@ const { handlerFindAdsByStatus } = require("../../handlers/companies/talentConta
 const companyTalentRouter = Router();
 
 //? Ruta para obtener los contactos recibidos por un Talento.
-companyTalentRouter.get("/talentContact:talentId", handlerFindAdsByStatus);
+companyTalentRouter.get("/talentContact/:talentId", handlerFindAdsByStatus);
 
 
 module.exports = companyTalentRouter;
