@@ -15,8 +15,7 @@
     padding: 10px;
     overflow: scroll;
     overflow-x: hidden;
-    text-align: center;
-    
+    text-align: center
 }
 .conatiner hr {
     color: var(--color-primario);

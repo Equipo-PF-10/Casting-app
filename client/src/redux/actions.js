@@ -26,6 +26,7 @@ export const SEND_ID_OF_CARD = "SEND_ID_OF_CARD";
 export const CLEAR_ID_OF_CARD = "CLEAR_ID_OF_CARD";
 export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
 export const IMAGE_URL = "IMAGE_URL";
+export const SEND_EMAIL_MESSAGE = "SEND_EMAIL_MESSAGE";
 export const ERROR_POSTULATE="ERROR_POSTULATE";
 export const GET_EVENTS_PREMIUM = "GET_EVENTS_PREMIUM";
 export const GET_POSTULANT_FAV_BY_NAME = "GET_POSTULANT_FAV_BY_NAME";
@@ -552,3 +553,12 @@ export const delete_favorite_postulant = () => {
 };
 
 */
+
+export const send_email_message = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: "SEND_EMAIL_MESSAGE",
+      payload: payload,
+    });
+  };
+};
