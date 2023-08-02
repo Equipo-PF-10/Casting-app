@@ -21,7 +21,7 @@ export default function SearchBarCompany() {
     axios(`http://localhost:3001/companies/${id}`).then(({ data }) => {
       setCompany(data);
     });
-  }, []);
+  }, [setCompany, id]);
   
   const navigate = useNavigate();
   let error;
@@ -29,9 +29,18 @@ export default function SearchBarCompany() {
     if (company.plan === "PENDIENTE") {
         error = "Antes de crear un evento debe adquirir un Plan.";
         mensaje_error_Toast();
-    } else if((company.name === "" || company.name === null) || (company.country === "" || company.country === null) || (company.descriptionShort === "" || company.descriptionShort === null) || (company.image === "" || company.image === null)){
-        error = "Antes de crear un evento debe actualizar sus datos de perfil principales.";
+    } else if(company.name === "" || company.name === null){
+        error = "Antes de crear un evento debe selecionar un nombre.";
         mensaje_error_Toast();
+    } else if (company.country === "" || company.country === null){
+      error = "Antes de crear un evento debe seleccionar un país.";
+        mensaje_error_Toast();
+    } else if (company.descriptionShort === "" || company.descriptionShort === null){
+      error = "Antes de crear un evento debe agregar una descripción a su perfil.";
+        mensaje_error_Toast();
+    } else if (company.image === "" || company.image === null) {
+      error = "Antes de crear un evento debe agregar una imagen a su perfil.";
+      mensaje_error_Toast();
     } else {
         navigate("/company/create");
     }
