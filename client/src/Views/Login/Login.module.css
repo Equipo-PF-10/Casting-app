@@ -392,28 +392,118 @@
   transform: translateY(0%);
 }
 
+.buttonTalent{
+  background-color: rgb(135, 255, 205);
+  color: #19885e;
+  width: 35vh;
+  font-size: 18px;
+}
+.buttonTalent:hover{
+  background-color: rgb(52, 182, 128);
+  color: #b2fee1;
+}
+
 .buttonCompany {
-  background-color: whitesmoke;
+  background-color: rgb(135, 181, 255);
   color: #4b31a1;
   width: 35vh;
+  font-size: 18px;
+}
+.buttonCompany:hover{
+  background-color: rgb(36, 120, 255);
+  color: #f2efff;
 }
 
 .delete {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 2.5vh;
   height: 2.5vh;
   top: 1px;
+  margin-top: 7px;
   right: 10px;
-  border-radius: 3px;
-  background-color: red;
-  color: white;
-  box-shadow: 0 3px 3px black;
-  &:hover {
+  border-radius: 5px;
+  background-color: rgb(255, 87, 87);
+  color: whitesmoke;
+  /*box-shadow: 0 3px 3px black;*/
+  /*&:hover {
     color: red;
     background-color: white;
     box-shadow: 0 3px 3px red;
-  }
+  }*/
 }
+
+.close{
+  margin-bottom: 5px;
+  font-weight: 100;
+}
+
+/*.delete {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border: none;
+  background: none;
+}
+
+.X {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 10px;
+  height: 5px;
+  background-color: #fff;
+  transform: rotate(45deg);
+}
+
+.Y {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 33%;
+width: 10px;
+  height: 5px;
+  background-color: #fff;
+  transform: rotate(-45deg);
+}
+
+.close {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: -40%;
+  left: 70%;
+  width: 3em;
+  height: 1.7em;
+  font-size: 16px;
+  background-color: rgb(254, 255, 225);
+  color: #000;
+  border: 1px solid #000;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.delete:hover {
+  background-color: rgb(210, 0, 0);
+}
+
+.delete:active {
+  background-color: rgb(130, 0, 0);
+}
+
+.delete:hover > .close {
+  animation: close 0.2s forwards 1.25s;
+}
+
+@keyframes close {
+  100% {
+    opacity: 1;
+  }
+}*/
 
 /* Modal Closed */
 
