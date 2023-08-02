@@ -61,7 +61,9 @@ const {
   ToContact,
   Payment,
   Review,
-  } = models;
+  SubscriptionPayment
+} = models;
+
 
 //* Relaciones de tablas de Empresas************************************************
 Company.hasMany(Event, { foreignKey: "CompanyId" });
@@ -95,6 +97,13 @@ Review.belongsTo(Company);
 
 Talent.hasMany(Review, { foreignKey: "TalentId" });
 Review.belongsTo(Talent);
+
+
+Company.hasMany(SubscriptionPayment, { as: "payments" });
+SubscriptionPayment.belongsTo(Company, {
+  foreignKey: "CompanyId",
+  as: "company",
+});
 
 
 // Tabla que establece la relación uno a muchos  entre Talent y Contact, y también entre Contact y Company.

@@ -11,8 +11,13 @@ const companyFormRouter = require("./forms/companyFormRouter");
 const eventFormRouter = require("../routes/forms/eventFormRouter");
 const companyReviewRouter = require("./talents/companyReviewRouter");
 const talentReviewRouter = require("./companies/talentReviewRouter");
+
+const paymentRouter = require("./payments/paymentRouter");
+const companyPaymentsRouter = require("./payments/companyPaymentsRouter");
+
 const companyTalentContact = require("./companies/companyTalentRouter");
 const adminRouter = require("./admin/adminRouter");
+
 
 //const loginSignupRouter = require("./login-sigup/loginSignupRouter");
 //const accessApiRouter = require("./access/accessApiRouter");
@@ -48,7 +53,13 @@ mainRouter.use("/forms/talents", talentFormRouter);
 mainRouter.use("/forms/companies", companyFormRouter);
 mainRouter.use("/forms/events", eventFormRouter);
 
+
+//Rutas de Pagos
+mainRouter.use("/payments", paymentRouter);
+mainRouter.use("/company/payments", companyPaymentsRouter);
+
 //* Rutas de Admin.
 mainRouter.use("/admin", adminRouter);
+
 
 module.exports = mainRouter;
