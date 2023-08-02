@@ -26,7 +26,8 @@ export const SEND_ID_OF_CARD = "SEND_ID_OF_CARD";
 export const CLEAR_ID_OF_CARD = "CLEAR_ID_OF_CARD";
 export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
 export const IMAGE_URL = "IMAGE_URL";
-export const ERROR_POSTULATE = "ERROR_POSTULATE";
+export const ERROR_POSTULATE="ERROR_POSTULATE";
+export const GET_EVENTS_PREMIUM = "GET_EVENTS_PREMIUM";
 import axios from "axios";
 
 export const register_model = (payload) => {
@@ -48,6 +49,7 @@ export const register_model = (payload) => {
     }
   };
 };
+
 export const register_company = (payload) => {
   let endpoint = "http://localhost:3001/companies/register";
   return async (dispatch) => {
@@ -201,6 +203,20 @@ export const getAllEvents = () => {
     try {
       const response = await axios.get("http://localhost:3001/events");
       return dispatch({ type: GET_ALL_EVENTS, payload: response.data });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al obtener los eventos!",
+      });
+    }
+  };
+};
+
+export const getEventsPremium = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get("http://localhost:3001/events/premium");
+      return dispatch({ type: GET_EVENTS_PREMIUM, payload: response.data });
     } catch (error) {
       return dispatch({
         type: "ERROR",
