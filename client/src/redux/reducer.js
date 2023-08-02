@@ -7,6 +7,8 @@ import {
   USER_TYPE,
   GET_EVENT_BY_ID,
   GET_ALL_EVENTS,
+  EDIT_EVENT,
+  CLOSE_EVENT,
   GET_EVENTS_PREMIUM,
   GET_ALL_COMPANIES,
   GET_COMPANY_BY_ID,
@@ -51,6 +53,8 @@ const initialState = {
   idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
   messageRegistered: {},
+  messageEventEdited: {},
+  messageEventClosed: {},
   postulantCreated: {},
   messagePostulantDeleted: {},
   modalMailMessage: "",
@@ -173,6 +177,16 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         postulantCreated: payload,
+      };
+    case EDIT_EVENT:
+      return {
+        ...state,
+        messageEventEdited: payload,
+      };
+    case CLOSE_EVENT:
+      return {
+        ...state,
+        messageEventClosed: payload,
       };
     case DELETE_POSTULANT_BY_ID:
       return {
