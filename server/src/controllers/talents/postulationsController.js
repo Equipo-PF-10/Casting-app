@@ -1,4 +1,4 @@
-const { Applied, TalentApplied, Talent, ToContact } = require("../../db");
+const { Applied, TalentApplied, Talent } = require("../../db");
 
 // Función controller para obtener todas las postulaciones
 const getAllApplied = async () => {
@@ -9,22 +9,28 @@ const getAllApplied = async () => {
 // Función controller para crear postulaciones
 const createApplied = async (EventId, TalentId) => {
   try {
-    // Crear la postulación en la base de datos
-    const postulacion = await Applied.create({
+   const talent = await Talent.findByPk(TalentId);
+
+  //  Talent.findAll({
+  //   include: [{
+  //     model: EventId,
+  //     through: {
+  //       attributes: [EventId]
+  //     }
+  //   }]
+  // });
+
+  //  const validation = await talent.getAllApplied();
+  //  console.log(validation);
+   const postulacion = await Applied.create({
       TalentId,
       EventId,
     });
-
-    const findPostulacion = await Applied.findAll({ where: { EventId } });
-
-    const AppliedId = findPostulacion[0].dataValues.id;
-
-    const intermedia = await TalentApplied.create({
-      TalentId,
-      AppliedId: postulacion.id,
-    });
-
-    return postulacion;
+    
+   //const AppliedId = postulacion.id;
+   await talent.addApplied(postulacion);
+        
+   return postulacion;
   } catch (error) {
     throw new Error("Error al crear la postulación: " + error.message);
   }
