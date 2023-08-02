@@ -25,6 +25,7 @@ import SendPersonalized from "./Components/mail/sendContactTalent";
 import Admin from "./Views/Admin/Admin";
 import Review from "./Views/Review/Review"
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
+import HomeTalento from "./Views/Home/HomeTalento";
 
 
 function App() {
@@ -55,7 +56,7 @@ function App() {
         <Route path="/contact" element={<SendPersonalized/>} />
         <Route path="/review" element={<Review/>}/>
         <Route path="/admin" element={<Admin/>}/>
-
+        <Route path="/home/talento" element={<HomeTalento/>}/>
       </Routes>
     </>
   );
