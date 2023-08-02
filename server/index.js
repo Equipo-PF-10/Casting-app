@@ -19,7 +19,9 @@ const syncDB = async () => {
     await talentsFromApi();
 
     // Finalmente, crear eventos
-    await eventsMocks();
+
+    // await eventsMocks();
+
 
     app.listen(process.env.PORT, () => {
       console.log("Listening at", PORT);

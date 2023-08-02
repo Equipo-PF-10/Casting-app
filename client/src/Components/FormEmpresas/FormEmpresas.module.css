@@ -15,8 +15,11 @@
 
 .img{
     border-radius: 50%;
-    height: 12rem;
-    width: 15rem;
+  height: 187px;
+  width: 187px;
+  max-width: 187px;
+  max-height: 187px;
+  object-fit: cover;
 }
 
 .svg1{

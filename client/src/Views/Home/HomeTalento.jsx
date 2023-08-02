@@ -4,10 +4,14 @@ import {useDispatch, useSelector} from "react-redux"
 import { get_talent_by_id } from "../../redux/actions";
 import LogoutButton from "../../Components/LogoutButton/LogoutButton";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const HomeTalento = () => {
 
     const dispatch = useDispatch()
+
+    const [events, setEvents] = useState([])
 
     // UserInfo
 
@@ -17,16 +21,35 @@ const HomeTalento = () => {
 
     const talent = useSelector((state) => state. talentById);
 
+    // URLs
+
+    //? const URLCompanyContact = `http://localhost:3001/companies/talentContact/${userId}`
+
+    //? const URLAppliedEvents = `http://localhost:3001//${userId}`
+
     // Eventos
 
     const allEvents = useSelector((state) => state.allEvents)
+
+    console.log("allEvents: ", allEvents);
+
+    const getEvents = async () => {
+        const response = await axios.get("http://localhost:3001/events")
+        setEvents(response.data)
+    }
+
+    useEffect(() => {
+        getEvents()
+    }, [])
     
-    const events = allEvents.map((evento, index) => (
-        <li key={index}>
-            <h2>{evento.name}</h2>
-            <h5>{evento.habilityRequired}</h5>
-            <p>{evento.shortDescription}</p>
-        </li>
+    const eventsRender = events.map((evento, index) => (
+        <NavLink to="" key={index} className={Styles.link}>
+            <li className={Styles.infoEvents}>
+                <h2>{evento.name}</h2>
+                <h5>{evento.habilityRequired.join(", ")}</h5>
+                <p>{evento.shortDescription}</p>
+            </li>
+        </NavLink>
     )) 
 
     return (
@@ -111,8 +134,8 @@ const HomeTalento = () => {
                 </article>
                 <article className={Styles.eventos}>
                     <h1>Últimas publicaciones</h1>
-                    <ul>
-                        {events}
+                    <ul className={Styles.eventList}>
+                        {eventsRender}
                     </ul>
                 </article>
             </section>

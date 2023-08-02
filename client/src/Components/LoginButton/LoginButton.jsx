@@ -41,13 +41,19 @@ const LoginButton = (props) => {
         <div className={style.containerModalOpened}>
           <div className={style.modalOpened}>
             <button onClick={handler_click_close} className={style.delete}>
-              {" "}
-              X{" "}
+              {/*<span className={style.X}></span>
+              <span className={style.Y}></span>*/}
+              <div className={style.close}>x</div>
             </button>
 
-            <h3>Selecciona un tipo de Registro</h3>
+            <h4>Selecciona un tipo de Registro</h4>
 
-            <button onClick={handler_click_talent}>Talento</button>
+            <button
+              onClick={handler_click_talent}
+              className={style.buttonTalent}
+            >
+              Talento
+            </button>
             <button
               onClick={handler_click_company}
               className={style.buttonCompany}

@@ -89,7 +89,7 @@ const Detail = (props) => {
         </div>  
         }
       </div>
-      {/* -------MODAL PARA ENVIAR UN MAIL AL POSTULANTE ------------*/}
+      {/* -------MODAL PARA RECHAZAR AL POSTULANTE ------------*/}
       {
         modalRefused ?
         <div className= {style.containerModalOpened}>

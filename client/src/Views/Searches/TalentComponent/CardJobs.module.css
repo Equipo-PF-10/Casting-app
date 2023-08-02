@@ -2,7 +2,21 @@
   width: 100%;
   border-radius: 20px;
   /*background-color: rgb(224, 224, 224);*/
-  background-image: radial-gradient(circle, #41e5ca, #3fe2c7, #3cdfc4, #3addc2, #37dabf, #34d8bd, #31d7ba, #2ed5b8, #29d4b6, #24d2b4, #1fd1b2, #18cfb0);
+  background-image: radial-gradient(
+    circle,
+    #41e5ca,
+    #3fe2c7,
+    #3cdfc4,
+    #3addc2,
+    #37dabf,
+    #34d8bd,
+    #31d7ba,
+    #2ed5b8,
+    #29d4b6,
+    #24d2b4,
+    #1fd1b2,
+    #18cfb0
+  );
   transition: 0.5s ease-in-out;
   margin-bottom: 30px;
   padding: 20px;
@@ -14,7 +28,7 @@
   transform: scale(1.05);
 }
 
-.containerCardJobs h2{
+.containerCardJobs h2 {
   background-color: rgba(252, 252, 252, 0.287);
   border-radius: 10px;
   padding-left: 5px;

@@ -5,6 +5,8 @@ export const MODAL_REFUSE_POSTULATE = "MODAL_REFUSE_POSTULATE";
 export const ERROR = "ERROR";
 export const USER_TYPE = "USER_TYPE";
 export const GET_EVENT_BY_ID = "GET_EVENT_BY_ID";
+export const EDIT_EVENT = "EDIT_EVENT";
+export const CLOSE_EVENT = "CLOSE_EVENT";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 export const GET_COMPANY_BY_ID="GET_COMPANY_BY_ID";
@@ -26,8 +28,10 @@ export const SEND_ID_OF_CARD = "SEND_ID_OF_CARD";
 export const CLEAR_ID_OF_CARD = "CLEAR_ID_OF_CARD";
 export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
 export const IMAGE_URL = "IMAGE_URL";
+export const SEND_EMAIL_MESSAGE = "SEND_EMAIL_MESSAGE";
 export const ERROR_POSTULATE="ERROR_POSTULATE";
 export const GET_EVENTS_PREMIUM = "GET_EVENTS_PREMIUM";
+export const GET_POSTULANT_FAV_BY_NAME = "GET_POSTULANT_FAV_BY_NAME";
 import axios from "axios";
 
 export const register_model = (payload) => {
@@ -221,6 +225,34 @@ export const getEventsPremium = () => {
       return dispatch({
         type: "ERROR",
         payload: "¡Ha ocurrido un error al obtener los eventos!",
+      });
+    }
+  };
+};
+
+export const edit_event_by_id = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(`http://localhost:3001/events/${id}`);
+      return dispatch({ type: EDIT_EVENT, payload: response.data });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al tratar de editar el evento!",
+      });
+    }
+  };
+};
+
+export const close_event_by_id = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(`http://localhost:3001/events/${id}`);
+      return dispatch({ type: CLOSE_EVENT, payload: response.data });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al tratar de cerrar el evento!",
       });
     }
   };
@@ -493,3 +525,72 @@ export const message_error_postulate  = (payload) => {
     });
   };
 };
+/*   FALTA LA RUTA
+export const get_all_favorite_postulant = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get("http://localhost:3001/companies/favorites");
+      return dispatch({ type: GET_ALL_POSTULANT_FAV, payload: response.data });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al obtener los postulantes favoritos!",
+      });
+    }
+  };
+};
+*/
+export const get_favorite_postulant_by_name = (name) => {
+  return async (dispatch) => {
+    try {                    //PROBAR LA RUTA
+      let response = await axios.get("http://localhost:3001/companies/favorites/?name=" + name);
+      //console.log(response + 'estoy en action');
+      return dispatch({
+        type: GET_POSTULANT_FAV_BY_NAME,
+        payload: response.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "Ha ocurrido un error al buscar un postulante por su nombre.",
+      });
+    }
+  };
+};
+
+/* PROBAR RUTA EN EL BACK
+export const delete_favorite_postulant = () => {
+  let endpoint = "http://localhost:3001/companies/favorites";
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.delete(endpoint, {
+        data: { TalentId:id_evento, CompanyId:id_talent }, 
+        headers: {
+          "Content-Type": "application/json", 
+        },
+      });
+      return dispatch({
+        type: DELETE_POSTULANT_FAV,
+        payload: data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "Ocurrió un error al intentar rechazar al postulante.",
+      });
+    }
+  };
+};
+
+*/
+
+export const send_email_message = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: "SEND_EMAIL_MESSAGE",
+      payload: payload,
+    });
+  };
+};
+
+
