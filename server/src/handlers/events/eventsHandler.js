@@ -5,6 +5,7 @@ const {
   getEventsByName,
   deleteEventById,
   updateEventById,
+  getPremiumEvents,
 } = require("../../controllers/events/eventsController");
 
 // Función handler para obtener los eventos.
@@ -45,9 +46,7 @@ const handlerGetEventById = async (req, res) => {
     const found = await getEventById(id);
 
     if (!found) {
-      res
-        .status(400)
-        .send("El evento con el ID proporcionado, no ha sido encontrado. ");
+      res.status(400).json(error.message);
     }
 
     res.status(200).json(found);
@@ -72,7 +71,8 @@ const handlerCreateEvent = async (req, res) => {
     CompanyId,
   } = req.body;
 
-  if (!name || !ubication || !habilityRequired) { //|| !image 
+  if (!name || !ubication || !habilityRequired) {
+    //|| !image
     return res.status(400).send("Faltan datos obligatorios");
   }
 
@@ -159,10 +159,21 @@ const handlerUpdateEventById = async (req, res) => {
   }
 };
 
+const handlerGetPremiumEvents = async (req, res) => {
+  try {
+    const premiumEvents = await getPremiumEvents();
+
+    res.status(200).json(premiumEvents);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   handlerGetAllEvents,
   handlerGetEventById,
   handlerCreateEvent,
   handlerDeleteEventById,
   handlerUpdateEventById,
+  handlerGetPremiumEvents,
 };

@@ -1,0 +1,109 @@
+.div{
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+.section{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.eventos{
+    height: 86vh;
+    width: 96%;
+    margin: 1rem;
+    border-radius: 30px;
+    box-shadow: 0px 5.986455917358398px 9.977426528930664px 2.993227958679199px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+    text-align: justify;
+}
+
+.eventos h1{
+    font-size: 4rem;
+}
+
+.container{
+    margin: 0 auto;
+    padding-top: 9rem;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    width: 70%;
+    gap: 1.5rem;
+}
+
+.card{
+    border-radius:30px;
+    background-color: #00C9A7;
+    position: relative;
+    width: 20rem;
+    height: 10rem;
+    gap: 1rem;
+    padding-top: 6.5rem;
+    color: whitesmoke;
+}
+
+.image{
+    position: absolute;
+    top: -90%;
+    right: 0;
+    left: 0;
+}
+
+.image img{
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+}
+
+.btnCont{
+    height: 5vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btnCont button{
+    margin-top: 2.5rem;
+    font-size: 16px;
+    margin-right: 1rem;
+}
+
+.btnCont button:hover{
+    background-color: white;
+    color: #4b31a1;
+}
+
+.info{
+    height: fit-content;
+    width: 25rem;
+}
+
+.info h3{
+    text-align: left;
+    width: 35rem;
+}
+
+.info ul{
+    text-align: left;
+    list-style: none;
+}
+
+.link {
+    color: #324844;
+}
+
+.link:hover{
+    color: #4b31a1;
+}
+
+.info li{
+    transition: 0.3s;
+    font-size: 18px;
+    padding-block: 3px;
+}
+
+.info li:hover{
+    transform: scale(1.1);
+}

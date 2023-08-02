@@ -66,13 +66,13 @@ module.exports = (sequelize) => {
       },
 
       plan: {
-        type: DataTypes.ENUM("PENDIENTE", "FREE", "BASICO", "PREMIUM"),
+        type: DataTypes.ENUM("PENDIENTE", "PRUEBA GRATIS", "BASICO", "PREMIUM"),
         allowNull: true,
         defaultValue: "PENDIENTE",
       },
 
       conditionPlan: {
-        // FREE = 3 | BASICO = 30 | PREMIUM = ∞ 
+        // FREE = 3 | BASICO = 30 | PREMIUM = ∞
         type: DataTypes.INTEGER,
         allowNull: true,
         validate: {

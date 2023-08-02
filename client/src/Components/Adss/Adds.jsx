@@ -1,48 +1,41 @@
+import { useDispatch, useSelector } from "react-redux";
 import "./AddsModule.css";
+import { useEffect } from "react";
+import { getEventsPremium } from "../../redux/actions";
 
 function Adds() {
-  return (
-    // <div className='anuncio'>
-    //     <div className='imagen-container'>
-    //         <img src="film-muestra.jfif" alt="" />
-    //     </div>
-    //     <div className='resumen'>
-    //         <h6>Resumen del Evento</h6>
-    //         <p>Lorem, igfghfghfghfhfghfghfgdfsgffggfgpsum dolor sit amet consectetur adipisicing elit.
-    //         </p>
-    //     </div>
-    //     <div className='requeridos'>
-    //         <h6>Resumen de Solicitudes</h6>
-    //         <li>Actor</li>
-    //         <li>Mago</li>
-    //         <li>Promotor/a</li>
+  const dispatch = useDispatch();
+  const eventsPr = useSelector((state) => state.eventsPremium);
+  //console.log(eventsPr);
 
-    //     </div>
-    //     <div className='button-container'>
-    //         <button className='postularte-button'><a href="">Postulate</a></button>
-    //     </div>
-    // </div>
-    <div className="card-container">
-      <div className="card-img">
-        <img src="film-muestra.jfif" alt="" />
-      </div>
-      <div className="card-info">
-        <p className="text-title">Anuncio </p>
-        <p className="text-body">
-          Descripción
-        </p>
-      </div>
-      <div className="card-footer">
-        <label className="talento-label">Actor</label>
-        <label className="talento-label">Mago</label>
-        <label className="talento-label">Promotor</label>
-        {/* <div className="card-button"> 
-            </div>*/}
-      </div>
-      <div className='boton-postulate'>
-        <button className="talento-button">Postulate</button>
-      </div>
-    </div>
+  useEffect(() => {
+    dispatch(getEventsPremium());
+  },[dispatch]);
+  
+
+  return (
+    <>
+      {eventsPr.length > 0 &&
+        eventsPr?.map((e) => {
+          return (
+            <div className="card-container">
+              <div className="card-img">
+                <img src={e.image} alt="imagen del evento" />
+              </div>
+              <div className="card-info">
+                <p className="text-title">{e.name}</p>
+                <p className="text-body">{e.shortDescription}</p>
+              </div>
+              <div className="card-footer">
+                <label className="talento-label">{e.habilityRequired.join(', ')}</label>
+              </div>
+              <div className="boton-postulate">
+                <button className="talento-button">Postulate</button>
+              </div>
+            </div>
+          );
+        })}
+    </>
   );
 }
 

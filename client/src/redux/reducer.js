@@ -7,6 +7,7 @@ import {
   USER_TYPE,
   GET_EVENT_BY_ID,
   GET_ALL_EVENTS,
+  GET_EVENTS_PREMIUM,
   GET_ALL_COMPANIES,
   GET_COMPANY_BY_ID,
   GET_COMPANY_ID,
@@ -36,6 +37,7 @@ const initialState = {
   postulatedTalentsByEvent: [],
   postulatedTalentsByEventFiltered: [],
   allEvents: [],
+  eventsPremium: {},
   eventsFiltered: [],
   eventDetail: {},
   getAllCompanies: [],
@@ -131,6 +133,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         eventsFiltered: payload,
         allEvents: payload,
+      };
+    case GET_EVENTS_PREMIUM:
+      return {
+        ...state,
+        eventsFiltered: payload,
+        eventsPremium: payload,
       };
     case GET_ALL_COMPANIES:
       return {

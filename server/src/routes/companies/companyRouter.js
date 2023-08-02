@@ -7,12 +7,18 @@ const {
   handlerUpdateCompanyById,
   handlerGetCompanyById,
   handlerDeleteCompanyById,
+  handlerGetCompanyByPlan,
 } = require("../../handlers/companies/companiesHandler");
 const companyRouter = Router();
-const { updateCompanyConditionPlan } = require('../../handlers/companies/conditionPlanHandler');
+const {
+  updateCompanyConditionPlan,
+} = require("../../handlers/companies/conditionPlanHandler");
 
 //* Esta ruta busca todas las empresas por una ubicación especifica.
 companyRouter.get("/location", handlerSearchByLocation);
+
+//* Esta ruta busca todas las empresas por plan.
+companyRouter.get("/plan", handlerGetCompanyByPlan);
 
 //* Esta ruta registra una nueva compañia en la base de datos.
 companyRouter.post("/register", handlerCreateCompany);
@@ -33,6 +39,6 @@ companyRouter.delete("/:id", handlerDeleteCompanyById);
 companyRouter.get("/", handlerGetAllCompanies);
 
 //* Ruta para actualizar el conditionPlan de la compañía
-companyRouter.put('/:companyId/updatePlan', updateCompanyConditionPlan);
+companyRouter.put("/:companyId/updatePlan", updateCompanyConditionPlan);
 
 module.exports = companyRouter;

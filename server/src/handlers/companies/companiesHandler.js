@@ -6,8 +6,10 @@ const {
   updateCompanyById,
   deleteCompanyById,
   getAllCompanies,
+  getCompaniesByPlan,
 } = require("../../controllers/companies/companiesController");
 
+// Función para traer todas las empresas.
 async function handlerGetAllCompanies(req, res) {
   try {
     const { name } = req.query;
@@ -49,6 +51,7 @@ const handlerGetCompanyByEmail = async (req, res) => {
   }
 };
 
+// Función para buscar empresa por location.
 const handlerSearchByLocation = async (req, res) => {
   try {
     const companies = await searchByLocation(req.query.country);
@@ -60,6 +63,7 @@ const handlerSearchByLocation = async (req, res) => {
   }
 };
 
+// Función para crear una empresa.
 const handlerCreateCompany = async (req, res) => {
   const { email, name, image } = req.body;
 
@@ -152,6 +156,18 @@ const handlerDeleteCompanyById = async (req, res) => {
   }
 };
 
+// Función para obtener empresa por plan.
+const handlerGetCompanyByPlan = async (req, res) => {
+  const { plan } = req.body;
+
+  try {
+    const searchByPlan = await getCompaniesByPlan(plan);
+    res.status(200).json(searchByPlan);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   handlerGetAllCompanies,
   handlerSearchByLocation,
@@ -160,4 +176,5 @@ module.exports = {
   handlerGetCompanyById,
   handlerGetCompanyByEmail,
   handlerDeleteCompanyById,
+  handlerGetCompanyByPlan,
 };
