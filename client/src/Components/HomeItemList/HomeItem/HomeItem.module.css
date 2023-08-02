@@ -42,7 +42,9 @@
     /* align-content: center; */
     text-align: center;
     justify-content: center;
+    align-items: center;
     margin-left: 10px;
+    padding-top: 5px;
     background-color: var(--color-error);
     color: white;
     &:hover{

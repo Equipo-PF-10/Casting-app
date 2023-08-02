@@ -5,6 +5,8 @@ export const MODAL_REFUSE_POSTULATE = "MODAL_REFUSE_POSTULATE";
 export const ERROR = "ERROR";
 export const USER_TYPE = "USER_TYPE";
 export const GET_EVENT_BY_ID = "GET_EVENT_BY_ID";
+export const EDIT_EVENT = "EDIT_EVENT";
+export const CLOSE_EVENT = "CLOSE_EVENT";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 export const GET_COMPANY_BY_ID="GET_COMPANY_BY_ID";
@@ -223,6 +225,34 @@ export const getEventsPremium = () => {
       return dispatch({
         type: "ERROR",
         payload: "¡Ha ocurrido un error al obtener los eventos!",
+      });
+    }
+  };
+};
+
+export const edit_event_by_id = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(`http://localhost:3001/events/${id}`);
+      return dispatch({ type: EDIT_EVENT, payload: response.data });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al tratar de editar el evento!",
+      });
+    }
+  };
+};
+
+export const close_event_by_id = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(`http://localhost:3001/events/${id}`);
+      return dispatch({ type: CLOSE_EVENT, payload: response.data });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al tratar de cerrar el evento!",
       });
     }
   };
@@ -562,3 +592,5 @@ export const send_email_message = (payload) => {
     });
   };
 };
+
+
