@@ -223,5 +223,5 @@ module.exports = {
   getTopUsers,
   getTopPost,
   getByCountry,
-  getIncomes,
+  // getIncomes,
 };
