@@ -1,101 +1,27 @@
 .container {
-    display: grid;
-    grid-template-columns: 4.2% 95.8%;
-    /* background-color: var(--color-fondo); */
-}
-
-.navbarLat {
-    width: 5vh;
+    background-color: whitesmoke;
     height: 100vh;
 }
 
-/* .view {
-    background-color: red; 
-    width: 191vh;
-    height: 98vh;
-    display: grid;
-    grid-template-rows: 6% auto auto;
-} */
-.view {
-    /* background-color: red;  */
-    width: 191vh;
-    height: 98vh;
-    display: grid;
-    grid-template-rows: 8% auto;
+.content{
+    padding-left: 6rem;
 }
 
-.body {
-    /* background-color: firebrick;  */
-    height: 92vh;
+.grid{
     display: grid;
     grid-template-columns: 30% 70%;
 }
 
-.navBar {
-    /* background-color: white; */
-    height: 6vh;
-}
-
-.middleSection {
-    /* background-color: pink; */
-    height: 92vh;
-    width: 60vh;
-    display: grid;
-    grid-template-rows: 35% 65%;
-}
-.middleSectionUser {
-    background-color: red;
-    width: 50vh;
-    height: 32vh;
-    margin-left: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.favs{
-    /* background-color: white; */
-    width: 60vh;
-    height: 58vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.bottomSection {
-    /* background-color: violet; */
+.gridItem1{
     height: 90vh;
-    width: 131vh;
-    display: grid;
-    grid-template-rows: auto auto;
+    gap: 20rem;
 }
 
-.middleSectionEvents {
-    /* background-color: rgb(74, 228, 112); */
-    width: 132.2vh;
-    /* height: 60vh; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.metricas{
-    /* background-color: yellow; */
-    width: 132.2vh;
-    /* height: 40vh; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /*justify-content: center; */
+.gridItem2{
+    padding-block: 1rem;
+    padding-inline: 4.5rem;
 }
 
-.metricas h1{
-    margin-top: 20px;
-}
-
-.metricas hr{
-    color: var(--color-primario);
-  width: 110vh;
-  margin-left: 56px;
-  border-top: 4px solid;
+.gridItem2 div{
+    margin-block: 15px;
 }

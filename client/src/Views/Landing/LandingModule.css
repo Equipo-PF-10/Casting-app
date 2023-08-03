@@ -89,8 +89,8 @@
   .blog, 
   .contacto {
     background-color: var(--color-fondo);
-    display: flex;
-    justify-content: space-between;
+    /*display: flex;*/
+    justify-content: center;
     align-items: center;
   }
 
@@ -107,7 +107,7 @@
     height: 50vh;
   }
   .anuncios {
-    height: 46vH;
+    height: 400px;
     border-radius: 20px;
   }
   .contacto p {

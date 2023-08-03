@@ -1,30 +1,36 @@
-const { Applied, TalentApplied, Talent, ToContact } = require("../../db");
+const { Applied, TalentApplied, Talent } = require("../../db");
 
 // Función controller para obtener todas las postulaciones
 const getAllApplied = async () => {
   const allPost = await Applied.findAll();
   return allPost;
-};
+}; 
 
 // Función controller para crear postulaciones
 const createApplied = async (EventId, TalentId) => {
   try {
-    // Crear la postulación en la base de datos
+  // encuentra el perfil que se quiere postular
+   const talent = await Talent.findByPk(TalentId);
+   // encuentra las postulaciones de ese perfil
+   const applieds = await talent.getApplieds();
+   // extraigo los ids de los eventos ya postulados
+   const eventsIds = applieds.map(ele => ele.EventId)
+   // Busca coincidencia entre el evento que se quiere postular y los ya postulados
+   const validation = eventsIds.filter(ele => ele === EventId)
+   // Si no consiguio coincidencia, postula al talento
+   if (validation.length === 0) {
+   // crea una nueva postulacion con el talento y el evento asignado
     const postulacion = await Applied.create({
       TalentId,
       EventId,
     });
-
-    const findPostulacion = await Applied.findAll({ where: { EventId } });
-
-    const AppliedId = findPostulacion[0].dataValues.id;
-
-    const intermedia = await TalentApplied.create({
-      TalentId,
-      AppliedId: postulacion.id,
-    });
-
-    return postulacion;
+    // asigna la postulacion y el talento a la tabla intermedia
+     await talent.addApplied(postulacion);
+   //retorno la postulacion creada     
+   return postulacion;
+   } 
+   // como el talento ya estaba postulad a ese evento retorna mensaje advirtiendo
+   return {error: "Error al crear la postulación: Este talento ya se ha postulado para este Evento"};
   } catch (error) {
     throw new Error("Error al crear la postulación: " + error.message);
   }
@@ -166,6 +172,17 @@ const applicantToContact = async (TalentId, EventId) => {
   }
 };
 
+// Función para encontrar postulaciones de un talento 
+
+const getPostulationsByTalentId = async (TalentId) => {
+  try {
+    const postulations = await Applied.findAll({ where: { TalentId } });
+    return postulations;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getAllApplied,
   createApplied,
@@ -174,4 +191,5 @@ module.exports = {
   getApplicantsForEventByFk,
   getApplicantByName,
   applicantToContact,
+  getPostulationsByTalentId
 };

@@ -7,6 +7,8 @@ import {
   USER_TYPE,
   GET_EVENT_BY_ID,
   GET_ALL_EVENTS,
+  EDIT_EVENT,
+  CLOSE_EVENT,
   GET_EVENTS_PREMIUM,
   GET_ALL_COMPANIES,
   GET_COMPANY_BY_ID,
@@ -29,6 +31,7 @@ import {
   GET_NAME_EVENTS,
   GET_POSTULANT_FAV_BY_NAME,
   IMAGE_URL,
+  SEND_EMAIL_MESSAGE,
   ERROR_POSTULATE,
 } from "./actions.js";
 
@@ -50,8 +53,11 @@ const initialState = {
   idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
   messageRegistered: {},
+  messageEventEdited: {},
+  messageEventClosed: {},
   postulantCreated: {},
   messagePostulantDeleted: {},
+  modalMailMessage: "",
   modalInLogin: false,
   modalInSearchCompany: false,
   modalTalentRefused: false,
@@ -117,6 +123,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         userType: payload,
       };
+    case SEND_EMAIL_MESSAGE:
+      return {
+        ...state,
+        modalMailMessage: payload,
+      };
     case GET_EVENT_BY_ID:
       return {
         ...state,
@@ -166,6 +177,16 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         postulantCreated: payload,
+      };
+    case EDIT_EVENT:
+      return {
+        ...state,
+        messageEventEdited: payload,
+      };
+    case CLOSE_EVENT:
+      return {
+        ...state,
+        messageEventClosed: payload,
       };
     case DELETE_POSTULANT_BY_ID:
       return {

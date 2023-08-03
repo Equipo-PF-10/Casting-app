@@ -25,7 +25,7 @@ const HomeTalento = () => {
 
     //? const URLCompanyContact = `http://localhost:3001/companies/talentContact/${userId}`
 
-    //? const URLAppliedEvents = `http://localhost:3001//${userId}`
+    const URLAppliedEvents = `localhost:3001/applied/talent/${userId}`
 
     // Eventos
 
@@ -33,14 +33,13 @@ const HomeTalento = () => {
 
     console.log("allEvents: ", allEvents);
 
-    const getEvents = async () => {
-        const response = await axios.get("http://localhost:3001/events")
-        setEvents(response.data)
-    }
-
     useEffect(() => {
+        const getEvents = async () => {
+            const response = await axios.get(URLAppliedEvents)
+            setEvents(response.data)
+        }
         getEvents()
-    }, [])
+    }, [URLAppliedEvents])
     
     const eventsRender = events.map((evento, index) => (
         <NavLink to="" key={index} className={Styles.link}>

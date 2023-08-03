@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import { useEffect} from "react";
 import styles from "./HomeCompany.module.css";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import SearchBarCompany from "../../Components/HomeCompanyComponents/SearchBarCompany";
@@ -15,42 +15,37 @@ const allEvents = useSelector((state) => state.allEvents);
 
 useEffect(() => {
     dispatch(getAllEvents());
-},[])
+},[dispatch])
 
 
 return (
     <div className={styles.container}>
-        <div className={styles.navbarLat}> <NavBarLateral/></div>
-        <div className={styles.view}>
-            <div className={styles.navBar}> <SearchBarCompany/></div>
-            <div className={styles.body}>
-                <div className={styles.middleSection}>
-                    <div className={styles.middleSectionUser}>
-                        <User />
-                    </div>
-                    <div className={styles.favs}>
-                    {/* ENVIAR POSTULANTES FAVORITOS POR PROPS */}
+        <NavBarLateral/>
+        <article className={styles.content}>
+            <SearchBarCompany/>
+            <section className={styles.grid}>
+                <article className={styles.gridItem1}>
+                    <User />
                     <HomeItemList/>
-                </div>
-                    
-                </div>
-                <div className={styles.bottomSection}> 
-                <div className={styles.middleSectionEvents}>
-                        <HomeEventsCard 
-                        title={"Eventos publicados"}
-                        events={allEvents}
-                        url={"company/search"}
-                        />
+                    <div className={styles.favs}>
+                        {/* ENVIAR POSTULANTES FAVORITOS POR PROPS */}
                     </div>
-                <div className={styles.metricas}>
-                    <hr />
-                    <h2>Metricas de tu Empresa</h2>
-                    <ChartsComponent/>
-                </div>
-                </div>
-        </div>
-        </div>
-        
+                </article>
+                <article className={styles.gridItem2}>
+                    <div>
+                        <HomeEventsCard 
+                            title={"Eventos publicados"}
+                            events={allEvents}
+                            url={"company/search"}
+                            />
+                    </div>
+                    <div>
+                        <h3>Metricas de tu Empresa</h3>
+                        <ChartsComponent/>
+                    </div>
+                </article>
+            </section>
+        </article>
     </div>
     )
 }

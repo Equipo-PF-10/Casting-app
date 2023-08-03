@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom"
 const NavBarLateral = () => {
 
     const root = localStorage.getItem("userType")
+    const id = localStorage.getItem("user_id")
     
     let homePath = "";
     let perfilPath = "";
@@ -11,11 +12,11 @@ const NavBarLateral = () => {
 
     if(root === "talent"){
         homePath = "/home/talent"
-        perfilPath = "/model/profile"
+        perfilPath = `/model/profile/${id}`
         formPath= "/form/talent"
     } else if (root === "company"){
         homePath = "/home/company"
-        perfilPath = "/company/profile"
+        perfilPath = `/company/profile/${id}`
         formPath = "/form/company"
     }
 
