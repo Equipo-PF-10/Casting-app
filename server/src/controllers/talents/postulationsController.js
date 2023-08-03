@@ -172,6 +172,17 @@ const applicantToContact = async (TalentId, EventId) => {
   }
 };
 
+// Función para encontrar postulaciones de un talento 
+
+const getPostulationsByTalentId = async (TalentId) => {
+  try {
+    const postulations = await Applied.findAll({ where: { TalentId } });
+    return postulations;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getAllApplied,
   createApplied,
@@ -180,4 +191,5 @@ module.exports = {
   getApplicantsForEventByFk,
   getApplicantByName,
   applicantToContact,
+  getPostulationsByTalentId
 };

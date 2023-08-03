@@ -10,19 +10,17 @@ export default function User() {
     axios(`http://localhost:3001/companies/${id}`).then(({ data }) => {
       setCompany(data);
     });
-  }, []);
+  }, [id]);
 
   return (
-    <div className={styles.container}>
-      <p>JUGATELA PABLOO</p>
       <div className={styles.card}>
         <div className={styles.image}>
           {company.image ? (
             <img src={company.image} alt="Profile Picture" />
           ) : (
             <svg
-              width="250"
-              height="250"
+              width="220"
+              height="220"
               viewBox="0 0 187 187"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -111,13 +109,13 @@ export default function User() {
             </svg>
           )}
         </div>
-        {company.name ? <h2>{company.name}</h2> : <h2>Nombre Apellido</h2>}
-        {company.plan === "PREMIUM" ? (
-          <h2>Plan activo: Ninguno</h2>
-        ) : (
-          <h2>Plan activo: {company.plan}</h2>
-        )}
+        <article className={styles.info}>
+          {company.name ? <h2>{company.name}</h2> : <h2>Nombre de la Empresa</h2>}
+          <div className={styles.plan}>
+            <h3>Plan Activo:</h3> 
+            {company.plan ? <h3>{company.plan}</h3> : <h3>Pendiente</h3>} 
+          </div>
+        </article>
       </div>
-    </div>
   );
 }

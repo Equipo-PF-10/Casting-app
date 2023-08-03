@@ -6,6 +6,7 @@ const {
   getApplicantsForEventByFk,
   getApplicantByName,
   applicantToContact,
+  getPostulationsByTalentId
 } = require("../../controllers/talents/postulationsController");
 
 // Función handler para obtener todas las postulaciones
@@ -114,6 +115,21 @@ const handlerToContact = async (req, res) => {
   }
 };
 
+const handlerGetTalentAplications = async (req, res) => {
+  const {id} = req.params;
+
+  console.log(req.params);
+
+  try {
+    const aplications = await getPostulationsByTalentId(id)
+
+    res.status(200).json(aplications)
+
+  } catch (error) {
+    res.status(400).send("No se encontraron postulaciones de este talento")
+  }
+}
+
 module.exports = {
   handlerGetAllApplied,
   handlerCreateApplied,
@@ -122,4 +138,5 @@ module.exports = {
   handlerGetApplicantsForEventByFk,
   handlerGetApplicantsByName,
   handlerToContact,
+  handlerGetTalentAplications
 };

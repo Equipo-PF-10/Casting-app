@@ -1,39 +1,39 @@
 
-/* .container{
-    margin: 0 auto; 
-    padding-top: 10rem;
-    padding-inline: 6rem;
+.card{
     display: flex;
     justify-content: center;
     align-items: center;
-} */
-
-.card{
-    margin-top: 100px;
-    margin-right: 20px;
-    border-radius: 30px;
-    background-color: #00C9A7;
-    width: 20rem;
-    height: 10rem; 
-    /* position: relative; */
-    
-    /* gap: 1rem;
-    padding-top: 2.5rem;
-    padding-left: 4.5rem; */
+    height: 250px;
+    color: whitesmoke;
 }
 
 .image{
-    position: absolute; 
-    
-    top: 0.1;
-    bottom: 10;
-    right: 0.5;
-    left: 0;
+    position: absolute;
+    top: -80;
 }
 
 .image img{
     border-radius: 50%;
-    height: 250px;
-    width: 250px;
+    height: 220;
+    width: 220;
 }
  
+.info{
+    margin-top: 12rem;
+    border-radius: 30px;
+    background-color: #00C9A7;
+    padding-top: 6.2rem;
+    width: 22rem;
+    text-align: center;
+}
+
+.info h2{
+    font-size: 1.8rem;
+}
+
+.plan{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    font-stretch: 1.5rem;
+}
