@@ -8,39 +8,36 @@ const {
 // Empresa agrega a un talento como favorito.
 const createFavoriteTalent = async (TalentId, CompanyId) => {
   try {
+    // encuentra la compañia que quiere publicar un favorito
     const company = await Company.findByPk(CompanyId);
-    if (!company) {
-      throw new Error(error.message);
+    // encuentra todos los talentos favoritos de esa compañia 
+    const favorites = await company.getTalentSelectedAsFavs();
+    // extraigo los ids de los talentos ya marcados como favoritos
+    const intermedia = favorites.map(ele => ele.CompanySelectTalentAsFav)
+    const favoritosIds = intermedia.map(ele => ele.TalentSelectedAsFavId)
+    console.log(favoritosIds)
+    // Busca coincidencia entre el talento que se quiere agregar a favorito y los que yaestan guardados como fav
+    const validation = favoritosIds.filter(ele => ele === TalentId)
+    // Si no consiguio coincidencia, Agrego el talento como favorito
+    if (validation.length === 0) {
+      // consigo el perfil completo del talento que se va a agregar a favoritos
+      const talent = await Talent.findByPk(TalentId)
+      // Crea un nuevo registro en la tabla de favoritos
+      const posteo = await TalentSelectedAsFav.create(talent.dataValues);
+      // asigna la posteo y el talento a la tabla intermedia
+      await company.addTalentSelectedAsFav(posteo);
+      //retorno el perfil agregadoa favoritos     
+      return posteo;
+      // como el talento ya estaba seleccionado como favorito procedo a sacarlo de ese grupo
+    } else {
+      // selecciono el talento que va a dejar de formar parte de los favoritos
+      const desposteo = await TalentSelectedAsFav.findByPk(TalentId)
+      // elimino el talento de los favoritos
+      await desposteo.destroy();
+      // retorno un mensaje de exito
+      return({Mensaje:"El talento ha dejado de ser favorito"})
     }
-    const talentoEncontrado = await Talent.findByPk(TalentId);
-    if (!talentoEncontrado) {
-      throw new Error("Empresa no encontrada.");
-    }
-    const talentoFavCreado = await TalentSelectedAsFav.create(
-      talentoEncontrado.dataValues
-    );
-
-    const interCompanyTale = await CompanySelectTalentAsFav.create({
-      TalentSelectedAsFavId: talentoFavCreado.dataValues.id,
-      CompanyId: CompanyId,
-    });
-    return talentoFavCreado;
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
-
-// Función controller para borrar talento favorito.
-const deleteFavoriteTalent = async (TalentId, CompanyId) => {
-  try {
-    const deletedTalent = await CompanySelectTalentAsFav.destroy({
-      where: {
-        TalentSelectedAsFavId: TalentId,
-        CompanyId: CompanyId,
-      },
-    });
-
-    return deletedTalent;
+ 
   } catch (error) {
     throw new Error(error.message);
   }
@@ -49,24 +46,18 @@ const deleteFavoriteTalent = async (TalentId, CompanyId) => {
 // Función controller que devuelve todos los talentos favoritos de una empresa.
 const getFavoritesTalentsById = async (id) => {
   try {
-    const company = await Company.findByPk(id);
+
+        // encuentra la compañia que quiere publicar un favorito
+        const company = await Company.findByPk(id);
+        // encuentra todos los talentos favoritos de esa compañia 
+        const favorites = await company.getTalentSelectedAsFavs();
+        // extraigo los ids de los talentos ya marcados como favoritos
 
     if (!company) {
       throw new Error("Empresa no encontrada.");
     }
 
-    const favTalents = await CompanySelectTalentAsFav.findAll({
-      where: { CompanyId: id },
-    });
-
-    const talentIds = favTalents.map(
-      (favTalent) => favTalent.TalentSelectedAsFavId
-    );
-    const talents = await Promise.all(
-      talentIds.map((talentId) => Talent.findByPk(talentId))
-    );
-
-    return talents;
+    return favorites;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -92,5 +83,4 @@ module.exports = {
   createFavoriteTalent,
   getFavoritesTalentsById,
   getByName,
-  deleteFavoriteTalent,
 };

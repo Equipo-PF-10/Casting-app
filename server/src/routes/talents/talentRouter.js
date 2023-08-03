@@ -28,4 +28,6 @@ talentRouter.delete("/:id", deleteTalentHandler);
 //? Esta ruta busca todos los talentos.
 talentRouter.get("/", getTalentsHandler);
 
+
+
 module.exports = talentRouter;

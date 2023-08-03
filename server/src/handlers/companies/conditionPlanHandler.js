@@ -8,17 +8,18 @@ const updateCompanyConditionPlan = async (req, res) => {
 
   try {
     if (
-      newConditionPlan !== "FREE" &&
+      newConditionPlan !== "PRUEBA GRATIS" &&
       newConditionPlan !== "BASICO" &&
       newConditionPlan !== "PREMIUM"
     ) {
       return res
         .status(400)
         .send(
-          "¡Error! Debes proporcionar un modelo de plan válido: FREE | BASICO | PREMIUM"
+          "¡Error! Debes proporcionar un modelo de plan válido: PRUEBA GRATIS | BASICO | PREMIUM"
         );
     }
 
+    // Utiliza el controlador para actualizar el plan de la empresa, incluida la verificación de "PRUEBA GRATIS"
     const updatedCompany = await updateConditionPlan(
       companyId,
       newConditionPlan
