@@ -7,6 +7,7 @@ const {
   handlerGetApplicantsForEventByFk,
   handlerGetApplicantsByName,
   handlerToContact,
+  handlerGetTalentAplications
 } = require("../../handlers/talents/postulationsHandler");
 
 const postulationRouter = Router();
@@ -16,6 +17,9 @@ postulationRouter.get("/:id", handlerGetApplicantById);
 
 //? Esta ruta busca todos los aplicantes a un anuncio.
 postulationRouter.get("/event/:fk", handlerGetApplicantsForEventByFk);
+
+//? Esta ruta busca las aplicaciones de un talento.
+postulationRouter.get("/talent/:id", handlerGetTalentAplications)
 
 //? Esta ruta acepta una postulacion por el id de la postulación.
 postulationRouter.post("/contact", handlerToContact);
