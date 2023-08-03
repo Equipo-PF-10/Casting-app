@@ -2,13 +2,14 @@
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  width: 18vw;
+  width: 240px;
   border-radius: 30px;
   height: auto;
   /*margin-top: 2.3vh;*/
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
   margin-top: 30px;
   margin-bottom: 30px;
   /*padding: 0.8em;*/
