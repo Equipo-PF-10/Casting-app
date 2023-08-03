@@ -1,15 +1,15 @@
 .container {
   margin-top: 6rem;
-  height: 20rem;
+  height: 32rem;
   width: 30rem;
   /* overflow: scroll; */
   box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
   border-radius: 1rem;
   /* margin-top: 1rem;
     margin-bottom: 1rem;
-    margin-left: 1rem; */
+ */
   padding: 15px;
-
+  margin-left: 2rem;
   background-color: #7e7193;
   overflow: scroll;
   overflow-x: hidden;
