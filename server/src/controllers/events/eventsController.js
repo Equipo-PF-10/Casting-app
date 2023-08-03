@@ -41,7 +41,7 @@ const createEvent = async (data) => {
       throw new Error("La compañía asociada al evento no existe.");
     }
 
-    if (company.plan === "FREE") {
+    if (company.plan === "PRUEBA GRATIS") {
       allowedPosts = 2;
     } else if (company.plan === "BASICO") {
       allowedPosts = 20;
