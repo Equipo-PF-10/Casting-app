@@ -1,4 +1,10 @@
-const { Applied, TalentApplied, Talent } = require("../../db");
+const {
+  Talent,
+  Applied,
+  Event,
+  TalentApplied,
+  ToContact,
+} = require("../../db");
 
 // Función controller para obtener todas las postulaciones
 const getAllApplied = async () => {
@@ -71,6 +77,13 @@ const deleteApplicantById = async (TalentId, EventId) => {
               },
             }
           );
+
+          // Actualizar también el estado en la tabla ToContact
+          await ToContact.update(
+            { status: "Rechazado" },
+            { where: { talentId: TalentId, EventId } }
+          );
+
           return postulationDeleted;
         }
       }
@@ -154,6 +167,21 @@ const applicantToContact = async (TalentId, EventId) => {
               },
             }
           );
+
+          const updatedPostulation = await Applied.findByPk(idPostulationInter);
+
+          const event = await Event.findByPk(EventId);
+
+          const CompanyId = event.CompanyId;
+
+          await ToContact.create({
+            date: updatedPostulation.date,
+            changeDate: new Date(),
+            talentId: TalentId,
+            companyId: CompanyId,
+            EventId: updatedPostulation.EventId,
+          });
+
           return postulationToContact;
         }
       }
@@ -191,6 +219,13 @@ const hireApplicant = async (TalentId, EventId) => {
             { status: "Contratado" },
             { where: { id: idPostulationInter } }
           );
+
+          // Actualizar también el estado en la tabla ToContact
+          await ToContact.update(
+            { status: "Contratado" },
+            { where: { talentId: TalentId, EventId } }
+          );
+
           return postulationHired;
         }
       }
