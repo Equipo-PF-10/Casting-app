@@ -116,7 +116,7 @@ const FormEmpresa = () => {
                 <form action="" className={Styles.form} method="POST" onSubmit={hanldeSubmit} >
                     <div className={Styles.div}>
                         <article className={Styles.coolinput}>
-                            <label htmlFor="name" className={Styles.text}>Nombre Completo</label>
+                            <label htmlFor="name" className={Styles.text}>Nombre de la Empresa</label>
                             <input type="text" name="name" id="name" value={input.name} onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
@@ -180,7 +180,7 @@ const FormEmpresa = () => {
 
                             <article className={Styles.coolinput}>
                                 <label htmlFor="descriptionShort" className={Styles.text}>Descripción Corta</label>
-                                <textarea name="descriptionShort" id="descriptionShort" value={input.descriptionShort} onChange={handleChange} placeholder="Descripción de tu evento..."></textarea>
+                                <textarea name="descriptionShort" id="descriptionShort" value={input.descriptionShort} onChange={handleChange} placeholder="Descripción breve de tu empresa..."></textarea>
                         </article>
                         <button type="submit" className={Styles.btn}>Enviar Datos</button>
                         </section>

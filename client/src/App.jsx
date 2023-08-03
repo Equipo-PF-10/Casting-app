@@ -56,7 +56,7 @@ function App() {
         <Route path="/contact" element={<SendPersonalized/>} />
         <Route path="/review" element={<Review/>}/>
         <Route path="/admin" element={<Admin/>}/>
-        <Route path="/home/talento" element={<HomeTalento/>}/>
+        <Route path="/home/talent" element={<HomeTalento/>}/>
         <Route path="/report" element={<Report/>}/>
         <Route path="/company/updateEvent" element={<EventUpdate/>} />
       </Routes>
