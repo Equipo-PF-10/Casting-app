@@ -91,20 +91,20 @@ const getApplicantsForEventByFk = async (fk) => {
         status: "Pendiente",
       },
     });
-       let talents = [];
+    let talents = [];
     if (!postulacion) {
       throw new Error(
         `La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`
-        );
-      };
-      
-      for (let i = 0; i < postulacion.length; i++) {
-        let postu = postulacion[i];
-        let postulante = await postu.getTalents();
+      );
+    }
 
-        talents.push(postulante[0]);
-      }
-  
+    for (let i = 0; i < postulacion.length; i++) {
+      let postu = postulacion[i];
+      let postulante = await postu.getTalents();
+
+      talents.push(postulante[0]);
+    }
+
     return talents;
   } catch (error) {
     throw new Error(error.message);
@@ -115,7 +115,7 @@ const getApplicantsForEventByFk = async (fk) => {
 const getApplicantByName = async (EventId, name) => {
   try {
     const nameToLower = name.toLowerCase();
-//console.log(EventId);
+    //console.log(EventId);
     const applicants = await getApplicantsForEventByFk(EventId);
 
     const applicantsByName = applicants.filter((applicant) =>
@@ -130,9 +130,6 @@ const getApplicantByName = async (EventId, name) => {
     throw new Error(error.message);
   }
 };
-
-
-
 
 // Función controller para cambiar el status a Contactado.
 const applicantToContact = async (TalentId, EventId) => {
@@ -221,6 +218,22 @@ const getAllHiredTalents = async () => {
   }
 };
 
+// Función controller para obtener a todos los talentos contactados.
+const getAllContactedTalents = async () => {
+  try {
+    const contactedTalents = await Talent.findAll({
+      include: {
+        model: Applied,
+        where: { status: "Contactado" },
+      },
+    });
+
+    return contactedTalents;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getAllApplied,
   createApplied,
@@ -232,4 +245,5 @@ module.exports = {
   getPostulationsByTalentId,
   hireApplicant,
   getAllHiredTalents,
+  getAllContactedTalents,
 };
