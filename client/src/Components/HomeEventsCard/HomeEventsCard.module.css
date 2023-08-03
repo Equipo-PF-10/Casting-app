@@ -1,16 +1,9 @@
 .container {
-    width: 80%;
-    min-width: 350px;
-    min-height: 300px;
-    /* width: 665px; */
-    height: 45vh;
+    height: 38vh;
     background: #f5f5f5;
     overflow: hidden;
     box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
     border-radius: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-left: 3rem;
     /* position: relative; */
     padding: 10px;
     overflow: scroll;
