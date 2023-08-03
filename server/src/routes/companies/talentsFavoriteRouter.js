@@ -2,7 +2,6 @@ const { Router } = require("express");
 const {
   handleCreateFavoriteTalent,
   handleGetFavoritesTalentsById,
-  handleDeleteFavoriteTalent,
 } = require("../../handlers/companies/talentFavoriteHandler");
 
 const companyRouter = Router();
@@ -13,7 +12,5 @@ companyRouter.get("/:id", handleGetFavoritesTalentsById);
 //? Esta ruta es para que una empresa pueda agregar talentos favoritos.
 companyRouter.post("/", handleCreateFavoriteTalent);
 
-//? Esta ruta es para que una empresa pueda borrar talentos favoritos.
-companyRouter.delete("/", handleDeleteFavoriteTalent);
 
 module.exports = companyRouter;
