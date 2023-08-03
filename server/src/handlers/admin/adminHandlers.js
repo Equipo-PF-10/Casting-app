@@ -5,6 +5,7 @@ const {
   getTopUsers,
   getTopPost,
   getByCountry,
+  getIncomes,
 } = require("../../controllers/admin/adminControllers");
 
 // Función que trae todas las empresas premium creadas a partir del mes initialMonth.
@@ -68,6 +69,7 @@ const handlerTopPosts = async (req, res) => {
   }
 };
 
+// Función para obtener los usuarios según su nacionalidad.
 const handlerGetByNationality = async (req, res) => {
   try {
     const { userType, country } = req.params;
@@ -80,6 +82,20 @@ const handlerGetByNationality = async (req, res) => {
   }
 };
 
+// Función para obtener los ingresos totales según tecnología (PayPal o MercadoPago).
+//! DUDA: ¿El modelo SubscriptionPayment es de PayPal y el de Payment es de MP?
+const handlerGetIncomes = async (req, res) => {
+  try {
+    const { platform } = req.params;
+
+    const incomes = await getIncomes(platform);
+
+    res.status(200).json(incomes);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   handlerGetPremiumCompanies,
   handlerGetUserByMonth,
@@ -87,4 +103,5 @@ module.exports = {
   handlerGetTopUsers,
   handlerTopPosts,
   handlerGetByNationality,
+  handlerGetIncomes,
 };

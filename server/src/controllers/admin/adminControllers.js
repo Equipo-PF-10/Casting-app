@@ -1,4 +1,4 @@
-const { Company, Talent } = require("../../db");
+const { Company, Talent, SubscriptionPayment, Payment } = require("../../db");
 const { Op } = require("sequelize");
 
 // Función controller que trae todas las empresas PREMIUM creadas a partir del mes initialMonth.
@@ -190,6 +190,32 @@ const getByCountry = async (userType, country) => {
   }
 };
 
+// Función controller para obtener los ingresos totales según la plataforma de pago.
+//! DUDA: ¿El modelo SubscriptionPayment es de PayPal y el de Payment es de MP?
+const getIncomes = async (platform) => {
+  try {
+    let incomes;
+
+    if (platform === "paypal") {
+      incomes = await SubscriptionPayment.sum("price", {
+        where: {}, //! Condiciono el ingreso también según los impuestos?
+      });
+    } else if (platform === "mercadopago") {
+      incomes = await Payment.sum("amount", {
+        where: {}, //! En este caso, no existe propiedad en el modelo con los impuestos.
+      });
+    } else {
+      throw new Error(
+        "Plataforma de pago no reconocida. Utilice 'PayPal' o 'Mercado Pago'."
+      );
+    }
+
+    return incomes;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getCompaniesByMonth,
   getUsersByMonth,
@@ -197,4 +223,5 @@ module.exports = {
   getTopUsers,
   getTopPost,
   getByCountry,
+  getIncomes,
 };

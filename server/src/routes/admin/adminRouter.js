@@ -5,6 +5,7 @@ const {
   handlerGetTopUsers,
   handlerTopPosts,
   handlerGetByNationality,
+  handlerGetIncomes,
 } = require("../../handlers/admin/adminHandlers");
 
 const { Router } = require("express");
@@ -37,5 +38,10 @@ adminRouter.get(
 //? Esta ruta es para buscar cuantos usuarios (talentos o companies) se registraron por mes.
 //| /admin/users/talents/5  --> devuelve los usuarios de tipo talents que se registraron en mayo.
 adminRouter.get("/users/:userType/:month", handlerGetUserByMonth);
+
+//? Esta ruta es para obtener los ingresos totales de la app. según qué plataforma se pasa por params.
+//! DUDA: ¿El modelo SubscriptionPayment es de PayPal y el de Payment es de MP?
+//| /admin/income/paypal
+adminRouter.get("/income/:platform", handlerGetIncomes);
 
 module.exports = adminRouter;
