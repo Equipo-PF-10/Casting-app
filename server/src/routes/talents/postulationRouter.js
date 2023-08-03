@@ -12,8 +12,7 @@ const {
 
 const postulationRouter = Router();
 
-//? Esta ruta busca una postulacion por su id.
-postulationRouter.get("/:id", handlerGetApplicantById);
+
 
 //? Esta ruta busca todos los aplicantes a un anuncio.
 postulationRouter.get("/event/:fk", handlerGetApplicantsForEventByFk);
@@ -23,6 +22,12 @@ postulationRouter.get("/talent/:id", handlerGetTalentAplications)
 
 //? Esta ruta acepta una postulacion por el id de la postulación.
 postulationRouter.post("/contact", handlerToContact);
+
+//? Esta ruta busca todos los postulantes de un evento por su nombre y id del evento.
+postulationRouter.get("/name/:EventId", handlerGetApplicantsByName);
+
+//? Esta ruta busca una postulacion por su id.
+postulationRouter.get("/:id", handlerGetApplicantById);
 
 //? Esta ruta rechaza una postulacion por el id de la postulación.
 postulationRouter.delete("/", handlerDeleteApplicantById);

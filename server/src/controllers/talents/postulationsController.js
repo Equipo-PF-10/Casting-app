@@ -88,43 +88,32 @@ const getApplicantsForEventByFk = async (fk) => {
         status: "Pendiente",
       },
     });
-    let postulacionesIds = [];
-    let talentsIds = [];
-    let talents = [];
+       let talents = [];
     if (!postulacion) {
       throw new Error(
         `La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`
-      );
-    }
+        );
+      };
+      
+      for (let i = 0; i < postulacion.length; i++) {
+        let postu = postulacion[i];
+        let postulante = await postu.getTalents();
 
-    for (let i = 0; i < postulacion.length; i++) {
-      postulacionesIds.push(postulacion[i].dataValues.id);
-    }
-
-    for (let i = 0; i < postulacionesIds.length; i++) {
-      let postulante = await TalentApplied.findAll({
-        where: { AppliedId: `${postulacionesIds[i]}` },
-      });
-      talentsIds.push(postulante[0].dataValues.TalentId);
-      console.log(talentsIds); // tengo el id de los talentos
-    }
-    for (let i = 0; i < talentsIds.length; i++) {
-      let postulante = await Talent.findByPk(`${talentsIds[i]}`);
-      console.log(postulante);
-      talents.push(postulante.dataValues);
-    }
+        talents.push(postulante[0]);
+      }
+  
     return talents;
   } catch (error) {
     throw new Error(error.message);
   }
 };
 
-// Obtener aplicantes por name.
-const getApplicantByName = async (fk, name) => {
+//Obtener aplicantes por name.
+const getApplicantByName = async (EventId, name) => {
   try {
     const nameToLower = name.toLowerCase();
-
-    const applicants = await getApplicantsForEventByFk(fk);
+//console.log(EventId);
+    const applicants = await getApplicantsForEventByFk(EventId);
 
     const applicantsByName = applicants.filter((applicant) =>
       applicant.name.toLowerCase().includes(nameToLower)
@@ -138,6 +127,9 @@ const getApplicantByName = async (fk, name) => {
     throw new Error(error.message);
   }
 };
+
+
+
 
 // Función controller para cambiar el status a Contactado.
 const applicantToContact = async (TalentId, EventId) => {
@@ -191,5 +183,5 @@ module.exports = {
   getApplicantsForEventByFk,
   getApplicantByName,
   applicantToContact,
-  getPostulationsByTalentId
+  getPostulationsByTalentId,
 };

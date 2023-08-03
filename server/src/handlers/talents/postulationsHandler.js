@@ -22,6 +22,7 @@ const handlerCreateApplied = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
+
 const handlerGetAllApplied = async (req, res) => {
   try {
     const allApplied = await getAllApplied();
@@ -32,17 +33,40 @@ const handlerGetAllApplied = async (req, res) => {
   }
 };
 
+
+
+// const handlerGetApplicantsByName = async (req, res) => {
+//   try {
+//     const { name } = req.body;
+
+//     if (!name) {
+//       return res.status(400).json("Debes ingresar un nombre para aplicar la búsqueda.");
+//     }
+
+//     const appliedByName = await getApplicantByName(name);
+
+//     if (appliedByName.length === 0) {
+//       return res.status(404).json({ error: "No se encontraron postulaciones con el nombre ingresado." });
+//     }
+
+//     res.status(200).json(appliedByName);
+//   } catch (error) {
+//     return res.status(404).json({ error: error.message });
+//   }
+// };
+
+
+
 const handlerGetApplicantsByName = async (req, res) => {
   try {
-    const { EventId, name } = req.body;
-
+    const { EventId } = req.params;
+    const { name } = req.query;
+//console.log(req.params);
     if (!name) {
-      return res
-        .status(400)
-        .send("Debes ingresar un nombre para aplicar la búsqueda.");
+      return res.status(400).json("Debes ingresar un nombre para aplicar la búsqueda.");
     }
 
-    const applicantsByName = await getApplicantByName(fk, name);
+    const applicantsByName = await getApplicantByName( EventId, name);
 
     if (typeof applicantsByName === "string") {
       return res.status(404).json({ error: applicantsByName });
