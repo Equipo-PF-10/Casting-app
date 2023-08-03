@@ -45,7 +45,7 @@ const getCompaniesByMonth = async (plan, initialMonth) => {
   }
 };
 
-// Función controller para obtener talentos por mes.
+// Función controller para obtener usuarios por mes.
 const getUsersByMonth = async (userType, month) => {
   try {
     const startDate = new Date();
@@ -86,4 +86,67 @@ const getUsersByMonth = async (userType, month) => {
   }
 };
 
-module.exports = { getCompaniesByMonth, getUsersByMonth };
+// Función controller para obtener usuarios según su disponibilidad.
+const getAvailableUsers = async (userType) => {
+  try {
+    if (userType === "talents") {
+      const availableTalents = Talent.findAll({
+        where: {
+          available: true,
+        },
+      });
+      return availableTalents;
+    } else if (userType === "companies") {
+      const availableCompanies = Company.findAll({
+        where: {
+          available: true,
+        },
+      });
+      return availableCompanies;
+    }
+
+    throw new Error(
+      "No se ha encontrado usuarios disponibles. Vuelve a intentarlo."
+    );
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller para obtener un top de usuarios según sus calificaciones y reviews.
+const getTopUsers = async (userType) => {
+  try {
+    let topUsers;
+
+    if (userType === "talents") {
+      topUsers = await Talent.findAll({
+        where: {
+          reviews: { [Op.ne]: null },
+        },
+        order: [["reviews", "DESC"]],
+        limit: 10,
+      });
+    } else if (userType === "companies") {
+      topUsers = await Company.findAll({
+        where: {
+          reviews: { [Op.ne]: null },
+        },
+        order: [["reviews", "DESC"]],
+        limit: 10,
+      });
+    } else {
+      throw new Error("Tipo de usuario inválido. Usa 'talents' o 'companies'.");
+    }
+
+    return topUsers;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+module.exports = {
+  getCompaniesByMonth,
+  getUsersByMonth,
+  getAvailableUsers,
+  getTopUsers,
+};

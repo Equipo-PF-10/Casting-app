@@ -104,7 +104,7 @@ module.exports = (sequelize) => {
       },
 
       reviews: {
-        type: DataTypes.STRING,
+        type: DataTypes.FLOAT,
       },
 
       reviewsCount: {
