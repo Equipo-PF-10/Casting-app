@@ -13,6 +13,7 @@ export const GET_COMPANY_BY_ID="GET_COMPANY_BY_ID";
 export const GET_COMPANY_ID="GET_COMPANY_ID";
 export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
+export const GET_ALL_POSTULANT_FAV = "GET_ALL_POSTULANT_FAV";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
 export const DELETE_POSTULANT_BY_ID = "DELETE_POSTULANT_BY_ID";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
@@ -559,16 +560,13 @@ export const get_favorite_postulant_by_name = (id, name) => {
   };
 };
 
-/* PROBAR RUTA EN EL BACK
-export const delete_favorite_postulant = () => {
+
+export const add_and_delete_favorite_postulant = (id_talent, id_company) => {
   let endpoint = "http://localhost:3001/companies/favorites";
   return async (dispatch) => {
     try {
-      const { data } = await axios.delete(endpoint, {
-        data: { TalentId:id_evento, CompanyId:id_talent }, 
-        headers: {
-          "Content-Type": "application/json", 
-        },
+      const { data } =  await axios.post(endpoint, {
+        TalentId: id_talent, CompanyId: id_company  
       });
       return dispatch({
         type: DELETE_POSTULANT_FAV,
@@ -583,7 +581,6 @@ export const delete_favorite_postulant = () => {
   };
 };
 
-*/
 
 export const send_email_message = (payload) => {
   return (dispatch) => {

@@ -14,6 +14,7 @@ const dispatch = useDispatch();
 const id_company = localStorage.getItem("user_id");
 const allEvents = useSelector((state) => state.allEvents);
 const allFavoritePostulants = useSelector((state) => state.allFavoritePostulants);
+console.log(allFavoritePostulants);
 const allFavoritePostulantsFiltered = useSelector((state) => state.allFavoritePostulantsFiltered);
 
 //Trae todos los eventos creados
