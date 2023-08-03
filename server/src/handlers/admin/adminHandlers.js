@@ -3,6 +3,8 @@ const {
   getUsersByMonth,
   getAvailableUsers,
   getTopUsers,
+  getTopPost,
+  getByCountry,
 } = require("../../controllers/admin/adminControllers");
 
 // Función que trae todas las empresas premium creadas a partir del mes initialMonth.
@@ -55,9 +57,34 @@ const handlerGetTopUsers = async (req, res) => {
   }
 };
 
+// Función que trae el top de companies según la cantidad de posts que han realizado.
+const handlerTopPosts = async (req, res) => {
+  try {
+    const topPost = await getTopPost();
+
+    res.status(200).json(topPost);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+const handlerGetByNationality = async (req, res) => {
+  try {
+    const { userType, country } = req.params;
+
+    const users = await getByCountry(userType, country);
+
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   handlerGetPremiumCompanies,
   handlerGetUserByMonth,
   handlerGetAvailableUsers,
   handlerGetTopUsers,
+  handlerTopPosts,
+  handlerGetByNationality,
 };

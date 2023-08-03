@@ -144,9 +144,57 @@ const getTopUsers = async (userType) => {
   }
 };
 
+// Función controller para obtener el top de companies según su cantidad de posts.
+const getTopPost = async () => {
+  try {
+    const topCompanies = await Company.findAll({
+      where: {
+        numberPosts: { [Op.ne]: 0 },
+      },
+      order: [["numberPosts", "DESC"]],
+    });
+
+    return topCompanies;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller para obtener usuarios por nacionalidad.
+const getByCountry = async (userType, country) => {
+  let users;
+  try {
+    if (userType === "talents") {
+      users = Talent.findAll({
+        where: {
+          nationality: {
+            [Op.iLike]: country,
+          },
+        },
+      });
+    } else if (userType === "companies") {
+      users = await Company.findAll({
+        where: {
+          country: {
+            [Op.iLike]: country,
+          },
+        },
+      });
+    } else {
+      throw new Error("Tipo de usuario inválido. Usa 'talents' o 'companies'.");
+    }
+
+    return users;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getCompaniesByMonth,
   getUsersByMonth,
   getAvailableUsers,
   getTopUsers,
+  getTopPost,
+  getByCountry,
 };

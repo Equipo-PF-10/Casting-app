@@ -3,11 +3,17 @@ const {
   handlerGetUserByMonth,
   handlerGetAvailableUsers,
   handlerGetTopUsers,
+  handlerTopPosts,
+  handlerGetByNationality,
 } = require("../../handlers/admin/adminHandlers");
 
 const { Router } = require("express");
 
 const adminRouter = Router();
+
+//? Esta ruta es para obtener las companies según su número de posts (Eventos creados).
+//| /admin/companies/posts
+adminRouter.get("/companies/posts", handlerTopPosts);
 
 //? Esta ruta trae todas las empresas de un plan en particular que fueron registradas a partir del mes que se pasa por param.
 //| /admin/companies/premium/6  --> trae las empresas con plan premium que fueron creadas desde junio hasta la actualidad
@@ -19,7 +25,14 @@ adminRouter.get("/users/available/:userType", handlerGetAvailableUsers);
 
 //? Esta ruta trae el top de los usuarios por número de reseñas. De mayor a menor.
 //| /admin/users/top/talents
-adminRouter.use("/users/top/:userType", handlerGetTopUsers);
+adminRouter.get("/users/top/:userType", handlerGetTopUsers);
+
+//? Esta ruta trae usuarios según su nacionalidad.
+//| /admin/users/nationality/talents/brasil
+adminRouter.get(
+  "/users/nationality/:userType/:country",
+  handlerGetByNationality
+);
 
 //? Esta ruta es para buscar cuantos usuarios (talentos o companies) se registraron por mes.
 //| /admin/users/talents/5  --> devuelve los usuarios de tipo talents que se registraron en mayo.
