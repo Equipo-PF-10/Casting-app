@@ -14,6 +14,7 @@ const {
 
 const postulationRouter = Router();
 
+
 //? Esta ruta es para obtener todos los talentos contratados.
 postulationRouter.get("/hired", handlerGetAllHiredTalents);
 
@@ -28,6 +29,12 @@ postulationRouter.get("/:id", handlerGetApplicantById);
 
 //? Esta ruta acepta una postulacion por el id de la postulación.
 postulationRouter.post("/contact", handlerToContact);
+
+//? Esta ruta busca todos los postulantes de un evento por su nombre y id del evento.
+postulationRouter.get("/name/:EventId", handlerGetApplicantsByName);
+
+//? Esta ruta busca una postulacion por su id.
+postulationRouter.get("/:id", handlerGetApplicantById);
 
 //? Esta ruta es para contratar un postulante.
 postulationRouter.post("/hire", handlerHireTalent);
