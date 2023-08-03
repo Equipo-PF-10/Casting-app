@@ -176,8 +176,23 @@ const applicantToContact = async (TalentId, EventId) => {
 
 const getPostulationsByTalentId = async (TalentId) => {
   try {
-    const postulations = await Applied.findAll({ where: { TalentId } });
-    return postulations;
+    
+    const postulations = await Talent.findByPk(TalentId, {
+      include: [
+        {
+          model: Applied,
+          through: {
+            attributes: [],
+          },
+        },
+      ],
+    });
+
+    if(!postulations){
+      throw new Error("No se encontraron postulaciones de este talento")
+    }
+
+    return postulations.Applieds
   } catch (error) {
     throw new Error(error.message);
   }

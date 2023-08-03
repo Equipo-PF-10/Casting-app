@@ -58,7 +58,9 @@ const FormEmpresa = () => {
         }
         return acc;
       }, {});
+
     let messageUpdated = "Se ha actualizado el perfil correctamente.";  
+    
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {

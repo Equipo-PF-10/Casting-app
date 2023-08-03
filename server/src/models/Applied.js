@@ -29,15 +29,6 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("Contactado", "Rechazado", "Pendiente"),
         defaultValue: "Pendiente",
       },
-
-      TalentId: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-          model: "Talent",
-          key: "id",
-        },
-      },
     },
     { freezeTableName: true, timestamps: false }
   );

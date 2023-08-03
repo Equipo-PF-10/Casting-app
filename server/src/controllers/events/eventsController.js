@@ -144,11 +144,7 @@ const updateEventById = async (id, updatedData) => {
 // Función controller que devuelve un evento que coincida con el ID pasado por params.
 const getEventById = async (id) => {
   try {
-    const foundInDb = await Event.findAll({
-      where: {
-        CompanyId: id,
-      },
-    });
+    const foundInDb = await Event.findByPk(id)
 
     if (!foundInDb)
       throw new Error(

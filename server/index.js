@@ -20,7 +20,7 @@ const syncDB = async () => {
 
     // Finalmente, crear eventos
 
-    // await eventsMocks();
+    await eventsMocks();
 
 
     app.listen(process.env.PORT, () => {
