@@ -26,18 +26,23 @@ module.exports = (sequelize) => {
       },
 
       status: {
-        type: DataTypes.ENUM("Contactado", "Rechazado", "Pendiente"),
+        type: DataTypes.ENUM(
+          "Contactado",
+          "Contratado",
+          "Rechazado",
+          "Pendiente"
+        ),
         defaultValue: "Pendiente",
       },
 
-      TalentId: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-          model: "Talent",
-          key: "id",
-        },
-      },
+      // TalentId: {
+      //   type: DataTypes.UUID,
+      //   allowNull: true,
+      //   references: {
+      //     model: "Talent",
+      //     key: "id",
+      //   },
+      // },
     },
     { freezeTableName: true, timestamps: false }
   );

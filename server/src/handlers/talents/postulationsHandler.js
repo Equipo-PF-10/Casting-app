@@ -6,7 +6,9 @@ const {
   getApplicantsForEventByFk,
   getApplicantByName,
   applicantToContact,
-  getPostulationsByTalentId
+  getPostulationsByTalentId,
+  hireApplicant,
+  getAllHiredTalents,
 } = require("../../controllers/talents/postulationsController");
 
 // Función handler para obtener todas las postulaciones
@@ -72,7 +74,11 @@ const handlerDeleteApplicantById = async (req, res) => {
   const { TalentId, EventId } = req.body;
   try {
     const deletedPost = await deleteApplicantById(TalentId, EventId);
-    res.status(200).send("El postulante ha sido rechazado correctamente. Actualice la lista para ver los cambios.");
+    res
+      .status(200)
+      .send(
+        "El postulante ha sido rechazado correctamente. Actualice la lista para ver los cambios."
+      );
   } catch (error) {
     res
       .status(400)
@@ -116,19 +122,38 @@ const handlerToContact = async (req, res) => {
 };
 
 const handlerGetTalentAplications = async (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
 
   console.log(req.params);
 
   try {
-    const aplications = await getPostulationsByTalentId(id)
+    const aplications = await getPostulationsByTalentId(id);
 
-    res.status(200).json(aplications)
-
+    res.status(200).json(aplications);
   } catch (error) {
-    res.status(400).send("No se encontraron postulaciones de este talento")
+    res.status(400).send("No se encontraron postulaciones de este talento");
   }
-}
+};
+
+const handlerHireTalent = async (req, res) => {
+  const { TalentId, EventId } = req.body;
+  try {
+    const result = await hireApplicant(TalentId, EventId);
+
+    res.status(200).send("El aplicante ha sido contratado con éxito.");
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+const handlerGetAllHiredTalents = async (req, res) => {
+  try {
+    const hiredTalents = await getAllHiredTalents();
+    res.status(200).json(hiredTalents);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 module.exports = {
   handlerGetAllApplied,
@@ -138,5 +163,7 @@ module.exports = {
   handlerGetApplicantsForEventByFk,
   handlerGetApplicantsByName,
   handlerToContact,
-  handlerGetTalentAplications
+  handlerGetTalentAplications,
+  handlerHireTalent,
+  handlerGetAllHiredTalents,
 };
