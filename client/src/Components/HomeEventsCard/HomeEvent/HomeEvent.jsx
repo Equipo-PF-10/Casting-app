@@ -1,26 +1,45 @@
-import styles from './HomeEvent.module.css';
+import styles from "./HomeEvent.module.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { close_event_by_id, getAllEvents, get_event_by_id } from "../../../redux/actions";
+import { useEffect } from "react";
 
 const HomeEvent = (props) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate=useNavigate();
+  const events = useSelector((state) => state.allEvents)
+  //console.log(props);
+
+  const handleDelete=() => {
+    dispatch(close_event_by_id(props.id));
+    dispatch(getAllEvents)
+  };
+  
+  useEffect(() => {
+    dispatch(getAllEvents())
+  },[])
 
   const handleClickEditEvent = () => {
     //navigate(`/company/editEvent/${props.id}`)
-  }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.fonts}>
         <Link to={`/${props.url}/${props.id}`}>
           <h2 className={styles.text}>{props.title}</h2>
           <h5 className={styles.text}>{props.subTitle}</h5>
+          <h5 className={styles.text}>{props.active}</h5>
         </Link>
-      </div >
+      </div>
       <div className={styles.options}>
-        <button className={styles.buttonEdit} onClick={handleClickEditEvent}>Editar Evento</button>
-        <button className={styles.buttonClose}>Cerrar Evento</button>
+        <button className={styles.buttonEdit} onClick={handleClickEditEvent}>
+          Editar Evento
+        </button>
+        <button className={styles.buttonClose} onClick={() => handleDelete()}>
+          Finalizar Evento
+        </button>
       </div>
     </div>
   );
