@@ -18,6 +18,8 @@ const companyPaymentsRouter = require("./payments/companyPaymentsRouter");
 const companyTalentContact = require("./companies/companyTalentRouter");
 const adminRouter = require("./admin/adminRouter");
 
+const plansRouter = require("./plans/plansRouter");
+
 
 //const loginSignupRouter = require("./login-sigup/loginSignupRouter");
 //const accessApiRouter = require("./access/accessApiRouter");
@@ -61,5 +63,7 @@ mainRouter.use("/company/payments", companyPaymentsRouter);
 //* Rutas de Admin.
 mainRouter.use("/admin", adminRouter);
 
+// Rutas de Planes.
+mainRouter.use("/payment/plans", plansRouter);
 
 module.exports = mainRouter;

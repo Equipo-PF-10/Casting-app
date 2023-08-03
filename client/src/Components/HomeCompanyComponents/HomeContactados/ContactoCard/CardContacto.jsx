@@ -1,32 +1,31 @@
-import styles from './HomeEvent.module.css';
+import styles from './CardContacto.module.css';
 import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
-const HomeEvent = (props) => {
+const CardContacto = (props) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const handleClickEditEvent = () => {
-    //navigate(`/company/editEvent/${props.id}`)
+  const handleClickContratar = () => {
+    //eliminar de la lista de contactos y postear en la de contratados
   }
   return (
     <div className={styles.container}>
       <div className={styles.fonts}>
-        <Link to={`/${props.url}/${props.id}`}>
-          <h2 className={styles.text}>{props.title}</h2>
-          <h5 className={styles.text}>{props.subTitle}</h5>
+        <Link to={`${props.url}/${props.id}`}>
+          <h2 className={styles.text}>{props.name}</h2>
+          <h5 className={styles.text}>{props.habilities ? props.habilities.map((hability)=> `${hability} `) : null}</h5>
         </Link>
       </div >
       <div className={styles.options}>
-        <button className={styles.buttonEdit} onClick={handleClickEditEvent}>Editar Evento</button>
-        <button className={styles.buttonClose}>Cerrar Evento</button>
+        <button className={styles.buttonEdit} onClick={() => {handleClickContratar}}>Contratar</button>
+        {/* ¿Estas seguro/a de mover al postulante a la lista de Contratados? */}
+        <button className={styles.buttonClose}>Rechazar</button>
       </div>
     </div>
   );
 };
 
-export default HomeEvent;
+export default CardContacto;
 
 //todo: Rutas de Eventos
 //mainRouter.use("/events", eventRouter);

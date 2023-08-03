@@ -21,7 +21,7 @@ import PaypalPremiumPlan from "./Views/PaymentPlans/PaypalPremiumPlan";
 import PaypalBasicPlan from "./Views/PaymentPlans/PaypalBasicPlan";
 import SendPersonalized from "./Components/mail/sendContactTalent";
 import Report from "./Views/Report/Report";
-
+import HiredTalent from "./Views/HiredTalent/HiredTalent";
 import Admin from "./Views/Admin/Admin";
 import Review from "./Views/Review/Review"
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
@@ -58,7 +58,8 @@ function App() {
         <Route path="/admin" element={<Admin/>}/>
         <Route path="/home/talento" element={<HomeTalento/>}/>
         <Route path="/report" element={<Report/>}/>
-        <Route path="/company/updateEvent" element={<EventUpdate/>} />
+         <Route path="/hiredtalent" element={<HiredTalent/>}/>
+            <Route path="/company/updateEvent" element={<EventUpdate/>} />
       </Routes>
     </>
   );

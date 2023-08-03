@@ -134,10 +134,7 @@ const handlerUpdateEventById = async (req, res) => {
   } = req.body;
 
   try {
-    // Verificar primero si el usuario talento existe antes de intentar actualizarlo
-    const event = await getEventById(id);
 
-    // Si el usuario evento existe, procedemos a actualizarlo
     const updatedData = {
       name,
       image,

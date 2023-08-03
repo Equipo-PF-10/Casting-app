@@ -525,11 +525,12 @@ export const message_error_postulate  = (payload) => {
     });
   };
 };
-/*   FALTA LA RUTA
-export const get_all_favorite_postulant = () => {
+
+export const get_all_favorite_postulants = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/companies/favorites");
+      const response = await axios.get(`http://localhost:3001/companies/favorites/${id}`);
+      console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULANT_FAV, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -539,11 +540,11 @@ export const get_all_favorite_postulant = () => {
     }
   };
 };
-*/
-export const get_favorite_postulant_by_name = (name) => {
+
+export const get_favorite_postulant_by_name = (id, name) => {
   return async (dispatch) => {
     try {                    //PROBAR LA RUTA
-      let response = await axios.get("http://localhost:3001/companies/favorites/?name=" + name);
+      let response = await axios.get(`http://localhost:3001/companies/favorites/${id}/?name=${name}`);
       //console.log(response + 'estoy en action');
       return dispatch({
         type: GET_POSTULANT_FAV_BY_NAME,
