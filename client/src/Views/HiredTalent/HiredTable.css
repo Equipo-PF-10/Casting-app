@@ -1,0 +1,23 @@
+.containerGral{
+background-color: rgb(255, 255, 255);
+}
+
+.logoContainer{
+    margin: 50px 0 50px 0
+}
+
+.containerTable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.titulo{
+    color: #00a186;
+    margin-bottom: 30px;
+}
+
+
+
