@@ -26,8 +26,8 @@ const HomeItem = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.text}>
-        <h3 className={styles.text}>Nombre</h3>
-        <h3 className={styles.text}>Orientacion Artistica</h3>
+        <h3 className={styles.text}>{props.talent?.name}</h3>
+        <h3 className={styles.text}>{props.talent?.hability?.map((hability) => `${hability} `)}</h3>
         {/* {props.title} */}
       </div>
       <div className={styles.options}>
@@ -50,7 +50,7 @@ const HomeItem = (props) => {
         </div>
         <div className={styles.delete}>
           <button onClick={handleClickDelete}>
-            <h2>X</h2>
+            <h2>✰</h2>
           </button>
         </div>
       </div>

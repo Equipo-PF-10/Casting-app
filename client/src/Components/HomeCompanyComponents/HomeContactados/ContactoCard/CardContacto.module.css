@@ -3,8 +3,6 @@
     transition: 0.5s;
     padding: 10px;
     /* background-color: red; */
-    /* height: 40%; */
-    /* height:15vh; */
     display: grid;
     grid-template-columns: 80% 20%;
     border-radius: 10px;
@@ -35,7 +33,7 @@
 .buttonClose {
     background-color: var(--color-error);
     color: white;
-
+    
     &:hover {
         background-color: white ;
     color:var(--color-error);
@@ -44,7 +42,7 @@
 .buttonEdit {
     background-color: var(--color-success);
     color: white;
-
+    
     &:hover {
         background-color: white ;
     color:var(--color-success);
