@@ -1,7 +1,9 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  return sequelize.define("Talent",{
+  return sequelize.define(
+    "Talent",
+    {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -60,7 +62,6 @@ module.exports = (sequelize) => {
 
       ubication: {
         type: DataTypes.STRING,
-        
       },
 
       hability: {
@@ -108,6 +109,12 @@ module.exports = (sequelize) => {
 
       reviewsCount: {
         type: DataTypes.INTEGER,
+      },
+
+      creationDate: {
+        type: DataTypes.DATEONLY,
+        allowNull: true,
+        defaultValue: DataTypes.NOW,
       },
     },
     { freezeTableName: true, timestamps: false }
