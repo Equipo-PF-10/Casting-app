@@ -3,7 +3,12 @@ import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import { Link } from "react-router-dom";
 import "./HiredTable.css";
 
-const HiredTalent = () => {
+const HiredTalent=() => {
+  
+  const id=localStorage.getItem("user_id");
+  console.log(id);
+
+  
   return (
     <div className="containerGral">
       <div>
@@ -33,24 +38,6 @@ const HiredTalent = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Imagen</td>
-                    <td>Lionel Messi</td>
-                    <td>Argentino</td>
-                    <td>Futbolista</td>
-                  </tr>
-                  <tr>
-                    <td>Imagen</td>
-                    <td>Lionel Messi</td>
-                    <td>Argentino</td>
-                    <td>Futbolista</td>
-                  </tr>
-                  <tr>
-                    <td>Imagen</td>
-                    <td>Lionel Messi</td>
-                    <td>Argentino</td>
-                    <td>Futbolista</td>
-                  </tr>
                   <tr>
                     <td>Imagen</td>
                     <td>Lionel Messi</td>
