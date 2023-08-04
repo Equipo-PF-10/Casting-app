@@ -6,6 +6,7 @@ const {
   deleteEventById,
   updateEventById,
   getPremiumEvents,
+  getEventForHability
 } = require("../../controllers/events/eventsController");
 
 // Función handler para obtener los eventos.
@@ -166,6 +167,30 @@ const handlerGetPremiumEvents = async (req, res) => {
   }
 };
 
+
+//obtener los eventos según la habilidad requerida
+const handlerHabilityRequerid = async (req, res) => {
+  try {
+    const { hability } = req.query;
+
+    if (!hability) {
+      return res.status(400).json({ error: 'Debes proporcionar la habilidad requerida.' });
+    }
+
+    const events = await getEventForHability(hability);
+
+    if (events.length === 0) {
+      return res.status(404).json({ error: 'No se encontraron eventos para la habilidad requerida.' });
+    }
+
+    res.status(200).json(events);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+
+
 module.exports = {
   handlerGetAllEvents,
   handlerGetEventById,
@@ -173,4 +198,5 @@ module.exports = {
   handlerDeleteEventById,
   handlerUpdateEventById,
   handlerGetPremiumEvents,
+  handlerHabilityRequerid
 };
