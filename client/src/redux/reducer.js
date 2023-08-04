@@ -45,7 +45,7 @@ const initialState = {
   allEvents: [],
   eventsPremium: {},
   eventsFiltered: [],
-  eventDetail: {},
+  eventDetail: [],
   getAllCompanies: [],
   companiesFiltered: [],
   companyDetail: [],
@@ -188,7 +188,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case CLOSE_EVENT:
       return {
         ...state,
-        messageEventClosed: payload,
+        //messageEventClosed: payload,
+        eventDetail: payload,
       };
     case DELETE_POSTULANT_BY_ID:
       return {

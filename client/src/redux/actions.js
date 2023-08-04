@@ -221,7 +221,8 @@ export const getAllEvents = () => {
 export const getEventsPremium = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/events/premium");
+      const response=await axios.get("http://localhost:3001/events/premium");
+      console.log(response);
       return dispatch({ type: GET_EVENTS_PREMIUM, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -246,11 +247,12 @@ export const edit_event_by_id = (id) => {
   };
 };
 
-export const close_event_by_id = (id) => {
+export const close_event_by_id = (id, companyId) => {
   return async (dispatch) => {
     try {
-      const response = await axios.delete(`http://localhost:3001/events/${id}`);
-      return dispatch({ type: CLOSE_EVENT, payload: response.data });
+      const response=await axios.delete(`http://localhost:3001/events/${id}`);
+      const eventDetail = await axios.get(`http://localhost:3001/events/${companyId}`);
+      return dispatch({ type: CLOSE_EVENT, payload: eventDetail.data });
     } catch (error) {
       return dispatch({
         type: "ERROR",
