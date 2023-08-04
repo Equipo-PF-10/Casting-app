@@ -1,7 +1,5 @@
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import Styles from "./Talent.module.css";
-import {useDispatch, useSelector} from "react-redux"
-import { get_talent_by_id } from "../../redux/actions";
 import LogoutButton from "../../Components/LogoutButton/LogoutButton";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
@@ -9,19 +7,24 @@ import {useState, useEffect} from "react";
 
 const HomeTalento = () => {
 
-    const dispatch = useDispatch()
-
     // UserInfo
-
+    
     const userId = localStorage.getItem("user_id");
 
+    const [talent, setTalent] = useState({})
+
     useEffect(() => {
-        
-    dispatch(get_talent_by_id(userId));
-
-    },[dispatch, userId])
-
-    const talent = useSelector((state) => state. talentById);
+        const getTalent = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3001/talents/${userId}`)
+                const data = response.data;
+                setTalent(data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getTalent();
+    },[userId])
 
     // URLs
 
