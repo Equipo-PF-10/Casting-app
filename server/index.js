@@ -12,15 +12,22 @@ const syncDB = async () => {
     await conn.sync({ force: false });
     console.log("Database synchronized successfully.");
 
-    // Primero crear empresas
+
+    // // Primero crear empresas
     // await companiesFromApi();
+
+    // // Luego crear talentos
+
+    // Primero crear empresas
+     await companiesFromApi();
 
 
     // Luego crear talentos
-    // await talentsFromApi();
+
+    await talentsFromApi();
 
     // Finalmente, crear eventos
-    // await eventsMocks();
+   await eventsMocks();
 
     app.listen(process.env.PORT, () => {
       console.log("Listening at", PORT);
