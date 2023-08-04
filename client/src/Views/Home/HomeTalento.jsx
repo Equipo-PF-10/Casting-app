@@ -15,7 +15,11 @@ const HomeTalento = () => {
 
     const userId = localStorage.getItem("user_id");
 
+    useEffect(() => {
+        
     dispatch(get_talent_by_id(userId));
+
+    },[dispatch, userId])
 
     const talent = useSelector((state) => state. talentById);
 
