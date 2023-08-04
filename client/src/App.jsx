@@ -26,6 +26,7 @@ import Admin from "./Views/Admin/Admin";
 import Review from "./Views/Review/Review"
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
 import HomeTalento from "./Views/Home/HomeTalento";
+import EventUpdate from "./Components/EventForm/EventUpdate";
 
 
 function App() {
@@ -49,7 +50,6 @@ function App() {
         <Route path="/form/company" element={<FormEmpresa />} />
         <Route path="/form/talent" element={<FormTalento />} />
         <Route path="/NavBarLateral" element={<NavBarLateral />} />
-        <Route path="/home/talent" element={<Home type="talent"/>} />
         {/* <Route path="/home/company" element={<Home type="company"/>} /> */}
         <Route path="/home/company" element={<HomeCompany/>} />
         <Route path="/cloud" element={<Cloudinary/>}/>
@@ -58,9 +58,8 @@ function App() {
         <Route path="/admin" element={<Admin/>}/>
         <Route path="/home/talento" element={<HomeTalento/>}/>
         <Route path="/report" element={<Report/>}/>
-        <Route path="/hiredtalent" element={<HiredTalent/>}/>
-
-        
+         <Route path="/hiredtalent" element={<HiredTalent/>}/>
+            <Route path="/company/updateEvent" element={<EventUpdate/>} />
       </Routes>
     </>
   );
