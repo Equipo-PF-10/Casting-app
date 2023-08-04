@@ -8,7 +8,7 @@ export default function PaymentPlans() {
   const [selectedPlan, setSelectedPlan] = useState("");
   const [modalPlanFree, setModalPlanFree] = useState(false);
   const [modalConfirmation, setModalConfirmation] = useState(false);
-  
+  const [planFreeUtilizado, setPlanFreeUtilizado] = useState(false); // Nuevo estado para controlar si el Plan Free ha sido utilizado
   //Fucniones para controlar los Modales
   const onClickCloseModal = () => {
     setModalPlanFree(false);
@@ -23,14 +23,20 @@ export default function PaymentPlans() {
   // Función para manejar el click en una card
   const handleCardClick = (plan) => {
     setSelectedPlan(plan);
+    if (plan === "Free" && planFreeUtilizado) {
+      setModalPlanFree(false);
+    } else if (plan === "Free") {
+      setModalPlanFree(true);
+    }
   };
 
   const handleContinueClick = () => {
     // Redirigir a una URL específica para cada plan.
     switch (selectedPlan) {
       case 'Free':
-        // Lógica para el plan Free (Mostrar el modal donde se pueda adquirir el plan)
-        setModalPlanFree(true);
+        if (!planFreeUtilizado) {
+          setModalPlanFree(true);
+        }
         break;
       case 'Básico':
         // Lógica para el plan Básico
@@ -44,10 +50,15 @@ export default function PaymentPlans() {
         break;
     }
   };
-
+  const handleConfirmPlanFree = () => {
+    setModalConfirmation(false);
+    setPlanFreeUtilizado(true);
+    setModalPlanFree(false);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.topSection}>
+        
         <div className={styles.logo}>
             <svg
               width="200"
@@ -91,11 +102,13 @@ export default function PaymentPlans() {
       </div>
       {/* IMPLEMENTACION DE MODAL PARA PLAN FREE */}
       {
-        modalPlanFree ?
+        modalPlanFree && !planFreeUtilizado ? (
         <div className= {styles.containerModalOpened}>
             <div className={styles.modalOpened}>
               <div className={styles.cerrar}>
-              <button onClick={onClickCloseModal} className={styles.delete}><span>X</span></button>
+              <button onClick={onClickCloseModal} className={styles.delete}>
+              <span>X</span>
+              </button>
               </div>
               <div className={styles.head2}>
                 <h2>Plan Seleccionado: <span>Plan Básico</span></h2>
@@ -119,22 +132,22 @@ export default function PaymentPlans() {
                 <button onClick={onClickOpenConfirmation}>Adquirir Plan</button>
               </div>
           </div>
-        </div>
-        :
-        <div className= {styles.containerModalClosed}>
-            <div className={styles.modalClosed}>
-              <button  className={styles.delete} >X</button>
-              <div>
-                <h1>ERROR!</h1>
-                <hr />
-                <h2>Error</h2>
-              </div>
-          </div>
-        </div>
-      }
+      </div>
+          ) : null }
+        // <div className= {styles.containerModalClosed}>
+        //     <div className={styles.modalClosed}>
+        //       <button  className={styles.delete} >X</button>
+        //       <div>
+        //         <h1>ERROR!</h1>
+        //         <hr />
+        //         <h2>Error</h2>
+        //       </div>
+        //   </div>
+        // </div>
+      
       {/* IMPLEMENTACION DE MODAL PARA MOSTRAR MENSAJE DE CONFIRMACIÓN */}
       {
-        modalConfirmation ?
+        modalConfirmation ? (
         <div className= {styles.containerModalOpened}>
             <div className={styles.modalConfirmationOpened}>
               <div className={styles.head3}>
@@ -144,13 +157,13 @@ export default function PaymentPlans() {
               
               <div className={styles.bottom3}>
                 {/* APLICAR LOGICA (en el handleClick ---- Muestro mensaje*/}
-                <button className={styles.buttonConfirmar}>Confirmar</button>
+                <button className={styles.buttonConfirmar} onClick={handleConfirmPlanFree}>Confirmar</button>
                 <button className={styles.buttonRegresar} onClick={onClickCloseModalConfirmation}>Regresar</button>
               </div>
           </div>
         </div>
-        :
-        <div className= {styles.containerModalClosed}>
+  ) : null }
+         <div className= {styles.containerModalClosed}>
             <div className={styles.modalClosed}>
               <button className={styles.delete} >X</button>
               <div>

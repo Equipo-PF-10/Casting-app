@@ -195,6 +195,14 @@
       background-color: white;
   }
 }
+.card.disabled {
+  opacity: 0.5; /* Reduce la opacidad para mostrar la tarjeta deshabilitada */
+  pointer-events: none; /* Evita que la tarjeta sea interactiva */
+}
+
+.disabledText {
+  color: red; /* Agrega estilos para mostrar un texto en rojo si la tarjeta está deshabilitada */
+}
 
 
 /* MODAL */
