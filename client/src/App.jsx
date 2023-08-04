@@ -26,6 +26,7 @@ import Admin from "./Views/Admin/Admin";
 import Review from "./Views/Review/Review"
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
 import HomeTalento from "./Views/Home/HomeTalento";
+import FinishedEvents from "./Views/FinishedEvents/FinishedEvents";
 
 
 function App() {
@@ -58,7 +59,8 @@ function App() {
         <Route path="/admin" element={<Admin/>}/>
         <Route path="/home/talento" element={<HomeTalento/>}/>
         <Route path="/report" element={<Report/>}/>
-        <Route path="/hiredtalent" element={<HiredTalent/>}/>
+        <Route path="/company/hiredtalent" element={<HiredTalent/>}/>
+        <Route path="/company/finishedEvents" element={<FinishedEvents/>}/>
 
         
       </Routes>
