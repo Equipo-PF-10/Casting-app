@@ -1,5 +1,5 @@
 const {
-    //addReportCompany,
+    addReportCompany,
     //addReportCompany,
     getCompanyReports,
     getTalentReports,

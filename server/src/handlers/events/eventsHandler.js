@@ -41,17 +41,17 @@ async function handlerGetAllEvents(req, res) {
 // Función handler para obtener eventos por ID.
 const handlerGetEventById = async (req, res) => {
   const { id } = req.params;
+  //console.log(id + 'soy id');
 
   try {
     const found = await getEventById(id);
-
     if (!found) {
       res.status(400).json(error.message);
     }
 
     res.status(200).json(found);
   } catch (error) {
-    throw new Error(error.message);
+    res.status(400).json({error: error.message});
   }
 };
 
