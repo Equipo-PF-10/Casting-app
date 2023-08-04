@@ -1,14 +1,21 @@
-import React from "react";
+import React, {useEffect} from "react";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import { Link } from "react-router-dom";
 import "./HiredTable.css";
+import {useDispatch} from "react-redux";
 
 const HiredTalent=() => {
+
+  //const dispatch = useDispatch()
   
   const id=localStorage.getItem("user_id");
-  console.log(id);
+  //console.log(id);
 
-  
+  //useEffect(() => {
+  //  dispatch(get_talents_hired()); 
+  //})
+
+
   return (
     <div className="containerGral">
       <div>
