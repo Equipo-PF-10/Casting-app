@@ -6,9 +6,13 @@ const {
   handlerDeleteEventById,
   handlerUpdateEventById,
   handlerGetPremiumEvents,
+  handlerHabilityRequerid
 } = require("../../handlers/events/eventsHandler");
 
 const eventRouter = Router();
+
+//? Esta ruta trae todos los eventos x habilidad reqerida.
+eventRouter.get("/habilityRequired", handlerHabilityRequerid);
 
 //? Esta ruta trae todos los eventos que pertenecen a empresas PREMIUM.
 eventRouter.get("/premium", handlerGetPremiumEvents);

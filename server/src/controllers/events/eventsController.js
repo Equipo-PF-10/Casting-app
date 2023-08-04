@@ -174,6 +174,24 @@ const getPremiumEvents = async () => {
   }
 };
 
+//se encargará de buscar los eventos según la habilidad requerida
+const getEventForHability = async (hability) => {
+  try {
+    const events = await Event.findAll({
+      where: {
+        habilityRequired: {
+          [Op.contains]: [hability],
+        },
+      },
+    });
+    return events;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+
+
 module.exports = {
   getAllEvents,
   getEventById,
@@ -182,4 +200,5 @@ module.exports = {
   deleteEventById,
   updateEventById,
   getPremiumEvents,
+  getEventForHability
 };
