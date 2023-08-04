@@ -240,7 +240,7 @@ const hireApplicant = async (TalentId, EventId) => {
           // Actualizar también el estado en la tabla ToContact
           await ToContact.update(
             { status: "Contratado" },
-            { where: { talentId: TalentId, EventId } }
+            { where: { EventId } }
           );
 
           return postulationHired;
