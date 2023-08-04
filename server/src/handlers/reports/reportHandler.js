@@ -1,6 +1,6 @@
 const {
-    addReportCompany,
-    addReportCompany,
+    //addReportCompany,
+    //addReportCompany,
     getCompanyReports,
     getTalentReports,
     updateReport

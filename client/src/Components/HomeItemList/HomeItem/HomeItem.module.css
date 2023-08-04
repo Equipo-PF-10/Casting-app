@@ -33,9 +33,9 @@
 .mail button {
     width: 40px;
     height: 40px;
-    background-color: whitesmoke;
+    background-color: rgba(245, 245, 245, 0.752);
     &:hover{
-        background-color: whitesmoke;
+        background-color: rgba(245, 245, 245, 0.795);
     }
     /* background-color: var(--color-success) */
 }
@@ -49,10 +49,10 @@
     align-items: center;
     margin-left: 10px;
     padding-top: 5px;
-    background-color: var(--color-error);
+    background-color: rgba(0, 68, 152, 0);
     color: white;
     &:hover{
-        background-color: var(--color-error);
+        background-color: rgba(0, 68, 152, 0);
     }
 }
 
@@ -181,5 +181,42 @@
   }
   
   .star input:checked ~ svg {
-    fill: #666;
+    fill: #ffeb49;
   }
+/* fill: #666; */
+
+
+
+/* 
+const [deleteClicked, setDeleteClicked] = useState(false);
+  const [isDeleteButtonDisabled, setIsDeleteButtonDisabled] = useState(false);
+*/
+
+  /* 
+  const handleClickDelete = () => {
+    if (!deleteClicked) {
+      setDeleteClicked(true);
+      setIsDeleteButtonDisabled(true); // Deshabilitar el botón después del primer clic
+      dispatch(add_and_delete_favorite_postulant(props.talent?.id, props.id_company));
+    }
+  }; 
+  */
+  /* className={isDeleteButtonDisabled ? styles.disabledButton : ''} */
+
+  /* Nuevos estilos para el botón deshabilitado */
+.disabledButton {
+  pointer-events: none; /* Evitar interacción con el botón */
+  opacity: 0.6; /* Reducir la opacidad del botón */
+  /* Puedes agregar más estilos según tus preferencias */
+}
+
+/* Estilos para el contenido del botón cuando está deshabilitado */
+.disabledButton .star svg {
+  fill: #999; /* Cambiar el color del SVG cuando el botón está deshabilitado */
+  cursor: not-allowed; /* Cambiar el cursor cuando el botón está deshabilitado */
+}
+
+/* Estilos para el contenido del botón seleccionado cuando está deshabilitado */
+.disabledButton .star input:checked + svg {
+  fill: #666; /* Cambiar el color del botón seleccionado cuando está deshabilitado */
+}

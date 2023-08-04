@@ -9,9 +9,7 @@ const HomeItem = (props) => {
   const [modalMail, setModalModel] = useState(false);
 
   const handleClickDelete = () => {
-    dispatch(
-      add_and_delete_favorite_postulant(props.talent?.id, props.id_company)
-    );
+    dispatch(add_and_delete_favorite_postulant(props.talent?.id, props.id_company));
   };
   const hanldleClickModalOpen = () => {
     setModalModel(true);
