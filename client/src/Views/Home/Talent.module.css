@@ -10,7 +10,7 @@
 
 .eventos{
     height: 86vh;
-    width: 96%;
+    width: 98%;
     margin: 1rem;
     border-radius: 30px;
     box-shadow: 0px 5.986455917358398px 9.977426528930664px 2.993227958679199px rgba(0, 0, 0, 0.25);
@@ -20,17 +20,22 @@
 
 .eventos h1{
     font-size: 4rem;
+    border-bottom: #4b31a1 3px solid;
+}
+
+.eventos ul{
+    line-height: 8px;
 }
 
 .container{
     margin: 0 auto;
-    padding-top: 9rem;
+    padding-top: 7rem;
     display: flex;
     flex-direction: column;
     justify-self: center;
     align-items: center;
     width: 70%;
-    gap: 1.5rem;
+    gap: 1rem
 }
 
 .card{
@@ -92,21 +97,31 @@
 
 .link {
     color: #324844;
+    height: fit-content;
 }
 
 .link:hover{
     color: #4b31a1;
 }
 
-.info li{
+.link li{
     transition: 0.3s;
+}
+
+.link li:hover{
+    transform: scale(1.04);
+}
+
+.info li{
     font-size: 18px;
-    padding-block: 3px;
+    padding-block: 5px;
+    transition: 0.3s;
 }
 
 .info li:hover{
     transform: scale(1.1);
 }
+
 
 .eventList{
     max-height: 30rem;
@@ -114,3 +129,35 @@
     list-style: none;
 }
 
+.aplication{
+    display: flex;
+    gap: 10px;
+    margin-block: 10px;
+    height: 2rem;
+    align-items: center;
+    color: whitesmoke;
+}
+
+.aplication h4:first-of-type{
+    border-right: #4b31a1 2px solid;
+    width: 8rem;
+    font-size: 20px;
+}
+
+.aplication h4{
+    font-size: 20px;
+}
+
+.yourEvents{
+    background-color: #00C9A7;
+    border-radius: 30px;
+    padding-block: 10px;
+    overflow-y: auto;
+    height: 11rem;
+}
+
+.yourEvents h4{
+    margin-block: 3rem;
+    color: white;
+
+}
