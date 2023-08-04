@@ -5,16 +5,17 @@ import axios from "axios";
 import Cloudinary from "../Cloudinary/Cloudinary";
 import styles from "./EventUpdate.module.css";
 import Select from "react-select";
+import { useParams } from "react-router-dom";
 
 const EventUpdate = () => {
 
-    const eventId = "";
+    const {eventId} = useParams();
 
     const URL = `http://localhost:3001/events/${eventId}`;
   
     const idUser = localStorage.getItem("user_id");
+    
     const imageURl = useSelector((state) => state.imageUrl);
-  
   
     const initialState = {
       name: "",
@@ -28,6 +29,7 @@ const EventUpdate = () => {
       contact: [],
       email: "",
       num: "",
+      active: true,
       CompanyId: idUser,
     };
   
@@ -64,6 +66,18 @@ const EventUpdate = () => {
       const habilityValue = orientaciones.map(item => item.value);
   
       input.habilityRequired = habilityValue;
+
+      // Estatus
+
+      const [isActive, setIsActive] = useState(true)
+
+      const handleStatus = () => {
+        setIsActive(!isActive);
+      };
+
+      input.active = isActive;
+
+      console.log(input.active)
             
       // Handlers
   
@@ -201,6 +215,10 @@ const EventUpdate = () => {
                         placeholder="Email de contacto"
                     />
                     </article>
+                    <article className={styles.coolinput1}>
+                        <label htmlFor="" className={styles.text}>Estatus del Evento</label>
+                        <input type="button" onClick={handleStatus} value={isActive ? 'Activo' : 'Desactivo'}/>
+                    </article>
                     <article className={styles.coolinput}>
                     <label htmlFor="" className={styles.text}>
                         Descripción
@@ -208,8 +226,6 @@ const EventUpdate = () => {
                     <textarea
                         name="description"
                         id=""
-                        cols="30"
-                        rows="10"
                         value={input.description}
                         onChange={handleChange}
                         placeholder="Descripción de tu evento..."
@@ -243,7 +259,7 @@ const EventUpdate = () => {
                     ></textarea>
                     </article>
                     <button type="submit" className={styles.btn} >
-                    Crear Evento
+                    Actualizar datos
                     </button>
                 </div>
                 </section>
