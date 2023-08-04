@@ -27,6 +27,7 @@ import Review from "./Views/Review/Review"
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
 import HomeTalento from "./Views/Home/HomeTalento";
 import EventUpdate from "./Components/EventForm/EventUpdate";
+import FinishedEvents from "./Views/FinishedEvents/FinishedEvents";
 
 
 function App() {
