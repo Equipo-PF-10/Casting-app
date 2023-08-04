@@ -120,7 +120,8 @@ const Landing = () => {
               return alert("Este email está siendo utilizado como usuario talento.");
             //? 3.2) si el mail no existe en la base de datos de talentos crea o encuentra en BD de compañias
             }else{
-              const register = await axios.post("http://localhost:3001/companies/register", {email,name,image,})
+              const register=await axios.post("http://localhost:3001/companies/register",{email,name,image,})
+              console.log(register.data.id);
               localStorage.setItem("user_id", `${register.data.id}`);
               navigate("/home/company");
             }

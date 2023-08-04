@@ -20,6 +20,24 @@ const NavBarLateral = () => {
         formPath = "/form/company"
     }
 
+    // Estadísticas 
+
+    const chart = () => {
+        if(root === "company"){
+        return (    
+        <NavLink to="/charts" className={styles.link4}>
+                <div className={styles.icons2}>
+                    <svg width="32" height="40" viewBox="0 0 47 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 51H46M7.5 16.95H3.5C2.125 16.95 1 18.075 1 19.45V41C1 42.375 2.125 43.5 3.5 43.5H7.5C8.875 43.5 10 42.375 10 41V19.45C10 18.075 8.875 16.95 7.5 16.95ZM25.5 8.975H21.5C20.125 8.975 19 10.1 19 11.475V41C19 42.375 20.125 43.5 21.5 43.5H25.5C26.875 43.5 28 42.375 28 41V11.475C28 10.1 26.875 8.975 25.5 8.975ZM43.5 1H39.5C38.125 1 37 2.125 37 3.5V41C37 42.375 38.125 43.5 39.5 43.5H43.5C44.875 43.5 46 42.375 46 41V3.5C46 2.125 44.875 1 43.5 1Z" stroke="#4B31A1" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <h4 className={styles.chart}>Métricas</h4>
+                </div>
+                </NavLink>)
+        }
+    }
+
+
+
 
     return(
         <section className={styles.section} >
@@ -65,6 +83,7 @@ const NavBarLateral = () => {
                             <h4>Perfil</h4>
                         </div>
                     </NavLink>
+                    {chart()}
                 </article>
                 <NavLink to={formPath} className={styles.link}>
                     <article className={styles.icons1}>

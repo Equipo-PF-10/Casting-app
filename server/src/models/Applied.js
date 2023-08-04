@@ -34,15 +34,6 @@ module.exports = (sequelize) => {
         ),
         defaultValue: "Pendiente",
       },
-
-      // TalentId: {
-      //   type: DataTypes.UUID,
-      //   allowNull: true,
-      //   references: {
-      //     model: "Talent",
-      //     key: "id",
-      //   },
-      // },
     },
     { freezeTableName: true, timestamps: false }
   );

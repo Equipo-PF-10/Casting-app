@@ -17,8 +17,11 @@ import {
   GET_ALL_POSTULATIONS,
   GET_POSTULANTS_BY_NAME,
   DELETE_POSTULANT_BY_ID,
+  DELETE_POSTULANT_FAV,
   GET_TALENT_BY_ID,
   GET_ALL_TALENTS,
+  GET_ALL_POSTULANT_FAV,
+  GET_POSTULANT_FAV_BY_NAME,
   FILTER_BY_HABILITY,
   FILTER_BY_EVENT_HABILITY,
   FILTER_BY_GENDER,
@@ -29,7 +32,6 @@ import {
   SEND_ID_OF_CARD,
   CLEAR_ID_OF_CARD,
   GET_NAME_EVENTS,
-  GET_POSTULANT_FAV_BY_NAME,
   IMAGE_URL,
   SEND_EMAIL_MESSAGE,
   ERROR_POSTULATE,
@@ -43,7 +45,7 @@ const initialState = {
   allEvents: [],
   eventsPremium: {},
   eventsFiltered: [],
-  eventDetail: {},
+  eventDetail: [],
   getAllCompanies: [],
   companiesFiltered: [],
   companyDetail: [],
@@ -186,7 +188,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case CLOSE_EVENT:
       return {
         ...state,
-        messageEventClosed: payload,
+        //messageEventClosed: payload,
+        eventDetail: payload,
       };
     case DELETE_POSTULANT_BY_ID:
       return {
@@ -337,12 +340,18 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         imageUrl: payload,
       }
-    // case GET_ALL_POSTULANT_FAV:   Falta hacer la ruta
-    //   return {
-    //     ...state,
-    //     allFavoritePostulants: payload,
-    //     allFavoritePostulantsFiltered: payload,
-    //   };
+    case GET_ALL_POSTULANT_FAV:   
+      return {
+        ...state,
+        allFavoritePostulants: payload,
+        allFavoritePostulantsFiltered: payload,
+      };
+    case DELETE_POSTULANT_FAV:   
+      return {
+        ...state,
+        allFavoritePostulants: payload,
+        allFavoritePostulantsFiltered: payload,
+      };
     case GET_POSTULANT_FAV_BY_NAME:
       return {
         ...state,

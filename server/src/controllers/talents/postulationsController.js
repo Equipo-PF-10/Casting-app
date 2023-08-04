@@ -1,4 +1,10 @@
-const { Applied, TalentApplied, Talent } = require("../../db");
+const {
+  Talent,
+  Applied,
+  Event,
+  TalentApplied,
+  ToContact,
+} = require("../../db");
 
 // Función controller para obtener todas las postulaciones
 const getAllApplied = async () => {
@@ -71,6 +77,13 @@ const deleteApplicantById = async (TalentId, EventId) => {
               },
             }
           );
+
+          // Actualizar también el estado en la tabla ToContact
+          await ToContact.update(
+            { status: "Rechazado" },
+            { where: { talentId: TalentId, EventId } }
+          );
+
           return postulationDeleted;
         }
       }
@@ -91,20 +104,20 @@ const getApplicantsForEventByFk = async (fk) => {
         status: "Pendiente",
       },
     });
-       let talents = [];
+    let talents = [];
     if (!postulacion) {
       throw new Error(
         `La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`
-        );
-      };
-      
-      for (let i = 0; i < postulacion.length; i++) {
-        let postu = postulacion[i];
-        let postulante = await postu.getTalents();
+      );
+    }
 
-        talents.push(postulante[0]);
-      }
-  
+    for (let i = 0; i < postulacion.length; i++) {
+      let postu = postulacion[i];
+      let postulante = await postu.getTalents();
+
+      talents.push(postulante[0]);
+    }
+
     return talents;
   } catch (error) {
     throw new Error(error.message);
@@ -115,7 +128,7 @@ const getApplicantsForEventByFk = async (fk) => {
 const getApplicantByName = async (EventId, name) => {
   try {
     const nameToLower = name.toLowerCase();
-//console.log(EventId);
+    //console.log(EventId);
     const applicants = await getApplicantsForEventByFk(EventId);
 
     const applicantsByName = applicants.filter((applicant) =>
@@ -130,9 +143,6 @@ const getApplicantByName = async (EventId, name) => {
     throw new Error(error.message);
   }
 };
-
-
-
 
 // Función controller para cambiar el status a Contactado.
 const applicantToContact = async (TalentId, EventId) => {
@@ -157,6 +167,21 @@ const applicantToContact = async (TalentId, EventId) => {
               },
             }
           );
+
+          const updatedPostulation = await Applied.findByPk(idPostulationInter);
+
+          const event = await Event.findByPk(EventId);
+
+          const CompanyId = event.CompanyId;
+
+          await ToContact.create({
+            date: updatedPostulation.date,
+            changeDate: new Date(),
+            talentId: TalentId,
+            companyId: CompanyId,
+            EventId: updatedPostulation.EventId,
+          });
+
           return postulationToContact;
         }
       }
@@ -170,8 +195,23 @@ const applicantToContact = async (TalentId, EventId) => {
 // Función para encontrar postulaciones de un talento
 const getPostulationsByTalentId = async (TalentId) => {
   try {
-    const postulations = await Applied.findAll({ where: { TalentId } });
-    return postulations;
+    
+    const postulations = await Talent.findByPk(TalentId, {
+      include: [
+        {
+          model: Applied,
+          through: {
+            attributes: [],
+          },
+        },
+      ],
+    });
+
+    if(!postulations){
+      throw new Error("No se encontraron postulaciones de este talento")
+    }
+
+    return postulations.Applieds
   } catch (error) {
     throw new Error(error.message);
   }
@@ -194,6 +234,13 @@ const hireApplicant = async (TalentId, EventId) => {
             { status: "Contratado" },
             { where: { id: idPostulationInter } }
           );
+
+          // Actualizar también el estado en la tabla ToContact
+          await ToContact.update(
+            { status: "Contratado" },
+            { where: { talentId: TalentId, EventId } }
+          );
+
           return postulationHired;
         }
       }
@@ -221,6 +268,22 @@ const getAllHiredTalents = async () => {
   }
 };
 
+// Función controller para obtener a todos los talentos contactados.
+const getAllContactedTalents = async () => {
+  try {
+    const contactedTalents = await Talent.findAll({
+      include: {
+        model: Applied,
+        where: { status: "Contactado" },
+      },
+    });
+
+    return contactedTalents;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getAllApplied,
   createApplied,
@@ -232,4 +295,5 @@ module.exports = {
   getPostulationsByTalentId,
   hireApplicant,
   getAllHiredTalents,
+  getAllContactedTalents,
 };

@@ -2,7 +2,7 @@ import styles from "./HomeItemList.module.css";
 import HomeItem from "./HomeItem/HomeItem.jsx";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_favorite_postulant_by_name } from "../../redux/actions";
+import { get_favorite_postulant_by_name, get_all_favorite_postulants } from "../../redux/actions";
 
 const HomeItemList = (props) => {
   const dispatch = useDispatch();
@@ -74,10 +74,10 @@ const HomeItemList = (props) => {
       {/* <h1 className={styles.text}>{props.title}</h1> */}
       {filters ? 
           props.allFavoritePostulantsFiltered?.map((talent) => 
-          (<HomeItem talent={talent}/>))
+          (<HomeItem talent={talent} id_company={props.id_company}/>))
       : 
       props.allFavoritePostulants?.map((talent) => 
-          (<HomeItem talent={talent}/>))
+          (<HomeItem talent={talent} id_company={props.id_company}/>))
       }
       
       {/* <HomeItem title="Title" />
