@@ -1,6 +1,7 @@
 const {
   Talent,
   Applied,
+  Company,
   Event,
   TalentApplied,
   ToContact,
@@ -175,10 +176,12 @@ const applicantToContact = async (TalentId, EventId) => {
           const CompanyId = event.CompanyId;
 
           await ToContact.create({
+            id: updatedPostulation.id,
             date: updatedPostulation.date,
             changeDate: new Date(),
-            talentId: TalentId,
+            active: updatedPostulation.active,
             companyId: CompanyId,
+            status: updatedPostulation.status,
             EventId: updatedPostulation.EventId,
           });
 
@@ -195,7 +198,6 @@ const applicantToContact = async (TalentId, EventId) => {
 // Función para encontrar postulaciones de un talento
 const getPostulationsByTalentId = async (TalentId) => {
   try {
-    
     const postulations = await Talent.findByPk(TalentId, {
       include: [
         {
@@ -207,11 +209,11 @@ const getPostulationsByTalentId = async (TalentId) => {
       ],
     });
 
-    if(!postulations){
-      throw new Error("No se encontraron postulaciones de este talento")
+    if (!postulations) {
+      throw new Error("No se encontraron postulaciones de este talento");
     }
 
-    return postulations.Applieds
+    return postulations.Applieds;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -284,6 +286,39 @@ const getAllContactedTalents = async () => {
   }
 };
 
+// Función para obtener todos los contratados por una empresa.
+const getContactedByCompany = async (idCompany) => {
+  try {
+    let applicants = [];
+
+    const events = await Event.findAll({
+      where: {
+        CompanyId: idCompany,
+      },
+    });
+
+    for (let i = 0; i < events.length; i++) {
+      const postulationContacted = await Applied.findAll({
+        where: {
+          EventId: events[i].id,
+          status: "Contactado",
+        },
+        include: [
+          {
+            model: Talent,
+          },
+        ],
+      });
+
+      applicants.push(postulationContacted[0].Talents);
+    }
+
+    return applicants;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getAllApplied,
   createApplied,
@@ -296,4 +331,5 @@ module.exports = {
   hireApplicant,
   getAllHiredTalents,
   getAllContactedTalents,
+  getContactedByCompany,
 };

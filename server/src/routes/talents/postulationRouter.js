@@ -11,6 +11,7 @@ const {
   handlerHireTalent,
   handlerGetAllHiredTalents,
   handlerGetAllContactedTalents,
+  handlerGetCompanyContacted,
 } = require("../../handlers/talents/postulationsHandler");
 
 const postulationRouter = Router();
@@ -20,6 +21,9 @@ postulationRouter.get("/hired", handlerGetAllHiredTalents);
 
 //? Esta ruta es para agregar a un postulante comoo CONTRATADO.
 postulationRouter.post("/hire", handlerHireTalent);
+
+//? Esta ruta es para traer todos los contactados por una empresa en particular.
+postulationRouter.get("/contacted/:idCompany", handlerGetCompanyContacted);
 
 //? Esta ruta es para agregar a un postulante como CONTACTADO.
 postulationRouter.get("/contacted", handlerGetAllContactedTalents);
