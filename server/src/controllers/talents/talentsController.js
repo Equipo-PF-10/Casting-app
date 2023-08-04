@@ -12,7 +12,7 @@ const getDbTalents = async () => {
 };
 
 // Función controller que crea un nuevo talento en la database.
-const createTalentDb = async (email,name,image) => {
+const createTalentDb = async (email, name, image) => {
   const [talent, created] = await Talent.findOrCreate({
     where: { email },
     defaults: {
@@ -80,6 +80,7 @@ const deleteTalent = async (id) => {
     }
 
     await DisableTalent.create({
+      id: talentToDelete.id,
       name: talentToDelete.name,
       dni: talentToDelete.dni,
       email: talentToDelete.email,

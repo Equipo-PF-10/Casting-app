@@ -72,8 +72,9 @@ const deleteCompanyById = async (id) => {
     }
 
     await DisableCompany.create({
+      id: companyToDelete.id,
       name: companyToDelete.name,
-      logo: companyToDelete.logo,
+      logo: companyToDelete.image,
       country: companyToDelete.country,
       available: companyToDelete.available,
       domain: companyToDelete.domain,

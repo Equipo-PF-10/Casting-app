@@ -5,6 +5,10 @@ const {
   getTopUsers,
   getTopPost,
   getByCountry,
+  getByGender,
+  getByRange,
+  banUser,
+  desbanUser,
   // getIncomes,
 } = require("../../controllers/admin/adminControllers");
 
@@ -83,18 +87,67 @@ const handlerGetByNationality = async (req, res) => {
 };
 
 // Función para obtener los ingresos totales según tecnología (PayPal o MercadoPago).
-//! DUDA: ¿El modelo SubscriptionPayment es de PayPal y el de Payment es de MP?
-// const handlerGetIncomes = async (req, res) => {
-//   try {
-//     const { platform } = req.params;
+const handlerGetIncomes = async (req, res) => {
+  try {
+    const { platform } = req.params;
 
-//     const incomes = await getIncomes(platform);
+    const incomes = await getIncomes(platform);
 
-//     res.status(200).json(incomes);
-//   } catch (error) {
-//     res.status(400).json(error.message);
-//   }
-// };
+    res.status(200).json(incomes);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+// Función para obtener usuarios talentos según su género.
+const handlerGetByGender = async (req, res) => {
+  const { gender } = req.params;
+
+  try {
+    const talents = await getByGender(gender);
+
+    res.status(200).json(talents);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+// Función para obtener los usuarios registrados dentro de un rango de meses.
+const handlerGetByMonthRange = async (req, res) => {
+  const { userType, initialMonth, lastMonth } = req.params;
+
+  try {
+    const users = await getByRange(userType, initialMonth, lastMonth);
+
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+// Función para banear a un usuario (talent o company).
+const handlerToBan = async (req, res) => {
+  const { userType, id } = req.params;
+  try {
+    await banUser(userType, id);
+    res.status(200).send(`El usuario con ID ${id} ha sido baneado con éxito.`);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+// Función para desbanear a un usuario (talent o company).
+const handlerToDesban = async (req, res) => {
+  const { userType, id } = req.params;
+  try {
+    await desbanUser(userType, id);
+    res
+      .status(200)
+      .send(`El usuario con ID ${id} ha sido desbaneado con éxito.`);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
 
 module.exports = {
   handlerGetPremiumCompanies,
@@ -103,5 +156,9 @@ module.exports = {
   handlerGetTopUsers,
   handlerTopPosts,
   handlerGetByNationality,
-  // handlerGetIncomes,
+  handlerGetIncomes,
+  handlerGetByGender,
+  handlerGetByMonthRange,
+  handlerToBan,
+  handlerToDesban,
 };

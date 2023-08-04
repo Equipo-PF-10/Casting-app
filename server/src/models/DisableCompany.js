@@ -1,7 +1,9 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  return sequelize.define("DisableCompany",{
+  return sequelize.define(
+    "DisableCompany",
+    {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -11,58 +13,83 @@ module.exports = (sequelize) => {
 
       name: {
         type: DataTypes.STRING,
-        get(){
-          return `${this.email}`
-        }
+        get() {
+          return `${this.email}`;
+        },
       },
 
-      logo: {                    
+      image: {
         type: DataTypes.STRING,
-        defaultValue: "default_logo.png", 
+        defaultValue: "default_logo.png",
       },
 
       country: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: "Argentina",  
-        },  
-        
+        defaultValue: "Argentina",
+      },
+
       available: {
-          type: DataTypes.STRING,
-          allowNull: false.BOOLEAN,
-          defaultValue: true,      
-        }, 
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+      },
 
       domain: {
         type: DataTypes.STRING,
         allowNull: true,
-      },     
+      },
 
-      descriptionShort: {               
+      descriptionShort: {
         type: DataTypes.TEXT,
-        allowNull: true,  
+        allowNull: true,
       },
 
       instagram: {
         type: DataTypes.STRING,
-        allowNull: true,   
+        allowNull: true,
       },
 
       facebook: {
         type: DataTypes.STRING,
-        allowNull: true,   
+        allowNull: true,
+      },
+
+      phoneNumber: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
+      numberPosts: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+
+      plan: {
+        type: DataTypes.ENUM("PENDIENTE", "PRUEBA GRATIS", "BASICO", "PREMIUM"),
+        allowNull: true,
+        defaultValue: "PENDIENTE",
+      },
+
+      conditionPlan: {
+        // FREE = 3 | BASICO = 30 | PREMIUM = ∞
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        validate: {
+          min: 0,
+        },
       },
 
       linkedin: {
         type: DataTypes.STRING,
-        allowNull: true,   
+        allowNull: true,
       },
 
       twitter: {
         type: DataTypes.STRING,
-        allowNull: true,   
-      }, 
-      
+        allowNull: true,
+      },
+
       password: {
         type: DataTypes.STRING,
         allowNull: true,
@@ -79,50 +106,35 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
 
-      description: {                     
+      description: {
         type: DataTypes.TEXT,
-        allowNull: true,
-      },      
-
-      phoneNumber: {                    
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-
-      plan: {
-        type: DataTypes.ENUM("FREE", "BASICO", "PREMIUM"),   
-        allowNull: true,
-        defaultValue: "FREE",
-      },
-
-      conditionPlan: {
-        type: DataTypes.TEXT,       
         allowNull: true,
       },
 
       creationDate: {
-        type: DataTypes.DATEONLY,      
+        type: DataTypes.DATEONLY,
         allowNull: true,
-        defaultValue: DataTypes.NOW,   
+        defaultValue: DataTypes.NOW,
       },
 
       expirationDate: {
-        type: DataTypes.DATEONLY,    
+        type: DataTypes.DATEONLY,
         allowNull: true,
       },
 
-      reviews: {                        
+      reviews: {
         type: DataTypes.FLOAT,
         allowNull: true,
       },
 
-      reviewsCount: {                   
+      reviewsCount: {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
-      
     },
-        
-    { freezeTableName: true, timestamps: false,
-  }
-  )}; 
+    {
+      freezeTableName: true,
+      timestamps: false,
+    }
+  );
+};
