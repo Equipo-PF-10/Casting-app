@@ -10,8 +10,11 @@ const HomeEventsCard=(props) => {
     <div className={styles.container}>
       <h1>{props.title}</h1>
       <hr />
-      {props.eventDetail
-        ? props.eventDetail.map((event, index) => {
+      {props.eventDetail.length === 0
+        ? 
+        <h2>En esta sección podrá visualizar sus Eventos publicados.</h2>
+        :
+        props.eventDetail.map((event, index) => {
             return (
               <HomeEvent
                 key={index}
@@ -23,7 +26,7 @@ const HomeEventsCard=(props) => {
               />
             );
           })
-        : null}
+        }
       {/* <HomeEvent 
           title = "Lorem ipsum dolor sit amet."
           subTitle = "Lorem ipsum dolor sit amet."

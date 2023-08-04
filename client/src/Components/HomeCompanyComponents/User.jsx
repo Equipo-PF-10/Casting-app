@@ -110,10 +110,15 @@ export default function User() {
           )}
         </div>
         <article className={styles.info}>
-          {company.name ? <h2>{company.name}</h2> : <h2>Nombre de la Empresa</h2>}
+          {company.name ? <h3>{company.name}</h3> : <h3>Nombre de la Empresa</h3>}
           <div className={styles.plan}>
-            <h3>Plan Activo:</h3> 
-            {company.plan ? <h3>{company.plan}</h3> : <h3>Pendiente</h3>} 
+            <h5>Plan Activo:</h5> 
+            {/* {company.plan ? <h5>{company.plan}</h5> : <h5>Pendiente</h5>}  */}
+            {company.plan !== "PENDIENTE" ? (
+              <h5>Plan activo: {company.plan}</h5>
+            ) : (
+              <h5>Pendiente</h5>
+            )}
           </div>
         </article>
       </div>

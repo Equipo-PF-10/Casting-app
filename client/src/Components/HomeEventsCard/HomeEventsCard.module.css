@@ -17,6 +17,10 @@
   border-top: 4px solid;
 }
 
+.container h2 {
+    margin-top: 140px;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 6px;

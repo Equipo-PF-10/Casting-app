@@ -72,13 +72,19 @@ const HomeItemList = (props) => {
         </div>
       </div>
       {/* <h1 className={styles.text}>{props.title}</h1> */}
-      {filters ? 
+      {
+        props.allFavoritePostulants.length === 0 && props.allFavoritePostulantsFiltered.length === 0 
+        ?
+        <h4>En esta sección podrá visualizar los talentos seleccionados como Favoritos.</h4>
+        :
+      filters ? 
           props.allFavoritePostulantsFiltered?.map((talent) => 
           (<HomeItem talent={talent} id_company={props.id_company}/>))
       : 
       props.allFavoritePostulants?.map((talent) => 
           (<HomeItem talent={talent} id_company={props.id_company}/>))
       }
+
       
       {/* <HomeItem title="Title" />
       <HomeItem title="Title" />

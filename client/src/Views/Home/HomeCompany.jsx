@@ -67,7 +67,7 @@ export default function HomeCompany() {
           <article className={styles.gridItem2}>
             <div>
               <HomeEventsCard
-                title={"Eventos publicados"}
+                title={"Eventos Publicados"}
                 eventDetail={eventDetail}
                 url={"company/search"}
                 handleDelete={handleDelete}
