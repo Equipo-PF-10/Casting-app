@@ -286,7 +286,7 @@ const getAllContactedTalents = async () => {
   }
 };
 
-// Función para obtener todos los contratados por una empresa.
+// Función para obtener todos los contactados por una empresa.
 const getContactedByCompany = async (idCompany) => {
   try {
     let applicants = [];
@@ -322,7 +322,34 @@ const getContactedByCompany = async (idCompany) => {
 // Función controller para obtener todos los contratados de una empresa.
 const getHiredByCompany = async (idCompany) => {
   try {
-  } catch (error) {}
+    let applicants = [];
+
+    const events = await Event.findAll({
+      where: {
+        CompanyId: idCompany,
+      },
+    });
+
+    for (let i = 0; i < events.length; i++) {
+      const postulationHired = await Applied.findAll({
+        where: {
+          EventId: events[i].id,
+          status: "Contratado",
+        },
+        include: [
+          {
+            model: Talent,
+          },
+        ],
+      });
+
+      applicants.push(postulationHired[0].Talents);
+    }
+
+    return applicants;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
 
 module.exports = {
