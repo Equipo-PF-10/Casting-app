@@ -6,7 +6,7 @@ const {
   deleteEventById,
   updateEventById,
   getPremiumEvents,
-  getEventForHability
+  getEventForHability,
 } = require("../../controllers/events/eventsController");
 
 // Función handler para obtener los eventos.
@@ -41,18 +41,17 @@ async function handlerGetAllEvents(req, res) {
 
 // Función handler para obtener eventos por ID.
 const handlerGetEventById = async (req, res) => {
-  const { id } = req.params;
-  //console.log(id + 'soy id');
+  const { companyId } = req.params;
 
   try {
-    const found = await getEventById(id);
+    const found = await getEventById(companyId);
     if (!found) {
       res.status(400).json(error.message);
     }
 
     res.status(200).json(found);
   } catch (error) {
-    res.status(400).json({error: error.message});
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -135,7 +134,6 @@ const handlerUpdateEventById = async (req, res) => {
   } = req.body;
 
   try {
-
     const updatedData = {
       name,
       image,
@@ -167,20 +165,23 @@ const handlerGetPremiumEvents = async (req, res) => {
   }
 };
 
-
 //obtener los eventos según la habilidad requerida
 const handlerHabilityRequerid = async (req, res) => {
   try {
     const { hability } = req.query;
 
     if (!hability) {
-      return res.status(400).json({ error: 'Debes proporcionar la habilidad requerida.' });
+      return res
+        .status(400)
+        .json({ error: "Debes proporcionar la habilidad requerida." });
     }
 
     const events = await getEventForHability(hability);
 
     if (events.length === 0) {
-      return res.status(404).json({ error: 'No se encontraron eventos para la habilidad requerida.' });
+      return res.status(404).json({
+        error: "No se encontraron eventos para la habilidad requerida.",
+      });
     }
 
     res.status(200).json(events);
@@ -189,8 +190,6 @@ const handlerHabilityRequerid = async (req, res) => {
   }
 };
 
-
-
 module.exports = {
   handlerGetAllEvents,
   handlerGetEventById,
@@ -198,5 +197,5 @@ module.exports = {
   handlerDeleteEventById,
   handlerUpdateEventById,
   handlerGetPremiumEvents,
-  handlerHabilityRequerid
+  handlerHabilityRequerid,
 };
