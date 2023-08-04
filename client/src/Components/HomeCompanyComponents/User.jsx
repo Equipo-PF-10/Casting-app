@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./User.module.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function User() {
   const id = localStorage.getItem("user_id");
@@ -12,7 +13,20 @@ export default function User() {
     });
   }, [id]);
 
+  
+  const user_type = localStorage.getItem("userType");
+  console.log(user_type);
+  let url_profile;
+  //useEffect(()=>{
+    if(user_type === "company"){
+      url_profile = "/company/profile";
+    } else if (user_type === "talent") {
+      url_profile = "/model/profile";
+    }
+  //},[user_type])
+
   return (
+        <Link to={`${url_profile}/${id}`}>
       <div className={styles.card}>
         <div className={styles.image}>
           {company.image ? (
@@ -109,18 +123,20 @@ export default function User() {
             </svg>
           )}
         </div>
+           
         <article className={styles.info}>
           {company.name ? <h3>{company.name}</h3> : <h3>Nombre de la Empresa</h3>}
           <div className={styles.plan}>
             <h5>Plan Activo:</h5> 
             {/* {company.plan ? <h5>{company.plan}</h5> : <h5>Pendiente</h5>}  */}
             {company.plan !== "PENDIENTE" ? (
-              <h5>Plan activo: {company.plan}</h5>
+              <h5>{company.plan}</h5>
             ) : (
               <h5>Pendiente</h5>
             )}
           </div>
         </article>
       </div>
+      </Link>
   );
 }
