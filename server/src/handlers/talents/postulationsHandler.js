@@ -9,10 +9,10 @@ const {
   getPostulationsByTalentId,
   hireApplicant,
   getAllHiredTalents,
+  getAllContactedTalents,
 } = require("../../controllers/talents/postulationsController");
 
-// Función handler para obtener todas las postulaciones
-// Función handler para crear postulaciones
+// Función handler para crear postulaciones.
 const handlerCreateApplied = async (req, res) => {
   const { EventId, TalentId } = req.body;
 
@@ -25,6 +25,7 @@ const handlerCreateApplied = async (req, res) => {
   }
 };
 
+// Función handler para obtener todas las postulaciones.
 const handlerGetAllApplied = async (req, res) => {
   try {
     const allApplied = await getAllApplied();
@@ -34,8 +35,6 @@ const handlerGetAllApplied = async (req, res) => {
     return res.status(404).json({ error: error.message });
   }
 };
-
-
 
 // const handlerGetApplicantsByName = async (req, res) => {
 //   try {
@@ -57,18 +56,19 @@ const handlerGetAllApplied = async (req, res) => {
 //   }
 // };
 
-
-
+// Función handler para obtener los aplicantes por nombre.
 const handlerGetApplicantsByName = async (req, res) => {
   try {
     const { EventId } = req.params;
     const { name } = req.query;
-//console.log(req.params);
+    //console.log(req.params);
     if (!name) {
-      return res.status(400).json("Debes ingresar un nombre para aplicar la búsqueda.");
+      return res
+        .status(400)
+        .json("Debes ingresar un nombre para aplicar la búsqueda.");
     }
 
-    const applicantsByName = await getApplicantByName( EventId, name);
+    const applicantsByName = await getApplicantByName(EventId, name);
 
     if (typeof applicantsByName === "string") {
       return res.status(404).json({ error: applicantsByName });
@@ -80,7 +80,7 @@ const handlerGetApplicantsByName = async (req, res) => {
   }
 };
 
-// Función handler para obtener por Id
+// Función handler para obtener aplicante por Id.
 const handlerGetApplicantById = async (req, res) => {
   const { id } = req.params;
 
@@ -97,7 +97,7 @@ const handlerGetApplicantById = async (req, res) => {
 const handlerDeleteApplicantById = async (req, res) => {
   const { TalentId, EventId } = req.body;
   try {
-    const deletedPost = await deleteApplicantById(TalentId, EventId);
+    await deleteApplicantById(TalentId, EventId);
     res
       .status(200)
       .send(
@@ -112,6 +112,7 @@ const handlerDeleteApplicantById = async (req, res) => {
   }
 };
 
+// Función para obtener a los aplicantes por Id de evento.
 const handlerGetApplicantsForEventByFk = async (req, res) => {
   const { fk } = req.params;
   const { name } = req.query;
@@ -131,20 +132,18 @@ const handlerGetApplicantsForEventByFk = async (req, res) => {
   }
 };
 
+// Función para contactar un aplicante.
 const handlerToContact = async (req, res) => {
   const { TalentId, EventId } = req.body;
   try {
-    const toContact = await applicantToContact(TalentId, EventId);
-    res
-      .status(200)
-      .send("El postulante ha sido seleccionado para contactar correctamente.");
+    await applicantToContact(TalentId, EventId);
+    res.status(200).send("El postulante ha sido contactado con éxito.");
   } catch (error) {
-    res
-      .status(400)
-      .send("El postulante no ha podido ser aceptado para contactar.");
+    res.status(400).json(error.message);
   }
 };
 
+// Función para obtener un aplicante por Id.
 const handlerGetTalentAplications = async (req, res) => {
   const { id } = req.params;
 
@@ -159,10 +158,11 @@ const handlerGetTalentAplications = async (req, res) => {
   }
 };
 
+// Función para contratar a un aplicante.
 const handlerHireTalent = async (req, res) => {
   const { TalentId, EventId } = req.body;
   try {
-    const result = await hireApplicant(TalentId, EventId);
+    await hireApplicant(TalentId, EventId);
 
     res.status(200).send("El aplicante ha sido contratado con éxito.");
   } catch (error) {
@@ -170,12 +170,24 @@ const handlerHireTalent = async (req, res) => {
   }
 };
 
+// Función para obtener a todos los aplicantes contratados.
 const handlerGetAllHiredTalents = async (req, res) => {
   try {
     const hiredTalents = await getAllHiredTalents();
     res.status(200).json(hiredTalents);
   } catch (error) {
     res.status(400).json({ error: error.message });
+  }
+};
+
+// Función para obtener a todos los aplicantes contactados.
+const handlerGetAllContactedTalents = async (req, res) => {
+  try {
+    const contactedTalents = await getAllContactedTalents();
+
+    res.status(200).json(contactedTalents);
+  } catch (error) {
+    res.status(400).json(error.message);
   }
 };
 
@@ -190,4 +202,5 @@ module.exports = {
   handlerGetTalentAplications,
   handlerHireTalent,
   handlerGetAllHiredTalents,
+  handlerGetAllContactedTalents,
 };
