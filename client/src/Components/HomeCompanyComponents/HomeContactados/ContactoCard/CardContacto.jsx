@@ -11,9 +11,11 @@ const CardContacto = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.fonts}>
+        {/* REDIRIGIR AL PERFIL DEL CONTACTADO */}
         <Link to={`${props.url}/${props.id}`}>
           <h2 className={styles.text}>{props.name}</h2>
-          <h5 className={styles.text}>{props.habilities ? props.habilities.map((hability)=> `${hability} `) : null}</h5>
+          {/* <h5 className={styles.text}>{props.habilities ? props.habilities.map((hability)=> `${hability} `) : null}</h5> */}
+          <h5 className={styles.text}>{props.habilities}</h5>
         </Link>
       </div >
       <div className={styles.options}>

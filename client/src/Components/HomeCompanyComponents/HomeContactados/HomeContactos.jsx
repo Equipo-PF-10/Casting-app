@@ -6,19 +6,29 @@ const HomeContactos = (props) => {
     <div className={styles.container}>
         <h1>{props.title}</h1>
         <hr />
-        {props.contactedTalents ? props.contactedTalents.map((talent, index) => {
+        {
+        // props.contactedTalents ? props.contactedTalents.map((talent, index) => {
 
-          return (
+          // return (
+            // <CardContacto
+            //   key = {index}
+            //   name = {talent.name}
+            //   habilities = {talent.hability}
+            //   url = {props.url}
+            //   id = {talent.id}
+            // />
             <CardContacto
-              key = {index}
-              name = {talent.name}
-              habilities = {talent.hability}
+              key = "2"
+              name = "Freddie Mercury"
+              habilities = "Cantante Musico"
               url = {props.url}
-              id = {talent.id}
+              id = "08ce36ec-c3af-40ef-83e8-69d58573d998"
             />
-          )
-        })
-      :null}
+          // )
+        // })
+      // :
+      // <h4>En esta sección podrá visualizar a los postulantes a eventos que fueron Contactados.</h4>
+      }
     </div>
   );
 };
