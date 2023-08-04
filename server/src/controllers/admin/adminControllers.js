@@ -1,4 +1,13 @@
-const { Company, Talent, SubscriptionPayment, Payment } = require("../../db");
+const {
+  Company,
+  Talent,
+  DisableCompany,
+  DisableTalent,
+  SubscriptionPayment,
+  Payment,
+} = require("../../db");
+const { deleteTalent } = require("../talents/talentsController");
+const { deleteCompanyById } = require("../companies/companiesController.js");
 const { Op } = require("sequelize");
 
 // Función controller que trae todas las empresas PREMIUM creadas a partir del mes initialMonth.
@@ -191,18 +200,18 @@ const getByCountry = async (userType, country) => {
 };
 
 // Función controller para obtener los ingresos totales según la plataforma de pago.
-//! DUDA: ¿El modelo SubscriptionPayment es de PayPal y el de Payment es de MP?
+
 const getIncomes = async (platform) => {
   try {
     let incomes;
 
     if (platform === "paypal") {
       incomes = await SubscriptionPayment.sum("price", {
-        where: {}, //! Condiciono el ingreso también según los impuestos?
+        where: {}, // Condiciono el ingreso también según los impuestos?
       });
     } else if (platform === "mercadopago") {
       incomes = await Payment.sum("amount", {
-        where: {}, //! En este caso, no existe propiedad en el modelo con los impuestos.
+        where: {}, // En este caso, no existe propiedad en el modelo con los impuestos.
       });
     } else {
       throw new Error(
@@ -216,6 +225,183 @@ const getIncomes = async (platform) => {
   }
 };
 
+// Función controller para obtener usuarios talento por género.
+const getByGender = async (gender) => {
+  try {
+    let users;
+
+    if (gender === "male") {
+      users = await Talent.findAll({
+        where: {
+          gender: "Masculino",
+        },
+      });
+    } else if (gender === "female") {
+      users = await Talent.findAll({
+        where: {
+          gender: "Femenino",
+        },
+      });
+    } else if (gender === "other") {
+      users = await Talent.findAll({
+        where: {
+          gender: "Otro",
+        },
+      });
+    } else {
+      throw new Error(
+        "Género no encontrado. Debes especificar si deseas buscar por 'male', 'female' u 'other'."
+      );
+    }
+
+    return users;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller para obtener usuarios según rango de meses.
+const getByRange = async (userType, initialMonth, lastMonth) => {
+  try {
+    const startDate = new Date();
+    startDate.setMonth(initialMonth - 1);
+    startDate.setDate(1);
+    startDate.setHours(0, 0, 0, 0);
+
+    const endDate = new Date();
+    endDate.setMonth(lastMonth);
+    endDate.setDate(0);
+    endDate.setHours(23, 59, 59, 999);
+
+    let users;
+
+    if (userType === "talents") {
+      users = await Talent.findAll({
+        where: {
+          creationDate: {
+            [Op.gte]: startDate,
+            [Op.lte]: endDate,
+          },
+        },
+      });
+    } else if (userType === "companies") {
+      users = await Company.findAll({
+        where: {
+          creationDate: {
+            [Op.gte]: startDate,
+            [Op.lte]: endDate,
+          },
+        },
+      });
+    } else {
+      throw new Error("Tipo de usuario inválido. Usa 'talents' o 'companies.'");
+    }
+
+    return users;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller para banear a un usuario.
+const banUser = async (userType, id) => {
+  let banned;
+  try {
+    if (userType === "talents") {
+      banned = await deleteTalent(id);
+    } else if (userType === "companies") {
+      banned = await deleteCompanyById(id);
+    } else {
+      throw new Error("Tipo de usuario inválido. Usa 'talents' o 'companies.'");
+    }
+
+    return banned;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller que desbanea un usuario.
+const desbanUser = async (userType, id) => {
+  try {
+    if (userType === "talents") {
+      const disabledTalent = await DisableTalent.findByPk(id);
+
+      if (!disabledTalent) {
+        throw new Error(`El talento con ID ${id} no está baneado`);
+      }
+
+      await Talent.create({
+        id: disabledTalent.id,
+        name: disabledTalent.name,
+        dni: disabledTalent.dni,
+        email: disabledTalent.email,
+        password: disabledTalent.password,
+        available: disabledTalent.available,
+        dateComeback: disabledTalent.dateComeback,
+        image: disabledTalent.image,
+        portfolio: disabledTalent.portfolio,
+        gender: disabledTalent.gender,
+        aboutMe: disabledTalent.aboutMe,
+        nationality: disabledTalent.nationality,
+        ubication: disabledTalent.ubication,
+        hability: disabledTalent.hability,
+        contexture: disabledTalent.contexture,
+        ethnicOrigin: disabledTalent.ethnicOrigin,
+        weight: disabledTalent.weight,
+        height: disabledTalent.height,
+        contact: disabledTalent.contact,
+        socialNetwork: disabledTalent.socialNetwork,
+        reviews: disabledTalent.reviews,
+        reviewsCount: disabledTalent.reviewsCount,
+      });
+
+      await disabledTalent.destroy();
+
+      return `Talento con ID ${id} ha sido desbaneado exitosamente`;
+    } else if (userType === "companies") {
+      const disabledCompany = await DisableCompany.findByPk(id);
+
+      if (!disabledCompany) {
+        throw new Error(`La empresa con ID ${id} no está baneada`);
+      }
+
+      await Company.create({
+        id: disabledCompany.id,
+        name: disabledCompany.name,
+        image: disabledCompany.logo,
+        country: disabledCompany.country,
+        available: disabledCompany.available,
+        domain: disabledCompany.domain,
+        descriptionShort: disabledCompany.descriptionShort,
+        instagram: disabledCompany.instagram,
+        facebook: disabledCompany.facebook,
+        linkedin: disabledCompany.linkedin,
+        twitter: disabledCompany.twitter,
+        password: disabledCompany.password,
+        email: disabledCompany.email,
+        industryMain: disabledCompany.industryMain,
+        description: disabledCompany.description,
+        phoneNumber: disabledCompany.phoneNumber,
+        plan: disabledCompany.plan,
+        conditionPlan: disabledCompany.conditionPlan,
+        creationDate: disabledCompany.creationDate,
+        expirationDate: disabledCompany.expirationDate,
+        reviews: disabledCompany.reviews,
+        reviewsCount: disabledCompany.reviewsCount,
+      });
+
+      await disabledCompany.destroy();
+
+      return `Empresa con ID ${id} ha sido desbaneada exitosamente`;
+    } else {
+      throw new Error("Tipo de usuario inválido. Usa 'talents' o 'companies.'");
+    }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getCompaniesByMonth,
   getUsersByMonth,
@@ -224,4 +410,8 @@ module.exports = {
   getTopPost,
   getByCountry,
   getIncomes,
+  getByGender,
+  getByRange,
+  banUser,
+  desbanUser,
 };

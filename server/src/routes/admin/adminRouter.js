@@ -6,6 +6,10 @@ const {
   handlerTopPosts,
   handlerGetByNationality,
   handlerGetIncomes,
+  handlerGetByGender,
+  handlerGetByMonthRange,
+  handlerToBan,
+  handlerToDesban,
 } = require("../../handlers/admin/adminHandlers");
 
 const { Router } = require("express");
@@ -19,6 +23,18 @@ adminRouter.get("/companies/posts", handlerTopPosts);
 //? Esta ruta trae todas las empresas de un plan en particular que fueron registradas a partir del mes que se pasa por param.
 //| /admin/companies/premium/6  --> trae las empresas con plan premium que fueron creadas desde junio hasta la actualidad
 adminRouter.get("/companies/:plan/:initialMonth", handlerGetPremiumCompanies);
+
+//? Esta ruta es para obtener los usuarios que se registraron dentro de un rango de meses.
+// Por ej. quiero saber cuántos talentos se registraron entre marzo y junio.
+//| /admin/users/talents/3/6
+adminRouter.get(
+  "/users/:userType/:initialMonth/:lastMonth",
+  handlerGetByMonthRange
+);
+
+//? Esta ruta es para obtener usuarios talento según su género
+//| /admin/users/talents/male
+adminRouter.get("/users/talents/:gender", handlerGetByGender);
 
 //? Esta ruta trae todos los usuarios (talents o companies) con disponibilidad.
 //| /admin/users/available/talents
@@ -40,8 +56,13 @@ adminRouter.get(
 adminRouter.get("/users/:userType/:month", handlerGetUserByMonth);
 
 //? Esta ruta es para obtener los ingresos totales de la app. según qué plataforma se pasa por params.
-//! DUDA: ¿El modelo SubscriptionPayment es de PayPal y el de Payment es de MP?
 //| /admin/income/paypal
 adminRouter.get("/income/:platform", handlerGetIncomes);
+
+//? Esta ruta es para banear (pasa a la tabla de borrado lógico) un usuario.
+adminRouter.delete("/users/ban/:userType/:id", handlerToBan);
+
+//? Esta ruta es para desbanear (pasa de la tabla de borrado lógico a la original) un usuario.
+adminRouter.patch("/users/desban/:userType/:id", handlerToDesban);
 
 module.exports = adminRouter;
