@@ -58,8 +58,9 @@ function App() {
         <Route path="/admin" element={<Admin/>}/>
         <Route path="/home/talento" element={<HomeTalento/>}/>
         <Route path="/report" element={<Report/>}/>
-         <Route path="/hiredtalent" element={<HiredTalent/>}/>
-            <Route path="/company/updateEvent" element={<EventUpdate/>} />
+        <Route path="/company/hiredtalent" element={<HiredTalent/>}/>
+        <Route path="/company/finishedEvents" element={<FinishedEvents/>}/>
+        <Route path="/company/updateEvent" element={<EventUpdate/>} />
       </Routes>
     </>
   );
