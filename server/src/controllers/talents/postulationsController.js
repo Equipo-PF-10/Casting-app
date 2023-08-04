@@ -319,6 +319,12 @@ const getContactedByCompany = async (idCompany) => {
   }
 };
 
+// Función controller para obtener todos los contratados de una empresa.
+const getHiredByCompany = async (idCompany) => {
+  try {
+  } catch (error) {}
+};
+
 module.exports = {
   getAllApplied,
   createApplied,
@@ -332,4 +338,5 @@ module.exports = {
   getAllHiredTalents,
   getAllContactedTalents,
   getContactedByCompany,
+  getHiredByCompany,
 };
