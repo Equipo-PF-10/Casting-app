@@ -1,33 +1,43 @@
-import styles from './HomeEvent.module.css';
+import styles from "./HomeEvent.module.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { edit_event_by_id } from '../../../redux/actions';
+import { useDispatch, useSelector, connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { close_event_by_id, getAllEvents, get_event_by_id } from "../../../redux/actions";
+import { useEffect } from "react";
+
+
 
 const HomeEvent = (props) => {
   const dispatch = useDispatch();
-  console.log(props.id);
+  const navigate=useNavigate();
 
   const handleClickEditEvent = () => {
-    //despachar la action
-    dispatch(edit_event_by_id(props.id))
-  }
+    //navigate(`/company/editEvent/${props.id}`)
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.fonts}>
         <Link to={`/${props.url}/${props.id}`}>
           <h2 className={styles.text}>{props.title}</h2>
           <h5 className={styles.text}>{props.subTitle}</h5>
+          <h5 className={styles.text}>{props.active}</h5>
         </Link>
-      </div >
+      </div>
       <div className={styles.options}>
-        <button className={styles.buttonEdit} onClick={() => {handleClickEditEvent}}>Editar Evento</button>
-        <button className={styles.buttonClose}>Cerrar Evento</button>
+        <button className={styles.buttonEdit} onClick={handleClickEditEvent}>
+          Editar Evento
+        </button>
+        <button className={styles.buttonClose} onClick={() => props.handleDelete(props.id)}>
+          Finalizar Evento
+        </button>
       </div>
     </div>
   );
 };
 
 export default HomeEvent;
+
 
 //todo: Rutas de Eventos
 //mainRouter.use("/events", eventRouter);
@@ -44,3 +54,4 @@ export default HomeEvent;
 
 //? Esta ruta hace el borrado logico de un evento por su id.
 //eventRouter.delete("/:id", handlerDeleteEventById);
+

@@ -1,8 +1,17 @@
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral"
 import styles from "./Report.module.css"
 import { useState } from "react"
+import axios from "axios"
 
 const Report = () => {
+
+    //URLs
+
+    const URLTalent = "http://localhost:3001/talents/report"
+
+    const URLCompany = "http://localhost:3001/companies/report"
+
+    // Estados
 
     const initialState = {
         idCompany: "",
@@ -19,10 +28,14 @@ const Report = () => {
 
     const userType = localStorage.getItem("userType");
 
+    let URL = "";
+
     if(userType === "talent"){
         input.idTalent = userId
+        URL = URLTalent
     } else {
         input.idCompany = userId;
+        URL = URLCompany;
     }
 
     // Handlers
@@ -32,13 +45,22 @@ const Report = () => {
         setInput({...input, [name]: value})
     }
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await axios.post(URL, input)
+        } catch (error) {
+            console.log(Error);
+        }
+    }
+
 
     return(
         <section className={styles.section}>
             <NavBarLateral/>
             <section className={styles.fromSection}>
                 <h1>Reporte</h1>
-                <form action="">
+                <form action="" method="POST" onSubmit={handleSubmit}>
                     <article className={styles.inputSection}>
                         <label htmlFor="">Tipo de Reporte</label>
                         <select name="" id="" onChange={handlerChange}>

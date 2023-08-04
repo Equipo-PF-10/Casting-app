@@ -11,12 +11,14 @@ const companyFormRouter = require("./forms/companyFormRouter");
 const eventFormRouter = require("../routes/forms/eventFormRouter");
 const companyReviewRouter = require("./talents/companyReviewRouter");
 const talentReviewRouter = require("./companies/talentReviewRouter");
-
+const reportRouter = require("./report/reportRouter")
 const paymentRouter = require("./payments/paymentRouter");
 const companyPaymentsRouter = require("./payments/companyPaymentsRouter");
 
 const companyTalentContact = require("./companies/companyTalentRouter");
 const adminRouter = require("./admin/adminRouter");
+
+const plansRouter = require("./plans/plansRouter");
 
 
 //const loginSignupRouter = require("./login-sigup/loginSignupRouter");
@@ -32,11 +34,13 @@ mainRouter.use("/companies/favorites", talentsFavoriteRouter);
 mainRouter.use("/companies/plan", conditionPlanRouter);
 mainRouter.use("/companies/reviews", talentReviewRouter);
 mainRouter.use("/companies/contact", companyTalentContact);
+mainRouter.use("companies/report", reportRouter)
 mainRouter.use("/companies", companyRouter);
 
 //? Rutas de Talentos
 mainRouter.use("/talents/favorites", companyFavoriteRouter);
 mainRouter.use("/talents/reviews", companyReviewRouter);
+mainRouter.use("talents/report", reportRouter)
 mainRouter.use("/talents", talentRouter);
 
 //todo: Rutas de Eventos
@@ -61,5 +65,7 @@ mainRouter.use("/company/payments", companyPaymentsRouter);
 //* Rutas de Admin.
 mainRouter.use("/admin", adminRouter);
 
+// Rutas de Planes.
+mainRouter.use("/payment/plans", plansRouter);
 
 module.exports = mainRouter;

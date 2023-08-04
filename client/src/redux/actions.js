@@ -13,6 +13,8 @@ export const GET_COMPANY_BY_ID="GET_COMPANY_BY_ID";
 export const GET_COMPANY_ID="GET_COMPANY_ID";
 export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
+export const GET_ALL_POSTULANT_FAV = "GET_ALL_POSTULANT_FAV";
+export const DELETE_POSTULANT_FAV = "DELETE_POSTULANT_FAV";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
 export const DELETE_POSTULANT_BY_ID = "DELETE_POSTULANT_BY_ID";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
@@ -219,7 +221,8 @@ export const getAllEvents = () => {
 export const getEventsPremium = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/events/premium");
+      const response=await axios.get("http://localhost:3001/events/premium");
+      console.log(response);
       return dispatch({ type: GET_EVENTS_PREMIUM, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -244,11 +247,12 @@ export const edit_event_by_id = (id) => {
   };
 };
 
-export const close_event_by_id = (id) => {
+export const close_event_by_id = (id, companyId) => {
   return async (dispatch) => {
     try {
-      const response = await axios.delete(`http://localhost:3001/events/${id}`);
-      return dispatch({ type: CLOSE_EVENT, payload: response.data });
+      const response=await axios.delete(`http://localhost:3001/events/${id}`);
+      const eventDetail = await axios.get(`http://localhost:3001/events/${companyId}`);
+      return dispatch({ type: CLOSE_EVENT, payload: eventDetail.data });
     } catch (error) {
       return dispatch({
         type: "ERROR",
@@ -525,11 +529,12 @@ export const message_error_postulate  = (payload) => {
     });
   };
 };
-/*   FALTA LA RUTA
-export const get_all_favorite_postulant = () => {
+
+export const get_all_favorite_postulants = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/companies/favorites");
+      const response = await axios.get(`http://localhost:3001/companies/favorites/${id}`);
+      console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULANT_FAV, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -539,11 +544,11 @@ export const get_all_favorite_postulant = () => {
     }
   };
 };
-*/
-export const get_favorite_postulant_by_name = (name) => {
+
+export const get_favorite_postulant_by_name = (id, name) => {
   return async (dispatch) => {
     try {                    //PROBAR LA RUTA
-      let response = await axios.get("http://localhost:3001/companies/favorites/?name=" + name);
+      let response = await axios.get(`http://localhost:3001/companies/favorites/${id}/?name=${name}`);
       //console.log(response + 'estoy en action');
       return dispatch({
         type: GET_POSTULANT_FAV_BY_NAME,
@@ -558,20 +563,18 @@ export const get_favorite_postulant_by_name = (name) => {
   };
 };
 
-/* PROBAR RUTA EN EL BACK
-export const delete_favorite_postulant = () => {
+
+export const add_and_delete_favorite_postulant = (id_talent, id_company) => {
   let endpoint = "http://localhost:3001/companies/favorites";
   return async (dispatch) => {
     try {
-      const { data } = await axios.delete(endpoint, {
-        data: { TalentId:id_evento, CompanyId:id_talent }, 
-        headers: {
-          "Content-Type": "application/json", 
-        },
+      const { data } =  await axios.post(endpoint, {
+        TalentId: id_talent, CompanyId: id_company  
       });
+      const allFavorites = await axios.get(`http://localhost:3001/companies/favorites/${id_company}`);
       return dispatch({
         type: DELETE_POSTULANT_FAV,
-        payload: data,
+        payload: allFavorites.data,
       });
     } catch (error) {
       return dispatch({
@@ -582,7 +585,6 @@ export const delete_favorite_postulant = () => {
   };
 };
 
-*/
 
 export const send_email_message = (payload) => {
   return (dispatch) => {

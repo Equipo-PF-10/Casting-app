@@ -2,27 +2,25 @@ import styles from "./HomeItemList.module.css";
 import HomeItem from "./HomeItem/HomeItem.jsx";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_favorite_postulant_by_name } from "../../redux/actions";
+import { get_favorite_postulant_by_name, get_all_favorite_postulants } from "../../redux/actions";
 
 const HomeItemList = (props) => {
   const dispatch = useDispatch();
-  //const allFavoritePostulants = useSelector((state) => state.allFavoritePostulants);
-  //const allFavoritePostulantsFiltered = useSelector((state) => state.allFavoritePostulantsFiltered);
-  //const filtersFavoritePostulants = useSelector((state) => state.filtersFavoritePostulants);
+
+  const filters = useSelector((state) => state.filtersFavoritePostulants);
   const [input, setInput] = useState("");
 
   const handleChange = (event) => setInput(event.target.value);
 
+  //Buscar favorito por nombre
   const handleClick = (event) => {
-    //Despachar la action para buscar por nombre
-    //dispatch(get_favorite_postulant_by_name(input));
+    dispatch(get_favorite_postulant_by_name(props.id_company, input));
   };
 
-  /* ESPERAR LA RUTA Y PROBAR EN HOMECOMPANY
-  useEffect(() => {
-    get_all_favorite_postulant();
-  },[])
-  */
+  //Recargar Postulantes
+  const handleClickRefresh = (event) => {
+    dispatch(get_all_favorite_postulants(props.id_company));
+  }
 
   return (
     <div className={styles.container}>
@@ -50,9 +48,9 @@ const HomeItemList = (props) => {
         {/*BOTON RECARGAR*/}
         <div>
           <button
-            // onClick={(event) => {
-            //   handleClick(event);
-            // }}
+            onClick={(event) => {
+              handleClickRefresh(event);
+            }}
             className={styles.recargar}
           >
             <svg
@@ -73,14 +71,21 @@ const HomeItemList = (props) => {
           </button>
         </div>
       </div>
-      <h1 className={styles.text}>{props.title}</h1>
-      {/* filtersFavoritePostulants ? <HomeItem allFavoritePostulantsFiltered={allFavoritePostulantsFiltered} : <HomeItem allFavoritePostulants={allFavoritePostulants} /> */}
+      {/* <h1 className={styles.text}>{props.title}</h1> */}
+      {filters ? 
+          props.allFavoritePostulantsFiltered?.map((talent) => 
+          (<HomeItem talent={talent} id_company={props.id_company}/>))
+      : 
+      props.allFavoritePostulants?.map((talent) => 
+          (<HomeItem talent={talent} id_company={props.id_company}/>))
+      }
+      
+      {/* <HomeItem title="Title" />
       <HomeItem title="Title" />
       <HomeItem title="Title" />
       <HomeItem title="Title" />
       <HomeItem title="Title" />
-      <HomeItem title="Title" />
-      <HomeItem title="Title" />
+      <HomeItem title="Title" /> */}
     </div>
   );
 };
@@ -91,6 +96,5 @@ export default HomeItemList;
 mainRouter.use("/companies/favorites", talentsFavoriteRouter);
 ? Esta ruta es para encontrar todos los talentos favoritos de una empresa por Id. También se puede buscar por name mediante query.
 companyRouter.get("/:id", handleGetFavoritesTalentsById);
-
 
 */

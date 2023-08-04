@@ -16,11 +16,11 @@ export default function User() {
       <div className={styles.card}>
         <div className={styles.image}>
           {company.image ? (
-            <img src={company.image} alt="Profile Picture" />
+            <img style={{width:"200px"}} src={company.image} alt="Profile Picture" />
           ) : (
             <svg
-              width="220"
-              height="220"
+              width="200"
+              height="200"
               viewBox="0 0 187 187"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

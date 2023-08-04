@@ -5,13 +5,11 @@ import { get_talent_by_id } from "../../redux/actions";
 import LogoutButton from "../../Components/LogoutButton/LogoutButton";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {useState, useEffect} from "react";
 
 const HomeTalento = () => {
 
     const dispatch = useDispatch()
-
-    const [events, setEvents] = useState([])
 
     // UserInfo
 
@@ -25,31 +23,96 @@ const HomeTalento = () => {
 
     //? const URLCompanyContact = `http://localhost:3001/companies/talentContact/${userId}`
 
-    const URLAppliedEvents = `localhost:3001/applied/talent/${userId}`
+    // Todos los Eventos
 
-    // Eventos
+    const [allEvents, setAllEvents] = useState([])
 
-    const allEvents = useSelector((state) => state.allEvents)
+    useEffect(() => {
+        const getAllEvents = async () => {
+            try {
+                const response = await axios.get("http://localhost:3001/events");
+                const data = response.data;
+                setAllEvents(data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getAllEvents()
+    }, [])
 
-    console.log("allEvents: ", allEvents);
+    const Events = allEvents.map((evento) => (
+        <NavLink key={evento.id} className={Styles.link}>
+            <li>
+                <h2>{evento.name}</h2>
+                <p>{evento.shortDescription}</p>
+                <p>{evento.habilityRequired.join(", ")}</p>
+            </li>
+        </NavLink>
+    ))
+
+    // Eventos Aplicados
+
+    const [events, setEvents] = useState([])
+
+    const [status, setStatus] = useState("")
+
+
+    const URLAppliedEvents = `http://localhost:3001/applied/talent/${userId}`;
 
     useEffect(() => {
         const getEvents = async () => {
-            const response = await axios.get(URLAppliedEvents)
-            setEvents(response.data)
-        }
-        getEvents()
-    }, [URLAppliedEvents])
-    
-    const eventsRender = events.map((evento, index) => (
-        <NavLink to="" key={index} className={Styles.link}>
-            <li className={Styles.infoEvents}>
-                <h2>{evento.name}</h2>
-                <h5>{evento.habilityRequired.join(", ")}</h5>
-                <p>{evento.shortDescription}</p>
+          try {
+            const response = await axios.get(URLAppliedEvents);
+            const data = response.data;
+            const eventsIds = data.map(item => item.EventId);
+            setEvents(eventsIds);
+            const status = data.map(item => item.status);
+            setStatus(status)
+          } catch (error) {
+            console.error('Error al obtener los eventos:', error);
+          }
+        };
+        getEvents();
+      }, [URLAppliedEvents]);
+
+    // Encontrar Eventos Aplicados
+
+    const [eventData, setEventData] = useState([]);
+
+    useEffect(() => {
+        const findEventById = async (id) => {
+            try {
+              const response = await axios.get(`http://localhost:3001/events/${id}`);
+              return response.data;
+            } catch (error) {
+              console.log(error);
+              return null;
+            }
+          };
+
+          const fetchEventsData = async () => {
+            try {
+              const eventPromises = events.map((eventId) => findEventById(eventId));
+              const eventResponses = await Promise.all(eventPromises);
+              setEventData(eventResponses);
+            } catch (error) {
+              console.log(error);
+            }
+          };
+      
+          fetchEventsData();
+    },[events])
+
+    const eventInfo = eventData.map((event,index) => (
+        <NavLink key={event.id} className={Styles.link}>
+            <li className={Styles.aplication}>
+                <h4>{event.name}</h4>
+                <h4>{status[index]}</h4>
             </li>
         </NavLink>
-    )) 
+    ))
+
+    // Compañias en contacto
 
     return (
         <div className={Styles.div}>
@@ -94,7 +157,7 @@ const HomeTalento = () => {
                         <h3>Empresas que te han contactado</h3>
                         <ul>
                             <NavLink to="/company/id" className={Styles.link}>
-                                <li>
+                                <li >
                                     Compañia 1
                                 </li>
                             </NavLink>
@@ -112,34 +175,19 @@ const HomeTalento = () => {
                     </article>
                     <article className={Styles.info}>
                         <h3>Tus Eventos</h3>
-                        <ul>
-                            <NavLink to="/event/id" className={Styles.link}>
-                                <li>
-                                    Evento 1
-                                </li>
-                            </NavLink>
-                            <NavLink to="/event/id" className={Styles.link}>
-                                <li>
-                                    Evento 2
-                                </li>
-                            </NavLink>
-                            <NavLink to="/event/id" className={Styles.link}>
-                                <li>
-                                    Evento 3
-                                </li>
-                            </NavLink>
+                        <ul className={Styles.yourEvents}>
+                            {eventInfo.length > 0 ? eventInfo : <h4>No tienes postulaciones activas</h4>}
                         </ul>
                     </article>
                 </article>
                 <article className={Styles.eventos}>
                     <h1>Últimas publicaciones</h1>
                     <ul className={Styles.eventList}>
-                        {eventsRender}
+                        {Events}
                     </ul>
                 </article>
             </section>
         </div>
     )
 }
-
 export default HomeTalento

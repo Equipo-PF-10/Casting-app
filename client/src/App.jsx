@@ -21,11 +21,13 @@ import PaypalPremiumPlan from "./Views/PaymentPlans/PaypalPremiumPlan";
 import PaypalBasicPlan from "./Views/PaymentPlans/PaypalBasicPlan";
 import SendPersonalized from "./Components/mail/sendContactTalent";
 import Report from "./Views/Report/Report";
-
+import HiredTalent from "./Views/HiredTalent/HiredTalent";
 import Admin from "./Views/Admin/Admin";
 import Review from "./Views/Review/Review"
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
 import HomeTalento from "./Views/Home/HomeTalento";
+import EventUpdate from "./Components/EventForm/EventUpdate";
+import FinishedEvents from "./Views/FinishedEvents/FinishedEvents";
 
 
 function App() {
@@ -49,15 +51,17 @@ function App() {
         <Route path="/form/company" element={<FormEmpresa />} />
         <Route path="/form/talent" element={<FormTalento />} />
         <Route path="/NavBarLateral" element={<NavBarLateral />} />
-        <Route path="/home/talent" element={<Home type="talent"/>} />
         {/* <Route path="/home/company" element={<Home type="company"/>} /> */}
         <Route path="/home/company" element={<HomeCompany/>} />
         <Route path="/cloud" element={<Cloudinary/>}/>
         <Route path="/contact" element={<SendPersonalized/>} />
         <Route path="/review" element={<Review/>}/>
         <Route path="/admin" element={<Admin/>}/>
-        <Route path="/home/talento" element={<HomeTalento/>}/>
+        <Route path="/home/talent" element={<HomeTalento/>}/>
         <Route path="/report" element={<Report/>}/>
+        <Route path="/company/hiredtalent" element={<HiredTalent/>}/>
+        <Route path="/company/finishedEvents" element={<FinishedEvents/>}/>
+        <Route path="/company/updateEvent" element={<EventUpdate/>} />
       </Routes>
     </>
   );
