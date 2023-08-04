@@ -52,6 +52,7 @@ const initialState = {
   companyById: {},
   allFavoritePostulants: [],
   allFavoritePostulantsFiltered: [],
+  allPostulantsContacted: [],
   idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
   messageRegistered: {},
@@ -358,6 +359,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
         filtersFavoritePostulants: true,
         allFavoritePostulantsFiltered: payload,
       };
+      /* ESPERANDO RUTA
+      case GET_ALL_POSTULANTS_CONTACTED_BY_ID:   
+        return {
+          ...state,
+          allPostulantsContacted: payload,
+        };
+      */
     case ERROR_POSTULATE:
       return {
         ...state,

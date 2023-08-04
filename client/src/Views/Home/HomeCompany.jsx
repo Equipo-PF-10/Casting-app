@@ -44,10 +44,10 @@ export default function HomeCompany() {
     dispatch(get_all_favorite_postulants(id_company));
   }, [dispatch]);
 
-  //Traer todos los contactos
+  //Traer todos los talentos contactos
   /*
     useEffect(() => {
-        dispatch(getAllContactados());
+        dispatch(get_all_contacted_talents_by_id(id_company));
     },[dispatch])
 */
   return (

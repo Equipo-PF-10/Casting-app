@@ -563,7 +563,6 @@ export const get_favorite_postulant_by_name = (id, name) => {
   };
 };
 
-
 export const add_and_delete_favorite_postulant = (id_talent, id_company) => {
   let endpoint = "http://localhost:3001/companies/favorites";
   return async (dispatch) => {
@@ -585,7 +584,6 @@ export const add_and_delete_favorite_postulant = (id_talent, id_company) => {
   };
 };
 
-
 export const send_email_message = (payload) => {
   return (dispatch) => {
     return dispatch({
@@ -595,4 +593,19 @@ export const send_email_message = (payload) => {
   };
 };
 
-
+/* ESPERANDO RUTA
+export const get_all_postulants_contacted_by_id = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`http://localhost:3001/applied/contact/${id}`); //VEIFICAR RUTA
+      //console.log(response.data);
+      return dispatch({ type: GET_ALL_POSTULANTS_CONTACTED_BY_ID, payload: response.data });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al obtener los postulantes favoritos!",
+      });
+    }
+  };
+};
+*/
