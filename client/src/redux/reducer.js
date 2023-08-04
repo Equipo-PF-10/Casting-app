@@ -17,6 +17,7 @@ import {
   GET_ALL_POSTULATIONS,
   GET_POSTULANTS_BY_NAME,
   DELETE_POSTULANT_BY_ID,
+  DELETE_POSTULANT_FAV,
   GET_TALENT_BY_ID,
   GET_ALL_TALENTS,
   GET_ALL_POSTULANT_FAV,
@@ -340,6 +341,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
         imageUrl: payload,
       }
     case GET_ALL_POSTULANT_FAV:   
+      return {
+        ...state,
+        allFavoritePostulants: payload,
+        allFavoritePostulantsFiltered: payload,
+      };
+    case DELETE_POSTULANT_FAV:   
       return {
         ...state,
         allFavoritePostulants: payload,

@@ -14,6 +14,7 @@ export const GET_COMPANY_ID="GET_COMPANY_ID";
 export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
 export const GET_ALL_POSTULANT_FAV = "GET_ALL_POSTULANT_FAV";
+export const DELETE_POSTULANT_FAV = "DELETE_POSTULANT_FAV";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
 export const DELETE_POSTULANT_BY_ID = "DELETE_POSTULANT_BY_ID";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
@@ -570,9 +571,10 @@ export const add_and_delete_favorite_postulant = (id_talent, id_company) => {
       const { data } =  await axios.post(endpoint, {
         TalentId: id_talent, CompanyId: id_company  
       });
+      const allFavorites = await axios.get(`http://localhost:3001/companies/favorites/${id_company}`);
       return dispatch({
         type: DELETE_POSTULANT_FAV,
-        payload: data,
+        payload: allFavorites.data,
       });
     } catch (error) {
       return dispatch({

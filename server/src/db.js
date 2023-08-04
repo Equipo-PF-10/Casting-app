@@ -107,18 +107,19 @@ SubscriptionPayment.belongsTo(Company, {
 
 //! Relación de Reportes
 
-//Company.hasMany(Reports, {foreignKey: "CompanyId"});
-//Reports.belongsTo(Company);
+// Company.hasMany(Reports, {foreignKey: "CompanyId"});
+// Reports.belongsTo(Company);
 
-//Talent.hasMany(Report, {foreignKey: "TalentId"});
-//Reports.belongsTo(Talent)
+// Talent.hasMany(Report, {foreignKey: "TalentId"});
+// Reports.belongsTo(Talent)
 
-// Tabla que establece la relación uno a muchos  entre Talent y Contact, y también entre Contact y Company.
-ToContact.belongsTo(Talent, { foreignKey: "talentId" });
-ToContact.belongsTo(Company, { foreignKey: "companyId" });
 
-Talent.hasMany(ToContact, { foreignKey: "talentId" });
-Company.hasMany(ToContact, { foreignKey: "companyId" });
+// // Tabla que establece la relación uno a muchos  entre Talent y Contact, y también entre Contact y Company.
+// ToContact.belongsTo(Talent, { foreignKey: "talentId" });
+// ToContact.belongsTo(Company, { foreignKey: "companyId" });
+
+// Talent.hasMany(ToContact, { foreignKey: "talentId" });
+// Company.hasMany(ToContact, { foreignKey: "companyId" });
 
 module.exports = {
   ...models,

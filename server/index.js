@@ -15,11 +15,11 @@ const syncDB = async () => {
     // Primero crear empresas
     // await companiesFromApi();
 
+
     // Luego crear talentos
     // await talentsFromApi();
 
     // Finalmente, crear eventos
-
     // await eventsMocks();
 
     app.listen(process.env.PORT, () => {
