@@ -142,16 +142,16 @@ const updateEventById = async (id, updatedData) => {
 };
 
 // Función controller que devuelve un evento que coincida con el ID pasado por params.
-const getEventById = async (companyId) => {
+const getEventByCompanyId = async (companyId) => {
   try {
     //const foundInDb = await Event.findByPk(id)
-     const foundInDb = await Company.findByPk(companyId);
+    const foundInDb = await Company.findByPk(companyId);
 
-     const events = await Event.findAll({
-       where: {
-         CompanyId: companyId,
-       },
-     });
+    const events = await Event.findAll({
+      where: {
+        CompanyId: companyId,
+      },
+    });
 
     if (!foundInDb)
       throw new Error(
@@ -197,15 +197,27 @@ const getEventForHability = async (hability) => {
   }
 };
 
+// Función controller que busca un evento por su Id.
+const getEventById = async (id) => {
+  try {
+    const foundEvent = await Event.findByPk(id);
 
+    if (!foundEvent) throw new Error(`No existe un evento con ID ${id}`);
+
+    return foundEvent;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 module.exports = {
   getAllEvents,
-  getEventById,
+  getEventByCompanyId,
   getEventsByName,
   createEvent,
   deleteEventById,
   updateEventById,
   getPremiumEvents,
-  getEventForHability
+  getEventForHability,
+  getEventById,
 };

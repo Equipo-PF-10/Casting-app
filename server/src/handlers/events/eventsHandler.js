@@ -7,6 +7,7 @@ const {
   updateEventById,
   getPremiumEvents,
   getEventForHability,
+  getEventByCompanyId,
 } = require("../../controllers/events/eventsController");
 
 // Función handler para obtener los eventos.
@@ -40,19 +41,19 @@ async function handlerGetAllEvents(req, res) {
 }
 
 // Función handler para obtener eventos por ID.
-const handlerGetEventById = async (req, res) => {
+const handlerGetEventByCompanyId = async (req, res) => {
   const { companyId } = req.params;
   //console.log(id + 'soy id');
 
   try {
-    const found = await getEventById(companyId);
+    const found = await getEventByCompanyId(companyId);
     if (!found) {
       res.status(400).json(error.message);
     }
 
     res.status(200).json(found);
   } catch (error) {
-    res.status(400).json({error: error.message});
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -108,7 +109,7 @@ const handlerDeleteEventById = async (req, res) => {
 
     // Si el evento existe, procedemos a eliminarlo
     //if (event) {
-      const eventDeleted = await deleteEventById(id);
+    const eventDeleted = await deleteEventById(id);
     //}
 
     res.status(200).send(`El evento con ID ${id} ha sido eliminado con éxito.`);
@@ -135,7 +136,6 @@ const handlerUpdateEventById = async (req, res) => {
   } = req.body;
 
   try {
-
     const updatedData = {
       name,
       image,
@@ -167,20 +167,23 @@ const handlerGetPremiumEvents = async (req, res) => {
   }
 };
 
-
 //obtener los eventos según la habilidad requerida
 const handlerHabilityRequerid = async (req, res) => {
   try {
     const { hability } = req.query;
 
     if (!hability) {
-      return res.status(400).json({ error: 'Debes proporcionar la habilidad requerida.' });
+      return res
+        .status(400)
+        .json({ error: "Debes proporcionar la habilidad requerida." });
     }
 
     const events = await getEventForHability(hability);
 
     if (events.length === 0) {
-      return res.status(404).json({ error: 'No se encontraron eventos para la habilidad requerida.' });
+      return res.status(404).json({
+        error: "No se encontraron eventos para la habilidad requerida.",
+      });
     }
 
     res.status(200).json(events);
@@ -189,7 +192,17 @@ const handlerHabilityRequerid = async (req, res) => {
   }
 };
 
+const handlerGetEventById = async (req, res) => {
+  const { id } = req.params;
 
+  try {
+    const eventById = await getEventById(id);
+
+    res.status(200).json(eventById);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
 
 module.exports = {
   handlerGetAllEvents,
@@ -199,4 +212,5 @@ module.exports = {
   handlerUpdateEventById,
   handlerGetPremiumEvents,
   handlerHabilityRequerid,
+  handlerGetEventByCompanyId,
 };
