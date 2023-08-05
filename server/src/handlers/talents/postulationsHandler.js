@@ -150,8 +150,6 @@ const handlerToContact = async (req, res) => {
 const handlerGetTalentAplications = async (req, res) => {
   const { id } = req.params;
 
-  console.log(req.params);
-
   try {
     const aplications = await getPostulationsByTalentId(id);
 
