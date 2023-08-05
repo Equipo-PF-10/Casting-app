@@ -174,7 +174,7 @@ export default function PaymentPlans() {
           </div>
         </div>
 
-      }
+      
     
 
       <div className={styles.middleSection}>
