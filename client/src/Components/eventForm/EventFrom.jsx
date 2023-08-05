@@ -111,9 +111,9 @@ const EventForm = () => {
       const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          console.log(input.image);
+          console.log(input);
           const response = (await axios.post(URL, input)).data;
-          console.log(response) //
+          //console.log(response) //
           if(response.id){
             mensaje_success_Toast();
           } else{
