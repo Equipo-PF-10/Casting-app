@@ -100,15 +100,15 @@ const handlerCreateEvent = async (req, res) => {
 // Función handler para borrar un evento.
 const handlerDeleteEventById = async (req, res) => {
   const { id } = req.params;
-
   try {
     // Verificar primero si el evento existe antes de intentar eliminarlo
-    const event = await getEventById(id);
-
+    //const event = await getEventById(id);
+    
     // Si el evento existe, procedemos a eliminarlo
-    if (event) {
+    //if (event) {
+      console.log(id);
       const eventDeleted = await deleteEventById(id);
-    }
+    //}
 
     res.status(200).send(`El evento con ID ${id} ha sido eliminado con éxito.`);
   } catch (error) {

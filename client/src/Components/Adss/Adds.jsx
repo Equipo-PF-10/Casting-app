@@ -14,7 +14,7 @@ import "swiper/css/scrollbar";
 function Adds() {
   const dispatch = useDispatch();
   const eventsPr = useSelector((state) => state.eventsPremium);
-  console.log(eventsPr);
+  //console.log(eventsPr);
 
   useEffect(() => {
     dispatch(getEventsPremium());
