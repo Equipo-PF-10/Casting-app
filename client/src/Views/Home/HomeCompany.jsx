@@ -33,6 +33,10 @@ export default function HomeCompany() {
   const allFavoritePostulantsFiltered = useSelector(
     (state) => state.allFavoritePostulantsFiltered
   );
+  const hiredTalents = useSelector(
+    (state) => state.hiredTalents
+  );
+console.log(hiredTalents);
 
   const handleDelete = (id) => {
     dispatch(close_event_by_id(id, id_company));
@@ -90,7 +94,6 @@ export default function HomeCompany() {
                 contactedTalents={allPostulantsContacted}
                 url={"model/profile"}
                 id_company={id_company}
-                id_event={eventDetail[0]?.id}
               />
             </div>
           </article>

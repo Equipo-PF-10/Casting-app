@@ -112,7 +112,7 @@ const handlerDeleteApplicantById = async (req, res) => {
     res
       .status(400)
       .send(
-        "El postulante que ha ingresado no existe o no está postulado al evento."
+        error.message
       );
   }
 };
@@ -165,9 +165,9 @@ const handlerGetTalentAplications = async (req, res) => {
 const handlerHireTalent = async (req, res) => {
   const { TalentId, EventId } = req.body;
   try {
-    await hireApplicant(TalentId, EventId);
+    const hired = await hireApplicant(TalentId, EventId);
 
-    res.status(200).send("El aplicante ha sido contratado con éxito.");
+    res.status(200).json("El aplicante ha sido contratado con éxito.");
   } catch (error) {
     res.status(400).json(error.message);
   }

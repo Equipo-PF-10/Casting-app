@@ -297,7 +297,7 @@ export const get_all_postulations = (fk) => {
   };
 };
 export const get_postulant_by_name = (fk, name) => {
-  let endpoint = `http://localhost:3001/applied/${fk}/?name=${name}`;
+  let endpoint = `http://localhost:3001/applied/company/${fk}/?name=${name}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -537,7 +537,7 @@ export const get_all_favorite_postulants = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/companies/favorites/${id}`);
-      console.log(response.data);
+      //console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULANT_FAV, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -612,16 +612,28 @@ export const get_all_postulants_contacted_by_id = (id) => {
 };
 
 export const add_hired = (id_talent, id_company, id_event) => {
+  let response = {};
   let endpoint = "http://localhost:3001/applied/hire";
   return async (dispatch) => {
     try {
-      await axios.post(endpoint, {
+      const hireds = await axios.post(endpoint, {
         TalentId: id_talent, EventId: id_event  
       });
       const allPostulantsContacted = await axios.get(`http://localhost:3001/applied/contacted/${id_company}`);
+      
+      const allContacteds = allPostulantsContacted.data;
+      const allHireds = hireds.data;
+      
+      console.log(allContacteds, allHireds);
+      
+      const response = {
+        allContacteds,
+        allHireds
+      }
+
       return dispatch({
         type: ADD_HIRED,
-        payload: allPostulantsContacted.data,
+        payload: response
       });
     } catch (error) {
       return dispatch({
@@ -633,13 +645,22 @@ export const add_hired = (id_talent, id_company, id_event) => {
 };
 
 export const refuse_postulant_contacted = (id_talent, id_company, id_event) => {
+  console.log(id_talent);
+  console.log(id_company);
+  console.log(id_event);
   let endpoint = "http://localhost:3001/applied/";
   return async (dispatch) => {
     try {
+      // await axios.delete(endpoint, {
+      //   TalentId: id_talent, EventId: id_event  
+      // });
       await axios.delete(endpoint, {
-        TalentId: id_talent, EventId: id_event  
+        data: {TalentId: id_talent, EventId: id_event},
+        headers: {
+          "Content-Type": "application/json", 
+        },
       });
-      const allPostulantsContacted = await axios.get(`http://localhost:3001/applied/contacted/${id_company}`);
+      let allPostulantsContacted = await axios.get(`http://localhost:3001/applied/contacted/${id_company}`);
       return dispatch({
         type: REFUSE_POSTULANT_CONTACTED,
         payload: allPostulantsContacted.data,
