@@ -13,6 +13,7 @@ const {
   getNameCompanies,
   getContactedByCompany,
   getHiredByCompany,
+  getApplicantsByCompany,
 } = require("../../controllers/talents/postulationsController");
 
 // Función handler para crear postulaciones.
@@ -230,6 +231,18 @@ const handlerGetHiredByCompany = async (req, res) => {
   }
 };
 
+// Función para traer todos los aplicantes al evento de una empresa.
+const handlerGetApplicantsByCompany = async (req, res) => {
+  const { idCompany } = req.params;
+  try {
+    const applicants = await getApplicantsByCompany(idCompany);
+
+    res.status(200).json(applicants);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   handlerGetAllApplied,
   handlerCreateApplied,
@@ -245,4 +258,5 @@ module.exports = {
   handlerGetNameOfCompaniesContacted,
   handlerGetContactedByCompany,
   handlerGetHiredByCompany,
+  handlerGetApplicantsByCompany,
 };
