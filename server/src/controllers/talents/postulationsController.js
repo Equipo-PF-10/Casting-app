@@ -4,6 +4,7 @@ const {
   Event,
   TalentApplied,
   ToContact,
+  Company
 } = require("../../db");
 
 // Función controller para obtener todas las postulaciones
@@ -284,6 +285,33 @@ const getAllContactedTalents = async () => {
   }
 };
 
+
+const getNameCompanies = async (appliedId) => {
+  try {
+    const talentWithApplied = await Talent.findOne({
+      where: { id: appliedId },
+      include: [
+        {
+          model: Applied,
+          where: { status: "Contactado" },
+          include: {
+            model: Event,
+            include: Company,
+          },
+        },
+      ],
+    });
+
+    if (!talentWithApplied || talentWithApplied.Applieds.length === 0) {
+      throw new Error("El appliedId no corresponde a ninguna postulación o no se encontró la información.");
+    }
+    const companies = talentWithApplied.Applieds.map((applied) => applied.Event.Company.name);
+    return companies;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getAllApplied,
   createApplied,
@@ -296,4 +324,5 @@ module.exports = {
   hireApplicant,
   getAllHiredTalents,
   getAllContactedTalents,
+  getNameCompanies
 };
