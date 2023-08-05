@@ -301,8 +301,8 @@ const getContactedByCompany = async (idCompany) => {
         },
       ],
     });
-
-    return events[0].Applieds;
+    const response = events[0].Applieds[0].Talents;
+    return response;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -324,7 +324,8 @@ const getHiredByCompany = async (idCompany) => {
       ],
     });
 
-    return events[0].Applieds;
+    const response = events[0].Applieds[0].Talents;
+    return response;
   } catch (error) {
     throw new Error(error.message);
   }
