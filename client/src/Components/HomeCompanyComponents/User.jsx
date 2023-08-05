@@ -15,7 +15,7 @@ export default function User() {
 
   
   const user_type = localStorage.getItem("userType");
-  console.log(user_type);
+  //console.log(user_type);
   let url_profile;
   //useEffect(()=>{
     if(user_type === "company"){

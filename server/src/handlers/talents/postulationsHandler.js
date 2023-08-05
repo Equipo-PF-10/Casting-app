@@ -139,8 +139,8 @@ const handlerGetApplicantsForEventByFk = async (req, res) => {
 const handlerToContact = async (req, res) => {
   const { TalentId, EventId } = req.body;
   try {
-    await applicantToContact(TalentId, EventId);
-    res.status(200).send("El postulante ha sido contactado con éxito.");
+    const contactedTalent = await applicantToContact(TalentId, EventId);
+    res.status(200).json(contactedTalent);
   } catch (error) {
     res.status(400).json(error.message);
   }

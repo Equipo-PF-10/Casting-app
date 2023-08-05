@@ -6,7 +6,7 @@ const {
   deleteEventById,
   updateEventById,
   getPremiumEvents,
-  getEventForHability
+  getEventForHability,
 } = require("../../controllers/events/eventsController");
 
 // Función handler para obtener los eventos.
@@ -41,11 +41,11 @@ async function handlerGetAllEvents(req, res) {
 
 // Función handler para obtener eventos por ID.
 const handlerGetEventById = async (req, res) => {
-  const { id } = req.params;
+  const { companyId } = req.params;
   //console.log(id + 'soy id');
 
   try {
-    const found = await getEventById(id);
+    const found = await getEventById(companyId);
     if (!found) {
       res.status(400).json(error.message);
     }
@@ -104,12 +104,12 @@ const handlerDeleteEventById = async (req, res) => {
 
   try {
     // Verificar primero si el evento existe antes de intentar eliminarlo
-    const event = await getEventById(id);
+    //const event = await getEventById(id);
 
     // Si el evento existe, procedemos a eliminarlo
-    if (event) {
+    //if (event) {
       const eventDeleted = await deleteEventById(id);
-    }
+    //}
 
     res.status(200).send(`El evento con ID ${id} ha sido eliminado con éxito.`);
   } catch (error) {
@@ -198,5 +198,5 @@ module.exports = {
   handlerDeleteEventById,
   handlerUpdateEventById,
   handlerGetPremiumEvents,
-  handlerHabilityRequerid
+  handlerHabilityRequerid,
 };

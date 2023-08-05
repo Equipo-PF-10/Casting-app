@@ -17,8 +17,8 @@ eventRouter.get("/habilityRequired", handlerHabilityRequerid);
 //? Esta ruta trae todos los eventos que pertenecen a empresas PREMIUM.
 eventRouter.get("/premium", handlerGetPremiumEvents);
 
-//? Esta ruta busca un evento por su id.
-eventRouter.get("/:id", handlerGetEventById);
+//? Esta ruta busca un evento por ID de la empresa.
+eventRouter.get("/:companyId", handlerGetEventById);
 
 //? Esta ruta actualiza informacion de un evento por su id.
 eventRouter.put("/:id", handlerUpdateEventById);
