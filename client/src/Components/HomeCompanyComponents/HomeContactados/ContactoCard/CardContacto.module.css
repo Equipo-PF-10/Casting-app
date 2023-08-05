@@ -69,3 +69,126 @@ a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
+
+/* MODAL PARA EL CASO DE CONTRATAR */
+.containerModalOpened {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalConfirmationOpened {
+    width: 35%;
+    height: 25%;
+    background-color: whitesmoke;
+    border-radius: 20px;    
+    display: grid;
+    grid-template-rows: 40% 60%;
+    align-items: center;
+    text-align: center; 
+    position: relative;
+    border: 1px solid black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.599);
+    &:hover {
+        border: 1px solid blue;
+    }
+    /* transition: transform 1s; */
+    transform: translateY(0%);
+  }
+  
+  
+  .head3 {
+    height: 15vh;
+    text-align: center;
+  }
+  .modalConfirmationOpened h4 {
+    margin-top: 40px;
+    color: black
+  }
+  .head3 span {
+    color: var(--color-success)
+  }
+  .head3 hr {  
+  color: var(--color-primario);
+  width: 67vh;
+  margin: auto;
+  border-top: 4px solid;
+  margin-top: 10px;
+  }
+  
+  .bottom3 {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-left: 90px;
+  }
+  .bottom3 button {
+    width: 20vh;
+    height: 3.4vh;
+    font-size: 20px;
+  }
+  
+  .buttonConfirmar {
+    background-color: var(--color-success);
+    color: white;
+    font-size: 20px;
+    width: 20vh;
+    &:hover{
+      border: solid 1px black;
+      background-color: white;
+      color: var(--color-success);
+    }
+  }
+  .buttonRegresar {
+    background-color: var(--color-error);
+    color: white;
+    margin-top: 20px;
+    font-size: 20px;
+    width: 20vh;
+    &:hover{
+      border: solid 1px black;
+      background-color: white;
+      color: var(--color-error);
+    }
+  }
+
+  /* Modal Closed */
+
+.containerModalClosed {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalClosed {
+  width: 40%;
+  height: 52%;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  border: 3px solid black;
+  &:hover {
+    box-shadow: 0 0 10px black;
+  }
+  transition: transform 1s;
+  transform: translateY(-200%);
+}
