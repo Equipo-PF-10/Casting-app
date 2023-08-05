@@ -23,6 +23,12 @@ const postulationRouter = Router();
 //? Esta ruta es para obtener todos los aplicantes CONTACTADOS por una empresa.
 postulationRouter.get("/contacted/:idCompany", handlerGetContactedByCompany);
 
+//? Esta ruta es para agregar a un postulante como CONTACTADO.
+postulationRouter.get("/contacted", handlerGetAllContactedTalents);
+
+//? Esta ruta es para agregar un postulante como CONTACTADO.
+postulationRouter.post("/contact", handlerToContact);
+
 //? Esta ruta es para obtener todos los CONTRATADOS por una empresa.
 postulationRouter.get("/hired/:idCompany", handlerGetHiredByCompany);
 
@@ -32,14 +38,6 @@ postulationRouter.get("/hired", handlerGetAllHiredTalents);
 //? Esta ruta es para agregar a un postulante comoo CONTRATADO.
 postulationRouter.post("/hire", handlerHireTalent);
 
-//? Esta ruta es para obtener todos los CONTACTADOS por una empresa.
-postulationRouter.get("/contacted/:idCompany", handlerGetContactedByCompany);
-
-//? Esta ruta es para agregar a un postulante como CONTACTADO.
-postulationRouter.get("/contacted", handlerGetAllContactedTalents);
-
-//? Esta ruta es para agregar un postulante como CONTACTADO.
-postulationRouter.post("/contact", handlerToContact);
 
 //? Esta ruta es para buscar nombre de las empresas que han contactado a un POSTULANTE.
 postulationRouter.get(
@@ -57,7 +55,7 @@ postulationRouter.get("/talent/:id", handlerGetTalentAplications);
 postulationRouter.get("/name/:EventId", handlerGetApplicantsByName);
 
 //? Esta ruta busca los postulantes que tiene una empresa a su evento.
-postulationRouter.get("/:idCompany", handlerGetApplicantsByCompany);
+postulationRouter.get("/company/:idCompany", handlerGetApplicantsByCompany);
 
 //? Esta ruta busca una postulacion por su id.
 postulationRouter.get("/:id", handlerGetApplicantById);

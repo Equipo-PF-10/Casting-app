@@ -77,6 +77,7 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
+  
   switch (type) {
     case REGISTER_MODEL_OR_COMPANY:
       return {
@@ -379,7 +380,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
       case ADD_HIRED:   
         return {
           ...state,
-          allPostulantsContacted: payload,
+          allPostulantsContacted: payload.allContacteds,
+          hiredTalents: payload.allHireds
         };
     case ERROR_POSTULATE:
       return {
