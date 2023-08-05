@@ -8,9 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { send_email_message } from "../../redux/actions";
 
-
 export default function SearchBarCompany() {
-
   const modalMailMessage = useSelector((state) => state.modalMailMessage);
   const dispatch = useDispatch();
 
@@ -28,29 +26,33 @@ export default function SearchBarCompany() {
       setCompany(data);
     });
   }, [setCompany, id]);
-  
+
   const navigate = useNavigate();
   let error;
   const handleClickCreate = () => {
     if (company.plan === "PENDIENTE") {
-        error = "Antes de crear un evento debe adquirir un Plan.";
-        mensaje_error_Toast();
-    } else if(company.name === "" || company.name === null){
-        error = "Antes de crear un evento debe selecionar un nombre.";
-        mensaje_error_Toast();
-    } else if (company.country === "" || company.country === null){
+      error = "Antes de crear un evento debe adquirir un Plan.";
+      mensaje_error_Toast();
+    } else if (company.name === "" || company.name === null) {
+      error = "Antes de crear un evento debe selecionar un nombre.";
+      mensaje_error_Toast();
+    } else if (company.country === "" || company.country === null) {
       error = "Antes de crear un evento debe seleccionar un país.";
-        mensaje_error_Toast();
-    } else if (company.descriptionShort === "" || company.descriptionShort === null){
-      error = "Antes de crear un evento debe agregar una descripción a su perfil.";
-        mensaje_error_Toast();
+      mensaje_error_Toast();
+    } else if (
+      company.descriptionShort === "" ||
+      company.descriptionShort === null
+    ) {
+      error =
+        "Antes de crear un evento debe agregar una descripción a su perfil.";
+      mensaje_error_Toast();
     } else if (company.image === "" || company.image === null) {
       error = "Antes de crear un evento debe agregar una imagen a su perfil.";
       mensaje_error_Toast();
     } else {
-        navigate("/company/create");
+      navigate("/company/create");
     }
-  }
+  };
 
   let currentToastId = null;
   //Evita que se renderice mas de 1 toast
@@ -79,12 +81,12 @@ export default function SearchBarCompany() {
     }
   };
 
-  useEffect(()=>{
-    if(modalMailMessage.length > 0){
-        mensaje_success_Toast_send_mail();
-        dispatch(send_email_message(""));
+  useEffect(() => {
+    if (modalMailMessage.length > 0) {
+      mensaje_success_Toast_send_mail();
+      dispatch(send_email_message(""));
     }
-},[modalMailMessage])
+  }, [modalMailMessage]);
 
   //Mostrar mensaje cuando se envie un mail de contacto al Postulante
   let currentToastIdSendMail = null;
@@ -112,17 +114,16 @@ export default function SearchBarCompany() {
       });
     }
   };
-  
+
   return (
     <div className={styles.container}>
-       
       <div className={styles.buttons}>
         <button onClick={handleClickCreate}>Crear Evento</button>
         <NavLink to="/company/finishedEvents">
-        <button>Eventos Finalizados</button>
+          <button>Eventos Finalizados</button>
         </NavLink>
         <NavLink to="/company/hiredtalent">
-        <button>Talentos Contratados</button>
+          <button>Talentos Contratados</button>
         </NavLink>
         <NavLink to="/company/plans">
           <button>Planes</button>
