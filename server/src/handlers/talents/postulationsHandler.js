@@ -216,7 +216,11 @@ const handlerGetCompanyHired = async (req, res) => {
   const { idCompany } = req.params;
   try {
     const hiredTalents = await getHiredByCompany(idCompany);
-  } catch (error) {}
+
+    res.status(200).json(hiredTalents);
+  } catch (error) {
+    res.status(400).json(error);
+  }
 };
 
 module.exports = {
