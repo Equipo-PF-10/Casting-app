@@ -11,7 +11,7 @@ const HomeTalento = () => {
     
     const userId = localStorage.getItem("user_id");
 
-    const [talent, setTalent] = useState({})
+    const [talent, setTalent] = useState({hability: []})
 
     useEffect(() => {
         const getTalent = async () => {
@@ -34,6 +34,8 @@ const HomeTalento = () => {
 
     const [allEvents, setAllEvents] = useState([])
 
+    const [filterEvents, setFilterEvents] = ([])
+
     useEffect(() => {
         const getAllEvents = async () => {
             try {
@@ -45,24 +47,69 @@ const HomeTalento = () => {
             }
         }
         getAllEvents()
-    }, [])
 
-    const Events = allEvents.map((evento) => (
-        <NavLink key={evento.id} className={Styles.link}>
+        if(talent && talent.hability && talent.hability.length !== 0){        
+        const eventsURL = `http://localhost:3001/events/habilityRequired?hability=${talent.hability[0]}`
+
+        const filteredEvents = async () => {
+            try {
+                const response = await axios.get(eventsURL);
+                const data = response.data;
+                setFilterEvents(data);
+            } catch (error) {
+                console.log(`No hay eventos para ti`);
+            }
+        }
+        filteredEvents();}
+
+    }, [setFilterEvents, talent])
+
+    const eventsPerHability = () => {
+        if(filterEvents && filterEvents.length !== 0){
+        const FilterEvents = filterEvents.map((evento) => (
+            <NavLink key={evento.id} className={Styles.link}>
             <li>
                 <h2>{evento.name}</h2>
                 <p>{evento.shortDescription}</p>
                 <p>{evento.habilityRequired.join(", ")}</p>
             </li>
         </NavLink>
+        ))
+        return FilterEvents
+    } else {
+        const FilterEvents = (
+            <h3>No hay eventos para ti</h3>
+        )
+        return FilterEvents
+    }
+
+    }
+
+    const Events = allEvents.map((evento) => (
+        <NavLink key={evento.id} className={Styles.link}>
+            <li>
+                <h2>{evento.name}</h2>
+                <p className={Styles.shortDescription}>{evento.shortDescription}</p>
+                <p>{evento.habilityRequired.join(", ")}</p>
+            </li>
+        </NavLink>
     ))
 
-    // Eventos Aplicados
+    const [showHabilityEvents, setShowHabilityEvents] = useState(true);
+
+    const handleMoveLeft = () => {
+      setShowHabilityEvents(true);
+    };
+  
+    const handleMoveRight = () => {
+      setShowHabilityEvents(false);
+    };
+
+    //? Eventos Aplicados
 
     const [events, setEvents] = useState([])
 
     const [status, setStatus] = useState("")
-
 
     const URLAppliedEvents = `http://localhost:3001/applied/talent/${userId}`;
 
@@ -82,7 +129,7 @@ const HomeTalento = () => {
         getEvents();
       }, [URLAppliedEvents]);
 
-    // Encontrar Eventos Aplicados
+    //! Encontrar Eventos Aplicados
 
     const [eventData, setEventData] = useState([]);
 
@@ -119,8 +166,6 @@ const HomeTalento = () => {
         </NavLink>
     ))
 
-    // Compañias en contacto
-
     return (
         <div className={Styles.div}>
             <NavBarLateral/>
@@ -128,7 +173,8 @@ const HomeTalento = () => {
                 <LogoutButton/>
             </section>
             <section className={Styles.section}>
-                <article className={Styles.container}>                                                       
+                <article className={Styles.container}>     
+                <NavLink to={`/model/profile/${userId}`}> 
                     <article className={Styles.card}>
                         <article  className={Styles.image}>
                             {talent.image ? <img src={talent.image} alt="Profile Picture"/> : 
@@ -160,24 +206,12 @@ const HomeTalento = () => {
                         </article>
                         {talent.name ? <h2>{talent.name}</h2> : <h2>Nombre Apellido</h2>}
                     </article>
+                </NavLink>                                                  
+
                     <article className={Styles.info}>
                         <h3>Empresas que te han contactado</h3>
-                        <ul>
-                            <NavLink to="/company/id" className={Styles.link}>
-                                <li >
-                                    Compañia 1
-                                </li>
-                            </NavLink>
-                            <NavLink to="/company/id" className={Styles.link}>
-                                <li>
-                                    Compañia 2
-                                </li>
-                            </NavLink>
-                            <NavLink to="/company/id" className={Styles.link}>
-                                <li>
-                                    Compañia 3
-                                </li>
-                            </NavLink>
+                        <ul className={Styles.info}>
+                            {}
                         </ul>
                     </article>
                     <article className={Styles.info}>
@@ -187,12 +221,23 @@ const HomeTalento = () => {
                         </ul>
                     </article>
                 </article>
-                <article className={Styles.eventos}>
-                    <h1>Últimas publicaciones</h1>
-                    <ul className={Styles.eventList}>
+                <article className={Styles.eventos} >
+                <button onClick={handleMoveLeft}>&larr; </button>
+                    <div style={{ display: showHabilityEvents ? 'block' : 'none' }}>
+                        <h2>Últimas publicaciones para ti</h2>
+                        <ul className={Styles.eventList}>
+                        {eventsPerHability()}
+                        </ul>
+                    </div>
+                    <div style={{ display: !showHabilityEvents ? 'block' : 'none' }}>
+                        <h1>Últimas publicaciones </h1>
+                        <ul className={Styles.eventList}>
                         {Events}
-                    </ul>
+                        </ul>
+                    </div>
+                    <button onClick={handleMoveRight}>&rarr;</button>
                 </article>
+
             </section>
         </div>
     )

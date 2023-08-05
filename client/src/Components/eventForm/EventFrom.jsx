@@ -11,11 +11,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 const EventForm = () => {
 
-  const root = useSelector((state) => state.userType);
-
   const URL = "http://localhost:3001/events/";
 
   const idUser = localStorage.getItem("user_id");
+  
   const imageURl = useSelector((state) => state.imageUrl);
 
   const company = `http://localhost:3001/companies/${idUser}`
@@ -32,7 +31,7 @@ const EventForm = () => {
     contact: [],
     email: "",
     num: "",
-    CompanyId: idUser,
+    CompanyId: "",
   };
 
     const optionshabilityRequired = [
@@ -69,10 +68,8 @@ const EventForm = () => {
       setBtn(false)
   }
 
-    initialState.idCompany = idUser;
-    initialState.image = imageURl;
+    input.CompanyId = idUser;
 
-    input.idCompany = idUser;
     input.image = imageURl;
 
     // Hability
@@ -181,7 +178,7 @@ const EventForm = () => {
     return(
 
     <div>
-      <NavBarLateral root={root} />
+      <NavBarLateral/>
       <div>
         <ToastContainer />
       </div>
