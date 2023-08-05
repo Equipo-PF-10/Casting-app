@@ -20,6 +20,7 @@ const CardContacto = (props) => {
   //Eliminar de la lista de contactos y postear en la de contratados (cambio en el estado status=Contactado a Contratado )
   const handleClickContratarConfirmation = () => {
     dispatch(add_hired(props.id_talent, props.id_company, props.id_event));
+    // AGREGAR UN TOASTIFY NOTIFICANDO LA CONTRATACION
     setModalContratar(false);
   }
   const handleClickRechazar = () => {
@@ -37,7 +38,7 @@ const CardContacto = (props) => {
     <div className={styles.container}>
       <div className={styles.fonts}>
         {/* REDIRIGIR AL PERFIL DEL CONTACTADO */}
-        <Link to={`${props.url}/${props.id_talent}`}>
+        <Link to={`http://localhost:5173/${props.url}/${props.id_talent}`}>
           <h2 className={styles.text}>{props.name}</h2>
           <h5 className={styles.text}>{props.habilities ? props.habilities.map((hability)=> `${hability} `) : null}</h5>
           {/*<h5 className={styles.text}>{props.habilities}</h5>*/}

@@ -7,17 +7,18 @@ const HomeContactos = (props) => {
         <h1>{props.title}</h1>
         <hr />
         {
-         props.contactedTalents ? props.contactedTalents.map((talent, index) => {
+         props.contactedTalents ? 
+         typeof props.contactedTalents === "object" ? props.contactedTalents.map((talent, index) => {
 
            return (
              <CardContacto
                key={index}
-               name={talent.name}
-               habilities={talent.hability}
+               name={talent.Talents[0]?.name}
+               habilities={talent.Talents[0]?.hability}
                url={props.url}
-               id_talent={talent.id}
+               id_talent={talent.Talents[0]?.id}
                id_company={props.id_company}
-               id_event={props.id_event}
+               id_event={talent.EventId}
              />
              //<CardContacto
              //  key = "2"
@@ -30,7 +31,10 @@ const HomeContactos = (props) => {
          })
        :
        <h4>En esta sección podrá visualizar a los postulantes a eventos que fueron Contactados.</h4>
+       :
+       <h4>En esta sección podrá visualizar a los postulantes a eventos que fueron Contactados.</h4>
       }
+      
     </div>
   );
 };

@@ -3,10 +3,10 @@
     transition: 0.5s;
     padding: 10px;
     /* background-color: red; */
-    height: 35%;
+    height: 30%;
     /* height:15vh; */
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 65% 35%;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.25);
     box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
@@ -16,29 +16,41 @@
 .fonts {
     /* background-color: blue; */
     width: 75vh;
+    height: 1vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding-bottom: 80px;
+}
+.fonts h2{
+    margin-bottom: 10px;
+}
+.fonts h5{
+    padding: 15px;
 }
 .options {
     /* background-color: white; */
-    width: 20vh;
+    width: 25vh;
     border-left: 3px solid rgba(0, 0, 0, 0.25);
-    height: 2vh;
-    padding-bottom: 120px;
+    height: 1vh;
+    margin-left: 50px; 
+    display: grid;
+    grid-template-columns: auto auto; 
+    padding-bottom: 80px;
 }
 
 .options button {
     width: 150px;
     height: 30px;
     font-size: 15px;
-    margin-bottom: 5px;
+    margin-left: 10px;
 }
 
 .buttonClose {
     background-color: var(--color-error);
     color: white;
-
+    margin-right: 10px;
     &:hover {
         background-color: white ;
     color:var(--color-error);

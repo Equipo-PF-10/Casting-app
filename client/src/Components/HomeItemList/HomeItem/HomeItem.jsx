@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./HomeItem.module.css";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { send_email_message } from "../../../redux/actions";
 import { add_and_delete_favorite_postulant } from "../../../redux/actions";
 
@@ -30,10 +31,12 @@ const HomeItem = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.text}>
+        <Link to={`http://localhost:5173/model/profile/${props.talent?.id}`}>
         <h3 className={styles.text}>{props.talent?.name}</h3>
         <h3 className={styles.text}>
           {props.talent?.hability?.map((hability) => `${hability} `)}
         </h3>
+        </Link>
         {/* {props.title} */}
       </div>
       <div className={styles.options}>
