@@ -247,10 +247,12 @@ export const edit_event_by_id = (id) => {
   };
 };
 
-export const close_event_by_id = (id, companyId) => {
+export const close_event_by_id=(id,companyId) => {
+  //console.log(id);
+  //console.log(companyId);
   return async (dispatch) => {
     try {
-      const response=await axios.delete(`http://localhost:3001/events/${id}`);
+      await axios.delete(`http://localhost:3001/events/${id}`);
       const eventDetail = await axios.get(`http://localhost:3001/events/${companyId}`);
       return dispatch({ type: CLOSE_EVENT, payload: eventDetail.data });
     } catch (error) {

@@ -1,6 +1,7 @@
 const {
   Talent,
   Applied,
+  Company,
   Event,
   TalentApplied,
   ToContact,
@@ -175,10 +176,12 @@ const applicantToContact = async (TalentId, EventId) => {
           const CompanyId = event.CompanyId;
 
           await ToContact.create({
+            id: updatedPostulation.id,
             date: updatedPostulation.date,
             changeDate: new Date(),
-            talentId: TalentId,
+            active: updatedPostulation.active,
             companyId: CompanyId,
+            status: updatedPostulation.status,
             EventId: updatedPostulation.EventId,
           });
 
@@ -195,7 +198,6 @@ const applicantToContact = async (TalentId, EventId) => {
 // Función para encontrar postulaciones de un talento
 const getPostulationsByTalentId = async (TalentId) => {
   try {
-    
     const postulations = await Talent.findByPk(TalentId, {
       include: [
         {
@@ -207,11 +209,11 @@ const getPostulationsByTalentId = async (TalentId) => {
       ],
     });
 
-    if(!postulations){
-      throw new Error("No se encontraron postulaciones de este talento")
+    if (!postulations) {
+      throw new Error("No se encontraron postulaciones de este talento");
     }
 
-    return postulations.Applieds
+    return postulations.Applieds;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -238,7 +240,7 @@ const hireApplicant = async (TalentId, EventId) => {
           // Actualizar también el estado en la tabla ToContact
           await ToContact.update(
             { status: "Contratado" },
-            { where: { talentId: TalentId, EventId } }
+            { where: { EventId } }
           );
 
           return postulationHired;
@@ -284,6 +286,50 @@ const getAllContactedTalents = async () => {
   }
 };
 
+// Función para obtener todos los contactados por una empresa.
+const getContactedByCompany = async (idCompany) => {
+  try {
+    const events = await Event.findAll({
+      where: { CompanyId: idCompany },
+      include: [
+        {
+          model: Applied,
+          where: { status: "Contactado" },
+          include: {
+            model: Talent,
+          },
+        },
+      ],
+    });
+
+    return events[0].Applieds;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller para obtener todos los contratados de una empresa.
+const getHiredByCompany = async (idCompany) => {
+  try {
+    const events = await Event.findAll({
+      where: { CompanyId: idCompany },
+      include: [
+        {
+          model: Applied,
+          where: { status: "Contratado" },
+          include: {
+            model: Talent,
+          },
+        },
+      ],
+    });
+
+    return events[0].Applieds;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getAllApplied,
   createApplied,
@@ -296,4 +342,6 @@ module.exports = {
   hireApplicant,
   getAllHiredTalents,
   getAllContactedTalents,
+  getContactedByCompany,
+  getHiredByCompany,
 };
