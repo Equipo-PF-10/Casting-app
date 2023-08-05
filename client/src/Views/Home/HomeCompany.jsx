@@ -10,6 +10,7 @@ import {
   getAllEvents,
   get_all_favorite_postulants,
   get_event_by_id,
+  get_all_postulants_contacted_by_id
 } from "../../redux/actions";
 import HomeItemList from "../../Components/HomeItemList/HomeItemList";
 import HomeContactos from "../../Components/HomeCompanyComponents/HomeContactados/HomeContactos";
@@ -18,9 +19,12 @@ export default function HomeCompany() {
   const dispatch = useDispatch();
   const id_company = localStorage.getItem("user_id");
   //const allEvents = useSelector((state) => state.allEvents);
-    const eventDetail=useSelector((state) => state.eventDetail);
-    //const companyId = localStorage.getItem("user_id");
-  //console.log(eventDetail);
+  const eventDetail=useSelector((state) => state.eventDetail);
+  const allPostulantsContacted =useSelector((state) => state.allPostulantsContacted);
+  //const companyId = localStorage.getItem("user_id");
+  console.log(eventDetail);
+  console.log(allPostulantsContacted);
+
   const allFavoritePostulants = useSelector(
     (state) => state.allFavoritePostulants
   );
@@ -46,11 +50,14 @@ export default function HomeCompany() {
   }, [dispatch]);
 
   //Traer todos los talentos contactos
-  /*
     useEffect(() => {
-        dispatch(get_all_contacted_talents_by_id(id_company));
+        dispatch(get_all_postulants_contacted_by_id(id_company));
     },[dispatch])
-*/
+
+    useEffect(() => {
+      dispatch(get_event_by_id(id_company));
+  },[dispatch])
+
   return (
     <div className={styles.container}>
       <NavBarLateral />
@@ -77,8 +84,10 @@ export default function HomeCompany() {
             <div className={styles.contactados}>
               <HomeContactos
                 title={"Postulantes Contactados"}
-                // contactedTalents={contactedTalents}
+                contactedTalents={allPostulantsContacted}
                 url={"model/profile"}
+                id_company={id_company}
+                id_event={eventDetail[0]?.id}
               />
             </div>
           </article>

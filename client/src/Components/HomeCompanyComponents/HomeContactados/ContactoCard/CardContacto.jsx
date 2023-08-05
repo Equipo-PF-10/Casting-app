@@ -2,6 +2,7 @@ import styles from './CardContacto.module.css';
 import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { add_hired } from '../../../../redux/actions';
 
 const CardContacto = (props) => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const CardContacto = (props) => {
   }
   const handleClickContratarConfirmation = () => {
     //eliminar de la lista de contactos y postear en la de contratados (cambio en el estado status=Contactado a Contratado )
+    dispatch(add_hired(props.id_talent, props.id_company, props.id_event))
     setModalContratar(false);
   }
   const handleClickRechazar = () => {
@@ -32,10 +34,10 @@ const CardContacto = (props) => {
     <div className={styles.container}>
       <div className={styles.fonts}>
         {/* REDIRIGIR AL PERFIL DEL CONTACTADO */}
-        <Link to={`${props.url}/${props.id}`}>
+        <Link to={`${props.url}/${props.id_talent}`}>
           <h2 className={styles.text}>{props.name}</h2>
-          {/* <h5 className={styles.text}>{props.habilities ? props.habilities.map((hability)=> `${hability} `) : null}</h5> */}
-          <h5 className={styles.text}>{props.habilities}</h5>
+          <h5 className={styles.text}>{props.habilities ? props.habilities.map((hability)=> `${hability} `) : null}</h5>
+          {/* <h5 className={styles.text}>{props.habilities}</h5> */}
         </Link>
       </div >
       <div className={styles.options}>
