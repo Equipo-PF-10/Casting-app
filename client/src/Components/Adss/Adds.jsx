@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import { getEventsPremium } from "../../redux/actions";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {ToastContainer,toast} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -20,25 +18,8 @@ function Adds() {
     dispatch(getEventsPremium());
   }, [dispatch]);
 
-  const notify = () => {
-    toast.success(
-      "Regístrate así puedes postularte al evento!",
-      {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      }
-    );
-  };
-
   return (
     <>
-      <ToastContainer />
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         autoplay={{
@@ -98,9 +79,7 @@ function Adds() {
                     </label>
                   </div>
                   <div className="boton-postulate">
-                    <button className="talento-button" onClick={notify}>
-                      Postulate
-                    </button>
+                    <button className="talento-button">Postulate</button>
                   </div>
                 </div>
               </SwiperSlide>

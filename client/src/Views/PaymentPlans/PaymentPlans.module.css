@@ -3,58 +3,6 @@
   grid-template-rows: 6% 28.5% 7% 5% 35% 10%;
   background-color: var(--color-fondo);
 }
-
-
-/* ... */
-
-.card.Free {
-  background-color: #f2f2f2;
-  border: 3px solid #ddd;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  cursor: pointer;
-  transition: border-color 0.3s ease;
-}
-
-.card.Basico {
-  background-color: #007bff;
-  border: 3px solid #0056b3;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
-  padding: 15px;
-  color: #fff;
-  cursor: pointer;
-  transition: border-color 0.3s ease;
-}
-
-.card.Premium {
-  background-color: #222;
-  border: 3px solid #000;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  padding: 15px;
-  color: #fff;
-  cursor: pointer;
-  transition: border-color 0.3s ease;
-}
-
-.card:hover {
-  border-color: #007bff;
-}
-
-.card.Free:hover {
-  border-color: #ddd;
-}
-
-.card.Básico:hover {
-  border-color: #0056b3;
-}
-
-.card.Premium:hover {
-  border-color: #000;
-}
-
 .topSection {
   height: 10vh;
   display: grid;

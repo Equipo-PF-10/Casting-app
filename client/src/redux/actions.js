@@ -15,8 +15,6 @@ export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
 export const GET_ALL_POSTULANT_FAV = "GET_ALL_POSTULANT_FAV";
 export const DELETE_POSTULANT_FAV = "DELETE_POSTULANT_FAV";
-export const GET_ALL_POSTULANTS_CONTACTED_BY_ID = "GET_ALL_POSTULANTS_CONTACTED_BY_ID";
-export const ADD_HIRED = "ADD_HIRED";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
 export const DELETE_POSTULANT_BY_ID = "DELETE_POSTULANT_BY_ID";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
@@ -249,12 +247,10 @@ export const edit_event_by_id = (id) => {
   };
 };
 
-export const close_event_by_id=(id,companyId) => {
-  //console.log(id);
-  //console.log(companyId);
+export const close_event_by_id = (id, companyId) => {
   return async (dispatch) => {
     try {
-      await axios.delete(`http://localhost:3001/events/${id}`);
+      const response=await axios.delete(`http://localhost:3001/events/${id}`);
       const eventDetail = await axios.get(`http://localhost:3001/events/${companyId}`);
       return dispatch({ type: CLOSE_EVENT, payload: eventDetail.data });
     } catch (error) {
@@ -597,11 +593,11 @@ export const send_email_message = (payload) => {
   };
 };
 
-
+/* ESPERANDO RUTA
 export const get_all_postulants_contacted_by_id = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3001/applied/contacted/${id}`); 
+      const response = await axios.get(`http://localhost:3001/applied/contact/${id}`); //VEIFICAR RUTA
       //console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULANTS_CONTACTED_BY_ID, payload: response.data });
     } catch (error) {
@@ -612,38 +608,4 @@ export const get_all_postulants_contacted_by_id = (id) => {
     }
   };
 };
-
-
-export const add_hired = (id_talent, id_company, id_event) => {
-  let endpoint = "http://localhost:3001/applied/hire";
-  return async (dispatch) => {
-    try {
-      await axios.post(endpoint, {
-        TalentId: id_talent, EventId: id_event  
-      });
-      const allPostulantsContacted = await axios.get(`http://localhost:3001/applied/contacted/${id_company}`);
-      return dispatch({
-        type: ADD_HIRED,
-        payload: allPostulantsContacted.data,
-      });
-    } catch (error) {
-      return dispatch({
-        type: "ERROR",
-        payload: "¡Ha ocurrido un error al obtener los postulantes favoritos!",
-      });
-    }
-  };
-};
-/*
-try {
-      const { data } =  await axios.post(endpoint, {
-        TalentId: id_talent, CompanyId: id_company  
-      });
-      const allFavorites = await axios.get(`http://localhost:3001/companies/favorites/${id_company}`);
-      return dispatch({
-        type: DELETE_POSTULANT_FAV,
-        payload: allFavorites.data,
-      });
-    } 
-
 */

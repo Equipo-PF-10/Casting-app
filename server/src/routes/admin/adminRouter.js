@@ -40,7 +40,7 @@ adminRouter.get("/users/talents/:gender", handlerGetByGender);
 //| /admin/users/available/talents
 adminRouter.get("/users/available/:userType", handlerGetAvailableUsers);
 
-//? Esta ruta trae el top 10 de los usuarios por número de reseñas. De mayor a menor.
+//? Esta ruta trae el top de los usuarios por número de reseñas. De mayor a menor.
 //| /admin/users/top/talents
 adminRouter.get("/users/top/:userType", handlerGetTopUsers);
 

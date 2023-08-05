@@ -15,11 +15,9 @@ import {
   GET_COMPANY_ID,
   CREATE_POSTULANT,
   GET_ALL_POSTULATIONS,
-  GET_ALL_POSTULANTS_CONTACTED_BY_ID,
   GET_POSTULANTS_BY_NAME,
   DELETE_POSTULANT_BY_ID,
   DELETE_POSTULANT_FAV,
-  ADD_HIRED,
   GET_TALENT_BY_ID,
   GET_ALL_TALENTS,
   GET_ALL_POSTULANT_FAV,
@@ -55,7 +53,6 @@ const initialState = {
   allFavoritePostulants: [],
   allFavoritePostulantsFiltered: [],
   allPostulantsContacted: [],
-  hiredTalents: [],
   idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
   messageRegistered: {},
@@ -362,16 +359,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
         filtersFavoritePostulants: true,
         allFavoritePostulantsFiltered: payload,
       };
+      /* ESPERANDO RUTA
       case GET_ALL_POSTULANTS_CONTACTED_BY_ID:   
         return {
           ...state,
           allPostulantsContacted: payload,
         };
-      case ADD_HIRED:   
-        return {
-          ...state,
-          allPostulantsContacted: payload,
-        };
+      */
     case ERROR_POSTULATE:
       return {
         ...state,
