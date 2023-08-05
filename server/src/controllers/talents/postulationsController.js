@@ -354,7 +354,31 @@ const getHiredByCompany = async (idCompany) => {
       ],
     });
 
-    const response = events[0].Applied;
+    const response = events[0].Applieds;
+    return response;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller para obtener todos los aplicantes que tiene una empresa.
+const getApplicantsByCompany = async (idCompany) => {
+  try {
+    const events = await Event.findAll({
+      where: { CompanyId: idCompany },
+      include: [
+        {
+          model: Applied,
+          where: { status: "Pendiente" },
+          include: {
+            model: Talent,
+          },
+        },
+      ],
+    });
+
+    const response = events[0].Applieds;
+    
     return response;
   } catch (error) {
     throw new Error(error.message);
@@ -374,6 +398,7 @@ module.exports = {
   getAllHiredTalents,
   getAllContactedTalents,
   getNameCompanies,
-  getHiredByCompany,
   getContactedByCompany,
+  getHiredByCompany,
+  getApplicantsByCompany,
 };

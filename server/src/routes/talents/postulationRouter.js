@@ -12,11 +12,16 @@ const {
   handlerGetAllHiredTalents,
   handlerGetAllContactedTalents,
   handlerGetNameOfCompaniesContacted,
-  handlerGetContactedByCompany,
   handlerGetHiredByCompany,
+  handlerGetContactedByCompany,
+  handlerGetApplicantsByCompany,
 } = require("../../handlers/talents/postulationsHandler");
 
 const postulationRouter = Router();
+
+
+//? Esta ruta es para obtener todos los aplicantes CONTACTADOS por una empresa.
+postulationRouter.get("/contacted/:idCompany", handlerGetContactedByCompany);
 
 //? Esta ruta es para obtener todos los CONTRATADOS por una empresa.
 postulationRouter.get("/hired/:idCompany", handlerGetHiredByCompany);
@@ -51,8 +56,8 @@ postulationRouter.get("/talent/:id", handlerGetTalentAplications);
 //? Esta ruta busca todos los postulantes de un evento por su nombre y id del evento.
 postulationRouter.get("/name/:EventId", handlerGetApplicantsByName);
 
-//? Esta ruta busca una postulacion por su id.
-postulationRouter.get("/:id", handlerGetApplicantById);
+//? Esta ruta busca los postulantes que tiene una empresa a su evento.
+postulationRouter.get("/:idCompany", handlerGetApplicantsByCompany);
 
 //? Esta ruta busca una postulacion por su id.
 postulationRouter.get("/:id", handlerGetApplicantById);
@@ -63,7 +68,7 @@ postulationRouter.delete("/", handlerDeleteApplicantById);
 //? Esta ruta crea una nueva postulación.
 postulationRouter.post("/", handlerCreateApplied);
 
-//? Esta ruta busca todos las postulaciones.
+//? Esta ruta busca todos los postulantes de una.
 postulationRouter.get("/", handlerGetAllApplied);
 
 module.exports = postulationRouter;

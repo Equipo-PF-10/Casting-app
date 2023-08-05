@@ -13,6 +13,8 @@ const {
   getNameCompanies,
   getContactedByCompany,
   getHiredByCompany,
+  getApplicantsByCompany,
+
 } = require("../../controllers/talents/postulationsController");
 
 // Función handler para crear postulaciones.
@@ -204,22 +206,35 @@ const handlerGetNameOfCompaniesContacted = async (req, res) => {
   }
 };
 
-// Función para obtener los contactados por una empresa.
+// Función para traer todos los contactados por una empresa.
 const handlerGetContactedByCompany = async (req, res) => {
   const { idCompany } = req.params;
   try {
-    const applicants = await getContactedByCompany(idCompany);
-    res.status(200).json(applicants);
+    const contactedApplicants = await getContactedByCompany(idCompany);
+
+    res.status(200).json(contactedApplicants);
   } catch (error) {
     res.status(400).json(error.message);
   }
 };
 
-// Función para obtener los contratados por una empresa.
+// Función para traer todos los contratados por una empresa.
 const handlerGetHiredByCompany = async (req, res) => {
   const { idCompany } = req.params;
   try {
-    const applicants = await getHiredByCompany(idCompany);
+    const hiredApplicants = await getHiredByCompany(idCompany);
+
+    res.status(200).json(hiredApplicants);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+// Función para traer todos los aplicantes al evento de una empresa.
+const handlerGetApplicantsByCompany = async (req, res) => {
+  const { idCompany } = req.params;
+  try {
+    const applicants = await getApplicantsByCompany(idCompany);
     res.status(200).json(applicants);
   } catch (error) {
     res.status(400).json(error.message);
@@ -241,4 +256,5 @@ module.exports = {
   handlerGetNameOfCompaniesContacted,
   handlerGetContactedByCompany,
   handlerGetHiredByCompany,
+  handlerGetApplicantsByCompany,
 };
