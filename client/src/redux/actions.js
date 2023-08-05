@@ -250,12 +250,10 @@ export const edit_event_by_id = (id) => {
   };
 };
 
-export const close_event_by_id=(id,companyId) => {
-  //console.log(id);
-  //console.log(companyId);
+export const close_event_by_id = (id, companyId) => {
   return async (dispatch) => {
     try {
-      await axios.delete(`http://localhost:3001/events/${id}`);
+      const response=await axios.delete(`http://localhost:3001/events/${id}`);
       const eventDetail = await axios.get(`http://localhost:3001/events/${companyId}`);
       return dispatch({ type: CLOSE_EVENT, payload: eventDetail.data });
     } catch (error) {
@@ -598,11 +596,10 @@ export const send_email_message = (payload) => {
   };
 };
 
-
 export const get_all_postulants_contacted_by_id = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3001/applied/contacted/${id}`); 
+      const response = await axios.get(`http://localhost:3001/applied/contact/${id}`);
       //console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULANTS_CONTACTED_BY_ID, payload: response.data });
     } catch (error) {
@@ -613,7 +610,6 @@ export const get_all_postulants_contacted_by_id = (id) => {
     }
   };
 };
-
 
 export const add_hired = (id_talent, id_company, id_event) => {
   let endpoint = "http://localhost:3001/applied/hire";
@@ -656,3 +652,4 @@ export const refuse_postulant_contacted = (id_talent, id_company, id_event) => {
     }
   };
 };
+

@@ -20,7 +20,6 @@ import {
   GET_POSTULANTS_BY_NAME,
   DELETE_POSTULANT_BY_ID,
   DELETE_POSTULANT_FAV,
-  ADD_HIRED,
   GET_TALENT_BY_ID,
   GET_ALL_TALENTS,
   GET_ALL_POSTULANT_FAV,
@@ -56,7 +55,6 @@ const initialState = {
   allFavoritePostulants: [],
   allFavoritePostulantsFiltered: [],
   allPostulantsContacted: [],
-  hiredTalents: [],
   idCard: "",  //id de una card (postulante o evento)
   userType: "", //"1" === "talent", "2" === "company" (se obtiene al logearse)
   messageRegistered: {},
@@ -368,6 +366,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
           ...state,
           allPostulantsContacted: payload,
         };
+
       case REFUSE_POSTULANT_CONTACTED:   
         return {
           ...state,

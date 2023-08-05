@@ -1,7 +1,6 @@
 .container {
     height: 46vh;
     background: #f5f5f5;
-    min-width: 600px;
     overflow: hidden;
     box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
     border-radius: 1rem;

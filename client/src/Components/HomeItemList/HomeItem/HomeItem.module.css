@@ -72,7 +72,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
   }
   
   .modalConfirmationOpened {
@@ -87,7 +86,6 @@
     position: relative;
     border: 1px solid black;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.599);
-    overflow: hidden;
     &:hover {
         border: 1px solid blue;
     }
@@ -140,7 +138,7 @@
   .buttonRegresar {
     background-color: var(--color-error);
     color: white;
-    margin-top: 20px;
+    margin-top: 0px;
     font-size: 20px;
     width: 20vh;
     &:hover{

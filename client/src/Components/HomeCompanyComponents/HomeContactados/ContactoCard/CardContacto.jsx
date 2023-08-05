@@ -4,10 +4,9 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { add_hired, refuse_postulant_contacted } from '../../../../redux/actions';
 
+
 const CardContacto = (props) => {
   const dispatch = useDispatch();
-  const [modalContratar, setModalContratar] = useState(false);
-  const [modalRechazar, setModalRechazar] = useState(false);
 
   const handleClickContratar = () => {
     setModalContratar(true);
@@ -35,10 +34,10 @@ const CardContacto = (props) => {
     <div className={styles.container}>
       <div className={styles.fonts}>
         {/* REDIRIGIR AL PERFIL DEL CONTACTADO */}
-        <Link to={`${props.url}/${props.id_talent}`}>
+        <Link to={`${props.url}/${props.id}`}>
           <h2 className={styles.text}>{props.name}</h2>
-          <h5 className={styles.text}>{props.habilities ? props.habilities.map((hability)=> `${hability} `) : null}</h5>
-          {/* <h5 className={styles.text}>{props.habilities}</h5> */}
+          {/* <h5 className={styles.text}>{props.habilities ? props.habilities.map((hability)=> `${hability} `) : null}</h5> */}
+          <h5 className={styles.text}>{props.habilities}</h5>
         </Link>
       </div >
       <div className={styles.options}>
@@ -109,3 +108,4 @@ const CardContacto = (props) => {
 };
 
 export default CardContacto;
+

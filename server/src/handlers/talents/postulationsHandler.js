@@ -10,8 +10,7 @@ const {
   hireApplicant,
   getAllHiredTalents,
   getAllContactedTalents,
-  getContactedByCompany,
-  getHiredByCompany,
+  getNameCompanies,
 } = require("../../controllers/talents/postulationsController");
 
 // Función handler para crear postulaciones.
@@ -138,8 +137,8 @@ const handlerGetApplicantsForEventByFk = async (req, res) => {
 const handlerToContact = async (req, res) => {
   const { TalentId, EventId } = req.body;
   try {
-    const contactedTalent = await applicantToContact(TalentId, EventId);
-    res.status(200).json(contactedTalent);
+    await applicantToContact(TalentId, EventId);
+    res.status(200).send("El postulante ha sido contactado con éxito.");
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -193,35 +192,19 @@ const handlerGetAllContactedTalents = async (req, res) => {
   }
 };
 
-// Función para obtener contactados de una empresa.
-const handlerGetCompanyContacted = async (req, res) => {
-  const { idCompany } = req.params;
+
+// Función para obtener los nombres de las companias que han contactado a un postulante.
+const handlerGetNameOfCompaniesContacted = async (req, res) => {
   try {
-    const contactedTalents = await getContactedByCompany(idCompany);
+    const { TalentId } = req.query;
+    const companies = await getNameCompanies(TalentId);
 
-    if (contactedTalents.length === 0) {
-      return res
-        .status(404)
-        .json({ error: "No hay contactados para esta compañía." });
-    }
-
-    res.status(200).json(contactedTalents);
+    res.status(200).json(companies);
   } catch (error) {
     res.status(400).json(error.message);
   }
 };
 
-// Función para obtener contratados de una empresa.
-const handlerGetCompanyHired = async (req, res) => {
-  const { idCompany } = req.params;
-  try {
-    const hiredTalents = await getHiredByCompany(idCompany);
-
-    res.status(200).json(hiredTalents);
-  } catch (error) {
-    res.status(400).json(error);
-  }
-};
 
 module.exports = {
   handlerGetAllApplied,
@@ -235,6 +218,5 @@ module.exports = {
   handlerHireTalent,
   handlerGetAllHiredTalents,
   handlerGetAllContactedTalents,
-  handlerGetCompanyContacted,
-  handlerGetCompanyHired,
+  handlerGetNameOfCompaniesContacted
 };
