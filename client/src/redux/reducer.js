@@ -15,6 +15,9 @@ import {
   GET_COMPANY_ID,
   CREATE_POSTULANT,
   GET_ALL_POSTULATIONS,
+  GET_ALL_POSTULANTS_CONTACTED_BY_ID,
+  REFUSE_POSTULANT_CONTACTED,
+  ADD_HIRED,
   GET_POSTULANTS_BY_NAME,
   DELETE_POSTULANT_BY_ID,
   DELETE_POSTULANT_FAV,
@@ -359,13 +362,22 @@ const rootReducer = (state = initialState, { type, payload }) => {
         filtersFavoritePostulants: true,
         allFavoritePostulantsFiltered: payload,
       };
-      /* ESPERANDO RUTA
       case GET_ALL_POSTULANTS_CONTACTED_BY_ID:   
         return {
           ...state,
           allPostulantsContacted: payload,
         };
-      */
+
+      case REFUSE_POSTULANT_CONTACTED:   
+        return {
+          ...state,
+          allPostulantsContacted: payload,
+        };
+      case ADD_HIRED:   
+        return {
+          ...state,
+          allPostulantsContacted: payload,
+        };
     case ERROR_POSTULATE:
       return {
         ...state,

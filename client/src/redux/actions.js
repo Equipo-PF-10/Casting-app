@@ -15,6 +15,9 @@ export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
 export const GET_ALL_POSTULANT_FAV = "GET_ALL_POSTULANT_FAV";
 export const DELETE_POSTULANT_FAV = "DELETE_POSTULANT_FAV";
+export const GET_ALL_POSTULANTS_CONTACTED_BY_ID = "GET_ALL_POSTULANTS_CONTACTED_BY_ID";
+export const REFUSE_POSTULANT_CONTACTED = "REFUSE_POSTULANT_CONTACTED";
+export const ADD_HIRED = "ADD_HIRED";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
 export const DELETE_POSTULANT_BY_ID = "DELETE_POSTULANT_BY_ID";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
@@ -593,19 +596,60 @@ export const send_email_message = (payload) => {
   };
 };
 
-/* ESPERANDO RUTA
 export const get_all_postulants_contacted_by_id = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3001/applied/contact/${id}`); //VEIFICAR RUTA
+      const response = await axios.get(`http://localhost:3001/applied/contact/${id}`);
       //console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULANTS_CONTACTED_BY_ID, payload: response.data });
     } catch (error) {
       return dispatch({
         type: "ERROR",
-        payload: "¡Ha ocurrido un error al obtener los postulantes favoritos!",
+        payload: "¡Ha ocurrido un error al obtener los postulantes contactados!",
       });
     }
   };
 };
-*/
+
+export const add_hired = (id_talent, id_company, id_event) => {
+  let endpoint = "http://localhost:3001/applied/hire";
+  return async (dispatch) => {
+    try {
+      await axios.post(endpoint, {
+        TalentId: id_talent, EventId: id_event  
+      });
+      const allPostulantsContacted = await axios.get(`http://localhost:3001/applied/contacted/${id_company}`);
+      return dispatch({
+        type: ADD_HIRED,
+        payload: allPostulantsContacted.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al contratar el postulante!",
+      });
+    }
+  };
+};
+
+export const refuse_postulant_contacted = (id_talent, id_company, id_event) => {
+  let endpoint = "http://localhost:3001/applied/";
+  return async (dispatch) => {
+    try {
+      await axios.delete(endpoint, {
+        TalentId: id_talent, EventId: id_event  
+      });
+      const allPostulantsContacted = await axios.get(`http://localhost:3001/applied/contacted/${id_company}`);
+      return dispatch({
+        type: REFUSE_POSTULANT_CONTACTED,
+        payload: allPostulantsContacted.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al rechazar el postulante!",
+      });
+    }
+  };
+};
+

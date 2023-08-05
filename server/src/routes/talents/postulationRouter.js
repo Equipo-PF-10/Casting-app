@@ -19,10 +19,11 @@ const {
 
 const postulationRouter = Router();
 
+
 //? Esta ruta es para obtener todos los aplicantes CONTACTADOS por una empresa.
 postulationRouter.get("/contacted/:idCompany", handlerGetContactedByCompany);
 
-//? Esta ruta es para obtener todos los aplicantes CONTRATADOS por una empresa.
+//? Esta ruta es para obtener todos los CONTRATADOS por una empresa.
 postulationRouter.get("/hired/:idCompany", handlerGetHiredByCompany);
 
 //? Esta ruta es para obtener todos los talentos contratados.
@@ -30,6 +31,9 @@ postulationRouter.get("/hired", handlerGetAllHiredTalents);
 
 //? Esta ruta es para agregar a un postulante comoo CONTRATADO.
 postulationRouter.post("/hire", handlerHireTalent);
+
+//? Esta ruta es para obtener todos los CONTACTADOS por una empresa.
+postulationRouter.get("/contacted/:idCompany", handlerGetContactedByCompany);
 
 //? Esta ruta es para agregar a un postulante como CONTACTADO.
 postulationRouter.get("/contacted", handlerGetAllContactedTalents);

@@ -376,6 +376,7 @@ const getApplicantsByCompany = async (idCompany) => {
     });
 
     const response = events[0].Applieds;
+    
     return response;
   } catch (error) {
     throw new Error(error.message);
