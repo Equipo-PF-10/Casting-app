@@ -30,6 +30,7 @@ export default function HomeCompany() {
 
   const handleDelete = (id) => {
     dispatch(close_event_by_id(id, id_company));
+    //dispatch(close_event_by_id(id));
     dispatch(get_event_by_id(id_company));
     //console.log(allEvents);
   };
