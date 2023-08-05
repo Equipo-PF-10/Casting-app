@@ -2,7 +2,7 @@
     margin: 15px;
     transition: 0.5s;
     /* background-color: red; */
-    height: 40%;
+    height: 35%;
     /* height:15vh; */
     display: grid;
     grid-template-columns: 80% 20%;
@@ -27,15 +27,15 @@
     /* background-color: white; */
     width: 20vh;
     border-left: 3px solid rgba(0, 0, 0, 0.25);
-    height: 1%;
-    padding-bottom: 130px;
+    height: 2vh;
+    padding-bottom: 120px;
 }
 
 .options button {
     width: 150px;
     height: 30px;
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .buttonClose {

@@ -16,6 +16,7 @@ import {
   CREATE_POSTULANT,
   GET_ALL_POSTULATIONS,
   GET_ALL_POSTULANTS_CONTACTED_BY_ID,
+  REFUSE_POSTULANT_CONTACTED,
   GET_POSTULANTS_BY_NAME,
   DELETE_POSTULANT_BY_ID,
   DELETE_POSTULANT_FAV,
@@ -363,6 +364,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         allFavoritePostulantsFiltered: payload,
       };
       case GET_ALL_POSTULANTS_CONTACTED_BY_ID:   
+        return {
+          ...state,
+          allPostulantsContacted: payload,
+        };
+      case REFUSE_POSTULANT_CONTACTED:   
         return {
           ...state,
           allPostulantsContacted: payload,

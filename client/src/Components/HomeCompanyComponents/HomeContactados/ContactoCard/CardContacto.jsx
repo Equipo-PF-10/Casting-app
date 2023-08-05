@@ -2,7 +2,7 @@ import styles from './CardContacto.module.css';
 import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { add_hired } from '../../../../redux/actions';
+import { add_hired, refuse_postulant_contacted } from '../../../../redux/actions';
 
 const CardContacto = (props) => {
   const dispatch = useDispatch();
@@ -15,9 +15,9 @@ const CardContacto = (props) => {
   const handleClickContratarClose = () => {
     setModalContratar(false);
   }
+  //Eliminar de la lista de contactos y postear en la de contratados (cambio en el estado status=Contactado a Contratado )
   const handleClickContratarConfirmation = () => {
-    //eliminar de la lista de contactos y postear en la de contratados (cambio en el estado status=Contactado a Contratado )
-    dispatch(add_hired(props.id_talent, props.id_company, props.id_event))
+    dispatch(add_hired(props.id_talent, props.id_company, props.id_event));
     setModalContratar(false);
   }
   const handleClickRechazar = () => {
@@ -26,8 +26,9 @@ const CardContacto = (props) => {
   const handleClickRechazarClose = () => {
     setModalRechazar(false);
   }
+  //Eliminar de la lista de contactos (cambio en el estado status=Contactado a Rechazado )
   const handleClickRechazarConfirmation = () => {
-    //eliminar de la lista de contactos (cambio en el estado status=Contactado a Rechazado )
+    dispatch(refuse_postulant_contacted(props.id_talent, props.id_company, props.id_event));
     setModalRechazar(false);
   }
   return (
@@ -42,7 +43,6 @@ const CardContacto = (props) => {
       </div >
       <div className={styles.options}>
         <button className={styles.buttonEdit} onClick={handleClickContratar}>Contratar</button>
-        {/* ¿Estas seguro/a de mover al postulante a la lista de Contratados? */}
         <button className={styles.buttonClose} onClick={handleClickRechazar}>Rechazar</button>
       </div>
       {/* -------MODAL PARA CONTRATAR AL POSTULANTE ------------*/}
