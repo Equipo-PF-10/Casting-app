@@ -285,7 +285,7 @@ export const get_all_postulations = (fk) => {
       const response = await axios.get(
         `http://localhost:3001/applied/event/${fk}`
       );
-      console.log(response.data);
+      //console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULATIONS, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -297,7 +297,8 @@ export const get_all_postulations = (fk) => {
   };
 };
 export const get_postulant_by_name = (fk, name) => {
-  let endpoint = `http://localhost:3001/applied/${fk}/?name=${name}`;
+  //let endpoint = `http://localhost:3001/applied/${fk}/?name=${name}`;
+  let endpoint = `http://localhost:3001/applied/name/${fk}/?name=${name}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -323,14 +324,24 @@ export const delete_postulant_by_id = (id_evento, id_talent) => {
     try {
       //const { data } = await axios.delete(endpoint, {EventId: id_evento, TalentId: id_talent}); //(endpoint, {EventId:id_evento, TalentId:id_talent})
       const { data } = await axios.delete(endpoint, {
-        data: { EventId: id_evento, TalentId: id_talent }, 
-        headers: {
-          "Content-Type": "application/json", 
-        },
+        data: {EventId: id_evento,TalentId: id_talent}, 
+      //const eliminado = await axios.delete(endpoint, {
+      //  data: { EventId: id_evento, TalentId: id_talent }
+        //headers: {
+        //  "Content-Type": "application/json", 
+        //},
       });
+      const fk = id_evento
+      const response = await axios.get(
+        `http://localhost:3001/applied/event/${fk}`
+      );
+      //const z = eliminado.data
+      //const postulantes=response.data
+      console.log(response);
+      //
       return dispatch({
         type: DELETE_POSTULANT_BY_ID,
-        payload: data,
+        payload: response.data
       });
     } catch (error) {
       return dispatch({

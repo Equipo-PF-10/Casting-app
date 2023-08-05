@@ -21,6 +21,7 @@ const SearchComp = (props) => {
     //console.log(event.target.value);
   };
 
+  //busqueda por nombre
   const handleSubmit = (event) => {
     //console.log(name); //nombre submitiado
     event.preventDefault();

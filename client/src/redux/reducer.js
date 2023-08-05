@@ -199,7 +199,9 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case DELETE_POSTULANT_BY_ID:
       return {
         ...state,
-        messagePostulantDeleted: payload,
+        //messagePostulantDeleted: payload.z,
+        postulatedTalentsByEventFiltered: payload,
+        postulatedTalentsByEvent: payload,
       };
     case GET_ALL_TALENTS:
       return {

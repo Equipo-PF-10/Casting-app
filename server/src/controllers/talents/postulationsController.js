@@ -92,22 +92,24 @@ const deleteApplicantById = async (TalentId, EventId) => {
 
     return "El talento con ese ID no ha aplicado a ese evento.";
   } catch (error) {
-    throw new Error(error.message);
+    return(error.message);
   }
 };
 
 // Obtener aplicantes por id de evento.
 const getApplicantsForEventByFk = async (fk) => {
   try {
+    //console.log(fk, "soy fk");
     const postulacion = await Applied.findAll({
       where: {
         EventId: fk,
         status: "Pendiente",
       },
     });
-    let talents = [];
+    let talents=[];
+    //console.log(postulacion);
     if (!postulacion) {
-      throw new Error(
+      return (
         `La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`
       );
     }
@@ -118,10 +120,10 @@ const getApplicantsForEventByFk = async (fk) => {
 
       talents.push(postulante[0]);
     }
-
+    //console.log(talents);
     return talents;
   } catch (error) {
-    throw new Error(error.message);
+    return(error.message);
   }
 };
 
