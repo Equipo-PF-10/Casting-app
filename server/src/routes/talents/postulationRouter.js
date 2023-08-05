@@ -11,16 +11,24 @@ const {
   handlerHireTalent,
   handlerGetAllHiredTalents,
   handlerGetAllContactedTalents,
-  handlerGetNameOfCompaniesContacted  
+  handlerGetNameOfCompaniesContacted,
+  handlerGetContactedByCompany,
+  handlerGetHiredByCompany,
 } = require("../../handlers/talents/postulationsHandler");
 
 const postulationRouter = Router();
+
+//? Esta ruta es para obtener todos los CONTRATADOS por una empresa.
+postulationRouter.get("/hired/:idCompany", handlerGetHiredByCompany);
 
 //? Esta ruta es para obtener todos los talentos contratados.
 postulationRouter.get("/hired", handlerGetAllHiredTalents);
 
 //? Esta ruta es para agregar a un postulante comoo CONTRATADO.
 postulationRouter.post("/hire", handlerHireTalent);
+
+//? Esta ruta es para obtener todos los CONTACTADOS por una empresa.
+postulationRouter.get("/contacted/:idCompany", handlerGetContactedByCompany);
 
 //? Esta ruta es para agregar a un postulante como CONTACTADO.
 postulationRouter.get("/contacted", handlerGetAllContactedTalents);
@@ -29,7 +37,10 @@ postulationRouter.get("/contacted", handlerGetAllContactedTalents);
 postulationRouter.post("/contact", handlerToContact);
 
 //? Esta ruta es para buscar nombre de las empresas que han contactado a un POSTULANTE.
-postulationRouter.get("/contactedForNameCompany", handlerGetNameOfCompaniesContacted );
+postulationRouter.get(
+  "/contactedForNameCompany",
+  handlerGetNameOfCompaniesContacted
+);
 
 //? Esta ruta busca todos los aplicantes a un anuncio.
 postulationRouter.get("/event/:fk", handlerGetApplicantsForEventByFk);
