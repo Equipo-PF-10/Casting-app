@@ -5,6 +5,8 @@
     align-items: center;
     height: 250px;
     color: whitesmoke;
+    margin-left: 2rem;
+    width: 30rem;
 }
 
 .image{
@@ -23,8 +25,12 @@
     border-radius: 30px;
     background-color: #00C9A7;
     padding-top: 6.2rem;
-    width: 22rem;
+    width: 30rem;
     text-align: center;
+    /*margin-left: 1rem;*/
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
 .info h3{

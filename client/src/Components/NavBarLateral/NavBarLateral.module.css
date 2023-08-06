@@ -63,4 +63,17 @@
     gap: 1.5rem;
     position: relative;
     transition: all ease 0.5s; 
+    margin-top: -20px;
+}
+
+.logoutIcono{
+    color: rgb(73, 90, 126);
+    margin-top: 20px;
+    width: 40px;
+    height: 40px;
+    margin-left: -5px;
+}
+
+.salirH4{
+    margin-top: 22px;
 }

@@ -430,7 +430,8 @@ export const get_talent_by_id = (id) => {
 };
 
 export const get_hired_by_company = (id) => {
-  let endpoint = `http://localhost:3001/applied/hired/${id}`;
+  let endpoint=`http://localhost:3001/applied/hired/${id}`;
+  //console.log('soy id');
   return async (dispatch) => {
     try {
       const {data}=await axios.get(endpoint);

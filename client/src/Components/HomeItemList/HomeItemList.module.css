@@ -1,20 +1,22 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  align-items: center;
   margin-top: 6rem;
-  height: 32rem;
+  height: 27rem;
   width: 30rem;
-  /* overflow: scroll; */
   box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
   border-radius: 1rem;
-  /* margin-top: 1rem;
-    margin-bottom: 1rem;
- */
   padding: 15px;
   margin-left: 2rem;
-  background-color: #7e7193;
+  background-color: #755f98;
   overflow: scroll;
   overflow-x: hidden;
-
   color: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 .container h4 {
   margin-top: 140px;
@@ -76,8 +78,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 10px;
   margin-top: 10px;
-  margin-left: 30px;
+  /*margin-left: 30px;*/
   
 }
 
@@ -95,11 +98,11 @@
   height: 100%;
   width: 70px;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 0;
   border: 0;
   border-radius: 100px;
   color: #00c9a7;
-  margin-right: 10px;
+  /*margin-right: 10px;*/
 }
 
 .searchButton:disabled {
@@ -154,3 +157,4 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 .recargar:focus svg {
   animation: spin_357 0.5s linear;
 }
+

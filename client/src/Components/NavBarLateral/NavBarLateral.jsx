@@ -1,7 +1,10 @@
 import styles from "./NavBarLateral.module.css";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import {FiLogOut} from "react-icons/fi"
+import { CiLogout } from "react-icons/ci";
+import {useAuth0} from "@auth0/auth0-react";
 
-const NavBarLateral = () => {
+const NavBarLateral=() => {
   const root = localStorage.getItem("userType");
   const id = localStorage.getItem("user_id");
 
@@ -20,6 +23,12 @@ const NavBarLateral = () => {
     perfilPath = `/company/profile/${id}`;
     formPath = "/form/company";
     searchPath = `/company/search/${id}`;
+  }
+
+  const {logout}=useAuth0();
+  const handlerClick=() => {
+    localStorage.clear();
+    logout({logoutParams: {returnTo: window.location.origin}})
   }
 
   // Estadísticas
@@ -157,6 +166,12 @@ const NavBarLateral = () => {
             </div>
           </NavLink>
           {chart()}
+          <NavLink to={perfilPath} className={styles.link}>
+            <div className={styles.icons2} onClick={handlerClick}>
+              <CiLogout className={styles.logoutIcono} />
+              <h4 className={styles.salirH4}>Salir</h4>
+            </div>
+          </NavLink>
         </article>
         <NavLink to={formPath} className={styles.link}>
           <article className={styles.icons1}>
