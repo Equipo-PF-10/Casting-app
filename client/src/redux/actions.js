@@ -729,12 +729,12 @@ export const update_plan = (id_company, plan) => {
   return async (dispatch) => {
     try {
       const { data } =  await axios.put(endpoint, {
-        "newConditionPlan": plan
+        newConditionPlan: plan
       });
-      // const allFavorites = await axios.get(`http://localhost:3001/companies/favorites/${id_company}`);
+      console.log(data);
       return dispatch({
         type: UPDATE_PLAN,
-        payload: data,
+        payload: data.plan,
       });
     } catch (error) {
       return dispatch({

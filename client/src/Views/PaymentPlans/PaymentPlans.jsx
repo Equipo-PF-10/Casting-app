@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./PaymentPlans.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { get_company_by_id, update_plan } from "../../redux/actions";
+import { get_company_by_id, get_company_id, update_plan } from "../../redux/actions";
 
 export default function PaymentPlans() {
   const PLAN_GRATIS = "PRUEBA GRATIS";
@@ -14,9 +14,8 @@ export default function PaymentPlans() {
   const [modalConfirmation, setModalConfirmation] = useState(false);
   const infoCompany = useSelector((state) => state.companyById);
   //const [planFreeUtilizado, setPlanFreeUtilizado] = useState(false); // Nuevo estado para controlar si el Plan Free ha sido utilizado
-
+  //console.log(infoCompany);
   const id_company = localStorage.getItem("user_id");
-
   //Fucniones para controlar los Modales
   const onClickCloseModal = () => {
     setModalPlanFree(false);
@@ -41,6 +40,9 @@ export default function PaymentPlans() {
     setSelectedPlan(plan);
   };
 
+  useEffect(()=>{
+    dispatch(get_company_id(id_company));
+  },[dispatch])
 
 
   const handleContinueClick = () => {
@@ -65,18 +67,13 @@ export default function PaymentPlans() {
     }
   };
   const handleConfirmPlanFree = () => {
-    
     dispatch(update_plan(id_company, PLAN_GRATIS));
-    dispatch(get_company_by_id(id_company));
     setModalConfirmation(false);
     setModalPlanFree(false);
-    if(infoCompany.plan === PLAN_GRATIS){
-      //mostrar mensaje toastify en home
-      navigate("/home/company");
-    }
+    navigate("/home/company");
     // setPlanFreeUtilizado(true);
   };
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.topSection}>

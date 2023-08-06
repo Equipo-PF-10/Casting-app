@@ -75,7 +75,7 @@ export default function SearchBarCompany() {
         toastId: "custom-toast-id",
         style: {
           marginTop: "50px",
-          width: "340px",
+          width: "450px",
         },
       });
     }
