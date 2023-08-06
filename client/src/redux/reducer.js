@@ -17,6 +17,7 @@ import {
   GET_ALL_POSTULATIONS,
   GET_ALL_POSTULANTS_CONTACTED_BY_ID,
   REFUSE_POSTULANT_CONTACTED,
+  ADD_POSTULANT_LIKE_CONTACTED,
   ADD_HIRED,
   GET_HIRED_BY_COMPANY,
   GET_POSTULANTS_BY_NAME,
@@ -179,6 +180,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
         getAllCompanies: payload,
       };
     case GET_ALL_POSTULATIONS:
+      return {
+        ...state,
+        postulatedTalentsByEvent: payload,
+        postulatedTalentsByEventFiltered: payload,
+      };
+    case ADD_POSTULANT_LIKE_CONTACTED:
       return {
         ...state,
         postulatedTalentsByEvent: payload,

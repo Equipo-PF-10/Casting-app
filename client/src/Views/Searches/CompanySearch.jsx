@@ -8,12 +8,12 @@ import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { get_all_postulations , get_event_by_id, get_talent_by_id, close_modal_search_compnay, clear_message_deleted, close_modal_refuse_postulate } from "../../redux/actions";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+ import { ToastContainer, toast } from "react-toastify";
+ import "react-toastify/dist/ReactToastify.css";
 
 const CompanySearch = () => {
   const {id} = useParams();
-  const MESSAGE_SEND_EMAIL = "Se ha enviado correctamente un email de contacto al postulante seleccionado.";
+  // const MESSAGE_SEND_EMAIL = "Se ha enviado correctamente un email de contacto al postulante seleccionado.";
   const dispatch = useDispatch();
   const evento = useSelector((state) => state.eventDetail);
   const postulantes = useSelector((state) =>  state.postulatedTalentsByEvent ); 
@@ -21,31 +21,33 @@ const CompanySearch = () => {
   const idCard = useSelector((state) =>  state.idCard); 
   const talent = useSelector((state) =>  state.talentById);
   const filters = useSelector((state) =>  state.filters);
-  const modal = useSelector((state) =>  state.modalInSearchCompany);
+  // const modal = useSelector((state) =>  state.modalInSearchCompany);
   let messageDeleted = useSelector((state) =>  state.messagePostulantDeleted );
   
-  //localStorage.getItem("id");
+  let id_company = localStorage.getItem("user_id");
   //Verificar si cuando se elimina un postulante se actualiza la lista (si no lo hace, buscar la forma)
 
   
   let [idTalent, setIdTalent] = useState("");
+
   
   //Fucnion para controlar el modal de Contactar
-  const onClickCloseModalConfirmation = () => {
-    const close = "isClosed";
-    dispatch(close_modal_search_compnay(close));
-  };
+  // const onClickCloseModalConfirmation = () => {
+  //   const close = "isClosed";
+  //   dispatch(close_modal_search_compnay(close));
+  // };
 
-  const onClickSendEmail = () => {
-    const close = "isClosed";
-    dispatch(close_modal_search_compnay(close));
-    const emailToCompany = axios.post("http://localhost:3001/email/talentContac/pedrocavataio@gmail.com")
-    .then((resp) => console.log(resp.data))
-    .catch((error) => console.log(error))
+  // const onClickSendEmail = () => {
+  //   //postear al usuario como contactado en el arreglo de contactados y eliminarla de la lista de postulantes
+  //   const close = "isClosed";
+  //   dispatch(close_modal_search_compnay(close));
+  //   const emailToCompany = axios.post("http://localhost:3001/email/talentContac/pedrocavataio@gmail.com")
+  //   .then((resp) => console.log(resp.data))
+  //   .catch((error) => console.log(error))
 
-    //Agregar mensaje por toastify
-    mensaje_success_Toast_send_mail();
-  };  
+  //   //Agregar mensaje por toastify
+  //   mensaje_success_Toast_send_mail();
+  // };  
 
 
   // Paginación
@@ -158,31 +160,31 @@ useEffect(()=>{
     }
   };
 
-  //Mostrar mensaje cuando se envie un mail de contacto al Postulante
-  let currentToastIdSendMail = null;
-  const mensaje_success_Toast_send_mail = () => {
-    if (currentToastIdSendMail) {
-      toast.update(currentToastIdSendMail, {
-        render: MESSAGE_SEND_EMAIL,
-        autoClose: 5000,
-      });
-    } else {
-      currentToastIdSendMail = toast.success(MESSAGE_SEND_EMAIL, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        toastId: "custom-toast-id",
-        style: {
-          width: "450px",
-        },
-      });
-    }
-  };
+  // //Mostrar mensaje cuando se envie un mail de contacto al Postulante
+  // let currentToastIdSendMail = null;
+  // const mensaje_success_Toast_send_mail = () => {
+  //   if (currentToastIdSendMail) {
+  //     toast.update(currentToastIdSendMail, {
+  //       render: MESSAGE_SEND_EMAIL,
+  //       autoClose: 5000,
+  //     });
+  //   } else {
+  //     currentToastIdSendMail = toast.success(MESSAGE_SEND_EMAIL, {
+  //       position: "top-right",
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "light",
+  //       toastId: "custom-toast-id",
+  //       style: {
+  //         width: "450px",
+  //       },
+  //     });
+  //   }
+  // };
 
   useEffect(() => {
     if (Object.keys(messageDeleted).length > 0) {
@@ -230,11 +232,11 @@ useEffect(()=>{
            {
             idCard.length === 0  ?
             filters ?
-            <Detail className={style.detail} talent={postulantesCopy[0]} id_event={id}/>
+            <Detail className={style.detail} talent={postulantesCopy[0]} id_event={id} id_company={id_company}/>
             :
-            <Detail className={style.detail} talent={postulantes[0]} id_event={id}/>
+            <Detail className={style.detail} talent={postulantes[0]} id_event={id} id_company={id_company}/>
             :
-            <Detail className={style.detail} talent={talent} key={talent.id} id_event={id}/>
+            <Detail className={style.detail} talent={talent} key={talent.id} id_event={id} id_company={id_company}/>
           } 
         </div>
       </div>
@@ -266,7 +268,7 @@ useEffect(()=>{
       }
 
 {/* -------MODAL PARA ENVIAR UN MAIL AL POSTULANTE ------------*/}
-{
+{/* {
         modal ?
         <div className= {style.containerModalOpened}>
             <div className={style.modalConfirmationOpened}>
@@ -286,7 +288,7 @@ useEffect(()=>{
             <div className={style.modalClosed}>
           </div>
         </div>
-      }
+      } */}
     </div>
   );
 };

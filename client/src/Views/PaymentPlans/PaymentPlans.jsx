@@ -67,7 +67,7 @@ export default function PaymentPlans() {
   const handleConfirmPlanFree = () => {
     
     dispatch(update_plan(id_company, PLAN_GRATIS));
-    get_company_by_id(id_company);
+    dispatch(get_company_by_id(id_company));
     setModalConfirmation(false);
     setModalPlanFree(false);
     if(infoCompany.plan === PLAN_GRATIS){
