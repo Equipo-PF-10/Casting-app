@@ -3,12 +3,23 @@ import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import { Link, useParams } from "react-router-dom";
 import "./HiredTable.css";
 import { useDispatch, useSelector } from "react-redux";
-import { get_hired_by_company } from "../../redux/actions";
+import { add_and_delete_favorite_postulant, get_hired_by_company } from "../../redux/actions";
 
 const HiredTalent = () => {
-  const { id } = useParams();
+  const {id}=useParams();
+  //console.log(id);
 
-  const dispatch = useDispatch();
+  const dispatch=useDispatch();
+
+  //const id_talent = id
+
+  const id_company=localStorage.getItem("user_id");
+  //console.log(id_company);
+  
+  const handleClickDelete=(event) => {
+    //console.log(event);
+    dispatch(add_and_delete_favorite_postulant(event, id_company))
+  }
 
   useEffect(() => {
     dispatch(get_hired_by_company(id));
@@ -17,7 +28,6 @@ const HiredTalent = () => {
   const hired = useSelector((state) => state.hiredByCompany);
   //console.log(hired);
 
-  //const id = localStorage.getItem("user_id");
   //console.log(id);
 
   return (
@@ -64,7 +74,7 @@ const HiredTalent = () => {
                           {/*<td>id={talent.id}</td>*/}
                           <td className="containerStart">
                             <div className="favorite">
-                              <button>
+                              <button onClick={() => handleClickDelete(talent.id)}>
                                 <label className="star">
                                   <input type="checkbox" />
                                   <svg
@@ -89,9 +99,7 @@ const HiredTalent = () => {
                           </td>
                           <td>
                             <div className="reseña">
-                              <Link
-                                to={`/company/review/${talent.id}`}
-                              >
+                              <Link to={`/company/review/${talent.id}`}>
                                 Dar reseña
                               </Link>
                             </div>
