@@ -1,14 +1,25 @@
 import React, { useEffect } from "react";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./HiredTable.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {get_hired_by_company} from "../../redux/actions";
 
 const HiredTalent=() => {
 
-  //const dispatch = useDispatch()
+  const {id} = useParams()
 
-  const id = localStorage.getItem("user_id");
+  const dispatch=useDispatch()
+  
+  useEffect(() => {
+    dispatch(get_hired_by_company(id))
+  },[dispatch])
+  
+  const hired = useSelector((state) => state.hiredByCompany);
+  console.log(hired);
+
+
+  //const id = localStorage.getItem("user_id");
   //console.log(id);
 
   //useEffect(() => {
@@ -44,24 +55,6 @@ const HiredTalent=() => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Imagen</td>
-                    <td>Lionel Messi</td>
-                    <td>Argentino</td>
-                    <td>Futbolista</td>
-                  </tr>
-                  <tr>
-                    <td>Imagen</td>
-                    <td>Lionel Messi</td>
-                    <td>Argentino</td>
-                    <td>Futbolista</td>
-                  </tr>
-                  <tr>
-                    <td>Imagen</td>
-                    <td>Lionel Messi</td>
-                    <td>Argentino</td>
-                    <td>Futbolista</td>
-                  </tr>
                   <tr>
                     <td>Imagen</td>
                     <td>Lionel Messi</td>

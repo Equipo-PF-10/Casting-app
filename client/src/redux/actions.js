@@ -17,7 +17,8 @@ export const GET_ALL_POSTULANT_FAV = "GET_ALL_POSTULANT_FAV";
 export const DELETE_POSTULANT_FAV = "DELETE_POSTULANT_FAV";
 export const GET_ALL_POSTULANTS_CONTACTED_BY_ID = "GET_ALL_POSTULANTS_CONTACTED_BY_ID";
 export const REFUSE_POSTULANT_CONTACTED = "REFUSE_POSTULANT_CONTACTED";
-export const ADD_HIRED = "ADD_HIRED";
+export const ADD_HIRED="ADD_HIRED";
+export const GET_HIRED_BY_COMPANY = "GET_HIRED_BY_COMPANY";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
 export const DELETE_POSTULANT_BY_ID = "DELETE_POSTULANT_BY_ID";
 export const GET_TALENT_BY_ID = "GET_TALENT_BY_ID";
@@ -407,6 +408,25 @@ export const get_talent_by_id = (id) => {
       return dispatch({
         type: "ERROR",
         payload: "¡Ha ocurrido un error al obtener un talento por ID!",
+      });
+    }
+  };
+};
+
+export const get_hired_by_company = (id) => {
+  let endpoint = `http://localhost:3001/applied/hired/${id}`;
+  return async (dispatch) => {
+    try {
+      const {data}=await axios.get(endpoint);
+      //console.log(data);
+      return dispatch({
+        type: GET_HIRED_BY_COMPANY,
+        payload: data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al obtener un talento contratado por la compañia!",
       });
     }
   };
