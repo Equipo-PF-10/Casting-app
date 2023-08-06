@@ -24,7 +24,7 @@ export default function HomeCompany() {
   const messagePlanUpdated = useSelector((state) => state.messagePlanUpdated);
   const eventDetail=useSelector((state) => state.eventDetail);
   //console.log(eventDetail);
-    
+  console.log(messagePlanUpdated);
   const allPostulantsContacted = useSelector(
     (state) => state.allPostulantsContacted
   );
@@ -69,13 +69,7 @@ export default function HomeCompany() {
       dispatch(get_event_by_id(id_company));
     }, [dispatch]);
 
-    let message_success_toastify;
-    if(messagePlanUpdated.length > 0) {
-      message_success_toastify = "¡Se ha actualizado su plan con éxito!";
-      mensaje_success_Toast();
-      dispatch(clear_message_plan_updated(""));
-    }
-
+  let message_success_toastify = "¡Se ha actualizado su plan con éxito!";
   //Mostrar mensaje cuando se actualiza un plan correctamente
   let currentToastIdSuccess = null;
   const mensaje_success_Toast = () => {
@@ -101,6 +95,22 @@ export default function HomeCompany() {
       });
     }
   };
+
+  useEffect(()=>{
+    if(messagePlanUpdated === "PRUEBA GRATIS") {
+      console.log("estoy dentro del useEffect");
+      mensaje_success_Toast();
+      //Aplico timeOut para que me muestre el mensaje y luego se limpie messagePlanUpdated
+      const timeoutId = setTimeout(() => {
+        dispatch(clear_message_plan_updated(""));
+      }, 5000);
+      // Limpia el timeout si el efecto se desmonta antes de que se complete
+      return () => {
+        clearTimeout(timeoutId); 
+      }
+    } 
+  },[messagePlanUpdated])
+
 
   return (
     <div className={styles.container}>
@@ -143,10 +153,3 @@ export default function HomeCompany() {
   );
 }
 
-/*
-mainRouter.use("/companies/favorites", talentsFavoriteRouter);
-
-
-? Esta ruta es para encontrar todos los talentos favoritos de una empresa por Id. También se puede buscar por name mediante query.
-companyRouter.get("/:id", handleGetFavoritesTalentsById);
-*/
