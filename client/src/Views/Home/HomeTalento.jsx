@@ -49,7 +49,7 @@ const HomeTalento = () => {
 
     
     const Events = allEvents.map((evento) => (
-        <NavLink key={evento.id} className={Styles.link}>
+        <NavLink key={evento.id} className={Styles.link} to="/">
             <li>
                 <h2>{evento.name}</h2>
                 <p className={Styles.shortDescription}>{evento.shortDescription}</p>
@@ -219,22 +219,23 @@ const HomeTalento = () => {
     }, [contact]);
 
     const companyInfo = () => {
-        const flattenedCompanies = companies.flat(); // Aplanamos el array de companies
+        const flattenedCompanies = companies.flat(); 
       
         if (flattenedCompanies.length <= 0) {
-          return null;
+          return (
+            <h4>En esta sección se mostrarán las compañias que te han contactado</h4>
+          );
         }
       
         return flattenedCompanies.map((company, index) => (
-          <NavLink key={index} to={`/company/profile/${company.id}`} className={Styles.link}>
-            <li className={Styles.aplication1}>
+          <NavLink key={index} to={`/company/profile/${company.id}`} className={Styles.link1}>
+            <li className={Styles.aplication2}>
                 <h4>{company.name}</h4>
             </li>
           </NavLink>
         ));
       };
 
-    console.log(companyInfo()) // Array Vacío 
 
     return (
         <div className={Styles.div}>
@@ -279,7 +280,7 @@ const HomeTalento = () => {
                 </NavLink>                                                  
 
                     <article className={Styles.info}>
-                        <h3>Empresas que te han contactado</h3>
+                        <h3 className={Styles.title2}>Empresas que te han contactado</h3>
                         <ul className={Styles.info}>
                             {companyInfo()}
                         </ul>
@@ -287,19 +288,19 @@ const HomeTalento = () => {
                     <article className={Styles.info}>
                         <h3>Tus Eventos</h3>
                         <ul className={Styles.yourEvents}>
-                            {eventInfo.length > 0 ? eventInfo : <h4>No tienes postulaciones activas</h4>}
+                            {eventInfo.length > 0 ? eventInfo : <h4 className={Styles.infoCard}>En esta sección se mostrarán tus postulaciones activas</h4>}
                         </ul>
                     </article>
                 </article>
                 <article className={Styles.eventos} >
-                <button onClick={handleMoveLeft}>&larr; </button>
-                    <div style={{ display: showHabilityEvents ? 'block' : 'none' }}>
-                        <h2>Últimas publicaciones para ti</h2>
+                    <button onClick={handleMoveLeft}>&larr; </button>
+                    <div style={{ display: showHabilityEvents ? 'block' : 'none'}}>
+                        <h2 className={Styles.title}>Últimas publicaciones para ti</h2>
                         <ul className={Styles.eventList}>
                         {eventsPerHability()}
                         </ul>
                     </div>
-                    <div style={{ display: !showHabilityEvents ? 'block' : 'none' }}>
+                    <div style={{ display: !showHabilityEvents ? 'block' : 'none'}}>
                         <h1>Últimas publicaciones </h1>
                         <ul className={Styles.eventList}>
                         {Events}
