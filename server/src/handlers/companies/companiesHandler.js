@@ -109,7 +109,7 @@ const handlerUpdateCompanyById = async (req, res) => {
     twitter,
     phoneNumber,
   } = req.body;
-
+  console.log(req.body);
   try {
     // Verificar primero si el usuario companies existe antes de intentar actualizarlo
     const companies = await getCompanyById(id);
@@ -131,9 +131,9 @@ const handlerUpdateCompanyById = async (req, res) => {
         phoneNumber,
       };
 
-      const updatedCompany = await updateCompanyById(id, updatedData);
+      await updateCompanyById(id, updatedData);
 
-      res.status(200).send("Se ha actualizado el perfil correctamente."); //json(updatedCompany);
+      res.status(200).send(`La compania ${name} ha sido actualzada`); //json(updatedCompany);
     }
   } catch (error) {
     res.status(400).json({ error: error.message });

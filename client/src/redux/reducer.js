@@ -33,6 +33,7 @@ import {
   FILTER_BY_CONTEXTURE,
   FILTER_BY_UBICATION,
   FILTER_BY_UBICATION_EVENT,
+  EDIT_COMPANY,
   CLEAR_DETAIL,
   SEND_ID_OF_CARD,
   CLEAR_ID_OF_CARD,
@@ -156,6 +157,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         companyById: payload,
       };
+    case EDIT_COMPANY:
+        return {
+          ...state,
+          companyById: payload,
+        };
     case GET_HIRED_BY_COMPANY:
       return {
         ...state,
@@ -248,6 +254,32 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
+    case EDIT_COMPANY:
+      const updateCompany = state.getAllCompanies.map((companies) => {
+        if (companies.name === action.payload.name) {
+          return {
+            ...companies,
+            email: action.payload.email ,
+        name: action.payload.name,
+        logo: action.payload.logo,
+        country: action.payload.country,
+        domain: action.payload.domain,
+        password: action.payload.password,
+        descriptionShort: action.payload.descriptionShort,
+        instagram: action.payload.instagram,
+        facebook: action.payload.facebook,
+        linkedin: action.payload.linkedin,
+        twitter: action.payload.twitter,
+        phoneNumber: action.payload.phoneNumber,
+          };
+        }
+        return mascota;
+      });
+
+      return {
+        ...state,
+        mascotas: updateMascotas,
+      };
     case FILTER_BY_EVENT_HABILITY: {
       if (payload === "Todos") {
         return {
