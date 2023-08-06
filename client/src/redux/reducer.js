@@ -18,6 +18,7 @@ import {
   GET_ALL_POSTULANTS_CONTACTED_BY_ID,
   REFUSE_POSTULANT_CONTACTED,
   ADD_HIRED,
+  GET_HIRED_BY_COMPANY,
   GET_POSTULANTS_BY_NAME,
   DELETE_POSTULANT_BY_ID,
   DELETE_POSTULANT_FAV,
@@ -43,6 +44,7 @@ import {
 const initialState = {
   talents: [],
   talentById: {},
+  hiredByCompany: {},
   postulatedTalentsByEvent: [],
   postulatedTalentsByEventFiltered: [],
   allEvents: [],
@@ -150,6 +152,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         companyById: payload,
+      };
+    case GET_HIRED_BY_COMPANY:
+      return {
+        ...state,
+        hiredByCompany: payload,
       };
     case GET_ALL_EVENTS:
       return {
@@ -344,17 +351,17 @@ const rootReducer = (state = initialState, { type, payload }) => {
         allEvents: payload,
       };
     case IMAGE_URL:
-      return{
+      return {
         ...state,
         imageUrl: payload,
-      }
-    case GET_ALL_POSTULANT_FAV:   
+      };
+    case GET_ALL_POSTULANT_FAV:
       return {
         ...state,
         allFavoritePostulants: payload,
         allFavoritePostulantsFiltered: payload,
       };
-    case DELETE_POSTULANT_FAV:   
+    case DELETE_POSTULANT_FAV:
       return {
         ...state,
         allFavoritePostulants: payload,
@@ -366,23 +373,23 @@ const rootReducer = (state = initialState, { type, payload }) => {
         filtersFavoritePostulants: true,
         allFavoritePostulantsFiltered: payload,
       };
-      case GET_ALL_POSTULANTS_CONTACTED_BY_ID:   
-        return {
-          ...state,
-          allPostulantsContacted: payload,
-        };
+    case GET_ALL_POSTULANTS_CONTACTED_BY_ID:
+      return {
+        ...state,
+        allPostulantsContacted: payload,
+      };
 
-      case REFUSE_POSTULANT_CONTACTED:   
-        return {
-          ...state,
-          allPostulantsContacted: payload,
-        };
-      case ADD_HIRED:   
-        return {
-          ...state,
-          allPostulantsContacted: payload.allContacteds,
-          hiredTalents: payload.allHireds
-        };
+    case REFUSE_POSTULANT_CONTACTED:
+      return {
+        ...state,
+        allPostulantsContacted: payload,
+      };
+    case ADD_HIRED:
+      return {
+        ...state,
+        allPostulantsContacted: payload.allContacteds,
+        hiredTalents: payload.allHireds,
+      };
     case ERROR_POSTULATE:
       return {
         ...state,
