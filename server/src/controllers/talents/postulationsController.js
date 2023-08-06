@@ -70,8 +70,8 @@ const deleteApplicantById = async (TalentId, EventId) => {
         let idPostulationInter = idPostulations[j].dataValues.AppliedId;
 
         if (idPostulationInter === idPostulation) {
-          const postulationDeleted = await Applied.destroy(
-            // { status: "Rechazado" },
+          const postulationDeleted = await Applied.update(
+            { status: "Rechazado" },
             {
               where: {
                 id: idPostulationInter,
@@ -79,9 +79,8 @@ const deleteApplicantById = async (TalentId, EventId) => {
             }
           );
 
-          // Actualizar también el estado en la tabla ToContact
-          await ToContact.destroy(
-            // { status: "Rechazado" },
+          await ToContact.update(
+            { status: "Rechazado" },
             { where: { id: idPostulationInter } }
           );
 
