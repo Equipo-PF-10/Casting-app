@@ -1,13 +1,14 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Styles from "./FormEmpresas.module.css"
 import axios from "axios"
 import validationEmpresas from "./validationEmpresas"
 import {NavLink} from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Cloudinary from "../Cloudinary/Cloudinary"
 import NavBarLateral from "../NavBarLateral/NavBarLateral"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getAllCompanies, get_company_by_id } from "../../redux/actions"
 
 const FormEmpresa = () => {
 
@@ -15,28 +16,52 @@ const FormEmpresa = () => {
 
     const imageURL = useSelector((state) => state.imageUrl)
 
+    const dispatch = useDispatch();
+    const miEmpresa = useSelector((state) => state.companyDetail);
+    console.log(miEmpresa);
+    const [loading, setLoading] = useState(true); // Bandera de carga
 
-    const URL = "http://localhost:3001/forms/companies"
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          await dispatch(get_company_by_id(idUser)); // Espera a que los datos se obtengan
+          setLoading(false); // Cambia la bandera de carga cuando los datos están listos
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          setLoading(false); // Cambia la bandera de carga incluso si hay un error
+        }
+      };
+  
+      fetchData();
+    }, [dispatch]);
+  useEffect(() => {
+      if (!loading && miEmpresa ) {
+            const empresa= miEmpresa;
+            
+            setInput({...empresa})}
+    }, [loading, miEmpresa]);
 
-    const initialState = {
-        id: "",
-        description: "",
-        descriptionShort: "",
-        name: "",
-        password: "",
-        email: "",
-        logo: "",
-        facebook: "",
-        twitter: "",
-        instagram: "",
-        linkedin: "",
-        phoneNumber: "",
-        country: "",
-        domain: "",
-        industryMain: "",
-    }
+ const URL = "http://localhost:3001/forms/companies"
 
-    const [input, setInput] = useState(initialState)
+        const initialState = {
+            id: "",
+            description: "",
+            descriptionShort: "",
+            name: "",
+            password: "", 
+            email: "",
+            logo: "",
+            facebook: "",
+            twitter: "",
+            instagram: "",
+            linkedin: "",
+            phoneNumber: "",
+            country: "",
+            domain: "",
+            industryMain: "",
+        }
+
+        const [input, setInput] = useState(initialState)
 
     const [error, setError] = useState({})
 
@@ -46,6 +71,7 @@ const FormEmpresa = () => {
 
 
     const handleChange = (event) => {
+        console.log(event.target);
         const {name, value} = event.target;
         setInput({...input, [name]: value})
         setError(validationEmpresas({...input, [name]: value}))
@@ -61,11 +87,13 @@ const FormEmpresa = () => {
 
     let messageUpdated = "Se ha actualizado el perfil correctamente.";  
     
+    
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
+            console.log(filledFields);
             const response = (await axios.patch(URL, filledFields)).data;
-            console.log("En eactualizacion");
+            console.log("En actualizacion");
             console.log(response);
             if(response === messageUpdated){
                 mensaje_success_Toast();
@@ -117,25 +145,25 @@ const FormEmpresa = () => {
                     <div className={Styles.div}>
                         <article className={Styles.coolinput}>
                             <label htmlFor="name" className={Styles.text}>Nombre de la Empresa</label>
-                            <input type="text" name="name" id="name" value={input.name} onChange={handleChange}/>
+                            <input type="text" name="name" id="name" value={input.name} autoComplete="off"  onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="password" className={Styles.text}>Contraseña</label>
-                            <input type="password" name="password" id="password" value={input.password} onChange={handleChange}/>
+                            <input type="password" name="password" id="password" value={input.password} autoComplete="off"  onChange={handleChange}/>
                             <p className={error.password ? Styles.error : ""}>{error.password ? error.password : null}</p>
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="email" className={Styles.text}>Email</label>
-                            <input type="text" name="email" id="email" value={input.email} onChange={handleChange}/>
+                            <input type="text" name="email" id="email" value={input.email} autoComplete="off"  onChange={handleChange}/>
                             <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null}</p>
                         </article>
                         <article className={Styles.coolinput}>
                                 <label htmlFor="logo" className={Styles.text}>Página Web</label>
-                                <input type="text" name="domain" id="domain" value={input.domain}  onChange={handleChange}/>
+                                <input type="text" name="domain" id="domain" value={input.domain} autoComplete="off"  onChange={handleChange}/>
                             </article>
                         <article className={Styles.coolinput}>
                                 <label htmlFor="description" className={Styles.text}>Descripción</label>
-                                <textarea name="description" id="description" value={input.description} onChange={handleChange} placeholder="Descripción de tu empresa..."></textarea>
+                                <textarea name="description" id="description" value={input.description} autoComplete="off"  onChange={handleChange} placeholder="Descripción de tu empresa..."></textarea>
                         </article>
 
 
@@ -175,12 +203,12 @@ const FormEmpresa = () => {
                             </article>
                             <article className={Styles.coolinput}>
                                 <label htmlFor="industryMain" className={Styles.text}>Industria Principal</label>
-                                <input type="text" name="industryMain" id="industryMain" value={input.industryMain}  onChange={handleChange}/>
+                                <input type="text" name="industryMain" id="industryMain" value={input.industryMain} autoComplete="off" onChange={handleChange}/>
                             </article>
 
                             <article className={Styles.coolinput}>
                                 <label htmlFor="descriptionShort" className={Styles.text}>Descripción Corta</label>
-                                <textarea name="descriptionShort" id="descriptionShort" value={input.descriptionShort} onChange={handleChange} placeholder="Descripción breve de tu empresa..."></textarea>
+                                <textarea name="descriptionShort" id="descriptionShort" value={input.descriptionShort} autoComplete="off"  onChange={handleChange} placeholder="Descripción breve de tu empresa..."></textarea>
                         </article>
                         <button type="submit" className={Styles.btn}>Enviar Datos</button>
                         </section>
@@ -199,27 +227,27 @@ const FormEmpresa = () => {
                         </NavLink>
                     <article className={Styles.coolinput}>
                             <label htmlFor="phoneNumber" className={Styles.text}>Número Telefónico</label>
-                            <input type="text" name="phoneNumber" id="phoneNumber" value={input.phoneNumber} onChange={handleChange}/>
+                            <input type="text" name="phoneNumber" id="phoneNumber" value={input.phoneNumber} autoComplete="off"  onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Facebook</label>
-                            <input type="text" name="facebook" value={input.facebook} onChange={handleChange}/>
+                            <input type="text" name="facebook" value={input.facebook} autoComplete="off"  onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Instagram</label>
-                            <input type="text" name="instagram" value={input.instagram}  onChange={handleChange}/>
+                            <input type="text" name="instagram" value={input.instagram} autoComplete="off"  onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Twitter</label>
-                            <input type="text" name="twitter" value={input.twitter} onChange={handleChange}/>
+                            <input type="text" name="twitter" value={input.twitter} autoComplete="off"  onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Linkedin</label>
-                            <input type="text" name="linkedin" value={input.linkedin} onChange={handleChange}/>
+                            <input type="text" name="linkedin" value={input.linkedin} autoComplete="off"  onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="country" className={Styles.text}>Ubicación</label>
-                            <input type="text" id="country" name="country" value={input.country} onChange={handleChange} />
+                            <input type="text" id="country" name="country" value={input.country} autoComplete="off"  onChange={handleChange} />
                         </article>
                     </div>
                 </form>
