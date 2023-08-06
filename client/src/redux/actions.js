@@ -13,6 +13,7 @@ export const GET_COMPANY_BY_ID="GET_COMPANY_BY_ID";
 export const GET_COMPANY_ID="GET_COMPANY_ID";
 export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
+export const ADD_POSTULANT_LIKE_CONTACTED = "ADD_POSTULANT_LIKE_CONTACTED";
 export const GET_ALL_POSTULANT_FAV = "GET_ALL_POSTULANT_FAV";
 export const DELETE_POSTULANT_FAV = "DELETE_POSTULANT_FAV";
 export const GET_ALL_POSTULANTS_CONTACTED_BY_ID = "GET_ALL_POSTULANTS_CONTACTED_BY_ID";
@@ -708,7 +709,7 @@ export const refuse_postulant_contacted = (id_talent, id_company, id_event) => {
 };
 
 export const update_plan = (id_company, plan) => {
-  let endpoint = `http://localhost:3001/payment/plans/${id_company}`;
+  let endpoint = `http://localhost:3001/companies/plan/${id_company}`;
   return async (dispatch) => {
     try {
       const { data } =  await axios.put(endpoint, {
@@ -736,3 +737,33 @@ export const clear_message_plan_updated = (payload) => {
     });
   };
 };
+
+export const add_postulant_like_contacted = (id_talent, id_company, id_event) => {
+  console.log(id_talent);
+  console.log(id_event);
+  let endpoint = "http://localhost:3001/applied/contact";
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(endpoint, {
+        TalentId: id_talent, EventId: id_event
+      });
+      console.log(response.data);
+
+      
+      //ESPERAR A QUE LLEGUE LA RUTA DE ELIMINAR PARA REFRESCAR LA PAG CON EL GET
+      let fk = id_event;
+      let allPostulantsContacted = await axios.get(`http://localhost:3001/applied/event/${fk}`);
+      return dispatch({
+        type: ADD_POSTULANT_LIKE_CONTACTED,
+        payload: allPostulantsContacted.data,
+      });
+      
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al contactar el postulante!",
+      });
+    }
+  };
+};
+
