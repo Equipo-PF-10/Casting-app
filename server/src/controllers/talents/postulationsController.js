@@ -70,8 +70,8 @@ const deleteApplicantById = async (TalentId, EventId) => {
         let idPostulationInter = idPostulations[j].dataValues.AppliedId;
 
         if (idPostulationInter === idPostulation) {
-          const postulationDeleted = await Applied.update(
-            { status: "Rechazado" },
+          const postulationDeleted = await Applied.destroy(
+            // { status: "Rechazado" },
             {
               where: {
                 id: idPostulationInter,
@@ -80,12 +80,12 @@ const deleteApplicantById = async (TalentId, EventId) => {
           );
 
           // Actualizar también el estado en la tabla ToContact
-          await ToContact.update(
-            { status: "Rechazado" },
-            { where: { id:idPostulationInter } }
+          await ToContact.destroy(
+            // { status: "Rechazado" },
+            { where: { id: idPostulationInter } }
           );
 
-          if(!postulationDeleted) return "No hay postulaciones activas.";
+          if (!postulationDeleted) return "No hay postulaciones activas.";
           return postulationDeleted;
         }
       }
@@ -110,10 +110,8 @@ const getApplicantsForEventByFk = async (fk) => {
     let talents=[];
     //console.log(postulacion);
     if (!postulacion) {
+      return `La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`;
 
-      return (
-        `La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`
-      );
     }
 
     for (let i = 0; i < postulacion.length; i++) {
@@ -338,7 +336,7 @@ const getContactedByCompany = async (idCompany) => {
     const response = events[0].Applieds;
     return response;
   } catch (error) {
-    return(error.message);
+    return error.message;
   }
 };
 
@@ -382,7 +380,7 @@ const getApplicantsByCompany = async (idCompany) => {
     });
 
     const response = events[0].Applieds;
-    
+
     return response;
   } catch (error) {
     throw new Error(error.message);
