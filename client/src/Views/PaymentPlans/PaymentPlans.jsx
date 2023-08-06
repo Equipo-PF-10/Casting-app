@@ -2,13 +2,21 @@ import React, { useState } from "react";
 import styles from "./PaymentPlans.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { get_company_by_id, update_plan } from "../../redux/actions";
 
 export default function PaymentPlans() {
+  const PLAN_GRATIS = "PRUEBA GRATIS";
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [selectedPlan, setSelectedPlan] = useState("");
   const [modalPlanFree, setModalPlanFree] = useState(false);
   const [modalConfirmation, setModalConfirmation] = useState(false);
-  const [planFreeUtilizado, setPlanFreeUtilizado] = useState(false); // Nuevo estado para controlar si el Plan Free ha sido utilizado
+  const infoCompany = useSelector((state) => state.companyById);
+  //const [planFreeUtilizado, setPlanFreeUtilizado] = useState(false); // Nuevo estado para controlar si el Plan Free ha sido utilizado
+
+  const id_company = localStorage.getItem("user_id");
+
   //Fucniones para controlar los Modales
   const onClickCloseModal = () => {
     setModalPlanFree(false);
@@ -20,23 +28,29 @@ export default function PaymentPlans() {
     setModalConfirmation(false);
   };
 
-  // Función para manejar el click en una card
+  //Función para manejar el click en una card
+  // const handleCardClick = (plan) => {
+  //   setSelectedPlan(plan);
+  //   if (plan === "Free" && planFreeUtilizado) {
+  //     setModalPlanFree(false);
+  //   } else if (plan === "Free") {
+  //     setModalPlanFree(true);
+  //   }
+  // };
   const handleCardClick = (plan) => {
     setSelectedPlan(plan);
-    if (plan === "Free" && planFreeUtilizado) {
-      setModalPlanFree(false);
-    } else if (plan === "Free") {
-      setModalPlanFree(true);
-    }
   };
+
+
 
   const handleContinueClick = () => {
     // Redirigir a una URL específica para cada plan.
     switch (selectedPlan) {
       case 'Free':
-        if (!planFreeUtilizado) {
-          setModalPlanFree(true);
-        }
+        // if (!planFreeUtilizado) {
+        //   setModalPlanFree(true);
+        // }
+        setModalPlanFree(true);
         break;
       case 'Básico':
         // Lógica para el plan Básico
@@ -51,14 +65,22 @@ export default function PaymentPlans() {
     }
   };
   const handleConfirmPlanFree = () => {
+    
+    dispatch(update_plan(id_company, PLAN_GRATIS));
+    get_company_by_id(id_company);
     setModalConfirmation(false);
-    setPlanFreeUtilizado(true);
     setModalPlanFree(false);
+    if(infoCompany.plan === PLAN_GRATIS){
+      //mostrar mensaje toastify en home
+      navigate("/home/company");
+    }
+    // setPlanFreeUtilizado(true);
   };
+  
   return (
     <div className={styles.container}>
       <div className={styles.topSection}>
-        
+
         <div className={styles.logo}>
             <svg
               width="200"
@@ -102,7 +124,7 @@ export default function PaymentPlans() {
       </div>
       {/* IMPLEMENTACION DE MODAL PARA PLAN FREE */}
       {
-        modalPlanFree && !planFreeUtilizado ? (
+        modalPlanFree ? (
         <div className= {styles.containerModalOpened}>
             <div className={styles.modalOpened}>
               <div className={styles.cerrar}>
@@ -134,17 +156,17 @@ export default function PaymentPlans() {
           </div>
       </div>
           ) : null }
-        // <div className= {styles.containerModalClosed}>
-        //     <div className={styles.modalClosed}>
-        //       <button  className={styles.delete} >X</button>
-        //       <div>
-        //         <h1>ERROR!</h1>
-        //         <hr />
-        //         <h2>Error</h2>
-        //       </div>
-        //   </div>
-        // </div>
-      
+         <div className= {styles.containerModalClosed}>
+             <div className={styles.modalClosed}>
+               <button  className={styles.delete} >X</button>
+               <div>
+                 <h1>ERROR!</h1>
+                 <hr />
+                 <h2>Error</h2>
+               </div>
+           </div>
+        </div>
+
       {/* IMPLEMENTACION DE MODAL PARA MOSTRAR MENSAJE DE CONFIRMACIÓN */}
       {
         modalConfirmation ? (
@@ -154,7 +176,7 @@ export default function PaymentPlans() {
                 <h4>¿Está seguro/a de adquirir el Plan Free?</h4>
                 <hr />
               </div>
-              
+
               <div className={styles.bottom3}>
                 {/* APLICAR LOGICA (en el handleClick ---- Muestro mensaje*/}
                 <button className={styles.buttonConfirmar} onClick={handleConfirmPlanFree}>Confirmar</button>
@@ -174,8 +196,8 @@ export default function PaymentPlans() {
           </div>
         </div>
 
-      
-    
+
+
 
       <div className={styles.middleSection}>
         <div className={styles.intro}>
@@ -201,13 +223,13 @@ export default function PaymentPlans() {
         <hr />
       </div>
       <div className={styles.titles}>
-        <h4 
+        <h4
           className={selectedPlan === 'Free' ? styles.selectedh4 : ''}
           >
         Free
         </h4>
         {/* className={styles.text_margin} */}
-        <h4 
+        <h4
         className={`${styles.text_margin} ${
           selectedPlan === 'Básico' ? styles.selectedh4 : ''
         }`}
@@ -267,3 +289,4 @@ export default function PaymentPlans() {
     </div>
   );
 }
+

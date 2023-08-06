@@ -11,14 +11,17 @@ import {
   get_all_favorite_postulants,
   get_event_by_id,
   get_all_postulants_contacted_by_id,
+  clear_message_plan_updated,
 } from "../../redux/actions";
 import HomeItemList from "../../Components/HomeItemList/HomeItemList";
 import HomeContactos from "../../Components/HomeCompanyComponents/HomeContactados/HomeContactos";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function HomeCompany() {
   const dispatch = useDispatch();
   const id_company = localStorage.getItem("user_id");
-  
+  const messagePlanUpdated = useSelector((state) => state.messagePlanUpdated);
   const eventDetail=useSelector((state) => state.eventDetail);
     
   const allPostulantsContacted = useSelector(
@@ -65,11 +68,47 @@ console.log(hiredTalents);
       dispatch(get_event_by_id(id_company));
     }, [dispatch]);
 
+    let message_success_toastify;
+    if(messagePlanUpdated.length > 0) {
+      message_success_toastify = "¡Se ha actualizado su plan con éxito!";
+      mensaje_success_Toast();
+      dispatch(clear_message_plan_updated(""));
+    }
+
+  //Mostrar mensaje cuando se actualiza un plan correctamente
+  let currentToastIdSuccess = null;
+  const mensaje_success_Toast = () => {
+    if (currentToastIdSuccess) {
+      toast.update(currentToastIdSuccess, {
+        render: message_success_toastify,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastIdSuccess = toast.success(message_success_toastify, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "500px",
+        },
+      });
+    }
+  };
+
   return (
     <div className={styles.container}>
       <NavBarLateral />
       <article className={styles.content}>
         <SearchBarCompany />
+        <div>
+        <ToastContainer />
+      </div>
         <section className={styles.grid}>
           <article className={styles.gridItem1}>
             <User />
