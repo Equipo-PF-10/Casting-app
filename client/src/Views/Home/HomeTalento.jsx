@@ -34,8 +34,6 @@ const HomeTalento = () => {
 
     const [allEvents, setAllEvents] = useState([])
 
-    const [filterEvents, setFilterEvents] = ([])
-
     useEffect(() => {
         const getAllEvents = async () => {
             try {
@@ -47,22 +45,42 @@ const HomeTalento = () => {
             }
         }
         getAllEvents()
+    }, [])
 
+    
+    const Events = allEvents.map((evento) => (
+        <NavLink key={evento.id} className={Styles.link}>
+            <li>
+                <h2>{evento.name}</h2>
+                <p className={Styles.shortDescription}>{evento.shortDescription}</p>
+                <p>{evento.habilityRequired.join(", ")}</p>
+            </li>
+        </NavLink>
+    ))
+
+    // Eventos filtrados por habilidad principal
+
+    const [filterEvents, setFilterEvents] = useState([]);
+
+    useEffect(() => {
         if(talent && talent.hability && talent.hability.length !== 0){        
-        const eventsURL = `http://localhost:3001/events/habilityRequired?hability=${talent.hability[0]}`
 
-        const filteredEvents = async () => {
-            try {
-                const response = await axios.get(eventsURL);
-                const data = response.data;
-                setFilterEvents(data);
-            } catch (error) {
-                console.log(`No hay eventos para ti`);
+            const events4U = talent.hability[0];
+    
+            const eventsURL = `http://localhost:3001/events/habilityRequired?hability=${events4U}`
+    
+            const filteredEvents = async () => {
+                try {
+                    const response = await axios.get(eventsURL);
+                    const data = response.data;
+                    setFilterEvents(data);
+                } catch (error) {
+                    console.log(`No hay eventos para ti`);
+                }
             }
-        }
-        filteredEvents();}
-
-    }, [setFilterEvents, talent])
+            filteredEvents();}
+    
+    },[talent])
 
     const eventsPerHability = () => {
         if(filterEvents && filterEvents.length !== 0){
@@ -84,16 +102,6 @@ const HomeTalento = () => {
     }
 
     }
-
-    const Events = allEvents.map((evento) => (
-        <NavLink key={evento.id} className={Styles.link}>
-            <li>
-                <h2>{evento.name}</h2>
-                <p className={Styles.shortDescription}>{evento.shortDescription}</p>
-                <p>{evento.habilityRequired.join(", ")}</p>
-            </li>
-        </NavLink>
-    ))
 
     const [showHabilityEvents, setShowHabilityEvents] = useState(true);
 
@@ -134,9 +142,10 @@ const HomeTalento = () => {
     const [eventData, setEventData] = useState([]);
 
     useEffect(() => {
+       
         const findEventById = async (id) => {
             try {
-              const response = await axios.get(`http://localhost:3001/events/${id}`);
+              const response = await axios.get(`http://localhost:3001/events/eventid/${id}`);
               return response.data;
             } catch (error) {
               console.log(error);
@@ -157,6 +166,8 @@ const HomeTalento = () => {
           fetchEventsData();
     },[events])
 
+    useEffect
+
     const eventInfo = eventData.map((event,index) => (
         <NavLink key={event.id} className={Styles.link}>
             <li className={Styles.aplication}>
@@ -165,6 +176,65 @@ const HomeTalento = () => {
             </li>
         </NavLink>
     ))
+
+    // Compañias que te han contactado 
+
+    const [contact, setContact] = useState([]);
+    const [companies, setCompanies] = useState([]);
+    
+    const URLContact = `http://localhost:3001/applied/contactedForNameCompany?TalentId=${userId}`;
+    
+    useEffect(() => {
+      const fetchContactData = async () => {
+        try {
+          const response = await axios.get(URLContact);
+          const data = response.data;
+          setContact(data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchContactData();
+    }, [URLContact]);
+    
+    useEffect(() => {
+      const fetchCompaniesInfo = async () => {
+        try {
+          if (contact.length === 0) return;
+    
+          const companiesData = await Promise.all(
+            contact.map(async (companyName) => {
+              const response = await axios.get(
+                `http://localhost:3001/companies/email/${companyName}`
+              );
+              return response.data;
+            })
+          );
+          setCompanies(companiesData);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchCompaniesInfo();
+    }, [contact]);
+
+    const companyInfo = () => {
+        const flattenedCompanies = companies.flat(); // Aplanamos el array de companies
+      
+        if (flattenedCompanies.length <= 0) {
+          return null;
+        }
+      
+        return flattenedCompanies.map((company, index) => (
+          <NavLink key={index} to={`/company/profile/${company.id}`} className={Styles.link}>
+            <li className={Styles.aplication1}>
+                <h4>{company.name}</h4>
+            </li>
+          </NavLink>
+        ));
+      };
+
+    console.log(companyInfo()) // Array Vacío 
 
     return (
         <div className={Styles.div}>
@@ -211,7 +281,7 @@ const HomeTalento = () => {
                     <article className={Styles.info}>
                         <h3>Empresas que te han contactado</h3>
                         <ul className={Styles.info}>
-                            {}
+                            {companyInfo()}
                         </ul>
                     </article>
                     <article className={Styles.info}>

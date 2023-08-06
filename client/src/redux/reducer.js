@@ -18,6 +18,7 @@ import {
   GET_ALL_POSTULANTS_CONTACTED_BY_ID,
   REFUSE_POSTULANT_CONTACTED,
   ADD_HIRED,
+  GET_HIRED_BY_COMPANY,
   GET_POSTULANTS_BY_NAME,
   DELETE_POSTULANT_BY_ID,
   DELETE_POSTULANT_FAV,
@@ -36,6 +37,7 @@ import {
   CLEAR_ID_OF_CARD,
   GET_NAME_EVENTS,
   IMAGE_URL,
+  UPDATE_PLAN,
   SEND_EMAIL_MESSAGE,
   ERROR_POSTULATE,
 } from "./actions.js";
@@ -43,6 +45,7 @@ import {
 const initialState = {
   talents: [],
   talentById: {},
+  hiredByCompany: [],
   postulatedTalentsByEvent: [],
   postulatedTalentsByEventFiltered: [],
   allEvents: [],
@@ -64,6 +67,7 @@ const initialState = {
   messageEventClosed: {},
   postulantCreated: {},
   messagePostulantDeleted: {},
+  messagePlanUpdated: "",
   modalMailMessage: "",
   modalInLogin: false,
   modalInSearchCompany: false,
@@ -151,6 +155,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         companyById: payload,
       };
+    case GET_HIRED_BY_COMPANY:
+      return {
+        ...state,
+        hiredByCompany: payload,
+      };
     case GET_ALL_EVENTS:
       return {
         ...state,
@@ -200,7 +209,9 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case DELETE_POSTULANT_BY_ID:
       return {
         ...state,
-        messagePostulantDeleted: payload,
+        //messagePostulantDeleted: payload.z,
+        postulatedTalentsByEventFiltered: payload,
+        postulatedTalentsByEvent: payload,
       };
     case GET_ALL_TALENTS:
       return {
@@ -342,17 +353,22 @@ const rootReducer = (state = initialState, { type, payload }) => {
         allEvents: payload,
       };
     case IMAGE_URL:
-      return{
+      return {
         ...state,
         imageUrl: payload,
-      }
-    case GET_ALL_POSTULANT_FAV:   
+      };
+    case UPDATE_PLAN:
+      return {
+        ...state,
+        messagePlanUpdated : payload,
+      };
+    case GET_ALL_POSTULANT_FAV:
       return {
         ...state,
         allFavoritePostulants: payload,
         allFavoritePostulantsFiltered: payload,
       };
-    case DELETE_POSTULANT_FAV:   
+    case DELETE_POSTULANT_FAV:
       return {
         ...state,
         allFavoritePostulants: payload,
@@ -364,23 +380,23 @@ const rootReducer = (state = initialState, { type, payload }) => {
         filtersFavoritePostulants: true,
         allFavoritePostulantsFiltered: payload,
       };
-      case GET_ALL_POSTULANTS_CONTACTED_BY_ID:   
-        return {
-          ...state,
-          allPostulantsContacted: payload,
-        };
+    case GET_ALL_POSTULANTS_CONTACTED_BY_ID:
+      return {
+        ...state,
+        allPostulantsContacted: payload,
+      };
 
-      case REFUSE_POSTULANT_CONTACTED:   
-        return {
-          ...state,
-          allPostulantsContacted: payload,
-        };
-      case ADD_HIRED:   
-        return {
-          ...state,
-          allPostulantsContacted: payload.allContacteds,
-          hiredTalents: payload.allHireds
-        };
+    case REFUSE_POSTULANT_CONTACTED:
+      return {
+        ...state,
+        allPostulantsContacted: payload,
+      };
+    case ADD_HIRED:
+      return {
+        ...state,
+        allPostulantsContacted: payload.allContacteds,
+        hiredTalents: payload.allHireds,
+      };
     case ERROR_POSTULATE:
       return {
         ...state,

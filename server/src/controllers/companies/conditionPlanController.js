@@ -19,19 +19,49 @@ const updateConditionPlan = async (companyId, newConditionPlan) => {
       throw new Error("No se encontró la compañía con el ID especificado.");
     }
 
-    // Verificar si el plan nuevo es "PRUEBA GRATIS"
-    if (newConditionPlan === "PRUEBA GRATIS") {
-      // Verificar si ya existe una compañía registrada con el plan "PRUEBA GRATIS" y el mismo correo electrónico
-      const userExists = await checkIfUserExists(company.id, "PRUEBA GRATIS");
-
-      if (userExists) {
-        throw new Error("Ya utilizaste este plan. Para mejorar tu experiencia, deberas adquirir un nuevo plan.");
-      }
+    if (
+      newConditionPlan !== "PRUEBA GRATIS" &&
+      newConditionPlan !== "BASICO" &&
+      newConditionPlan !== "PREMIUM"
+    ) {
+      throw new Error(
+        "El plan que has introducido no es válido. Elige entre PRUEBA GRATIS, PREMIUM, o BASICO."
+      );
     }
 
-    // Actualizar el plan de la compañía
+    const currentDate = new Date();
+    const expirationDate = new Date(
+      currentDate.setFullYear(currentDate.getFullYear() + 1)
+    );
     company.plan = newConditionPlan;
+    company.numberPosts = 0;
+    company.expirationDate = expirationDate;
     await company.save();
+
+    await Company.update(
+      {
+        plan: newConditionPlan,
+        numberPosts: 0,
+        expirationDate: expirationDate,
+      },
+      {
+        where: {
+          id: companyId,
+        },
+      }
+    );
+
+    // // Verificar si el plan nuevo es "PRUEBA GRATIS"
+    // if (newConditionPlan === "PRUEBA GRATIS") {
+    //   // Verificar si ya existe una compañía registrada con el plan "PRUEBA GRATIS" y el mismo correo electrónico
+    //   const userExists = await checkIfUserExists(company.id, "PRUEBA GRATIS");
+
+    //   if (userExists) {
+    //     throw new Error(
+    //       "Ya utilizaste este plan. Para mejorar tu experiencia, deberas adquirir un nuevo plan."
+    //     );
+    //   }
+    // }
 
     return company;
   } catch (error) {
