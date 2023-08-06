@@ -600,7 +600,9 @@ export const get_favorite_postulant_by_name = (id, name) => {
   };
 };
 
-export const add_and_delete_favorite_postulant = (id_talent, id_company) => {
+export const add_and_delete_favorite_postulant=(id_talent,id_company) => {
+  //console.log(id_talent);
+  //console.log(id_company);
   let endpoint = "http://localhost:3001/companies/favorites";
   return async (dispatch) => {
     try {
