@@ -102,6 +102,7 @@ const handlerGetApplicantById = async (req, res) => {
 const handlerDeleteApplicantById = async (req, res) => {
   const { TalentId, EventId } = req.body;
   try {
+    
     await deleteApplicantById(TalentId, EventId);
     res
       .status(200)
@@ -121,14 +122,15 @@ const handlerDeleteApplicantById = async (req, res) => {
 const handlerGetApplicantsForEventByFk = async (req, res) => {
   const { fk } = req.params;
   const { name } = req.query;
-
   if (name) {
     const applicant = await getApplicantByName(fk, name);
-
+    
     res.status(200).json(applicant);
   }
-
+  
   try {
+    
+    //console.log(fk, "soy EventId");
     const evento = await getApplicantsForEventByFk(fk);
 
     res.status(200).json(evento);

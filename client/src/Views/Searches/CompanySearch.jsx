@@ -35,6 +35,7 @@ const CompanySearch = () => {
     const close = "isClosed";
     dispatch(close_modal_search_compnay(close));
   };
+
   const onClickSendEmail = () => {
     const close = "isClosed";
     dispatch(close_modal_search_compnay(close));
@@ -283,8 +284,6 @@ useEffect(()=>{
         :
         <div className= {style.containerModalClosed}>
             <div className={style.modalClosed}>
-              
-              
           </div>
         </div>
       }

@@ -16,6 +16,7 @@ const Search = (props) => {
     setName(event.target.value);
   };
   
+  //busqueda por nombre
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(get_postulant_by_name(id_event, name));

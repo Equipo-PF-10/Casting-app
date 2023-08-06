@@ -189,3 +189,7 @@
   flex: 1;
   transition: opacity 0.3s ease-in-out;
 }
+
+.aplication1 h4{
+    font-size: 1.2rem;
+}
