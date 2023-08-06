@@ -34,6 +34,7 @@ export const SEND_ID_OF_CARD = "SEND_ID_OF_CARD";
 export const CLEAR_ID_OF_CARD = "CLEAR_ID_OF_CARD";
 export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
 export const IMAGE_URL = "IMAGE_URL";
+export const UPDATE_PLAN = "UPDATE_PLAN";
 export const SEND_EMAIL_MESSAGE = "SEND_EMAIL_MESSAGE";
 export const ERROR_POSTULATE="ERROR_POSTULATE";
 export const GET_EVENTS_PREMIUM = "GET_EVENTS_PREMIUM";
@@ -182,7 +183,7 @@ export const get_company_id = (id) => {
     } catch (error) {
       return dispatch({
         type: "ERROR",
-        payload: "¡Ha ocurrido un error al obtener un compañia por ID!",
+        payload: "¡Ha ocurrido un error al obtener la compañia por ID!",
       });
     }
   };
@@ -706,3 +707,32 @@ export const refuse_postulant_contacted = (id_talent, id_company, id_event) => {
   };
 };
 
+export const update_plan = (id_company, plan) => {
+  let endpoint = `http://localhost:3001/payment/plans/${id_company}`;
+  return async (dispatch) => {
+    try {
+      const { data } =  await axios.put(endpoint, {
+        "newConditionPlan": plan
+      });
+      // const allFavorites = await axios.get(`http://localhost:3001/companies/favorites/${id_company}`);
+      return dispatch({
+        type: UPDATE_PLAN,
+        payload: data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "Ocurrió un error al intentar actualizar el plan.",
+      });
+    }
+  };
+};
+
+export const clear_message_plan_updated = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: "UPDATE_PLAN",
+      payload: payload,
+    });
+  };
+};

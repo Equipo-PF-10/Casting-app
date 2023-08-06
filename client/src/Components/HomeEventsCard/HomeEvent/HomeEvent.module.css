@@ -50,7 +50,7 @@
 .buttonClose {
     background-color: var(--color-error);
     color: white;
-    margin-right: 10px;
+    margin-left: 10px;
     &:hover {
         background-color: white ;
     color:var(--color-error);

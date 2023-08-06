@@ -37,6 +37,7 @@ import {
   CLEAR_ID_OF_CARD,
   GET_NAME_EVENTS,
   IMAGE_URL,
+  UPDATE_PLAN,
   SEND_EMAIL_MESSAGE,
   ERROR_POSTULATE,
 } from "./actions.js";
@@ -66,6 +67,7 @@ const initialState = {
   messageEventClosed: {},
   postulantCreated: {},
   messagePostulantDeleted: {},
+  messagePlanUpdated: "",
   modalMailMessage: "",
   modalInLogin: false,
   modalInSearchCompany: false,
@@ -354,6 +356,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         imageUrl: payload,
+      };
+    case UPDATE_PLAN:
+      return {
+        ...state,
+        messagePlanUpdated : payload,
       };
     case GET_ALL_POSTULANT_FAV:
       return {
