@@ -122,7 +122,7 @@ export default function SearchBarCompany() {
         <NavLink to="/company/finishedEvents">
           <button>Eventos Finalizados</button>
         </NavLink>
-        <NavLink to="/company/hiredtalent">
+        <NavLink to={`/company/hiredtalent/${id}`}>
           <button>Talentos Contratados</button>
         </NavLink>
         <NavLink to="/company/plans">
