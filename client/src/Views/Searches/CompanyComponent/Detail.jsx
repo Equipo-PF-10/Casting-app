@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Detail = (props) => {
   const MESSAGE_SEND_EMAIL = "Se ha enviado correctamente un email de contacto al postulante seleccionado.";
+  const MESSAGE_POSTULANT_DELETED = "Se ha rechazo al postulante correctamente."
   //const { id, name, aboutMe, ubication, hability } = talent;
   //console.log(props.talent);
   const {talent,id_event, id_company}=props;
@@ -39,7 +40,7 @@ const Detail = (props) => {
 
   const onClickRefuseTalent = (id_talent) => {
     dispatch(delete_postulant_by_id(id_event, id_talent));
-    //dispatch(get_all_postulations(id_event));
+    mensaje_success_Toast();
     setModalRefused(false);
     const emailToCompany = axios
     .post(
@@ -96,14 +97,46 @@ const Detail = (props) => {
     }
   };
 
+  //Mostrar mensaje cuando se elimina un postulante
+  let currentToastIdSuccess = null;
+  const mensaje_success_Toast = () => {
+    if (currentToastIdSuccess) {
+      toast.update(currentToastIdSuccess, {
+        render: MESSAGE_POSTULANT_DELETED,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastIdSuccess = toast.success(MESSAGE_POSTULANT_DELETED, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "500px",
+        },
+      });
+    }
+  };
+
   return (
     <div className={style.containerDetail}>
         {/* <ToastContainer /> */}
       <h2>{talent?.name}</h2>
       <div className={style.head}>
+        {
+        talent ?
         <NavLink to={`/model/profile/${talent?.id}`} className={style.navLink}>
-          <button>Ver perfil completo</button>
+          <button className={style.verPerfil}>Ver perfil completo</button>
         </NavLink>
+        :
+        <button className={style.verPerfil} disabled >Ver perfil completo</button>
+        }
+
       </div>
       <h5>Ubicación: {talent?.ubication}</h5>
       <h5>Resumen del perfil:</h5>
