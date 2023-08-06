@@ -79,6 +79,7 @@ const deleteApplicantById = async (TalentId, EventId) => {
             }
           );
 
+          // Actualizar también el estado en la tabla ToContact
           await ToContact.update(
             { status: "Rechazado" },
             { where: { id: idPostulationInter } }
@@ -92,7 +93,7 @@ const deleteApplicantById = async (TalentId, EventId) => {
 
     return "El talento con ese ID no ha aplicado a ese evento.";
   } catch (error) {
-    return(error.message);
+    throw new Error(error.message);
   }
 };
 
@@ -106,11 +107,10 @@ const getApplicantsForEventByFk = async (fk) => {
         status: "Pendiente",
       },
     });
-    let talents=[];
+    let talents = [];
     //console.log(postulacion);
     if (!postulacion) {
       return `La postulación con ID del evento ${fk} no existe. Intenta de nuevo.`;
-
     }
 
     for (let i = 0; i < postulacion.length; i++) {
@@ -122,7 +122,7 @@ const getApplicantsForEventByFk = async (fk) => {
     //console.log(talents);
     return talents;
   } catch (error) {
-    return(error.message);
+    return error.message;
   }
 };
 
