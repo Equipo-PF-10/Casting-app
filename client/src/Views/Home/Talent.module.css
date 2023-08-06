@@ -5,28 +5,28 @@
 
 .section{
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 20% 80%;
+    margin-left: 10rem;
+    gap: 5rem;
+    margin-top: 1rem;
 }
 
 .eventos{
-    height: 86vh;
-    width: 98%;
-    margin: 1rem;
+    height: 90vh;
     border-radius: 30px;
     box-shadow: 0px 5.986455917358398px 9.977426528930664px 2.993227958679199px rgba(0, 0, 0, 0.25);
     padding: 2rem;
     text-align: justify;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
     transition: opacity 0.5s ease;
     opacity: 1;
     overflow: hidden;
+    display: grid;
+    width: 90%;
+    grid-template-columns: 1% 98% 1%;
 }
 
 .eventos button{
-    width: 1rem;
-    position: relative;
+    width: 13px;
     background-color: #00C9A7;
     border: none;
 }
@@ -34,6 +34,7 @@
 .eventos h1{
     font-size: 4rem;
     border-bottom: #4b31a1 3px solid;
+    margin-left: 2rem;
 }
 
 .eventos h2{
@@ -128,11 +129,11 @@
 }
 
 .link li{
-    transition: 0.3s;
+    transition: 0.1s;
 }
 
 .link li:hover{
-    transform: scale(1.04);
+    transform: scale(1.0009);
 }
 
 .info li{
@@ -142,7 +143,7 @@
 }
 
 .info li:hover{
-    transform: scale(1.1);
+    color: #4b31a1;
 }
 
 
@@ -192,4 +193,27 @@
 
 .aplication1 h4{
     font-size: 1.2rem;
+}
+
+.btnSection{
+background-color: aqua;
+height: 30px;
+}
+
+.title{
+    margin-left: 2rem;
+}
+
+.infoCard{
+    text-align: center;
+    margin-left: -2rem;
+}
+
+.link1{
+    color: #324844;
+    transition: 0.3s;
+}
+
+.link1:hover{
+    color: #4b31a1;
 }
