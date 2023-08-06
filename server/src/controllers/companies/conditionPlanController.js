@@ -25,13 +25,24 @@ const updateConditionPlan = async (companyId, newConditionPlan) => {
       const userExists = await checkIfUserExists(company.id, "PRUEBA GRATIS");
 
       if (userExists) {
-        throw new Error("Ya utilizaste este plan. Para mejorar tu experiencia, deberas adquirir un nuevo plan.");
+        throw new Error(
+          "Ya utilizaste este plan. Para mejorar tu experiencia, deberas adquirir un nuevo plan."
+        );
       }
     }
 
-    // Actualizar el plan de la compañía
+    const currentDate = new Date();
+    const expirationDate = new Date(
+      currentDate.setFullYear(currentDate.getFullYear() + 1)
+    );
+
     company.plan = newConditionPlan;
+    company.numberPosts = 0;
+    company.expirationDate = expirationDate;
+
     await company.save();
+
+    return company;
 
     return company;
   } catch (error) {
