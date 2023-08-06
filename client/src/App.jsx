@@ -55,7 +55,7 @@ function App() {
         <Route path="/home/company" element={<HomeCompany/>} />
         <Route path="/cloud" element={<Cloudinary/>}/>
         <Route path="/contact" element={<SendPersonalized/>} />
-        <Route path="/review" element={<Review/>}/>
+        <Route path="/company/review/:id" element={<Review />} /> {/*id de compañia*/}
         <Route path="/admin" element={<Admin/>}/>
         <Route path="/home/talent" element={<HomeTalento/>}/>
         <Route path="/report" element={<Report/>}/>

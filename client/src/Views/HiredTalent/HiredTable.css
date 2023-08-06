@@ -19,5 +19,78 @@ background-color: rgb(255, 255, 255);
     margin-bottom: 30px;
 }
 
+.imageTd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reseña {
+    display: flex;
+    justify-content: center;
+}
+
+/*BOTON FAVORITO*/
+.containerStart div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.favorite button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    /* align-content: center; */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    /*margin-left: 10px;
+    padding-top: 5px;*/
+    background-color: rgba(0, 68, 152, 0);
+    color: white;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0) 0 0 0,
+    rgba(0, 0, 0, 0) 0 0px 0 inset;
+    &:hover{
+        background-color: rgba(0, 68, 152, 0);
+    }
+}
+
+.star input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .star {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 5px;
+  }
+  
+  .star svg {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    transition: all 0.3s;
+    fill: #dec92f;
+  }
+  
+  .star svg:hover {
+    transform: scale(1.1);
+  }
+  
+  .star input:checked ~ svg {
+    fill: #ffeb49;
+  }
+
 
 

@@ -45,7 +45,7 @@ import {
 const initialState = {
   talents: [],
   talentById: {},
-  hiredByCompany: {},
+  hiredByCompany: [],
   postulatedTalentsByEvent: [],
   postulatedTalentsByEventFiltered: [],
   allEvents: [],
