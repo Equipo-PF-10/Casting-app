@@ -29,7 +29,7 @@ const TalentSearch = () => {
 
   //const idUser = useSelector((state) => state.idUser);
   const idTalent = localStorage.getItem("user_id");
-  console.log(idTalent);
+  //console.log(idTalent);
 
   let [id, setId] = useState(""); //id cambian segun carta
   //let [eventSelected, setEventSelected] = useState({});

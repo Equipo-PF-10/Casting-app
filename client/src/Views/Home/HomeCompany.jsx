@@ -23,7 +23,8 @@ export default function HomeCompany() {
   const id_company = localStorage.getItem("user_id");
   const messagePlanUpdated = useSelector((state) => state.messagePlanUpdated);
   const eventDetail=useSelector((state) => state.eventDetail);
-    
+  //console.log(eventDetail);
+  console.log(messagePlanUpdated);
   const allPostulantsContacted = useSelector(
     (state) => state.allPostulantsContacted
   );
@@ -39,7 +40,7 @@ export default function HomeCompany() {
   const hiredTalents = useSelector(
     (state) => state.hiredTalents
   );
-console.log(hiredTalents);
+//console.log(hiredTalents);
 
   const handleDelete = (id) => {
     dispatch(close_event_by_id(id, id_company));
@@ -68,13 +69,7 @@ console.log(hiredTalents);
       dispatch(get_event_by_id(id_company));
     }, [dispatch]);
 
-    let message_success_toastify;
-    if(messagePlanUpdated.length > 0) {
-      message_success_toastify = "¡Se ha actualizado su plan con éxito!";
-      mensaje_success_Toast();
-      dispatch(clear_message_plan_updated(""));
-    }
-
+  let message_success_toastify = "¡Se ha actualizado su plan con éxito!";
   //Mostrar mensaje cuando se actualiza un plan correctamente
   let currentToastIdSuccess = null;
   const mensaje_success_Toast = () => {
@@ -100,6 +95,22 @@ console.log(hiredTalents);
       });
     }
   };
+
+  useEffect(()=>{
+    if(messagePlanUpdated === "PRUEBA GRATIS") {
+      console.log("estoy dentro del useEffect");
+      mensaje_success_Toast();
+      //Aplico timeOut para que me muestre el mensaje y luego se limpie messagePlanUpdated
+      const timeoutId = setTimeout(() => {
+        dispatch(clear_message_plan_updated(""));
+      }, 5000);
+      // Limpia el timeout si el efecto se desmonta antes de que se complete
+      return () => {
+        clearTimeout(timeoutId); 
+      }
+    } 
+  },[messagePlanUpdated])
+
 
   return (
     <div className={styles.container}>
@@ -142,10 +153,3 @@ console.log(hiredTalents);
   );
 }
 
-/*
-mainRouter.use("/companies/favorites", talentsFavoriteRouter);
-
-
-? Esta ruta es para encontrar todos los talentos favoritos de una empresa por Id. También se puede buscar por name mediante query.
-companyRouter.get("/:id", handleGetFavoritesTalentsById);
-*/

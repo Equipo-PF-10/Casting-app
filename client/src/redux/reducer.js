@@ -6,6 +6,7 @@ import {
   MODAL_REFUSE_POSTULATE,
   USER_TYPE,
   GET_EVENT_BY_ID,
+  GET_EVENT_BY_ID_EVENT,
   GET_ALL_EVENTS,
   EDIT_EVENT,
   CLOSE_EVENT,
@@ -46,13 +47,14 @@ import {
 const initialState = {
   talents: [],
   talentById: {},
-  hiredByCompany: [],
+  hiredByCompany: {},
   postulatedTalentsByEvent: [],
   postulatedTalentsByEventFiltered: [],
   allEvents: [],
   eventsPremium: {},
   eventsFiltered: [],
   eventDetail: [],
+  eventById: {},
   getAllCompanies: [],
   companiesFiltered: [],
   companyDetail: [],
@@ -145,6 +147,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         eventDetail: payload,
+      };
+    case GET_EVENT_BY_ID_EVENT:
+      return {
+        ...state,
+        eventById: payload,
       };
     case GET_COMPANY_BY_ID:
       return {

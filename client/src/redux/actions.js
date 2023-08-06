@@ -5,6 +5,7 @@ export const MODAL_REFUSE_POSTULATE = "MODAL_REFUSE_POSTULATE";
 export const ERROR = "ERROR";
 export const USER_TYPE = "USER_TYPE";
 export const GET_EVENT_BY_ID = "GET_EVENT_BY_ID";
+export const GET_EVENT_BY_ID_EVENT = "GET_EVENT_BY_ID_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 export const CLOSE_EVENT = "CLOSE_EVENT";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
@@ -156,16 +157,14 @@ export const get_company_by_id = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
-      //console.log("Compañía obtenida de la preticion: " + data);
       return dispatch({
         type: GET_COMPANY_BY_ID,
         payload: data,
       });
     } catch (error) {
-      //window.alert(error.message); //"An error has occurred while getting a pokemon by ID!"
       return dispatch({
         type: "ERROR",
-        payload: "¡Ha ocurrido un error al obtener un compañia por ID!",
+        payload: "¡Ha ocurrido un error al obtener la empresa por ID!",
       });
     }
   };
@@ -176,7 +175,6 @@ export const get_company_id = (id) => {
   return async (dispatch) => {
     try {
       const {data}=await axios.get(endpoint);
-      //console.log(data + 'soy actions');
       return dispatch({
         type: GET_COMPANY_ID,
         payload: data,
@@ -195,13 +193,29 @@ export const get_event_by_id = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
-      //console.log("evento obtenido de la preticion: " + data);
       return dispatch({
         type: GET_EVENT_BY_ID,
         payload: data,
       });
     } catch (error) {
-      //window.alert(error.message); //"An error has occurred while getting a pokemon by ID!"
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al obtener los eventos por de la empresa!",
+      });
+    }
+  };
+};
+
+export const get_event_by_id_event = (id) => {
+  let endpoint = `http://localhost:3001/events/eventid/${id}`;
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(endpoint);
+      return dispatch({
+        type: GET_EVENT_BY_ID_EVENT,
+        payload: data,
+      });
+    } catch (error) {
       return dispatch({
         type: "ERROR",
         payload: "¡Ha ocurrido un error al obtener un evento por ID!",
@@ -715,12 +729,12 @@ export const update_plan = (id_company, plan) => {
   return async (dispatch) => {
     try {
       const { data } =  await axios.put(endpoint, {
-        "newConditionPlan": plan
+        newConditionPlan: plan
       });
-      // const allFavorites = await axios.get(`http://localhost:3001/companies/favorites/${id_company}`);
+      console.log(data);
       return dispatch({
         type: UPDATE_PLAN,
-        payload: data,
+        payload: data.plan,
       });
     } catch (error) {
       return dispatch({
