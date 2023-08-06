@@ -11,6 +11,7 @@ export const CLOSE_EVENT = "CLOSE_EVENT";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 export const GET_COMPANY_BY_ID="GET_COMPANY_BY_ID";
+export const EDIT_COMPANY="EDIT_COMPANY";
 export const GET_COMPANY_ID="GET_COMPANY_ID";
 export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
@@ -59,6 +60,50 @@ export const register_model = (payload) => {
         type: "ERROR",
         payload: "Ya existe un usuario con el email ingresado.",
       });
+    }
+  };
+};
+
+export const updateCompany = (
+        id,
+        email,
+        name,
+        logo,
+        country,
+        domain,
+        password,
+        descriptionShort,
+        instagram,
+        facebook,
+        linkedin,
+        twitter,
+        phoneNumber,
+  ) => 
+  {
+    return async (dispatch) => {
+    try {
+      const response = await axios.put("http://localhost:3001/forms/companies", {
+        email,
+        name,
+        logo,
+        country,
+        domain,
+        password,
+        descriptionShort,
+        instagram,
+        facebook,
+        linkedin,
+        twitter,
+        phoneNumber,
+        
+      });
+      dispatch({
+        type: EDIT_COMPANY,
+        payload: response.data,
+      });
+     
+    } catch (error) {
+      alert(` error al actualizar datos de la Compañia ${error} `);
     }
   };
 };

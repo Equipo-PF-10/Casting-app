@@ -50,7 +50,7 @@ const createCompany = async (email, name, image) => {
   return company;
 };
 
-// Función controller que devuele el talent según el Id recibido por parámetro.
+// Función controller que devuele la compañia según el Id recibido por parámetro.
 const getCompanyById = async (id) => {
   try {
     const foundCompany = await Company.findByPk(id);
