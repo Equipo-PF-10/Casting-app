@@ -23,6 +23,7 @@ export default function HomeCompany() {
   const id_company = localStorage.getItem("user_id");
   const messagePlanUpdated = useSelector((state) => state.messagePlanUpdated);
   const eventDetail=useSelector((state) => state.eventDetail);
+  //console.log(eventDetail);
     
   const allPostulantsContacted = useSelector(
     (state) => state.allPostulantsContacted
@@ -39,7 +40,7 @@ export default function HomeCompany() {
   const hiredTalents = useSelector(
     (state) => state.hiredTalents
   );
-console.log(hiredTalents);
+//console.log(hiredTalents);
 
   const handleDelete = (id) => {
     dispatch(close_event_by_id(id, id_company));
