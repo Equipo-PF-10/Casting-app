@@ -129,9 +129,9 @@ export default function SearchBarCompany() {
           <button>Planes</button>
         </NavLink>
       </div>
-      <div className={styles.logout} onClick={handlerClick}>
+      {/*<div className={styles.logout} onClick={handlerClick}>
         <button>Salir</button>
-      </div>
+      </div>*/}
       <ToastContainer />
     </div>
   );
