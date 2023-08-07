@@ -28,10 +28,10 @@ import Cloudinary from "./Components/Cloudinary/Cloudinary";
 import HomeTalento from "./Views/Home/HomeTalento";
 import EventUpdate from "./Components/EventForm/EventUpdate";
 import FinishedEvents from "./Views/FinishedEvents/FinishedEvents";
-
+import Loader from "./Components/Preloader/preloader";
 
 function App() {
-  return (
+  return ( 
     <>
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -40,6 +40,7 @@ function App() {
         <Route path="/model/profile/:id" element={<ProfileModel />} />
         <Route path="/model/search/:id" element={<TalentSearch />} />
         <Route path="/company/register" element={<RegisterCompany />} />
+      <Route path="/loading" element={<Loader />} />
         <Route path="/company/profile/:id" element={<ProfileCompany />} />
         <Route path="/company/search/:id" element={<CompanySearch />} />
         <Route path="/company/plans" element={<PaymentPlans />} />

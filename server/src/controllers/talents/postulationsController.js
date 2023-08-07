@@ -332,7 +332,16 @@ const getContactedByCompany = async (idCompany) => {
         },
       ],
     });
-    const response = events[0].Applieds;
+
+    // const response = events[0];
+    // const response = events.map((event) => event.Applieds.Talents);
+
+    const response = events.map((event) => {
+      return {
+        ...event.get({ plain: true }),
+        Applieds: event.Applieds.map((applied) => applied.Talents),
+      };
+    });
     return response;
   } catch (error) {
     return error.message;
@@ -355,7 +364,14 @@ const getHiredByCompany = async (idCompany) => {
       ],
     });
 
-    const response = events[0].Applieds;
+    // const response = events[0].Applieds;
+    const response = events.map((event) => {
+      return {
+        ...event.get({ plain: true }),
+        Applieds: event.Applieds.map((applied) => applied.Talents),
+      };
+    });
+
     return response;
   } catch (error) {
     throw new Error(error.message);
