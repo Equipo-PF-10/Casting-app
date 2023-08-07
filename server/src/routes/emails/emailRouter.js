@@ -29,7 +29,7 @@ emailRouter.post("/companyNewEvent/:email", handlerCompanyNewEvent)
 emailRouter.post("/newPostulante/:email", handlerNewPostulant)
 
 // Ruta que envia email a Talento por su postulacion.
-emailRouter.post("/postulationEvent/:email", handlerPostulation)  //nueva 
+emailRouter.post("/postulationEvent/:email", handlerPostulation)  
 
 // Ruta que envia email a Talent que hace sido contactado.
 emailRouter.post("/talentContac/:email", handlerTalentContact)
