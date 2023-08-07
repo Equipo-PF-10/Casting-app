@@ -9,11 +9,11 @@ const eventsMocks = require("./src/data/eventsMocks");
 // force is to reset my database
 const syncDB = async () => {
   try {
-    await conn.sync({ force: true });
+    await conn.sync({ force: false });
     console.log("Database synchronized successfully.");
 
     // Primero crear empresas
-    //await companiesFromApi();
+    await companiesFromApi();
 
     // Luego crear talentos
     await talentsFromApi();
