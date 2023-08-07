@@ -10,7 +10,8 @@ const { handlerRegisterTalent,
         handlerTalentContact,
         handlerTalentContactRefused,
         handlerExpirationSuscription,
-        handlerStopAdd
+        handlerStopAdd,
+        handlerEditedPerfilCompany
      } = require("../../handlers/emails/emailsHandler");
 
 const emailRouter = Router();
@@ -41,6 +42,9 @@ emailRouter.post("/expirationSuscription/:email", handlerExpirationSuscription)
 
 // Ruta que envia email a Company de que se han agotado sus publicaciones.
 emailRouter.post("/stopAdd/:email", handlerStopAdd)
+
+// Ruta que envia email a Company dando aviso de que ha editado su perfil.
+emailRouter.post("/editedPerfilCompany/:email", handlerEditedPerfilCompany)
 
 
 

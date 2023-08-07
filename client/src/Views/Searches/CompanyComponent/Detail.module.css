@@ -1,11 +1,16 @@
 .containerDetail {
   /*margin-right: 20px;*/
-  position: relative;
-  display: grid;
-  grid-template-rows: 10% 10% 10% 5% 30% 5% 20% 10%;
-  padding: 30px;
+  /*position: relative;*/
+  position: absolute;
+  /*display: grid;
+  grid-template-rows: 10% 10% 10% 5% 30% 5% 20% 10%;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
   width: 400px;
-  height: 80vh;
+  height: auto;
   background-color: rgba(79, 153, 203, 0.226);
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.25);
@@ -64,19 +69,20 @@
   /* align-content: center;  */
 }
 
-.habilidad button {
+.habilidad span {
   width: 10vh;
   margin: 10px 5px 0px 10px;
   cursor:inherit;
-  background-color: #00c9a7;
-  border-radius: 2px;
+  background-color: #00c9a729;
+  border-radius: 30px;
+  padding: 10px;
 }
 
-.habilidad button:active {
+.habilidad span:active {
     background-color: #edeff200;
 }
 
-.habilidad button:hover {
+.habilidad span:hover {
   text-decoration: none;
   background-color: #00c9a7
 }

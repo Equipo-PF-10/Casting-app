@@ -13,6 +13,11 @@
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
+.selected {
+  /* Estilos para las cartas seleccionadas */
+  border: 5px solid #015345;
+}
+
 .fonts {
     /* background-color: blue; */
     margin-left: 200px;
@@ -91,7 +96,7 @@ a:active { text-decoration: none; }
   
   .modalConfirmationOpened {
     width: 35%;
-    height: 25%;
+    height: auto;
     background-color: whitesmoke;
     border-radius: 20px;    
     display: grid;
@@ -110,7 +115,7 @@ a:active { text-decoration: none; }
   
   
   .head3 {
-    height: 15vh;
+    height: 10vh;
     text-align: center;
   }
   .modalConfirmationOpened h4 {

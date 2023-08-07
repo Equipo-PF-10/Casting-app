@@ -98,6 +98,9 @@ const FormEmpresa = () => {
             if(response === messageUpdated){
                 mensaje_success_Toast();
             }
+            const emailToCompany = axios.post("http://localhost:3001/email/editedPerfilCompany/pedrocavataio@gmail.com")
+                .then((resp) => console.log(resp.data))
+                .catch((error) => console.log(error));
             setInput(initialState)
         } catch (error) {
             console.log({error: error.message})

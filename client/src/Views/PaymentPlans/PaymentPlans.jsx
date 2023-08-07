@@ -26,6 +26,11 @@ export default function PaymentPlans() {
   const onClickCloseModalConfirmation = () => {
     setModalConfirmation(false);
   };
+  
+  // Calcula si la tarjeta del Plan Gratis debe estar deshabilitada
+  //const isPlanFreeDisabled = infoCompany.expirationDate && new Date() < new Date(infoCompany.expirationDate);
+  //CREAR UNA PROPIEDAD BOOLEANA PARA VERIFICAR SI ALGUNA VEZ LA COMPAÑIA ADQUIRIÓ EL PLAN GRATIS
+  const isPlanFreeDisabled = infoCompany.expirationDate || infoCompany.plan === "PRUEBA GRATIS";
 
   //Función para manejar el click en una card
   // const handleCardClick = (plan) => {
@@ -192,10 +197,6 @@ export default function PaymentPlans() {
               </div>
           </div>
         </div>
-
-
-
-
       <div className={styles.middleSection}>
         <div className={styles.intro}>
           <h4>Información </h4>
@@ -240,16 +241,25 @@ export default function PaymentPlans() {
         </h4>
       </div>
       <div className={styles.bottomSection}>
-        <div className={`${styles.card} ${
+        {/* <div className={`${styles.card} ${
             selectedPlan === 'Free' ? styles.selected : ''
-          }`} onClick={() => handleCardClick('Free')}>
+          }`} onClick={() => handleCardClick('Free')}> */}
+            {/* <div className={`${styles.card} ${
+          selectedPlan === 'Free' ? styles.selected : ''} ${
+          isPlanFreeDisabled ? styles.disabled : ''}`} onClick={() => handleCardClick('Free')}> */}
+          <div
+            className={`${styles.card} ${
+              selectedPlan === 'Free' ? styles.selected : ''} ${
+              isPlanFreeDisabled ? styles.disabled : ''}`}
+            onClick={() => !isPlanFreeDisabled && handleCardClick('Free')} // Agregamos una condición para permitir el clic solo si no está deshabilitado
+          >
           <p>El plan Free es la opción perfecta para aquellos que desean descubrir las funcionalidades básicas de nuestra plataforma sin costo alguno.</p>
           <ul>
             <li>Publica hasta 2 eventos para empezar a dar a conocer tu Empresa.</li>
             <li>Recibe alertas por correo electrónico.</li>
           </ul>
           <h1>$0 <span className={styles.gratis}>GRATIS</span></h1>
-          <button>Escoger</button>
+          {/* <button disabled={isPlanFreeDisabled} >Escoger</button> */}
         </div>
         <div className={`${styles.card} ${
             selectedPlan === 'Básico' ? styles.selected : ''
@@ -263,7 +273,7 @@ export default function PaymentPlans() {
           <h3><s className={styles.antes}>Antes</s> $110.00</h3>
           <h3><span className={styles.ahora}>Ahora</span> $100.00</h3>
           </div>
-          <button>Escoger</button>
+          {/* <button>Escoger</button> */}
         </div>
         <div className={`${styles.card} ${
             selectedPlan === 'Premium' ? styles.selected : ''
@@ -277,7 +287,7 @@ export default function PaymentPlans() {
           <h3><s className={styles.antes}>Antes</s> $210.00</h3>
           <h3><span className={styles.ahora}>Ahora</span> $200.00</h3>
           </div>
-          <button>Escoger</button>
+          {/* <button>Escoger</button> */}
         </div>
       </div>
         <div className={styles.bottom}>
