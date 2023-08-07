@@ -131,7 +131,7 @@ export default function PaymentPlans() {
             <button>Regresar</button>
           </Link>
         </div>*/}
-      </div>
+      
       {/* IMPLEMENTACION DE MODAL PARA PLAN FREE */}
       {modalPlanFree ? (
         <div className={styles.containerModalOpened}>
@@ -300,6 +300,7 @@ export default function PaymentPlans() {
             </li>
             <li>Recibir alertas por correo electrónico.</li>
           </ul>
+          <h5>Inversión:</h5>
           <h1>
             $0 <span className={styles.gratis}>GRATIS</span>
           </h1>
@@ -325,14 +326,16 @@ export default function PaymentPlans() {
               postulen a tus vacantes.
             </li>
           </ul>
-          <div className={styles.precios}>
+          <h5>Inversión:</h5>
+          {/* <div className={styles.precios}>
             <h3>
               <s className={styles.antes}>Antes</s> $110.00
             </h3>
             <h3>
               <span className={styles.ahora}>Ahora</span> $100.00
             </h3>
-          </div>
+          </div> */}
+          <h2> $100.00 </h2>
           {/* <button>Escoger</button> */}
         </div>
         <div
@@ -349,25 +352,28 @@ export default function PaymentPlans() {
             Nuestro Plan PRO te permitirá:
           </p>
           <ul>
-            <li>Publicar oportunidades laborales de forma ilimitada.</li>
+            <li>Publicar eventos de forma ilimitada.</li>
             <li>
               Obtener una mayor visibilidad al resaltar sus eventos en la pagina
               principal.
             </li>
           </ul>
-          <div className={styles.precios}>
+          <h5>Inversión:</h5>
+          {/* <div className={styles.precios}>
             <h3>
               <s className={styles.antes}>Antes</s> $210.00
             </h3>
             <h3>
               <span className={styles.ahora}>Ahora</span> $200.00
             </h3>
-          </div>
+          </div> */}
+          <h2> $200.00 </h2>
           {/* <button>Escoger</button> */}
         </div>
       </div>
       <div className={styles.bottom}>
         <button onClick={handleContinueClick}>Continuar</button>
+      </div>
       </div>
     </div>
   );
