@@ -1,7 +1,8 @@
 import CardContacto from './ContactoCard/CardContacto';
 import styles from './HomeContactos.module.css';
 
-const HomeContactos = (props) => {
+const HomeContactos=(props) => {
+  console.log(props);
   return (
     <div className={styles.container}>
       <h1>{props.title}</h1>
