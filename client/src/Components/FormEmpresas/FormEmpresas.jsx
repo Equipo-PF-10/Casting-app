@@ -151,23 +151,29 @@ const FormEmpresa = () => {
                             <input type="text" name="name" id="name" value={input.name} autoComplete="off"  onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
+                                <label htmlFor="industryMain" className={Styles.text}>Industria Principal</label>
+                                <input type="text" name="industryMain" id="industryMain" value={input.industryMain} autoComplete="off" onChange={handleChange}/>
+                            </article>
+                            <article className={Styles.coolinput}>
+                            <label htmlFor="phoneNumber" className={Styles.text}>Número Telefónico</label>
+                            <input type="text" name="phoneNumber" id="phoneNumber" value={input.phoneNumber} autoComplete="off"  onChange={handleChange}/>
+                        </article>
+                        {/* <article className={Styles.coolinput}>
                             <label htmlFor="password" className={Styles.text}>Contraseña</label>
                             <input type="password" name="password" id="password" value={input.password} autoComplete="off"  onChange={handleChange}/>
                             <p className={error.password ? Styles.error : ""}>{error.password ? error.password : null}</p>
-                        </article>
+                        </article> */}
                         <article className={Styles.coolinput}>
                             <label htmlFor="email" className={Styles.text}>Email</label>
                             <input type="text" name="email" id="email" value={input.email} autoComplete="off"  onChange={handleChange}/>
                             <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null}</p>
                         </article>
-                        <article className={Styles.coolinput}>
-                                <label htmlFor="logo" className={Styles.text}>Página Web</label>
-                                <input type="text" name="domain" id="domain" value={input.domain} autoComplete="off"  onChange={handleChange}/>
-                            </article>
-                        <article className={Styles.coolinput}>
-                                <label htmlFor="description" className={Styles.text}>Descripción</label>
-                                <textarea name="description" id="description" value={input.description} autoComplete="off"  onChange={handleChange} placeholder="Descripción de tu empresa..."></textarea>
+                        
+                            <article className={Styles.coolinput}>
+                            <label htmlFor="country" className={Styles.text}>Ubicación</label>
+                            <input type="text" id="country" name="country" value={input.country} autoComplete="off"  onChange={handleChange} />
                         </article>
+                        
 
 
                     </div>
@@ -204,14 +210,15 @@ const FormEmpresa = () => {
                                 <label htmlFor="logo" className={Styles.text}>Subir Imágen</label>
                                 <Cloudinary/>
                             </article>
-                            <article className={Styles.coolinput}>
-                                <label htmlFor="industryMain" className={Styles.text}>Industria Principal</label>
-                                <input type="text" name="industryMain" id="industryMain" value={input.industryMain} autoComplete="off" onChange={handleChange}/>
-                            </article>
+                           
 
                             <article className={Styles.coolinput}>
                                 <label htmlFor="descriptionShort" className={Styles.text}>Descripción Corta</label>
                                 <textarea name="descriptionShort" id="descriptionShort" value={input.descriptionShort} autoComplete="off"  onChange={handleChange} placeholder="Descripción breve de tu empresa..."></textarea>
+                        </article>
+                        <article className={Styles.coolinput}>
+                                <label htmlFor="description" className={Styles.text}>Descripción</label>
+                                <textarea name="description" id="description" value={input.description} autoComplete="off"  onChange={handleChange} placeholder="Descripción de tu empresa..."></textarea>
                         </article>
                         <button type="submit" className={Styles.btn}>Enviar Datos</button>
                         </section>
@@ -228,10 +235,10 @@ const FormEmpresa = () => {
                             </defs>
                             </svg>
                         </NavLink>
-                    <article className={Styles.coolinput}>
-                            <label htmlFor="phoneNumber" className={Styles.text}>Número Telefónico</label>
-                            <input type="text" name="phoneNumber" id="phoneNumber" value={input.phoneNumber} autoComplete="off"  onChange={handleChange}/>
-                        </article>
+                        <article className={Styles.coolinput}>
+                                <label htmlFor="logo" className={Styles.text}>Página Web</label>
+                                <input type="text" name="domain" id="domain" value={input.domain} autoComplete="off"  onChange={handleChange}/>
+                            </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="" className={Styles.text}>Facebook</label>
                             <input type="text" name="facebook" value={input.facebook} autoComplete="off"  onChange={handleChange}/>
@@ -248,10 +255,7 @@ const FormEmpresa = () => {
                             <label htmlFor="" className={Styles.text}>Linkedin</label>
                             <input type="text" name="linkedin" value={input.linkedin} autoComplete="off"  onChange={handleChange}/>
                         </article>
-                        <article className={Styles.coolinput}>
-                            <label htmlFor="country" className={Styles.text}>Ubicación</label>
-                            <input type="text" id="country" name="country" value={input.country} autoComplete="off"  onChange={handleChange} />
-                        </article>
+                       
                     </div>
                 </form>
                 <svg width="345" height="202" viewBox="0 0 345 202" fill="none" xmlns="http://www.w3.org/2000/svg" className={Styles.svg2}>
