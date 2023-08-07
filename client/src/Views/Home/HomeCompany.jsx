@@ -98,7 +98,7 @@ export default function HomeCompany() {
 
   useEffect(()=>{
     if(messagePlanUpdated === "PRUEBA GRATIS") {
-      console.log("estoy dentro del useEffect");
+      //console.log("estoy dentro del useEffect");
       mensaje_success_Toast();
       //Aplico timeOut para que me muestre el mensaje y luego se limpie messagePlanUpdated
       const timeoutId = setTimeout(() => {

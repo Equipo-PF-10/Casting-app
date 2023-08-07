@@ -251,7 +251,7 @@ export default function PaymentPlans() {
             className={`${styles.card} ${
               selectedPlan === 'Free' ? styles.selected : ''} ${
               isPlanFreeDisabled ? styles.disabled : ''}`}
-            onClick={() => !isPlanFreeDisabled && handleCardClick('Free')} // Agregamos una condición para permitir el clic solo si no está deshabilitado
+            onClick={() => !isPlanFreeDisabled && handleCardClick('Free')} // Agrego una condición para permitir el clic solo si no está deshabilitado
           >
           <p>El plan Free es la opción perfecta para aquellos que desean descubrir las funcionalidades básicas de nuestra plataforma sin costo alguno.</p>
           <ul>
