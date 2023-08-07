@@ -154,7 +154,7 @@ const Detail = (props) => {
       <div className={style.habilidades}>
         <div className={style.habilidad}>
           {talent?.hability?.map((habilit, key) => (
-            <button key={key}>{habilit}</button>
+            <span key={key}>{habilit}</span>
           ))}
         </div>
       </div>

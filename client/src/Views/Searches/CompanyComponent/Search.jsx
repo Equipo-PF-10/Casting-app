@@ -129,7 +129,7 @@ const Search = (props) => {
         {locationTags}
       </select>
       {/*BOTON RECARGAR*/}
-      <div>
+      {/*<div>
         <button
           onClick={(event) => {
             handleClick(event);
@@ -152,7 +152,7 @@ const Search = (props) => {
           </svg>
           Limpiar Filtros
         </button>
-      </div>
+      </div>*/}
     </div>
   );
 };

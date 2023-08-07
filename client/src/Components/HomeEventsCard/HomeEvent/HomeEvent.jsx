@@ -19,12 +19,14 @@ const HomeEvent = (props) => {
 
   return (
     <div className={styles.containerGral}>
-      <Link to={`/${props.url}/${props.id}`} className={styles.container}>
-        <div className={styles.fonts}>
-          <h2 className={styles.text}>{props.title}</h2>
-          <h5 className={styles.text}>{props.subTitle}</h5>
-          <h5 className={styles.text}>{props.active}</h5>
-        </div>
+      <div className={styles.container}>
+        <Link to={`/${props.url}/${props.id}`}>
+          <div className={styles.fonts}>
+            <h2 className={styles.text}>{props.title}</h2>
+            <h5 className={styles.text}>{props.subTitle}</h5>
+            <h5 className={styles.text}>{props.active}</h5>
+          </div>
+        </Link>
         <div className={styles.options}>
           <button className={styles.buttonEdit} onClick={handleClickEditEvent}>
             Editar
@@ -36,7 +38,7 @@ const HomeEvent = (props) => {
             Finalizar
           </button>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

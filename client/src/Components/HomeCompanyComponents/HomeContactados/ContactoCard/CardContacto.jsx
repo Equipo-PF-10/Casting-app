@@ -43,20 +43,19 @@ const CardContacto = (props) => {
   };
   return (
     <div className={styles.containerGral}>
-      <Link
-        to={`http://localhost:5173/${props.url}/${props.id_talent}`}
-        className={styles.container}
-      >
-        <div className={styles.fonts}>
-          {/* REDIRIGIR AL PERFIL DEL CONTACTADO */}
-          <h2 className={styles.text}>{props.name}</h2>
-          <h5 className={styles.text}>
-            {props.habilities
-              ? props.habilities.map((hability) => `${hability} `)
-              : null}
-          </h5>
-          {/*<h5 className={styles.text}>{props.habilities}</h5>*/}
-        </div>
+      <div className={styles.container}>
+        <Link to={`http://localhost:5173/${props.url}/${props.id_talent}`}>
+          <div className={styles.fonts}>
+            {/* REDIRIGIR AL PERFIL DEL CONTACTADO */}
+            <h2 className={styles.text}>{props.name}</h2>
+            <h5 className={styles.text}>
+              {props.habilities
+                ? props.habilities.map((hability) => `${hability} `)
+                : null}
+            </h5>
+            {/*<h5 className={styles.text}>{props.habilities}</h5>*/}
+          </div>
+        </Link>
         <div className={styles.options}>
           <button className={styles.buttonEdit} onClick={handleClickContratar}>
             Contratar
@@ -65,7 +64,7 @@ const CardContacto = (props) => {
             Rechazar
           </button>
         </div>
-      </Link>
+      </div>
       {/* -------MODAL PARA CONTRATAR AL POSTULANTE ------------*/}
       {modalContratar || modalRechazar ? (
         <div className={styles.containerModalOpened}>
