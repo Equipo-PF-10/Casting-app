@@ -11,7 +11,7 @@ const EventUpdate = () => {
 
     const {eventId} = useParams();
 
-    const URL = `http://localhost:3001/events/${eventId}`;
+    const URL = `https://deploy-sprint-2-backend.onrender.com/events/${eventId}`;
   
     const idUser = localStorage.getItem("user_id");
     

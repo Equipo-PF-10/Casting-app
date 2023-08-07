@@ -7,11 +7,15 @@ const { log } = require("console");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DB_DEPLOY } =
   process.env;
 
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+const sequelize = new Sequelize(DB_DEPLOY,
   {
     logging: false,
     native: false,
+    dialectOptions: {
+      ssl: {
+        require: false,
+      },
+    },
   }
 );
 

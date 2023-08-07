@@ -44,7 +44,7 @@ const Detail = (props) => {
     setModalRefused(false);
     const emailToCompany = axios
     .post(
-      "http://localhost:3001/email/talentContacRefused/pedrocavataio@gmail.com"
+      "https://deploy-sprint-2-backend.onrender.com/email/talentContacRefused/pedrocavataio@gmail.com"
       )
       .then((resp) => console.log(resp.data))
       .catch((error) => console.log(error));
@@ -56,7 +56,7 @@ const Detail = (props) => {
 
       // const close = "isClosed";
       // dispatch(close_modal_search_compnay(close));
-      const emailToCompany = axios.post("http://localhost:3001/email/talentContac/pedrocavataio@gmail.com")
+      const emailToCompany = axios.post("https://deploy-sprint-2-backend.onrender.com/email/talentContac/pedrocavataio@gmail.com")
       .then((resp) => console.log(resp.data))
       .catch((error) => console.log(error))
       

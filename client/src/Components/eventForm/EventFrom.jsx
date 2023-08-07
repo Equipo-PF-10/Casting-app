@@ -11,13 +11,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 const EventForm = () => {
 
-  const URL = "http://localhost:3001/events/";
+  const URL = "https://deploy-sprint-2-backend.onrender.com/events/";
 
   const idUser = localStorage.getItem("user_id");
   
   const imageURl = useSelector((state) => state.imageUrl);
 
-  const company = `http://localhost:3001/companies/${idUser}`
+  const company = `https://deploy-sprint-2-backend.onrender.com/companies/${idUser}`
 
   const initialState = {
     name: "",
