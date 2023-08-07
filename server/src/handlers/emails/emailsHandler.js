@@ -179,6 +179,29 @@ const  handlerStopAdd = async (req, res) => {
 }
 
 
+const  handlerEditedPerfilCompany = async (req, res) => {
+    const { email } = req.params
+    console.log(email);
+    try {
+        const result = await transporter.sendMail({
+            from: "henry38b10@gmail.com",
+            to:email,
+            subject:"Perfil actualizado con éxito!!.",
+            text:"Haz actualzado con éxito tu perfil. ¡Esperamos que tengas una experiencia increíble en este proyecto!  ¡Mucho éxito!    Atentamente,        El equipo de CastingApp",   
+        },(err, info) => {
+            // console.log(info.envelope);
+            // console.log(info.messageId);
+        })
+         return res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
+        //return res.status(200).json(result)
+    } catch (error) {
+
+        console.log(error.message)
+    }    
+}
+
+
+
   module.exports = { handlerRegisterTalent,
                      handlerRegisterCompany,
                      handlerCompanyNewEvent,
@@ -187,5 +210,6 @@ const  handlerStopAdd = async (req, res) => {
                      handlerTalentContact,
                      handlerTalentContactRefused,
                      handlerExpirationSuscription,
-                     handlerStopAdd
+                     handlerStopAdd,
+                     handlerEditedPerfilCompany
                     };
