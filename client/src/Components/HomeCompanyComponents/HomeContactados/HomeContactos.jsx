@@ -2,7 +2,7 @@ import CardContacto from "./ContactoCard/CardContacto";
 import styles from "./HomeContactos.module.css";
 
 const HomeContactos = (props) => {
-  console.log(props.contactedTalents[0]?.Applieds);
+  //console.log(props.eventDetail.index);
   return (
     <div className={styles.container}>
       <h1>{props.title}</h1>
@@ -19,9 +19,10 @@ const HomeContactos = (props) => {
                   url={props.url}
                   id_talent={talent[0]?.id}
                   id_company={props.id_company}
-                  id_event={talent[0]?.EventId}
+                  id_event={props.eventDetail.length > 0 && props.eventDetail[index]}
+                  id_post={talent[0]?.TalentApplied?.AppliedId}
                 />
-              )
+              );
             })
           ))
         ) : (
