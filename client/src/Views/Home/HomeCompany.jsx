@@ -23,8 +23,8 @@ export default function HomeCompany() {
   const id_company = localStorage.getItem("user_id");
   const messagePlanUpdated = useSelector((state) => state.messagePlanUpdated);
   const eventDetail=useSelector((state) => state.eventDetail);
-  //console.log(eventDetail);
-  console.log(messagePlanUpdated);
+  //console.log(eventDetail);  //id eventos
+  //console.log(messagePlanUpdated);
   const allPostulantsContacted = useSelector(
     (state) => state.allPostulantsContacted
   );
@@ -118,8 +118,8 @@ export default function HomeCompany() {
       <article className={styles.content}>
         <SearchBarCompany />
         <div>
-        <ToastContainer />
-      </div>
+          <ToastContainer />
+        </div>
         <section className={styles.grid}>
           <article className={styles.gridItem1}>
             <User />
@@ -140,6 +140,7 @@ export default function HomeCompany() {
             </div>
             <div className={styles.contactados}>
               <HomeContactos
+                eventDetail={eventDetail}
                 title={"Postulantes Contactados"}
                 contactedTalents={allPostulantsContacted}
                 url={"model/profile"}

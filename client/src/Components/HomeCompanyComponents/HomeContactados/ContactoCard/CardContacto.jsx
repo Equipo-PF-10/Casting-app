@@ -7,7 +7,12 @@ import {
   refuse_postulant_contacted,
 } from "../../../../redux/actions";
 
-const CardContacto=(props) => {
+const CardContacto = (props) => {
+  //console.log(props.id_talent);
+  //console.log(props.id_company);
+  //console.log(props.id_event);
+  //console.log(props.id_post);
+  //console.log(props.id_post);
   const dispatch = useDispatch();
   const [modalContratar, setModalContratar] = useState(false);
   const [modalRechazar, setModalRechazar] = useState(false);
@@ -53,6 +58,7 @@ const CardContacto=(props) => {
                 ? props.habilities.map((hability) => `${hability} `)
                 : null}
             </h5>
+            <h5>{props.id_event && props.id_event.name}</h5>
             {/*<h5 className={styles.text}>{props.habilities}</h5>*/}
           </div>
         </Link>
