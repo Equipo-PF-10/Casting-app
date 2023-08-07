@@ -35,8 +35,9 @@ export default function PaymentPlans() {
   // Calcula si la tarjeta del Plan Gratis debe estar deshabilitada
   //const isPlanFreeDisabled = infoCompany.expirationDate && new Date() < new Date(infoCompany.expirationDate);
   //CREAR UNA PROPIEDAD BOOLEANA PARA VERIFICAR SI ALGUNA VEZ LA COMPAÑIA ADQUIRIÓ EL PLAN GRATIS
+  
   const isPlanFreeDisabled =
-    infoCompany.expirationDate || infoCompany.plan === "PRUEBA GRATIS";
+    infoCompany.expirationDate || infoCompany.plan === "PRUEBA GRATIS"; //infoCompany.planFree
 
   //Función para manejar el click en una card
   // const handleCardClick = (plan) => {
@@ -285,16 +286,19 @@ export default function PaymentPlans() {
           } ${isPlanFreeDisabled ? styles.disabled : ""}`}
           onClick={() => !isPlanFreeDisabled && handleCardClick("Free")} // Agregamos una condición para permitir el clic solo si no está deshabilitado
         >
-          <p>
+          {/* <p>
             El plan Free es la opción perfecta para aquellos que desean
             descubrir las funcionalidades básicas de nuestra plataforma sin
             costo alguno.
+          </p> */}
+          <p>
+            La prueba gratis te permitirá:
           </p>
           <ul>
             <li>
-              Publica hasta 2 eventos para empezar a dar a conocer tu Empresa.
+              Publicar hasta 2 eventos para empezar a dar a conocer tu Empresa.
             </li>
-            <li>Recibe alertas por correo electrónico.</li>
+            <li>Recibir alertas por correo electrónico.</li>
           </ul>
           <h1>
             $0 <span className={styles.gratis}>GRATIS</span>
@@ -307,14 +311,17 @@ export default function PaymentPlans() {
           }`}
           onClick={() => handleCardClick("Básico")}
         >
-          <p>
+          {/* <p>
             El plan Premium brinda a las empresas herramientas esenciales para
             encontrar talento de manera efectiva.
+          </p> */}
+          <p>
+            El plan Premium te permitirá:
           </p>
           <ul>
-            <li>Publica hasta 20 eventos cuando usted lo desee. </li>
+            <li>Publicar hasta 20 eventos cuando usted lo desee. </li>
             <li>
-              Recibe notificaciones en tiempo real cuando nuevos talentos
+              Recibir notificaciones en tiempo real cuando nuevos talentos
               postulen a tus vacantes.
             </li>
           </ul>
@@ -334,14 +341,17 @@ export default function PaymentPlans() {
           }`}
           onClick={() => handleCardClick("Premium")}
         >
-          <p>
+          {/* <p>
             Nuestro exclusivo Plan PRO está diseñado para llevar la experiencia
             de búsqueda de talento al siguiente nivel.{" "}
+          </p> */}
+          <p>
+            Nuestro Plan PRO te permitirá:
           </p>
           <ul>
-            <li>Publica oportunidades laborales de forma ilimitada.</li>
+            <li>Publicar oportunidades laborales de forma ilimitada.</li>
             <li>
-              Obten una mayor visibilidad al resaltar sus eventos en la pagina
+              Obtener una mayor visibilidad al resaltar sus eventos en la pagina
               principal.
             </li>
           </ul>
