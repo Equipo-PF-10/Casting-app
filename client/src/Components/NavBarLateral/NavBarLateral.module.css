@@ -67,7 +67,7 @@
 }
 
 .logoutIcono{
-    color: rgb(73, 90, 126);
+    color: rgb(41, 41, 41);
     margin-top: 20px;
     width: 40px;
     height: 40px;
@@ -76,4 +76,5 @@
 
 .salirH4{
     margin-top: 22px;
+    color: rgb(41, 41, 41);
 }
