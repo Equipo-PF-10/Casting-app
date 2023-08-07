@@ -4,10 +4,17 @@ import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { update_plan } from '../../redux/actions';
 
 const PaypalPayments = (props) => {
+	console.log(props.subs);
     const navigate = useNavigate();
-	console.log(props.plan_id);
+	const dispatch = useDispatch();
+	const id_company = localStorage.getItem("user_id");
+	let PLAN_TYPE = "";
+	if(props.subs === "pro") PLAN_TYPE = "PREMIUM";
+	else if(props.subs === "premium") PLAN_TYPE = "BASICO";
 	return (
         <PayPalButtons
 		    createSubscription={(data, actions) => {
@@ -23,9 +30,9 @@ const PaypalPayments = (props) => {
             onApprove={(data, actions) => {
 				// const details = await actions.subscription.capture();
 				// const name = details.payer.name.given_name;
-				
+				dispatch(update_plan(id_company, PLAN_TYPE));
                 navigate("/home/company");
-                alert("Suscripción completada con éxito! Gracias! ");
+                // alert("Suscripción completada con éxito! Gracias! ");
 			}}
 	    />
     );
