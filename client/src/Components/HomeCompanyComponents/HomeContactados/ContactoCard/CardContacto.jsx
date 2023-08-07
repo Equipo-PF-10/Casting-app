@@ -7,7 +7,7 @@ import {
   refuse_postulant_contacted,
 } from "../../../../redux/actions";
 
-const CardContacto = (props) => {
+const CardContacto=(props) => {
   const dispatch = useDispatch();
   const [modalContratar, setModalContratar] = useState(false);
   const [modalRechazar, setModalRechazar] = useState(false);
