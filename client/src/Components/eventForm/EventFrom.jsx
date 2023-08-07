@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Select from "react-select";
 import styles from "./EventForm.module.css";
 import validation from "./validation";
@@ -8,16 +8,23 @@ import NavBarLateral from "../NavBarLateral/NavBarLateral";
 import Cloudinary from "../Cloudinary/Cloudinary";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { get_company_id } from "../../redux/actions";
+import { useNavigate } from "react-router-dom";
 
 const EventForm = () => {
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const URL = "http://localhost:3001/events/";
-
   const idUser = localStorage.getItem("user_id");
-  
   const imageURl = useSelector((state) => state.imageUrl);
+  const company = `http://localhost:3001/companies/${idUser}`;
+  const empresa = useSelector((state) => state.companyById);
 
-  const company = `http://localhost:3001/companies/${idUser}`
+  console.log(empresa);
+
+  useEffect(()=>{
+    dispatch(get_company_id(idUser))
+  },[dispatch])
 
   const initialState = {
     name: "",
@@ -103,17 +110,25 @@ const EventForm = () => {
       const handleChangeSelect = (selectedOptions) => {
         setOrientaciones(selectedOptions);
       };
-      
+
+      const handlerRedirectPlans = () => {
+        navigate("/company/plans");
+      }
+
+      const handlerRedirectHome = () => {
+        navigate("/home/company");
+      }
+
       let messageEventCreated = "Se ha creado el evento con éxito.";
       const handleSubmit = async (event) => {
         event.preventDefault();
         try {
           console.log(input);
           const response = (await axios.post(URL, input)).data;
-          //console.log(response) //
+          console.log(response) 
           if(response.id){
             mensaje_success_Toast();
-          } else{
+          } else { //if (response.error.response.data.error === "Has alcanzado el límite de eventos que puedes crear con tu plan actual.")
             mensaje_error_Toast();
           }
 
@@ -182,6 +197,52 @@ const EventForm = () => {
       <div>
         <ToastContainer />
       </div>
+      {/* {
+         empresa.numberPosts === 2
+         ?
+         (
+        <div className= {styles.modalOpened}>
+            <div className={styles.modalConfirmationOpened}>
+              <div className={styles.head3}>
+                <h4>¿Está seguro/a de adquirir el Plan Free?</h4>
+                <hr />
+              </div>
+
+              <div className={styles.bottom3}>
+                
+                <button className={styles.buttonConfirmar} onClick={handlerRedirectPlans}>Mejorar Plan</button>
+                <button className={styles.buttonRegresar} onClick={handlerRedirectHome}>Regresar</button>
+              </div>
+          </div>
+        </div>
+      ) */}
+      {
+        empresa.numberPosts === 2 ? 
+        <div className= {styles.containerModalOpened}>
+            <div className={styles.modalOpened}>
+              
+                <h2>Has alcanzado la cantidad máxima de posteos correspondientes a la Prueba Gratis.</h2>
+                <h3>Te invitamos a adquirir un plan con mejores características.</h3>
+              
+              <div className={styles.botones}>
+                <button className={styles.buttonConfirmar} onClick={handlerRedirectPlans}>Mejorar Plan</button>
+                <button className={styles.buttonRegresar} onClick={handlerRedirectHome}>Regresar</button>
+              </div>
+             
+          </div>
+      </div>  
+      : 
+      <div className= {styles.containerModalClosed}>
+             <div className={styles.modalClosed}>
+               <div>
+                 <h1>ERROR!</h1>
+                 <hr />
+                 <h2>Error</h2>
+               </div>
+           </div>
+        </div>
+}
+      
       <section className={styles.section}>
         <div className={styles.formSection}>
           <form action="" method="POST" onSubmit={handleSubmit}>
@@ -438,6 +499,10 @@ const EventForm = () => {
           />
         </svg>
       </section>
+      
+      {/* IMPLEMENTACION DE UN MODAL INVASIVO QUE APARECE CUANDO EL USUARIO LLEGA A LA CANTIDAD MAXIMA DE POSTEOS */}
+      {/* empresa.numberPosts < empresa.conditionPlan ? Renderizar todo : Rendirizar el modal*/}
+      {/* empresa.numberPosts === empresa.conditionPlan */}
     </div>
   );
 };
