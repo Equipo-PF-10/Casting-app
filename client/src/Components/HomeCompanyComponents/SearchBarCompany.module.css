@@ -1,7 +1,9 @@
 .container {
-    display: grid;
-    grid-template-columns: 80% 20%;
+    /*display: grid;
+    grid-template-columns: 80% 20%;*/
     /* background-color: var(--color-fondo); */
+    display: flex;
+    justify-content: center;
 }
 .buttons {
     /* background-color: green; */
@@ -10,7 +12,8 @@
     display: flex;
     justify-content:space-around;
     align-items: center;
-    padding-top: 20px;
+    padding-top: 45px;
+    margin-bottom: 10px;
 }
 .logout {
     /* background-color: wheat; */

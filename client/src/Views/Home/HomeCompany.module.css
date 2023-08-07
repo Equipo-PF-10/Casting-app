@@ -1,5 +1,5 @@
 .container {
-    background-color: whitesmoke;
+    background-color: rgb(255, 255, 255);
     height: 100vh;
 }
 
@@ -8,8 +8,10 @@
 }
 
 .grid{
-    display: grid;
-    grid-template-columns: 30% 70%;
+    /*display: grid;
+    grid-template-columns: 30% 70%;*/
+    display: flex;
+    justify-content: center;
 }
 
 .gridItem1{
@@ -18,8 +20,9 @@
 }
 
 .gridItem2{
-    padding-block: 1rem;
-    padding-inline: 4.5rem;
+    /*padding-block: 1rem;*/
+    padding-inline: 2.8rem;
+    margin-top: 18px;
 }
 
 .gridItem2 div{
