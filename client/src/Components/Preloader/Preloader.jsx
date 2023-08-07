@@ -1,13 +1,13 @@
 import React from 'react';
-import styles from './Preloader.module.css'; // Asegúrate de tener importado correctamente tu archivo de estilos
+import styles from './Preloader.module.css'; 
 
 const Preloader = () => {
   return (
     <div className={styles.preloaderContainer}>
-      {/* Texto "Casting App" centrado arriba de la animación */}
+     
       <div className={styles.title}>Casting App</div>
 
-      {/* Contenedor de la animación */}
+      
       <div className={styles.container}>
         <div className={styles.loader}>
           <div className={styles.slider} style={{ '--i': 0 }}></div>
@@ -16,7 +16,7 @@ const Preloader = () => {
           <div className={styles.slider} style={{ '--i': 3 }}></div>
         </div>
         
-        {/* Texto "Cargando..." centrado abajo de la animación */}
+       
         <div className={styles.loadingText}> Cargando..</div>
       </div>
     </div>
