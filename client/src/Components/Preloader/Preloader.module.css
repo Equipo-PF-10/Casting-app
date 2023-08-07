@@ -1,24 +1,62 @@
-
-.container {
+/* Estilos para el contenedor principal */
+.preloaderContainer {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  height: 100vh; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.9); /* Color de fondo casi transparente */
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  position: relative; /* Agregar posición relativa */
+  overflow: hidden; /* Ocultar cualquier desbordamiento */
 }
 
-.loader-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
+/* Agregar efecto morado en las esquinas */
+.preloaderContainer::before,
+.preloaderContainer::after {
+  content: '';
+  position: absolute;
+  width: 100px; /* Ancho del triángulo */
+  height: 100px; /* Altura del triángulo */
+  background-color: #9b5de5; /* Color morado */
+}
+
+.preloaderContainer::before {
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo transparente con opacidad 0.5 */
+  clip-path: polygon(0 0, 100% 0, 0 100%); /* Forma del triángulo */
 }
 
-/* Estilos para el Loader */
+.preloaderContainer::after {
+  bottom: 0;
+  right: 0;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%); /* Forma del triángulo */
+}
+
+/* Estilos para el texto "Casting App" */
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  color: #00C9A7;
+  margin-bottom: 30px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Borde de sombra simulado */
+}
+
+/* Estilos para el texto "Cargando..." */
+.loadingText {
+  font-size: 25px;
+  color: #00C9A7;
+  margin: auto; /* Centrar verticalmente */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Borde de sombra simulado */
+}
+/* Estilos para el contenedor de la animación y el texto "Cargando..." */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilos para la animación */
 .loader {
   display: flex;
   align-items: center;
@@ -26,32 +64,43 @@
   flex-direction: row;
 }
 
+/* Estilos para cada celda en la animación */
 .slider {
   overflow: hidden;
-  background-color: white;
+  background-color: #ffffff; /* Cambia el color de fondo de las barras */
   margin: 0 15px;
   height: 85px;
   width: 16px;
   border-radius: 15px;
-  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.1), -15px -15px 30px #fff,
-    inset -5px -5px 10px rgba(0, 0, 255, 0.1),
-    inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.1), -15px -15px 30px #9ce5de, /* Cambia el color de fondo de las barras */
+      inset -5px -5px 10px rgba(0, 0, 255, 0.1),
+      inset 5px 5px 10px rgba(0, 0, 0, 0.1);
   position: relative;
   transform: translateY(-7px);
+  border: 1px solid #000; /* Agregar borde negro fino */
 }
 
 .slider::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   height: 25px;
   width: 25px;
   border-radius: 100%;
-  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.3), 0px 420px 0 400px #FF6B6B,
-    inset 0px 0px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.3), 0px 420px 0 400px #00C9A7; /* Cambia el color de fondo de la animación */
   animation: animate-2 2s ease-in-out infinite;
   animation-delay: calc(-1s * var(--i));
+}
+
+/* Estilos para el texto "Cargando..." */
+.loadingText {
+  font-size: 20px;
+  color: #00C9A7;
+  margin: 30px 0; /* Añadir margen superior e inferior */
+  padding-right: 12px; /* Añadir un pequeño espaciado en la derecha */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Borde de sombra simulado */
+   /* Borde negro en la derecha */
 }
 
 @keyframes animate-2 {
