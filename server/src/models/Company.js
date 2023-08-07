@@ -80,6 +80,11 @@ module.exports = (sequelize) => {
         },
       },
 
+      planFree: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+
       linkedin: {
         type: DataTypes.STRING,
         allowNull: true,
