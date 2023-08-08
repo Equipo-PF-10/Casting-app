@@ -401,7 +401,7 @@ const getHiredByCompany = async (idCompany) => {
       });
     }
 
-    // const response = events[0].Applieds;
+     //const response = events[0].Applieds;
     const response = events.map((event) => {
       return {
         ...event.get({ plain: true }),
