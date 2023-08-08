@@ -3,6 +3,7 @@ const {
   Applied,
   Event,
   TalentApplied,
+  DisableEvent,
   ToContact,
   Company,
 } = require("../../db");
@@ -173,6 +174,10 @@ const applicantToContact = async (TalentId, EventId) => {
           const updatedPostulation = await Applied.findByPk(idPostulationInter);
 
           const event = await Event.findByPk(EventId);
+
+          if (!event) {
+            event = await DisableEvent.findByPk(DisableEvent);
+          }
 
           const CompanyId = event.CompanyId;
 

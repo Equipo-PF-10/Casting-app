@@ -1,90 +1,158 @@
-const { Review, Company, Talent,Event, ToContact,Applied,DisableEvent } = require("../../db");
+const {
+  Review,
+  Company,
+  Talent,
+  Event,
+  ToContact,
+  Applied,
+  DisableEvent,
+} = require("../../db");
 
 // Función controller para añadir review a una company.
 const addReviewCompany = async (EventId, CompanyId, rating, text) => {
   try {
-    console.log(EventId)
-    const event = await DisableEvent.findByPk(EventId);
+    let event = await Event.findByPk(EventId);
+
+    if (!event) {
+      event = await DisableEvent.findByPk(EventId);
+    }
+
     const company = await Company.findByPk(CompanyId);
 
-    if (!event && !company) {
+    if (!event || !company) {
       throw new Error("Error al encontrar la empresa o el evento.");
     }
 
     const prueba = await ToContact.findAll({
-      where:{
-        EventId:EventId,
-        status:"Contratado"}
-    })
+      where: {
+        EventId: EventId,
+        status: "Contratado",
+      },
+    });
     let postulacionesId = [];
     let eventosId = [];
 
-    for(let i=0 ; i<prueba.length;i++){
-      postulacionesId.push(prueba[i].id)
-      eventosId.push(prueba[i].EventId)
-    } 
-    for (let i=0 ;i<eventosId.length;i++){
-      if(eventosId[i]===EventId){
-        await Applied.update({Talentreviews:rating, TalentreviewsComentary:text},{
-          where:{
-            id: postulacionesId[i]
+    for (let i = 0; i < prueba.length; i++) {
+      postulacionesId.push(prueba[i].id);
+      eventosId.push(prueba[i].EventId);
+    }
+    for (let i = 0; i < eventosId.length; i++) {
+      if (eventosId[i] === EventId) {
+        await Applied.update(
+          {
+            Talentreviews:
+              (company.reviews * company.reviewsCount + rating) /
+              (company.reviewsCount + 1),
+            TalentreviewsComentary: text,
+          },
+          {
+            where: {
+              id: postulacionesId[i],
+            },
           }
-        })
-        await ToContact.update({Talentreviews:rating, TalentreviewsComentary:text},{
-          where:{
-            EventId: EventId
+        );
+        await ToContact.update(
+          {
+            Talentreviews:
+              (company.reviews * company.reviewsCount + rating) /
+              (company.reviewsCount + 1),
+            TalentreviewsComentary: text,
+          },
+          {
+            where: {
+              EventId: EventId,
+            },
           }
-        })
-        return `Se ha incluido tu puntuacion para la compañia ${CompanyId} que te contrató en el evento ${EventId}`
+        );
+
+        // Actualizar promedio de reviews y conteo para la empresa
+        const updatedCompanyRating =
+          (company.reviews * company.reviewsCount + rating) /
+          (company.reviewsCount + 1);
+        await company.update({
+          reviews: updatedCompanyRating,
+          reviewsCount: company.reviewsCount + 1,
+        });
+
+        return `Se ha incluido tu puntuación para la compañía ${CompanyId} que te contrató en el evento ${EventId}`;
       }
     }
     return prueba;
-
   } catch (error) {
     throw new Error(error.message);
   }
 };
-
 // Función controller para añadir un review a un talento.
 const addReviewTalent = async (EventId, TalentId, rating, text) => {
   try {
-    const event = await Event.findByPk(EventId);
+    let event = await Event.findByPk(EventId);
+
+    if (!event) {
+      event = await DisableEvent.findByPk(EventId);
+    }
+
     const talent = await Talent.findByPk(TalentId);
 
-    if (!event && !talent) {
-      throw new Error("Error al encontrar la empresa o el talento.");
+    if (!event || !talent) {
+      throw new Error("Error al encontrar el evento o el talento.");
     }
 
     const prueba = await Applied.findAll({
-      where:{
-        EventId:EventId,
-        status:"Contratado"
+      where: {
+        EventId: EventId,
+        status: "Contratado",
       },
-      include:{model:Talent}
-    })
-    for(let i=0 ; i<prueba.length;i++){
-      let prueba2=prueba[i].Talents
-      
-      for (let j=0 ; j < prueba2.length ; j++){
-        if(prueba2[j].id===TalentId) {
-          await Applied.update({Companyreviews:rating, CompanyreviewsComentary:text},{
-            where:{
-              EventId: EventId,
-              id:prueba[j].id
+      include: { model: Talent },
+    });
+    for (let i = 0; i < prueba.length; i++) {
+      let prueba2 = prueba[i].Talents;
+
+      for (let j = 0; j < prueba2.length; j++) {
+        if (prueba2[j].id === TalentId) {
+          updatedAppliedRating = Applied;
+
+          await Applied.update(
+            {
+              Companyreviews:
+                (talent.reviews * talent.reviewsCount + rating) /
+                (talent.reviewsCount + 1),
+              CompanyreviewsComentary: text,
+            },
+            {
+              where: {
+                EventId: EventId,
+                id: prueba[j].id,
+              },
             }
-          })
-          await ToContact.update({Companyreviews:rating, CompanyreviewsComentary:text},{
-            where:{
-              EventId: EventId
+          );
+          await ToContact.update(
+            {
+              Companyreviews:
+                (talent.reviews * talent.reviewsCount + rating) /
+                (talent.reviewsCount + 1),
+              CompanyreviewsComentary: text,
+            },
+            {
+              where: {
+                EventId: EventId,
+              },
             }
-          })
-          return `Se ha incluido tu puntuacion para el talento ${TalentId} que participó en el evento ${EventId}`
-       }
+          );
+
+          const updatedTalentRating =
+            (talent.reviews * talent.reviewsCount + rating) /
+            (talent.reviewsCount + 1);
+          await talent.update({
+            reviews: updatedTalentRating,
+            reviewsCount: talent.reviewsCount + 1,
+          });
+
+          return `Se ha incluido tu puntuación para el talento ${TalentId} que participó en el evento ${EventId}`;
+        }
       }
     }
 
     return prueba;
-
   } catch (error) {
     throw new Error(error.message);
   }

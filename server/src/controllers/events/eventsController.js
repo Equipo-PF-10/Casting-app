@@ -190,9 +190,12 @@ const getEventForHability = async (hability) => {
 // Función controller que busca un evento por su Id.
 const getEventById = async (id) => {
   try {
-    const foundEvent = await Event.findByPk(id);
+    let foundEvent = await Event.findByPk(id);
 
-    if (!foundEvent) throw new Error(`No existe un evento con ID ${id}`);
+    if (!foundEvent) {
+      foundEvent = await DisableEvent.findByPk(id);
+      if (!foundEvent) throw new Error(`No existe un evento con ID ${id}`);
+    }
 
     return foundEvent;
   } catch (error) {
