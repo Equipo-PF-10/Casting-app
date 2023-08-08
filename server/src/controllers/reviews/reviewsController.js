@@ -106,7 +106,7 @@ const addReviewTalent = async (EventId, TalentId, rating, text) => {
     });
     //console.log(prueba + 'estoy aca');
     for (let i = 0; i < prueba.length; i++) {
-      let prueba2 = prueba[i].Talents[0];
+      //let prueba2 = prueba[i].Talents[0];
       if (prueba[i].Talents[0].id === TalentId) {
         await Applied.update(
           { Companyreviews: rating, CompanyreviewsComentary: text },
@@ -134,7 +134,7 @@ const addReviewTalent = async (EventId, TalentId, rating, text) => {
           },
           {
             where: {
-              EventId: EventId,
+              //EventId: EventId,
               id: prueba[i].id,
             },
           }

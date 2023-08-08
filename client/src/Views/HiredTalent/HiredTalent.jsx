@@ -62,6 +62,7 @@ const HiredTalent = () => {
                 <tbody>
                   {hired.length > 0 &&
                     hired?.map((event) =>
+                      //console.log(event)
                       event.Applieds?.map((talentArray) =>
                         talentArray.map((talent, index) => {
                         return (
