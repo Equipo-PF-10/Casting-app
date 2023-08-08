@@ -26,8 +26,7 @@ const Detail = (props) => {
   //const idTalent=talent?.id
   //console.log(idTalent);
   const empresa = useSelector((state) => state.companyById);
-  const talent = useSelector((state) =>  state.talentById);
-
+  
   const handlerClick = () => {
     // const open = "isOpened";
     // dispatch(open_modal_search_compnay(open));
