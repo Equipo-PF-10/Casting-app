@@ -20,6 +20,7 @@ const EventForm = () => {
   const company = `http://localhost:3001/companies/${idUser}`;
   const empresa = useSelector((state) => state.companyById);
 
+
   //console.log(empresa);
 
   useEffect(() => {
@@ -119,6 +120,8 @@ const EventForm = () => {
     navigate("/home/company");
   };
 
+
+ 
   let messageEventCreated = "Se ha creado el evento con éxito.";
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -128,6 +131,7 @@ const EventForm = () => {
       console.log(response);
       if (response.id) {
         mensaje_success_Toast();
+        dispatch(get_company_id(idUser))
       } else {
         //if (response.error.response.data.error === "Has alcanzado el límite de eventos que puedes crear con tu plan actual.")
         mensaje_error_Toast();
@@ -138,8 +142,10 @@ const EventForm = () => {
         .then((resp) => console.log(resp.data))
         .catch((error) => console.log(error))
       }
-      console.log((Number(empresa.numberPosts))); 
-      if ((Number(empresa.numberPosts)+1) === (Number(empresa.conditionPlan) -1)){
+      console.log(empresa.numberPosts)
+      console.log(empresa.conditionPlan)
+
+      if ((Number(empresa.numberPosts)+1) === (Number(empresa.conditionPlan) -1)){        
         axios.post(`http://localhost:3001/email/stopAdd/${empresa.email}`)
         .then((resp) => console.log(resp.data))
         .catch((error) => console.log(error))
