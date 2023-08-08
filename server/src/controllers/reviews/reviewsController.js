@@ -1,54 +1,156 @@
-const { Review, Company, Talent } = require("../../db");
+const {
+  Review,
+  Company,
+  Talent,
+  Event,
+  ToContact,
+  Applied,
+  DisableEvent,
+} = require("../../db");
 
 // Función controller para añadir review a una company.
-const addReviewCompany = async (CompanyId, TalentId, rating, text) => {
+const addReviewCompany = async (EventId, CompanyId, rating, text) => {
   try {
-    const company = await Company.findByPk(CompanyId);
-    const talent = await Talent.findByPk(TalentId);
+    let event = await Event.findByPk(EventId);
 
-    if (!company || !talent) {
-      throw new Error("Error al encontrar la empresa o el talento.");
+    if (!event) {
+      event = await DisableEvent.findByPk(EventId);
     }
 
-    const review = await Review.create({ rating, text });
+    const company = await Company.findByPk(CompanyId);
 
-    await review.setCompany(company);
-    await review.setTalent(talent);
+    if (!event || !company) {
+      throw new Error("Error al encontrar la empresa o el evento.");
+    }
 
-    company.reviews =
-      (company.reviews * company.reviewsCount + rating) /
-      (company.reviewsCount + 1);
-    company.reviewsCount += 1;
-    await company.save();
+    const prueba = await ToContact.findAll({
+      where: {
+        EventId: EventId,
+        status: "Contratado",
+      },
+    });
+    let postulacionesId = [];
+    let eventosId = [];
 
-    return review;
+
+    for (let i = 0; i < prueba.length; i++) {
+      postulacionesId.push(prueba[i].id);
+      eventosId.push(prueba[i].EventId);
+    }
+    for (let i = 0; i < eventosId.length; i++) {
+      if (eventosId[i] === EventId) {
+        await Applied.update(
+          {
+            Talentreviews:
+              (company.reviews * company.reviewsCount + rating) /
+              (company.reviewsCount + 1),
+            TalentreviewsComentary: text,
+          },
+          {
+            where: {
+              id: postulacionesId[i],
+            },
+          }
+        );
+        await ToContact.update(
+          {
+            Talentreviews:
+              (company.reviews * company.reviewsCount + rating) /
+              (company.reviewsCount + 1),
+            TalentreviewsComentary: text,
+          },
+          {
+            where: {
+              EventId: EventId,
+            },
+          }
+        );
+
+        const updatedCompanyRating =
+          (company.reviews * company.reviewsCount + rating) /
+          (company.reviewsCount + 1);
+        await company.update({
+          reviews: updatedCompanyRating,
+          reviewsCount: company.reviewsCount + 1,
+        });
+
+        return `Se ha incluido tu puntuación para la compañía ${CompanyId} que te contrató en el evento ${EventId}`;
+      }
+    }
+    return prueba;
   } catch (error) {
     throw new Error(error.message);
   }
 };
-
 // Función controller para añadir un review a un talento.
-const addReviewTalent = async (CompanyId, TalentId, rating, text) => {
+const addReviewTalent = async (EventId, TalentId, rating, text) => {
   try {
-    const company = await Company.findByPk(CompanyId);
-    const talent = await Talent.findByPk(TalentId);
+    let event = await Event.findByPk(EventId);
 
-    if (!company || !talent) {
-      throw new Error("Error al encontrar la empresa o el talento.");
+    if (!event) {
+      event = await DisableEvent.findByPk(EventId);
     }
 
-    const review = await Review.create({ rating, text });
+    const talent = await Talent.findByPk(TalentId);
 
-    await review.setCompany(company);
-    await review.setTalent(talent);
+    if (!event || !talent) {
+      throw new Error("Error al encontrar el evento o el talento.");
+    }
 
-    talent.reviews =
-      (talent.reviews * talent.reviewsCount + rating) /
-      (talent.reviewsCount + 1);
-    talent.reviewsCount += 1;
-    await talent.save();
+    const prueba = await Applied.findAll({
+      where: {
+        EventId: EventId,
+        status: "Contratado",
+      },
 
-    return review;
+      include:{model:Talent}
+    })
+    //console.log(prueba + 'estoy aca');
+    for(let i=0 ; i<prueba.length;i++){
+      let prueba2=prueba[i].Talents[0]
+      if (prueba[i].Talents[0].id === TalentId) {
+        await Applied.update(
+          { Companyreviews: rating, CompanyreviewsComentary: text },
+          {
+            where: {
+              EventId: EventId,
+              id: prueba[i].id,
+            },
+          }
+        );
+        await ToContact.update(
+          { Companyreviews: rating, CompanyreviewsComentary: text },
+          {
+            where: {
+              EventId: EventId,
+            },
+          }
+        );
+        
+           await Talent.update(
+            {
+              reviews:
+                (talent.reviews * talent.reviewsCount + rating) /
+                (talent.reviewsCount + 1),
+            },
+            {
+              where: {
+                EventId: EventId,
+                id: prueba[i].id,
+              },
+            }
+          );
+        
+        return `Se ha incluido tu puntuacion para el talento ${TalentId} que participó en el evento ${EventId}`
+      }
+      //for (let j=0 ; j < prueba2.length ; j++){
+      //  if(prueba2[j].id===TalentId) {
+      // }
+      //}
+    }
+
+    return prueba[0].Talents[0].id;
+
   } catch (error) {
     throw new Error(error.message);
   }

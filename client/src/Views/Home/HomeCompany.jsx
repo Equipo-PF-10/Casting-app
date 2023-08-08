@@ -12,6 +12,7 @@ import {
   get_event_by_id,
   get_all_postulants_contacted_by_id,
   clear_message_plan_updated,
+  message_hired_or_refused_talents,
 } from "../../redux/actions";
 import HomeItemList from "../../Components/HomeItemList/HomeItemList";
 import HomeContactos from "../../Components/HomeCompanyComponents/HomeContactados/HomeContactos";
@@ -23,28 +24,15 @@ export default function HomeCompany() {
   const id_company = localStorage.getItem("user_id");
   const messagePlanUpdated = useSelector((state) => state.messagePlanUpdated);
   const eventDetail=useSelector((state) => state.eventDetail);
-    
-  const allPostulantsContacted = useSelector(
-    (state) => state.allPostulantsContacted
-  );
-  //console.log(eventDetail);
-  //console.log(allPostulantsContacted);
-  
-  const allFavoritePostulants = useSelector(
-    (state) => state.allFavoritePostulants
-  );
-  const allFavoritePostulantsFiltered = useSelector(
-    (state) => state.allFavoritePostulantsFiltered
-  );
-  const hiredTalents = useSelector(
-    (state) => state.hiredTalents
-  );
-console.log(hiredTalents);
+  const allPostulantsContacted = useSelector((state) => state.allPostulantsContacted);
+  const allFavoritePostulants = useSelector((state) => state.allFavoritePostulants);
+  const allFavoritePostulantsFiltered = useSelector((state) => state.allFavoritePostulantsFiltered);
+  const hiredTalents = useSelector((state) => state.hiredTalents);
+  const message_hired_or_refused = useSelector((state) => state.hiredOrRefusedMessage);
 
   const handleDelete = (id) => {
     dispatch(close_event_by_id(id, id_company));
     dispatch(get_event_by_id(id_company));
-    //console.log(allEvents);
   };
 
   //Trae todos los eventos creados
@@ -64,17 +52,7 @@ console.log(hiredTalents);
     },[dispatch])
   
   
-    useEffect(() => {
-      dispatch(get_event_by_id(id_company));
-    }, [dispatch]);
-
-    let message_success_toastify;
-    if(messagePlanUpdated.length > 0) {
-      message_success_toastify = "¡Se ha actualizado su plan con éxito!";
-      mensaje_success_Toast();
-      dispatch(clear_message_plan_updated(""));
-    }
-
+  let message_success_toastify = "¡Se ha actualizado su plan con éxito!";
   //Mostrar mensaje cuando se actualiza un plan correctamente
   let currentToastIdSuccess = null;
   const mensaje_success_Toast = () => {
@@ -99,7 +77,59 @@ console.log(hiredTalents);
         },
       });
     }
+    // const timeoutId = setTimeout(() => {
+    //   dispatch(clear_message_plan_updated(""));
+    //  }, 5000);
   };
+
+
+  //Mostrar mensaje cuando se actualiza un plan correctamente
+  let currentToastIdSuccessContacted = null;
+  const mensaje_success_Toast_contacted = () => {
+    if (currentToastIdSuccessContacted) {
+      toast.update(currentToastIdSuccessContacted, {
+        render: message_hired_or_refused,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastIdSuccessContacted = toast.success(message_hired_or_refused, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "500px",
+        },
+      });
+    }
+  };
+
+  
+    if(messagePlanUpdated === "PRUEBA GRATIS" || messagePlanUpdated === "PREMIUM" || messagePlanUpdated === "BASICO") {
+      mensaje_success_Toast();
+    } 
+
+    useEffect(()=>{
+      return ()=>{
+        dispatch(clear_message_plan_updated(""));
+      }
+    })
+
+  if(message_hired_or_refused === "¡Se ha contratado al postulante con éxito!"){
+    mensaje_success_Toast_contacted();
+    dispatch(message_hired_or_refused_talents(""));
+  }
+
+  if(message_hired_or_refused === "¡Se ha rechazado al postulante con éxito!"){
+    mensaje_success_Toast_contacted();
+    dispatch(message_hired_or_refused_talents(""));
+  }
+  
 
   return (
     <div className={styles.container}>
@@ -107,8 +137,8 @@ console.log(hiredTalents);
       <article className={styles.content}>
         <SearchBarCompany />
         <div>
-        <ToastContainer />
-      </div>
+          <ToastContainer />
+        </div>
         <section className={styles.grid}>
           <article className={styles.gridItem1}>
             <User />
@@ -129,6 +159,7 @@ console.log(hiredTalents);
             </div>
             <div className={styles.contactados}>
               <HomeContactos
+                eventDetail={eventDetail}
                 title={"Postulantes Contactados"}
                 contactedTalents={allPostulantsContacted}
                 url={"model/profile"}
@@ -142,10 +173,3 @@ console.log(hiredTalents);
   );
 }
 
-/*
-mainRouter.use("/companies/favorites", talentsFavoriteRouter);
-
-
-? Esta ruta es para encontrar todos los talentos favoritos de una empresa por Id. También se puede buscar por name mediante query.
-companyRouter.get("/:id", handleGetFavoritesTalentsById);
-*/

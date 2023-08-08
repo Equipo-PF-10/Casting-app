@@ -12,8 +12,10 @@ async function checkIfUserExists(id, plan) {
 
 // Función controller que actualiza el plan de la empresa.
 const updateConditionPlan = async (companyId, newConditionPlan) => {
+  let condition = 0;
   try {
-    const company = await Company.findByPk(companyId);
+    let company = await Company.findByPk(companyId);
+    let plan = false;
 
     if (!company) {
       throw new Error("No se encontró la compañía con el ID especificado.");
@@ -29,13 +31,26 @@ const updateConditionPlan = async (companyId, newConditionPlan) => {
       );
     }
 
+    if (newConditionPlan === "PRUEBA GRATIS") {
+      condition = 2;
+      plan = true;
+    } else if (newConditionPlan === "BASICO") {
+      condition = 20;
+    } else if (newConditionPlan === "PREMIUM") {
+      condition = 999999999;
+    } else {
+      condition = 0;
+    }
+
     const currentDate = new Date();
     const expirationDate = new Date(
       currentDate.setFullYear(currentDate.getFullYear() + 1)
     );
     company.plan = newConditionPlan;
     company.numberPosts = 0;
+    company.planFree = plan;
     company.expirationDate = expirationDate;
+    company.conditionPlan = condition;
     await company.save();
 
     await Company.update(
@@ -51,18 +66,6 @@ const updateConditionPlan = async (companyId, newConditionPlan) => {
       }
     );
 
-    // // Verificar si el plan nuevo es "PRUEBA GRATIS"
-    // if (newConditionPlan === "PRUEBA GRATIS") {
-    //   // Verificar si ya existe una compañía registrada con el plan "PRUEBA GRATIS" y el mismo correo electrónico
-    //   const userExists = await checkIfUserExists(company.id, "PRUEBA GRATIS");
-
-    //   if (userExists) {
-    //     throw new Error(
-    //       "Ya utilizaste este plan. Para mejorar tu experiencia, deberas adquirir un nuevo plan."
-    //     );
-    //   }
-    // }
-
     return company;
   } catch (error) {
     throw new Error(error.message);
@@ -70,25 +73,3 @@ const updateConditionPlan = async (companyId, newConditionPlan) => {
 };
 
 module.exports = { updateConditionPlan };
-
-// const { Company } = require("../../db");
-
-// // Función controller que actualiza el plan de la empresa.
-// const updateConditionPlan = async (companyId, newConditionPlan) => {
-//   try {
-//     const company = await Company.findByPk(companyId);
-
-//     if (!company) {
-//       throw new Error("No se encontró la compañía con el ID especificado.");
-//     }
-
-//     company.plan = newConditionPlan;
-//     await company.save();
-
-//     return company;
-//   } catch (error) {
-//     throw new Error(error.message);
-//   }
-// };
-
-// module.exports = { updateConditionPlan };

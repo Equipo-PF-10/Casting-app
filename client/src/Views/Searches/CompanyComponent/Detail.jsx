@@ -10,9 +10,13 @@ import {
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getAllCompanies, get_company_by_id } from "../../../redux/actions"
+import { create_postulant, get_all_postulations, get_talent_by_id, message_error_postulate } from "../../../redux/actions";
+import { useSelector } from "react-redux";
 
 const Detail = (props) => {
   const MESSAGE_SEND_EMAIL = "Se ha enviado correctamente un email de contacto al postulante seleccionado.";
+  const MESSAGE_POSTULANT_DELETED = "Se ha rechazo al postulante correctamente."
   //const { id, name, aboutMe, ubication, hability } = talent;
   //console.log(props.talent);
   const {talent,id_event, id_company}=props;
@@ -22,6 +26,7 @@ const Detail = (props) => {
   const [modalMail,setModalMail]=useState(false);
   //const idTalent=talent?.id
   //console.log(idTalent);
+  const empresa = useSelector((state) => state.companyById);
 
   const handlerClick = () => {
     // const open = "isOpened";
@@ -39,15 +44,19 @@ const Detail = (props) => {
 
   const onClickRefuseTalent = (id_talent) => {
     dispatch(delete_postulant_by_id(id_event, id_talent));
-    //dispatch(get_all_postulations(id_event));
+    mensaje_success_Toast();
     setModalRefused(false);
-    const emailToCompany = axios
-    .post(
-      "http://localhost:3001/email/talentContacRefused/pedrocavataio@gmail.com"
-      )
-      .then((resp) => console.log(resp.data))
-      .catch((error) => console.log(error));
-    };
+    // const emailToCompany = axios
+    // .post(
+    //   "http://localhost:3001/email/talentContacRefused/pedrocavataio@gmail.com"
+    //   )
+    //   .then((resp) => console.log(resp.data))
+    //   .catch((error) => console.log(error));
+    // };
+    const emailToTalent = axios.post(`http://localhost:3001/email/talentContacRefused/${talent.email}`)
+    .then((resp) => console.log(resp.data))
+    .catch((error) => console.log(error));
+  };
 
     const onClickSendEmail = () => {
       //postear al usuario como contactado en el arreglo de contactados y eliminarla de la lista de postulantes
@@ -55,9 +64,13 @@ const Detail = (props) => {
 
       // const close = "isClosed";
       // dispatch(close_modal_search_compnay(close));
-      const emailToCompany = axios.post("http://localhost:3001/email/talentContac/pedrocavataio@gmail.com")
+      // const emailToCompany = axios.post("http://localhost:3001/email/talentContac/pedrocavataio@gmail.com")
+      // .then((resp) => console.log(resp.data))
+      // .catch((error) => console.log(error))
+
+      const emailToTalent2 = axios.post(`http://localhost:3001/email/talentContac/${talent.email}`)
       .then((resp) => console.log(resp.data))
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error));
       
       //Agregar mensaje por toastify
       mensaje_success_Toast_send_mail();
@@ -96,14 +109,46 @@ const Detail = (props) => {
     }
   };
 
+  //Mostrar mensaje cuando se elimina un postulante
+  let currentToastIdSuccess = null;
+  const mensaje_success_Toast = () => {
+    if (currentToastIdSuccess) {
+      toast.update(currentToastIdSuccess, {
+        render: MESSAGE_POSTULANT_DELETED,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastIdSuccess = toast.success(MESSAGE_POSTULANT_DELETED, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "500px",
+        },
+      });
+    }
+  };
+
   return (
     <div className={style.containerDetail}>
         {/* <ToastContainer /> */}
       <h2>{talent?.name}</h2>
       <div className={style.head}>
+        {
+        talent ?
         <NavLink to={`/model/profile/${talent?.id}`} className={style.navLink}>
-          <button>Ver perfil completo</button>
+          <button className={style.verPerfil}>Ver perfil completo</button>
         </NavLink>
+        :
+        <button className={style.verPerfil} disabled >Ver perfil completo</button>
+        }
+
       </div>
       <h5>Ubicación: {talent?.ubication}</h5>
       <h5>Resumen del perfil:</h5>
@@ -121,7 +166,7 @@ const Detail = (props) => {
       <div className={style.habilidades}>
         <div className={style.habilidad}>
           {talent?.hability?.map((habilit, key) => (
-            <button key={key}>{habilit}</button>
+            <span key={key}>{habilit}</span>
           ))}
         </div>
       </div>

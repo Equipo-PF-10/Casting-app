@@ -75,7 +75,7 @@ export default function SearchBarCompany() {
         toastId: "custom-toast-id",
         style: {
           marginTop: "50px",
-          width: "340px",
+          width: "450px",
         },
       });
     }
@@ -122,16 +122,16 @@ export default function SearchBarCompany() {
         <NavLink to="/company/finishedEvents">
           <button>Eventos Finalizados</button>
         </NavLink>
-        <NavLink to="/company/hiredtalent">
+        <NavLink to={`/company/hiredtalent/${id}`}>
           <button>Talentos Contratados</button>
         </NavLink>
         <NavLink to="/company/plans">
           <button>Planes</button>
         </NavLink>
       </div>
-      <div className={styles.logout} onClick={handlerClick}>
+      {/*<div className={styles.logout} onClick={handlerClick}>
         <button>Salir</button>
-      </div>
+      </div>*/}
       <ToastContainer />
     </div>
   );

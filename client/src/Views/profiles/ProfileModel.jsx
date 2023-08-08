@@ -69,10 +69,10 @@ const ProfileModel=() => {
               <h3>Datos</h3>
               <ul className={style.proyP}>
                 <li>
-                  <p className={style.pe}>{talentId?.ubication}</p>
+                  <p className={style.pe}>Ubicacion: {talentId?.ubication}</p>
                 </li>
                 <li>
-                  <p className={style.pe}>{talentId?.nationality}</p>
+                  <p className={style.pe}>Nacionalidad: {talentId?.nationality}</p>
                 </li>
               </ul>
             </div>

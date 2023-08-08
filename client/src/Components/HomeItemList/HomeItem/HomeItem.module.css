@@ -2,8 +2,10 @@
     margin: 10px;
     background-color: rgba(255, 255, 255, 0.164);
     height: 120px;
-    display: grid;
-    grid-template-columns: 70% 30%;
+    width: 25rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
     border-radius: 10px;
 }
 
@@ -12,11 +14,13 @@
     font-size: 20px;
     padding-top: 10px;
     padding-left: 3px;
+    width: 18rem;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
 }
+
 .options {
     display: grid;
     grid-template-columns: auto auto;
@@ -33,12 +37,37 @@
 .mail button {
     width: 40px;
     height: 40px;
-    background-color: rgba(245, 245, 245, 0.752);
+    background-color: transparent;
+    background-color: transparent;
     &:hover{
-        background-color: rgba(245, 245, 245, 0.795);
+        background-color: transparent;
     }
-    /* background-color: var(--color-success) */
+    /*background-color: var(--color-success)*/
 }
+
+.sobreMail{
+  width: 35px;
+  height: 35px;
+  color: whitesmoke;
+  background-color: transparent;
+    &:hover{
+        background-color: transparent;
+        color: #672bc8;
+    }
+    /*background-color: var(--color-success)*/
+}
+/*.sobreMail:hover{
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+}*/
+
+.mailButton{
+  border: 0px solid rgba(0, 0, 0, 0);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0 0 0 0, rgba(1, 0, 0, 0) 0 0 0 inset;
+}
+
 .delete button {
     width: 40px;
     height: 40px;
@@ -156,6 +185,21 @@
     cursor: pointer;
     height: 0;
     width: 0;
+    border: 0px solid rgba(0, 0, 0, 0);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0 0 0 0, rgba(1, 0, 0, 0) 0 0 0 inset;
+  }
+
+  .starButton{
+    border: 0px solid rgba(0, 0, 0, 0);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0 0 0 0, rgba(1, 0, 0, 0) 0 0 0 inset;
+  }
+
+  .star input:hover{
+    border: 0px solid rgba(0, 0, 0, 0);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0 0 0 0, rgba(1, 0, 0, 0) 0 0 0 inset;
   }
   
   .star {
@@ -163,17 +207,17 @@
     position: relative;
     cursor: pointer;
     user-select: none;
-    margin-bottom: 5px;
+    margin-bottom: 11px;
   }
   
   .star svg {
     position: relative;
     top: 0;
     left: 0;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     transition: all 0.3s;
-    fill: #ffeb49;
+    fill: #cab935;
   }
   
   .star svg:hover {

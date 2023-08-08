@@ -7,6 +7,7 @@ import Blog from "../../Components/Blog/Blog.jsx";
 import "./LandingModule.css";
 import axios from "axios";
 import Footer from "../../Components/Footer/Footer.jsx";
+import LogoutButton from "../../Components/LogoutButton/LogoutButton.jsx";
 
 const Landing = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -47,6 +48,7 @@ const Landing = () => {
           let email = response.email
           let name = response.name
           let image = response.picture
+          console.log(email)
 
           //? 3) comparo si este email esta siendo utilizado como talento        
           if (isAuthenticated) {
@@ -159,6 +161,7 @@ const Landing = () => {
   return (
     <>
       <Navbar />
+      {/* <LogoutButton/> */}
       <main>
         <section id="introduccion-login" className="introduccion">
           <div className="introduccion">

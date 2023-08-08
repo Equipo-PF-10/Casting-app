@@ -169,7 +169,7 @@ const handlerHireTalent = async (req, res) => {
   try {
     const hired = await hireApplicant(TalentId, EventId);
 
-    res.status(200).json("El aplicante ha sido contratado con éxito.");
+    res.status(200).json(hired);
   } catch (error) {
     res.status(400).json(error.message);
   }

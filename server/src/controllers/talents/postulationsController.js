@@ -3,6 +3,7 @@ const {
   Applied,
   Event,
   TalentApplied,
+  DisableEvent,
   ToContact,
   Company,
 } = require("../../db");
@@ -16,27 +17,19 @@ const getAllApplied = async () => {
 // Función controller para crear postulaciones
 const createApplied = async (EventId, TalentId) => {
   try {
-    // encuentra el perfil que se quiere postular
     const talent = await Talent.findByPk(TalentId);
-    // encuentra las postulaciones de ese perfil
     const applieds = await talent.getApplieds();
-    // extraigo los ids de los eventos ya postulados
     const eventsIds = applieds.map((ele) => ele.EventId);
-    // Busca coincidencia entre el evento que se quiere postular y los ya postulados
     const validation = eventsIds.filter((ele) => ele === EventId);
-    // Si no consiguio coincidencia, postula al talento
     if (validation.length === 0) {
-      // crea una nueva postulacion con el talento y el evento asignado
       const postulacion = await Applied.create({
         TalentId,
         EventId,
       });
-      // asigna la postulacion y el talento a la tabla intermedia
+
       await talent.addApplied(postulacion);
-      //retorno la postulacion creada
       return postulacion;
     }
-    // como el talento ya estaba postulad a ese evento retorna mensaje advirtiendo
     return {
       error:
         "Error al crear la postulación: Este talento ya se ha postulado para este Evento",
@@ -149,7 +142,14 @@ const getApplicantByName = async (EventId, name) => {
 // Función controller para cambiar el status a Contactado.
 const applicantToContact = async (TalentId, EventId) => {
   try {
-    const postulations = await Applied.findAll({ where: { EventId } });
+    let postulations = await Applied.findAll({ where: { EventId } });
+
+    // if (!postulations) {
+    //   postulations = await Applied.findAll({
+    //     where: { DisableEventId: EventId },
+    //   });
+    // }
+
     const idPostulations = await TalentApplied.findAll({ where: { TalentId } });
 
     for (let i = 0; i < postulations.length; i++) {
@@ -173,6 +173,10 @@ const applicantToContact = async (TalentId, EventId) => {
           const updatedPostulation = await Applied.findByPk(idPostulationInter);
 
           const event = await Event.findByPk(EventId);
+
+          if (!event) {
+            event = await DisableEvent.findByPk(DisableEvent);
+          }
 
           const CompanyId = event.CompanyId;
 
@@ -223,9 +227,15 @@ const getPostulationsByTalentId = async (TalentId) => {
 // Función para agregar un talento a contratado.
 const hireApplicant = async (TalentId, EventId) => {
   try {
-    const postulations = await Applied.findAll({ where: { EventId } });
-    const idPostulations = await TalentApplied.findAll({ where: { TalentId } });
+    let postulations = await Applied.findAll({ where: { EventId } });
 
+    // if (!postulations) {
+    //   postulations = await Applied.findAll({
+    //     where: { DisableEventId: EventId },
+    //   });
+    // }
+    const idPostulations = await TalentApplied.findAll({ where: { TalentId } });
+    console.log(postulations)
     for (let i = 0; i < postulations.length; i++) {
       let idPostulation = postulations[i].dataValues.id;
 
@@ -243,7 +253,6 @@ const hireApplicant = async (TalentId, EventId) => {
             { status: "Contratado" },
             { where: { EventId } }
           );
-
           return postulationHired;
         }
       }
@@ -251,7 +260,7 @@ const hireApplicant = async (TalentId, EventId) => {
 
     return "No ha sido posible seleccionar al aspirante como contratado.";
   } catch (error) {
-    throw new Error(error.message);
+    return(error.message);
   }
 };
 
@@ -320,19 +329,41 @@ const getNameCompanies = async (appliedId) => {
 // Función para obtener todos los contactados por una empresa.
 const getContactedByCompany = async (idCompany) => {
   try {
-    const events = await Event.findAll({
+    let events = await Event.findAll({
       where: { CompanyId: idCompany },
       include: [
         {
           model: Applied,
-          where: { status: "Contactado" },
+          where: { status: "Contactado", Companyreviews: null },
           include: {
             model: Talent,
           },
         },
       ],
     });
-    const response = events[0].Applieds;
+
+    if (events.length === 0) {
+      events = await DisableEvent.findAll({
+        where: { CompanyId: idCompany },
+        include: [
+          {
+            model: Applied,
+            where: { status: "Contactado", Companyreviews: null },
+            include: {
+              model: Talent,
+            },
+          },
+        ],
+      });
+    }
+
+    const response = events.map((event) => {
+      return {
+        ...event.get({ plain: true }),
+        Applieds: event.Applieds.map((applied) => applied.Talents),
+      };
+    });
+
     return response;
   } catch (error) {
     return error.message;
@@ -342,12 +373,12 @@ const getContactedByCompany = async (idCompany) => {
 // Función controller para obtener todos los contratados de una empresa.
 const getHiredByCompany = async (idCompany) => {
   try {
-    const events = await Event.findAll({
+    let events = await Event.findAll({
       where: { CompanyId: idCompany },
       include: [
         {
           model: Applied,
-          where: { status: "Contratado" },
+          where: { status: "Contratado", Companyreviews: null },
           include: {
             model: Talent,
           },
@@ -355,7 +386,29 @@ const getHiredByCompany = async (idCompany) => {
       ],
     });
 
-    const response = events[0].Applieds;
+    if (events.length === 0) {
+      events = await DisableEvent.findAll({
+        where: { CompanyId: idCompany },
+        include: [
+          {
+            model: Applied,
+            where: { status: "Contratado", Companyreviews: null },
+            include: {
+              model: Talent,
+            },
+          },
+        ],
+      });
+    }
+
+    // const response = events[0].Applieds;
+    const response = events.map((event) => {
+      return {
+        ...event.get({ plain: true }),
+        Applieds: event.Applieds.map((applied) => applied.Talents),
+      };
+    });
+
     return response;
   } catch (error) {
     throw new Error(error.message);
@@ -377,12 +430,13 @@ const getApplicantsByCompany = async (idCompany) => {
         },
       ],
     });
-
+    
     const response = events[0].Applieds;
-
+    
+    
     return response;
   } catch (error) {
-    throw new Error(error.message);
+    return(error.message);
   }
 };
 

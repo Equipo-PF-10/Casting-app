@@ -14,6 +14,10 @@ background-color: rgb(255, 255, 255);
     margin-left: 50px;
 }
 
+.container table{
+  border-radius: 200px !important;
+}
+
 .titulo{
     color: #00a186;
     margin-bottom: 30px;
@@ -93,4 +97,7 @@ background-color: rgb(255, 255, 255);
   }
 
 
+  .table{
+    border-radius: 200px !important;
+  }
 

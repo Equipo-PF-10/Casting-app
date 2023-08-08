@@ -7,48 +7,38 @@ import Detail from "./CompanyComponent/Detail";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { get_all_postulations , get_event_by_id, get_talent_by_id, close_modal_search_compnay, clear_message_deleted, close_modal_refuse_postulate } from "../../redux/actions";
- import { ToastContainer, toast } from "react-toastify";
- import "react-toastify/dist/ReactToastify.css";
+import {
+  get_all_postulations,
+  get_event_by_id,
+  get_talent_by_id,
+  close_modal_search_compnay,
+  clear_message_deleted,
+  close_modal_refuse_postulate,
+  get_event_by_id_event,
+} from "../../redux/actions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CompanySearch = () => {
-  const {id} = useParams();
-  // const MESSAGE_SEND_EMAIL = "Se ha enviado correctamente un email de contacto al postulante seleccionado.";
+  const { id } = useParams();
   const dispatch = useDispatch();
-  const evento = useSelector((state) => state.eventDetail);
-  const postulantes = useSelector((state) =>  state.postulatedTalentsByEvent ); 
-  const postulantesCopy = useSelector((state) =>  state.postulatedTalentsByEventFiltered ); 
-  const idCard = useSelector((state) =>  state.idCard); 
-  const talent = useSelector((state) =>  state.talentById);
-  const filters = useSelector((state) =>  state.filters);
-  // const modal = useSelector((state) =>  state.modalInSearchCompany);
-  let messageDeleted = useSelector((state) =>  state.messagePostulantDeleted );
-  
+  const eventSelected = useSelector((state) => state.eventById);
+  const postulantes = useSelector((state) => state.postulatedTalentsByEvent);
+  const postulantesCopy = useSelector(
+    (state) => state.postulatedTalentsByEventFiltered
+  );
+  const idCard = useSelector((state) => state.idCard);
+  const talent = useSelector((state) => state.talentById);
+  const filters = useSelector((state) => state.filters);
+
+  console.log(idCard);
+
+  useEffect(() => {
+    dispatch(get_event_by_id_event(id));
+  }, [dispatch, id]);
+
   let id_company = localStorage.getItem("user_id");
-  //Verificar si cuando se elimina un postulante se actualiza la lista (si no lo hace, buscar la forma)
-
-  
   let [idTalent, setIdTalent] = useState("");
-
-  
-  //Fucnion para controlar el modal de Contactar
-  // const onClickCloseModalConfirmation = () => {
-  //   const close = "isClosed";
-  //   dispatch(close_modal_search_compnay(close));
-  // };
-
-  // const onClickSendEmail = () => {
-  //   //postear al usuario como contactado en el arreglo de contactados y eliminarla de la lista de postulantes
-  //   const close = "isClosed";
-  //   dispatch(close_modal_search_compnay(close));
-  //   const emailToCompany = axios.post("http://localhost:3001/email/talentContac/pedrocavataio@gmail.com")
-  //   .then((resp) => console.log(resp.data))
-  //   .catch((error) => console.log(error))
-
-  //   //Agregar mensaje por toastify
-  //   mensaje_success_Toast_send_mail();
-  // };  
-
 
   // Paginación
 
@@ -64,7 +54,6 @@ const CompanySearch = () => {
     setCurrentPage(pageNumber);
   };
 
-  
   const pageNumbers = Math.ceil(postulantes.length / talentsPerPage);
   const pagination = Array.from(
     { length: pageNumbers },
@@ -86,10 +75,10 @@ const CompanySearch = () => {
     dispatch(get_event_by_id(id));
   }, [dispatch, id]);
 
-//Funcion para traerme el detail de un postulante, muestra el detail de un talento al hacer click en la Card
-useEffect(()=>{
-  dispatch(get_talent_by_id(idCard));
-},[idCard])
+  //Funcion para traerme el detail de un postulante, muestra el detail de un talento al hacer click en la Card
+  useEffect(() => {
+    dispatch(get_talent_by_id(idCard));
+  }, [idCard]);
 
   // Función que muestra el detail de un talento al hacer click en la Card
   const handleClick = (talentoId) => {
@@ -132,163 +121,107 @@ useEffect(()=>{
     return ubication.indexOf(item) === index;
   });
 
-  
-
-  //Mostrar mensaje cuando se elimina un postulante
-  let currentToastIdSuccess = null;
-  const mensaje_success_Toast = () => {
-    if (currentToastIdSuccess) {
-      toast.update(currentToastIdSuccess, {
-        render: messageDeleted,
-        autoClose: 5000,
-      });
-    } else {
-      currentToastIdSuccess = toast.success(messageDeleted, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        toastId: "custom-toast-id",
-        style: {
-          width: "500px",
-        },
-      });
-    }
-  };
-
-  // //Mostrar mensaje cuando se envie un mail de contacto al Postulante
-  // let currentToastIdSendMail = null;
-  // const mensaje_success_Toast_send_mail = () => {
-  //   if (currentToastIdSendMail) {
-  //     toast.update(currentToastIdSendMail, {
-  //       render: MESSAGE_SEND_EMAIL,
-  //       autoClose: 5000,
-  //     });
-  //   } else {
-  //     currentToastIdSendMail = toast.success(MESSAGE_SEND_EMAIL, {
-  //       position: "top-right",
-  //       autoClose: 5000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //       theme: "light",
-  //       toastId: "custom-toast-id",
-  //       style: {
-  //         width: "450px",
-  //       },
-  //     });
-  //   }
-  // };
-
-  useEffect(() => {
-    if (Object.keys(messageDeleted).length > 0) {
-      mensaje_success_Toast();
-      dispatch(clear_message_deleted(""));
-          
-    }
-  }, [messageDeleted]);
-
   return (
     <div className={style.containerG}>
       <div className={style.searchFil}>
-        <Search ubication={singleLocation} setCurrentPage={setCurrentPage} id_event={id} />
+        <Search
+          ubication={singleLocation}
+          setCurrentPage={setCurrentPage}
+          id_event={id}
+        />
       </div>
       <div>
-
-       <ToastContainer />
-
+        <ToastContainer />
       </div>
       <div className={style.secciones}>
-       
-
-     <div className={style.navLateral}>
+        <div className={style.navLateral}>
           <NavBarLateral />
         </div>
-        {      
-          postulantesCopy.length === 0 ?
-          <div  className={style.text}>
-           <h3>No se han encontrado resultados.</h3>
-           </div>
-          :
-          filters ?
+        {postulantesCopy.length === 0 ? (
+          <div className={style.text}>
+            <h3>No se han encontrado resultados.</h3>
+          </div>
+        ) : filters ? (
           <div className={style.grid}>
-           <div><h2>Postulantes al Evento: {evento.name}</h2><hr /></div>
-           
-          <div className={style.cards}>{listedTalentsCopy}</div>
-        </div>
-          :
+            <div>
+              <h2>Postulantes al Evento: {eventSelected.name}</h2>
+              <hr />
+            </div>
+            <div className={style.cards}>{listedTalentsCopy}</div>
+          </div>
+        ) : (
           <div className={style.grid}>
-           <div><h2>Postulantes al Evento: {evento.name}</h2></div>
-          <div className={style.cards}>{listedTalents}</div>
-        </div>
-        }
+            <div>
+              <h2>Postulantes al Evento: {eventSelected.name}</h2>
+            </div>
+            <div className={style.cards}>{listedTalents}</div>
+          </div>
+        )}
         <div className={style.detailCard}>
-           {
-            idCard.length === 0  ?
-            filters ?
-            <Detail className={style.detail} talent={postulantesCopy[0]} id_event={id} id_company={id_company}/>
-            :
-            <Detail className={style.detail} talent={postulantes[0]} id_event={id} id_company={id_company}/>
-            :
-            <Detail className={style.detail} talent={talent} key={talent.id} id_event={id} id_company={id_company}/>
-          } 
+          {idCard.length === 0 ? (
+            postulantes.length === 0 ? (
+              <Detail
+                className={style.detail}
+                id_event={id}
+                id_company={id_company}
+              />
+            ) : filters ? (
+              <Detail
+                className={style.detail}
+                talent={postulantesCopy[0]}
+                id_event={id}
+                id_company={id_company}
+              />
+            ) : (
+              <Detail
+                className={style.detail}
+                talent={postulantes[0]}
+                id_event={id}
+                id_company={id_company}
+              />
+            )
+          ) : postulantesCopy.length === 0 ? (
+            <Detail
+              className={style.detail}
+              id_event={id}
+              id_company={id_company}
+            />
+          ) : (
+            <Detail
+              className={style.detail}
+              talent={talent}
+              key={talent.id}
+              id_event={id}
+              id_company={id_company}
+            />
+          )}
         </div>
       </div>
-      {
-        filters ?
+      {filters ? (
         <ul className={style.pagination}>
-        {paginationCopy.map((number) => (
-          <li
-            key={number}
-            className={number === currentPage ? style.active : ""}
-            onClick={() => paginate(number)}
-          >
-            <p>{number}</p>
-          </li>
-        ))}
-      </ul>
-      :
-      <ul className={style.pagination}>
-        {pagination.map((number) => (
-          <li
-            key={number}
-            className={number === currentPage ? style.active : ""}
-            onClick={() => paginate(number)}
-          >
-            <p>{number}</p>
-          </li>
-        ))}
-      </ul>
-      }
-
-{/* -------MODAL PARA ENVIAR UN MAIL AL POSTULANTE ------------*/}
-{/* {
-        modal ?
-        <div className= {style.containerModalOpened}>
-            <div className={style.modalConfirmationOpened}>
-              <div className={style.head3}>
-                <h4>¿Está seguro/a de enviar un mail de conacto al Postulante?</h4>
-                <hr />
-              </div>
-              
-              <div className={style.bottom3}>
-                <button className={style.buttonConfirmar} onClick={onClickSendEmail}>Confirmar</button>
-                <button className={style.buttonRegresar} onClick={onClickCloseModalConfirmation}>Regresar</button>
-              </div>
-          </div>
-        </div>
-        :
-        <div className= {style.containerModalClosed}>
-            <div className={style.modalClosed}>
-          </div>
-        </div>
-      } */}
+          {paginationCopy.map((number) => (
+            <li
+              key={number}
+              className={number === currentPage ? style.active : ""}
+              onClick={() => paginate(number)}
+            >
+              <p>{number}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul className={style.pagination}>
+          {pagination.map((number) => (
+            <li
+              key={number}
+              className={number === currentPage ? style.active : ""}
+              onClick={() => paginate(number)}
+            >
+              <p>{number}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

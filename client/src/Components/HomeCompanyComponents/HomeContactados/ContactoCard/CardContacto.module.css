@@ -1,40 +1,48 @@
 .container {
     margin: 15px;
-    height: 30%;
     transition: 0.5s;
-    /* padding: 10px; */
-    /* background-color: red; */
-    display: grid;
-    grid-template-columns: 70% 30%;
+    height: 30%;
+    height:15vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.25);
     box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
+.selected {
+  /* Estilos para las cartas seleccionadas */
+  border: 5px solid #015345;
+}
+
 .fonts {
     /* background-color: blue; */
-    width: 78vh;
-    height: 8vh;
+    margin-left: 200px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 20px;
-    margin-bottom: 60px;
+    text-align: center;
+    /*margin-left: 20px;*/
+    /*margin-bottom: 60px;*/
 }
 .options {
-    /* background-color: red; */
-    width: 100%;
-    height: 65%;
+    width: 25vh;
     border-left: 3px solid rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .options button {
-    width: 100px;
+    width: 120px;
     height: 30px;
     font-size: 15px;
-    margin-left: 10px;
-    margin-right: 10px;
+    /*margin-left: 10px;*/
+    margin: 10px 0 10px 0 ;
 }
 
 .buttonClose {
@@ -88,7 +96,7 @@ a:active { text-decoration: none; }
   
   .modalConfirmationOpened {
     width: 35%;
-    height: 25%;
+    height: auto;
     background-color: whitesmoke;
     border-radius: 20px;    
     display: grid;
@@ -107,7 +115,7 @@ a:active { text-decoration: none; }
   
   
   .head3 {
-    height: 15vh;
+    height: 10vh;
     text-align: center;
   }
   .modalConfirmationOpened h4 {

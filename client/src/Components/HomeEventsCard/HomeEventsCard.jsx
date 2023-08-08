@@ -4,7 +4,7 @@ import {connect, useDispatch} from 'react-redux';
 
 
 const HomeEventsCard=(props) => {
-  const dispatch = useDispatch()
+  //const dispatch = useDispatch()
   
   return (
     <div className={styles.container}>
@@ -12,7 +12,7 @@ const HomeEventsCard=(props) => {
       <hr />
       {props.eventDetail.length === 0
         ? 
-        <h2>En esta sección podrá visualizar sus Eventos publicados.</h2>
+        <h2 className={styles.mensajeEvento}>En esta sección podrá visualizar sus Eventos publicados.</h2>
         :
         props.eventDetail.map((event, index) => {
             return (

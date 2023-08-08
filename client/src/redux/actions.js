@@ -5,11 +5,13 @@ export const MODAL_REFUSE_POSTULATE = "MODAL_REFUSE_POSTULATE";
 export const ERROR = "ERROR";
 export const USER_TYPE = "USER_TYPE";
 export const GET_EVENT_BY_ID = "GET_EVENT_BY_ID";
+export const GET_EVENT_BY_ID_EVENT = "GET_EVENT_BY_ID_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 export const CLOSE_EVENT = "CLOSE_EVENT";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
 export const GET_COMPANY_BY_ID="GET_COMPANY_BY_ID";
+export const EDIT_COMPANY="EDIT_COMPANY";
 export const GET_COMPANY_ID="GET_COMPANY_ID";
 export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
@@ -37,6 +39,7 @@ export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
 export const IMAGE_URL = "IMAGE_URL";
 export const UPDATE_PLAN = "UPDATE_PLAN";
 export const SEND_EMAIL_MESSAGE = "SEND_EMAIL_MESSAGE";
+export const MESSAGE_CONTACTED = "MESSAGE_CONTACTED";
 export const ERROR_POSTULATE="ERROR_POSTULATE";
 export const GET_EVENTS_PREMIUM = "GET_EVENTS_PREMIUM";
 export const GET_POSTULANT_FAV_BY_NAME = "GET_POSTULANT_FAV_BY_NAME";
@@ -58,6 +61,50 @@ export const register_model = (payload) => {
         type: "ERROR",
         payload: "Ya existe un usuario con el email ingresado.",
       });
+    }
+  };
+};
+
+export const updateCompany = (
+        id,
+        email,
+        name,
+        logo,
+        country,
+        domain,
+        password,
+        descriptionShort,
+        instagram,
+        facebook,
+        linkedin,
+        twitter,
+        phoneNumber,
+  ) => 
+  {
+    return async (dispatch) => {
+    try {
+      const response = await axios.put("http://localhost:3001/forms/companies", {
+        email,
+        name,
+        logo,
+        country,
+        domain,
+        password,
+        descriptionShort,
+        instagram,
+        facebook,
+        linkedin,
+        twitter,
+        phoneNumber,
+        
+      });
+      dispatch({
+        type: EDIT_COMPANY,
+        payload: response.data,
+      });
+     
+    } catch (error) {
+      alert(` error al actualizar datos de la Compañia ${error} `);
     }
   };
 };
@@ -156,16 +203,14 @@ export const get_company_by_id = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
-      //console.log("Compañía obtenida de la preticion: " + data);
       return dispatch({
         type: GET_COMPANY_BY_ID,
         payload: data,
       });
     } catch (error) {
-      //window.alert(error.message); //"An error has occurred while getting a pokemon by ID!"
       return dispatch({
         type: "ERROR",
-        payload: "¡Ha ocurrido un error al obtener un compañia por ID!",
+        payload: "¡Ha ocurrido un error al obtener la empresa por ID!",
       });
     }
   };
@@ -176,7 +221,6 @@ export const get_company_id = (id) => {
   return async (dispatch) => {
     try {
       const {data}=await axios.get(endpoint);
-      //console.log(data + 'soy actions');
       return dispatch({
         type: GET_COMPANY_ID,
         payload: data,
@@ -195,13 +239,29 @@ export const get_event_by_id = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
-      //console.log("evento obtenido de la preticion: " + data);
       return dispatch({
         type: GET_EVENT_BY_ID,
         payload: data,
       });
     } catch (error) {
-      //window.alert(error.message); //"An error has occurred while getting a pokemon by ID!"
+      return dispatch({
+        type: "ERROR",
+        payload: "¡Ha ocurrido un error al obtener los eventos por de la empresa!",
+      });
+    }
+  };
+};
+
+export const get_event_by_id_event = (id) => {
+  let endpoint = `http://localhost:3001/events/eventid/${id}`;
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(endpoint);
+      return dispatch({
+        type: GET_EVENT_BY_ID_EVENT,
+        payload: data,
+      });
+    } catch (error) {
       return dispatch({
         type: "ERROR",
         payload: "¡Ha ocurrido un error al obtener un evento por ID!",
@@ -416,7 +476,8 @@ export const get_talent_by_id = (id) => {
 };
 
 export const get_hired_by_company = (id) => {
-  let endpoint = `http://localhost:3001/applied/hired/${id}`;
+  let endpoint=`http://localhost:3001/applied/hired/${id}`;
+  //console.log('soy id');
   return async (dispatch) => {
     try {
       const {data}=await axios.get(endpoint);
@@ -660,7 +721,7 @@ export const add_hired = (id_talent, id_company, id_event) => {
       const allContacteds = allPostulantsContacted.data;
       const allHireds = hireds.data;
       
-      console.log(allContacteds, allHireds);
+      //console.log(allContacteds, allHireds);
       
       const response = {
         allContacteds,
@@ -715,12 +776,12 @@ export const update_plan = (id_company, plan) => {
   return async (dispatch) => {
     try {
       const { data } =  await axios.put(endpoint, {
-        "newConditionPlan": plan
+        newConditionPlan: plan
       });
-      // const allFavorites = await axios.get(`http://localhost:3001/companies/favorites/${id_company}`);
+      console.log(data);
       return dispatch({
         type: UPDATE_PLAN,
-        payload: data,
+        payload: data.plan,
       });
     } catch (error) {
       return dispatch({
@@ -769,3 +830,11 @@ export const add_postulant_like_contacted = (id_talent, id_company, id_event) =>
   };
 };
 
+export const message_hired_or_refused_talents = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: "MESSAGE_CONTACTED",
+      payload: payload,
+    });
+  };
+};

@@ -2,7 +2,10 @@ import styles from "./HomeItemList.module.css";
 import HomeItem from "./HomeItem/HomeItem.jsx";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_favorite_postulant_by_name, get_all_favorite_postulants } from "../../redux/actions";
+import {
+  get_favorite_postulant_by_name,
+  get_all_favorite_postulants,
+} from "../../redux/actions";
 
 const HomeItemList = (props) => {
   const dispatch = useDispatch();
@@ -20,7 +23,7 @@ const HomeItemList = (props) => {
   //Recargar Postulantes
   const handleClickRefresh = (event) => {
     dispatch(get_all_favorite_postulants(props.id_company));
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -29,24 +32,24 @@ const HomeItemList = (props) => {
       </div>
       <hr />
       <div className={styles.divisor}>
-      <div className={styles.searchBarContainer}>
-        <input
-          value={input}
-          onChange={handleChange}
-          type="search"
-          className={styles.input}
-          placeholder="Ingrese un nombre..."
-        />
-        <button
-          onClick={handleClick}
-          className={styles.searchButton}
-          disabled={!input.length}
-        >
-          Buscar
-        </button>
+        <div className={styles.searchBarContainer}>
+          <input
+            value={input}
+            onChange={handleChange}
+            type="search"
+            className={styles.input}
+            placeholder="Ingrese un nombre..."
+          />
+          <button
+            onClick={handleClick}
+            className={styles.searchButton}
+            disabled={!input.length}
+          >
+            Buscar
+          </button>
         </div>
         {/*BOTON RECARGAR*/}
-        <div>
+        {/*<div>
           <button
             onClick={(event) => {
               handleClickRefresh(event);
@@ -69,23 +72,25 @@ const HomeItemList = (props) => {
             </svg>
             
           </button>
-        </div>
+        </div>*/}
       </div>
       {/* <h1 className={styles.text}>{props.title}</h1> */}
-      {
-        props.allFavoritePostulants.length === 0 && props.allFavoritePostulantsFiltered.length === 0 
-        ?
-        <h4>En esta sección podrá visualizar los talentos seleccionados como Favoritos.</h4>
-        :
-      filters ? 
-          props.allFavoritePostulantsFiltered?.map((talent) => 
-          (<HomeItem talent={talent} id_company={props.id_company}/>))
-      : 
-      props.allFavoritePostulants?.map((talent) => 
-          (<HomeItem talent={talent} id_company={props.id_company}/>))
-      }
+      {props.allFavoritePostulants.length === 0 &&
+      props.allFavoritePostulantsFiltered.length === 0 ? (
+        <h4>
+          En esta sección podrá visualizar los talentos seleccionados como
+          Favoritos.
+        </h4>
+      ) : filters ? (
+        props.allFavoritePostulantsFiltered?.map((talent) => (
+          <HomeItem talent={talent} id_company={props.id_company} />
+        ))
+      ) : (
+        props.allFavoritePostulants?.map((talent) => (
+          <HomeItem talent={talent} id_company={props.id_company} />
+        ))
+      )}
 
-      
       {/* <HomeItem title="Title" />
       <HomeItem title="Title" />
       <HomeItem title="Title" />

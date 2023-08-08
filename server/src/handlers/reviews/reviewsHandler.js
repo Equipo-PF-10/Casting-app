@@ -9,9 +9,9 @@ const {
 // Handler para añadir una review a una empresa.
 const handlerAddReviewCompany = async (req, res) => {
   try {
-    const { CompanyId, TalentId, rating, text } = req.body;
+    const { EventId, CompanyId, rating, text } = req.body;
 
-    const review = await addReviewCompany(CompanyId, TalentId, rating, text);
+    const review = await addReviewCompany(EventId, CompanyId, rating, text);
 
     res.status(200).json(review);
   } catch (error) {
@@ -22,9 +22,10 @@ const handlerAddReviewCompany = async (req, res) => {
 // Handler para añadir una review a un talento.
 const handlerAddReviewTalent = async (req, res) => {
   try {
-    const { CompanyId, TalentId, rating, text } = req.body;
+    const { EventId, TalentId, rating, text } = req.body;
+    //console.log(EventId);
 
-    const review = await addReviewTalent(CompanyId, TalentId, rating, text);
+    const review = await addReviewTalent(EventId, TalentId, rating, text);
 
     res.status(200).json(review);
   } catch (error) {
