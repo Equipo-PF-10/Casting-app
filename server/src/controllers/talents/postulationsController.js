@@ -235,7 +235,7 @@ const hireApplicant = async (TalentId, EventId) => {
     //   });
     // }
     const idPostulations = await TalentApplied.findAll({ where: { TalentId } });
-    console.log(postulations)
+    console.log(postulations);
     for (let i = 0; i < postulations.length; i++) {
       let idPostulation = postulations[i].dataValues.id;
 
@@ -260,7 +260,7 @@ const hireApplicant = async (TalentId, EventId) => {
 
     return "No ha sido posible seleccionar al aspirante como contratado.";
   } catch (error) {
-    return(error.message);
+    return error.message;
   }
 };
 
@@ -386,20 +386,20 @@ const getHiredByCompany = async (idCompany) => {
       ],
     });
 
-    if (events.length === 0) {
-      events = await DisableEvent.findAll({
-        where: { CompanyId: idCompany },
-        include: [
-          {
-            model: Applied,
-            where: { status: "Contratado", Companyreviews: null },
-            include: {
-              model: Talent,
-            },
-          },
-        ],
-      });
-    }
+    // if (events.length === 0) {
+    //   events = await DisableEvent.findAll({
+    //     where: { CompanyId: idCompany },
+    //     include: [
+    //       {
+    //         model: Applied,
+    //         where: { status: "Contratado", Companyreviews: null },
+    //         include: {
+    //           model: Talent,
+    //         },
+    //       },
+    //     ],
+    //   });
+    // }
 
     // const response = events[0].Applieds;
     const response = events.map((event) => {
@@ -430,13 +430,12 @@ const getApplicantsByCompany = async (idCompany) => {
         },
       ],
     });
-    
+
     const response = events[0].Applieds;
-    
-    
+
     return response;
   } catch (error) {
-    return(error.message);
+    return error.message;
   }
 };
 

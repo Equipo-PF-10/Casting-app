@@ -7,6 +7,7 @@ const {
   deleteTalent,
   updateTalent,
 } = require("../../controllers/talents/talentsController");
+const jwt = require("jsonwebtoken");
 
 // Función handler que devuelve los talentos.
 const getTalentsHandler = async (req, res) => {
@@ -33,12 +34,15 @@ const createTalentHandler = async (req, res) => {
     return res.status(400).send("Faltan datos obligatorios");
   }
 
-  // const dateVerification = dateComeBack instanceof Date ? dateComeBack : null;
-
   try {
-    const register = await createTalentDb(email,name,image);
+    const register = await createTalentDb(email, name, image);
 
-    res.status(200).json(register);
+    // res.status(200).json(register);
+    jwt.sign({ user: { id: register.id } }, "secretkey", (err, token) => {
+      res.json({
+        token: token,
+      });
+    });
   } catch (error) {
     res.status(400).json(error.message);
   }
