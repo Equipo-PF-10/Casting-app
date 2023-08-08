@@ -232,6 +232,16 @@ const getEventById = async (id) => {
   }
 };
 
+// Función controller para traer todos los Disable Events.
+const getDisable = async () => {
+  try {
+    const disableEvents = await DisableEvent.findAll();
+    return disableEvents;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getAllEvents,
   getEventByCompanyId,
@@ -242,4 +252,5 @@ module.exports = {
   getPremiumEvents,
   getEventForHability,
   getEventById,
+  getDisable,
 };

@@ -16,6 +16,7 @@ const Detail = (props) => {
   const empresa = useSelector((state) => state.companyById);
   const [isPostulated, setIsPostulated] = useState("");
   
+  console.log(idEvent);
 
   // Verificar si el idTalent se encuentra en allPostulants
   useEffect(() => {
@@ -45,7 +46,7 @@ const Detail = (props) => {
 
       let userEmail = localStorage.getItem("user_email");
 
-      const emailToTalent = axios.post(`http://localhost:3001/email/postulationEvent/${talent.email}`) 
+      const emailToTalent = axios.post(`http://localhost:3001/email/postulationEvent/${userEmail}`) 
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
     }

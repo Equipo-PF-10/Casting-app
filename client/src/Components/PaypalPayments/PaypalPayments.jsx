@@ -33,7 +33,6 @@ const PaypalPayments = (props) => {
         // const name = details.payer.name.given_name;
         dispatch(update_plan(id_company, PLAN_TYPE));
 
-	    
         navigate("/home/company");
         // alert("Suscripción completada con éxito! Gracias! ");
       }}
