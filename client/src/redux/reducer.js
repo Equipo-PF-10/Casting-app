@@ -43,6 +43,8 @@ import {
   UPDATE_PLAN,
   SEND_EMAIL_MESSAGE,
   ERROR_POSTULATE,
+  MESSAGE_CONTACTED,
+  ADD_REVIEW_TALENT,
 } from "./actions.js";
 
 const initialState = {
@@ -73,6 +75,7 @@ const initialState = {
   messagePostulantDeleted: {},
   messagePlanUpdated: "",
   modalMailMessage: "",
+  hiredOrRefusedMessage: "",
   modalInLogin: false,
   modalInSearchCompany: false,
   modalTalentRefused: false,
@@ -82,10 +85,10 @@ const initialState = {
   errorPostulate: {},
   errors: {},
   imageUrl: "",
+  reviewTalent: {},
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
-  
   switch (type) {
     case REGISTER_MODEL_OR_COMPANY:
       return {
@@ -144,6 +147,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         modalMailMessage: payload,
       };
+    case MESSAGE_CONTACTED:
+      return {
+        ...state,
+        hiredOrRefusedMessage: payload,
+      };
     case GET_EVENT_BY_ID:
       return {
         ...state,
@@ -165,10 +173,10 @@ const rootReducer = (state = initialState, { type, payload }) => {
         companyById: payload,
       };
     case EDIT_COMPANY:
-        return {
-          ...state,
-          companyById: payload,
-        };
+      return {
+        ...state,
+        companyById: payload,
+      };
     case GET_HIRED_BY_COMPANY:
       return {
         ...state,
@@ -266,18 +274,18 @@ const rootReducer = (state = initialState, { type, payload }) => {
         if (companies.name === action.payload.name) {
           return {
             ...companies,
-            email: action.payload.email ,
-        name: action.payload.name,
-        logo: action.payload.logo,
-        country: action.payload.country,
-        domain: action.payload.domain,
-        password: action.payload.password,
-        descriptionShort: action.payload.descriptionShort,
-        instagram: action.payload.instagram,
-        facebook: action.payload.facebook,
-        linkedin: action.payload.linkedin,
-        twitter: action.payload.twitter,
-        phoneNumber: action.payload.phoneNumber,
+            email: action.payload.email,
+            name: action.payload.name,
+            logo: action.payload.logo,
+            country: action.payload.country,
+            domain: action.payload.domain,
+            password: action.payload.password,
+            descriptionShort: action.payload.descriptionShort,
+            instagram: action.payload.instagram,
+            facebook: action.payload.facebook,
+            linkedin: action.payload.linkedin,
+            twitter: action.payload.twitter,
+            phoneNumber: action.payload.phoneNumber,
           };
         }
         return mascota;
@@ -406,7 +414,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case UPDATE_PLAN:
       return {
         ...state,
-        messagePlanUpdated : payload,
+        messagePlanUpdated: payload,
       };
     case GET_ALL_POSTULANT_FAV:
       return {
@@ -442,6 +450,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         allPostulantsContacted: payload.allContacteds,
         hiredTalents: payload.allHireds,
+      };
+    case ADD_REVIEW_TALENT:
+      return {
+        ...state,
+        reviewTalent: payload,
       };
     case ERROR_POSTULATE:
       return {

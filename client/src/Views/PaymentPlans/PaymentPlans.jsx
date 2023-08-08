@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styles from "./PaymentPlans.module.css";
 import { Link } from "react-router-dom";
@@ -18,6 +19,7 @@ export default function PaymentPlans() {
   const [modalPlanFree, setModalPlanFree] = useState(false);
   const [modalConfirmation, setModalConfirmation] = useState(false);
   const infoCompany = useSelector((state) => state.companyById);
+  
   //const [planFreeUtilizado, setPlanFreeUtilizado] = useState(false); // Nuevo estado para controlar si el Plan Free ha sido utilizado
   //console.log(infoCompany);
   const id_company = localStorage.getItem("user_id");
@@ -36,8 +38,7 @@ export default function PaymentPlans() {
   //const isPlanFreeDisabled = infoCompany.expirationDate && new Date() < new Date(infoCompany.expirationDate);
   //CREAR UNA PROPIEDAD BOOLEANA PARA VERIFICAR SI ALGUNA VEZ LA COMPAÑIA ADQUIRIÓ EL PLAN GRATIS
   
-  const isPlanFreeDisabled =
-    infoCompany.expirationDate || infoCompany.plan === "PRUEBA GRATIS"; //infoCompany.planFree
+  const isPlanFreeDisabled = 0//; infoCompany.expirationDate || infoCompany.plan === "PRUEBA GRATIS"; //infoCompany.planFree
 
   //Función para manejar el click en una card
   // const handleCardClick = (plan) => {
@@ -82,6 +83,11 @@ export default function PaymentPlans() {
     setModalConfirmation(false);
     setModalPlanFree(false);
     navigate("/home/company");
+
+    const emailToCompany = axios.post(`http://localhost:3001/email/suscriptionFree/${infoCompany.email}`)
+                .then((resp) => console.log(resp.data))
+                .catch((error) => console.log(error));
+    
     // setPlanFreeUtilizado(true);
   };
 

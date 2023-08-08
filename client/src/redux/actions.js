@@ -10,17 +10,18 @@ export const EDIT_EVENT = "EDIT_EVENT";
 export const CLOSE_EVENT = "CLOSE_EVENT";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 export const GET_ALL_COMPANIES = "GET_ALL_COMPANIES";
-export const GET_COMPANY_BY_ID="GET_COMPANY_BY_ID";
-export const EDIT_COMPANY="EDIT_COMPANY";
-export const GET_COMPANY_ID="GET_COMPANY_ID";
+export const GET_COMPANY_BY_ID = "GET_COMPANY_BY_ID";
+export const EDIT_COMPANY = "EDIT_COMPANY";
+export const GET_COMPANY_ID = "GET_COMPANY_ID";
 export const CREATE_POSTULANT = "CREATE_POSTULANT";
 export const GET_ALL_POSTULATIONS = "GET_ALL_POSTULATIONS";
 export const ADD_POSTULANT_LIKE_CONTACTED = "ADD_POSTULANT_LIKE_CONTACTED";
 export const GET_ALL_POSTULANT_FAV = "GET_ALL_POSTULANT_FAV";
 export const DELETE_POSTULANT_FAV = "DELETE_POSTULANT_FAV";
-export const GET_ALL_POSTULANTS_CONTACTED_BY_ID = "GET_ALL_POSTULANTS_CONTACTED_BY_ID";
+export const GET_ALL_POSTULANTS_CONTACTED_BY_ID =
+  "GET_ALL_POSTULANTS_CONTACTED_BY_ID";
 export const REFUSE_POSTULANT_CONTACTED = "REFUSE_POSTULANT_CONTACTED";
-export const ADD_HIRED="ADD_HIRED";
+export const ADD_HIRED = "ADD_HIRED";
 export const GET_HIRED_BY_COMPANY = "GET_HIRED_BY_COMPANY";
 export const GET_POSTULANTS_BY_NAME = "GET_POSTULANTS_BY_NAME";
 export const DELETE_POSTULANT_BY_ID = "DELETE_POSTULANT_BY_ID";
@@ -39,9 +40,11 @@ export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
 export const IMAGE_URL = "IMAGE_URL";
 export const UPDATE_PLAN = "UPDATE_PLAN";
 export const SEND_EMAIL_MESSAGE = "SEND_EMAIL_MESSAGE";
-export const ERROR_POSTULATE="ERROR_POSTULATE";
+export const MESSAGE_CONTACTED = "MESSAGE_CONTACTED";
+export const ERROR_POSTULATE = "ERROR_POSTULATE";
 export const GET_EVENTS_PREMIUM = "GET_EVENTS_PREMIUM";
-export const GET_POSTULANT_FAV_BY_NAME = "GET_POSTULANT_FAV_BY_NAME";
+export const GET_POSTULANT_FAV_BY_NAME="GET_POSTULANT_FAV_BY_NAME";
+export const ADD_REVIEW_TALENT = "ADD_REVIEW_TALENT";
 import axios from "axios";
 
 export const register_model = (payload) => {
@@ -65,43 +68,43 @@ export const register_model = (payload) => {
 };
 
 export const updateCompany = (
-        id,
-        email,
-        name,
-        logo,
-        country,
-        domain,
-        password,
-        descriptionShort,
-        instagram,
-        facebook,
-        linkedin,
-        twitter,
-        phoneNumber,
-  ) => 
-  {
-    return async (dispatch) => {
+  id,
+  email,
+  name,
+  logo,
+  country,
+  domain,
+  password,
+  descriptionShort,
+  instagram,
+  facebook,
+  linkedin,
+  twitter,
+  phoneNumber
+) => {
+  return async (dispatch) => {
     try {
-      const response = await axios.put("http://localhost:3001/forms/companies", {
-        email,
-        name,
-        logo,
-        country,
-        domain,
-        password,
-        descriptionShort,
-        instagram,
-        facebook,
-        linkedin,
-        twitter,
-        phoneNumber,
-        
-      });
+      const response = await axios.put(
+        "http://localhost:3001/forms/companies",
+        {
+          email,
+          name,
+          logo,
+          country,
+          domain,
+          password,
+          descriptionShort,
+          instagram,
+          facebook,
+          linkedin,
+          twitter,
+          phoneNumber,
+        }
+      );
       dispatch({
         type: EDIT_COMPANY,
         payload: response.data,
       });
-     
     } catch (error) {
       alert(` error al actualizar datos de la Compañia ${error} `);
     }
@@ -219,7 +222,7 @@ export const get_company_id = (id) => {
   let endpoint = `http://localhost:3001/companies/${id}`;
   return async (dispatch) => {
     try {
-      const {data}=await axios.get(endpoint);
+      const { data } = await axios.get(endpoint);
       return dispatch({
         type: GET_COMPANY_ID,
         payload: data,
@@ -245,7 +248,8 @@ export const get_event_by_id = (id) => {
     } catch (error) {
       return dispatch({
         type: "ERROR",
-        payload: "¡Ha ocurrido un error al obtener los eventos por de la empresa!",
+        payload:
+          "¡Ha ocurrido un error al obtener los eventos por de la empresa!",
       });
     }
   };
@@ -286,7 +290,7 @@ export const getAllEvents = () => {
 export const getEventsPremium = () => {
   return async (dispatch) => {
     try {
-      const response=await axios.get("http://localhost:3001/events/premium");
+      const response = await axios.get("http://localhost:3001/events/premium");
       console.log(response);
       return dispatch({ type: GET_EVENTS_PREMIUM, payload: response.data });
     } catch (error) {
@@ -316,7 +320,9 @@ export const close_event_by_id = (id, companyId) => {
   return async (dispatch) => {
     try {
       await axios.delete(`http://localhost:3001/events/${id}`);
-      const eventDetail = await axios.get(`http://localhost:3001/events/${companyId}`);
+      const eventDetail = await axios.get(
+        `http://localhost:3001/events/${companyId}`
+      );
       return dispatch({ type: CLOSE_EVENT, payload: eventDetail.data });
     } catch (error) {
       return dispatch({
@@ -359,7 +365,6 @@ export const get_all_postulations = (fk) => {
   };
 };
 export const get_postulant_by_name = (fk, name) => {
-
   let endpoint = `http://localhost:3001/applied/company/${fk}/?name=${name}`;
 
   return async (dispatch) => {
@@ -379,7 +384,6 @@ export const get_postulant_by_name = (fk, name) => {
   };
 };
 
-
 //Deberia retornar un mensaje
 export const delete_postulant_by_id = (id_evento, id_talent) => {
   let endpoint = "http://localhost:3001/applied";
@@ -387,14 +391,14 @@ export const delete_postulant_by_id = (id_evento, id_talent) => {
     try {
       //const { data } = await axios.delete(endpoint, {EventId: id_evento, TalentId: id_talent}); //(endpoint, {EventId:id_evento, TalentId:id_talent})
       const { data } = await axios.delete(endpoint, {
-        data: {EventId: id_evento,TalentId: id_talent}, 
-      //const eliminado = await axios.delete(endpoint, {
-      //  data: { EventId: id_evento, TalentId: id_talent }
+        data: { EventId: id_evento, TalentId: id_talent },
+        //const eliminado = await axios.delete(endpoint, {
+        //  data: { EventId: id_evento, TalentId: id_talent }
         //headers: {
-        //  "Content-Type": "application/json", 
+        //  "Content-Type": "application/json",
         //},
       });
-      const fk = id_evento
+      const fk = id_evento;
       const response = await axios.get(
         `http://localhost:3001/applied/event/${fk}`
       );
@@ -404,7 +408,7 @@ export const delete_postulant_by_id = (id_evento, id_talent) => {
       //
       return dispatch({
         type: DELETE_POSTULANT_BY_ID,
-        payload: response.data
+        payload: response.data,
       });
     } catch (error) {
       return dispatch({
@@ -429,10 +433,11 @@ export const create_postulant = (idEvent, idTalent) => {
   console.log("id evento en action: " + idEvent);
   return async (dispatch) => {
     try {
-      const { data } =  await axios.post(endpoint, {
-          EventId: idEvent, TalentId: idTalent  
+      const { data } = await axios.post(endpoint, {
+        EventId: idEvent,
+        TalentId: idTalent,
       });
-        console.log(data)
+      console.log(data);
       return dispatch({
         type: CREATE_POSTULANT,
         payload: data,
@@ -459,7 +464,7 @@ export const get_talent_by_id = (id) => {
   let endpoint = `http://localhost:3001/talents/${id}`;
   return async (dispatch) => {
     try {
-      const {data}=await axios.get(endpoint);
+      const { data } = await axios.get(endpoint);
       //console.log(data);
       return dispatch({
         type: GET_TALENT_BY_ID,
@@ -475,11 +480,11 @@ export const get_talent_by_id = (id) => {
 };
 
 export const get_hired_by_company = (id) => {
-  let endpoint=`http://localhost:3001/applied/hired/${id}`;
+  let endpoint = `http://localhost:3001/applied/hired/${id}`;
   //console.log('soy id');
   return async (dispatch) => {
     try {
-      const {data}=await axios.get(endpoint);
+      const { data } = await axios.get(endpoint);
       //console.log(data);
       return dispatch({
         type: GET_HIRED_BY_COMPANY,
@@ -488,7 +493,8 @@ export const get_hired_by_company = (id) => {
     } catch (error) {
       return dispatch({
         type: "ERROR",
-        payload: "¡Ha ocurrido un error al obtener un talento contratado por la compañia!",
+        payload:
+          "¡Ha ocurrido un error al obtener un talento contratado por la compañia!",
       });
     }
   };
@@ -618,7 +624,7 @@ export const getUrlImage = (url) => {
   };
 };
 
-export const message_error_postulate  = (payload) => {
+export const message_error_postulate = (payload) => {
   return (dispatch) => {
     return dispatch({
       type: ERROR_POSTULATE,
@@ -630,7 +636,9 @@ export const message_error_postulate  = (payload) => {
 export const get_all_favorite_postulants = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3001/companies/favorites/${id}`);
+      const response = await axios.get(
+        `http://localhost:3001/companies/favorites/${id}`
+      );
       //console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULANT_FAV, payload: response.data });
     } catch (error) {
@@ -644,8 +652,11 @@ export const get_all_favorite_postulants = (id) => {
 
 export const get_favorite_postulant_by_name = (id, name) => {
   return async (dispatch) => {
-    try {                    //PROBAR LA RUTA
-      let response = await axios.get(`http://localhost:3001/companies/favorites/${id}/?name=${name}`);
+    try {
+      //PROBAR LA RUTA
+      let response = await axios.get(
+        `http://localhost:3001/companies/favorites/${id}/?name=${name}`
+      );
       //console.log(response + 'estoy en action');
       return dispatch({
         type: GET_POSTULANT_FAV_BY_NAME,
@@ -660,16 +671,19 @@ export const get_favorite_postulant_by_name = (id, name) => {
   };
 };
 
-export const add_and_delete_favorite_postulant=(id_talent,id_company) => {
+export const add_and_delete_favorite_postulant = (id_talent, id_company) => {
   //console.log(id_talent);
   //console.log(id_company);
   let endpoint = "http://localhost:3001/companies/favorites";
   return async (dispatch) => {
     try {
-      const { data } =  await axios.post(endpoint, {
-        TalentId: id_talent, CompanyId: id_company  
+      const { data } = await axios.post(endpoint, {
+        TalentId: id_talent,
+        CompanyId: id_company,
       });
-      const allFavorites = await axios.get(`http://localhost:3001/companies/favorites/${id_company}`);
+      const allFavorites = await axios.get(
+        `http://localhost:3001/companies/favorites/${id_company}`
+      );
       return dispatch({
         type: DELETE_POSTULANT_FAV,
         payload: allFavorites.data,
@@ -695,13 +709,19 @@ export const send_email_message = (payload) => {
 export const get_all_postulants_contacted_by_id = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3001/applied/contacted/${id}`);
+      const response = await axios.get(
+        `http://localhost:3001/applied/contacted/${id}`
+      );
       //console.log(response.data);
-      return dispatch({ type: GET_ALL_POSTULANTS_CONTACTED_BY_ID, payload: response.data });
+      return dispatch({
+        type: GET_ALL_POSTULANTS_CONTACTED_BY_ID,
+        payload: response.data,
+      });
     } catch (error) {
       return dispatch({
         type: "ERROR",
-        payload: "¡Ha ocurrido un error al obtener los postulantes contactados!",
+        payload:
+          "¡Ha ocurrido un error al obtener los postulantes contactados!",
       });
     }
   };
@@ -713,23 +733,26 @@ export const add_hired = (id_talent, id_company, id_event) => {
   return async (dispatch) => {
     try {
       const hireds = await axios.post(endpoint, {
-        TalentId: id_talent, EventId: id_event  
+        TalentId: id_talent,
+        EventId: id_event,
       });
-      const allPostulantsContacted = await axios.get(`http://localhost:3001/applied/contacted/${id_company}`);
-      
+      const allPostulantsContacted = await axios.get(
+        `http://localhost:3001/applied/contacted/${id_company}`
+      );
+
       const allContacteds = allPostulantsContacted.data;
       const allHireds = hireds.data;
-      
+
       //console.log(allContacteds, allHireds);
-      
+
       const response = {
         allContacteds,
-        allHireds
-      }
+        allHireds,
+      };
 
       return dispatch({
         type: ADD_HIRED,
-        payload: response
+        payload: response,
       });
     } catch (error) {
       return dispatch({
@@ -741,22 +764,24 @@ export const add_hired = (id_talent, id_company, id_event) => {
 };
 
 export const refuse_postulant_contacted = (id_talent, id_company, id_event) => {
-  console.log(id_talent);
-  console.log(id_company);
-  console.log(id_event);
+  //console.log(id_talent);
+  //console.log(id_company);
+  //console.log(id_event);
   let endpoint = "http://localhost:3001/applied/";
   return async (dispatch) => {
     try {
       // await axios.delete(endpoint, {
-      //   TalentId: id_talent, EventId: id_event  
+      //   TalentId: id_talent, EventId: id_event
       // });
       await axios.delete(endpoint, {
-        data: {TalentId: id_talent, EventId: id_event},
+        data: { TalentId: id_talent, EventId: id_event },
         headers: {
-          "Content-Type": "application/json", 
+          "Content-Type": "application/json",
         },
       });
-      let allPostulantsContacted = await axios.get(`http://localhost:3001/applied/contacted/${id_company}`);
+      let allPostulantsContacted = await axios.get(
+        `http://localhost:3001/applied/contacted/${id_company}`
+      );
       return dispatch({
         type: REFUSE_POSTULANT_CONTACTED,
         payload: allPostulantsContacted.data,
@@ -774,8 +799,8 @@ export const update_plan = (id_company, plan) => {
   let endpoint = `http://localhost:3001/companies/plan/${id_company}`;
   return async (dispatch) => {
     try {
-      const { data } =  await axios.put(endpoint, {
-        newConditionPlan: plan
+      const { data } = await axios.put(endpoint, {
+        newConditionPlan: plan,
       });
       console.log(data);
       return dispatch({
@@ -800,26 +825,31 @@ export const clear_message_plan_updated = (payload) => {
   };
 };
 
-export const add_postulant_like_contacted = (id_talent, id_company, id_event) => {
-  console.log(id_talent);
-  console.log(id_event);
+export const add_postulant_like_contacted = (
+  id_talent,
+  id_company,
+  id_event
+) => {
+  //console.log(id_talent);
+  //console.log(id_event);
   let endpoint = "http://localhost:3001/applied/contact";
   return async (dispatch) => {
     try {
       const response = await axios.post(endpoint, {
-        TalentId: id_talent, EventId: id_event
+        TalentId: id_talent,
+        EventId: id_event,
       });
       console.log(response.data);
 
-      
       //ESPERAR A QUE LLEGUE LA RUTA DE ELIMINAR PARA REFRESCAR LA PAG CON EL GET
       let fk = id_event;
-      let allPostulantsContacted = await axios.get(`http://localhost:3001/applied/event/${fk}`);
+      let allPostulantsContacted = await axios.get(
+        `http://localhost:3001/applied/event/${fk}`
+      );
       return dispatch({
         type: ADD_POSTULANT_LIKE_CONTACTED,
         payload: allPostulantsContacted.data,
       });
-      
     } catch (error) {
       return dispatch({
         type: "ERROR",
@@ -829,3 +859,27 @@ export const add_postulant_like_contacted = (id_talent, id_company, id_event) =>
   };
 };
 
+export const message_hired_or_refused_talents = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: "MESSAGE_CONTACTED",
+      payload: payload,
+    });
+  };
+};
+
+export const addReviewTalent = (EventId, TalentId, rating, text) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/companies/reviews${EventId, TalentId, rating, text}`
+      );
+      dispatch({ type: "ADD_REVIEW_TALENT", payload: response.data });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "Ha ocurrido un error al añadir una reseña del talento contratado",
+      });
+    }
+  };
+};

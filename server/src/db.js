@@ -92,6 +92,9 @@ CompanySelectedAsFav.belongsToMany(Talent, {
 Event.hasMany(Applied, { foreignKey: "EventId" });
 Applied.belongsTo(Event);
 
+// DisableEvent.hasMany(Applied, { foreignKey: "EventId" });
+// Applied.belongsTo(DisableEvent);
+
 //* Relaciones de tablas de reviews************************************************
 Company.hasMany(Review, { foreignKey: "CompanyId" });
 Review.belongsTo(Company);
@@ -112,7 +115,6 @@ SubscriptionPayment.belongsTo(Company, {
 
 // Talent.hasMany(Report, {foreignKey: "TalentId"});
 // Reports.belongsTo(Talent)
-
 
 // // Tabla que establece la relación uno a muchos  entre Talent y Contact, y también entre Contact y Company.
 // ToContact.belongsTo(Talent, { foreignKey: "talentId" });

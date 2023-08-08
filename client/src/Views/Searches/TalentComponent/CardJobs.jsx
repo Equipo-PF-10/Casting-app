@@ -9,7 +9,7 @@ const CardJobs=({event}) => {
     >
       <h2>{event.name}</h2>
       <p>{event.ubication}</p>
-      <h5>{event.habilityRequired}</h5>
+      <h5>{event.habilityRequired.join(", ")}</h5>
       {/*<h5>{companyData.name}</h5>*/}
       {/*<div className={style.brLinea}></div>*/}
     </div>

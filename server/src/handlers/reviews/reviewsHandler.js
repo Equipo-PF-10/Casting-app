@@ -23,6 +23,7 @@ const handlerAddReviewCompany = async (req, res) => {
 const handlerAddReviewTalent = async (req, res) => {
   try {
     const { EventId, TalentId, rating, text } = req.body;
+    //console.log(EventId);
 
     const review = await addReviewTalent(EventId, TalentId, rating, text);
 
