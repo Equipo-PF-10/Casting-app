@@ -11,7 +11,13 @@ const Review = () => {
 
     const userType = localStorage.getItem("userType")
 
-    const userReview = ""
+    let userReview = "";
+
+    if(userType === "talent"){
+      userReview = userId;
+  } else {
+      userReview  = userId;
+  }
 
     // Rutas Talentos
 
@@ -31,7 +37,8 @@ const Review = () => {
         text: "",
         rating: 0,
         CompanyId: "",
-        TalentId: ""
+        TalentId: "",
+        EventId: ""
     }
 
     const [input, setInput] = useState(initialState);
@@ -83,7 +90,7 @@ const Review = () => {
         );
       });
 
-    // Handle
+    // Handlers
 
     const handlerChage = (event) => {
         const {name, value} = event.target;
@@ -92,22 +99,30 @@ const Review = () => {
     }
 
     const submitHandler = async (event) => {
-        event.preventDefault();
+      event.preventDefault();
+  
+      const endpoint = userType === "talent" ? TalentReview : CompanyReview;
+      const filteredData = filterInitialStateByUserType(userType);
+  
+      try {
+          const response = await axios.post(endpoint, filteredData);
+          return response.data;
 
-        let endpoint = "";
-
-        if(userType === "talent"){
-            endpoint = TalentReview
-        } else if (userType === "company"){
-            endpoint = CompanyReview
-        }
-
-        try {
-            axios.post(endpoint, input)
-        } catch (error) {
-            console.log({error})
-        }
-    }
+      } catch (error) {
+          console.log("Error:", error);
+      }
+  }
+  
+  const filterInitialStateByUserType = (userType) => {
+      const excludedProperty = userType === "talent" ? 'TalentId' : 'CompanyId';
+  
+      return Object.keys(initialState)
+          .filter(key => key !== excludedProperty)
+          .reduce((obj, key) => {
+              obj[key] = initialState[key];
+              return obj;
+          }, {});
+  }
 
     return(
         <section className={Styles.section}>

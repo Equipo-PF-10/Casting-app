@@ -147,6 +147,8 @@ const HomeTalento = () => {
 
     const [eventData, setEventData] = useState([]);
 
+    console.log(events);
+
     useEffect(() => {
        
         const findEventById = async (id) => {
@@ -174,14 +176,16 @@ const HomeTalento = () => {
 
     useEffect
 
-    const eventInfo = eventData.map((event,index) => (
-        <NavLink key={event.id} className={Styles.link}>
-            <li className={Styles.aplication}>
-                <h4>{event.name}</h4>
-                <h4>{status[index]}</h4>
-            </li>
-        </NavLink>
-    ))
+    const eventInfo = eventData.map((event, index) => (
+      <NavLink key={event && event.id} className={Styles.link}>
+          <li className={Styles.aplication}>
+              <h4>{event && event.name}</h4>
+              <h4>{event && status[index]}</h4>
+          </li>
+      </NavLink>
+  ));
+
+
 
     // Compañias que te han contactado 
 
@@ -294,7 +298,7 @@ const HomeTalento = () => {
                     <article className={Styles.info}>
                         <h3>Tus Eventos</h3>
                         <ul className={Styles.yourEvents}>
-                            {eventInfo.length > 0 ? eventInfo : <h4 className={Styles.infoCard}>En esta sección se mostrarán tus postulaciones activas</h4>}
+                            {eventInfo.length >= 1 ? eventInfo : <h4 className={Styles.infoCard}>En esta sección se mostrarán tus postulaciones activas</h4>}
                         </ul>
                     </article>
                 </article>
