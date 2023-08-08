@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { update_plan } from "../../redux/actions";
 import axios from "axios";
 
+
 const PaypalPayments = (props) => {
   console.log(props.subs);
   const navigate = useNavigate();
@@ -32,20 +33,6 @@ const PaypalPayments = (props) => {
         // const name = details.payer.name.given_name;
         dispatch(update_plan(id_company, PLAN_TYPE));
 
-        if (PLAN_TYPE === "PREMIUM") {
-          axios
-            .post(
-              `http://localhost:3001/email/suscriptionPremium/${localStorage.getItem("user_email")}`)
-            .then((resp) => console.log(resp.data))
-            .catch((error) => console.log(error));
-        } else if (PLAN_TYPE === "BASICO") {
-          axios
-            .post(`http://localhost:3001/email/suscriptionPro/${localStorage.getItem("user_email")}`)
-            .then((resp) => console.log(resp.data))
-            .catch((error) => console.log(error));
-        } else {
-			console.log("Tipo de suscripción inválido:", PLAN_TYPE);
-		}
         navigate("/home/company");
         // alert("Suscripción completada con éxito! Gracias! ");
       }}

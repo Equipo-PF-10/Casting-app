@@ -16,7 +16,7 @@ const syncDB = async () => {
     await companiesFromApi();
 
     // Luego crear talentos
-    await talentsFromApi();
+    //await talentsFromApi();
 
     // Finalmente, crear eventos
     //await eventsMocks();
