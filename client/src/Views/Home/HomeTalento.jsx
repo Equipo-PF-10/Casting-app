@@ -4,6 +4,8 @@ import LogoutButton from "../../Components/LogoutButton/LogoutButton";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import {useState, useEffect} from "react";
+import { useDispatch } from "react-redux";
+import { get_event_by_id_event } from "../../redux/actions";
 
 const HomeTalento = () => {
 
@@ -26,9 +28,13 @@ const HomeTalento = () => {
         getTalent();
     },[userId])
 
-    // URLs
+    // Dispatch para eventos
 
-    //? const URLCompanyContact = `http://localhost:3001/companies/talentContact/${userId}`
+    const dispatch = useDispatch()
+
+  const eventClick = async (eventId) => {
+    dispatch(get_event_by_id_event(eventId))
+  }
 
     // Todos los Eventos
 
@@ -49,7 +55,7 @@ const HomeTalento = () => {
 
     
     const Events = allEvents.map((evento) => (
-        <NavLink key={evento.id} className={Styles.link} to="/">
+        <NavLink key={evento.id} onClick={() => eventClick(evento.id)} className={Styles.link} to="/model/search/">
             <li>
                 <h2>{evento.name}</h2>
                 <p className={Styles.shortDescription}>{evento.shortDescription}</p>
@@ -85,7 +91,7 @@ const HomeTalento = () => {
     const eventsPerHability = () => {
         if(filterEvents && filterEvents.length !== 0){
         const FilterEvents = filterEvents.map((evento) => (
-            <NavLink key={evento.id} className={Styles.link}>
+            <NavLink key={evento.id} className={Styles.link} to="/model/search/"  onClick={() => eventClick(evento.id)}>
             <li>
                 <h2>{evento.name}</h2>
                 <p>{evento.shortDescription}</p>
