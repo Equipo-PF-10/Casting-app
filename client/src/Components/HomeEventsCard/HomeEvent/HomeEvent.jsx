@@ -10,8 +10,8 @@ import {
 import { useEffect } from "react";
 
 const HomeEvent = (props) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  //const dispatch = useDispatch();
+  //const navigate = useNavigate();
 
   const handleClickEditEvent = () => {
     //navigate(`/company/editEvent/${props.id}`)

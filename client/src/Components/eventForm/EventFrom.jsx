@@ -20,11 +20,11 @@ const EventForm = () => {
   const company = `http://localhost:3001/companies/${idUser}`;
   const empresa = useSelector((state) => state.companyById);
 
-  console.log(empresa);
+  //console.log(empresa);
 
-  useEffect(()=>{
-    dispatch(get_company_id(idUser))
-  },[dispatch])
+  useEffect(() => {
+    dispatch(get_company_id(idUser));
+  }, [dispatch]);
 
   const initialState = {
     name: "",
@@ -41,102 +41,112 @@ const EventForm = () => {
     CompanyId: "",
   };
 
-    const optionshabilityRequired = [
-        { value: 'Actuación', label: 'Actuación' },
-        { value: 'Animador/a', label: 'Animador/a' },
-        { value: 'Bailarín/a', label: 'Bailarín/a' },
-        { value: 'Blogger', label: 'Blogger' },
-        { value: 'Cantante', label: 'Cantante' },
-        { value: 'DJ', label: 'DJ' },
-        { value: 'Influencer', label: 'Influencer' },
-        { value: 'Locutor/a', label: 'Locutor/a' },
-        { value: 'Mago/a', label: 'Mago/a' },
-        { value: 'Músico/a', label: 'Músico/a' },
-        { value: 'Modelo', label: 'Modelo' },
-        { value: 'Presentador/a', label: 'Presentador/a' },
-        { value: 'Promotor/a', label: 'Promotor/a' },
-      ];
-    
-    // Estados
+  const optionshabilityRequired = [
+    { value: "Actuación", label: "Actuación" },
+    { value: "Animador/a", label: "Animador/a" },
+    { value: "Bailarín/a", label: "Bailarín/a" },
+    { value: "Blogger", label: "Blogger" },
+    { value: "Cantante", label: "Cantante" },
+    { value: "DJ", label: "DJ" },
+    { value: "Influencer", label: "Influencer" },
+    { value: "Locutor/a", label: "Locutor/a" },
+    { value: "Mago/a", label: "Mago/a" },
+    { value: "Músico/a", label: "Músico/a" },
+    { value: "Modelo", label: "Modelo" },
+    { value: "Presentador/a", label: "Presentador/a" },
+    { value: "Promotor/a", label: "Promotor/a" },
+  ];
 
-    const [input, setInput] = useState(initialState)
+  // Estados
 
-    const [orientaciones, setOrientaciones] = useState([])
+  const [input, setInput] = useState(initialState);
 
-    const [error, setError] = useState({});
+  const [orientaciones, setOrientaciones] = useState([]);
 
-    const [bnt, setBtn] = useState(false)
+  const [error, setError] = useState({});
 
-    if(company.plan === "FREE" && company.numberPosts === 2){
-      setBtn(true)
-  } else if(company.plan === "BASICO" && company.numberPosts === 20){
-      setBtn(true)
-  } else if(company.plan === "PREMIUM"){
-      setBtn(false)
+  const [bnt, setBtn] = useState(false);
+
+  if (company.plan === "FREE" && company.numberPosts === 2) {
+    setBtn(true);
+  } else if (company.plan === "BASICO" && company.numberPosts === 20) {
+    setBtn(true);
+  } else if (company.plan === "PREMIUM") {
+    setBtn(false);
   }
 
-    input.CompanyId = idUser;
+  input.CompanyId = idUser;
 
-    input.image = imageURl;
+  input.image = imageURl;
 
-    // Hability
+  // Hability
 
-    const habilityValue = orientaciones.map(item => item.value);
+  const habilityValue = orientaciones.map((item) => item.value);
 
-    input.habilityRequired = habilityValue;
-          
-    // Handles
+  input.habilityRequired = habilityValue;
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        if (name === "image") {
-          setInput({ ...input, image: event.target.files[0] });
-        } else {
-          setInput((prevInput) => ({
-            ...prevInput,
-            [name]: value,
-          }));
-          setError(validation({ ...input, [name]: value }));
-        }
-      };
-      
-      const handleAddContact = () => {
-        setInput((prevInput) => ({
-          ...prevInput,
-          contact: [input.email, input.num], 
-        }));
-      };
+  // Handles
 
-      const handleChangeSelect = (selectedOptions) => {
-        setOrientaciones(selectedOptions);
-      };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === "image") {
+      setInput({ ...input, image: event.target.files[0] });
+    } else {
+      setInput((prevInput) => ({
+        ...prevInput,
+        [name]: value,
+      }));
+      setError(validation({ ...input, [name]: value }));
+    }
+  };
 
-      const handlerRedirectPlans = () => {
-        navigate("/company/plans");
+  const handleAddContact = () => {
+    setInput((prevInput) => ({
+      ...prevInput,
+      contact: [input.email, input.num],
+    }));
+  };
+
+  const handleChangeSelect = (selectedOptions) => {
+    setOrientaciones(selectedOptions);
+  };
+
+  const handlerRedirectPlans = () => {
+    navigate("/company/plans");
+  };
+
+  const handlerRedirectHome = () => {
+    navigate("/home/company");
+  };
+
+  let messageEventCreated = "Se ha creado el evento con éxito.";
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      console.log(input);
+      const response = (await axios.post(URL, input)).data;
+      console.log(response);
+      if (response.id) {
+        mensaje_success_Toast();
+      } else {
+        //if (response.error.response.data.error === "Has alcanzado el límite de eventos que puedes crear con tu plan actual.")
+        mensaje_error_Toast();
       }
-
-      const handlerRedirectHome = () => {
-        navigate("/home/company");
+      if(Number(empresa.numberPosts) === (Number(empresa.conditionPlan) -1 )){
+        axios.post(`http://localhost:3001/email/stopAdd/${empresa.email}`)
+        .then((resp) => console.log(resp.data))
+        .catch((error) => console.log(error))
       }
-
-      let messageEventCreated = "Se ha creado el evento con éxito.";
-      const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-          console.log(input);
-          const response = (await axios.post(URL, input)).data;
-          console.log(response) 
-          if(response.id){
-            mensaje_success_Toast();
-          } else { //if (response.error.response.data.error === "Has alcanzado el límite de eventos que puedes crear con tu plan actual.")
-            mensaje_error_Toast();
-          }
-
-          setInput(initialState);
-        } catch (error) {
-          console.log({ error });
-        }
-      };
+      if(empresa.numberPosts === empresa.conditionPlan){
+      axios.post(`http://localhost:3001/email/stop/${empresa.email}`)
+      .then((resp) => console.log(resp.data))
+      .catch((error) => console.log(error))
+      }
+      setInput(initialState);
+    } catch (error) {
+      console.log({ error });
+    }
+  };
 
   //Mostrar mensaje cuando crea un evento
 
@@ -164,85 +174,77 @@ const EventForm = () => {
       });
     }
   };
-  let errorMessage = "Ha ocurrido un error al crear un evento."
+  let errorMessage = "Ha ocurrido un error al crear un evento.";
   let currentToastId = null;
   const mensaje_error_Toast = () => {
-      if (currentToastId) {
-        toast.update(currentToastId, {
-          render: errorMessage,
-          autoClose: 5000,
-        });
-      } else {
-        currentToastId = toast.error(errorMessage, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          toastId: "custom-toast-id",
-          style: {
-            width: "500px",
-          },
-        });
-      }
+    if (currentToastId) {
+      toast.update(currentToastId, {
+        render: errorMessage,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastId = toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "500px",
+        },
+      });
+    }
   };
 
-    return(
-
+  return (
     <div>
-      <NavBarLateral/>
+      <NavBarLateral />
       <div>
         <ToastContainer />
       </div>
-      {/* {
-         empresa.numberPosts === 2
-         ?
-         (
-        <div className= {styles.modalOpened}>
-            <div className={styles.modalConfirmationOpened}>
-              <div className={styles.head3}>
-                <h4>¿Está seguro/a de adquirir el Plan Free?</h4>
-                <hr />
-              </div>
+      {/* IMPLEMENTACIÓN DE MODAL QUE SE MUESTRA CUANDO LA EMPESA ALCANZA LA CANTIDAD MAXIMA DE POSTEOS (SIRVE PARA TODOS LOS CASOS) */}
+      {empresa.numberPosts === empresa.conditionPlan ? (
+        <div className={styles.containerModalOpened}>
+          <div className={styles.modalOpened}>
+            <h2>
+              Has alcanzado la cantidad máxima de posteos correspondientes a tu plan actual.
+            </h2>
+            <h3>
+              Te invitamos a adquirir un plan con mejores características.
+            </h3>
 
-              <div className={styles.bottom3}>
-                
-                <button className={styles.buttonConfirmar} onClick={handlerRedirectPlans}>Mejorar Plan</button>
-                <button className={styles.buttonRegresar} onClick={handlerRedirectHome}>Regresar</button>
-              </div>
+            <div className={styles.botones}>
+              <button
+                className={styles.buttonConfirmar}
+                onClick={handlerRedirectPlans}
+              >
+                Mejorar Plan
+              </button>
+              <button
+                className={styles.buttonRegresar}
+                onClick={handlerRedirectHome}
+              >
+                Regresar
+              </button>
+            </div>
           </div>
         </div>
-      ) */}
-      {
-        empresa.numberPosts === 2 ? 
-        <div className= {styles.containerModalOpened}>
-            <div className={styles.modalOpened}>
-              
-                <h2>Has alcanzado la cantidad máxima de posteos correspondientes a la Prueba Gratis.</h2>
-                <h3>Te invitamos a adquirir un plan con mejores características.</h3>
-              
-              <div className={styles.botones}>
-                <button className={styles.buttonConfirmar} onClick={handlerRedirectPlans}>Mejorar Plan</button>
-                <button className={styles.buttonRegresar} onClick={handlerRedirectHome}>Regresar</button>
-              </div>
-             
+      ) : (
+        <div className={styles.containerModalClosed}>
+          <div className={styles.modalClosed}>
+            <div>
+              <h1>ERROR!</h1>
+              <hr />
+              <h2>Error</h2>
+            </div>
           </div>
-      </div>  
-      : 
-      <div className= {styles.containerModalClosed}>
-             <div className={styles.modalClosed}>
-               <div>
-                 <h1>ERROR!</h1>
-                 <hr />
-                 <h2>Error</h2>
-               </div>
-           </div>
         </div>
-}
-      
+      )}
+
       <section className={styles.section}>
         <div className={styles.formSection}>
           <form action="" method="POST" onSubmit={handleSubmit}>
@@ -499,7 +501,7 @@ const EventForm = () => {
           />
         </svg>
       </section>
-      
+
       {/* IMPLEMENTACION DE UN MODAL INVASIVO QUE APARECE CUANDO EL USUARIO LLEGA A LA CANTIDAD MAXIMA DE POSTEOS */}
       {/* empresa.numberPosts < empresa.conditionPlan ? Renderizar todo : Rendirizar el modal*/}
       {/* empresa.numberPosts === empresa.conditionPlan */}

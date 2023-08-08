@@ -235,7 +235,7 @@ const hireApplicant = async (TalentId, EventId) => {
     //   });
     // }
     const idPostulations = await TalentApplied.findAll({ where: { TalentId } });
-
+    console.log(postulations)
     for (let i = 0; i < postulations.length; i++) {
       let idPostulation = postulations[i].dataValues.id;
 
@@ -253,7 +253,6 @@ const hireApplicant = async (TalentId, EventId) => {
             { status: "Contratado" },
             { where: { EventId } }
           );
-
           return postulationHired;
         }
       }
@@ -261,7 +260,7 @@ const hireApplicant = async (TalentId, EventId) => {
 
     return "No ha sido posible seleccionar al aspirante como contratado.";
   } catch (error) {
-    throw new Error(error.message);
+    return(error.message);
   }
 };
 
@@ -358,15 +357,13 @@ const getContactedByCompany = async (idCompany) => {
       });
     }
 
-    // const response = events[0];
-    // const response = events.map((event) => event.Applieds.Talents);
-
     const response = events.map((event) => {
       return {
         ...event.get({ plain: true }),
         Applieds: event.Applieds.map((applied) => applied.Talents),
       };
     });
+
     return response;
   } catch (error) {
     return error.message;
@@ -433,12 +430,13 @@ const getApplicantsByCompany = async (idCompany) => {
         },
       ],
     });
-
+    
     const response = events[0].Applieds;
-
+    
+    
     return response;
   } catch (error) {
-    throw new Error(error.message);
+    return(error.message);
   }
 };
 
