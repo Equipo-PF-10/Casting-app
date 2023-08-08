@@ -3,6 +3,7 @@ import axios from "axios";
 import style from "./DetailComp.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { create_postulant, get_all_postulations, get_talent_by_id, message_error_postulate } from "../../../redux/actions";
+import { getAllCompanies, get_company_by_id } from "../../../redux/actions"
 
 
 const Detail = (props) => {
@@ -12,9 +13,9 @@ const Detail = (props) => {
   const dispatch = useDispatch();
   const allPostulants = useSelector((state) =>  state.postulatedTalentsByEvent );//console.log(allPostulants);
   const talent = useSelector((state) =>  state.talentById);
-
-
+  const empresa = useSelector((state) => state.companyById);
   const [isPostulated, setIsPostulated] = useState("");
+  
 
   // Verificar si el idTalent se encuentra en allPostulants
   useEffect(() => {
@@ -38,15 +39,15 @@ const Detail = (props) => {
       .then((resp) => resp.data.email)
       .catch((error) => console.log(error))
 
-      const emailToCompany = axios.post("http://localhost:3001/email/newPostulante/pedrocavataio@gmail.com")
-      .then((resp) => console.log(resp.data))
-      .catch((error) => console.log(error))
+      const emailToCompany = axios.post(`http://localhost:3001/email/newPostulante/${empresa.email}`)
+                .then((resp) => console.log(resp.data))
+                .catch((error) => console.log(error));
 
       let userEmail = localStorage.getItem("user_email");
 
-      const emailToTalent = axios.post("http://localhost:3001/email/postulationEvent/pedrocavataio@gmail.com")
-      .then((resp) => console.log(resp.data))
-      .catch((error) => console.log(error))
+      const emailToTalent = axios.post(`http://localhost:3001/email/postulationEvent/${talent.email}`) 
+                .then((resp) => console.log(resp.data))
+                .catch((error) => console.log(error));
     }
   }
 

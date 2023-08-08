@@ -138,7 +138,7 @@ const  handlerStopAdd = async (req, res) => {
             from: "henry38b10@gmail.com",
             to:email,
             subject:"Límite de creación de eventos.",
-            text:"¡Importante aviso! Ha alcanzado el límite de creación de eventos en su plan actual. Le invitamos a suscribirse a nuestro plan premium para disfrutar de publicar eventos de forma ilimitada. ¡No se pierda esta gran oportunidad de ampliar sus posibilidades!   Pronto recibirás más detalles sobre los siguientes pasos. \n ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!  \n\n   Atentamente,  \n      El equipo de CastingApp",   
+            text:"¡Importante aviso! Ha alcanzado el límite de creación de eventos en su plan actual. Le invitamos a suscribirse a nuestro plan Premium para disfrutar de publicar eventos de forma ilimitada. ¡No se pierda esta gran oportunidad de ampliar sus posibilidades!   Pronto recibirás más detalles sobre los siguientes pasos. \n ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!  \n\n   Atentamente,  \n      El equipo de CastingApp",   
         },(err, info) => {
         })
         res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
@@ -154,8 +154,8 @@ const  handlerStop = async (req, res) => {
         const result = await transporter.sendMail({
             from: "henry38b10@gmail.com",
             to:email,
-            subject:"No puede anunciar.",
-            text:"¡Importante aviso! Es imposible cargar nuevos anuncios, ha alcanzado el límite de creación de eventos en su plan actual. Le invitamos a suscribirse a nuestro plan premium para disfrutar de publicar eventos de forma ilimitada. ¡No se pierda esta gran oportunidad de ampliar sus posibilidades!   Pronto recibirás más detalles sobre los siguientes pasos. \n ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!  \n\n   Atentamente,  \n      El equipo de CastingApp",   
+            subject:"Ha excedido su limite de anuncios.",
+            text:"¡Importante aviso! Es imposible cargar nuevos anuncios, ha alcanzado el límite de creación de eventos en su plan actual. Le invitamos a suscribirse a nuestro plan Premium para disfrutar de publicar eventos de forma ilimitada. ¡No se pierda esta gran oportunidad de ampliar sus posibilidades!   Pronto recibirás más detalles sobre los siguientes pasos. \n ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!  \n\n   Atentamente,  \n      El equipo de CastingApp",   
         },(err, info) => {
         })
         res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
@@ -173,7 +173,7 @@ const  handlerEditedPerfilCompany = async (req, res) => {
             from: "henry38b10@gmail.com",
             to:email,
             subject:"Perfil actualizado con éxito!!.",
-            text:"Haz actualzado con éxito tu perfil. ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
+            text:"Has actualizado con éxito tu perfil. ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
         },(err, info) => {
         })
          return res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
@@ -243,7 +243,7 @@ const  handlerEditedPerfilTalent = async (req, res) => {
             from: "henry38b10@gmail.com",
             to:email,
             subject:"Perfil actualizado con éxito!!.",
-            text:"Haz actualzado con éxito tu perfil. ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
+            text:"Has actualzado con éxito tu perfil. ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
         },(err, info) => {
         })
          return res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
@@ -303,6 +303,23 @@ const handlerSuscriptionPro = async (req, res) => {
     }    
 }
 
+const handlerCompanyEditedEvent = async (req, res) => {
+    const { email } = req.params
+    console.log(email);
+    try {
+        const result = await transporter.sendMail({
+            from: "henry38b10@gmail.com",
+            to:email,
+            subject:"Has modificado exitosamente tu evento!!..",
+            text:"¡Evento modificado exitosamente! Los cambios han sido guardados.!. ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
+        },(err, info) => {
+        })
+         return res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
+    } catch (error) {
+        console.log(error.message)
+    }    
+}
+
 
   module.exports = { handlerRegisterTalent,
                      handlerRegisterCompany,
@@ -321,5 +338,6 @@ const handlerSuscriptionPro = async (req, res) => {
                      handlerSuscriptionFree,
                      handlerSuscriptionPro,
                      handlerSuscriptionPremium,
-                     handlerStop
+                     handlerStop,
+                     handlerCompanyEditedEvent
                     };
