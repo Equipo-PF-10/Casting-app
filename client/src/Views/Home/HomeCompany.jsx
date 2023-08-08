@@ -23,14 +23,10 @@ export default function HomeCompany() {
   const id_company = localStorage.getItem("user_id");
   const messagePlanUpdated = useSelector((state) => state.messagePlanUpdated);
   const eventDetail=useSelector((state) => state.eventDetail);
-  //console.log(eventDetail);  //id eventos
-  //console.log(messagePlanUpdated);
   const allPostulantsContacted = useSelector(
     (state) => state.allPostulantsContacted
   );
-  //console.log(eventDetail);
-  //console.log(allPostulantsContacted);
-  
+
   const allFavoritePostulants = useSelector(
     (state) => state.allFavoritePostulants
   );
@@ -40,12 +36,11 @@ export default function HomeCompany() {
   const hiredTalents = useSelector(
     (state) => state.hiredTalents
   );
-//console.log(hiredTalents);
+
 
   const handleDelete = (id) => {
     dispatch(close_event_by_id(id, id_company));
     dispatch(get_event_by_id(id_company));
-    //console.log(allEvents);
   };
 
   //Trae todos los eventos creados
@@ -65,10 +60,6 @@ export default function HomeCompany() {
     },[dispatch])
   
   
-    useEffect(() => {
-      dispatch(get_event_by_id(id_company));
-    }, [dispatch]);
-
   let message_success_toastify = "¡Se ha actualizado su plan con éxito!";
   //Mostrar mensaje cuando se actualiza un plan correctamente
   let currentToastIdSuccess = null;
