@@ -23,7 +23,7 @@ const addReviewCompany = async (EventId, CompanyId, rating, text) => {
       throw new Error("Error al encontrar la empresa o el evento.");
     }
 
-    const prueba = await ToContact.findAll({
+    const prueba = await Applied.findAll({
       where: {
         EventId: EventId,
         status: "Contratado",
@@ -31,7 +31,6 @@ const addReviewCompany = async (EventId, CompanyId, rating, text) => {
     });
     let postulacionesId = [];
     let eventosId = [];
-
 
     for (let i = 0; i < prueba.length; i++) {
       postulacionesId.push(prueba[i].id);
@@ -103,11 +102,11 @@ const addReviewTalent = async (EventId, TalentId, rating, text) => {
         status: "Contratado",
       },
 
-      include:{model:Talent}
-    })
+      include: { model: Talent },
+    });
     //console.log(prueba + 'estoy aca');
-    for(let i=0 ; i<prueba.length;i++){
-      let prueba2=prueba[i].Talents[0]
+    for (let i = 0; i < prueba.length; i++) {
+      let prueba2 = prueba[i].Talents[0];
       if (prueba[i].Talents[0].id === TalentId) {
         await Applied.update(
           { Companyreviews: rating, CompanyreviewsComentary: text },
@@ -126,22 +125,22 @@ const addReviewTalent = async (EventId, TalentId, rating, text) => {
             },
           }
         );
-        
-           await Talent.update(
-            {
-              reviews:
-                (talent.reviews * talent.reviewsCount + rating) /
-                (talent.reviewsCount + 1),
+
+        await Talent.update(
+          {
+            reviews:
+              (talent.reviews * talent.reviewsCount + rating) /
+              (talent.reviewsCount + 1),
+          },
+          {
+            where: {
+              EventId: EventId,
+              id: prueba[i].id,
             },
-            {
-              where: {
-                EventId: EventId,
-                id: prueba[i].id,
-              },
-            }
-          );
-        
-        return `Se ha incluido tu puntuacion para el talento ${TalentId} que participó en el evento ${EventId}`
+          }
+        );
+
+        return `Se ha incluido tu puntuacion para el talento ${TalentId} que participó en el evento ${EventId}`;
       }
       //for (let j=0 ; j < prueba2.length ; j++){
       //  if(prueba2[j].id===TalentId) {
@@ -150,7 +149,6 @@ const addReviewTalent = async (EventId, TalentId, rating, text) => {
     }
 
     return prueba[0].Talents[0].id;
-
   } catch (error) {
     throw new Error(error.message);
   }
