@@ -92,8 +92,8 @@ CompanySelectedAsFav.belongsToMany(Talent, {
 Event.hasMany(Applied, { foreignKey: "EventId" });
 Applied.belongsTo(Event);
 
-DisableEvent.hasMany(Applied, { foreignKey: "EventId" });
-Applied.belongsTo(DisableEvent);
+// DisableEvent.hasMany(Applied, { foreignKey: "EventId" });
+// Applied.belongsTo(DisableEvent);
 
 //* Relaciones de tablas de reviews************************************************
 Company.hasMany(Review, { foreignKey: "CompanyId" });

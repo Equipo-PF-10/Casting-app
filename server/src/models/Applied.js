@@ -33,22 +33,27 @@ module.exports = (sequelize) => {
       Talentreviews: {
         type: DataTypes.FLOAT,
         allowNull: true,
-        defaultValue:null,
+        defaultValue: null,
       },
       TalentreviewsComentary: {
         type: DataTypes.TEXT,
         allowNull: true,
-        defaultValue:null,
+        defaultValue: null,
       },
       Companyreviews: {
         type: DataTypes.FLOAT,
         allowNull: true,
-        defaultValue:null,
+        defaultValue: null,
       },
       CompanyreviewsComentary: {
         type: DataTypes.TEXT,
         allowNull: true,
-        defaultValue:null,
+        defaultValue: null,
+      },
+
+      EventId: {
+        type: DataTypes.UUID,
+        allowNull: true,
       },
     },
     { freezeTableName: true, timestamps: false }

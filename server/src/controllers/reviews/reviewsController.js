@@ -65,7 +65,6 @@ const addReviewCompany = async (EventId, CompanyId, rating, text) => {
           }
         );
 
-        // Actualizar promedio de reviews y conteo para la empresa
         const updatedCompanyRating =
           (company.reviews * company.reviewsCount + rating) /
           (company.reviewsCount + 1);

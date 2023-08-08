@@ -1,4 +1,4 @@
-const { Event, DisableEvent, Company } = require("../../db");
+const { Event, DisableEvent, Company, Applied } = require("../../db");
 const {
   getCompaniesByPlan,
 } = require("../../controllers/companies/companiesController");
@@ -17,9 +17,15 @@ async function getAllEvents(name) {
 // Función controller que retorna evento por nombre.
 const getEventsByName = async (name) => {
   try {
-    const foundInDb = await Event.findOne({
+    let foundInDb = await Event.findOne({
       where: { name: { [Op.iLike]: `%${name}%` } },
     });
+
+    if (!foundInDb) {
+      foundInDb = await DisableEvent.findOne({
+        where: { name: { [Op.iLike]: `%${name}%` } },
+      });
+    }
 
     if (!foundInDb) {
       throw new Error(
@@ -69,6 +75,21 @@ const deleteEventById = async (id) => {
     if (!eventToDelete) {
       throw new Error(`El Evento con ID ${id} no existe`);
     }
+
+    // let postulations = await Applied.findAll({ where: { id } });
+
+    // if (postulations) {
+    //   await Promise.all(
+    //     postulations.map(async (postulation) => {
+    //       if (
+    //         postulation.status === "Contactado" ||
+    //         postulation.status === "Contratado"
+    //       ) {
+    //         await postulation.update({ EventId: null, DisableEventId: id });
+    //       }
+    //     })
+    //   );
+    // }
 
     await DisableEvent.create({
       name: eventToDelete.name,
@@ -143,7 +164,15 @@ const getEventByCompanyId = async (companyId) => {
       },
     });
 
-    if (!foundInDb)
+    if (events.length === 0) {
+      events = await DisableEvent.findAll({
+        where: {
+          CompanyId: companyId,
+        },
+      });
+    }
+
+    if (!foundInDb || events.length === 0)
       throw new Error(
         "No existe empresa con ese ID que haya creado un evento."
       );
