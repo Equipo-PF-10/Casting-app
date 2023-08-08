@@ -830,7 +830,7 @@ export const add_postulant_like_contacted = (id_talent, id_company, id_event) =>
   };
 };
 
-export const message_contrated_or_refused_talents = (payload) => {
+export const message_hired_or_refused_talents = (payload) => {
   return (dispatch) => {
     return dispatch({
       type: "MESSAGE_CONTACTED",
