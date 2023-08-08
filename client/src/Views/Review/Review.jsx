@@ -13,7 +13,15 @@ const Review = () => {
   const userType = localStorage.getItem("userType");
 
   const userReview="";
+ 
+  let userReview = "";
 
+    if(userType === "talent"){
+      userReview = userId;
+  } else {
+      userReview  = userId;
+  }
+  
   const dispatch=useDispatch()
   
   const reviewTalents = (state) => state.reviewTalents
@@ -34,18 +42,94 @@ const Review = () => {
   
   const navigate = useNavigate(company + `/hiredtalent/${userId}`);
 
-  // Estados
+    // Estados
+  
+      let initialState = {
+        text: "",
+        rating: 0,
+        CompanyId: "",
+        TalentId: "",
+        EventId: ""
+    }
 
-  let initialState = {
-    text: "",
-    rating: 0,
-    CompanyId: "",
-    TalentId: "",
-  };
+
 
   const [input, setInput] = useState(initialState);
 
   //const [error, setError] = useState({});
+
+    //userName
+
+    let userName = "";
+
+    const getUserData = async () => {
+        try {
+          if (userType === "talent") {
+            const response = await axios.get(URLCompany);
+            if (response) {
+              userName = response.data.name;
+            }
+          } else {
+            const response = await axios.get(URLTalent);
+            if (response) {
+              userName = response.data.name;
+            }
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      (async () => {await getUserData()})();
+
+    // Estrellas
+
+    const stars = Array(5).fill(null).map((_star, index) => {
+        const starValue = index + 1;
+        return (
+          <FaStar
+            key={index}
+            size={80}
+            onClick={() => setInput((input) => ({ ...input, rating: starValue }))}
+            color={starValue <= input.rating ? '#4B31A1' : '#324844'}
+            style={{ cursor: 'pointer' }}
+          />
+        );
+      });
+
+    // Handlers
+
+    const handlerChage = (event) => {
+        const {name, value} = event.target;
+        setInput({...input, [name]: value})
+        setError(Validation({ ...input, [name]: value }))
+    }
+
+    const submitHandler = async (event) => {
+      event.preventDefault();
+  
+      const endpoint = userType === "talent" ? TalentReview : CompanyReview;
+      const filteredData = filterInitialStateByUserType(userType);
+  
+      try {
+          const response = await axios.post(endpoint, filteredData);
+          return response.data;
+
+      } catch (error) {
+          console.log("Error:", error);
+      }
+  }
+  
+  const filterInitialStateByUserType = (userType) => {
+      const excludedProperty = userType === "talent" ? 'TalentId' : 'CompanyId';
+  
+      return Object.keys(initialState)
+          .filter(key => key !== excludedProperty)
+          .reduce((obj, key) => {
+              obj[key] = initialState[key];
+              return obj;
+          }, {});
+  }
 
   if (userType === "talent") {
     input.TalentId = userId;
