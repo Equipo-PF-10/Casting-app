@@ -48,7 +48,7 @@ export const ADD_REVIEW_TALENT = "ADD_REVIEW_TALENT";
 import axios from "axios";
 
 export const register_model = (payload) => {
-  let endpoint = "http://localhost:3001/talents/register";
+  let endpoint = "https://deploy-sprint-2-backend.onrender.com/talents/register";
   //  let endpoint = "postgres.render.com/casting_app_db";
   //https://casting-app-server.onrender.com/talents/register
   return async (dispatch) => {
@@ -85,7 +85,7 @@ export const updateCompany = (
   return async (dispatch) => {
     try {
       const response = await axios.put(
-        "http://localhost:3001/forms/companies",
+        "https://deploy-sprint-2-backend.onrender.com/forms/companies",
         {
           email,
           name,
@@ -112,7 +112,7 @@ export const updateCompany = (
 };
 
 export const register_company = (payload) => {
-  let endpoint = "http://localhost:3001/companies/register";
+  let endpoint = "https://deploy-sprint-2-backend.onrender.com/companies/register";
   return async (dispatch) => {
     try {
       const response = await axios.post(endpoint, payload);
@@ -201,7 +201,7 @@ export const user_type = (payload) => {
 };
 
 export const get_company_by_id = (id) => {
-  let endpoint = `http://localhost:3001/companies/${id}`;
+  let endpoint = `https://deploy-sprint-2-backend.onrender.com/companies/${id}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -219,7 +219,7 @@ export const get_company_by_id = (id) => {
 };
 
 export const get_company_id = (id) => {
-  let endpoint = `http://localhost:3001/companies/${id}`;
+  let endpoint = `https://deploy-sprint-2-backend.onrender.com/companies/${id}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -237,7 +237,7 @@ export const get_company_id = (id) => {
 };
 
 export const get_event_by_id = (id) => {
-  let endpoint = `http://localhost:3001/events/${id}`;
+  let endpoint = `https://deploy-sprint-2-backend.onrender.com/events/${id}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -256,7 +256,7 @@ export const get_event_by_id = (id) => {
 };
 
 export const get_event_by_id_event = (id) => {
-  let endpoint = `http://localhost:3001/events/eventid/${id}`;
+  let endpoint = `https://deploy-sprint-2-backend.onrender.com/events/eventid/${id}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -276,7 +276,7 @@ export const get_event_by_id_event = (id) => {
 export const getAllEvents = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/events");
+      const response = await axios.get("https://deploy-sprint-2-backend.onrender.com/events");
       return dispatch({ type: GET_ALL_EVENTS, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -290,7 +290,7 @@ export const getAllEvents = () => {
 export const getEventsPremium = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/events/premium");
+      const response = await axios.get("https://deploy-sprint-2-backend.onrender.com/events/premium");
       console.log(response);
       return dispatch({ type: GET_EVENTS_PREMIUM, payload: response.data });
     } catch (error) {
@@ -305,7 +305,7 @@ export const getEventsPremium = () => {
 export const edit_event_by_id = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.put(`http://localhost:3001/events/${id}`);
+      const response = await axios.put(`https://deploy-sprint-2-backend.onrender.com/events/${id}`);
       return dispatch({ type: EDIT_EVENT, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -319,9 +319,9 @@ export const edit_event_by_id = (id) => {
 export const close_event_by_id = (id, companyId) => {
   return async (dispatch) => {
     try {
-      await axios.delete(`http://localhost:3001/events/${id}`);
+      await axios.delete(`https://deploy-sprint-2-backend.onrender.com/events/${id}`);
       const eventDetail = await axios.get(
-        `http://localhost:3001/events/${companyId}`
+        `https://deploy-sprint-2-backend.onrender.com/events/${companyId}`
       );
       return dispatch({ type: CLOSE_EVENT, payload: eventDetail.data });
     } catch (error) {
@@ -336,7 +336,7 @@ export const close_event_by_id = (id, companyId) => {
 export const getAllCompanies = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/companies");
+      const response = await axios.get("https://deploy-sprint-2-backend.onrender.com/companies");
       return dispatch({ type: GET_ALL_COMPANIES, payload: response.data });
     } catch (error) {
       return dispatch({
@@ -351,7 +351,7 @@ export const get_all_postulations = (fk) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/applied/event/${fk}`
+        `https://deploy-sprint-2-backend.onrender.com/applied/event/${fk}`
       );
       //console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULATIONS, payload: response.data });
@@ -365,7 +365,7 @@ export const get_all_postulations = (fk) => {
   };
 };
 export const get_postulant_by_name = (fk, name) => {
-  let endpoint = `http://localhost:3001/applied/company/${fk}/?name=${name}`;
+  let endpoint = `https://deploy-sprint-2-backend.onrender.com/applied/company/${fk}/?name=${name}`;
 
   return async (dispatch) => {
     try {
@@ -386,7 +386,7 @@ export const get_postulant_by_name = (fk, name) => {
 
 //Deberia retornar un mensaje
 export const delete_postulant_by_id = (id_evento, id_talent) => {
-  let endpoint = "http://localhost:3001/applied";
+  let endpoint = "https://deploy-sprint-2-backend.onrender.com/applied";
   return async (dispatch) => {
     try {
       //const { data } = await axios.delete(endpoint, {EventId: id_evento, TalentId: id_talent}); //(endpoint, {EventId:id_evento, TalentId:id_talent})
@@ -400,7 +400,7 @@ export const delete_postulant_by_id = (id_evento, id_talent) => {
       });
       const fk = id_evento;
       const response = await axios.get(
-        `http://localhost:3001/applied/event/${fk}`
+        `https://deploy-sprint-2-backend.onrender.com/applied/event/${fk}`
       );
       //const z = eliminado.data
       //const postulantes=response.data
@@ -429,7 +429,7 @@ export const clear_message_deleted = (payload) => {
 };
 
 export const create_postulant = (idEvent, idTalent) => {
-  let endpoint = "http://localhost:3001/applied";
+  let endpoint = "https://deploy-sprint-2-backend.onrender.com/applied";
   console.log("id evento en action: " + idEvent);
   return async (dispatch) => {
     try {
@@ -461,7 +461,7 @@ export const clear_message_postulated = (payload) => {
 };
 
 export const get_talent_by_id = (id) => {
-  let endpoint = `http://localhost:3001/talents/${id}`;
+  let endpoint = `https://deploy-sprint-2-backend.onrender.com/talents/${id}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -480,7 +480,7 @@ export const get_talent_by_id = (id) => {
 };
 
 export const get_hired_by_company = (id) => {
-  let endpoint = `http://localhost:3001/applied/hired/${id}`;
+  let endpoint = `https://deploy-sprint-2-backend.onrender.com/applied/hired/${id}`;
   //console.log('soy id');
   return async (dispatch) => {
     try {
@@ -501,7 +501,7 @@ export const get_hired_by_company = (id) => {
 };
 
 export const getAllTalents = () => {
-  let endpoint = "http://localhost:3001/talents/";
+  let endpoint = "https://deploy-sprint-2-backend.onrender.com/talents/";
   return async (dispatch) => {
     try {
       const response = await axios.get(endpoint);
@@ -599,7 +599,7 @@ export const getEventsByName = (name) => {
   return async (dispatch) => {
     try {
       let response = await axios.get(
-        "http://localhost:3001/events/?name=" + name
+        "https://deploy-sprint-2-backend.onrender.com/events/?name=" + name
       );
       //console.log(response + 'estoy en action');
       return dispatch({
@@ -637,7 +637,7 @@ export const get_all_favorite_postulants = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/companies/favorites/${id}`
+        `https://deploy-sprint-2-backend.onrender.com/companies/favorites/${id}`
       );
       //console.log(response.data);
       return dispatch({ type: GET_ALL_POSTULANT_FAV, payload: response.data });
@@ -655,7 +655,7 @@ export const get_favorite_postulant_by_name = (id, name) => {
     try {
       //PROBAR LA RUTA
       let response = await axios.get(
-        `http://localhost:3001/companies/favorites/${id}/?name=${name}`
+        `https://deploy-sprint-2-backend.onrender.com/companies/favorites/${id}/?name=${name}`
       );
       //console.log(response + 'estoy en action');
       return dispatch({
@@ -674,7 +674,7 @@ export const get_favorite_postulant_by_name = (id, name) => {
 export const add_and_delete_favorite_postulant = (id_talent, id_company) => {
   //console.log(id_talent);
   //console.log(id_company);
-  let endpoint = "http://localhost:3001/companies/favorites";
+  let endpoint = "https://deploy-sprint-2-backend.onrender.com/companies/favorites";
   return async (dispatch) => {
     try {
       const { data } = await axios.post(endpoint, {
@@ -682,7 +682,7 @@ export const add_and_delete_favorite_postulant = (id_talent, id_company) => {
         CompanyId: id_company,
       });
       const allFavorites = await axios.get(
-        `http://localhost:3001/companies/favorites/${id_company}`
+        `https://deploy-sprint-2-backend.onrender.com/companies/favorites/${id_company}`
       );
       return dispatch({
         type: DELETE_POSTULANT_FAV,
@@ -710,7 +710,7 @@ export const get_all_postulants_contacted_by_id = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/applied/contacted/${id}`
+        `https://deploy-sprint-2-backend.onrender.com/applied/contacted/${id}`
       );
       //console.log(response.data);
       return dispatch({
@@ -729,7 +729,7 @@ export const get_all_postulants_contacted_by_id = (id) => {
 
 export const add_hired = (id_talent, id_company, id_event) => {
   let response = {};
-  let endpoint = "http://localhost:3001/applied/hire";
+  let endpoint = "https://deploy-sprint-2-backend.onrender.com/applied/hire";
   return async (dispatch) => {
     try {
       const hireds = await axios.post(endpoint, {
@@ -737,7 +737,7 @@ export const add_hired = (id_talent, id_company, id_event) => {
         EventId: id_event,
       });
       const allPostulantsContacted = await axios.get(
-        `http://localhost:3001/applied/contacted/${id_company}`
+        `https://deploy-sprint-2-backend.onrender.com/applied/contacted/${id_company}`
       );
 
       const allContacteds = allPostulantsContacted.data;
@@ -767,7 +767,7 @@ export const refuse_postulant_contacted = (id_talent, id_company, id_event) => {
   //console.log(id_talent);
   //console.log(id_company);
   //console.log(id_event);
-  let endpoint = "http://localhost:3001/applied/";
+  let endpoint = "https://deploy-sprint-2-backend.onrender.com/applied/";
   return async (dispatch) => {
     try {
       // await axios.delete(endpoint, {
@@ -780,7 +780,7 @@ export const refuse_postulant_contacted = (id_talent, id_company, id_event) => {
         },
       });
       let allPostulantsContacted = await axios.get(
-        `http://localhost:3001/applied/contacted/${id_company}`
+        `https://deploy-sprint-2-backend.onrender.com/applied/contacted/${id_company}`
       );
       return dispatch({
         type: REFUSE_POSTULANT_CONTACTED,
@@ -796,7 +796,7 @@ export const refuse_postulant_contacted = (id_talent, id_company, id_event) => {
 };
 
 export const update_plan = (id_company, plan) => {
-  let endpoint = `http://localhost:3001/companies/plan/${id_company}`;
+  let endpoint = `https://deploy-sprint-2-backend.onrender.com/companies/plan/${id_company}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.put(endpoint, {
@@ -832,7 +832,7 @@ export const add_postulant_like_contacted = (
 ) => {
   //console.log(id_talent);
   //console.log(id_event);
-  let endpoint = "http://localhost:3001/applied/contact";
+  let endpoint = "https://deploy-sprint-2-backend.onrender.com/applied/contact";
   return async (dispatch) => {
     try {
       const response = await axios.post(endpoint, {
@@ -844,7 +844,7 @@ export const add_postulant_like_contacted = (
       //ESPERAR A QUE LLEGUE LA RUTA DE ELIMINAR PARA REFRESCAR LA PAG CON EL GET
       let fk = id_event;
       let allPostulantsContacted = await axios.get(
-        `http://localhost:3001/applied/event/${fk}`
+        `https://deploy-sprint-2-backend.onrender.com/applied/event/${fk}`
       );
       return dispatch({
         type: ADD_POSTULANT_LIKE_CONTACTED,
@@ -872,7 +872,7 @@ export const addReviewTalent = (EventId, TalentId, rating, text) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        `http://localhost:3001/companies/reviews${EventId, TalentId, rating, text}`
+        `https://deploy-sprint-2-backend.onrender.com/companies/reviews${EventId, TalentId, rating, text}`
       );
       dispatch({ type: "ADD_REVIEW_TALENT", payload: response.data });
     } catch (error) {

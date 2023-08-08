@@ -43,7 +43,7 @@ const FormEmpresa = () => {
             setInput({...empresa})}
     }, [loading, miEmpresa]);
 
- const URL = "http://localhost:3001/forms/companies"
+ const URL = "https://deploy-sprint-2-backend.onrender.com/forms/companies"
 
         const initialState = {
             id: "",
@@ -100,7 +100,7 @@ const FormEmpresa = () => {
             if(response === messageUpdated){
                 mensaje_success_Toast();
             }            
-            const emailToCompany = axios.post(`http://localhost:3001/email/editedPerfilCompany/${empresa.email}`)
+            const emailToCompany = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/editedPerfilCompany/${empresa.email}`)
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
             setInput(initialState)

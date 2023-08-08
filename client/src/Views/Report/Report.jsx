@@ -7,9 +7,9 @@ const Report = () => {
 
     //URLs
 
-    const URLTalent = "http://localhost:3001/talents/report"
+    const URLTalent = "https://deploy-sprint-2-backend.onrender.com/talents/report"
 
-    const URLCompany = "http://localhost:3001/companies/report"
+    const URLCompany = "https://deploy-sprint-2-backend.onrender.com/companies/report"
 
     // Estados
 

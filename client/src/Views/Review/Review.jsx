@@ -28,17 +28,17 @@ const Review = () => {
 
   // Rutas Talentos
 
-  const URLTalent = `http://localhost:3001/talents/${userReview}`;
+  const URLTalent = `https://deploy-sprint-2-backend.onrender.com/talents/${userReview}`;
 
-  const TalentReview = "http://localhost:3001/talents/reviews";
+  const TalentReview = "https://deploy-sprint-2-backend.onrender.com/talents/reviews";
 
   // Rutas Compañias
 
-  const URLCompany = `http://localhost:3001/companies/${userReview}`;
+  const URLCompany = `https://deploy-sprint-2-backend.onrender.com/companies/${userReview}`;
 
-  const CompanyReview="http://localhost:3001/companies/reviews";
+  const CompanyReview="https://deploy-sprint-2-backend.onrender.com/companies/reviews";
 
-  const company="http://localhost:3001/companies";
+  const company="https://deploy-sprint-2-backend.onrender.com/companies";
   
   const navigate = useNavigate(company + `/hiredtalent/${userId}`);
 

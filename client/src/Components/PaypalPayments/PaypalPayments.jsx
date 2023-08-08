@@ -35,12 +35,12 @@ const PaypalPayments = (props) => {
         if (PLAN_TYPE === "PREMIUM") {
           return axios
             .post(
-              `http://localhost:3001/email/suscriptionPremium/${props.email}`)
+              `https://deploy-sprint-2-backend.onrender.com/email/suscriptionPremium/${props.email}`)
             .then((resp) => console.log(resp.data))
             .catch((error) => console.log(error));
         } else if (PLAN_TYPE === "BASICO") {
           return axios
-            .post(`http://localhost:3001/email/suscriptionPro/${props.email}`)
+            .post(`https://deploy-sprint-2-backend.onrender.com/email/suscriptionPro/${props.email}`)
             .then((resp) => console.log(resp.data))
             .catch((error) => console.log(error));
         } else {

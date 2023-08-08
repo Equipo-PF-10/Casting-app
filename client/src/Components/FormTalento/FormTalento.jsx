@@ -11,7 +11,7 @@ import { get_talent_by_id } from "../../redux/actions"
 
 const FormTalento = () => {
 
-    const URL = `http://localhost:3001/forms/talents`
+    const URL = `https://deploy-sprint-2-backend.onrender.com/forms/talents`
 
     const idUser = localStorage.getItem("user_id")
 

@@ -14,10 +14,10 @@ import { useNavigate } from "react-router-dom";
 const EventForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const URL = "http://localhost:3001/events/";
+  const URL = "https://deploy-sprint-2-backend.onrender.com/events/";
   const idUser = localStorage.getItem("user_id");
   const imageURl = useSelector((state) => state.imageUrl);
-  const company = `http://localhost:3001/companies/${idUser}`;
+  const company = `https://deploy-sprint-2-backend.onrender.com/companies/${idUser}`;
   const empresa = useSelector((state) => state.companyById);
 
   //console.log(empresa);
@@ -133,12 +133,12 @@ const EventForm = () => {
         mensaje_error_Toast();
       }
       if(Number(empresa.numberPosts) === (Number(empresa.conditionPlan) -1 )){
-        axios.post(`http://localhost:3001/email/stopAdd/${empresa.email}`)
+        axios.post(`https://deploy-sprint-2-backend.onrender.com/email/stopAdd/${empresa.email}`)
         .then((resp) => console.log(resp.data))
         .catch((error) => console.log(error))
       }
       if(empresa.numberPosts === empresa.conditionPlan){
-      axios.post(`http://localhost:3001/email/stop/${empresa.email}`)
+      axios.post(`https://deploy-sprint-2-backend.onrender.com/email/stop/${empresa.email}`)
       .then((resp) => console.log(resp.data))
       .catch((error) => console.log(error))
       }

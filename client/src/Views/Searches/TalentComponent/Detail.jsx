@@ -32,21 +32,21 @@ const Detail = (props) => {
         dispatch(message_error_postulate("Para postularse antes debe completar los datos principales de su perfil."));
     }else {
       dispatch(create_postulant(idEvent, idTalent));
-/*       const CompanyId = axios.get(`http://localhost:3001/events/${}`)
+/*       const CompanyId = axios.get(`https://deploy-sprint-2-backend.onrender.com/events/${}`)
       .then((resp) => resp.data.CompanyId)
       .catch((error) => console.log(error)) */
 
-      const CompanyEmail = axios.get(`http://localhost:3001/companies/${CompanyId}`)
+      const CompanyEmail = axios.get(`https://deploy-sprint-2-backend.onrender.com/companies/${CompanyId}`)
       .then((resp) => resp.data.email)
       .catch((error) => console.log(error))
 
-      const emailToCompany = axios.post(`http://localhost:3001/email/newPostulante/${empresa.email}`)
+      const emailToCompany = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/newPostulante/${empresa.email}`)
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
 
       let userEmail = localStorage.getItem("user_email");
 
-      const emailToTalent = axios.post(`http://localhost:3001/email/postulationEvent/${userEmail}`) 
+      const emailToTalent = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/postulationEvent/${userEmail}`) 
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
     }
