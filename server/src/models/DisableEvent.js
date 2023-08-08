@@ -1,7 +1,9 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  return sequelize.define("DisableEvent",{
+  return sequelize.define(
+    "DisableEvent",
+    {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -15,7 +17,7 @@ module.exports = (sequelize) => {
 
       image: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
 
       shortDescription: {
@@ -69,7 +71,7 @@ module.exports = (sequelize) => {
 
       CompanyId: {
         type: DataTypes.UUID,
-       },
+      },
     },
     { freezeTableName: true, timestamps: false }
   );
