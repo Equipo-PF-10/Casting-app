@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getAllCompanies, get_company_by_id } from "../../../redux/actions"
 import { create_postulant, get_all_postulations, get_talent_by_id, message_error_postulate } from "../../../redux/actions";
+import { useSelector } from "react-redux";
 
 const Detail = (props) => {
   const MESSAGE_SEND_EMAIL = "Se ha enviado correctamente un email de contacto al postulante seleccionado.";
@@ -26,7 +27,7 @@ const Detail = (props) => {
   //const idTalent=talent?.id
   //console.log(idTalent);
   const empresa = useSelector((state) => state.companyById);
-  
+
   const handlerClick = () => {
     // const open = "isOpened";
     // dispatch(open_modal_search_compnay(open));
