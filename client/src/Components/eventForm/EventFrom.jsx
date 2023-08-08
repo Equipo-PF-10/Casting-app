@@ -20,7 +20,7 @@ const EventForm = () => {
   const company = `http://localhost:3001/companies/${idUser}`;
   const empresa = useSelector((state) => state.companyById);
 
-  console.log(empresa);
+  //console.log(empresa);
 
   useEffect(() => {
     dispatch(get_company_id(idUser));
@@ -133,9 +133,9 @@ const EventForm = () => {
         mensaje_error_Toast();
       }
       if(Number(empresa.numberPosts) === (Number(empresa.conditionPlan) -1 )){
-      axios.post(`http://localhost:3001/email/stopAdd/${empresa.email}`)
-      .then((resp) => console.log(resp.data))
-      .catch((error) => console.log(error))
+        axios.post(`http://localhost:3001/email/stopAdd/${empresa.email}`)
+        .then((resp) => console.log(resp.data))
+        .catch((error) => console.log(error))
       }
       if(empresa.numberPosts === empresa.conditionPlan){
       axios.post(`http://localhost:3001/email/stop/${empresa.email}`)
