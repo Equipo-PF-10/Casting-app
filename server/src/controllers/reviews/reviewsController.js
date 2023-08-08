@@ -19,10 +19,12 @@ const addReviewCompany = async (EventId, CompanyId, rating, text) => {
     let postulacionesId = [];
     let eventosId = [];
 
+    //console.log('prueba');
     for(let i=0 ; i<prueba.length;i++){
       postulacionesId.push(prueba[i].id)
       eventosId.push(prueba[i].EventId)
     } 
+    //console.log(postulacionesId);
     for (let i=0 ;i<eventosId.length;i++){
       if(eventosId[i]===EventId){
         await Applied.update({Talentreviews:rating, TalentreviewsComentary:text},{
@@ -62,28 +64,36 @@ const addReviewTalent = async (EventId, TalentId, rating, text) => {
       },
       include:{model:Talent}
     })
+    //console.log(prueba + 'estoy aca');
     for(let i=0 ; i<prueba.length;i++){
-      let prueba2=prueba[i].Talents
-      
-      for (let j=0 ; j < prueba2.length ; j++){
-        if(prueba2[j].id===TalentId) {
-          await Applied.update({Companyreviews:rating, CompanyreviewsComentary:text},{
-            where:{
+      let prueba2=prueba[i].Talents[0]
+      if (prueba[i].Talents[0].id === TalentId) {
+        await Applied.update(
+          { Companyreviews: rating, CompanyreviewsComentary: text },
+          {
+            where: {
               EventId: EventId,
-              id:prueba[j].id
-            }
-          })
-          await ToContact.update({Companyreviews:rating, CompanyreviewsComentary:text},{
-            where:{
-              EventId: EventId
-            }
-          })
-          return `Se ha incluido tu puntuacion para el talento ${TalentId} que participó en el evento ${EventId}`
-       }
+              id: prueba[i].id,
+            },
+          }
+        );
+        await ToContact.update(
+          { Companyreviews: rating, CompanyreviewsComentary: text },
+          {
+            where: {
+              EventId: EventId,
+            },
+          }
+        );
+        return `Se ha incluido tu puntuacion para el talento ${TalentId} que participó en el evento ${EventId}`
       }
+      //for (let j=0 ; j < prueba2.length ; j++){
+      //  if(prueba2[j].id===TalentId) {
+      // }
+      //}
     }
 
-    return prueba;
+    return prueba[0].Talents[0].id;
 
   } catch (error) {
     throw new Error(error.message);
