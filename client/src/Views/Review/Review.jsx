@@ -12,8 +12,6 @@ const Review = () => {
 
   const userType = localStorage.getItem("userType");
 
-  //const userReview="";
- 
   let userReview = "";
 
     if(userType === "talent"){
