@@ -104,7 +104,7 @@ const addReviewTalent = async (EventId, TalentId, rating, text) => {
 
       include: { model: Talent },
     });
-    //console.log(prueba + 'estoy aca');
+
     for (let i = 0; i < prueba.length; i++) {
       //let prueba2 = prueba[i].Talents[0];
       if (prueba[i].Talents[0].id === TalentId) {
@@ -131,11 +131,11 @@ const addReviewTalent = async (EventId, TalentId, rating, text) => {
             reviews:
               (talent.reviews * talent.reviewsCount + rating) /
               (talent.reviewsCount + 1),
+            reviewsCount: talent.reviewsCount + 1,
           },
           {
             where: {
-              //EventId: EventId,
-              id: prueba[i].id,
+              id: talent.id,
             },
           }
         );
