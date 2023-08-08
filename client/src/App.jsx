@@ -38,7 +38,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/model/register" element={<RegisterModel />} />
         <Route path="/model/profile/:id" element={<ProfileModel />} />
-        <Route path="/model/search/:id" element={<TalentSearch />} />
+        <Route path="/model/search/" element={<TalentSearch />} />
         <Route path="/company/register" element={<RegisterCompany />} />
       <Route path="/loading" element={<Loader />} />
         <Route path="/company/profile/:id" element={<ProfileCompany />} />
