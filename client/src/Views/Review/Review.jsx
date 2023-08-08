@@ -12,7 +12,7 @@ const Review = () => {
 
   const userType = localStorage.getItem("userType");
 
-  const userReview="";
+  //const userReview="";
  
   let userReview = "";
 
