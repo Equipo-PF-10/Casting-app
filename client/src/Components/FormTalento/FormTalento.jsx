@@ -143,6 +143,13 @@ const FormTalento = () => {
         try {
             await axios.patch(URL, filledFields)
             console.log("Datos actualizados correctamente")
+            const emailToCompany = axios.post(`http://localhost:3001/email/editedPerfilTalent/${talentData.email}`)
+            .then((resp) => console.log(resp.data))
+            .catch((error) => console.log(error));
+
+
+
+
             setInput(initialState)
         } catch (error) {
             console.log({error: error.message})
