@@ -63,7 +63,7 @@ const FormEmpresa = () => {
             industryMain: "",
         }
 
-    const [input, setInput] = useState(initialState)
+        const [input, setInput] = useState(initialState)
 
     const [error, setError] = useState({})
 

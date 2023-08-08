@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./TalentSearch.module.css";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import CardJobs from "./TalentComponent/CardJobs";
@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import {
   getAllEvents,
   filterByEvent,
+  get_event_by_id,
   clear_message_postulated,
   message_error_postulate,
 } from "../../redux/actions";
@@ -17,6 +18,7 @@ import {
 const TalentSearch = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.allEvents);
+  const evento = useSelector((state) => state.eventDetail);
   const eventFilter = useSelector((state) => state.eventsFiltered);
   const postulantCreated = useSelector((state) => state.postulantCreated);
   const filters = useSelector((state) => state.filtersEvent);
@@ -28,6 +30,9 @@ const TalentSearch = () => {
   //const idUser = useSelector((state) => state.idUser);
   const idTalent = localStorage.getItem("user_id");
   //console.log(idTalent);
+
+  let [id, setId] = useState(""); //id cambian segun carta
+  //let [eventSelected, setEventSelected] = useState({});
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,40 +53,33 @@ const TalentSearch = () => {
     (_, index) => index + 1
   );
 
-  // Eventos
-  const eventFromHome = useSelector((state) => state.eventById);
-  
-  const [id, setId] = useState("");
-  const [eventSelected, setEventSelected] = useState({});
-  
-  const handleClick = (event, eventId) => {
-      setId(eventId);
-      setEventSelected(event);
+  const handleClick = (eventId) => {
+    //console.log(eventId);
+    setId(eventId);
+    setEventSelected(events.find((event) => event.id === id));
   };
-  
-  const flatedEvents = currentEvents.flat();
-  
-  const listedEvents = flatedEvents.map((event) => (
-      <div key={event.id} onClick={() => handleClick(event, event.id)}>
-          <CardJobs
-              name={event.name}
-              event={event}
-          />
-      </div>
-  ));
-  
-  const flatedEventsFilter = currentEventsFilter.flat();
-  
-  //copia
-  const listedEventsFilter = flatedEventsFilter.map((event) => (
-      <div key={event.id} onClick={() => handleClick(event, event.id)}>
-          <CardJobs
-              name={event.name}
-              event={event}
-          />
-      </div>
-  ));
 
+  const listedEvents = currentEvents.map((event) => (
+    <div key={event.id}>
+      <CardJobs
+        setId={setId}
+        name={event.name}
+        event={event}
+        onClick={() => handleClick(event.id)}
+      />
+    </div>
+  ));
+  //copia
+  const listedEventsFilter = currentEventsFilter.map((event) => (
+    <div key={event.id}>
+      <CardJobs
+        setId={setId}
+        name={event.name}
+        event={event}
+        onClick={() => handleClick(event.id)}
+      />
+    </div>
+  ));
 
   const ubication = events.map((e) => {
     return e.ubication;
@@ -225,9 +223,9 @@ const TalentSearch = () => {
         <div className={style.detailStyle}>
           {/*<Detail events={events} />*/}
           {id.length === 0 ? (
-            <Detail detail={Object.keys(eventFromHome).length === 0 ? events[0] : eventFromHome} idTalent={idTalent} idEvent={id} />
+            <Detail detail={events[0]} idTalent={idTalent} idEvent={id} />
           ) : (
-            <Detail detail={eventSelected} idTalent={idTalent} idEvent={id} />
+            <Detail detail={evento} idTalent={idTalent} idEvent={id} />
           )}
         </div>
       </div>
