@@ -53,7 +53,6 @@ const Review = () => {
     }
 
 
-
   const [input, setInput] = useState(initialState);
 
   //const [error, setError] = useState({});
@@ -136,76 +135,6 @@ const Review = () => {
   } else {
     input.CompanyId = userId;
   }
-
-  //userName
-
-  let userName = "";
-
-  const getUserData = async () => {
-    try {
-      if (userType === "talent") {
-        const response = await axios.get(URLCompany);
-        if (response) {
-          userName = response.data.name;
-        }
-      } else {
-        const response = await axios.get(URLTalent);
-        if (response) {
-          userName = response.data.name;
-        }
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  (async () => {
-    await getUserData();
-  })();
-
-  // Estrellas
-
-  const stars = Array(5)
-    .fill(null)
-    .map((_star, index) => {
-      const starValue = index + 1;
-      return (
-        <FaStar
-          key={index}
-          size={80}
-          onClick={() => setInput((input) => ({ ...input, rating: starValue }))}
-          color={starValue <= input.rating ? "#9989ce" : "#324844"}
-          style={{ cursor: "pointer" }}
-        />
-      );
-    });
-
-  // Handle
-
-  const handlerChage=(event) => {
-    console.log(event.target.name);
-    const { name, value } = event.target;
-    setInput({ ...input, [name]: value });
-    //setError(Validation({ ...error, [name]: value }));
-  };
-
-  const submitHandler = async (event) => {
-    event.preventDefault();
-
-    let endpoint = "";
-
-    if (userType === "talent") {
-      endpoint = TalentReview;
-    } else if (userType === "company") {
-      endpoint = CompanyReview;
-    }
-
-    try {
-      axios.post(endpoint, input);
-    } catch (error) {
-      console.log({ error });
-    }
-  };
 
   return (
     <section className={Styles.section}>
