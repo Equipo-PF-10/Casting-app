@@ -2,13 +2,17 @@
     height: 100vh;
     background-color: whitesmoke;
     position: relative;
-    color: #324844;
+    color: #32483e;
 }
 
 .vector{
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+.pruebaE{
+    color: #9989ce;
 }
 
 .form{
