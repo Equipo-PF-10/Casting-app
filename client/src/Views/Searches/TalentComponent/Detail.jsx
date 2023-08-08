@@ -7,15 +7,15 @@ import { getAllCompanies, get_company_by_id } from "../../../redux/actions"
 
 
 const Detail = (props) => {
-
   const { detail , idTalent, idEvent} = props;  
-
+  console.log("en detail... idUsuario:  "+idTalent+"   idEvento:  "+ idEvent ); 
+  
   const dispatch = useDispatch();
   const allPostulants = useSelector((state) =>  state.postulatedTalentsByEvent );//console.log(allPostulants);
   const talent = useSelector((state) =>  state.talentById);
   const empresa = useSelector((state) => state.companyById);
-  const [isPostulated, setIsPostulated] = useState("");
   
+  const [isPostulated, setIsPostulated] = useState("");
 
   // Verificar si el idTalent se encuentra en allPostulants
   useEffect(() => {
@@ -31,9 +31,9 @@ const Detail = (props) => {
         dispatch(message_error_postulate("Para postularse antes debe completar los datos principales de su perfil."));
     }else {
       dispatch(create_postulant(idEvent, idTalent));
-/*       const CompanyId = axios.get(`http://localhost:3001/events/${}`)
+      const CompanyId = axios.get(`http://localhost:3001/events/${idEvent}`)
       .then((resp) => resp.data.CompanyId)
-      .catch((error) => console.log(error)) */
+      .catch((error) => console.log(error))
 
       const CompanyEmail = axios.get(`http://localhost:3001/companies/${CompanyId}`)
       .then((resp) => resp.data.email)
@@ -55,26 +55,15 @@ const Detail = (props) => {
     dispatch(get_all_postulations(idEvent));
   }, [idEvent, dispatch]);
 
-
   return (
     <div className={style.containerDetail}>
-      <article className={style.sectionInfo}>
-        {
-          detail ? 
-          <section>
-            <h2>{detail?.name}</h2>
-            <h5>{detail?.country}</h5>
-            <h5>Se requiere: {detail?.habilityRequired}</h5>
-            <p>{detail?.ubication}</p>
-            <p>Fecha de publicación: {detail?.creationDate}</p>
-            <p>Fecha de expiración: {detail?.expirationDate}</p>
-            <p className={style.textoDetail}>{detail?.description}</p>
-          </section>
-          :
-          <h1>No hay eventos disponibles. Intenta más tarde</h1>
-        }
-      </article>
-
+      <h2>{detail?.name}</h2>
+      <h5>{detail?.country}</h5>
+      <h5>Se requiere: {detail?.habilityRequired}</h5>
+      <p>{detail?.ubication}</p>
+      <p>Fecha de publicación: {detail?.creationDate}</p>
+      <p>Fecha de expiración: {detail?.expirationDate}</p>
+      <p className={style.textoDetail}>{detail?.description}</p>
       {
         isPostulated === "Yes" ?
         <div className={style.message}>

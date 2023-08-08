@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import {useDispatch, useSelector} from "react-redux"
+import { useState } from "react"
+import {useSelector} from "react-redux"
 import Select from "react-select"
 import Styles from "./FormTalento.module.css"
 import axios from "axios"
@@ -7,7 +7,6 @@ import validationTalentos from "./validationTalentos"
 import {NavLink} from "react-router-dom"
 import Cloudinary from "../Cloudinary/Cloudinary"
 import NavBarLateral from "../NavBarLateral/NavBarLateral"
-import { get_talent_by_id } from "../../redux/actions"
 
 const FormTalento = () => {
 
@@ -15,17 +14,7 @@ const FormTalento = () => {
 
     const idUser = localStorage.getItem("user_id")
 
-    const dispatch = useDispatch()
-
     const imageURl = useSelector((state) => state.imageUrl)
-
-    const talentData = useSelector((state) => state.talentById)
-
-    useEffect(() => {
-      if (idUser) {
-        dispatch(get_talent_by_id(idUser));
-      }
-    }, [dispatch, idUser]);
 
 
     const optionshability = [
@@ -59,9 +48,9 @@ const FormTalento = () => {
         height: 0,
         gender: "",
         ethnicOrigin: "",
-        socialNetwork: [""],
-        contact: [""],
-        hability: [""],
+        socialNetwork: [],
+        contact: [],
+        hability: [],
       };
       
 
@@ -72,21 +61,6 @@ const FormTalento = () => {
     const [orientaciones, setOrientaciones] = useState([])
 
     const [error, setError] = useState({})
-
-    useEffect(() => {
-        const filteredObject = Object.entries(talentData).reduce((acc, [key, value]) => {
-            if (value !== null) {
-              acc[key] = value;
-            }
-            return acc;
-          }, {});
-        
-          setInput((estadoAnterior) => ({
-            ...estadoAnterior,
-            ...filteredObject,
-          }));
-    },[talentData])
-
 
     // Asignamiento 
 
@@ -149,6 +123,8 @@ const FormTalento = () => {
         }
     }
 
+    console.log(idUser)
+
     return(
         <div>
             <NavBarLateral/>
@@ -171,8 +147,8 @@ const FormTalento = () => {
                         </article>
                         <article className={Styles.coolinput}>
                             <label htmlFor="email" className={Styles.text}>Email</label>
-                            <input type="text" name="email" id="email" value={input.email} onChange={handleChange} autoComplete="off"/>
-                            <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null} </p>
+                            <input type="text" name="email" id="email" value={input.email} onChange={handleChange}/>
+                            <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null}</p>
                         </article>
                         <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Descripción</label>
