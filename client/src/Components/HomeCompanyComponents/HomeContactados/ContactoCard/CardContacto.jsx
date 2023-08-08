@@ -4,12 +4,12 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import {
   add_hired,
+  message_hired_or_refused_talents,
   refuse_postulant_contacted,
 } from "../../../../redux/actions";
 
 const CardContacto = (props) => {
   const dispatch = useDispatch();
-  let message_success_toastify = "¡Se ha contratado al postulante con éxito!";
   const [modalContratar, setModalContratar] = useState(false);
   const [modalRechazar, setModalRechazar] = useState(false);
 
@@ -22,7 +22,7 @@ const CardContacto = (props) => {
   //Eliminar de la lista de contactos y postear en la de contratados (cambio en el estado status=Contactado a Contratado )
   const handleClickContratarConfirmation = () => {
     dispatch(add_hired(props.id_talent, props.id_company, props.event.id));
-    // AGREGAR UN TOASTIFY NOTIFICANDO LA CONTRATACION
+    dispatch(message_hired_or_refused_talents("¡Se ha contratado al postulante con éxito!"));
     setModalContratar(false);
   };
   const handleClickRechazar = () => {
@@ -40,6 +40,7 @@ const CardContacto = (props) => {
         props.event.id
       )
     );
+    dispatch(message_hired_or_refused_talents("¡Se ha rechazado al postulante con éxito!"));
     setModalRechazar(false);
   };
 

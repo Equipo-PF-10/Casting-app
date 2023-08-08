@@ -43,6 +43,7 @@ import {
   UPDATE_PLAN,
   SEND_EMAIL_MESSAGE,
   ERROR_POSTULATE,
+  MESSAGE_CONTACTED,
 } from "./actions.js";
 
 const initialState = {
@@ -73,6 +74,7 @@ const initialState = {
   messagePostulantDeleted: {},
   messagePlanUpdated: "",
   modalMailMessage: "",
+  hiredOrRefusedMessage: "",
   modalInLogin: false,
   modalInSearchCompany: false,
   modalTalentRefused: false,
@@ -143,6 +145,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         modalMailMessage: payload,
+      };
+    case MESSAGE_CONTACTED:
+      return {
+        ...state,
+        hiredOrRefusedMessage: payload,
       };
     case GET_EVENT_BY_ID:
       return {
