@@ -62,7 +62,8 @@ const HiredTalent = () => {
                 <tbody>
                   {hired.length > 0 &&
                     hired?.map((event) =>
-                      event.Talents?.map((talent, index) => {
+                      event.Applieds?.map((talentArray) =>
+                        talentArray.map((talent, index) => {
                         return (
                           <tr key={index}>
                             <td className="imageTd">
@@ -71,7 +72,6 @@ const HiredTalent = () => {
                             <td>{talent.name}</td>
                             <td>{talent.nationality}</td>
                             <td>{talent.hability.join(", ")}</td>
-                            {/*<td>id={talent.id}</td>*/}
                             <td className="containerStart">
                               <div className="favorite">
                                 <button
@@ -109,7 +109,7 @@ const HiredTalent = () => {
                             </td>
                           </tr>
                         );
-                      })
+                      }))
                     )}
                 </tbody>
               </table>
