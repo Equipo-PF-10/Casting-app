@@ -251,7 +251,7 @@ const hireApplicant = async (TalentId, EventId) => {
 
     return "No ha sido posible seleccionar al aspirante como contratado.";
   } catch (error) {
-    throw new Error(error.message);
+    return(error.message);
   }
 };
 

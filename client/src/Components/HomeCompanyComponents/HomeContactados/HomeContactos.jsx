@@ -3,6 +3,7 @@ import styles from "./HomeContactos.module.css";
 
 const HomeContactos = (props) => {
   //console.log(props.eventDetail.index);
+  
   return (
     <div className={styles.container}>
       <h1>{props.title}</h1>
@@ -11,6 +12,8 @@ const HomeContactos = (props) => {
         typeof props.contactedTalents === "object" ? (
           props.contactedTalents?.map((event) => (
             event.Applieds?.map((talent, index) => {
+              //console.log(event);
+              // console.log(props.eventDetail[index]);
               return (
                 <CardContacto
                   key={index}
@@ -19,7 +22,8 @@ const HomeContactos = (props) => {
                   url={props.url}
                   id_talent={talent[0]?.id}
                   id_company={props.id_company}
-                  id_event={props.eventDetail.length > 0 && props.eventDetail[index]}
+                  // event={props.eventDetail[index].id}
+                  event={event}
                   id_post={talent[0]?.TalentApplied?.AppliedId}
                 />
               );
