@@ -39,6 +39,7 @@ export const GET_NAME_EVENTS = "GET_NAME_EVENTS";
 export const IMAGE_URL = "IMAGE_URL";
 export const UPDATE_PLAN = "UPDATE_PLAN";
 export const SEND_EMAIL_MESSAGE = "SEND_EMAIL_MESSAGE";
+export const MESSAGE_CONTACTED = "MESSAGE_CONTACTED";
 export const ERROR_POSTULATE="ERROR_POSTULATE";
 export const GET_EVENTS_PREMIUM = "GET_EVENTS_PREMIUM";
 export const GET_POSTULANT_FAV_BY_NAME = "GET_POSTULANT_FAV_BY_NAME";
@@ -829,3 +830,11 @@ export const add_postulant_like_contacted = (id_talent, id_company, id_event) =>
   };
 };
 
+export const message_contrated_or_refused_talents = (payload) => {
+  return (dispatch) => {
+    return dispatch({
+      type: "MESSAGE_CONTACTED",
+      payload: payload,
+    });
+  };
+};

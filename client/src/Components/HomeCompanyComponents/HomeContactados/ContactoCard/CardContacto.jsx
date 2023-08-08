@@ -8,12 +8,8 @@ import {
 } from "../../../../redux/actions";
 
 const CardContacto = (props) => {
-  //console.log(props.id_talent);
-  //console.log(props.id_company);
-  //console.log(props.id_event);
-  //console.log(props.id_post);
-  //console.log(props.id_post);
   const dispatch = useDispatch();
+  let message_success_toastify = "¡Se ha contratado al postulante con éxito!";
   const [modalContratar, setModalContratar] = useState(false);
   const [modalRechazar, setModalRechazar] = useState(false);
 
@@ -46,6 +42,7 @@ const CardContacto = (props) => {
     );
     setModalRechazar(false);
   };
+
   return (
     <div className={styles.containerGral}>
       <div className={styles.container}>
