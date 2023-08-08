@@ -19,7 +19,8 @@ const { handlerRegisterTalent,
         handlerSuscriptionFree,
         handlerSuscriptionPro,
         handlerSuscriptionPremium,
-        handlerStop
+        handlerStop,
+        handlerCompanyEditedEvent
      } = require("../../handlers/emails/emailsHandler");
 
 const emailRouter = Router();
@@ -34,7 +35,7 @@ emailRouter.post("/registerTalent/:email", handlerRegisterTalent)
 // Ruta que envia email a Talento por su postulacion.
 emailRouter.post("/postulationEvent/:email", handlerPostulation) 
 
-// Ruta que envia email a Talent que hace sido contactado.
+// Ruta que envia email a Talent que hace sido contactado.                     
 emailRouter.post("/talentContac/:email", handlerTalentContact)
 
 // Ruta que envia email a Talent que hace sido contratado.
@@ -60,6 +61,9 @@ emailRouter.post("/registerCompany/:email", handlerRegisterCompany)
 // Ruta que envia email a Company por el registro de un nuevo Event.
 emailRouter.post("/companyNewEvent/:email", handlerCompanyNewEvent)
 
+// Ruta que envia email a Company por ediciiont de un  Event.
+emailRouter.post("/companyEditedEvent/:email", handlerCompanyEditedEvent)
+
 // Ruta que envia email a Company por nuevo postulante.
 emailRouter.post("/newPostulante/:email", handlerNewPostulant)
 
@@ -82,7 +86,7 @@ emailRouter.post("/stop/:email", handlerStop)
  emailRouter.post("/suscriptionPremium/:email", handlerSuscriptionPremium)
 
 // Ruta que envia email a Company dando aviso de que ha editado su perfil.
-emailRouter.post("/editedPerfilCompany/:email", handlerEditedPerfilCompany)
+emailRouter.post("/editedPerfilCompany/:email", handlerEditedPerfilCompany)        //ok
 
 // Ruta que envia email a Company que hace sido vaneada.
 emailRouter.post("/companyVanished/:email", handlerCompanyVanished)

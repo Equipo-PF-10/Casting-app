@@ -10,6 +10,8 @@ import {
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getAllCompanies, get_company_by_id } from "../../../redux/actions"
+import { create_postulant, get_all_postulations, get_talent_by_id, message_error_postulate } from "../../../redux/actions";
 
 const Detail = (props) => {
   const MESSAGE_SEND_EMAIL = "Se ha enviado correctamente un email de contacto al postulante seleccionado.";
@@ -23,6 +25,8 @@ const Detail = (props) => {
   const [modalMail,setModalMail]=useState(false);
   //const idTalent=talent?.id
   //console.log(idTalent);
+  const empresa = useSelector((state) => state.companyById);
+  const talent = useSelector((state) =>  state.talentById);
 
   const handlerClick = () => {
     // const open = "isOpened";
@@ -42,13 +46,17 @@ const Detail = (props) => {
     dispatch(delete_postulant_by_id(id_event, id_talent));
     mensaje_success_Toast();
     setModalRefused(false);
-    const emailToCompany = axios
-    .post(
-      "http://localhost:3001/email/talentContacRefused/pedrocavataio@gmail.com"
-      )
-      .then((resp) => console.log(resp.data))
-      .catch((error) => console.log(error));
-    };
+    // const emailToCompany = axios
+    // .post(
+    //   "http://localhost:3001/email/talentContacRefused/pedrocavataio@gmail.com"
+    //   )
+    //   .then((resp) => console.log(resp.data))
+    //   .catch((error) => console.log(error));
+    // };
+    const emailToTalent = axios.post(`http://localhost:3001/email/talentContacRefused/${talent.email}`)
+    .then((resp) => console.log(resp.data))
+    .catch((error) => console.log(error));
+  };
 
     const onClickSendEmail = () => {
       //postear al usuario como contactado en el arreglo de contactados y eliminarla de la lista de postulantes
@@ -56,9 +64,13 @@ const Detail = (props) => {
 
       // const close = "isClosed";
       // dispatch(close_modal_search_compnay(close));
-      const emailToCompany = axios.post("http://localhost:3001/email/talentContac/pedrocavataio@gmail.com")
+      // const emailToCompany = axios.post("http://localhost:3001/email/talentContac/pedrocavataio@gmail.com")
+      // .then((resp) => console.log(resp.data))
+      // .catch((error) => console.log(error))
+
+      const emailToTalent2 = axios.post(`http://localhost:3001/email/talentContac/${talent.email}`)
       .then((resp) => console.log(resp.data))
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error));
       
       //Agregar mensaje por toastify
       mensaje_success_Toast_send_mail();
