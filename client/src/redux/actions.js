@@ -720,7 +720,7 @@ export const add_hired = (id_talent, id_company, id_event) => {
       const allContacteds = allPostulantsContacted.data;
       const allHireds = hireds.data;
       
-      console.log(allContacteds, allHireds);
+      //console.log(allContacteds, allHireds);
       
       const response = {
         allContacteds,

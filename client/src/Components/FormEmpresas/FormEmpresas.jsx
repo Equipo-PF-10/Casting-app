@@ -21,6 +21,8 @@ const FormEmpresa = () => {
     console.log(miEmpresa);
     const [loading, setLoading] = useState(true); // Bandera de carga
 
+    const empresa = useSelector((state) => state.companyById);
+
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -61,7 +63,7 @@ const FormEmpresa = () => {
             industryMain: "",
         }
 
-        const [input, setInput] = useState(initialState)
+    const [input, setInput] = useState(initialState)
 
     const [error, setError] = useState({})
 
@@ -97,15 +99,16 @@ const FormEmpresa = () => {
             console.log(response);
             if(response === messageUpdated){
                 mensaje_success_Toast();
-            }
-            const emailToCompany = axios.post("http://localhost:3001/email/editedPerfilCompany/pedrocavataio@gmail.com")
+            }            
+            const emailToCompany = axios.post(`http://localhost:3001/email/editedPerfilCompany/${empresa.email}`)
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
             setInput(initialState)
         } catch (error) {
             console.log({error: error.message})
         }
-    }
+    }   
+       
 
     //Mostrar mensaje cuando se actualizan los datos del perfil
   let currentToastIdSuccess = null;

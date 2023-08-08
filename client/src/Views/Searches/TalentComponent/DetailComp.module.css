@@ -6,10 +6,10 @@
   min-width: 800px;
   background-color: rgba(79, 153, 203, 0.226);
   border-radius: 20px;
-  margin-top: 21px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+    height: 80vh;
 }
 
 .textoDetail {
@@ -39,16 +39,25 @@
 
 
 /*boton postular*/
-.Postularme {
+.postularme {
   /*width: 200px;*/
-  width: 100%;
-  height: 40px;
+  width: 80%;
+  height: 30px;
   border-radius: 100px;
-  font-size: larger;
-  margin: 0;
-  margin-top: 40px;
+  transition: 1s;
+  margin-inline: 5rem;
 }
+
+.postularme:hover{
+  color:#4B31A1 ;
+  background-color: whitesmoke;
+}
+
 .conectar{
   margin-bottom: 0px;
   margin-top: 0px;
+}
+
+.sectionInfo{
+  height: 65vh;
 }

@@ -35,8 +35,9 @@ export default function PaymentPlans() {
   // Calcula si la tarjeta del Plan Gratis debe estar deshabilitada
   //const isPlanFreeDisabled = infoCompany.expirationDate && new Date() < new Date(infoCompany.expirationDate);
   //CREAR UNA PROPIEDAD BOOLEANA PARA VERIFICAR SI ALGUNA VEZ LA COMPAÑIA ADQUIRIÓ EL PLAN GRATIS
+  
   const isPlanFreeDisabled =
-    infoCompany.expirationDate || infoCompany.plan === "PRUEBA GRATIS";
+    infoCompany.expirationDate || infoCompany.plan === "PRUEBA GRATIS"; //infoCompany.planFree
 
   //Función para manejar el click en una card
   // const handleCardClick = (plan) => {
@@ -130,7 +131,7 @@ export default function PaymentPlans() {
             <button>Regresar</button>
           </Link>
         </div>*/}
-      </div>
+      
       {/* IMPLEMENTACION DE MODAL PARA PLAN FREE */}
       {modalPlanFree ? (
         <div className={styles.containerModalOpened}>
@@ -285,17 +286,21 @@ export default function PaymentPlans() {
           } ${isPlanFreeDisabled ? styles.disabled : ""}`}
           onClick={() => !isPlanFreeDisabled && handleCardClick("Free")} // Agregamos una condición para permitir el clic solo si no está deshabilitado
         >
-          <p>
+          {/* <p>
             El plan Free es la opción perfecta para aquellos que desean
             descubrir las funcionalidades básicas de nuestra plataforma sin
             costo alguno.
+          </p> */}
+          <p>
+            La prueba gratis te permitirá:
           </p>
           <ul>
             <li>
-              Publica hasta 2 eventos para empezar a dar a conocer tu Empresa.
+              Publicar hasta 2 eventos para empezar a dar a conocer tu Empresa.
             </li>
-            <li>Recibe alertas por correo electrónico.</li>
+            <li>Recibir alertas por correo electrónico.</li>
           </ul>
+          <h5>Inversión:</h5>
           <h1>
             $0 <span className={styles.gratis}>GRATIS</span>
           </h1>
@@ -307,25 +312,30 @@ export default function PaymentPlans() {
           }`}
           onClick={() => handleCardClick("Básico")}
         >
-          <p>
+          {/* <p>
             El plan Premium brinda a las empresas herramientas esenciales para
             encontrar talento de manera efectiva.
+          </p> */}
+          <p>
+            El plan Premium te permitirá:
           </p>
           <ul>
-            <li>Publica hasta 20 eventos cuando usted lo desee. </li>
+            <li>Publicar hasta 20 eventos cuando usted lo desee. </li>
             <li>
-              Recibe notificaciones en tiempo real cuando nuevos talentos
+              Recibir notificaciones en tiempo real cuando nuevos talentos
               postulen a tus vacantes.
             </li>
           </ul>
-          <div className={styles.precios}>
+          <h5>Inversión:</h5>
+          {/* <div className={styles.precios}>
             <h3>
               <s className={styles.antes}>Antes</s> $110.00
             </h3>
             <h3>
               <span className={styles.ahora}>Ahora</span> $100.00
             </h3>
-          </div>
+          </div> */}
+          <h2> $100.00 </h2>
           {/* <button>Escoger</button> */}
         </div>
         <div
@@ -334,30 +344,36 @@ export default function PaymentPlans() {
           }`}
           onClick={() => handleCardClick("Premium")}
         >
-          <p>
+          {/* <p>
             Nuestro exclusivo Plan PRO está diseñado para llevar la experiencia
             de búsqueda de talento al siguiente nivel.{" "}
+          </p> */}
+          <p>
+            Nuestro Plan PRO te permitirá:
           </p>
           <ul>
-            <li>Publica oportunidades laborales de forma ilimitada.</li>
+            <li>Publicar eventos de forma ilimitada.</li>
             <li>
-              Obten una mayor visibilidad al resaltar sus eventos en la pagina
+              Obtener una mayor visibilidad al resaltar sus eventos en la pagina
               principal.
             </li>
           </ul>
-          <div className={styles.precios}>
+          <h5>Inversión:</h5>
+          {/* <div className={styles.precios}>
             <h3>
               <s className={styles.antes}>Antes</s> $210.00
             </h3>
             <h3>
               <span className={styles.ahora}>Ahora</span> $200.00
             </h3>
-          </div>
+          </div> */}
+          <h2> $200.00 </h2>
           {/* <button>Escoger</button> */}
         </div>
       </div>
       <div className={styles.bottom}>
         <button onClick={handleContinueClick}>Continuar</button>
+      </div>
       </div>
     </div>
   );

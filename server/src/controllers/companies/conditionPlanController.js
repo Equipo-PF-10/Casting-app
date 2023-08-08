@@ -14,7 +14,8 @@ async function checkIfUserExists(id, plan) {
 const updateConditionPlan = async (companyId, newConditionPlan) => {
   let condition = 0;
   try {
-    const company = await Company.findByPk(companyId);
+    let company = await Company.findByPk(companyId);
+    let plan = false;
 
     if (!company) {
       throw new Error("No se encontró la compañía con el ID especificado.");
@@ -32,6 +33,7 @@ const updateConditionPlan = async (companyId, newConditionPlan) => {
 
     if (newConditionPlan === "PRUEBA GRATIS") {
       condition = 2;
+      plan = true;
     } else if (newConditionPlan === "BASICO") {
       condition = 20;
     } else if (newConditionPlan === "PREMIUM") {
@@ -46,6 +48,7 @@ const updateConditionPlan = async (companyId, newConditionPlan) => {
     );
     company.plan = newConditionPlan;
     company.numberPosts = 0;
+    company.planFree = plan;
     company.expirationDate = expirationDate;
     company.conditionPlan = condition;
     await company.save();

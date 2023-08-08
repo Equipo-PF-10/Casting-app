@@ -6,6 +6,7 @@ import Cloudinary from "../Cloudinary/Cloudinary";
 import styles from "./EventUpdate.module.css";
 import Select from "react-select";
 import { useParams } from "react-router-dom";
+import { getAllCompanies, get_company_by_id } from "../../redux/actions"
 
 const EventUpdate = () => {
 
@@ -16,6 +17,8 @@ const EventUpdate = () => {
     const idUser = localStorage.getItem("user_id");
     
     const imageURl = useSelector((state) => state.imageUrl);
+
+    const empresa = useSelector((state) => state.companyById);
   
     const initialState = {
       name: "",
@@ -117,6 +120,12 @@ const EventUpdate = () => {
         event.preventDefault();
         try {
         await axios.put(URL, filledFields)
+
+        //email para enviar cuando se edite el evento
+        // const emailToCompany = axios.post(`http://localhost:3001/email/handlerCompanyEditedEvent/${empresa.email}`)
+        // .then((resp) => console.log(resp.data))
+        // .catch((error) => console.log(error));
+
           setInput(initialState);
         } catch (error) {
           console.log({ error });

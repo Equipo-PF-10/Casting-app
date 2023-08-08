@@ -3,17 +3,19 @@ import axios from "axios";
 import style from "./DetailComp.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { create_postulant, get_all_postulations, get_talent_by_id, message_error_postulate } from "../../../redux/actions";
+import { getAllCompanies, get_company_by_id } from "../../../redux/actions"
 
 
 const Detail = (props) => {
+
   const { detail , idTalent, idEvent} = props;  
-  console.log("en detail... idUsuario:  "+idTalent+"   idEvento:  "+ idEvent ); 
-  
+
   const dispatch = useDispatch();
   const allPostulants = useSelector((state) =>  state.postulatedTalentsByEvent );//console.log(allPostulants);
   const talent = useSelector((state) =>  state.talentById);
-  
+  const empresa = useSelector((state) => state.companyById);
   const [isPostulated, setIsPostulated] = useState("");
+  
 
   // Verificar si el idTalent se encuentra en allPostulants
   useEffect(() => {
@@ -29,23 +31,23 @@ const Detail = (props) => {
         dispatch(message_error_postulate("Para postularse antes debe completar los datos principales de su perfil."));
     }else {
       dispatch(create_postulant(idEvent, idTalent));
-      const CompanyId = axios.get(`http://localhost:3001/events/${idEvent}`)
+/*       const CompanyId = axios.get(`http://localhost:3001/events/${}`)
       .then((resp) => resp.data.CompanyId)
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error)) */
 
       const CompanyEmail = axios.get(`http://localhost:3001/companies/${CompanyId}`)
       .then((resp) => resp.data.email)
       .catch((error) => console.log(error))
 
-      const emailToCompany = axios.post("http://localhost:3001/email/newPostulante/pedrocavataio@gmail.com")
-      .then((resp) => console.log(resp.data))
-      .catch((error) => console.log(error))
+      const emailToCompany = axios.post(`http://localhost:3001/email/newPostulante/${empresa.email}`)
+                .then((resp) => console.log(resp.data))
+                .catch((error) => console.log(error));
 
       let userEmail = localStorage.getItem("user_email");
 
-      const emailToTalent = axios.post("http://localhost:3001/email/postulationEvent/pedrocavataio@gmail.com")
-      .then((resp) => console.log(resp.data))
-      .catch((error) => console.log(error))
+      const emailToTalent = axios.post(`http://localhost:3001/email/postulationEvent/${talent.email}`) 
+                .then((resp) => console.log(resp.data))
+                .catch((error) => console.log(error));
     }
   }
 
@@ -53,15 +55,26 @@ const Detail = (props) => {
     dispatch(get_all_postulations(idEvent));
   }, [idEvent, dispatch]);
 
+
   return (
     <div className={style.containerDetail}>
-      <h2>{detail?.name}</h2>
-      <h5>{detail?.country}</h5>
-      <h5>Se requiere: {detail?.habilityRequired}</h5>
-      <p>{detail?.ubication}</p>
-      <p>Fecha de publicación: {detail?.creationDate}</p>
-      <p>Fecha de expiración: {detail?.expirationDate}</p>
-      <p className={style.textoDetail}>{detail?.description}</p>
+      <article className={style.sectionInfo}>
+        {
+          detail ? 
+          <section>
+            <h2>{detail?.name}</h2>
+            <h5>{detail?.country}</h5>
+            <h5>Se requiere: {detail?.habilityRequired}</h5>
+            <p>{detail?.ubication}</p>
+            <p>Fecha de publicación: {detail?.creationDate}</p>
+            <p>Fecha de expiración: {detail?.expirationDate}</p>
+            <p className={style.textoDetail}>{detail?.description}</p>
+          </section>
+          :
+          <h1>No hay eventos disponibles. Intenta más tarde</h1>
+        }
+      </article>
+
       {
         isPostulated === "Yes" ?
         <div className={style.message}>
