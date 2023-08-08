@@ -77,13 +77,13 @@ emailRouter.post("/stopAdd/:email", handlerStopAdd)
 emailRouter.post("/stop/:email", handlerStop)
 
  // Ruta que envia email a Company dando aviso que se suscribió al plan free.
- emailRouter.post("/suscriptionFree/:email", handlerSuscriptionFree)
+ emailRouter.post("/suscriptionFree/:email", handlerSuscriptionFree)              //ok
 
  // Ruta que envia email a Company dando aviso que se suscribió al plan free.
- emailRouter.post("/suscriptionPro/:email", handlerSuscriptionPro)
+ emailRouter.post("/suscriptionPro/:email", handlerSuscriptionPro)              //ok
 
  // Ruta que envia email a Company dando aviso que se suscribió al plan free.
- emailRouter.post("/suscriptionPremium/:email", handlerSuscriptionPremium)
+ emailRouter.post("/suscriptionPremium/:email", handlerSuscriptionPremium)             //ok
 
 // Ruta que envia email a Company dando aviso de que ha editado su perfil.
 emailRouter.post("/editedPerfilCompany/:email", handlerEditedPerfilCompany)        //ok
