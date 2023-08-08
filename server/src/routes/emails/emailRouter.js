@@ -32,7 +32,7 @@ const emailRouter = Router();
 // Ruta que envia email al resgistrase un nuevo Talent.
 emailRouter.post("/registerTalent/:email", handlerRegisterTalent)
  
-// Ruta que envia email a Talento por su postulacion.
+// Ruta que envia email a Talento por su postulacion.                        //ok
 emailRouter.post("/postulationEvent/:email", handlerPostulation) 
 
 // Ruta que envia email a Talent que hace sido contactado.                     
@@ -41,7 +41,7 @@ emailRouter.post("/talentContac/:email", handlerTalentContact)
 // Ruta que envia email a Talent que hace sido contratado.
 emailRouter.post("/talenContacHired/:email", handlerTalentContactHired)
 
-// Ruta que envia email a Talent que hace sido rechazado.
+// Ruta que envia email a Talent que hace sido rechazado.                      //ok
 emailRouter.post("/talentContacRefused/:email", handlerTalentContactRefused)
 
 // Ruta que envia email a Talent que hace sido vaneado.
@@ -61,16 +61,16 @@ emailRouter.post("/registerCompany/:email", handlerRegisterCompany)
 // Ruta que envia email a Company por el registro de un nuevo Event.
 emailRouter.post("/companyNewEvent/:email", handlerCompanyNewEvent)
 
-// Ruta que envia email a Company por ediciiont de un  Event.
+// Ruta que envia email a Company por edicion de un  Event.                           //ok
 emailRouter.post("/companyEditedEvent/:email", handlerCompanyEditedEvent)
 
-// Ruta que envia email a Company por nuevo postulante.
+// Ruta que envia email a Company por nuevo postulante.                                //ok
 emailRouter.post("/newPostulante/:email", handlerNewPostulant)
 
  // Ruta que envia email a Company dando aviso de que en 15 días vence su suscripción.
 emailRouter.post("/expirationSuscription/:email", handlerExpirationSuscription)
 
-// Ruta que envia email a Company de que se han agotado sus publicaciones.
+// Ruta que envia email a Company de que se han agotado sus publicaciones.             //ok
 emailRouter.post("/stopAdd/:email", handlerStopAdd)
 
 // Ruta que envia email a Company de que ya no puede publicar
