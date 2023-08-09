@@ -17,7 +17,7 @@ export default function validation(input){
     if(input.description.length > 60)error.shortDescription= "Debe ingresar hasta 60 carácteres.";
 
     // Validacion de email
-    if(!regexEmail.test(input.email)) error.email = "Debe ingresar un email válido.";
+    //if(!regexEmail.test(input.email)) error.email = "Debe ingresar un email válido.";
 
     // Validacion de salary
     if(input.salary.length > 30)error.shortDescription= "Debe ingresar hasta 30 carácteres.";
