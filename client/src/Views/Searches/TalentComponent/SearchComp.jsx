@@ -105,14 +105,14 @@ const SearchComp = (props) => {
       </div>
       {/*selects filtros y ordenamientos*/}
       <select className={style.selectFilter} onChange={handleHabilities}>
-        <option defaultChecked value="" disabled>
-          Eventos
+        <option  disabled selected>
+          Habilidad
         </option>
         <option value="Todos">Todos</option>
         {optionTags}
       </select>
       <select className={style.selectFilter} onChange={handleUbicationsEvent}>
-        <option defaultChecked value="" disabled>
+        <option  disabled selected>
           Ubicación
         </option>
         <option value="Todos">Todas</option>
