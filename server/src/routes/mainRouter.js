@@ -14,7 +14,7 @@ const talentReviewRouter = require("./companies/talentReviewRouter");
 const reportRouter = require("./report/reportRouter");
 const paymentRouter = require("./payments/paymentRouter");
 const companyPaymentsRouter = require("./payments/companyPaymentsRouter");
-
+const eventNameRouter = require("./events/eventRouter");
 const companyTalentContact = require("./companies/companyTalentRouter");
 const adminRouter = require("./admin/adminRouter");
 
@@ -44,6 +44,7 @@ mainRouter.use("/talents", talentRouter);
 
 //todo: Rutas de Eventos
 mainRouter.use("/events", eventRouter);
+mainRouter.use("/events/name", eventNameRouter);
 
 //todo: Rutas de Postulaciones
 mainRouter.use("/applied", postulationRouter);
