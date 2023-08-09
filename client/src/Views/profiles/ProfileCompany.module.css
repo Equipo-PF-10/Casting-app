@@ -58,13 +58,26 @@
   margin-right: 20px;
   text-align: center;
 }
+.update {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+  padding-bottom: 10px;
+  
+}
+.update h5{
+  color: white;
+  /* border-bottom: solid  gray; */
+}
 
 .nombre {
   margin-bottom: 30px;
 }
 
 /*carta de orientacion*/
-.orientacionCard {
+/* .orientacionCard {
   width: 500px;
   height: 200px;
   display: flex;
@@ -98,10 +111,67 @@
 
 .habilidad h4 {
   color: whitesmoke;
+} */
+
+.orientacionCard {
+  /* background-color: red; */
+  width: 500px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+}
+.orientacionTexto {
+  /* margin-top: 10px; */
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+.habilityEmpty {
+  padding-bottom: 30px;
+}
+.habilidades {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content:space-around;
+  align-items: center;
+  height: 9vh;
+  /* align-content: center;  */
+}
+.habilidad {
+  margin-bottom: 50px;
 }
 
-/*carta de imagenes*/
-.imagenesCard {
+.habilidad span {
+  width: 10vh;
+  font-size: 20px;
+  cursor:inherit;
+  background-color: #00c9a729;
+  padding: 10px;
+}
+
+.habilidad span:active {
+    background-color: #edeff200;
+}
+
+.habilidad span:hover {
+  text-decoration: none;
+  background-color: #00c9a729
+}
+
+.habilidad h4 {
+  color: whitesmoke;
+  font-size: medium;
+  margin-top: 4px;
+}
+
+/*carta de reviews*/
+/* .imagenesCard {
   background-color: #00c9a7;
   width: 500px;
   height: 400px;
@@ -110,7 +180,7 @@
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
-}
+} */
 
 /*carta de imagenes con grid*/
 /*.imagenesCard{
@@ -131,9 +201,30 @@
                 transform: scale(1.04);
             }
 }*/
+.reviews {
+  background-color: #00c9a7;
+  width: 500px;
+  height: 378px;
+  max-height: 600px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-rows: 20% 15% 65%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 20px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+}
+
+.reviews h3 {
+  margin-bottom: 20px;
+  font-weight: 700;
+}
 
 /*carta de proyectos*/
-.proyectosCard {
+/* .proyectosCard {
   width: 600px;
   min-height: 200px;
   height: auto;
@@ -150,21 +241,86 @@
 }
 
 .textoProyectos h3 {
-  /*margin-top: -20px;*/
   font-weight: 700;
   margin-bottom: 30px;
-}
+} */
 
 /*.proyP {
   margin-bottom: -30px;
 }*/
 
+.proyectosCard {
+  width: 600px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+  padding-left: 30px;
+}
+
+.textoProyectos h3 {
+  /*margin-top: -160px;*/
+  margin-left: 230px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.dato {
+  background-color: #7e7193;
+  border-color: 3px rgb(72, 72, 72);
+  height: 40px;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
+  padding-right: 20px;
+  text-align: start;
+  padding-left: 15px;
+  padding-top: 5px;
+  color: whitesmoke;
+  font-size:larger;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(190, 190, 190),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+.datoTitle{
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size:large;
+  font-weight: 700;
+  color:  hsl(170, 100%, 35%);
+}
+.value {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS'sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 0px;
+  margin-top: 0px;
+  font-size:large;
+  color: white;
+}
+.valueInput {
+  font-weight: 400;
+  padding-left: 10px
+}
+.textoProyectos p {
+  /*margin-top: -200px;*/
+  font-weight: 700;
+  color: whitesmoke;
+}
+
+/* 
 .pe {
   margin-left: 30px;
   font-weight: 700;
   font-size: large;
   color: #00927a;
-}
+} */
 
 /*Sobre nosotros*/
 .trabajosPostulados {
@@ -188,11 +344,13 @@
   /*margin-top: -200px;*/
   font-weight: 700;
   color: whitesmoke;
+  margin-left: 180px;
 }
 
 .textoTrab {
   margin-left: 10px;
   margin-top: 30px;
+  font-size: 18px;
   color: whitesmoke;
 }
 
@@ -212,9 +370,20 @@
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
   padding-left: 30px;
 }
+.valueContact {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 28px;
+  margin-left: 0px;
+  margin-top: 0px;
+  color: rgb(91, 90, 90);
+}
 
 .contactos {
   margin-bottom: 30px;
+}
+.contactos h2 {
+  font-weight: 700;
+  margin-left: 190px;
 }
 
 .svgIcono {
@@ -224,3 +393,5 @@
 .svgIconoInst {
   margin-right: 21px;
 }
+
+

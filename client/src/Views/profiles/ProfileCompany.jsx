@@ -1,13 +1,16 @@
 import React, {useEffect} from "react";
 import style from "./ProfileCompany.module.css";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import { get_company_id } from "../../redux/actions";
+import lapiz from "../../assets/lapiz.png";
 
 const profileCompany=() => {
   const {id}=useParams()
   //console.log(id);
+  const userImage = localStorage.getItem("user_image");
+  const userEmail = localStorage.getItem("user_email");
   
   const dispatch = useDispatch()
 
@@ -15,8 +18,8 @@ const profileCompany=() => {
     dispatch(get_company_id(id))
   },[dispatch])
   
-  const companyId=useSelector((state) => state.companyById)
-  console.log(companyId);
+  const company=useSelector((state) => state.companyById)
+  console.log(company);
 
   return (
     <div className={style.fondo}>
@@ -28,85 +31,85 @@ const profileCompany=() => {
             {/*carta con foto y descripcion*/}
             <div className={style.cardContainer}>
               <div className={style.image}>
-                <img src={companyId?.logo} alt={companyId?.name} />
+                {
+                  company?.logo ?
+                  <img src={company?.logo} alt={company?.name} />
+                  :
+                  <img src={userImage} alt={company?.name} />
+                }
               </div>
               <div className={style.textoCard}>
-                <h2 className={style.nombre}>{companyId?.domain}</h2>
-              <h5 className={style.titulo}>{companyId?.industryMain}</h5>
-                <p className={style.descripcion}>
-                  {companyId?.descriptionShort}
-                </p>
+              <h3 className={style.nombre}>{company?.name}</h3>
+                {/* <p className={style.descripcion}>
+                  {company?.descriptionShort}
+                </p> */}
+                {
+                  company.email === userEmail ?
+                <Link to={"/form/company"}>
+              <div className={style.update}>
+                <img style={{width:"20px", paddingBottom:"6px"}} src={lapiz} alt="Editar perfil" />
+                <h5>Actualiza tu perfil aquí</h5>
+              </div>
+              </Link>
+              :
+              null
+                }
               </div>
             </div>
             {/*carta de orientacion*/}
             <div className={style.orientacionCard}>
-              <h3 className={style.orientacionTexto}>Commercial Orientation</h3>
-              <div className={style.habilidades}>
+              <h3 className={style.orientacionTexto}>Orientación Comercial</h3>
+              {/* <div className={style.habilidades}>
                 <div className={style.habilidad}>
-                  <h4>{companyId?.industryMain}</h4>
+                  <h4>{company?.industryMain}</h4>
+                </div>
+              </div> */}
+              {
+                company?.industryMain 
+                ?
+                <div className={style.habilidades}>
+                <div className={style.habilidad}>
+                <span>{company.industryMain}</span>
                 </div>
               </div>
+                :
+                <h5 className={style.habilityEmpty}>Actualiza tu perfil y describe tu industria principal.</h5>
+              }
             </div>
-            {/*carta de imagenes*/}
-            <div className={style.imagenesCard}>
-              <div className={style.contImg}>
-                <div
-                  className="grid-item wide"
-                  //style="background-image: url(../img/fo.arq/bdl1.jpg);"
-                ></div>
-              </div>
-              <div className={style.contImg}>
-                <div
-                  className="grid-item"
-                  //style="background-image: url(../img/fo.arq/bdl1.jpg);"
-                ></div>
-              </div>
-              <div className={style.contImg}>
-                <div
-                  className="grid-item wide"
-                  //style="background-image: url(../img/fo.arq/bdl1.jpg);"
-                ></div>
-              </div>
-              <div className={style.contImg}>
-                <div
-                  className="grid-item"
-                  //style="background-image: url(../img/fo.arq/bdl1.jpg);"
-                ></div>
-              </div>
+            {/*carta de reviews*/}
+            <div className={style.reviews}>
+              
+              <h3>Puntuación y Reseñas</h3>
+              <h3>Puntuacion: Estrellas</h3>
+              <h4>Aquí podrá ver los comentarios de parte de los talentos que has contratado.</h4>
             </div>
           </div>
           <div className={style.divDerecho}>
             {/*carta de proyectos*/}
             <div className={style.proyectosCard}>
               <div className={style.textoProyectos}>
-                <h3>Data</h3>
-                <ul className={style.proyP}>
-                <li>
-                  <span className={style.pe}>Register: </span>
-                  {companyId?.creationDate}
-                </li>
-                <li>
-                  <span className={style.pe}>Location: </span>
-                  {companyId?.country}
-                </li>
-                <li>
-                  <span className={style.pe}>Plan: </span>
-                  {companyId?.plan}
-                </li>
-              </ul>
+                <h3>Datos</h3>
+              
+                  <p className={style.dato}> <span className={style.datoTitle}>Fecha de registro: </span> {company?.creationDate ?  <span className={style.valueInput}>{company.creationDate}</span>  : <span className={style.value}> Pendiente de actualizar.</span>}
+                  </p>
+                  <p className={style.dato}> <span className={style.datoTitle}>Ubicación: </span> {company?.country ?  <span className={style.valueInput}>{company.country}</span>  : <span className={style.value}> Pendiente de actualizar.</span>}
+                  </p>
+                  <p className={style.dato}> <span className={style.datoTitle}>Plan actual: </span> {company?.plan ?  <span className={style.valueInput}>{company.plan}</span>  : <span className={style.value}> Pendiente de actualizar.</span>}
+                  </p>
               </div>
             </div>
             {/*Sobre nosotros*/}
             <div className={style.trabajosPostulados}>
-              <h3 className={style.tituloTrabajos}>About us</h3>
+              <h3 className={style.tituloTrabajos}>Sobre Nosotros</h3>
               <p className={style.textoTrab}>
-                {companyId?.description}
+                {company?.description ? company.description : <span className={style.value}> Pendiente de actualizar.</span> 
+                }
               </p>
             </div>
             {/*carta de contacto*/}
             <div className={style.cardContactos}>
               <div className={style.contactos}>
-                <h2>Contacts</h2>
+                <h2>Contactos</h2>
               </div>
               <div className={style.listaContactos}>
                 <p>
@@ -123,7 +126,9 @@ const profileCompany=() => {
                       fill="#324844"
                     />
                   </svg>
-                  {companyId?.phoneNumber}
+                  
+                  {company?.phoneNumber ?<span className={style.valueContact}>{company.phoneNumber?.join(", ")}</span>
+                    : <span className={style.valueContact}>xxx-xxx-xxxx</span>}
                 </p>
                 <p>
                   <svg
@@ -139,7 +144,7 @@ const profileCompany=() => {
                       fill="#324844"
                     />
                   </svg>
-                  {companyId?.facebook}
+                  {company.facebook ? <span className={style.valueContact}>{company.facebook}</span> : <span className={style.valueContact}>usuario_facebook</span>}
                 </p>
                 <p>
                   <svg
@@ -155,7 +160,7 @@ const profileCompany=() => {
                       fill="#324844"
                     />
                   </svg>
-                  {companyId?.email}
+                  {company.email ? <span className={style.valueContact}>{company.email}</span> : <span className={style.valueContact}>ejemplo@gmail.com</span>}
                 </p>
                 <p>
                   <svg
@@ -169,13 +174,13 @@ const profileCompany=() => {
                   >
                     <path d="M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z"></path>
                   </svg>
-                  {companyId?.instagram}
+                  {company.instagram ? <span className={style.valueContact}>{company.instagram}</span> : <span className={style.valueContact}>usuario_instagram</span>}
                 </p>
                 <p>
                   <svg className={style.svgIconoInst} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="2 0 55 50">
     <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"></path>
 </svg>
-                  {companyId?.linkedin}
+                  {company.linkedin ? <span className={style.valueContact}>{company.linkedin}</span> : <span className={style.valueContact}>usuario_linkedin</span>}
                 </p>
                 <p>
                   <svg
@@ -191,7 +196,7 @@ const profileCompany=() => {
                       fill="#324844"
                     />
                   </svg>
-                  {companyId?.domain}
+                  {company.domain ? <span className={style.valueContact}>{company.domain}</span> : <span className={style.valueContact}>www.ejemplo.com</span>}
                 </p>
               </div>
             </div>
