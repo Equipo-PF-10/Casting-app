@@ -5,6 +5,7 @@ const {
   getCompanyReviews,
   updateReview,
   getCommentsTalent,
+  getCommentsCompany,
 } = require("../../controllers/reviews/reviewsController");
 
 // Handler para añadir una review a una empresa.
@@ -89,6 +90,16 @@ const handlerGetCommentsByTalents = async (req, res) => {
   }
 };
 
+// Función para traer los comentarios hechos por una Company.
+const handlerGetCommentsByCompany = async (req, res) => {
+  try {
+    const comments = await getCommentsCompany();
+    res.status(200).json(comments);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   handlerAddReviewCompany,
   handlerAddReviewTalent,
@@ -96,4 +107,5 @@ module.exports = {
   handlerGetReviewsForTalent,
   handlerUpdateReview,
   handlerGetCommentsByTalents,
+  handlerGetCommentsByCompany,
 };

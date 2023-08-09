@@ -239,6 +239,47 @@ const getCommentsTalent = async () => {
   }
 };
 
+// Función controller para obtener los comentarios hechos por una empresa.
+const getCommentsCompany = async () => {
+  try {
+    const appliedEntriesWithCompanyComments = await Applied.findAll({
+      attributes: ["CompanyreviewsComentary"],
+      include: [
+        {
+          model: Event,
+          attributes: ["CompanyId"],
+          include: [
+            {
+              model: Company,
+              attributes: ["id", "email"],
+            },
+          ],
+        },
+      ],
+      where: {
+        CompanyreviewsComentary: {
+          [Op.ne]: null,
+        },
+      },
+    });
+
+    // console.log(appliedEntriesWithCompanyComments);
+
+    const comments = appliedEntriesWithCompanyComments.map((entry) => {
+      const company = entry.Event.Company;
+      return {
+        companyId: company.id,
+        companyName: company.name,
+        comment: entry.CompanyreviewsComentary,
+      };
+    });
+
+    return comments;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   addReviewCompany,
   addReviewTalent,
@@ -246,4 +287,5 @@ module.exports = {
   getTalentReviews,
   updateReview,
   getCommentsTalent,
+  getCommentsCompany,
 };
