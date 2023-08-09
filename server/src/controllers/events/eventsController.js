@@ -183,13 +183,27 @@ const getEventByCompanyId = async (companyId) => {
   }
 };
 
+const getEventsByCompanyId = async (companyId) => {
+  try {
+    const events = await Event.findAll({ where: { CompanyId: companyId } });
+
+    if (!events.length) {
+      throw new Error(`No existen eventos para la empresa con ID ${companyId}`);
+    }
+
+    return events;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 const getPremiumEvents = async () => {
   try {
     const premiumCompanies = await getCompaniesByPlan("PREMIUM");
     let allPremiumEvents = [];
 
     for (let company of premiumCompanies) {
-      const events = await getEventById(company.id);
+      const events = await getEventsByCompanyId(company.id);
 
       allPremiumEvents = allPremiumEvents.concat(events);
     }
@@ -231,8 +245,6 @@ const getEventById = async (id) => {
     throw new Error(error.message);
   }
 };
-
-
 
 // Función controller para traer todos los Disable Events.
 const getDisable = async () => {
