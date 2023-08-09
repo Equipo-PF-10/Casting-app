@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Styles from "./FormEmpresas.module.css"
 import axios from "axios"
 import validationEmpresas from "./validationEmpresas"
-import {NavLink} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import Cloudinary from "../Cloudinary/Cloudinary"
 import NavBarLateral from "../NavBarLateral/NavBarLateral"
@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { getAllCompanies, get_company_by_id } from "../../redux/actions";
 
 const FormEmpresa = () => {
-
+const navigate = useNavigate();
     const idUser = localStorage.getItem("user_id");
 
     const imageURL = useSelector((state) => state.imageUrl)
@@ -52,7 +52,7 @@ const FormEmpresa = () => {
             name: "",
             password: "", 
             email: "",
-            logo: "",
+            image: "",
             facebook: "",
             twitter: "",
             instagram: "",
@@ -69,13 +69,14 @@ const FormEmpresa = () => {
 
     input.id = idUser;
 
-    input.logo = imageURL;
+    input.image = imageURL;
 
 
     const handleChange = (event) => {
-        // console.log(event.target);
+        console.log(event.target.value);
         const {name, value} = event.target;
         setInput({...input, [name]: value})
+        setInput({...input, image: imageURL})
         setError(validationEmpresas({...input, [name]: value}))
     }
 
@@ -91,8 +92,8 @@ const FormEmpresa = () => {
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
-            // console.log(filledFields);
-            const response = (await axios.patch(URL, filledFields)).data;
+            console.log(filledFields);
+            const response = (await axios.patch(URL, input)).data;
             // console.log("En actualizacion");
             //console.log(response);
             if(response === messageUpdated){
@@ -102,6 +103,7 @@ const FormEmpresa = () => {
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
             setInput(initialState)
+            navigate("/home/company")
         } catch (error) {
             mensaje_error_Toast();
             console.log({error: error.message})
@@ -205,7 +207,7 @@ const FormEmpresa = () => {
                     <div className={Styles.div}>
                         <section className={Styles.chart}>
                             <article className={Styles.img}>
-                                    {input.logo ? <img src={imageURL} alt="Foto de Perfil" /> : <svg width="187" height="187" viewBox="0 0 187 187" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    {input.image ? <img src={imageURL} alt="Foto de Perfil" /> : <svg width="187" height="187" viewBox="0 0 187 187" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g filter="url(#filter0_d_497_36)">
                                     <g clipPath="url(#clip0_497_36)">
                                     <rect x="3" y="1" width="181" height="181" rx="90.5" fill="#F5F5F5"/>

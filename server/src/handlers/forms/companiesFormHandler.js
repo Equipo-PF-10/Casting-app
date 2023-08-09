@@ -6,7 +6,7 @@ const handlerUpdateFormCompany = async (req, res) => {
   const {
     id,
     name,
-    logo,
+    image,
     country,
     available,
     domain,
@@ -31,7 +31,7 @@ const handlerUpdateFormCompany = async (req, res) => {
     const updatedCompany = await updateCompany(
       id,
       name,
-      logo,
+      image,
       country,
       available,
       domain,

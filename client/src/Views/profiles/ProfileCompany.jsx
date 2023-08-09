@@ -33,8 +33,8 @@ const profileCompany=() => {
             <div className={style.cardContainer}>
               <div className={style.image}>
                 {
-                  company?.logo ?
-                  <img src={company?.logo} alt={company?.name} />
+                  company?.image ?
+                  <img src={company?.image} alt={company?.name} />
                   :
                   <img src={userImage} alt={company?.name} />
                 }
@@ -44,17 +44,12 @@ const profileCompany=() => {
                 {/* <p className={style.descripcion}>
                   {company?.descriptionShort}
                 </p> */}
-                {
-                  company.email === userEmail ?
                 <Link to={"/form/company"}>
               <div className={style.update}>
                 <img style={{width:"20px", paddingBottom:"6px"}} src={lapiz} alt="Editar perfil" />
                 <h5>Actualiza tu perfil aquí</h5>
               </div>
               </Link>
-              :
-              null
-                }
               </div>
             </div>
             {/*carta de orientacion*/}

@@ -101,7 +101,7 @@ const HomeTalento = () => {
         return FilterEvents
     } else {
         const FilterEvents = (
-            <h3>No hay eventos para ti</h3>
+            <h3>Te invitamos a que mantengas tu perfil y así poder postularte a tus eventos de interes</h3>
         )
         return FilterEvents
     }
@@ -297,20 +297,20 @@ const HomeTalento = () => {
                     <article className={Styles.info}>
                         <h3>Tus Eventos</h3>
                         <ul className={Styles.yourEvents}>
-                            {eventInfo.length >= 1 ? eventInfo : <h4 className={Styles.infoCard}>En esta sección se mostrarán tus postulaciones activas</h4>}
+                            {eventInfo.length >= 1 ? eventInfo : <h4 className={Styles.infoCard}>En esta sección se mostrarán tus postulaciones activas.</h4>}
                         </ul>
                     </article>
                 </article>
                 <article className={Styles.eventos} >
                     <button onClick={handleMoveLeft}>&larr; </button>
                     <div style={{ display: showHabilityEvents ? 'block' : 'none'}}>
-                        <h2 className={Styles.title}>Últimas publicaciones para ti</h2>
+                        <h2 className={Styles.title}>Últimas publicaciones segun tus habilidades artisticas</h2>
                         <ul className={Styles.eventList}>
                         {eventsPerHability()}
                         </ul>
                     </div>
                     <div style={{ display: !showHabilityEvents ? 'block' : 'none'}}>
-                        <h1>Últimas publicaciones </h1>
+                        <h1>Todas las publicaciones </h1>
                         <ul className={Styles.eventList}>
                         {Events}
                         </ul>
