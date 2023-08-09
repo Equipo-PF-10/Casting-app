@@ -1,4 +1,13 @@
 const { Router } = require("express");
+const { auth, requiredScopes } = require("express-oauth2-jwt-bearer");
+
+// Authorization middleware. When used, the Access Token must
+// exist and be verified against the Auth0 JSON Web Key Set.
+const checkJwt = auth({
+  audience: "https://dev-btf5b41eu5m4dqh0.us.auth0.com/api/v2/",
+  issuerBaseURL: `https://dev-btf5b41eu5m4dqh0.us.auth0.com/`,
+});
+
 const {
   getTalentsHandler,
   createTalentHandler,
@@ -7,43 +16,18 @@ const {
   deleteTalentHandler,
   updateTalentHandler,
 } = require("../../handlers/talents/talentsHandler");
-const jwt = require("jsonwebtoken");
-
-// Authorization: Bearer <token>
-const verifyToken = (req, res, next) => {
-  const bearerHeader = req.headers["authorization"];
-  if (!bearerHeader) {
-    return res.status(403).send("Acceso no autorizado");
-  }
-
-  const bearerToken = bearerHeader.split(" ")[1];
-  jwt.verify(bearerToken, "secretkey", (err, decoded) => {
-    if (err) {
-      return res.status(403).send("Token inválido");
-    }
-    req.user = decoded.user;
-    next();
-  });
-};
 
 const talentRouter = Router();
+const checkScopes = requiredScopes("read:messages");
 
-//? Esta ruta registra un nuevo talento.
+// Rutas sin autenticación
 talentRouter.post("/register", createTalentHandler);
-
-//? Esta ruta obtiene un talento por email.
 talentRouter.get("/email/:email", talentByEmailHandler);
-
-//? Esta ruta obtiene un talento por id.
-talentRouter.get("/:id", talentByIdHandler);
-
-//? Esta ruta actualiza el perfil de un talento por id.
-talentRouter.put("/:id", verifyToken, updateTalentHandler);
-
-//? Esta ruta elimina el perfil de un talento por id.
-talentRouter.delete("/:id", verifyToken, deleteTalentHandler);
-
-//? Esta ruta busca todos los talentos.
 talentRouter.get("/", getTalentsHandler);
+
+// Rutas con autenticación
+talentRouter.get("/:id", checkJwt, checkScopes, talentByIdHandler);
+talentRouter.put("/:id", checkJwt, checkScopes, updateTalentHandler);
+talentRouter.delete("/:id", checkJwt, checkScopes, deleteTalentHandler);
 
 module.exports = talentRouter;

@@ -36,13 +36,7 @@ const createTalentHandler = async (req, res) => {
 
   try {
     const register = await createTalentDb(email, name, image);
-
-    // res.status(200).json(register);
-    jwt.sign({ user: { id: register.id } }, "secretkey", (err, token) => {
-      res.json({
-        token: token,
-      });
-    });
+    res.status(200).json(register);
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -76,6 +70,13 @@ const talentByEmailHandler = async (req, res) => {
 // Función handler para eliminar talento.
 const deleteTalentHandler = async (req, res) => {
   const { id } = req.params;
+  const userIdFromToken = req.user.sub;
+
+  if (userIdFromToken !== id) {
+    return res
+      .status(403)
+      .send("No estás autorizado para eliminar este talento");
+  }
 
   try {
     const talent = await getTalentById(id);
@@ -95,6 +96,14 @@ const deleteTalentHandler = async (req, res) => {
 // Función handler para modificar un usuario talento mediante su ID.
 const updateTalentHandler = async (req, res) => {
   const { id } = req.params;
+  const userIdFromToken = req.user.sub;
+
+  if (userIdFromToken !== id) {
+    return res
+      .status(403)
+      .send("No estás autorizado para actualizar este usuario.");
+  }
+
   const {
     name,
     dni,
