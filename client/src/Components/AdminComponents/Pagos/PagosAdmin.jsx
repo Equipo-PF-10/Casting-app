@@ -9,19 +9,24 @@ const PagosAdmin = () => {
     const handleChange = (event) => setInput(event.target.value);
 
     const handleClick = (event) => {
-        console.log(input);
+        const filteredPayments = paymentsData.filter(payment => {
+          return payment.id === input || payment.paymentId === input || payment.id.includes(input) || payment.paymentId.includes(input)
+        })
+        setPaymentsData(filteredPayments);
     }
 
   useEffect(() => {
+    if(input === "") {
     axios('http://localhost:3001/payments').then(({ data }) => {
             setPaymentsData(data);
         })
-  }, []);
+    }
+  }, [input]);
   return (
     <>
     <div className={style.optionsBar}>
     <div className={style.searchBarContainer}>
-                <input value={input} onChange={handleChange} type='search' className={style.input} placeholder="Búsqueda..." />
+                <input value={input} onChange={handleChange} type='search' className={style.input} placeholder="Búsqueda por id..." />
                 <button onClick={handleClick} className={style.searchButton} disabled={!input.length}>
                     Search
                 </button>
@@ -39,7 +44,7 @@ const PagosAdmin = () => {
     <th>EXPIRACIÓN</th>
     <th>PRECIO</th>
     <th>COMISIÓN</th>
-    <th>EMPRESA</th>
+    {/* <th>EMPRESA</th> */}
   </tr>
   
   {paymentsData ? paymentsData.map(talent => {
@@ -47,12 +52,18 @@ const PagosAdmin = () => {
       <tr>
         <td>{talent.id}</td>
         <td>{talent.paymentId}</td>
-        <td>{talent.planType}</td>
+        <td>
+          <span className={
+            talent.planType === "PREMIUM" ? style.basico : style.premium
+          }>{
+            talent.planType
+          }</span>
+        </td>
         <td>{talent.paymentDate ? talent.paymentDate.split("T")[0]:null}</td>
         <td>{talent.expirationDate ? talent.expirationDate.split("T")[0]:null}</td>
         <td>{talent.price}</td>
         <td>{talent.taxes}</td>
-        <td>{talent.company.email ? talent.company.email.split("@")[0] : null}</td>
+        {/* <td>{talent.company ? talent.company.email.split("@")[0] : null}</td> */}
       </tr>
     )
   }): null}

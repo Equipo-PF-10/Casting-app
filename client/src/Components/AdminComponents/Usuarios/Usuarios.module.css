@@ -39,14 +39,15 @@
 }
 
 .talentsTable td {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   border-top: 2px solid #00c9a78c;
   border-bottom: 2px solid #00c9a78c;
   /* border-top:    2px solid  #00c9a73d; */
   /* border-right:  2px dashed #f0F; */
   /* border-bottom: 2px dotted #00c9a73d; */
   /* border-left:   5px solid  #09f; */
+  height: 85px;
 }
 
 .banButton {
@@ -60,6 +61,29 @@
 
 .banButton:hover {
   background-color: #c90000de;
+}
+
+.unbanButton {
+  width: 110px;
+  background-color: #ffa26485;
+  border: none;
+  transition: 0.7s;
+  margin: 0;
+  box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
+}
+
+.unbanButton:hover {
+  background-color: #ffa264de;
+}
+
+.banned {
+  background-color: #cececea4;
+  /* background-color: #ff00001e; */
+}
+
+.talentsTable .banned:hover {
+  background-color: #cecece;
+  /* background-color: #ff00002d; */
 }
 
 .title {

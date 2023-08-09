@@ -15,6 +15,11 @@ export const Companies_Plan = (props) => {
                 ticks: {
                     display: true
                 }
+            },
+            y: {
+              ticks: {
+                precision:0
+              }
             }
           },
           plugins: {

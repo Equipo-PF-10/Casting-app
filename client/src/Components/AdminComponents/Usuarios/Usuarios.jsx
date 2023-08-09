@@ -4,12 +4,20 @@ import axios from "axios";
 
 const Usuarios = () => {
   const [talentsData, setTalentsData] = useState([]);
+  const [bannedTalentsData, setBannedTalentsData] = useState([]);
   const [input, setInput] = useState("");
 
     const handleChange = (event) => setInput(event.target.value);
 
-    const handleClick = (event) => {
-        console.log(input);
+    const handleClick = () => {
+        const filteredTalents = talentsData.filter(talent => {
+        return talent.id === input || talent.email.includes(input) || talent.id.includes(input) || talent.name.includes(input);
+      })
+      const filteredBannedTalents = bannedTalentsData.filter(talent => {
+        return talent.id === input || talent.email.includes(input) || talent.id.includes(input) || talent.name.includes(input);
+      })
+      setTalentsData(filteredTalents);
+      setBannedTalentsData(filteredBannedTalents);
     }
 
 
@@ -18,13 +26,31 @@ const Usuarios = () => {
         axios('http://localhost:3001/talents').then(({ data }) => {
             setTalentsData(data);
         })
+        axios('http://localhost:3001/admin/users/banned/talents').then(({ data }) => {
+      setBannedTalentsData(data);
+      })
+      })
+    }
+    const handleUnban = (id) => {
+      axios.patch(`http://localhost:3001/admin/users/desban/talents/${id}`).then(() => {
+        axios('http://localhost:3001/talents').then(({ data }) => {
+            setTalentsData(data);
+        })
+        axios('http://localhost:3001/admin/users/banned/talents').then(({ data }) => {
+      setBannedTalentsData(data);
+      })
       })
     }
   useEffect(() => {
+    if(input === "") {
     axios('http://localhost:3001/talents').then(({ data }) => {
             setTalentsData(data);
         })
-  }, []);
+    axios('http://localhost:3001/admin/users/banned/talents').then(({ data }) => {
+      setBannedTalentsData(data);
+      })
+    }
+  }, [input]);
   return (
     <>
     <div className={style.optionsBar}>
@@ -64,6 +90,23 @@ const Usuarios = () => {
       </tr>
     )
   }): null}
+
+{bannedTalentsData ? bannedTalentsData.map(talent => {
+    return (
+      <tr className={style.banned}>
+        <td>{talent.id}</td>
+        <td>{talent.email}</td>
+        <td>{talent.name}</td>
+        <td>{talent.gender}</td>
+        <td>{talent.nationality}</td>
+        <td>{talent.ubication}</td>
+        <td>
+          <button className={style.unbanButton} onClick={() => handleUnban(talent.id)}>QUITAR BAN</button>
+        </td>
+      </tr>
+    )
+  }): null}
+
 </table>
     </div>
     </>

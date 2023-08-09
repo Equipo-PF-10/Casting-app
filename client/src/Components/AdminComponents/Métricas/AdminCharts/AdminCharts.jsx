@@ -23,9 +23,12 @@ const AdminCharts = () => {
     const [maleTalentsData, setMaleTalentsData] = useState([]);
     const [femaleTalentsData, setFemaleTalentsData] = useState([]);
     const [availableTalentsData, setAvailableTalentsData] = useState([]);
+    const [bannedTalentsData, setBannedTalentsData] = useState([]);
     
     const [totalCompaniesData, setTotalCompaniesData] = useState([]);
     const [availableCompaniesData, setAvailableCompaniesData] = useState([]);
+    const [bannedCompaniesData, setBannedCompaniesData] = useState([]);
+
 
     const [paymentsData, setPaymentsData] = useState([]);
     
@@ -70,12 +73,12 @@ const AdminCharts = () => {
                 {
                     id: 1,
                     label: "Disponible",
-                    data: availableTalentsData.length
+                    data: totalTalentsData.length
                 },
                 {
                     id: 2,
-                    label: "No Disponible",
-                    data: totalTalentsData.length - availableTalentsData.length
+                    label: "Baneado",
+                    data: bannedTalentsData.length
                 }
             ])
         }
@@ -111,12 +114,12 @@ const AdminCharts = () => {
                 {
                     id: 1,
                     label: "Disponible",
-                    data: availableCompaniesData.length
+                    data: totalCompaniesData.length
                 },
                 {
                     id: 2,
-                    label: "No Disponible",
-                    data: totalCompaniesData.length - availableCompaniesData.length
+                    label: "Baneado",
+                    data: bannedCompaniesData.length
                 }
             ])
         }
@@ -190,6 +193,12 @@ const AdminCharts = () => {
         axios('http://localhost:3001/payments').then(({ data }) => {
             setPaymentsData(data);
         })
+        axios('http://localhost:3001/admin/users/banned/companies').then(({ data }) => {
+      setBannedCompaniesData(data);
+      })
+      axios('http://localhost:3001/admin/users/banned/talents').then(({ data }) => {
+      setBannedTalentsData(data);
+      })
     }, []);
 
     const companiesPosts = {
@@ -303,11 +312,11 @@ const AdminCharts = () => {
             <div className={styles.leftDiv}>
                 <div className={styles.stats}>
                     GANANCIAS TOTALES:
-                    <h1 className={styles.amount}>$ <span>{totalEarnings}</span> USD</h1>
+                    <h1 className={styles.amount}>$ <span>{totalEarnings.toFixed(2)}</span> USD</h1>
                 </div>
                 <div className={styles.stats}>
                     COMISIONES:
-                    <h1 className={styles.amount}>$ <span>{totalComissions}</span> USD</h1>
+                    <h1 className={styles.amount}>$ <span>{totalComissions.toFixed(2)}</span> USD</h1>
                 </div>
             </div> 
             {/* <div className={styles.chart}>
