@@ -7,6 +7,7 @@ const {
   Applied,
   DisableEvent,
 } = require("../../db");
+const { Op } = require("sequelize");
 
 // Función controller para añadir review a una company.
 const addReviewCompany = async (EventId, CompanyId, rating, text) => {
@@ -197,9 +198,86 @@ const updateReview = async (id, text, rating, CompanyId, TalentId) => {
     );
   }
 
-  // Opcionalmente, puedes cargar el talento actualizado desde la base de datos
   const updatedReview = await Review.findByPk(id);
   return updatedReview;
+};
+
+// Función controller para obtener los comentarios hechos por Talentos.
+const getCommentsTalent = async () => {
+  try {
+    const appliedEntriesWithComments = await Applied.findAll({
+      attributes: ["TalentreviewsComentary"],
+      include: {
+        model: Talent,
+        through: "TalentApplieds",
+        attributes: ["id", "name"],
+      },
+      where: {
+        TalentreviewsComentary: {
+          [Op.ne]: null,
+        },
+      },
+    });
+
+    const comments = [];
+
+    appliedEntriesWithComments.forEach((entry) => {
+      if (entry.Talents && Array.isArray(entry.Talents)) {
+        entry.Talents.forEach((talent) => {
+          comments.push({
+            talentId: talent.id,
+            talentName: talent.name,
+            comment: entry.TalentreviewsComentary,
+          });
+        });
+      }
+    });
+
+    return comments;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Función controller para obtener los comentarios hechos por una empresa.
+const getCommentsCompany = async () => {
+  try {
+    const appliedEntriesWithCompanyComments = await Applied.findAll({
+      attributes: ["CompanyreviewsComentary"],
+      include: [
+        {
+          model: Event,
+          attributes: ["CompanyId"],
+          include: [
+            {
+              model: Company,
+              attributes: ["id", "email"],
+            },
+          ],
+        },
+      ],
+      where: {
+        CompanyreviewsComentary: {
+          [Op.ne]: null,
+        },
+      },
+    });
+
+    // console.log(appliedEntriesWithCompanyComments);
+
+    const comments = appliedEntriesWithCompanyComments.map((entry) => {
+      const company = entry.Event.Company;
+      return {
+        companyId: company.id,
+        companyName: company.name,
+        comment: entry.CompanyreviewsComentary,
+      };
+    });
+
+    return comments;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
 
 module.exports = {
@@ -208,4 +286,6 @@ module.exports = {
   getCompanyReviews,
   getTalentReviews,
   updateReview,
+  getCommentsTalent,
+  getCommentsCompany,
 };

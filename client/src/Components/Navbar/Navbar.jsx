@@ -1,3 +1,4 @@
+import AboutUs from "../../Views/AboutUs/AboutUs";
 import LoginButton from "../LoginButton/LoginButton";
 import LogoutButton from "../LogoutButton/LogoutButton";
 //import './NavbarModule.css'
@@ -9,9 +10,7 @@ function Navbar() {
   return (
     <nav>
       <section className={style.logoContainer}>
-        <Link to={"/"}>
           <img src="/Logo con Letras.svg" alt="" className={style.imgLogo} />
-        </Link>
       </section>
       <section className={style.buttonsContainer}>
         <div className={style.containerButtonNav}>
@@ -28,7 +27,7 @@ function Navbar() {
             </a>
           </button>
           <button className={style.buttonNosotros}>
-            <a href="#nosotros" className={style.buttonNav}>
+            <a href="/about" className={style.buttonNav}>
               Nosotros
             </a>
           </button>

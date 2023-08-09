@@ -11,7 +11,7 @@ export default function User() {
     axios(`http://localhost:3001/companies/${id}`).then(({ data }) => {
       setCompany(data);
     });
-  }, [id]);
+  }, []);
 
   
   const user_type = localStorage.getItem("userType");
@@ -24,7 +24,7 @@ export default function User() {
       url_profile = "/model/profile";
     }
   //},[user_type])
-
+//console.log(company.image)
   return (
         <Link to={`${url_profile}/${id}`}>
       <div className={styles.card}>
