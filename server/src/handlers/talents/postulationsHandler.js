@@ -67,11 +67,11 @@ const handlerGetApplicantsByName = async (req, res) => {
     const { EventId } = req.params;
     const { name } = req.query;
     //console.log(req.params);
-    if (!name) {
-      return res
-        .status(400)
-        .json("Debes ingresar un nombre para aplicar la búsqueda.");
-    }
+    // if (!name) {
+    //   return res
+    //     .status(400)
+    //     .json("Debes ingresar un nombre para aplicar la búsqueda.");
+    // }
 
     const applicantsByName = await getApplicantByName(EventId, name);
 

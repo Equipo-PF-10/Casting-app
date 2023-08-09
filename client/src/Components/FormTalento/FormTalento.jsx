@@ -6,7 +6,9 @@ import axios from "axios"
 import validationTalentos from "./validationTalentos"
 import Cloudinary from "../Cloudinary/Cloudinary"
 import NavBarLateral from "../NavBarLateral/NavBarLateral"
-import { get_talent_by_id } from "../../redux/actions"
+import { get_talent_by_id } from "../../redux/actions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FormTalento = () => {
 
@@ -119,45 +121,100 @@ const FormTalento = () => {
           return { ...prevInput, socialNetwork: updatedSocialNetwork };
         });
       };
-    
-    const handleContactChange = (index, event) => {
-        const {value} = event.target;
-        setInput((prevInput) => {
-            const updatedCOntact = [...prevInput.contact];
-            updatedCOntact[index] = value;
-            return {...prevInput, contact: updatedCOntact}
-        })
-    }
 
-    const filledFields = Object.keys(input).reduce((acc, key) => {
-        const value = input[key];
-        if (value !== "" && value !== null && value.length !== 0 && value !== 0) {
-          acc[key] = value;
+      const handleContactChange = (index, event) => {
+          const {value} = event.target;
+          setInput((prevInput) => {
+              const updatedCOntact = [...prevInput.contact];
+              updatedCOntact[index] = value;
+              return {...prevInput, contact: updatedCOntact}
+            })
         }
-        return acc;
-      }, {});
-
+        
+        const filledFields = Object.keys(input).reduce((acc, key) => {
+            const value = input[key];
+            if (value !== "" && value !== null && value.length !== 0 && value !== 0) {
+                acc[key] = value;
+            }
+            return acc;
+        }, {});
+        
+    let messageUpdated = "Se ha actualizado el perfil correctamente."; 
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
-            await axios.patch(URL, filledFields)
-            console.log("Datos actualizados correctamente")
+            const response = (await (axios.patch(URL, filledFields))).data;
+            console.log(response);
+            if(response === messageUpdated){
+                mensaje_success_Toast();
+            }  
+            
             const emailToCompany = axios.post(`http://localhost:3001/email/editedPerfilTalent/${talentData.email}`)
             .then((resp) => console.log(resp.data))
             .catch((error) => console.log(error));
 
-
-
-
             setInput(initialState)
         } catch (error) {
+            mensaje_error_Toast();
             console.log({error: error.message})
         }
     }
 
+      //Mostrar mensaje cuando se actualizan los datos del perfil
+  let currentToastIdSuccess = null;
+  const mensaje_success_Toast = () => {
+    if (currentToastIdSuccess) {
+      toast.update(currentToastIdSuccess, {
+        render: messageUpdated,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastIdSuccess = toast.success(messageUpdated, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "500px",
+        },
+      });
+    }
+  };
+
+  let errorMessage = "Ha ocurrido un error al actualizar los datos de tu perfil.";
+  let currentToastId = null;
+  const mensaje_error_Toast = () => {
+    if (currentToastId) {
+      toast.update(currentToastId, {
+        render: errorMessage,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastId = toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "500px",
+        },
+      });
+    }
+  };
     return(
         <div>
             <NavBarLateral/>
+            <ToastContainer />
             <section className={Styles.section}>
                 <svg width="345" height="202" viewBox="0 0 345 202" fill="none" xmlns="http://www.w3.org/2000/svg" className={Styles.svg1}>
                 <path d="M276.775 -48.0724L345 -66L-57 -57.4216V202C17.4227 78.335 137.182 -11.3914 276.775 -48.0724Z" fill="#7E7193"/>
@@ -230,6 +287,7 @@ const FormTalento = () => {
                                 <article className={Styles.coolinput}>
                                     <label htmlFor="ethnicOrigin" className={Styles.text}>Origen étnico</label>
                                     <select name="" id="" onChange={handleChange} value={input.ethnicOrigin}>
+                                        <option value="" disabled>Tipos</option>
                                         <option value="Caucásico">Caucásico</option>
                                         <option value="Afroamericano">Afroamericano</option>
                                         <option value="Asiático">Asiático</option>

@@ -13,7 +13,7 @@ const Blog = () => {
               </p>
             </div>
             <div className={style.content1}>
-              <p className={style.heading1}>Tips</p>
+              <p className={style.heading1}>Fotografías</p>
               <p className={style.pTextoA}>
                 Mira a la cámara, sonríe, y no tapes tu cara. Evita estar con el
                 sol frente a ti, ya que tus ojos tienden a cerrarse, evita el
@@ -32,7 +32,7 @@ const Blog = () => {
               </p>
             </div>
             <div className={style.content2}>
-              <p className={style.heading2}>Tips</p>
+              <p className={style.heading2}>Castings</p>
               <p>
                 A la hora de participar de un casting, debes tener en cuenta que
                 solo tienes un par de segundos para generar un marca que te
@@ -50,7 +50,7 @@ const Blog = () => {
               </p>
             </div>
             <div className={style.content3}>
-              <p className={style.heading3}>Tips</p>
+              <p className={style.heading3}>Tu info</p>
               <p className={style.pTextoA}>
                 Llegaste a la plataforma que te las opciones que estás buscando,
                 ya que en Casting App tenemos las herramientas para que filtres

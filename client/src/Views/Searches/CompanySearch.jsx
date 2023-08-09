@@ -87,7 +87,7 @@ const CompanySearch = () => {
   };
 
   //Map Talentos
-  const listedTalents = currentTalents.map((talento) => (
+  const listedTalents = currentTalents?.map((talento) => (
     <li key={talento.id}>
       <Card
         id={talento.id}

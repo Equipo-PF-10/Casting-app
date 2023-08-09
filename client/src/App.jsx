@@ -36,11 +36,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/loading" element={<Loader />} />
         <Route path="/model/register" element={<RegisterModel />} />
         <Route path="/model/profile/:id" element={<ProfileModel />} />
         <Route path="/model/search/" element={<TalentSearch />} />
+        <Route path="/model/review/:id" element={<Review />} />
         <Route path="/company/register" element={<RegisterCompany />} />
-      <Route path="/loading" element={<Loader />} />
         <Route path="/company/profile/:id" element={<ProfileCompany />} />
         <Route path="/company/search/:id" element={<CompanySearch />} />
         <Route path="/company/plans" element={<PaymentPlans />} />
@@ -49,20 +50,20 @@ function App() {
         <Route path="/company/plans/premium/paypal" element={<PaypalBasicPlan />} />
         <Route path="/company/plans/pro/paypal" element={<PaypalPremiumPlan />} />
         <Route path="/company/create" element={<EventForm />} />
+        <Route path="/company/hiredtalent/:id" element={<HiredTalent/>}/>
+        <Route path="/company/review/:id/:idEvent" element={<Review />} /> {/*id de compañia*/}
+        <Route path="/company/updateEvent" element={<EventUpdate/>} />
+        <Route path="/company/finishedEvents" element={<FinishedEvents/>}/>
         <Route path="/form/company" element={<FormEmpresa />} />
         <Route path="/form/talent" element={<FormTalento />} />
         <Route path="/NavBarLateral" element={<NavBarLateral />} />
         {/* <Route path="/home/company" element={<Home type="company"/>} /> */}
         <Route path="/home/company" element={<HomeCompany/>} />
+        <Route path="/home/talent" element={<HomeTalento/>}/>
         <Route path="/cloud" element={<Cloudinary/>}/>
         <Route path="/contact" element={<SendPersonalized/>} />
-        <Route path="/company/review/:id/:idEvent" element={<Review />} /> {/*id de compañia*/}
         <Route path="/admin" element={<Admin/>}/>
-        <Route path="/home/talent" element={<HomeTalento/>}/>
         <Route path="/report" element={<Report/>}/>
-        <Route path="/company/hiredtalent/:id" element={<HiredTalent/>}/>
-        <Route path="/company/finishedEvents" element={<FinishedEvents/>}/>
-        <Route path="/company/updateEvent" element={<EventUpdate/>} />
       </Routes>
     </>
   );

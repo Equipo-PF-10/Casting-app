@@ -36,9 +36,9 @@ export default function PaymentPlans() {
 
   // Calcula si la tarjeta del Plan Gratis debe estar deshabilitada
   //const isPlanFreeDisabled = infoCompany.expirationDate && new Date() < new Date(infoCompany.expirationDate);
-  //CREAR UNA PROPIEDAD BOOLEANA PARA VERIFICAR SI ALGUNA VEZ LA COMPAÑIA ADQUIRIÓ EL PLAN GRATIS
   
-  const isPlanFreeDisabled = 0//; infoCompany.expirationDate || infoCompany.plan === "PRUEBA GRATIS"; //infoCompany.planFree
+  //Cuando infoCompany.planFree es true se deshabilita la card de Prueba Gratis
+  const isPlanFreeDisabled = infoCompany.planFree;
 
   //Función para manejar el click en una card
   // const handleCardClick = (plan) => {

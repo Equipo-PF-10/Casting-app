@@ -232,6 +232,8 @@ const getEventById = async (id) => {
   }
 };
 
+
+
 // Función controller para traer todos los Disable Events.
 const getDisable = async () => {
   try {

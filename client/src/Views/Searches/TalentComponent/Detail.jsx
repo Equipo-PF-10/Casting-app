@@ -16,8 +16,7 @@ const Detail = (props) => {
   const empresa = useSelector((state) => state.companyById);
   const [isPostulated, setIsPostulated] = useState("");
   
-  console.log(idEvent);
-
+ 
   // Verificar si el idTalent se encuentra en allPostulants
   useEffect(() => {
     const isTalentPostulated = allPostulants.some((postulant) => postulant.id === idTalent);
@@ -25,31 +24,32 @@ const Detail = (props) => {
   }, [allPostulants, idTalent]);
 
   //Verificar que el talento haya ingresado los datos minimos en su perfil antes de postularse a un evento
-  const handlerClickCreate = () => {
+  const handlerClickCreate = async () => {
     dispatch(get_talent_by_id(idTalent));
+    //dispatch(get_talent_by_id(idTalent));
+    console.log(idEvent);
     console.log(talent);
     if(talent.id === "" || talent.image === null || talent.hability === null){
         dispatch(message_error_postulate("Para postularse antes debe completar los datos principales de su perfil."));
     }else {
       dispatch(create_postulant(idEvent, idTalent));
-/*       const CompanyId = axios.get(`http://localhost:3001/events/${}`)
-      .then((resp) => resp.data.CompanyId)
-      .catch((error) => console.log(error)) */
+      
+      
+      
+      const { CompanyId } = (await (axios.get(`http://localhost:3001/events/eventid/${idEvent}`))).data
+      
+      const { email } = (await (axios.get(`http://localhost:3001/companies/${CompanyId}`))).data     
 
-      const CompanyEmail = axios.get(`http://localhost:3001/companies/${CompanyId}`)
-      .then((resp) => resp.data.email)
-      .catch((error) => console.log(error))
-
-      const emailToCompany = axios.post(`http://localhost:3001/email/newPostulante/${empresa.email}`)
+      const emailToCompany = axios.post(`http://localhost:3001/email/newPostulante/${email}`)
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
-
-      let userEmail = localStorage.getItem("user_email");
-
-      const emailToTalent = axios.post(`http://localhost:3001/email/postulationEvent/${userEmail}`) 
+      
+      const talentEmail = (await (axios.get(`http://localhost:3001/talents/${idTalent}`))).data.email          
+      
+      const emailToTalent = axios.post(`http://localhost:3001/email/postulationEvent/${talentEmail}`) 
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
-    }
+    }   
   }
 
   useEffect(() => {

@@ -73,40 +73,15 @@ const getTalentByEmail = async (email) => {
 // Función controller que elimina a un talento de la base de datos.
 const deleteTalent = async (id) => {
   try {
-    const talentToDelete = await Talent.findByPk(id);
+    const talent = await Talent.findByPk(id);
+    if (!talent) throw new Error("El talento especificado no existe.");
 
-    if (!talentToDelete) {
-      throw new Error(`El Usuario con ID ${id} no existe`);
-    }
+    await DisableTalent.create({ ...talent.dataValues, available: false });
+    await talent.destroy();
 
-    await DisableTalent.create({
-      id: talentToDelete.id,
-      name: talentToDelete.name,
-      dni: talentToDelete.dni,
-      email: talentToDelete.email,
-      password: talentToDelete.password,
-      available: talentToDelete.available,
-      dateComeback: talentToDelete.dateComeback,
-      image: talentToDelete.image,
-      portfolio: talentToDelete.portfolio,
-      gender: talentToDelete.gender,
-      aboutMe: talentToDelete.aboutMe,
-      nationality: talentToDelete.nationality,
-      ubication: talentToDelete.ubication,
-      hability: talentToDelete.hability,
-      contexture: talentToDelete.contexture,
-      ethnicOrigin: talentToDelete.ethnicOrigin,
-      weight: talentToDelete.weight,
-      height: talentToDelete.height,
-      contact: talentToDelete.contact,
-      socialNetwork: talentToDelete.socialNetwork,
-      reviews: talentToDelete.reviews,
-      reviewsCount: talentToDelete.reviewsCount,
-    });
+    await talent.destroy();
 
-    await talentToDelete.destroy();
-
-    return talentToDelete;
+    return talent;
   } catch (error) {
     throw new Error(error.message);
   }

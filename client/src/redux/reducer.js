@@ -303,7 +303,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
           eventsFiltered: [...state.allEvents],
         };
       } else {
-        const hability = [...state.eventsFiltered].filter((event) =>
+        const hability = [...state.allEvents].filter((event) =>
           event.habilityRequired.includes(payload)
         );
         return {
@@ -376,7 +376,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
           eventsFiltered: [...state.allEvents],
         };
       } else {
-        const ubication = [...state.eventsFiltered].filter((event) =>
+        const ubication = [...state.allEvents].filter((event) =>
           event.ubication.includes(payload)
         );
         return {
