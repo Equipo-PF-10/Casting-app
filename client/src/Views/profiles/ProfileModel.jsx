@@ -9,7 +9,8 @@ import lapiz from "../../assets/lapiz.png";
 const ProfileModel=() => {
   const { id }=useParams()
   //console.log(id);
-
+  const userImage = localStorage.getItem("user_image");
+  const userEmail = localStorage.getItem("user_email");
   const dispatch=useDispatch()
 
   
@@ -39,20 +40,30 @@ const ProfileModel=() => {
           {/*carta con foto y descripcion*/}
           <div className={style.cardContainer}>
             <div className={style.image}>
-              <img src={talentId?.image} alt={talentId.Name} />
+              {
+                talentId?.image ?
+                <img src={talentId?.image} alt={talentId.name} />
+                :
+                <img src={userImage} alt={talentId.name} />
+              }
             </div>
             <div className={style.textoCard}>
               <h3 className={style.nombre}>{talentId?.name}</h3>
               <h5 className={style.titulo}>{habilidades?.join(", ")}</h5>
-              <p className={style.descripcion}>
+              {/* <p className={style.descripcion}>
                 {talentId?.aboutMe}
-              </p>
+              </p> */}
+              {
+                talentId?.email === userEmail ?
               <Link to={"/form/talent"}>
               <div className={style.update}>
                 <img style={{width:"20px", paddingBottom:"6px"}} src={lapiz} alt="Editar perfil" />
                 <h5>Actualiza tu perfil aquí</h5>
               </div>
               </Link>
+              :
+              null
+              }
             </div>
           </div>
           {/*carta de orientacion*/}
