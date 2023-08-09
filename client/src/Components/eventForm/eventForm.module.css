@@ -95,16 +95,28 @@
 }
 
 .error{
-  font-size: 12px;
+  font-size: 14px;
   color: #990004;
+}
+
+.obligatorios {
+  font-size: 16px;
+  color: #990004;
+  margin-right: 110px;
 }
 
 .btn{
   margin-top: 2rem;
   margin-left: -7rem;
   width: 10rem;
+  height: 2rem;
+  font-size: 18px;
 }
 
+.btn:disabled {
+  opacity: 0.5; 
+  cursor: not-allowed;
+}
 
 
 .select{
