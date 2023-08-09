@@ -14,15 +14,19 @@ const getPaymentsDb = () => {
     }
 }
 
-const createPaymentDb = async (paymentId, CompanyId, planType, paymentDate, expirationDate, price, taxes) => {
+const createPaymentDb = async (paymentId, CompanyId, planType, price, taxes) => {
     try {
+        const currentDate = new Date();
+        const expirationDate = new Date(
+        currentDate.setFullYear(currentDate.getFullYear() + 1)
+        );
         const [ existingPayment, newPayment] = await SubscriptionPayment.findOrCreate({
             where: {paymentId},
             defaults: {
                 paymentId,
                 planType,
-                paymentDate,
-                expirationDate,
+                paymentDate: new Date(),
+                expirationDate: expirationDate,
                 price,
                 taxes,
                 CompanyId

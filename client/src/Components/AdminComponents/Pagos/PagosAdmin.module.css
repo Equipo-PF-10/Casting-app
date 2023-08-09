@@ -1,0 +1,123 @@
+.containerUsuario {
+    width: 85%;
+    height: 700px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 1rem;
+    /* border: 5px solid #00c9a7d7; */
+    box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
+    /* overflow: hidden; */
+    overflow: scroll;
+    overflow-x: hidden;
+    padding: 3rem;
+  }
+  
+  .talentsTable {
+    border-collapse: collapse;
+    width: 100%;
+    /* border-collapse: separate;
+    border-spacing: 0 15px; */
+  }
+  
+  .talentsTable td, .talentsTable th {
+    padding: 8px;
+  }
+  
+  /* .talentsTable tr:nth-child(even){background-color: #f2f2f2;} */
+  
+  .talentsTable tr:hover {background-color: #00c9a731;}
+  
+  .talentsTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    /* border-top: 3px solid #00c9a7c0;
+    border-bottom: 3px solid #00c9a7c0; */
+    background-color: #00c9a7c0;
+    /* color: #00c9a7c0; */
+    color: white;
+    /* border-radius: 1rem 1rem 0 0; */
+  }
+  
+  .talentsTable td {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: 2px solid #00c9a78c;
+    border-bottom: 2px solid #00c9a78c;
+    /* border-top:    2px solid  #00c9a73d; */
+    /* border-right:  2px dashed #f0F; */
+    /* border-bottom: 2px dotted #00c9a73d; */
+    /* border-left:   5px solid  #09f; */
+  }
+  
+  .banButton {
+    width: 110px;
+    background-color: #c9000071;
+    border: none;
+    transition: 0.7s;
+    margin: 0;
+  }
+  
+  .banButton:hover {
+    background-color: #c90000c5;
+  }
+  
+  .title {
+    margin-bottom: 1.5rem;
+    font-size: 25px;
+    color: #00c9a7;
+    /* text-align: center; */
+  }
+  
+  .optionsBar {
+    width: 85%;
+    height: 80px;
+    /* background-color: red; */
+    /* background-color: #00c9a7c0; */
+    /* box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432); */
+    /* border-radius: 1rem; */
+  
+  }
+  
+  .searchBarContainer {
+    width: 300px;
+    background-color: white;
+    border-radius: 100px;
+    border: none;
+    box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .input {
+    width: 90%;
+    padding: 10px;
+    height: 100%;
+    border-radius: 100px;
+    border: none;
+    outline: none;
+  }
+  
+  .searchButton {
+    background-color: white;
+    height: 40px;
+    width: 80px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 100px;
+    color: #00c9a7
+  }
+  
+  .searchButton:disabled {
+    background-color: white;
+  }
+  
+  .searchButton:enabled:hover {
+    background-color: #00c9a72d;
+  }
+  
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration { display: none; }

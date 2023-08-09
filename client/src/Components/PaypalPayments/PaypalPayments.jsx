@@ -47,6 +47,29 @@ const PaypalPayments = (props) => {
         } else {
 			console.log("Tipo de suscripción inválido:", PLAN_TYPE);
 		}
+
+
+    if (PLAN_TYPE === "PREMIUM") {
+      axios.post('http://localhost:3001/payments', {
+        paymentId: data.subscriptionID,
+        planType: "PRO",
+        price: 200.00,
+        taxes: 7.47,
+        CompanyId: localStorage.getItem("user_id")
+      })
+        .then((resp) => console.log(resp.data))
+        .catch((error) => console.log(error));
+    } else if (PLAN_TYPE === "BASICO") {
+      axios.post('http://localhost:3001/payments', {
+        paymentId: data.subscriptionID,
+        planType: "PREMIUM",
+        price: 100.00,
+        taxes: 3.98,
+        CompanyId: localStorage.getItem("user_id")
+      })
+        .then((resp) => console.log(resp.data))
+        .catch((error) => console.log(error));
+    }
         navigate("/home/company");
         // alert("Suscripción completada con éxito! Gracias! ");
       }}

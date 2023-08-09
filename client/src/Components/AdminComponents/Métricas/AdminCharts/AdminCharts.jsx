@@ -12,7 +12,7 @@ import { TotalCompanies } from './Charts/TotalCompanies';
 Chart.register(CategoryScale);
 
 const AdminCharts = () => {
-    const monthLabels = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    const monthLabels = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 
     const [companiesPostsData, setcompaniesPostsData] = useState([]);
     const [proPlanData, setProPlanData] = useState([]);
@@ -26,6 +26,16 @@ const AdminCharts = () => {
     
     const [totalCompaniesData, setTotalCompaniesData] = useState([]);
     const [availableCompaniesData, setAvailableCompaniesData] = useState([]);
+
+    const [paymentsData, setPaymentsData] = useState([]);
+    
+    let totalComissions = 0;
+    let totalEarnings = 0;
+    paymentsData.map(payment => {
+        totalComissions = totalComissions + payment.taxes;
+        totalEarnings = totalEarnings + payment.price;
+    })
+    totalEarnings = totalEarnings - totalComissions;
     
     const planDataRefactorization = monthLabels.map(month => {
         const obj = {
@@ -177,6 +187,9 @@ const AdminCharts = () => {
         axios('http://localhost:3001/admin/users/available/companies').then(({ data }) => {
             setAvailableCompaniesData(data);
         })
+        axios('http://localhost:3001/payments').then(({ data }) => {
+            setPaymentsData(data);
+        })
     }, []);
 
     const companiesPosts = {
@@ -187,7 +200,8 @@ const AdminCharts = () => {
             data: companiesPostsData.map((data) => data.numberPosts),
             backgroundColor: [
                 "#7E7193",
-                "#e2e2e2",
+                "#00c9a7",
+                // "#e2e2e2",
                 // "#e0d663",
                 // "#63dae0",
                 // "#c97175"
@@ -205,16 +219,16 @@ const AdminCharts = () => {
             label: "PRO ",
             data: planDataRefactorization.map((data) => data.pro),
             backgroundColor: [
-                "#00c9a7",
+                "#e2e2e2",
             ],
-            borderColor: "#e2e2e2",
+            borderColor: "#00c9a7",
             borderWidth: 3
         },
         {
             label: "Premium ",
             data: planDataRefactorization.map((data) => data.premium),
             backgroundColor: [
-                "#00c9a7",
+                "#e2e2e2",
             ],
             borderColor: "#7E7193",
             borderWidth: 3
@@ -223,9 +237,9 @@ const AdminCharts = () => {
             label: "Free ",
             data: planDataRefactorization.map((data) => data.free),
             backgroundColor: [
-                "#00c9a7",
+                "#e2e2e2",
             ],
-            borderColor: "#ded290",
+            borderColor: "#63dae0",
             borderWidth: 3
         }
         ]
@@ -266,35 +280,69 @@ const AdminCharts = () => {
     };
   
     return (
-    <div className={styles.container}>
-        {/* <h1>Métricas Admin</h1> */}
-        <div className={styles.chart}>
-            <Companies_Posts chartData={companiesPosts}/>
-        </div>
-        <div className={styles.chart}>
-            <Companies_Plan chartData={companiesPlans}/>
-        </div>
-        <div className={styles.donnutDiv}>
-            <select name="talentsDisplay" className={styles.dropDown} onChange={handleTalentsDisplay}>
-                <option className={styles.option} value="all">Todos los Talentos</option>
-                <option className={styles.option} value="availability">Disponibilidad</option>
-                <option className={styles.option} value="gender">Género</option>
-            </select>
-            <div className={styles.donnutChart}>
-                <TotalTalents chartData={totalTalentsDataSet}/>
+    <>
+        <div className={styles.container}>
+            {/* <h1>Métricas Admin</h1> */}
+            
+            <div className={styles.chart}>
+                <Companies_Posts chartData={companiesPosts}/>
             </div>
-        </div>
-        <div className={styles.donnutDiv}>
-            <select name="companiesDisplay" className={styles.dropDown} onChange={handleCompaniesDisplay}>
-                <option className={styles.option} value="all">Todas las Empresas</option>
-                <option className={styles.option} value="availability">Disponibilidad</option>
-                <option className={styles.option} value="plan">Plan</option>
-            </select>
-            <div className={styles.donnutChart}>
-                <TotalCompanies chartData={totalCompaniesDataSet}/>
+            <div className={styles.chart}>
+                <Companies_Plan chartData={companiesPlans}/>
+            </div> 
+            {/* <div className={styles.donnutDiv}>
+                <select name="talentsDisplay" className={styles.dropDown} onChange={handleTalentsDisplay}>
+                    <option className={styles.option} value="all">Todos los Talentos</option>
+                    <option className={styles.option} value="availability">Disponibilidad</option>
+                    <option className={styles.option} value="gender">Género</option>
+                </select>
+                <div className={styles.donnutChart}>
+                    <TotalTalents chartData={totalTalentsDataSet}/>
+                </div>
+            </div> */}
+            <div className={styles.leftDiv}>
+                <div className={styles.stats}>
+                    GANANCIAS TOTALES:
+                    <h1 className={styles.amount}>$ <span>{totalEarnings}</span> USD</h1>
+                </div>
+                <div className={styles.stats}>
+                    COMISIONES:
+                    <h1 className={styles.amount}>$ <span>{totalComissions}</span> USD</h1>
+                </div>
+            </div> 
+            {/* <div className={styles.chart}>
+                <Companies_Plan chartData={companiesPlans}/>
+            </div>         */}
+            <div className={styles.donnutDiv}>
+                <select name="talentsDisplay" className={styles.dropDown} onChange={handleTalentsDisplay}>
+                    <option className={styles.option} value="all">Todos los Talentos</option>
+                    <option className={styles.option} value="availability">Disponibilidad</option>
+                    <option className={styles.option} value="gender">Género</option>
+                </select>
+                <div className={styles.donnutChart}>
+                    <TotalTalents chartData={totalTalentsDataSet}/>
+                </div>
             </div>
-        </div> 
-    </div>
+            <div className={styles.donnutDiv}>
+                <select name="companiesDisplay" className={styles.dropDown} onChange={handleCompaniesDisplay}>
+                    <option className={styles.option} value="all">Todas las Empresas</option>
+                    <option className={styles.option} value="availability">Disponibilidad</option>
+                    <option className={styles.option} value="plan">Plan</option>
+                </select>
+                <div className={styles.donnutChart}>
+                    <TotalCompanies chartData={totalCompaniesDataSet}/>
+                </div>
+            </div>
+            {/* <div className={styles.leftDiv}> */}
+            {/* <div className={styles.stats}>
+                    TOTAL COMPANIES:
+                </div>
+                <div className={styles.stats}>
+                    TOTAL EVENTS:
+                </div> */}
+            {/* </div> */}
+        </div>
+    </>
   );
 };
 

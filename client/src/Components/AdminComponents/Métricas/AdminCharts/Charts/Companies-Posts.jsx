@@ -4,7 +4,7 @@ import { Bar } from "react-chartjs-2";
 export const Companies_Posts = (props) => {
   return (
     <div>
-      <h4 style={{ textAlign: "center" }}>Eventos por Compañía</h4>
+      <h4 style={{ textAlign: "center" }}>EVENTOS POR COMPAÑÍA</h4>
       <Bar
         data={props.chartData}
         options={{
