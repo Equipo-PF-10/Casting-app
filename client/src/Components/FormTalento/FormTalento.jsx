@@ -287,6 +287,7 @@ const FormTalento = () => {
                                 <article className={Styles.coolinput}>
                                     <label htmlFor="ethnicOrigin" className={Styles.text}>Origen étnico</label>
                                     <select name="" id="" onChange={handleChange} value={input.ethnicOrigin}>
+                                        <option value="" disabled>Tipos</option>
                                         <option value="Caucásico">Caucásico</option>
                                         <option value="Afroamericano">Afroamericano</option>
                                         <option value="Asiático">Asiático</option>
