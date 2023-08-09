@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Select from "react-select";
 import styles from "./EventForm.module.css";
 import validation from "./validation";
+import validationCreate from "./validationCreate";
 import axios from "axios";
 import NavBarLateral from "../NavBarLateral/NavBarLateral";
 import Cloudinary from "../Cloudinary/Cloudinary";
@@ -19,12 +20,12 @@ const EventForm = () => {
   const imageURl = useSelector((state) => state.imageUrl);
   const company = `http://localhost:3001/companies/${idUser}`;
   const empresa = useSelector((state) => state.companyById);
-  
-    const getCurrentDate = () => {
+
+  const getCurrentDate = () => {
     const now = new Date();
     const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
 
@@ -34,7 +35,7 @@ const EventForm = () => {
 
   const initialState = {
     name: "",
-    date:  getCurrentDate(),
+    date: getCurrentDate(),
     ubication: "",
     image: imageURl,
     shortDescription: "",
@@ -72,6 +73,14 @@ const EventForm = () => {
   const [error, setError] = useState({});
 
   const [bnt, setBtn] = useState(false);
+
+  const [disable, setDisable] = useState(false);
+
+  // Este useEffect controla que el boton "Crear evento" se habilite o no
+  useEffect(() => {
+    let errExists = validationCreate(error, input);
+    !errExists ? setDisable(true) : setDisable(false);
+  }, [error, input]);
 
   if (company.plan === "FREE" && company.numberPosts === 2) {
     setBtn(true);
@@ -125,8 +134,6 @@ const EventForm = () => {
     navigate("/home/company");
   };
 
-
- 
   let messageEventCreated = "Se ha creado el evento con éxito.";
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -136,26 +143,32 @@ const EventForm = () => {
       console.log(response);
       if (response.id) {
         mensaje_success_Toast();
-        dispatch(get_company_id(idUser))
-      } 
-
-       if (Number(empresa.numberPosts) <= (Number(empresa.conditionPlan) )){
-        axios.post(`http://localhost:3001/email/companyNewEvent/${empresa.email}`)
-        .then((resp) => console.log(resp.data))
-        .catch((error) => console.log(error))
+        dispatch(get_company_id(idUser));
       }
-      console.log(empresa.numberPosts)
-      console.log(empresa.conditionPlan)
 
-      if ((Number(empresa.numberPosts)+1) === (Number(empresa.conditionPlan) -1)){        
-        axios.post(`http://localhost:3001/email/stopAdd/${empresa.email}`)
-        .then((resp) => console.log(resp.data))
-        .catch((error) => console.log(error))
-      } 
-      if ((Number(empresa.numberPosts)+1) === (Number(empresa.conditionPlan) )){
-        axios.post(`http://localhost:3001/email/stop/${empresa.email}`)
-        .then((resp) => console.log(resp.data))
-        .catch((error) => console.log(error))
+      if (Number(empresa.numberPosts) <= Number(empresa.conditionPlan)) {
+        axios
+          .post(`http://localhost:3001/email/companyNewEvent/${empresa.email}`)
+          .then((resp) => console.log(resp.data))
+          .catch((error) => console.log(error));
+      }
+      console.log(empresa.numberPosts);
+      console.log(empresa.conditionPlan);
+
+      if (
+        Number(empresa.numberPosts) + 1 ===
+        Number(empresa.conditionPlan) - 1
+      ) {
+        axios
+          .post(`http://localhost:3001/email/stopAdd/${empresa.email}`)
+          .then((resp) => console.log(resp.data))
+          .catch((error) => console.log(error));
+      }
+      if (Number(empresa.numberPosts) + 1 === Number(empresa.conditionPlan)) {
+        axios
+          .post(`http://localhost:3001/email/stop/${empresa.email}`)
+          .then((resp) => console.log(resp.data))
+          .catch((error) => console.log(error));
       }
 
       setInput(initialState);
@@ -228,7 +241,8 @@ const EventForm = () => {
         <div className={styles.containerModalOpened}>
           <div className={styles.modalOpened}>
             <h2>
-              Has alcanzado la cantidad máxima de posteos correspondientes a tu plan actual.
+              Has alcanzado la cantidad máxima de posteos correspondientes a tu
+              plan actual.
             </h2>
             <h3>
               Te invitamos a adquirir un plan con mejores características.
@@ -269,7 +283,9 @@ const EventForm = () => {
             <section className={styles.inputs}>
               <div className={styles.div}>
                 <article className={styles.coolinput}>
-                  <label className={styles.text}> Nombre del evento</label>
+                  <label className={styles.text}>
+                    <span className={styles.error}>* </span> Nombre del evento
+                  </label>
                   <input
                     type="text"
                     name="name"
@@ -292,7 +308,10 @@ const EventForm = () => {
                   />
                 </article>
                 <article className={styles.coolinput}>
-                  <label className={styles.text}> Locación del evento</label>
+                  <label className={styles.text}>
+                    {" "}
+                    <span className={styles.error}>*</span>Locación del evento
+                  </label>
                   <input
                     type="text"
                     name="ubication"
@@ -308,7 +327,8 @@ const EventForm = () => {
               <div className={styles.div}>
                 <article className={styles.coolinput}>
                   <label htmlFor="" className={styles.text}>
-                    Orientación Artística
+                    <span className={styles.error}>* </span>Orientación
+                    Artística que buscas
                   </label>
                   <Select
                     isMulti
@@ -359,10 +379,13 @@ const EventForm = () => {
                     onBlur={handleAddContact}
                     placeholder="Email de contacto"
                   />
+                  <p className={error.email ? styles.error : ""}>
+                    {error.email ? error.email : null}
+                  </p>
                 </article>
                 <article className={styles.coolinput}>
                   <label htmlFor="" className={styles.text}>
-                    Descripción
+                    Descripción general
                   </label>
                   <textarea
                     name="description"
@@ -388,10 +411,13 @@ const EventForm = () => {
                     onChange={handleChange}
                     placeholder="Salario estimado del evento"
                   />
+                  <p className={error.salary ? styles.error : ""}>
+                    {error.salary ? error.salary : null}
+                  </p>
                 </article>
                 <article className={styles.coolinput}>
                   <label htmlFor="" className={styles.text}>
-                    Descripción Corta
+                  <span className={styles.error}>*</span>Descripción Corta
                   </label>
                   <textarea
                     name="shortDescription"
@@ -404,9 +430,17 @@ const EventForm = () => {
                     {error.shortDescription ? error.shortDescription : null}
                   </p>
                 </article>
-                <button type="submit" className={styles.btn} disabled={bnt}>
-                  Crear Evento
-                </button>
+                {disable ? (
+                  <button className={styles.btn} type="submit">
+                    {" "}
+                    Crear Evento{" "}
+                  </button>
+                ) : (
+                  <button disabled className={styles.btn}>
+                    Crear Evento
+                  </button>
+                )}
+                <p className={styles.obligatorios}> * Datos obligatorios</p>
               </div>
             </section>
           </form>
@@ -519,10 +553,6 @@ const EventForm = () => {
           />
         </svg>
       </section>
-
-      {/* IMPLEMENTACION DE UN MODAL INVASIVO QUE APARECE CUANDO EL USUARIO LLEGA A LA CANTIDAD MAXIMA DE POSTEOS */}
-      {/* empresa.numberPosts < empresa.conditionPlan ? Renderizar todo : Rendirizar el modal*/}
-      {/* empresa.numberPosts === empresa.conditionPlan */}
     </div>
   );
 };
