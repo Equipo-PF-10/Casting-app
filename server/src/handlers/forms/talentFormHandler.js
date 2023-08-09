@@ -34,7 +34,7 @@ const handlerUpdateFormTalent = async (req, res) => {
             socialNetwork,
             reviews,
             reviewsCount)
-        res.status(200).json(updateTalent);
+        res.status(200).send("Se ha actualizado el perfil correctamente.")  //json(updateTalent);
     } catch (error) {
         res.status(400).json(error.message)
     }

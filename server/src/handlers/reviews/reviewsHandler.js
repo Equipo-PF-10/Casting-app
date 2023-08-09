@@ -45,6 +45,7 @@ const handlerGetReviewsForCompany = async (req, res) => {
   }
 };
 
+// Función para obenter las reviews de un talento.
 const handlerGetReviewsForTalent = async (req, res) => {
   const { idTalento } = req.params;
 
@@ -57,6 +58,7 @@ const handlerGetReviewsForTalent = async (req, res) => {
   }
 };
 
+// Función para actualizar una review.
 const handlerUpdateReview = async (req, res) => {
   const { idReview } = req.params;
   const { text, rating, CompanyId, TalentId } = req.body;

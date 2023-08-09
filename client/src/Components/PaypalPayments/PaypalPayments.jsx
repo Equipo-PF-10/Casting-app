@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { update_plan } from "../../redux/actions";
 import axios from "axios";
 
+
 const PaypalPayments = (props) => {
   console.log(props.subs);
   const navigate = useNavigate();
@@ -33,14 +34,14 @@ const PaypalPayments = (props) => {
         dispatch(update_plan(id_company, PLAN_TYPE));
 
         if (PLAN_TYPE === "PREMIUM") {
-          return axios
+          axios
             .post(
-              `http://localhost:3001/email/suscriptionPremium/${props.email}`)
+              `http://localhost:3001/email/suscriptionPremium/${localStorage.getItem("user_email")}`)
             .then((resp) => console.log(resp.data))
             .catch((error) => console.log(error));
         } else if (PLAN_TYPE === "BASICO") {
-          return axios
-            .post(`http://localhost:3001/email/suscriptionPro/${props.email}`)
+          axios
+            .post(`http://localhost:3001/email/suscriptionPro/${localStorage.getItem("user_email")}`)
             .then((resp) => console.log(resp.data))
             .catch((error) => console.log(error));
         } else {

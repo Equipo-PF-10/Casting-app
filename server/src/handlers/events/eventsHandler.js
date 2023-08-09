@@ -8,6 +8,7 @@ const {
   getPremiumEvents,
   getEventForHability,
   getEventByCompanyId,
+  getDisable,
 } = require("../../controllers/events/eventsController");
 
 // Función handler para obtener los eventos.
@@ -204,6 +205,17 @@ const handlerGetEventById = async (req, res) => {
   }
 };
 
+// Función para obtener todos los eventos eliminados.
+const handlerGetDisableEvents = async (req, res) => {
+  try {
+    const disableEvents = await getDisable();
+
+    res.status(200).json(disableEvents);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   handlerGetAllEvents,
   handlerGetEventById,
@@ -213,4 +225,5 @@ module.exports = {
   handlerGetPremiumEvents,
   handlerHabilityRequerid,
   handlerGetEventByCompanyId,
+  handlerGetDisableEvents,
 };
