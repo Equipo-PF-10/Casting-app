@@ -1,6 +1,5 @@
 import styles from "./NavBarLateral.module.css";
 import {NavLink} from "react-router-dom";
-import {FiLogOut} from "react-icons/fi"
 import { CiLogout } from "react-icons/ci";
 import {useAuth0} from "@auth0/auth0-react";
 
@@ -17,7 +16,7 @@ const NavBarLateral=() => {
     homePath = "/home/talent";
     perfilPath = `/model/profile/${id}`;
     formPath = "/form/talent";
-    searchPath = `/model/search/${id}`;
+    searchPath = `/model/search/`;
 } else if (root === "company") {
     homePath = "/home/company";
     perfilPath = `/company/profile/${id}`;
@@ -165,8 +164,17 @@ const NavBarLateral=() => {
               <h4>Perfil</h4>
             </div>
           </NavLink>
+          <NavLink to="" className={styles.link}>
+            <div className={styles.icons2}>
+            <svg width="50" height="40" viewBox="0 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M104 96.25L88.3681 81.5951M80.1652 9.86829L79.8041 28.199C79.7525 30.714 81.455 34.0513 83.6218 35.5506L96.4162 44.6435C104.619 50.4474 103.278 57.5572 93.4756 60.4591L76.8118 65.3441C74.026 66.1663 71.0853 69.0199 70.363 71.6801L66.3906 85.8997C63.2436 97.1206 55.4018 98.233 48.9014 88.3663L39.8215 74.582C38.1706 72.067 34.2497 70.1807 31.1543 70.3258L13.9231 71.148C1.593 71.7284 -1.91514 65.0539 6.13296 56.2513L16.3479 45.1271C18.2567 43.0474 19.1337 39.1781 18.2567 36.5663L13.0461 20.9441C10.0022 11.7546 15.4708 6.67613 25.2214 9.67483L40.4406 14.3663C43.0201 15.1402 46.8894 14.6082 49.0562 13.1088L64.946 2.37156C73.5101 -3.43237 80.3716 -0.0467453 80.1652 9.86829Z" stroke="#4B31A1" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
+
+              <h4 style={{marginLeft: "-1.2rem"}}>Reviews</h4>
+            </div>
+          </NavLink>
           {chart()}
-          <NavLink to={perfilPath} className={styles.link}>
+          <NavLink className={styles.link}>
             <div className={styles.icons2} onClick={handlerClick}>
               <CiLogout className={styles.logoutIcono} />
               <h4 className={styles.salirH4}>Salir</h4>

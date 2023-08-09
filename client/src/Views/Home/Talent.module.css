@@ -23,6 +23,7 @@
     display: grid;
     width: 90%;
     grid-template-columns: 1% 98% 1%;
+    margin-top: -2rem;
 }
 
 .eventos button{
