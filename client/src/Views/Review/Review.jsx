@@ -14,7 +14,7 @@ const Review = () => {
 
   
   const {id, idEvent}=useParams()
-  console.log(idEvent);
+  //console.log(idEvent);
   
   let userReview=id;
   
@@ -40,9 +40,13 @@ const Review = () => {
 
   const CompanyReview = "http://localhost:3001/companies/reviews";
 
-  const company = "http://localhost:3001/companies";
+  const company="http://localhost:3001/companies";
+  
+  // Redireccion
 
-  //const navigate = useNavigate(company + `/hiredtalent/${userId}`);
+  const urlNavigate = userType === 'talent' ? '/home/talent' : '/home/company'
+
+  const navigate = useNavigate();
 
   // Estados
 
@@ -54,12 +58,13 @@ const Review = () => {
   //  text: "",
   //};
   let initialState = {
-    EventId: "",
-    TalentId: "",
+    EventId: idEvent,
+    CompanyId: id,
+    TalentId: id,
     rating: 0,
     text: "",
   };
-  console.log(initialState);
+  //console.log(initialState);
 
   const [input,setInput]=useState(initialState);
   //console.log(input);
@@ -106,8 +111,8 @@ const Review = () => {
         <FaStar
           key={index}
           size={80}
-          //onClick={() => setInput(({ ...input, rating: starValue }))}
-          onClick={() => console.log(starValue)}
+          onClick={() => setInput(({ ...input, rating: starValue }))}
+          //onClick={() => console.log(starValue)}
           color={starValue <= input.rating ? "#4B31A1" : "#324844"}
           style={{ cursor: "pointer" }}
         />
@@ -125,17 +130,18 @@ const Review = () => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-
+    
     const endpoint = userType === "talent" ? TalentReview : CompanyReview;
     const filteredData = filterInitialStateByUserType(userType);
     console.log(filteredData);
 
-    //try {
-    //  const response = await axios.post(endpoint, filteredData);
-    //  return response.data;
-    //} catch (error) {
-    //  console.log("Error:", error);
-    //}
+    try {
+      const response=await axios.post(endpoint,filteredData);
+      navigate(urlNavigate)
+      return response.data;
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
 
   const filterInitialStateByUserType = (userType) => {
@@ -144,7 +150,7 @@ const Review = () => {
     return Object.keys(initialState)
       .filter((key) => key !== excludedProperty)
       .reduce((obj, key) => {
-        obj[key] = initialState[key];
+        obj[key] = input[key];
         return obj;
       }, {});
   };
