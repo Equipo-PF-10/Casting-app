@@ -52,8 +52,8 @@ const handlerUpdateFormCompany = async (req, res) => {
       reviews,
       reviewsCount
     );
-
-    res.status(200).json(updateCompany);
+    
+    res.status(200).send("Se ha actualizado el perfil correctamente.") //json(updatedCompany);
   } catch (error) {
     res.status(400).json(error.message);
   }

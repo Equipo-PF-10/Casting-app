@@ -8,7 +8,7 @@ import Cloudinary from "../Cloudinary/Cloudinary"
 import NavBarLateral from "../NavBarLateral/NavBarLateral"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { getAllCompanies, get_company_by_id } from "../../redux/actions"
+import { getAllCompanies, get_company_by_id } from "../../redux/actions";
 
 const FormEmpresa = () => {
 
@@ -18,11 +18,11 @@ const FormEmpresa = () => {
 
     const dispatch = useDispatch();
     const miEmpresa = useSelector((state) => state.companyDetail);
-    console.log(miEmpresa);
+    // console.log(miEmpresa);
     const [loading, setLoading] = useState(true); // Bandera de carga
 
     const empresa = useSelector((state) => state.companyById);
-
+    
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -73,7 +73,7 @@ const FormEmpresa = () => {
 
 
     const handleChange = (event) => {
-        console.log(event.target);
+        // console.log(event.target);
         const {name, value} = event.target;
         setInput({...input, [name]: value})
         setError(validationEmpresas({...input, [name]: value}))
@@ -88,23 +88,22 @@ const FormEmpresa = () => {
       }, {});
 
     let messageUpdated = "Se ha actualizado el perfil correctamente.";  
-    
-    
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
-            console.log(filledFields);
+            // console.log(filledFields);
             const response = (await axios.patch(URL, filledFields)).data;
-            console.log("En actualizacion");
-            console.log(response);
+            // console.log("En actualizacion");
+            //console.log(response);
             if(response === messageUpdated){
                 mensaje_success_Toast();
-            }            
+            }           
             const emailToCompany = axios.post(`http://localhost:3001/email/editedPerfilCompany/${empresa.email}`)
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
             setInput(initialState)
         } catch (error) {
+            mensaje_error_Toast();
             console.log({error: error.message})
         }
     }   
@@ -135,13 +134,36 @@ const FormEmpresa = () => {
       });
     }
   };
+  let errorMessage = "Ha ocurrido un error al actualizar los datos de tu perfil.";
+  let currentToastId = null;
+  const mensaje_error_Toast = () => {
+    if (currentToastId) {
+      toast.update(currentToastId, {
+        render: errorMessage,
+        autoClose: 5000,
+      });
+    } else {
+      currentToastId = toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        toastId: "custom-toast-id",
+        style: {
+          width: "500px",
+        },
+      });
+    }
+  };
     
     return(
         <div>
-            <NavBarLateral/>
-            <div>
-                <ToastContainer />
-            </div>
+            <NavBarLateral/> 
+            <ToastContainer />
             <section className={Styles.section}>
                 <svg width="345" height="202" viewBox="0 0 345 202" fill="none" xmlns="http://www.w3.org/2000/svg" className={Styles.svg1}>
                 <path d="M276.775 -48.0724L345 -66L-57 -57.4216V202C17.4227 78.335 137.182 -11.3914 276.775 -48.0724Z" fill="#7E7193"/>

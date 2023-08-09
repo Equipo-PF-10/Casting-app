@@ -132,10 +132,7 @@ const EventForm = () => {
       if (response.id) {
         mensaje_success_Toast();
         dispatch(get_company_id(idUser))
-      } else {
-        //if (response.error.response.data.error === "Has alcanzado el límite de eventos que puedes crear con tu plan actual.")
-        mensaje_error_Toast();
-      }
+      } 
 
        if (Number(empresa.numberPosts) <= (Number(empresa.conditionPlan) )){
         axios.post(`http://localhost:3001/email/companyNewEvent/${empresa.email}`)
@@ -158,6 +155,7 @@ const EventForm = () => {
 
       setInput(initialState);
     } catch (error) {
+      mensaje_error_Toast();
       console.log({ error });
     }
   };

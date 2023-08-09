@@ -88,7 +88,8 @@ const talentsFromApi = async () => {
     );
     return users;
   } catch (error) {
-    throw new Error(error.message);
+    return(error.message);
+    //throw new Error(error.message);
   }
 };
 

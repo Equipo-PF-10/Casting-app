@@ -19,7 +19,7 @@ const profileCompany=() => {
   },[dispatch])
   
   const company=useSelector((state) => state.companyById)
-  console.log(company);
+  //console.log(company);
 
   return (
     <div className={style.fondo}>
