@@ -29,6 +29,7 @@ import HomeTalento from "./Views/Home/HomeTalento";
 import EventUpdate from "./Components/EventForm/EventUpdate";
 import FinishedEvents from "./Views/FinishedEvents/FinishedEvents";
 import Loader from "./Components/Preloader/preloader";
+import AboutUs from "./Views/AboutUs/AboutUs";
 
 function App() {
   return ( 
@@ -64,6 +65,7 @@ function App() {
         <Route path="/contact" element={<SendPersonalized/>} />
         <Route path="/admin" element={<Admin/>}/>
         <Route path="/report" element={<Report/>}/>
+        <Route path="/about" element={<AboutUs/>}/>
       </Routes>
     </>
   );
