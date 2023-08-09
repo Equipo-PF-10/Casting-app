@@ -47,8 +47,8 @@ emailRouter.post("/talentContacRefused/:email", handlerTalentContactRefused)
 // Ruta que envia email a Talent que hace sido vaneado.
 emailRouter.post("/talentVanished/:email", handlerTalentContactVanished)
 
-// Ruta que envia email a Talent que hace modificado su perfil.
-emailRouter.post("/editedPerfilTalent/:email", handlerEditedPerfilTalent)
+// Ruta que envia email a Talent que ha modificado su perfil.
+emailRouter.post("/editedPerfilTalent/:email", handlerEditedPerfilTalent)          //ok
 
 
 

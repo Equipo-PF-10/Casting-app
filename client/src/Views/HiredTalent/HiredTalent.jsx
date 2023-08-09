@@ -25,9 +25,12 @@ const HiredTalent = () => {
   }, [dispatch]);
 
   const hired = useSelector((state) => state.hiredByCompany);
-  //console.log(hired);
+  //console.log(hired[0].id);
 
   //console.log(id);
+
+  const idEvent=hired.length>0? hired.map((idEvents) => idEvents.id):null
+  //console.log(idEvent);
 
   return (
     <div className="containerGral">
@@ -62,7 +65,9 @@ const HiredTalent = () => {
                 <tbody>
                   {hired.length > 0 &&
                     hired?.map((event) =>
-                      event.Talents?.map((talent, index) => {
+                      //console.log(event)
+                      event.Applieds?.map((talentArray) =>
+                        talentArray.map((talent, index) => {
                         return (
                           <tr key={index}>
                             <td className="imageTd">
@@ -71,7 +76,6 @@ const HiredTalent = () => {
                             <td>{talent.name}</td>
                             <td>{talent.nationality}</td>
                             <td>{talent.hability.join(", ")}</td>
-                            {/*<td>id={talent.id}</td>*/}
                             <td className="containerStart">
                               <div className="favorite">
                                 <button
@@ -101,7 +105,9 @@ const HiredTalent = () => {
                             </td>
                             <td>
                               <div className="reseña">
-                                <Link to={`/company/review/${talent.id}`}>
+                                <Link
+                                  to={`/company/review/${talent.id}/${idEvent[index]}`}
+                                >
                                   {/*<Link to={`/company/review/`}>*/}
                                   Dar reseña
                                 </Link>
@@ -109,7 +115,7 @@ const HiredTalent = () => {
                             </td>
                           </tr>
                         );
-                      })
+                      }))
                     )}
                 </tbody>
               </table>

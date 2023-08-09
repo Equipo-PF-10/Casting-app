@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { update_plan } from "../../redux/actions";
 import axios from "axios";
 
+
 const PaypalPayments = (props) => {
   console.log(props.subs);
   const navigate = useNavigate();
