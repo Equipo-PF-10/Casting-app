@@ -337,7 +337,7 @@ const desbanUser = async (userType, id) => {
         dni: disabledTalent.dni,
         email: disabledTalent.email,
         password: disabledTalent.password,
-        available: disabledTalent.available,
+        available: true,
         dateComeback: disabledTalent.dateComeback,
         image: disabledTalent.image,
         portfolio: disabledTalent.portfolio,
@@ -371,7 +371,7 @@ const desbanUser = async (userType, id) => {
         name: disabledCompany.name,
         image: disabledCompany.logo,
         country: disabledCompany.country,
-        available: disabledCompany.available,
+        available: true,
         domain: disabledCompany.domain,
         descriptionShort: disabledCompany.descriptionShort,
         instagram: disabledCompany.instagram,
@@ -402,6 +402,21 @@ const desbanUser = async (userType, id) => {
   }
 };
 
+// Función controller para obtener todos los usuarios baneados (Talents o Companies).
+const getBannedUsers = async (userType) => {
+  try {
+    if (userType === "talents") {
+      return await DisableTalent.findAll();
+    } else if (userType === "companies") {
+      return await DisableCompany.findAll();
+    } else {
+      throw new Error("Tipo de usuario inválido. Usa 'talents' o 'companies.'");
+    }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getCompaniesByMonth,
   getUsersByMonth,
@@ -414,4 +429,5 @@ module.exports = {
   getByRange,
   banUser,
   desbanUser,
+  getBannedUsers,
 };

@@ -65,39 +65,13 @@ const getCompanyById = async (id) => {
 // Función controller que elimina a un empresa de la base de datos.
 const deleteCompanyById = async (id) => {
   try {
-    const companyToDelete = await Company.findByPk(id);
+    const company = await Company.findByPk(id);
+    if (!company) throw new Error("La empresa especificada no existe.");
 
-    if (!companyToDelete) {
-      throw new Error(`La empresa con ID ${id} no existe`);
-    }
+    await DisableCompany.create({ ...company.dataValues, available: false });
+    await company.destroy();
 
-    await DisableCompany.create({
-      id: companyToDelete.id,
-      name: companyToDelete.name,
-      logo: companyToDelete.image,
-      country: companyToDelete.country,
-      available: companyToDelete.available,
-      domain: companyToDelete.domain,
-      descriptionShort: companyToDelete.descriptionShort,
-      instagram: companyToDelete.instagram,
-      facebook: companyToDelete.facebook,
-      linkedin: companyToDelete.linkedin,
-      twitter: companyToDelete.twitter,
-      password: companyToDelete.password,
-      email: companyToDelete.email,
-      industryMain: companyToDelete.industryMain,
-      description: companyToDelete.description,
-      phoneNumber: companyToDelete.phoneNumber,
-      plan: companyToDelete.plan,
-      conditionPlan: companyToDelete.conditionPlan,
-      creationDate: companyToDelete.creationDate,
-      expirationDate: companyToDelete.expirationDate,
-      reviews: companyToDelete.reviews,
-      reviewsCount: companyToDelete.reviewsCount,
-    });
-    await companyToDelete.destroy();
-
-    return companyToDelete;
+    return company;
   } catch (error) {
     throw new Error(error.message);
   }

@@ -9,6 +9,7 @@ const {
   getByRange,
   banUser,
   desbanUser,
+  getBannedUsers,
   // getIncomes,
 } = require("../../controllers/admin/adminControllers");
 
@@ -149,6 +150,17 @@ const handlerToDesban = async (req, res) => {
   }
 };
 
+// Función para traer todos los usuarios baneados (Talents o Companies).
+const handlerGetBanUsers = async (req, res) => {
+  const { userType } = req.params;
+  try {
+    const bannedUsers = await getBannedUsers(userType);
+    res.status(200).json(bannedUsers);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   handlerGetPremiumCompanies,
   handlerGetUserByMonth,
@@ -161,4 +173,5 @@ module.exports = {
   handlerGetByMonthRange,
   handlerToBan,
   handlerToDesban,
+  handlerGetBanUsers,
 };
