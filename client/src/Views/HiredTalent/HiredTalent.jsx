@@ -30,7 +30,7 @@ const HiredTalent = () => {
   //console.log(id);
 
   const idEvent=hired.length>0? hired.map((idEvents) => idEvents.id):null
-  console.log(idEvent);
+  //console.log(idEvent);
 
   return (
     <div className="containerGral">
