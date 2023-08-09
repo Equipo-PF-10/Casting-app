@@ -24,7 +24,7 @@ const Card = (props) => {
       onClick={() => handleClick(id)}
     >
       <div className={style.imagen}>
-        <img src={image} alt="foto de perfil" />
+        <img style={{width:"130px", marginTop:"10px"}} src={image} alt="foto de perfil" />
       </div>
       <div>
         <h4>{name}</h4>
