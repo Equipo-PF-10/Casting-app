@@ -29,10 +29,10 @@ const emailRouter = Router();
 // ? ////////////////////////   EMAILS TALENT   //////////////////////////////////////////////////////
 
 
-// Ruta que envia email al resgistrase un nuevo Talent.
-emailRouter.post("/registerTalent/:email", handlerRegisterTalent)
+// Ruta que envia email al resgistrase un nuevo Talent.                   
+emailRouter.post("/registerTalent/:email", handlerRegisterTalent)            //?ok
  
-// Ruta que envia email a Talento por su postulacion.                        //ok
+// Ruta que envia email a Talento por su postulacion.                        //?ok
 emailRouter.post("/postulationEvent/:email", handlerPostulation) 
 
 // Ruta que envia email a Talent que hace sido contactado.                     
@@ -41,14 +41,14 @@ emailRouter.post("/talentContac/:email", handlerTalentContact)
 // Ruta que envia email a Talent que hace sido contratado.
 emailRouter.post("/talenContacHired/:email", handlerTalentContactHired)
 
-// Ruta que envia email a Talent que hace sido rechazado.                      //ok
+// Ruta que envia email a Talent que hace sido rechazado.                      
 emailRouter.post("/talentContacRefused/:email", handlerTalentContactRefused)
 
 // Ruta que envia email a Talent que hace sido vaneado.
 emailRouter.post("/talentVanished/:email", handlerTalentContactVanished)
 
 // Ruta que envia email a Talent que ha modificado su perfil.
-emailRouter.post("/editedPerfilTalent/:email", handlerEditedPerfilTalent)          //ok
+emailRouter.post("/editedPerfilTalent/:email", handlerEditedPerfilTalent)          //?ok
 
 
 
@@ -56,37 +56,37 @@ emailRouter.post("/editedPerfilTalent/:email", handlerEditedPerfilTalent)       
 
 
 // Ruta que envia email al resgistrase una nueva Company.
-emailRouter.post("/registerCompany/:email", handlerRegisterCompany)
+emailRouter.post("/registerCompany/:email", handlerRegisterCompany)                  //?ok
 
-// Ruta que envia email a Company por el registro de un nuevo Event.
+// Ruta que envia email a Company por el registro de un nuevo Event.                 //?ok
 emailRouter.post("/companyNewEvent/:email", handlerCompanyNewEvent)
 
-// Ruta que envia email a Company por edicion de un  Event.                           //ok
+// Ruta que envia email a Company por edicion de un  Event.                           
 emailRouter.post("/companyEditedEvent/:email", handlerCompanyEditedEvent)
 
-// Ruta que envia email a Company por nuevo postulante.                                //ok
+// Ruta que envia email a Company por nuevo postulante.                              //?ok
 emailRouter.post("/newPostulante/:email", handlerNewPostulant)
 
  // Ruta que envia email a Company dando aviso de que en 15 días vence su suscripción.
 emailRouter.post("/expirationSuscription/:email", handlerExpirationSuscription)
 
-// Ruta que envia email a Company de que se han agotado sus publicaciones.             //ok
+// Ruta que envia email a Company de que se han agotado sus publicaciones.           //?ok
 emailRouter.post("/stopAdd/:email", handlerStopAdd)
 
-// Ruta que envia email a Company de que ya no puede publicar
+// Ruta que envia email a Company de que ya no puede publicar                       //?ok
 emailRouter.post("/stop/:email", handlerStop)
 
  // Ruta que envia email a Company dando aviso que se suscribió al plan free.
- emailRouter.post("/suscriptionFree/:email", handlerSuscriptionFree)              //ok
+ emailRouter.post("/suscriptionFree/:email", handlerSuscriptionFree)                //?ok
 
- // Ruta que envia email a Company dando aviso que se suscribió al plan free.
- emailRouter.post("/suscriptionPro/:email", handlerSuscriptionPro)              //ok
+ // Ruta que envia email a Company dando aviso que se suscribió al plan Pro.
+ emailRouter.post("/suscriptionPro/:email", handlerSuscriptionPro)                  //?ok
 
- // Ruta que envia email a Company dando aviso que se suscribió al plan free.
- emailRouter.post("/suscriptionPremium/:email", handlerSuscriptionPremium)             //ok
+ // Ruta que envia email a Company dando aviso que se suscribió al plan Premium.
+ emailRouter.post("/suscriptionPremium/:email", handlerSuscriptionPremium)          //?ok
 
 // Ruta que envia email a Company dando aviso de que ha editado su perfil.
-emailRouter.post("/editedPerfilCompany/:email", handlerEditedPerfilCompany)        //ok
+emailRouter.post("/editedPerfilCompany/:email", handlerEditedPerfilCompany)        //?ok
 
 // Ruta que envia email a Company que hace sido vaneada.
 emailRouter.post("/companyVanished/:email", handlerCompanyVanished)

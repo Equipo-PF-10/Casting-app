@@ -65,6 +65,11 @@ const Landing = () => {
             }else{
               const register = await axios.post("http://localhost:3001/talents/register", {email,name,image})
               localStorage.setItem("user_id", `${register.data.id}`);
+              
+              const emailToTalent = axios.post(`http://localhost:3001/email/registerTalent/${email}`) 
+                .then((resp) => console.log(resp.data))
+                .catch((error) => console.log(error));
+              
               navigate("/home/talent");
             }
           }
@@ -125,6 +130,11 @@ const Landing = () => {
               const register=await axios.post("http://localhost:3001/companies/register",{email,name,image,})
               console.log(register.data.id);
               localStorage.setItem("user_id", `${register.data.id}`);
+
+              const emailToCompany = axios.post(`http://localhost:3001/email/registerCompany/${email}`)
+                .then((resp) => console.log(resp.data))
+                .catch((error) => console.log(error));
+
               navigate("/home/company");
             }
           }
