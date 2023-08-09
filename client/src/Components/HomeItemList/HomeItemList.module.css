@@ -1,7 +1,11 @@
 .container {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  /*justify-content: center;*/
+  justify-content: center;
+  align-items: center; */
+  display: grid;
+  grid-template-rows: 40% 60%;
+  justify-content: center;
   align-items: center;
   margin-top: 6rem;
   height: 27rem;
@@ -27,16 +31,26 @@
   text-decoration: underline;
 }
 .head {
+  /* background-color: red; */
   display: flex;
+  flex-direction: column;
   text-align: center;
   align-items: center;
   justify-content: center;
+  height: 10vh;
+  margin-bottom: 50px;
 }
 .container hr {
   color: var(--color-primario);
   width: 35vh;
   margin: auto;
   border-top: 4px solid;
+}
+
+.cards {
+  /* background-color: blue; */
+  height: 32vh;
+  margin-bottom: 50px;
 }
 
 /* width */

@@ -3,10 +3,12 @@
     transition: 0.5s;
     height: 30%;
     height:15vh;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; */
+    display: grid;
+    grid-template-columns: 55% 25% 20%;
     border-radius: 10px;
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.25);
@@ -18,7 +20,7 @@
     /* background-color: blue; */
     /*width: 75vh;*/
     /*height: 1vh;*/
-    margin-left: 200px;
+    /* margin-left: 180px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,11 +35,26 @@
     padding: 15px;
 }*/
 .options {
-    width: 25vh;
+    /* background-color: yellow; */
+    width: 20vh;
     border-left: 3px solid rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.postulantes {
+    /* background-color: red; */
+    width: 25vh;
+    margin-left: 15px;
+    height: 10vh;
+    border-left: 3px solid rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.postulantesh5 {
+    padding: 20px 0px 0px 12px;
 }
 
 .options button {
