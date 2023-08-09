@@ -73,10 +73,9 @@ const navigate = useNavigate();
 
 
     const handleChange = (event) => {
-        console.log(event.target.value);
+
         const {name, value} = event.target;
         setInput({...input, [name]: value})
-        setInput({...input, image: imageURL})
         setError(validationEmpresas({...input, [name]: value}))
     }
 
@@ -92,8 +91,9 @@ const navigate = useNavigate();
     const hanldeSubmit = async(event) => {
         event.preventDefault();
         try {
+          console.log(input)
             console.log(filledFields);
-            const response = (await axios.patch(URL, input)).data;
+            const response = (await axios.patch(URL, filledFields)).data;
             // console.log("En actualizacion");
             //console.log(response);
             if(response === messageUpdated){
