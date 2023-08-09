@@ -46,31 +46,29 @@ const Detail = (props) => {
     dispatch(delete_postulant_by_id(id_event, id_talent));
     mensaje_success_Toast();
     setModalRefused(false);
-    // const emailToCompany = axios
-    // .post(
-    //   "http://localhost:3001/email/talentContacRefused/pedrocavataio@gmail.com"
-    //   )
-    //   .then((resp) => console.log(resp.data))
-    //   .catch((error) => console.log(error));
-    // };
+  
     const emailToTalent = axios.post(`http://localhost:3001/email/talentContacRefused/${talent.email}`)
     .then((resp) => console.log(resp.data))
     .catch((error) => console.log(error));
+
+    const contacRefusedForCompany = axios.post(`http://localhost:3001/email/talentContacRefusedForCompany/${localStorage.getItem("user_email")}`)
+    .then((resp) => console.log(resp.data))
+    .catch((error) => console.log(error));
   };
+    
 
     const onClickSendEmail = () => {
       //postear al usuario como contactado en el arreglo de contactados y eliminarla de la lista de postulantes
       dispatch(add_postulant_like_contacted(talent?.id, id_company, id_event))
 
-      // const close = "isClosed";
-      // dispatch(close_modal_search_compnay(close));
-      // const emailToCompany = axios.post("http://localhost:3001/email/talentContac/pedrocavataio@gmail.com")
-      // .then((resp) => console.log(resp.data))
-      // .catch((error) => console.log(error))
-
+    
       const emailToTalent2 = axios.post(`http://localhost:3001/email/talentContac/${talent.email}`)
       .then((resp) => console.log(resp.data))
       .catch((error) => console.log(error));
+
+      const contactTalentForCompany = axios.post(`http://localhost:3001/email/talentContacForCompany/${localStorage.getItem("user_email")}`)
+    .then((resp) => console.log(resp.data))
+    .catch((error) => console.log(error));
       
       //Agregar mensaje por toastify
       mensaje_success_Toast_send_mail();

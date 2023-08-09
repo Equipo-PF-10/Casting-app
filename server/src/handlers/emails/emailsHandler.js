@@ -225,7 +225,7 @@ const  handlerTalentContactHired = async (req, res) => {
         const result = await transporter.sendMail({
             from: "henry38b10@gmail.com",
             to:email,
-            subject:"Usuario Suspendido!!.",
+            subject:"Felicidades has sido contratado para el evento!!.",
             text:"Felicitaciones, has sido contratado para el puesto. ¡Esperamos que tengas una experiencia laboral exitosa!. Gracias.\n\n    Atentamente,    \n    El equipo de CastingApp",   
         },(err, info) => {
         })
@@ -320,6 +320,76 @@ const handlerCompanyEditedEvent = async (req, res) => {
     }    
 }
 
+const handlerContacRefusedForCompany = async (req, res) => {
+    const { email } = req.params
+    console.log(email);
+    try {
+        const result = await transporter.sendMail({
+            from: "henry38b10@gmail.com",
+            to:email,
+            subject:"Has rechazdo a un postulante!!..",
+            text:"Has rechazado a un postulante para tu evento!.  \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
+        },(err, info) => {
+        })
+         return res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
+    } catch (error) {
+        console.log(error.message)
+    }    
+}
+
+
+const handlerTalentContactForCompany = async (req, res) => {
+    const { email } = req.params
+    console.log(email);
+    try {
+        const result = await transporter.sendMail({
+            from: "henry38b10@gmail.com",
+            to:email,
+            subject:"¡Felicidades! Has seleccionado a un Talento.!!..",
+            text:"Nos complace informarte que has elegido a un postulante para participar en tu evento. ¡Enhorabuena por esta  oportunidad!!.  \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
+        },(err, info) => {
+        })
+         return res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
+    } catch (error) {
+        console.log(error.message)
+    }    
+}
+
+const  handlerContacHiredForCompany = async (req, res) => {
+    const { email } = req.params
+    console.log(email);
+    try {
+        const result = await transporter.sendMail({
+            from: "henry38b10@gmail.com",
+            to:email,
+            subject:"Felicidades Has cantratado a un talento!!.",
+            text:"Felicitaciones, has contratado a un talento para tu evento!!. ¡Esperamos que tengas una experiencia laboral exitosa!. Gracias.\n\n    Atentamente,    \n    El equipo de CastingApp",   
+        },(err, info) => {
+        })
+         return res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
+    } catch (error) {
+        console.log(error.message)
+    }    
+}
+
+const   handlerEventFinish = async (req, res) => {
+    const { email } = req.params
+    console.log(email);
+    try {
+        const result = await transporter.sendMail({
+            from: "henry38b10@gmail.com",
+            to:email,
+            subject:"Tu evento a finalizado!!.",
+            text:"Ha finalizado tu evento!!. ¡Esperamos que hayas tenido una experiencia exitosa!. Gracias.\n\n    Atentamente,    \n    El equipo de CastingApp",   
+        },(err, info) => {
+        })
+         return res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
+    } catch (error) {
+        console.log(error.message)
+    }    
+}
+
+
 
   module.exports = { handlerRegisterTalent,
                      handlerRegisterCompany,
@@ -339,5 +409,9 @@ const handlerCompanyEditedEvent = async (req, res) => {
                      handlerSuscriptionPro,
                      handlerSuscriptionPremium,
                      handlerStop,
-                     handlerCompanyEditedEvent
+                     handlerCompanyEditedEvent,
+                     handlerContacRefusedForCompany,
+                     handlerTalentContactForCompany,
+                     handlerContacHiredForCompany,
+                     handlerEventFinish
                     };
