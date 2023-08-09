@@ -20,15 +20,21 @@ const EventForm = () => {
   const company = `http://localhost:3001/companies/${idUser}`;
   const empresa = useSelector((state) => state.companyById);
 
-  //console.log(empresa);
+  const getCurrentDate = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
 
   useEffect(() => {
     dispatch(get_company_id(idUser));
-  }, [dispatch]);
+  }, [dispatch, idUser]);
 
   const initialState = {
     name: "",
-    date: "",
+    date:  getCurrentDate(),
     ubication: "",
     image: imageURl,
     shortDescription: "",
@@ -270,6 +276,7 @@ const EventForm = () => {
                     type="date"
                     name="date"
                     value={input.date}
+                    min={getCurrentDate()}
                     onChange={handleChange}
                   />
                 </article>
@@ -312,7 +319,7 @@ const EventForm = () => {
                 </article>
                 <article className={styles.coolinput}>
                   <label htmlFor="num" className={styles.text}>
-                    Número telefónico
+                    Número de contacto
                   </label>
                   <input
                     type="text"
@@ -330,7 +337,7 @@ const EventForm = () => {
               <div>
                 <article className={styles.coolinput}>
                   <label htmlFor="email" className={styles.text}>
-                    Email
+                    Email de contacto
                   </label>
                   <input
                     type="text"

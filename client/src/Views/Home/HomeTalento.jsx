@@ -1,6 +1,5 @@
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import Styles from "./Talent.module.css";
-import LogoutButton from "../../Components/LogoutButton/LogoutButton";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import {useState, useEffect} from "react";
@@ -251,7 +250,7 @@ const HomeTalento = () => {
         <div className={Styles.div}>
             <NavBarLateral/>
             <section className={Styles.btnCont}>
-                <LogoutButton/>
+
             </section>
             <section className={Styles.section}>
                 <article className={Styles.container}>     
