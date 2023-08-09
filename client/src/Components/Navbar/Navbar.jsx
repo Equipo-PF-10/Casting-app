@@ -10,9 +10,7 @@ function Navbar() {
   return (
     <nav>
       <section className={style.logoContainer}>
-        <Link to={"/"}>
           <img src="/Logo con Letras.svg" alt="" className={style.imgLogo} />
-        </Link>
       </section>
       <section className={style.buttonsContainer}>
         <div className={style.containerButtonNav}>

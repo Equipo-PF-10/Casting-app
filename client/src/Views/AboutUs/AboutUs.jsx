@@ -17,8 +17,8 @@ const AboutUs = () => {
   return (
     <div className={style.containerGral}>
       <Navbar />
-          <div className={style.containerCards}>
-              <h2 className={style.titulo}>Casting App Team</h2>
+      <div className={style.containerCards}>
+        <h2 className={style.titulo}>Casting App Team</h2>
         <div className={style.top}>
           {/*julio */}
           <div className={style.cardClient}>
@@ -140,28 +140,6 @@ const AboutUs = () => {
           </div>
         </div>
         <div className={style.bottom}>
-          {/*jesus*/}
-          <div className={style.cardClient}>
-            <div className={style.userPicture}>
-              <img src={jesus} alt="Jesús Re" className={style.fotoPerfil} />
-            </div>
-            <p className={style.name}>
-              <h3>Jesús Re</h3>
-              <span>Fullstack web developer</span>
-            </p>
-            <div className={style.social}>
-              <div>
-                <a className={style.link} href="www.linkedin.com/in/jesus-re">
-                  <BsLinkedin className={style.tooltip} />
-                </a>
-              </div>
-              <div>
-                <a className={style.link} href="https://github.com/jesusre890">
-                  <BsGithub className={style.tooltip} />
-                </a>
-              </div>
-            </div>
-          </div>
           {/*pedro*/}
           <div className={style.cardClient}>
             <div className={style.userPicture}>
@@ -243,6 +221,31 @@ const AboutUs = () => {
               </div>
               <div>
                 <a className={style.link} href="https://github.com/agustinnnv">
+                  <BsGithub className={style.tooltip} />
+                </a>
+              </div>
+            </div>
+          </div>
+          {/*jesus*/}
+          <div className={style.cardClient}>
+            <div className={style.userPicture}>
+              <img src={jesus} alt="Jesús Re" className={style.fotoPerfil} />
+            </div>
+            <p className={style.name}>
+              <h3>Jesús Re</h3>
+              <span>Fullstack web developer</span>
+            </p>
+            <div className={style.social}>
+              <div>
+                <a
+                  className={style.link}
+                  href="https://www.linkedin.com/in/jes%C3%BAs-re-1a11aa1a5/"
+                >
+                  <BsLinkedin className={style.tooltip} />
+                </a>
+              </div>
+              <div>
+                <a className={style.link} href="https://github.com/jesusre890">
                   <BsGithub className={style.tooltip} />
                 </a>
               </div>
