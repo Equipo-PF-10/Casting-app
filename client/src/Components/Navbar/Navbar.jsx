@@ -1,3 +1,4 @@
+import AboutUs from "../../Views/AboutUs/AboutUs";
 import LoginButton from "../LoginButton/LoginButton";
 import LogoutButton from "../LogoutButton/LogoutButton";
 //import './NavbarModule.css'
@@ -28,7 +29,7 @@ function Navbar() {
             </a>
           </button>
           <button className={style.buttonNosotros}>
-            <a href="#nosotros" className={style.buttonNav}>
+            <a href="/about" className={style.buttonNav}>
               Nosotros
             </a>
           </button>
