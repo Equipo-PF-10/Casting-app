@@ -3,7 +3,7 @@ const { Company } = require("../../db");
 const updateCompany = async (
   id,
   name,
-  logo,
+  image,
   country,
   available,
   domain,
@@ -27,7 +27,7 @@ const updateCompany = async (
   const [rowsUpdated] = await Company.update(
     {
       name,
-      logo,
+      image,
       country,
       available,
       domain,
