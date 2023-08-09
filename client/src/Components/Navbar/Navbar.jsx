@@ -17,22 +17,22 @@ function Navbar() {
         <div className={style.containerButtonNav}>
           <LoginButton className={style.buttonNav} />
           {/* <button className='button-login'><a href="/login">Ingresa</a></button> */}
-          <button>
+          <button className={style.buttonBlog}>
             <a className={style.buttonNav} href="#servicios">
               Servicios
             </a>
           </button>
-          <button className="button-blog">
+          <button className={style.buttonBlog}>
             <a href="#blog" className={style.buttonNav}>
-              Blog
+              Tips
             </a>
           </button>
-          <button className="button-nosotros">
+          <button className={style.buttonNosotros}>
             <a href="#nosotros" className={style.buttonNav}>
               Nosotros
             </a>
           </button>
-          <button className="button-contacto">
+          <button className={style.buttonContacto}>
             <a href="#contacto" className={style.buttonNav}>
               Contacto
             </a>
