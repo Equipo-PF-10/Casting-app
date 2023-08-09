@@ -9,6 +9,7 @@ const {
   handlerHabilityRequerid,
   handlerGetEventByCompanyId,
   handlerGetDisableEvents,
+  handlerGetEventByName
 } = require("../../handlers/events/eventsHandler");
 
 const eventRouter = Router();
@@ -24,6 +25,9 @@ eventRouter.get("/disable", handlerGetDisableEvents);
 
 //? Esta ruta busca un evento por su id.
 eventRouter.get("/eventid/:id", handlerGetEventById);
+//? Esta ruta busca un evento por su name.
+
+eventRouter.get("/eventsName/:name", handlerGetEventByName);
 
 //? Esta ruta busca un evento por ID de la empresa.
 eventRouter.get("/:companyId", handlerGetEventByCompanyId);
