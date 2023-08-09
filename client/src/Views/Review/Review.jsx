@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import Styles from "./Review.module.css";
 import axios from "axios";
 import Validation from "./validation";
-import {useNavigate} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 const Review = () => {
@@ -12,17 +12,21 @@ const Review = () => {
 
   const userType = localStorage.getItem("userType");
 
-  let userReview = "";
+  
+  const {id, idEvent}=useParams()
+  console.log(idEvent);
+  
+  let userReview=id;
+  
+  //if (userType === "talent") {
+  //  userReview = userId;
+  //} else {
+  //  userReview = userId;
+  //}
 
-    if(userType === "talent"){
-      userReview = userId;
-  } else {
-      userReview  = userId;
-  }
-  
-  const dispatch=useDispatch()
-  
-  const reviewTalents = (state) => state.reviewTalents
+  //const dispatch=useDispatch()
+
+  //const reviewTalents = (state) => state.reviewTalents
 
   // Rutas Talentos
 
@@ -34,99 +38,116 @@ const Review = () => {
 
   const URLCompany = `http://localhost:3001/companies/${userReview}`;
 
-  const CompanyReview="http://localhost:3001/companies/reviews";
+  const CompanyReview = "http://localhost:3001/companies/reviews";
 
-  const company="http://localhost:3001/companies";
-  
-  const navigate = useNavigate(company + `/hiredtalent/${userId}`);
+  const company = "http://localhost:3001/companies";
 
-    // Estados
-  
-      let initialState = {
-        text: "",
-        rating: 0,
-        CompanyId: "",
-        TalentId: "",
-        EventId: ""
-    }
+  //const navigate = useNavigate(company + `/hiredtalent/${userId}`);
 
+  // Estados
 
-  const [input, setInput] = useState(initialState);
+  //let initialState = {
+  //  CompanyId: "",
+  //  EventId: "",
+  //  TalentId: "",
+  //  rating: 0,
+  //  text: "",
+  //};
+  let initialState = {
+    EventId: "",
+    TalentId: "",
+    rating: 0,
+    text: "",
+  };
+  console.log(initialState);
 
-  //const [error, setError] = useState({});
+  const [input,setInput]=useState(initialState);
+  //console.log(input);
 
-    //userName
+  const [error, setError] = useState({});
 
-    let userName = "";
+  //userName
 
-    const getUserData = async () => {
-        try {
-          if (userType === "talent") {
-            const response = await axios.get(URLCompany);
-            if (response) {
-              userName = response.data.name;
-            }
-          } else {
-            const response = await axios.get(URLTalent);
-            if (response) {
-              userName = response.data.name;
-            }
-          }
-        } catch (error) {
-          console.log(error);
+  let userName = "";
+
+  const getUserData = async () => {
+    try {
+      if (userType === "talent") {
+        const response = await axios.get(URLCompany);
+        if (response) {
+          userName = response.data.name;
         }
-      };
-
-      (async () => {await getUserData()})();
-
-    // Estrellas
-
-    const stars = Array(5).fill(null).map((_star, index) => {
-        const starValue = index + 1;
-        return (
-          <FaStar
-            key={index}
-            size={80}
-            onClick={() => setInput((input) => ({ ...input, rating: starValue }))}
-            color={starValue <= input.rating ? '#4B31A1' : '#324844'}
-            style={{ cursor: 'pointer' }}
-          />
-        );
-      });
-
-    // Handlers
-
-    const handlerChage = (event) => {
-        const {name, value} = event.target;
-        setInput({...input, [name]: value})
-        setError(Validation({ ...input, [name]: value }))
-    }
-
-    const submitHandler = async (event) => {
-      event.preventDefault();
-  
-      const endpoint = userType === "talent" ? TalentReview : CompanyReview;
-      const filteredData = filterInitialStateByUserType(userType);
-  
-      try {
-          const response = await axios.post(endpoint, filteredData);
-          return response.data;
-
-      } catch (error) {
-          console.log("Error:", error);
+      } else {
+        const response=await axios.get(URLTalent);
+        console.log(response.data);
+        if (response) {
+          userName = response.data.name;
+        }
       }
-  }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //(async () => {await getUserData()})();
+  useEffect(() => {
+    getUserData()
+  },[]);
   
+
+  // Estrellas
+
+  const stars = Array(5)
+    .fill(null)
+    .map((_star, index) => {
+      const starValue=index+1;
+      //console.log(starValue);
+      return (
+        <FaStar
+          key={index}
+          size={80}
+          //onClick={() => setInput(({ ...input, rating: starValue }))}
+          onClick={() => console.log(starValue)}
+          color={starValue <= input.rating ? "#4B31A1" : "#324844"}
+          style={{ cursor: "pointer" }}
+        />
+      );
+    });
+
+  // Handlers
+
+  const handlerChage=(event) => {
+    const {name,value}=event.target;
+    //console.log(name, value);
+    setInput({ ...input, [name]: value });
+    setError(Validation({ ...input, [name]: value }));
+  };
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+
+    const endpoint = userType === "talent" ? TalentReview : CompanyReview;
+    const filteredData = filterInitialStateByUserType(userType);
+    console.log(filteredData);
+
+    //try {
+    //  const response = await axios.post(endpoint, filteredData);
+    //  return response.data;
+    //} catch (error) {
+    //  console.log("Error:", error);
+    //}
+  };
+
   const filterInitialStateByUserType = (userType) => {
-      const excludedProperty = userType === "talent" ? 'TalentId' : 'CompanyId';
-  
-      return Object.keys(initialState)
-          .filter(key => key !== excludedProperty)
-          .reduce((obj, key) => {
-              obj[key] = initialState[key];
-              return obj;
-          }, {});
-  }
+    const excludedProperty = userType === "talent" ? "TalentId" : "CompanyId";
+
+    return Object.keys(initialState)
+      .filter((key) => key !== excludedProperty)
+      .reduce((obj, key) => {
+        obj[key] = initialState[key];
+        return obj;
+      }, {});
+  };
 
   if (userType === "talent") {
     input.TalentId = userId;

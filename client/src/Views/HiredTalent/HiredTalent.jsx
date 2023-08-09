@@ -25,9 +25,12 @@ const HiredTalent = () => {
   }, [dispatch]);
 
   const hired = useSelector((state) => state.hiredByCompany);
-  //console.log(hired);
+  //console.log(hired[0].id);
 
   //console.log(id);
+
+  const idEvent=hired.length>0? hired.map((idEvents) => idEvents.id):null
+  console.log(idEvent);
 
   return (
     <div className="containerGral">
@@ -102,7 +105,9 @@ const HiredTalent = () => {
                             </td>
                             <td>
                               <div className="reseña">
-                                <Link to={`/company/review/${talent.id}`}>
+                                <Link
+                                  to={`/company/review/${talent.id}/${idEvent[index]}`}
+                                >
                                   {/*<Link to={`/company/review/`}>*/}
                                   Dar reseña
                                 </Link>
