@@ -14,6 +14,12 @@
   /* margin-left: 200px; */
   /*background-color: red;*/
 }
+.container h1 {
+  padding-top: 10px;
+}
+.container h4 {
+  padding-top: 30px;
+}
 .conatiner hr {
   color: var(--color-primario);
   width: 25vh;

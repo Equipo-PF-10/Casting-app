@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./HomeCompany.module.css";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import SearchBarCompany from "../../Components/HomeCompanyComponents/SearchBarCompany";
@@ -13,6 +13,7 @@ import {
   get_all_postulants_contacted_by_id,
   clear_message_plan_updated,
   message_hired_or_refused_talents,
+  get_all_postulations,
 } from "../../redux/actions";
 import HomeItemList from "../../Components/HomeItemList/HomeItemList";
 import HomeContactos from "../../Components/HomeCompanyComponents/HomeContactados/HomeContactos";
@@ -23,22 +24,24 @@ export default function HomeCompany() {
   const dispatch = useDispatch();
   const id_company = localStorage.getItem("user_id");
   const messagePlanUpdated = useSelector((state) => state.messagePlanUpdated);
-  const eventDetail=useSelector((state) => state.eventDetail);
+  const eventDetail = useSelector((state) => state.eventDetail);
   const allPostulantsContacted = useSelector((state) => state.allPostulantsContacted);
   const allFavoritePostulants = useSelector((state) => state.allFavoritePostulants);
   const allFavoritePostulantsFiltered = useSelector((state) => state.allFavoritePostulantsFiltered);
   const hiredTalents = useSelector((state) => state.hiredTalents);
   const message_hired_or_refused = useSelector((state) => state.hiredOrRefusedMessage);
-
+  
   const handleDelete = (id) => {
     dispatch(close_event_by_id(id, id_company));
     dispatch(get_event_by_id(id_company));
   };
-
+  
   //Trae todos los eventos creados
+  //Obtener todos los postulantes en base al id del evento
   useEffect(() => {
     dispatch(get_event_by_id(id_company));
   }, [dispatch]);
+  
 
   //Trae todos los talentos favoritos
   useEffect(() => {
@@ -46,10 +49,15 @@ export default function HomeCompany() {
   }, [dispatch]);
 
   //Traer todos los talentos contactos
-  
-    useEffect(() => {
-        dispatch(get_all_postulants_contacted_by_id(id_company));
-    },[dispatch])
+  useEffect(() => {
+      dispatch(get_all_postulants_contacted_by_id(id_company));
+  },[dispatch])
+
+  // if(postulantes.length > 0){
+  //   for(let i=0; i < postulantes.length ; i++){
+  //     setNumberPostulations(numberPostulations ++);
+  //   }
+  // }
   
   
   let message_success_toastify = "¡Se ha actualizado su plan con éxito!";

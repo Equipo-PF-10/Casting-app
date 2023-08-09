@@ -29,7 +29,7 @@ const HomeItemList = (props) => {
     <div className={styles.container}>
       <div className={styles.head}>
         <h3>Postulantes Favoritos</h3>
-      </div>
+      
       <hr />
       <div className={styles.divisor}>
         <div className={styles.searchBarContainer}>
@@ -47,6 +47,7 @@ const HomeItemList = (props) => {
           >
             Buscar
           </button>
+        </div>
         </div>
         {/*BOTON RECARGAR*/}
         {/*<div>
@@ -74,7 +75,7 @@ const HomeItemList = (props) => {
           </button>
         </div>*/}
       </div>
-      {/* <h1 className={styles.text}>{props.title}</h1> */}
+      <div className={styles.cards}>
       {props.allFavoritePostulants.length === 0 &&
       props.allFavoritePostulantsFiltered.length === 0 ? (
         <h4>
@@ -90,13 +91,7 @@ const HomeItemList = (props) => {
           <HomeItem talent={talent} id_company={props.id_company} />
         ))
       )}
-
-      {/* <HomeItem title="Title" />
-      <HomeItem title="Title" />
-      <HomeItem title="Title" />
-      <HomeItem title="Title" />
-      <HomeItem title="Title" />
-      <HomeItem title="Title" /> */}
+      </div>
     </div>
   );
 };
