@@ -12,7 +12,7 @@ const EventUpdate = () => {
 
     const {eventId} = useParams();
 
-    const URL = `http://localhost:3001/events/${eventId}`;
+    const URL = `https://deploy-sprint-2-backend.onrender.com/events/${eventId}`;
   
     const idUser = localStorage.getItem("user_id");
     
@@ -122,7 +122,7 @@ const EventUpdate = () => {
         await axios.put(URL, filledFields)
 
         //email para enviar cuando se edite el evento
-        // const emailToCompany = axios.post(`http://localhost:3001/email/handlerCompanyEditedEvent/${empresa.email}`)
+        // const emailToCompany = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/handlerCompanyEditedEvent/${empresa.email}`)
         // .then((resp) => console.log(resp.data))
         // .catch((error) => console.log(error));
 

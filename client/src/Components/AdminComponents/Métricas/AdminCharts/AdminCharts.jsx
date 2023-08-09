@@ -137,19 +137,19 @@ const AdminCharts = () => {
     }
 
     useEffect(() => {
-        axios('http://localhost:3001/admin/companies/posts').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/companies/posts').then(({ data }) => {
             setcompaniesPostsData(data);
         })
-        axios('http://localhost:3001/admin/companies/premium/1').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/companies/premium/1').then(({ data }) => {
             setProPlanData(data);
         })
-        axios('http://localhost:3001/admin/companies/basico/1').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/companies/basico/1').then(({ data }) => {
             setPremiumPlanData(data);
         })
-        axios('http://localhost:3001/admin/companies/prueba-gratis/1').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/companies/prueba-gratis/1').then(({ data }) => {
             setFreePlanData(data);
         })
-        axios('http://localhost:3001/admin/users/talents/1/12').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/users/talents/1/12').then(({ data }) => {
             setTotalTalentsData(data);
             setTotalTalentsDataRefactorization([{
                 id: 1,
@@ -157,7 +157,7 @@ const AdminCharts = () => {
                 data: data.length
             }])
         })
-        axios('http://localhost:3001/admin/users/companies/1/12').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/users/companies/1/12').then(({ data }) => {
             setTotalCompaniesData(data);
             setTotalCompaniesDataRefactorization([{
                 id: 1,
@@ -165,16 +165,16 @@ const AdminCharts = () => {
                 data: data.length
             }])
         })
-        axios('http://localhost:3001/admin/users/talents/male').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/users/talents/male').then(({ data }) => {
             setMaleTalentsData(data);
         })
-        axios('http://localhost:3001/admin/users/talents/female').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/users/talents/female').then(({ data }) => {
             setFemaleTalentsData(data);
         })
-        axios('http://localhost:3001/admin/users/available/talents').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/users/available/talents').then(({ data }) => {
             setAvailableTalentsData(data);
         })
-        axios('http://localhost:3001/admin/users/available/companies').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/users/available/companies').then(({ data }) => {
             setAvailableCompaniesData(data);
         })
     }, []);

@@ -47,7 +47,7 @@ const CardContacto = (props) => {
   return (
     <div className={styles.containerGral}>
       <div className={styles.container}>
-        <Link to={`http://localhost:5173/${props.url}/${props.id_talent}`}>
+        <Link to={`https://deploy-sprint-2-frontend.onrender.com/${props.url}/${props.id_talent}`}>
           <div className={styles.fonts}>
             {/* REDIRIGIR AL PERFIL DEL CONTACTADO */}
             <h2 className={styles.text}>{props.name}</h2>
