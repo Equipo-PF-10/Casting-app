@@ -10,6 +10,7 @@ const {
   handlerGetByMonthRange,
   handlerToBan,
   handlerToDesban,
+  handlerGetBanUsers,
 } = require("../../handlers/admin/adminHandlers");
 
 const { Router } = require("express");
@@ -50,6 +51,10 @@ adminRouter.get(
   "/users/nationality/:userType/:country",
   handlerGetByNationality
 );
+
+//? Esta ruta es para obtener todos los usuarios baneados según tipo de usuario pasado por params.
+// userType puede ser "talents" o "companies"
+adminRouter.get("/users/banned/:userType", handlerGetBanUsers);
 
 //? Esta ruta es para buscar cuantos usuarios (talentos o companies) se registraron por mes.
 //| /admin/users/talents/5  --> devuelve los usuarios de tipo talents que se registraron en mayo.
