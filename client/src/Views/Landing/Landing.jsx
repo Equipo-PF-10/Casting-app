@@ -6,6 +6,8 @@ import Navbar from "../../Components/Navbar/Navbar.jsx";
 import Blog from "../../Components/Blog/Blog.jsx";
 import "./LandingModule.css";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Footer from "../../Components/Footer/Footer.jsx";
 import LogoutButton from "../../Components/LogoutButton/LogoutButton.jsx";
 
@@ -162,14 +164,28 @@ const Landing = () => {
 
     if (response.ok) {
       event.target.reset();
-      alert(
-        "Gracias por contactarte con CastingAPP, te responderemos a la brevedad"
-      );
+      //alert(
+      //  "Gracias por contactarte con CastingAPP, te responderemos a la brevedad"
+      //);
     }
+  };
+
+  const notify = () => {
+    toast.success("Has enviado la consulta correctamente. A la brevedad nos estaremos comunicando con usted.", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   return (
     <>
+      <ToastContainer />
       <Navbar />
       {/* <LogoutButton/> */}
       <main>
@@ -281,6 +297,7 @@ const Landing = () => {
         <br />
         <section id="blog" className="blog">
           <div className="containerBlogs">
+            <h3>Tips</h3>
             <Blog />
           </div>
         </section>
@@ -295,20 +312,21 @@ const Landing = () => {
               <div className="col-sm-12 col-md-8 col-lg-6">
                 <div className="cardMail">
                   <div className="card-header text-center">
-                    <h3>Formulario de contacto</h3>
+                    <h3 className="text-form">Envianos una consulta</h3>
                   </div>
                   <div className="card-body">
                     <form
                       action="https://formspree.io/f/xoqovoyp"
                       method="POST"
                       onSubmit={handleSubmit}
+                      className="rounded-5 p-4"
                     >
                       <div className="mb-3">
                         <input
                           type="text"
                           name="Name"
                           placeholder="Nombre"
-                          className="form-control"
+                          className="form-control rounded-pill"
                         />
                       </div>
 
@@ -317,7 +335,7 @@ const Landing = () => {
                           type="text"
                           name="email"
                           placeholder="Correo electrónico"
-                          className="form-control"
+                          className="form-control rounded-pill"
                         />
                       </div>
 
@@ -326,21 +344,24 @@ const Landing = () => {
                           type="text"
                           name="phone"
                           placeholder="Teléfono"
-                          className="form-control"
+                          className="form-control rounded-pill"
                         />
                       </div>
 
-                      <div className="mb-3">
+                      <div>
                         <textarea
-                          className="form-control"
+                          className="form-control rounded-4 p-2"
                           name="message"
                           rows="3"
-                          placeholder="Mensaje"
+                          placeholder="Mensaje "
                         ></textarea>
                       </div>
 
-                      <div className="text-center">
-                        <button className="btn btn-primary w-50">
+                      <div className="text-center  mb-5">
+                        <button
+                          className="btn btn-primary w-50 rounded-5"
+                          onClick={notify}
+                        >
                           Enviar
                         </button>
                       </div>
@@ -357,8 +378,8 @@ const Landing = () => {
         <br />
         <br />
       </main>
-      <footer className='footerE'>
-        <Footer/>
+      <footer className="footerE">
+        <Footer />
       </footer>
     </>
   );

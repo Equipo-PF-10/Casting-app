@@ -89,3 +89,19 @@ nav a {
 .buttonsContainer{
   margin-left: 50px;
 }
+
+.buttonBlog:hover{
+  background-color: whitesmoke;
+}
+
+.buttonNosotros:hover{
+  background-color: whitesmoke;
+}
+
+.buttonContacto:hover{
+  background-color: whitesmoke;
+}
+
+.buttonNav:hover{
+  background-color: whitesmoke;
+}
