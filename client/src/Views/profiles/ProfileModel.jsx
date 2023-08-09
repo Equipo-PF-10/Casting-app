@@ -11,6 +11,7 @@ const ProfileModel=() => {
   //console.log(id);
   const userImage = localStorage.getItem("user_image");
   const userEmail = localStorage.getItem("user_email");
+  const userName = localStorage.getItem("user_name");
   const dispatch=useDispatch()
 
   
@@ -48,7 +49,7 @@ const ProfileModel=() => {
               }
             </div>
             <div className={style.textoCard}>
-              <h3 className={style.nombre}>{talentId?.name}</h3>
+              <h3 className={style.nombre}>{userName ? userName : talentId?.name}</h3>
               <h5 className={style.titulo}>{habilidades?.join(", ")}</h5>
               {/* <p className={style.descripcion}>
                 {talentId?.aboutMe}

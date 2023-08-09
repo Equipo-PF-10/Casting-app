@@ -41,6 +41,7 @@
 }
 
 .cards {
+  /* background-color: red; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   /*margin-inline: 4rem;*/
@@ -49,6 +50,7 @@
   float: left;
   gap: 2rem;
   list-style: none;
+  padding-top: 20px;
   margin-bottom: 30px;
 }
 

@@ -11,6 +11,7 @@ const profileCompany=() => {
   //console.log(id);
   const userImage = localStorage.getItem("user_image");
   const userEmail = localStorage.getItem("user_email");
+  const userName = localStorage.getItem("user_name");
   
   const dispatch = useDispatch()
 
@@ -39,7 +40,7 @@ const profileCompany=() => {
                 }
               </div>
               <div className={style.textoCard}>
-              <h3 className={style.nombre}>{company?.name}</h3>
+              <h3 className={style.nombre}>{userName ? userName : company?.name}</h3>
                 {/* <p className={style.descripcion}>
                   {company?.descriptionShort}
                 </p> */}
