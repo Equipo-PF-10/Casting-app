@@ -50,6 +50,27 @@
   height: 85px;
 }
 
+.pendiente {
+  padding: 5px;
+  background-color: #bbbbbb81;
+  border-radius: 4px;
+}
+.prueba {
+  padding: 5px;
+  background-color: #dfd67459;
+  border-radius: 4px;
+}
+.basico {
+  padding: 5px;
+  background-color: #5c31a179;
+  border-radius: 4px;
+}
+.premium {
+  padding: 5px;
+  background-color: #00ecc59f;
+  border-radius: 4px;
+}
+
 .banButton {
   width: 110px;
   background-color: #c9000085;
@@ -91,6 +112,14 @@
   font-size: 25px;
   color: #00c9a7;
   /* text-align: center; */
+}
+
+.unavailable {
+  background-color: #cececed3;
+}
+
+.talentsTable .unavailable:hover {
+  background-color: #cececed3;
 }
 
 .optionsBar {

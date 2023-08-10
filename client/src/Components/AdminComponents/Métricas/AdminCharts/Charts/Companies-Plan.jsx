@@ -4,7 +4,7 @@ import { Line } from "react-chartjs-2";
 export const Companies_Plan = (props) => {
   return (
     <div>
-      <h4 style={{ textAlign: "center" }}>Suscripciones por Mes</h4>
+      <h4 style={{ textAlign: "center" }}>SUSCRIPCIONES POR MES</h4>
       <Line
         data={props.chartData}
         options={{
@@ -13,8 +13,13 @@ export const Companies_Plan = (props) => {
           scales: {
             x: {
                 ticks: {
-                    display: false
+                    display: true
                 }
+            },
+            y: {
+              ticks: {
+                precision:0
+              }
             }
           },
           plugins: {
