@@ -1,11 +1,13 @@
 import styles from "./NavBarLateral.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { CiLogout } from "react-icons/ci";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBarLateral = () => {
   const root = localStorage.getItem("userType");
-  const id = localStorage.getItem("user_id");
+  const id=localStorage.getItem("user_id");
+  
+  const location = useLocation()
 
   let homePath = "";
   let perfilPath = "";
@@ -119,7 +121,8 @@ const NavBarLateral = () => {
               <h4>Home</h4>
             </div>
           </NavLink>
-          <NavLink to={searchPath} className={styles.link}>
+          {location === ''}
+          {/*<NavLink to={searchPath} className={styles.link} >
             <div className={styles.icons2}>
               <svg
                 width="30"
@@ -139,7 +142,7 @@ const NavBarLateral = () => {
               </svg>
               <h4>Buscar</h4>
             </div>
-          </NavLink>
+          </NavLink>*/}
           <NavLink to={perfilPath} className={styles.link}>
             <div className={styles.icons2}>
               <svg
@@ -187,7 +190,7 @@ const NavBarLateral = () => {
               <h4 style={{ marginLeft: "-1.2rem" }}>Reviews</h4>
             </div>
           </NavLink>
-          {chart()}
+          {/*{chart()}*/}
           <NavLink className={styles.link}>
             <div className={styles.icons2} onClick={handlerClick}>
               <CiLogout className={styles.logoutIcono} />
