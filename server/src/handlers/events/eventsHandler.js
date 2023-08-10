@@ -9,7 +9,6 @@ const {
   getEventForHability,
   getEventByCompanyId,
   getDisable,
-
 } = require("../../controllers/events/eventsController");
 
 // Función handler para obtener los eventos.
@@ -135,21 +134,25 @@ const handlerUpdateEventById = async (req, res) => {
     description,
     salary,
     expirationDate,
+    creationDate,
+    changeDate,
   } = req.body;
 
   try {
     const updatedData = {
       name,
       image,
-      expirationDate,
-      shortDescription,
       detail,
-      description,
       active,
       ubication,
       habilityRequired,
-      salary,
       contact,
+      shortDescription,
+      description,
+      salary,
+      expirationDate,
+      creationDate,
+      changeDate,
     };
     const eventUpdated = await updateEventById(id, updatedData);
 
@@ -206,7 +209,7 @@ const handlerGetEventById = async (req, res) => {
   }
 };
 
-const handlerGetEventByName= async (req, res) => {
+const handlerGetEventByName = async (req, res) => {
   const { name } = req.params;
 
   try {
@@ -239,5 +242,5 @@ module.exports = {
   handlerGetPremiumEvents,
   handlerHabilityRequerid,
   handlerGetEventByCompanyId,
-  handlerGetDisableEvents
+  handlerGetDisableEvents,
 };
