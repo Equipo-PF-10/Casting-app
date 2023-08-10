@@ -81,7 +81,7 @@ export default function PaymentPlans() {
   const handleContinueClick = () => {
     // Redirigir a una URL específica para cada plan.
     switch (selectedPlan) {
-      case "Prueba Gratis":
+      case "Free":
         // if (!planFreeUtilizado) {
         //   setModalPlanFree(true);
         // }
