@@ -137,6 +137,8 @@ const updateEventById = async (id, updatedData) => {
         salary: updatedData.salary,
         expirationDate: `${updatedData.expirationDate}`,
         contact: updatedData.contact,
+        creationDate: updatedData.creationDate,
+        changeDate: updatedData.creationDate,
         updateAt: Date.now(),
       },
       {
