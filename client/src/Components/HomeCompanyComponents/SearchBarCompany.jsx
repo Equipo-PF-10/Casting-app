@@ -119,9 +119,9 @@ export default function SearchBarCompany() {
     <div className={styles.container}>
       <div className={styles.buttons}>
         <button onClick={handleClickCreate}>Crear Evento</button>
-        <NavLink to="/company/finishedEvents">
+        {/*<NavLink to="/company/finishedEvents">
           <button>Eventos Finalizados</button>
-        </NavLink>
+        </NavLink>*/}
         <NavLink to={`/company/hiredtalent/${id}`}>
           <button>Talentos Contratados</button>
         </NavLink>
