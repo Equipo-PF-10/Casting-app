@@ -12,6 +12,8 @@ import { loginControler } from "./loginControler";
 import style from "./Login.module.css";
 import axios from "axios";
 import {login} from "./loginFunction"
+import admin from '../../../assets/Fotos/admin.png'
+import { GrUserAdmin } from "react-icons/gr";
 
 const Login = () => {
   useEffect(() => {
@@ -243,11 +245,9 @@ const Login = () => {
   }, [messageRegistered]);
 
   return (
-    <div>
-      <Navbar />
-      <div>
-        <ToastContainer />
-      </div>
+    <div className={style.containerGeneral}>
+      {/*<Navbar />*/}
+      <div>{/*<ToastContainer />*/}</div>
       <div className={style.container}>
         <div className={style.containerImg}>
           <div className={style.login}>
@@ -285,13 +285,14 @@ const Login = () => {
                 </svg>
               </Link>
             </div>
+            
             <form
               id="loginForm"
               className={style.formContainer}
               onSubmit={(e) => handleSubmit(e)}
             >
               {/*Login*/}
-              <h3 className={style.loginRegistro}>Iniciar sesión</h3>
+              <h3 className={style.loginRegistro}>Administrador <GrUserAdmin className={style.adminis} /></h3>
               <div className={style.inputContainer}>
                 <label htmlFor="input" className={style.text}>
                   Email:
@@ -336,12 +337,12 @@ const Login = () => {
                     </span>
                   )}
                 </div>
-                <div className={style.buttonMantener}>
+                {/*<div className={style.buttonMantener}>
                   <input type="checkbox" className={style.checkBox} />
                   <label htmlFor="" className={style.mantener}>
                     Mantener registrado
                   </label>
-                </div>
+                </div>*/}
               </div>
               <div>
                 <button
@@ -354,7 +355,7 @@ const Login = () => {
                 </button>
               </div>
               <div className={style.buttonPlan}>
-                <button className={style.buttonGoogle}>
+                {/*<button className={style.buttonGoogle}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     preserveAspectRatio="xMidYMid"
@@ -384,7 +385,7 @@ const Login = () => {
                   <button className={style.registrate} onClick={handler_click}>
                     Regístrate
                   </button>
-                </div>
+                </div>*/}
                 {modal ? (
                   <div className={style.containerModalOpened}>
                     <div className={style.modalOpened}>
