@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
 import { Link, useParams } from "react-router-dom";
 import "./HiredTable.css";
 import { useDispatch, useSelector } from "react-redux";
 import { add_and_delete_favorite_postulant, get_hired_by_company } from "../../redux/actions";
+import styles from "./HiredTalent.module.css"
 
 const HiredTalent = () => {
   const {id}=useParams();
@@ -33,7 +34,7 @@ const HiredTalent = () => {
   //console.log(idEvent);
 
   return (
-    <div className="containerGral">
+    <div className={styles.containerGral}>
       <div>
         <NavBarLateral />
       </div>
@@ -47,9 +48,9 @@ const HiredTalent = () => {
             />
           </Link>
         </div>
-        <h3 className="titulo">Talentos Contratados</h3>
+        <h3 className={styles.title}>Talentos Contratados</h3>
         <div className="container">
-          <div className="row" style={{ borderRadius: 100}}>
+          <div className="row" style={{ borderRadius: "100px"}}>
             <div className="col" style={{ borderRadius: 100 }}>
               <table className="table table-success align-middle table-striped table-hover table-bordered">
                 <thead className="rounded-5">
@@ -71,7 +72,7 @@ const HiredTalent = () => {
                         return (
                           <tr key={index}>
                             <td className="imageTd">
-                              <img src={talent.image} alt="Talent" />
+                              <img src={talent.image} alt="Talent" className={styles.img} />
                             </td>
                             <td>{talent.name}</td>
                             <td>{talent.nationality}</td>
@@ -106,7 +107,7 @@ const HiredTalent = () => {
                             <td>
                               <div className="reseña">
                                 <Link
-                                  to={`/company/review/${talent.id}/${idEvent[index]}`}
+                                  to={`/company/review/${talent.id}/${idEvent[index]}`} className={styles.link}
                                 >
                                   {/*<Link to={`/company/review/`}>*/}
                                   Dar reseña

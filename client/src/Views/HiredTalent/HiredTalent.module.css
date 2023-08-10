@@ -1,0 +1,24 @@
+.img{
+    border-radius: 20px;
+    height: 180;
+    max-height: 180;
+}
+
+.link{
+    color: #324844;
+}
+
+.title{
+    color: #00C9A7;
+    font-size: 3rem;
+    font-weight: 3rem;
+    border-bottom: #4B31A1 solid 3px;
+    margin-bottom: 1rem;
+}
+
+.containerGral{
+    height: 100vh;
+    max-height: max-content;
+    background-color: #f5f5f5;
+}
+
