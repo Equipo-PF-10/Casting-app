@@ -46,8 +46,8 @@ function App() {
         <Route path="/company/profile/:id" element={<ProfileCompany />} />
         <Route path="/company/search/:id" element={<CompanySearch />} />
         <Route path="/company/plans" element={<PaymentPlans />} />
-        <Route path="/company/plans/premium" element={<BasicPlan />} />
-        <Route path="/company/plans/pro" element={<PremiumPlan />} />
+        <Route path="/company/plans/basico" element={<BasicPlan />} />
+        <Route path="/company/plans/premium" element={<PremiumPlan />} />
         <Route
           path="/company/plans/premium/paypal"
           element={<PaypalBasicPlan />}
