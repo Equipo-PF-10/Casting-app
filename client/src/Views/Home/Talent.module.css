@@ -20,16 +20,19 @@
     transition: opacity 0.5s ease;
     opacity: 1;
     overflow: hidden;
-    display: grid;
     width: 90%;
+    display: grid;
     grid-template-columns: 1% 98% 1%;
+    background-color: rgb(240, 240, 240);
     /*margin-top: -2rem;*/
 }
 
 .eventos button{
-    width: 33px;
+    width: 30px;
+    height: 60px;
     background-color: #00C9A7;
     border: none;
+    margin: auto;
 }
 
 .eventos h1{
@@ -44,6 +47,11 @@
     top: 0;
 }
 
+.arrowE{
+    width: 30px;
+    height: 30px;
+}
+
 .shortDescription{
     line-height: 15px;
 }
@@ -53,7 +61,7 @@
 }
 
 .divInterno{
-    width: 800px;
+    width: 900px;
     margin: auto;
 }
 
@@ -65,18 +73,20 @@
     justify-self: center;
     align-items: center;
     width: 70%;
-    gap: 1rem
+    gap: 1rem;
 }
 
 .card{
     border-radius:30px;
     background-color: #00C9A7;
     position: relative;
-    width: 20rem;
+    width: 25rem;
     height: 10rem;
     gap: 1rem;
     padding-top: 6.5rem;
     color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
 .image{
@@ -155,6 +165,7 @@
     font-size: 18px;
     /*padding-block: 5px;*/
     transition: 0.3s;
+    display: flex;
 }
 
 .info li:hover{
@@ -191,13 +202,15 @@
     margin: auto;
 }
 
+
 .yourEvents{
      background-color: #755f98;
     border-radius: 30px;
-    padding-block: 10px;
+    /*padding-block: 10px;*/
     overflow-y: auto;
+    width: 350px;
     height: 11rem;
-    margin: 5px 2px 5px 2px;
+    margin: 5px 0 5px 0;
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
@@ -208,7 +221,7 @@
     padding: 10px;
     color: whitesmoke;
     background-color: #aaa0cc;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
@@ -253,11 +266,15 @@ height: 30px;
 .link8 li{
     font-size: 18px;
     transition: 0.3s;
-    background-color: #00c9a774;
+    background-color: #00c9a71f;
     border-radius: 15px;
     padding: 10px;
     margin-bottom: 20px;
     box-shadow: rgba(0, 0, 0, 0.1) 1px 5px 5px,
     rgba(0, 0, 0, 0.1) 1px 1px 5px 1px, rgba(1, 0, 0, 0.1) 0px -1px 1px inset;
+}
+
+.link8 li:hover{
+    background-color: #00c9a781;
 }
 

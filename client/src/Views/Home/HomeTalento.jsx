@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { get_event_by_id_event } from "../../redux/actions";
+import {get_event_by_id_event} from "../../redux/actions";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const HomeTalento = () => {
   // UserInfo
@@ -190,8 +192,8 @@ const HomeTalento = () => {
   const eventInfo = eventData.map((event, index) => (
     <NavLink key={event && event.id} className={Styles.link}>
       <li className={Styles.aplication}>
-        <h4>{event && event.name}</h4>
-        <h4>{event && status[index]}</h4>
+        <h4 className={Styles.eventH}>{event && event.name}</h4>
+        <h4 className={Styles.eventH}>{event && status[index]}</h4>
       </li>
     </NavLink>
   ));
@@ -371,22 +373,24 @@ const HomeTalento = () => {
           <article className={Styles.info}>
             <h4 className={Styles.title2}>Empresas que te han contactado</h4>
             <ul className={Styles.infoC}>{companyInfo()}</ul>
-                </article>
-            <article className={Styles.info}>
-              <h4>Tus Eventos</h4>
-              <ul className={Styles.yourEvents}>
-                {eventInfo.length >= 1 ? (
-                  eventInfo
-                ) : (
-                  <h5 className={Styles.infoCard}>
-                    En esta sección se mostrarán tus postulaciones activas.
-                  </h5>
-                )}
-              </ul>
+          </article>
+          <article className={Styles.info}>
+            <h4>Tus Eventos</h4>
+            <ul className={Styles.yourEvents}>
+              {eventInfo.length >= 1 ? (
+                eventInfo
+              ) : (
+                <h5 className={Styles.infoCard}>
+                  En esta sección se mostrarán tus postulaciones activas.
+                </h5>
+              )}
+            </ul>
           </article>
         </article>
         <article className={Styles.eventos}>
-          <button onClick={handleMoveLeft}>&larr; </button>
+          <button onClick={handleMoveLeft}>
+            <AiOutlineArrowLeft className={Styles.arrowE} />
+          </button>
           <div
             style={{ display: showHabilityEvents ? "block" : "none" }}
             className={Styles.divInterno}
@@ -403,7 +407,9 @@ const HomeTalento = () => {
             <h3>Todas las publicaciones </h3>
             <ul className={Styles.eventList}>{Events}</ul>
           </div>
-          <button onClick={handleMoveRight}>&rarr;</button>
+          <button onClick={handleMoveRight}>
+            <AiOutlineArrowRight className={Styles.arrowE} />
+          </button>
         </article>
       </section>
     </div>
