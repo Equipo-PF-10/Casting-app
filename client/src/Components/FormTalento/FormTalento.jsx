@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const FormTalento = () => {
 
-    const URL = `http://localhost:3001/forms/talents`
+    const URL = `https://casting-app-thdg.onrender.com/forms/talents`
 
     const idUser = localStorage.getItem("user_id")
 
@@ -149,7 +149,7 @@ const FormTalento = () => {
                 mensaje_success_Toast();
             }  
             
-            const emailToCompany = axios.post(`http://localhost:3001/email/editedPerfilTalent/${talentData.email}`)
+            const emailToCompany = axios.post(`https://casting-app-thdg.onrender.com/email/editedPerfilTalent/${talentData.email}`)
             .then((resp) => console.log(resp.data))
             .catch((error) => console.log(error));
 

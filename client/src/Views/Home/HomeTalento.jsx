@@ -19,7 +19,7 @@ const HomeTalento = () => {
     const getTalent = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/talents/${userId}`
+          `https://casting-app-thdg.onrender.com/talents/${userId}`
         );
         const data = response.data;
         setTalent(data);
@@ -45,7 +45,7 @@ const HomeTalento = () => {
   useEffect(() => {
     const getAllEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/events");
+        const response = await axios.get("https://casting-app-thdg.onrender.com/events");
         const data = response.data;
         setAllEvents(data);
       } catch (error) {
@@ -78,7 +78,7 @@ const HomeTalento = () => {
     if (talent && talent.hability && talent.hability.length !== 0) {
       const events4U = talent.hability[0];
 
-      const eventsURL = `http://localhost:3001/events/habilityRequired?hability=${events4U}`;
+      const eventsURL = `https://casting-app-thdg.onrender.com/events/habilityRequired?hability=${events4U}`;
 
       const filteredEvents = async () => {
         try {
@@ -138,7 +138,7 @@ const HomeTalento = () => {
 
   const [status, setStatus] = useState("");
 
-  const URLAppliedEvents = `http://localhost:3001/applied/talent/${userId}`;
+  const URLAppliedEvents = `https://casting-app-thdg.onrender.com/applied/talent/${userId}`;
 
 
   useEffect(() => {
@@ -167,7 +167,7 @@ const HomeTalento = () => {
     const findEventById = async (id) => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/events/eventid/${id}`
+          `https://casting-app-thdg.onrender.com/events/eventid/${id}`
         );
         return response.data;
       } catch (error) {
@@ -205,7 +205,7 @@ const HomeTalento = () => {
   const [contact, setContact] = useState([]);
   const [companies, setCompanies] = useState([]);
 
-  const URLContact = `http://localhost:3001/applied/contactedForNameCompany?TalentId=${userId}`;
+  const URLContact = `https://casting-app-thdg.onrender.com/applied/contactedForNameCompany?TalentId=${userId}`;
 
   useEffect(() => {
     const fetchContactData = async () => {
@@ -228,7 +228,7 @@ const HomeTalento = () => {
         const companiesData = await Promise.all(
           contact.map(async (companyName) => {
             const response = await axios.get(
-              `http://localhost:3001/companies/email/${companyName}`
+              `https://casting-app-thdg.onrender.com/companies/email/${companyName}`
             );
             return response.data;
           })

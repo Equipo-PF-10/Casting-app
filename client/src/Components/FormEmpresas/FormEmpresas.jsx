@@ -43,7 +43,7 @@ const navigate = useNavigate();
             setInput({...empresa})}
     }, [loading, miEmpresa]);
 
- const URL = "http://localhost:3001/forms/companies"
+ const URL = "https://casting-app-thdg.onrender.com/forms/companies"
 
         const initialState = {
             id: "",
@@ -99,7 +99,7 @@ const navigate = useNavigate();
             if(response === messageUpdated){
                 mensaje_success_Toast();
             }           
-            const emailToCompany = axios.post(`http://localhost:3001/email/editedPerfilCompany/${empresa.email}`)
+            const emailToCompany = axios.post(`https://casting-app-thdg.onrender.com/email/editedPerfilCompany/${empresa.email}`)
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
             setInput(initialState)

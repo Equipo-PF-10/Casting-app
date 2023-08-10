@@ -105,7 +105,7 @@ export default function PaymentPlans() {
     setModalPlanFree(false);
     navigate("/home/company");
 
-    const emailToCompany = axios.post(`http://localhost:3001/email/suscriptionFree/${infoCompany.email}`)
+    const emailToCompany = axios.post(`https://casting-app-thdg.onrender.com/email/suscriptionFree/${infoCompany.email}`)
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
     

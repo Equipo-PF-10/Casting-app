@@ -2,7 +2,7 @@ import axios from "axios";
 export const loginControler = async (email, password) => {
   try {
     // busqueda como talento
-    const isTalent = (await axios("http://localhost:3001/talents")).data;
+    const isTalent = (await axios("https://casting-app-thdg.onrender.com/talents")).data;
     let access = false;
 
     for (const talent of isTalent) {
@@ -13,7 +13,7 @@ export const loginControler = async (email, password) => {
       }
     }
     //busqueda como empresa
-    const isCompany = (await axios("http://localhost:3001/companies")).data;
+    const isCompany = (await axios("https://casting-app-thdg.onrender.com/companies")).data;
     for (const company of isCompany) {
       if (company.email === email && company.password === password) {
         access = 2;

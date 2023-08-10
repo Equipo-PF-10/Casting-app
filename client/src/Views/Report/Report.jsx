@@ -7,9 +7,9 @@ const Report = () => {
 
     //URLs
 
-    const URLTalent = "http://localhost:3001/talents/report"
+    const URLTalent = "https://casting-app-thdg.onrender.com/talents/report"
 
-    const URLCompany = "http://localhost:3001/companies/report"
+    const URLCompany = "https://casting-app-thdg.onrender.com/companies/report"
 
     // Estados
 

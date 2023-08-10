@@ -34,7 +34,7 @@ const HomeItem = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.text}>
-        <Link to={`http://localhost:5173/model/profile/${props.talent?.id}`}>
+        <Link to={`https://casting-app-frontend.onrender.com/model/profile/${props.talent?.id}`}>
           <h3 className={styles.text}>{props.talent?.name}</h3>
           <h3 className={styles.text}>
             {props.talent?.hability?.map((hability) => `${hability} `)}

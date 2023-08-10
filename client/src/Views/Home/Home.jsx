@@ -24,11 +24,11 @@ const Home = (props) => {
 
   useEffect(() => {
     if(props.type === "talent") {
-       axios(`http://localhost:3001/talents/${localStorage.getItem("user_id")}`).then(({ data }) => {
+       axios(`https://casting-app-thdg.onrender.com/talents/${localStorage.getItem("user_id")}`).then(({ data }) => {
         setUser(data);
       });
     } else {
-       axios(`http://localhost:3001/companies/${localStorage.getItem("user_id")}`).then(({ data }) => {
+       axios(`https://casting-app-thdg.onrender.com/companies/${localStorage.getItem("user_id")}`).then(({ data }) => {
         setUser(data);
       });
     }

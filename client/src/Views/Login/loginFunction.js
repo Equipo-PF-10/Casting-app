@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const login = async (email, password) => {
     try {
-        const response = await axios.get("http://localhost:3001/admin/login")
+        const response = await axios.get("https://casting-app-thdg.onrender.com/admin/login")
         if(response.data[0].email === email && response.data[0].password === password) {
             return {
                 access: true

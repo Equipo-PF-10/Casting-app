@@ -22,31 +22,31 @@ const Usuarios = () => {
 
 
     const handleBan = (id) => {
-      axios.delete(`http://localhost:3001/admin/users/ban/talents/${id}`).then(() => {
-        axios('http://localhost:3001/talents').then(({ data }) => {
+      axios.delete(`https://casting-app-thdg.onrender.com/admin/users/ban/talents/${id}`).then(() => {
+        axios('https://casting-app-thdg.onrender.com/talents').then(({ data }) => {
             setTalentsData(data);
         })
-        axios('http://localhost:3001/admin/users/banned/talents').then(({ data }) => {
+        axios('https://casting-app-thdg.onrender.com/admin/users/banned/talents').then(({ data }) => {
       setBannedTalentsData(data);
       })
       })
     }
     const handleUnban = (id) => {
-      axios.patch(`http://localhost:3001/admin/users/desban/talents/${id}`).then(() => {
-        axios('http://localhost:3001/talents').then(({ data }) => {
+      axios.patch(`https://casting-app-thdg.onrender.com/admin/users/desban/talents/${id}`).then(() => {
+        axios('https://casting-app-thdg.onrender.com/talents').then(({ data }) => {
             setTalentsData(data);
         })
-        axios('http://localhost:3001/admin/users/banned/talents').then(({ data }) => {
+        axios('https://casting-app-thdg.onrender.com/admin/users/banned/talents').then(({ data }) => {
       setBannedTalentsData(data);
       })
       })
     }
   useEffect(() => {
     if(input === "") {
-    axios('http://localhost:3001/talents').then(({ data }) => {
+    axios('https://casting-app-thdg.onrender.com/talents').then(({ data }) => {
             setTalentsData(data);
         })
-    axios('http://localhost:3001/admin/users/banned/talents').then(({ data }) => {
+    axios('https://casting-app-thdg.onrender.com/admin/users/banned/talents').then(({ data }) => {
       setBannedTalentsData(data);
       })
     }

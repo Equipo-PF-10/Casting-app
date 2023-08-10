@@ -15,10 +15,10 @@ import { useNavigate } from "react-router-dom";
 const EventForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const URL = "http://localhost:3001/events/";
+  const URL = "https://casting-app-thdg.onrender.com/events/";
   const idUser = localStorage.getItem("user_id");
   const imageURl = useSelector((state) => state.imageUrl);
-  const company = `http://localhost:3001/companies/${idUser}`;
+  const company = `https://casting-app-thdg.onrender.com/companies/${idUser}`;
   const empresa = useSelector((state) => state.companyById);
 
   const getCurrentDate = () => {
@@ -148,7 +148,7 @@ const EventForm = () => {
 
       if (Number(empresa.numberPosts) <= Number(empresa.conditionPlan)) {
         axios
-          .post(`http://localhost:3001/email/companyNewEvent/${empresa.email}`)
+          .post(`https://casting-app-thdg.onrender.com/email/companyNewEvent/${empresa.email}`)
           .then((resp) => console.log(resp.data))
           .catch((error) => console.log(error));
       }
@@ -160,13 +160,13 @@ const EventForm = () => {
         Number(empresa.conditionPlan) - 1
       ) {
         axios
-          .post(`http://localhost:3001/email/stopAdd/${empresa.email}`)
+          .post(`https://casting-app-thdg.onrender.com/email/stopAdd/${empresa.email}`)
           .then((resp) => console.log(resp.data))
           .catch((error) => console.log(error));
       }
       if (Number(empresa.numberPosts) + 1 === Number(empresa.conditionPlan)) {
         axios
-          .post(`http://localhost:3001/email/stop/${empresa.email}`)
+          .post(`https://casting-app-thdg.onrender.com/email/stop/${empresa.email}`)
           .then((resp) => console.log(resp.data))
           .catch((error) => console.log(error));
       }

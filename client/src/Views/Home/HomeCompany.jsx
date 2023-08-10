@@ -36,7 +36,7 @@ export default function HomeCompany() {
     dispatch(close_event_by_id(id, id_company));
     dispatch(get_event_by_id(id_company));
   
-    const emailToCompany = axios.post(`http://localhost:3001/email/eventFinish/${localStorage.getItem("user_email")}`)
+    const emailToCompany = axios.post(`https://casting-app-thdg.onrender.com/email/eventFinish/${localStorage.getItem("user_email")}`)
        .then((resp) => console.log(resp.data))
        .catch((error) => console.log(error));
   };

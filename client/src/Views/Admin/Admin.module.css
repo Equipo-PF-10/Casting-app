@@ -1,9 +1,10 @@
 .containerGral {
   /* background-color: rgb(255, 255, 255); */
-  height: 100vh;
-  position: relative;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
   background-color: #f5f5f5b6;
-  /* background-color: #00c9a72f; */
 }
 
 .logoContainer {
@@ -145,17 +146,5 @@
 }
 .containerComponent {
   zoom: 85%;
-}
-}
-
-@media screen and (max-width: 1300px) {
-  .containerGral {
-      zoom: 75%;
-  }
-  .overlay {
-    zoom: 75%;
-}
-.containerComponent {
-  zoom: 75%;
 }
 }

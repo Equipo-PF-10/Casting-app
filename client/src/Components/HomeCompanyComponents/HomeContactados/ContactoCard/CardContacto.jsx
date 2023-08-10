@@ -27,13 +27,13 @@ const CardContacto = (props) => {
     setModalContratar(false);
   
     try {
-      const talentResponse = await axios.get(`http://localhost:3001/talents/${props.id_talent}`);
+      const talentResponse = await axios.get(`https://casting-app-thdg.onrender.com/talents/${props.id_talent}`);
       const talentEmail = talentResponse.data.email;
   
-      const emailToTalent = await axios.post(`http://localhost:3001/email/talenContacHired/${talentEmail}`);
+      const emailToTalent = await axios.post(`https://casting-app-thdg.onrender.com/email/talenContacHired/${talentEmail}`);
       console.log(emailToTalent.data);
   
-      const emailToCompany = axios.post(`http://localhost:3001/email/talenContacHiredForCompany/${localStorage.getItem("user_email")}`)
+      const emailToCompany = axios.post(`https://casting-app-thdg.onrender.com/email/talenContacHiredForCompany/${localStorage.getItem("user_email")}`)
     
       console.log(emailToCompany.data);
     } catch (error) {
@@ -62,13 +62,13 @@ const CardContacto = (props) => {
 
 
     try {
-      const talentResponse = await axios.get(`http://localhost:3001/talents/${props.id_talent}`);
+      const talentResponse = await axios.get(`https://casting-app-thdg.onrender.com/talents/${props.id_talent}`);
       const talentEmail = talentResponse.data.email;
   
-      const emailToTalent = await axios.post(`http://localhost:3001/email/talentContacRefused/${talentEmail}`);
+      const emailToTalent = await axios.post(`https://casting-app-thdg.onrender.com/email/talentContacRefused/${talentEmail}`);
       console.log(emailToTalent.data);
   
-      const emailToCompany = axios.post(`http://localhost:3001/email/talentContacRefusedForCompany/${localStorage.getItem("user_email")}`)
+      const emailToCompany = axios.post(`https://casting-app-thdg.onrender.com/email/talentContacRefusedForCompany/${localStorage.getItem("user_email")}`)
     
       console.log(emailToCompany.data);
     } catch (error) {
@@ -80,7 +80,7 @@ const CardContacto = (props) => {
   return (
     <div className={styles.containerGral}>
       <div className={styles.container}>
-        <Link to={`http://localhost:5173/${props.url}/${props.id_talent}`}>
+        <Link to={`https://casting-app-frontend.onrender.com/${props.url}/${props.id_talent}`}>
           <div className={styles.fonts}>
             {/* REDIRIGIR AL PERFIL DEL CONTACTADO */}
             <h2 className={styles.text}>{props.name}</h2>

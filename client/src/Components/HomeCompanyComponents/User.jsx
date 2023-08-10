@@ -8,7 +8,7 @@ export default function User() {
   const [company, setCompany] = useState({});
 
   useEffect(() => {
-    axios(`http://localhost:3001/companies/${id}`).then(({ data }) => {
+    axios(`https://casting-app-thdg.onrender.com/companies/${id}`).then(({ data }) => {
       setCompany(data);
     });
   }, []);
