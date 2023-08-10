@@ -46,6 +46,12 @@ const TalentSearch = () => {
     (_, index) => index + 1
   );
 
+  const pageNumbersCopy = Math.ceil(eventFilter.length / eventsPerPage);
+  const paginationCopy = Array.from(
+    { length: pageNumbersCopy },
+    (_, index) => index + 1
+  );
+
   // Eventos
   const eventFromHome = useSelector((state) => state.eventById);
   
@@ -189,7 +195,7 @@ const TalentSearch = () => {
           <div className={style.cardJobsStyle}>
             {listedEventsFilter}
             <ul className={style.pagination}>
-              {pagination.map((number, index) => (
+              {paginationCopy.map((number, index) => (
                 <li
                   key={index}
                   className={number === currentPage ? style.active : ""}

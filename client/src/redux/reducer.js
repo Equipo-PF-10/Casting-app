@@ -252,24 +252,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         talentById: payload,
       };
-    case FILTER_BY_HABILITY: {
-      if (payload === "Todos") {
-        return {
-          ...state,
-          filters: true,
-          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
-        };
-      } else {
-        const hability = [...state.postulatedTalentsByEventFiltered].filter(
-          (talent) => talent.hability.includes(payload)
-        );
-        return {
-          ...state,
-          filters: true,
-          postulatedTalentsByEventFiltered: hability,
-        };
-      }
-    }
     case EDIT_COMPANY:
       const updateCompany = state.getAllCompanies.map((companies) => {
         if (companies.name === action.payload.name) {
@@ -296,6 +278,25 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         mascotas: updateMascotas,
       };
+
+      case FILTER_BY_HABILITY: {
+        if (payload === "Todos") {
+          return {
+            ...state,
+            filters: true,
+            postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
+          };
+        } else {
+          const hability = [...state.postulatedTalentsByEventFiltered].filter(
+            (talent) => talent.hability.includes(payload)
+          );
+          return {
+            ...state,
+            filters: true,
+            postulatedTalentsByEventFiltered: hability,
+          };
+        }
+      }
     case FILTER_BY_EVENT_HABILITY: {
       if (payload === "Todos") {
         return {
@@ -387,6 +388,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
+    case GET_NAME_EVENTS:
+      return {
+        ...state,
+        filtersEvent: true,
+        eventsFiltered: payload,
+      };
     case GET_EVENT_BY_NAME: {
       if (payload.error) {
         return {
@@ -416,11 +423,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         companyDetail: payload,
-      };
-    case GET_NAME_EVENTS:
-      return {
-        ...state,
-        allEvents: payload,
       };
     case IMAGE_URL:
       return {
