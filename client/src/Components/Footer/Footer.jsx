@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className={style.container}>
       <div>
-        <Link to={"/"}>
+        <Link to={"/login"}>
           <img src="/Logo con Letras.svg" alt="" className={style.imgLogo} />
         </Link>
       </div>

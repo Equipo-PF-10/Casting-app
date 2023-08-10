@@ -10,6 +10,9 @@ const {
   banUser,
   desbanUser,
   getBannedUsers,
+  postAdmin,
+  getAdmin,
+  findAdmin,
   // getIncomes,
 } = require("../../controllers/admin/adminControllers");
 
@@ -161,6 +164,36 @@ const handlerGetBanUsers = async (req, res) => {
   }
 };
 
+const handlerCreateAdmin = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    await postAdmin(email, password);
+
+    res.status(200).send("El administrador se ha creado con éxito.");
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+const handlerGetAdmin = async (req, res) => {
+  // const { id, email, password } = req.body;
+  try {
+    // if (email || id) {
+    //   const foundAdmin = await findAdmin(id, email, password);
+
+    //   if (!foundAdmin) {
+    //     return res.status(400).send({ access: false });
+    //   }
+
+    //   res.status(200).json({ access: true });
+    // }
+    const admin = await getAdmin();
+    res.status(200).json(admin);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   handlerGetPremiumCompanies,
   handlerGetUserByMonth,
@@ -174,4 +207,6 @@ module.exports = {
   handlerToBan,
   handlerToDesban,
   handlerGetBanUsers,
+  handlerCreateAdmin,
+  handlerGetAdmin,
 };
