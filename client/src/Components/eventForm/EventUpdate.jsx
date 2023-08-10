@@ -11,7 +11,6 @@ import { getAllCompanies, get_company_by_id } from "../../redux/actions"
 const EventUpdate = () => {
 
     const {id}=useParams();
-    console.log(id);
 
     const URL = `http://localhost:3001/events/${id}`;
   
@@ -20,10 +19,19 @@ const EventUpdate = () => {
     const imageURl = useSelector((state) => state.imageUrl);
 
     const empresa = useSelector((state) => state.companyById);
+
+    const getCurrentDate = () => {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      };
+    
   
     const initialState = {
       name: "",
-      date: "",
+      expirationDate: getCurrentDate(),
       ubication: "",
       image: imageURl,
       shortDescription: "",
@@ -58,11 +66,8 @@ const EventUpdate = () => {
       const [input, setInput] = useState(initialState)
   
       const [orientaciones, setOrientaciones] = useState([])
-  
-      initialState.idCompany = idUser;
-      initialState.image = imageURl;
-  
-      input.idCompany = idUser;
+
+      input.CompanyId = idUser;
       input.image = imageURl;
   
       // Hability
@@ -81,8 +86,6 @@ const EventUpdate = () => {
 
       input.active = isActive;
 
-      //console.log(input.active)
-            
       // Handlers
   
       const handleChange = (event) => {
@@ -109,6 +112,10 @@ const EventUpdate = () => {
 
     // Submit 
 
+    if(input.expirationDate === getCurrentDate()){
+        input.expirationDate = "";
+    }
+
     const filledFields = Object.keys(input).reduce((acc, key) => {
         const value = input[key];
         if (value !== "" && value !== null && value.length !== 0 && value !== 0) {
@@ -116,6 +123,8 @@ const EventUpdate = () => {
         }
         return acc;
       }, {});
+
+    console.log(filledFields);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -152,12 +161,13 @@ const EventUpdate = () => {
                         />
                         </article>
                         <article className={styles.coolinput}>
-                        <label className={styles.text}>Fecha del evento</label>
+                        <label className={styles.text}>Fecha de expiración</label>
                         <input
                             type="date"
-                            name="date"
-                            value={input.date}
+                            name="expirationDate"
+                            value={input.expirationDate}
                             onChange={handleChange}
+                            min={getCurrentDate()}
                         />
                         </article>
                         <article className={styles.coolinput}>
