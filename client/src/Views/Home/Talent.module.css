@@ -23,7 +23,9 @@
     width: 90%;
     display: grid;
     grid-template-columns: 1% 98% 1%;
+
     background-color: rgb(240, 240, 240);
+
     /*margin-top: -2rem;*/
 }
 

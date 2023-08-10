@@ -123,6 +123,7 @@ const HomeTalento = () => {
 
   const [showHabilityEvents, setShowHabilityEvents] = useState(true);
 
+
   const handleMoveLeft = () => {
     setShowHabilityEvents(true);
   };
@@ -138,6 +139,7 @@ const HomeTalento = () => {
   const [status, setStatus] = useState("");
 
   const URLAppliedEvents = `http://localhost:3001/applied/talent/${userId}`;
+
 
   useEffect(() => {
     const getEvents = async () => {
@@ -373,6 +375,7 @@ const HomeTalento = () => {
           <article className={Styles.info}>
             <h4 className={Styles.title2}>Empresas que te han contactado</h4>
             <ul className={Styles.infoC}>{companyInfo()}</ul>
+
           </article>
           <article className={Styles.info}>
             <h4>Tus Eventos</h4>
