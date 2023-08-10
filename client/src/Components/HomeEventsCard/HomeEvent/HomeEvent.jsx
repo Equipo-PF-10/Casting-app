@@ -53,7 +53,9 @@ const HomeEvent = (props) => {
   const hanldleClickEventDetail = () => {
     console.log("entro en error");
     mensaje_error_Toast();
+
   };
+
 
   let errorMessage =
     "Podrá ver el detalle del evento cuando hayan postulantes al mismo.";

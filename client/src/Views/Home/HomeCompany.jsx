@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from "./HomeCompany.module.css";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
@@ -34,6 +35,10 @@ export default function HomeCompany() {
   const handleDelete = (id) => {
     dispatch(close_event_by_id(id, id_company));
     dispatch(get_event_by_id(id_company));
+  
+    const emailToCompany = axios.post(`http://localhost:3001/email/eventFinish/${localStorage.getItem("user_email")}`)
+       .then((resp) => console.log(resp.data))
+       .catch((error) => console.log(error));
   };
   
   //Trae todos los eventos creados
