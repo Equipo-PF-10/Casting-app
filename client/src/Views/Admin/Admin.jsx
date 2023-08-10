@@ -7,6 +7,7 @@ import Usuarios from "../../Components/AdminComponents/Usuarios/Usuarios";
 import AdminCharts from "../../Components/AdminComponents/Métricas/AdminCharts/AdminCharts";
 import EmpresasAdmin from "../../Components/AdminComponents/Empresas/EmpresasAdmin";
 import PagosAdmin from "../../Components/AdminComponents/Pagos/PagosAdmin";
+import AdminReviews from "../../Components/AdminComponents/Reviews/AdminReviews";
 
 const Admin = () => {
   const [selectedOption, setSelectedOption] = useState("DASHBOARD");
@@ -29,8 +30,7 @@ const Admin = () => {
           <li  className={selectedOption === "PAYMENTS" ? style.selectedOption : style.option} onClick={() => setSelectedOption("PAYMENTS")}>VENTAS</li>
           <li  className={selectedOption === "TALENTS" ? style.selectedOption : style.option} onClick={() => setSelectedOption("TALENTS")}>TALENTOS</li>
           <li  className={selectedOption === "COMPANIES" ? style.selectedOption : style.option} onClick={() => setSelectedOption("COMPANIES")}>EMPRESAS</li>
-          <li  className={style.option}>REVIEWS</li>
-          <li className={style.option}>REPORTES</li>
+          <li  className={selectedOption === "REVIEWS" ? style.selectedOption : style.option} onClick={() => setSelectedOption("REVIEWS")}>REVIEWS</li>
           </ul>
         </div>
         </div>
@@ -70,6 +70,12 @@ const Admin = () => {
           (
             <div className={style.talentsContainer}>
               <EmpresasAdmin />
+            </div>
+          ) :null }
+          {selectedOption === "REVIEWS" ? 
+          (
+            <div className={style.talentsContainer}>
+              <AdminReviews />
             </div>
           ) :null }
           {/* <div className={style.izq}>
