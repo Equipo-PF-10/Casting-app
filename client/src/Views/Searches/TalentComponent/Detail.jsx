@@ -37,17 +37,17 @@ const Detail = (props) => {
       
       
       
-      const { CompanyId } = (await (axios.get(`http://localhost:3001/events/eventid/${idEvent}`))).data
+      const { CompanyId } = (await (axios.get(`https://deploy-sprint-2-backend.onrender.com/events/eventid/${idEvent}`))).data
       
-      const { email } = (await (axios.get(`http://localhost:3001/companies/${CompanyId}`))).data     
+      const { email } = (await (axios.get(`https://deploy-sprint-2-backend.onrender.com/companies/${CompanyId}`))).data     
 
-      const emailToCompany = axios.post(`http://localhost:3001/email/newPostulante/${email}`)
+      const emailToCompany = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/newPostulante/${email}`)
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
       
-      const talentEmail = (await (axios.get(`http://localhost:3001/talents/${idTalent}`))).data.email          
+      const talentEmail = (await (axios.get(`https://deploy-sprint-2-backend.onrender.com/talents/${idTalent}`))).data.email          
       
-      const emailToTalent = axios.post(`http://localhost:3001/email/postulationEvent/${talentEmail}`) 
+      const emailToTalent = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/postulationEvent/${talentEmail}`) 
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
     }   

@@ -24,21 +24,21 @@ const EmpresasAdmin = () => {
   
 
     const handleBan = (id) => {
-      axios.delete(`http://localhost:3001/admin/users/ban/companies/${id}`).then(() => {
-        axios('http://localhost:3001/companies').then(({ data }) => {
+      axios.delete(`https://deploy-sprint-2-backend.onrender.com/admin/users/ban/companies/${id}`).then(() => {
+        axios('https://deploy-sprint-2-backend.onrender.com/companies').then(({ data }) => {
             setCompaniesData(data);
         })
-        axios('http://localhost:3001/admin/users/banned/companies').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/users/banned/companies').then(({ data }) => {
       setBannedCompaniesData(data);
       })
       })
     }
     const handleUnban = (id) => {
-      axios.patch(`http://localhost:3001/admin/users/desban/companies/${id}`).then(() => {
-        axios('http://localhost:3001/companies').then(({ data }) => {
+      axios.patch(`https://deploy-sprint-2-backend.onrender.com/admin/users/desban/companies/${id}`).then(() => {
+        axios('https://deploy-sprint-2-backend.onrender.com/companies').then(({ data }) => {
             setCompaniesData(data);
         })
-        axios('http://localhost:3001/admin/users/banned/companies').then(({ data }) => {
+        axios('https://deploy-sprint-2-backend.onrender.com/admin/users/banned/companies').then(({ data }) => {
       setBannedCompaniesData(data);
       })
       })
@@ -46,10 +46,10 @@ const EmpresasAdmin = () => {
 
   useEffect(() => {
     if(input === "") {
-    axios('http://localhost:3001/companies').then(({ data }) => {
+    axios('https://deploy-sprint-2-backend.onrender.com/companies').then(({ data }) => {
             setCompaniesData(data);
         })
-      axios('http://localhost:3001/admin/users/banned/companies').then(({ data }) => {
+      axios('https://deploy-sprint-2-backend.onrender.com/admin/users/banned/companies').then(({ data }) => {
       setBannedCompaniesData(data);
       })
     }

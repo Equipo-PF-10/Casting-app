@@ -22,20 +22,20 @@ const AdminReviews = () => {
 
 
     // const handleBan = (id) => {
-    //   axios.delete(`http://localhost:3001/admin/users/ban/talents/${id}`).then(() => {
-    //     axios('http://localhost:3001/talents').then(({ data }) => {
+    //   axios.delete(`https://deploy-sprint-2-backend.onrender.com/admin/users/ban/talents/${id}`).then(() => {
+    //     axios('https://deploy-sprint-2-backend.onrender.com/talents').then(({ data }) => {
     //         setTalentsData(data);
     //     })
-    //     axios('http://localhost:3001/admin/users/banned/talents').then(({ data }) => {
+    //     axios('https://deploy-sprint-2-backend.onrender.com/admin/users/banned/talents').then(({ data }) => {
     //   setBannedTalentsData(data);
     //   })
     //   })
     // }
   useEffect(() => {
-    axios('http://localhost:3001/talents/reviews').then(({ data }) => {
+    axios('https://deploy-sprint-2-backend.onrender.com/talents/reviews').then(({ data }) => {
         setTalentReviews(data);
         })
-    axios('http://localhost:3001/companies/reviews').then(({ data }) => {
+    axios('https://deploy-sprint-2-backend.onrender.com/companies/reviews').then(({ data }) => {
         setCompanyReviews(data);
       })
   }, []);

@@ -55,7 +55,7 @@ const Landing = () => {
           //? 3) comparo si este email esta siendo utilizado como talento        
           if (isAuthenticated) {
  
-            const validation = await axios.get(`http://localhost:3001/companies/email/${email}`)
+            const validation = await axios.get(`https://deploy-sprint-2-backend.onrender.com/companies/email/${email}`)
 
             //? 3.1) si el email existe en la base de datos de compañias envia un error y no deberia dejar loguear
             if (validation.data.length > 0) {
@@ -65,10 +65,10 @@ const Landing = () => {
               return alert("Este email está siendo utilizado como usuario talento.");
             //? 3.2) si el mail no existe en la base de datos de talentos crea o encuentra en BD de compañias
             }else{
-              const register = await axios.post("http://localhost:3001/talents/register", {email,name,image})
+              const register = await axios.post("https://deploy-sprint-2-backend.onrender.com/talents/register", {email,name,image})
               localStorage.setItem("user_id", `${register.data.id}`);
               
-              const emailToTalent = axios.post(`http://localhost:3001/email/registerTalent/${email}`) 
+              const emailToTalent = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/registerTalent/${email}`) 
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
               
@@ -119,7 +119,7 @@ const Landing = () => {
           //? 3) comparo si este email esta siendo utilizado como talento        
           if (isAuthenticated) {
     
-            const validation = await axios.get(`http://localhost:3001/talents/email/${email}`)
+            const validation = await axios.get(`https://deploy-sprint-2-backend.onrender.com/talents/email/${email}`)
             
             //? 3.1) si el email existe en la base de datos de talentos envia un error y no deberia dejar loguear
             if (validation.data.length > 0) {
@@ -129,11 +129,11 @@ const Landing = () => {
               return alert("Este email está siendo utilizado como usuario talento.");
             //? 3.2) si el mail no existe en la base de datos de talentos crea o encuentra en BD de compañias
             }else{
-              const register=await axios.post("http://localhost:3001/companies/register",{email,name,image,})
+              const register=await axios.post("https://deploy-sprint-2-backend.onrender.com/companies/register",{email,name,image,})
               console.log(register.data.id);
               localStorage.setItem("user_id", `${register.data.id}`);
 
-              const emailToCompany = axios.post(`http://localhost:3001/email/registerCompany/${email}`)
+              const emailToCompany = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/registerCompany/${email}`)
                 .then((resp) => console.log(resp.data))
                 .catch((error) => console.log(error));
 

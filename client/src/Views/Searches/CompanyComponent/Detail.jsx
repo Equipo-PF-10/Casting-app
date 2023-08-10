@@ -47,11 +47,11 @@ const Detail = (props) => {
     mensaje_success_Toast();
     setModalRefused(false);
   
-    const emailToTalent = axios.post(`http://localhost:3001/email/talentContacRefused/${talent.email}`)
+    const emailToTalent = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/talentContacRefused/${talent.email}`)
     .then((resp) => console.log(resp.data))
     .catch((error) => console.log(error));
 
-    const contacRefusedForCompany = axios.post(`http://localhost:3001/email/talentContacRefusedForCompany/${localStorage.getItem("user_email")}`)
+    const contacRefusedForCompany = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/talentContacRefusedForCompany/${localStorage.getItem("user_email")}`)
     .then((resp) => console.log(resp.data))
     .catch((error) => console.log(error));
   };
@@ -62,11 +62,11 @@ const Detail = (props) => {
       dispatch(add_postulant_like_contacted(talent?.id, id_company, id_event))
 
     
-      const emailToTalent2 = axios.post(`http://localhost:3001/email/talentContac/${talent.email}`)
+      const emailToTalent2 = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/talentContac/${talent.email}`)
       .then((resp) => console.log(resp.data))
       .catch((error) => console.log(error));
 
-      const contactTalentForCompany = axios.post(`http://localhost:3001/email/talentContacForCompany/${localStorage.getItem("user_email")}`)
+      const contactTalentForCompany = axios.post(`https://deploy-sprint-2-backend.onrender.com/email/talentContacForCompany/${localStorage.getItem("user_email")}`)
     .then((resp) => console.log(resp.data))
     .catch((error) => console.log(error));
       

@@ -17,7 +17,7 @@ const PagosAdmin = () => {
 
   useEffect(() => {
     if(input === "") {
-    axios('http://localhost:3001/payments').then(({ data }) => {
+    axios('https://deploy-sprint-2-backend.onrender.com/payments').then(({ data }) => {
             setPaymentsData(data);
         })
     }

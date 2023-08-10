@@ -26,7 +26,7 @@ const HomeEvent=(props) => {
     const get_postulantes = async (fk) => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/applied/event/${fk}`
+          `https://deploy-sprint-2-backend.onrender.com/applied/event/${fk}`
         );
         console.log(response);
         setPostulantes(response.data);
