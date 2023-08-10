@@ -58,19 +58,19 @@ export default function PaypalBasicPlan () {
                         vault: true, }}
                     >
                         <PaypalPayments  type="subscription" plan_id="P-1VL54030GR7632215MTBY6QI"
-                        subs="premium"
+                        subs="basico"
                         />
                     </PayPalScriptProvider>
                     </div>
                 </div>
                 <div className={styles.bodyCenter}>
                   <div className={styles.bodyCenterPlan}>
-                    <h2>Plan Seleccionado: <span>Plan Premium</span></h2>
+                    <h2>Plan Seleccionado: <span>Plan Básico</span></h2>
                   </div>
                   <hr />
                   <div className={styles.bodyCenterIntro}>
-                    <p>Nuestro Plan Premium es una opción intermedia que ofrece una experiencia enriquecedora para las empresas que buscan talentos emergentes. Este plan brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
-                    <p>Caracteristicas del Plan Premium: </p>
+                    <p>Nuestro Plan Básico es una opción intermedia que ofrece una experiencia enriquecedora para las empresas que buscan talentos emergentes. Este plan brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
+                    <p>Caracteristicas del Plan Básico: </p>
                   </div>
                   <div className={styles.bodyCenterFeatures}>
                     <ul>

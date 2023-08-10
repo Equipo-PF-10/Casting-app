@@ -58,19 +58,19 @@ export default function PaypalPremiumPlan () {
                         vault: true, }}
                     >
                         <PaypalPayments  type="subscription" plan_id="P-3YJ63100N5151460SMTB35DQ"
-                        subs="pro"
+                        subs="premium"
                         />
                     </PayPalScriptProvider>
                     </div>
                 </div>
                 <div className={styles.bodyCenter}>
                   <div className={styles.bodyCenterPlan}>
-                    <h2>Plan Seleccionado: <span>Plan PRO</span></h2>
+                    <h2>Plan Seleccionado: <span>Plan Premium</span></h2>
                   </div>
                   <hr />
                   <div className={styles.bodyCenterIntro}>
-                    <p>Nuestro exclusivo Plan PRO está diseñado para ofrecer un conjunto completo de herramientas avanzadas y privilegios especiales para satisfacer las necesidades de las empresas más exigentes en el mundo del entretenimiento y la publicidad.</p>
-                    <p>Caracteristicas del Plan PRO: </p>
+                    <p>Nuestro exclusivo Plan Premium está diseñado para ofrecer un conjunto completo de herramientas avanzadas y privilegios especiales para satisfacer las necesidades de las empresas más exigentes en el mundo del entretenimiento y la publicidad.</p>
+                    <p>Caracteristicas del Plan Premium: </p>
                   </div>
                   <div className={styles.bodyCenterFeatures}>
                     <ul>
