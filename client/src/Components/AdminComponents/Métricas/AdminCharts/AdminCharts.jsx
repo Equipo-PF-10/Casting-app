@@ -127,24 +127,24 @@ const AdminCharts = () => {
             setTotalCompaniesDataRefactorization([
                 {
                     id: 1,
-                    label: "PRO",
+                    label: "Premium",
                     data: proPlanData.length
                 },
                 {
                     id: 2,
-                    label: "Premium",
+                    label: "Básico",
                     data: premiumPlanData.length
                 },
                 {
                     id: 1,
-                    label: "Free",
+                    label: "Prueba",
                     data: freePlanData.length
                 },
-                // {
-                //     id: 2,
-                //     label: "Pendiente",
-                //     data: totalCompaniesData.length - (proPlanData.length + premiumPlanData.length + freePlanData.length)
-                // }
+                {
+                    id: 2,
+                    label: "Pendiente",
+                    data: totalCompaniesData.length - (proPlanData.length + premiumPlanData.length + freePlanData.length)
+                }
             ])
         }
     }
@@ -225,7 +225,7 @@ const AdminCharts = () => {
         labels: planDataRefactorization.map((data) => data.label), 
         datasets: [
         {
-            label: "PRO ",
+            label: "Premium",
             data: planDataRefactorization.map((data) => data.pro),
             backgroundColor: [
                 "#e2e2e2",
@@ -234,7 +234,7 @@ const AdminCharts = () => {
             borderWidth: 3
         },
         {
-            label: "Premium ",
+            label: "Básico",
             data: planDataRefactorization.map((data) => data.premium),
             backgroundColor: [
                 "#e2e2e2",
@@ -243,7 +243,7 @@ const AdminCharts = () => {
             borderWidth: 3
         },
         {
-            label: "Free ",
+            label: "Prueba Gratis",
             data: planDataRefactorization.map((data) => data.free),
             backgroundColor: [
                 "#e2e2e2",
@@ -280,7 +280,7 @@ const AdminCharts = () => {
                 "#7E7193",
                 "#e2e2e2",
                 "#63dae0",
-                // "#e0d663",
+                "#d1cc90",
             ],
             borderColor: "#00c9a7",
             borderWidth: 6

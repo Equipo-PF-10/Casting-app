@@ -52,7 +52,7 @@ const PaypalPayments = (props) => {
     if (PLAN_TYPE === "PREMIUM") {
       axios.post('http://localhost:3001/payments', {
         paymentId: data.subscriptionID,
-        planType: "PRO",
+        planType: "PREMIUM",
         price: 200.00,
         taxes: 7.47,
         CompanyId: localStorage.getItem("user_id")
@@ -62,7 +62,7 @@ const PaypalPayments = (props) => {
     } else if (PLAN_TYPE === "BASICO") {
       axios.post('http://localhost:3001/payments', {
         paymentId: data.subscriptionID,
-        planType: "PREMIUM",
+        planType: "BASICO",
         price: 100.00,
         taxes: 3.98,
         CompanyId: localStorage.getItem("user_id")

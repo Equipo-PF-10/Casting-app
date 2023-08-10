@@ -54,7 +54,7 @@ const PagosAdmin = () => {
         <td>{talent.paymentId}</td>
         <td>
           <span className={
-            talent.planType === "PREMIUM" ? style.basico : style.premium
+            talent.planType === "BASICO" ? style.basico : style.premium
           }>{
             talent.planType
           }</span>

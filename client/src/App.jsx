@@ -49,11 +49,11 @@ function App() {
         <Route path="/company/plans/basico" element={<BasicPlan />} />
         <Route path="/company/plans/premium" element={<PremiumPlan />} />
         <Route
-          path="/company/plans/premium/paypal"
+          path="/company/plans/basico/paypal"
           element={<PaypalBasicPlan />}
         />
         <Route
-          path="/company/plans/pro/paypal"
+          path="/company/plans/premium/paypal"
           element={<PaypalPremiumPlan />}
         />
         <Route path="/company/create" element={<EventForm />} />

@@ -88,9 +88,7 @@ const EmpresasAdmin = () => {
         <td>{talent.email ? talent.email.split("@")[0] : null}</td>
         <td><span className={
           talent.plan === "PENDIENTE" ? style.pendiente : (talent.plan === "PRUEBA GRATIS" ? style.prueba : (talent.plan === "BASICO" ? style.basico : (talent.plan === "PREMIUM" ? style.premium : null)))
-        }>{
-          talent.plan === "PENDIENTE" ? talent.plan : (talent.plan === "PRUEBA GRATIS" ? "FREE" : (talent.plan === "BASICO" ? "PREMIUM" : (talent.plan === "PREMIUM" ? "PRO" : null)))
-        }</span></td>
+        }>{talent.plan === "PRUEBA GRATIS" ? "PRUEBA" : talent.plan}</span></td>
         <td>{talent.numberPosts}</td>
         <td>{talent.country}</td>
         <td>{talent.email}</td>
