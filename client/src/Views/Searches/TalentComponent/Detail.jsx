@@ -16,11 +16,12 @@ const Detail = (props) => {
   const empresa = useSelector((state) => state.companyById);
   const [isPostulated, setIsPostulated] = useState("");
   
- 
   // Verificar si el idTalent se encuentra en allPostulants
   useEffect(() => {
-    const isTalentPostulated = allPostulants.some((postulant) => postulant.id === idTalent);
-    setIsPostulated(isTalentPostulated ? 'Yes' : 'No');
+    if (Array.isArray(allPostulants)) {
+      const isTalentPostulated = allPostulants.some((postulant) => postulant.id === idTalent);
+      setIsPostulated(isTalentPostulated ? 'Yes' : 'No');
+    }
   }, [allPostulants, idTalent]);
 
   //Verificar que el talento haya ingresado los datos minimos en su perfil antes de postularse a un evento
@@ -63,9 +64,9 @@ const Detail = (props) => {
         {
           detail ? 
           <section>
-            <h2>{detail?.name}</h2>
+            <h2 className={style.title}>{detail?.name}</h2>
             <h5>{detail?.country}</h5>
-            <h5>Se requiere: {detail?.habilityRequired}</h5>
+            <h5>Se requiere: {detail?.habilityRequired.join(", ")}</h5>
             <p>{detail?.ubication}</p>
             <p>Fecha de publicación: {detail?.creationDate}</p>
             <p>Fecha de expiración: {detail?.expirationDate}</p>

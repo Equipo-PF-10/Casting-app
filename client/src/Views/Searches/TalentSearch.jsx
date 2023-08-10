@@ -23,11 +23,9 @@ const TalentSearch = () => {
   const errorPostulate = useSelector((state) => state.errorPostulate);
   let messagePostulated;
   if (postulantCreated?.status === "Pendiente")
-    messagePostulated = "Se ha postulado corectamente al evento.";
+  messagePostulated = "Se ha postulado corectamente al evento.";
 
-  //const idUser = useSelector((state) => state.idUser);
   const idTalent = localStorage.getItem("user_id");
-  //console.log(idTalent);
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,14 +33,14 @@ const TalentSearch = () => {
 
   const lastIndex = currentPage * eventsPerPage;
   const firstIndex = lastIndex - eventsPerPage;
-  const currentEvents = events.slice(firstIndex, lastIndex);
-  const currentEventsFilter = eventFilter.slice(firstIndex, lastIndex);
-
+  const currentEvents = Array.isArray(events) ? events.slice(firstIndex, lastIndex) : [];
+  const currentEventsFilter = Array.isArray(eventFilter) ? eventFilter.slice(firstIndex, lastIndex) : [];
+  
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  const pageNumbers = Math.ceil(events.length / eventsPerPage);
+  
+  const pageNumbers = Math.ceil(eventFilter.length / eventsPerPage);
   const pagination = Array.from(
     { length: pageNumbers },
     (_, index) => index + 1
@@ -82,7 +80,6 @@ const TalentSearch = () => {
       </div>
   ));
 
-
   const ubication = events.map((e) => {
     return e.ubication;
   });
@@ -97,9 +94,6 @@ const TalentSearch = () => {
     dispatch(filterByEvent());
   }, [dispatch]);
 
-  //useEffect(() => {
-  //  dispatch(get_event_by_id(id));
-  //}, [id]);
 
   let currentToastIdSuccess = null;
   //Evita que se renderice mas de 1 toast
@@ -225,7 +219,7 @@ const TalentSearch = () => {
         <div className={style.detailStyle}>
           {/*<Detail events={events} />*/}
           {id.length === 0 ? (
-            <Detail detail={Object.keys(eventFromHome).length === 0 ? events[0] : eventFromHome} idTalent={idTalent} idEvent={id} />
+            <Detail detail={Object.keys(eventFromHome).length === 0 ? eventFilter[0] : eventFromHome} idTalent={idTalent} idEvent={id} />
           ) : (
             <Detail detail={eventSelected} idTalent={idTalent} idEvent={id} />
           )}

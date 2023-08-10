@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import {useState } from "react";
 import style from "./SearchComp.module.css";
 import { useDispatch } from "react-redux";
 import {
@@ -6,6 +6,7 @@ import {
   filterByUbicationEvent,
   getAllEvents,
   getEventsByName,
+  get_event_by_name,
 } from "../../../redux/actions";
 
 const SearchComp = (props) => {
@@ -18,16 +19,14 @@ const SearchComp = (props) => {
 
   const handleInputChange = (event) => {
     setName(event.target.value);
-    //console.log(event.target.value);
+
   };
 
   //busqueda por nombre
   const handleSubmit = (event) => {
-    //console.log(name); //nombre submitiado
     event.preventDefault();
-    //console.log(name);
-    dispatch(getEventsByName(name));
-    setName("");
+    dispatch(get_event_by_name(name))
+    setName("")
   };
 
   //recargar postulantes
@@ -60,6 +59,7 @@ const SearchComp = (props) => {
       </option>
     );
   });
+
 
   const handleHabilities = (event) => {
     dispatch(filterByEvent(event.target.value));

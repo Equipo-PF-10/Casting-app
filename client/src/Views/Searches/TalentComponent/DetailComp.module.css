@@ -2,14 +2,14 @@
   /*margin-right: 20px;*/
   position: fixed;
   padding: 30px;
-  /* width: 800px; */
-  min-width: 800px;
+  width: 35rem;
   background-color: rgba(79, 153, 203, 0.226);
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
     height: 80vh;
+  margin-left: 12rem;
 }
 
 .textoDetail {
@@ -45,12 +45,14 @@
   height: 30px;
   border-radius: 100px;
   transition: 1s;
-  margin-inline: 5rem;
+  margin-inline: 3rem;
+  border: none;
 }
 
 .postularme:hover{
   color:#4B31A1 ;
   background-color: whitesmoke;
+  border: #4B31A1 solid 1px;
 }
 
 .conectar{
@@ -60,4 +62,9 @@
 
 .sectionInfo{
   height: 65vh;
+}
+
+.title{
+  border-bottom: #4B31A1 2px solid;
+  font-size: 4rem;
 }
