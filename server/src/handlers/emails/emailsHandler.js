@@ -259,8 +259,8 @@ const handlerSuscriptionFree = async (req, res) => {
         const result = await transporter.sendMail({
             from: "henry38b10@gmail.com",
             to:email,
-            subject:"Te has suscrito al plan Free!!.",
-            text:"Bienvenido/a! Te has suscrito al plan Free. Descubre nuestras funcionalidades básicas sin costo alguno. Publica hasta 2 eventos y recibe alertas por correo electrónico. $0 GRATIS. \n ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
+            subject:"Te has suscrito al Prueba Gratis!!.",
+            text:"Bienvenido/a! Te has suscrito al Prueba Gratis. Descubre nuestras funcionalidades básicas sin costo alguno. Publica hasta 2 eventos y recibe alertas por correo electrónico. $0 GRATIS. \n ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
         },(err, info) => {
         })
          return res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
@@ -276,8 +276,8 @@ const handlerSuscriptionPremium = async (req, res) => {
         const result = await transporter.sendMail({
             from: "henry38b10@gmail.com",
             to:email,
-            subject:"Te has suscrito al plan Premium!!..",
-            text:"Felicidades por elegir el plan Premium! Obtén herramientas esenciales para encontrar talento de manera efectiva. Publica hasta 20 eventos y recibe notificaciones en tiempo real cuando nuevos talentos postulen a tus vacantes. ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
+            subject:"Te has suscrito al plan Básico!!..",
+            text:"Felicidades por elegir el plan Básico! Obtén herramientas esenciales para encontrar talento de manera efectiva. Publica hasta 20 eventos y recibe notificaciones en tiempo real cuando nuevos talentos postulen a tus vacantes. ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
         },(err, info) => {
         })
          return res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
@@ -293,8 +293,8 @@ const handlerSuscriptionPro = async (req, res) => {
         const result = await transporter.sendMail({
             from: "henry38b10@gmail.com",
             to:email,
-            subject:"Te has suscrito al plan PRO!!..",
-            text:"¡Bienvenido/a al exclusivo Plan PRO! Lleva tu experiencia de búsqueda de talento al siguiente nivel con nuestras ventajas PRO: Publica oportunidades laborales de forma ilimitada y obtén una mayor visibilidad al resaltar tus eventos en la página principal. ¡Potencia tu empresa con el Plan PRO!. ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
+            subject:"Te has suscrito al plan Premium!!..",
+            text:"¡Bienvenido/a al exclusivo Plan Premium! Lleva tu experiencia de búsqueda de talento al siguiente nivel con nuestras ventajas Premium: Publica oportunidades laborales de forma ilimitada y obtén una mayor visibilidad al resaltar tus eventos en la página principal. ¡Potencia tu empresa con el Plan Premium!. ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
         },(err, info) => {
         })
          return res.status(200).json({ok: true, message: "Se ha dado aviso con éxito!!!"})
