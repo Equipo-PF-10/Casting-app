@@ -56,6 +56,7 @@ const HomeEvent = (props) => {
     console.log("entro en error");
     mensaje_error_Toast();
   }
+ 
 
   let errorMessage = "Podrá ver el detalle del evento cuando hayan postulantes al mismo.";
   let currentToastId = null;

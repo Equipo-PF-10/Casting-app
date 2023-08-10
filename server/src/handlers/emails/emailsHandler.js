@@ -90,7 +90,7 @@ const  handlerTalentContact = async (req, res) => {
             from: "henry38b10@gmail.com",
             to:email,
             subject:"¡Felicidades! Has sido seleccionado/a por una compañía.",
-            text:"Nos complace informarte que has sido elegido/a para participar en su evento. ¡Enhorabuena por esta emocionante oportunidad!   Pronto recibirás más detalles sobre los siguientes pasos. ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito en tu carrera artística! \n\n    Atentamente,   \n     El equipo de CastingApp",   
+            text:"Nos complace informarte que has sido elegido/a para participar en el proceso de seleccion al evento al que te has postulado. ¡Enhorabuena por esta emocionante oportunidad!   Pronto recibirás más detalles sobre los siguientes pasos. ¡Esperamos que tengas una experiencia increíble en este proyecto! \n ¡Mucho éxito en tu carrera artística! \n\n    Atentamente,   \n     El equipo de CastingApp",   
         },(err, info) => {
         })
         res.status(200).json({ok: true, message: "Se ha enviado el contacto con éxito!!!"})
@@ -327,7 +327,7 @@ const handlerContacRefusedForCompany = async (req, res) => {
         const result = await transporter.sendMail({
             from: "henry38b10@gmail.com",
             to:email,
-            subject:"Has rechazdo a un postulante!!..",
+            subject:"Has rechazado a un postulante!!..",
             text:"Has rechazado a un postulante para tu evento!.  \n ¡Mucho éxito!    Atentamente,   \n\n      El equipo de CastingApp",   
         },(err, info) => {
         })
@@ -362,7 +362,7 @@ const  handlerContacHiredForCompany = async (req, res) => {
         const result = await transporter.sendMail({
             from: "henry38b10@gmail.com",
             to:email,
-            subject:"Felicidades Has cantratado a un talento!!.",
+            subject:"Felicidades, has contratado a un talento!!.",
             text:"Felicitaciones, has contratado a un talento para tu evento!!. ¡Esperamos que tengas una experiencia laboral exitosa!. Gracias.\n\n    Atentamente,    \n    El equipo de CastingApp",   
         },(err, info) => {
         })
