@@ -23,7 +23,7 @@
     display: grid;
     width: 90%;
     grid-template-columns: 1% 98% 1%;
-    margin-top: -2rem;
+    /*margin-top: -2rem;*/
 }
 
 .eventos button{
@@ -50,6 +50,11 @@
 
 .eventos ul{
     line-height: 8px;
+}
+
+.divInterno{
+    width: 800px;
+    margin: auto;
 }
 
 .container{
@@ -106,40 +111,49 @@
 }
 
 .info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     height: fit-content;
     width: 25rem;
+    background-color:#00C9A7;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
 .info h3{
-    text-align: left;
+    /*text-align: left;*/
     width: 35rem;
 }
 
 .info ul{
-    text-align: left;
-    list-style: none;
+    color: grey;
+    margin: auto;
 }
 
 .link {
     color: #324844;
     height: fit-content;
+    /*background-color: red;*/
 }
 
 .link:hover{
     color: #4b31a1;
 }
 
-.link li{
+/*.link li{
     transition: 0.1s;
 }
 
 .link li:hover{
     transform: scale(1.0009);
-}
+}*/
 
 .info li{
     font-size: 18px;
-    padding-block: 5px;
+    /*padding-block: 5px;*/
     transition: 0.3s;
 }
 
@@ -164,27 +178,40 @@
 }
 
 .aplication h4:first-of-type{
-    border-right: #4b31a1 2px solid;
+    /*border-right: #4b31a1 2px solid;*/
     width: 8rem;
     font-size: 20px;
 }
 
 .aplication h4{
     font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
 }
 
 .yourEvents{
-    background-color: #00C9A7;
+     background-color: #755f98;
     border-radius: 30px;
     padding-block: 10px;
     overflow-y: auto;
     height: 11rem;
+    margin: 5px 2px 5px 2px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
 .yourEvents h4{
-    margin-block: 3rem;
-    color: white;
-
+    /*margin-block: 3rem;*/
+    padding: 10px;
+    color: whitesmoke;
+    background-color: #aaa0cc;
+    padding: 5px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
 .eventDiv {
@@ -207,7 +234,7 @@ height: 30px;
 
 .infoCard{
     text-align: center;
-    margin-left: -2rem;
+    /*margin-left: -2rem;*/
 }
 
 .link1{
@@ -218,3 +245,19 @@ height: 30px;
 .link1:hover{
     color: #4b31a1;
 }
+
+.link8{
+    color: #324844;
+}
+
+.link8 li{
+    font-size: 18px;
+    transition: 0.3s;
+    background-color: #00c9a774;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 5px 5px,
+    rgba(0, 0, 0, 0.1) 1px 1px 5px 1px, rgba(1, 0, 0, 0.1) 0px -1px 1px inset;
+}
+
