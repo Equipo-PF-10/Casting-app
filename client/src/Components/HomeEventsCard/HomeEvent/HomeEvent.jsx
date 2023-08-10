@@ -19,23 +19,22 @@ const HomeEvent = (props) => {
   //const navigate = useNavigate();
   //const postulantes = useSelector((state) => state.postulatedTalentsByEvent);
   const [postulantes, setPostulantes] = useState([]);
-  
-  useEffect(() => {
-  const get_postulantes = async (fk) => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3001/applied/event/${fk}`
-      );
-      console.log(response);
-      setPostulantes(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-  get_postulantes(props.id);
-  // dispatch(get_all_postulations(props.id));
-  }, []);
 
+  useEffect(() => {
+    const get_postulantes = async (fk) => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/applied/event/${fk}`
+        );
+        console.log(response);
+        setPostulantes(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    get_postulantes(props.id);
+    // dispatch(get_all_postulations(props.id));
+  }, []);
 
   // let [numberPostulations, setNumberPostulations] = useState(postulantes.length);
 
@@ -46,7 +45,6 @@ const HomeEvent = (props) => {
   //   console.log(postulantes);
   // }, [postulantes]);
 
-
   const handleClickEditEvent = () => {
     //navigate(`/company/editEvent/${props.id}`)
   };
@@ -55,10 +53,12 @@ const HomeEvent = (props) => {
   const hanldleClickEventDetail = () => {
     console.log("entro en error");
     mensaje_error_Toast();
-  }
- 
 
-  let errorMessage = "Podrá ver el detalle del evento cuando hayan postulantes al mismo.";
+  };
+
+
+  let errorMessage =
+    "Podrá ver el detalle del evento cuando hayan postulantes al mismo.";
   let currentToastId = null;
   const mensaje_error_Toast = () => {
     if (currentToastId) {
@@ -86,33 +86,34 @@ const HomeEvent = (props) => {
 
   return (
     <div className={styles.containerGral}>
-        <ToastContainer />
+      <ToastContainer />
       <div className={styles.container}>
-        {
-          postulantes.length > 0 ?
-        <Link to={`/${props.url}/${props.id}`}>
-          <div className={styles.fonts}>
-            <h2 className={styles.text}>{props.title}</h2>
-            <h5 className={styles.text}>{props.subTitle}</h5>
-            <h5 className={styles.text}>{props.active}</h5>
-          </div>
-        </Link>
-        :
-        <Link onClick={hanldleClickEventDetail}>
-          <div className={styles.fonts}>
-            <h2 className={styles.text}>{props.title}</h2>
-            <h5 className={styles.text}>{props.subTitle}</h5>
-            <h5 className={styles.text}>{props.active}</h5>
-          </div>
-        </Link>
-        }
+        {postulantes.length > 0 ? (
+          <Link to={`/${props.url}/${props.id}`}>
+            <div className={styles.fonts}>
+              <h2 className={styles.text}>{props.title}</h2>
+              <h5 className={styles.text}>{props.subTitle}</h5>
+              <h5 className={styles.text}>{props.active}</h5>
+            </div>
+          </Link>
+        ) : (
+          <Link onClick={hanldleClickEventDetail}>
+            <div className={styles.fonts}>
+              <h2 className={styles.text}>{props.title}</h2>
+              <h5 className={styles.text}>{props.subTitle}</h5>
+              <h5 className={styles.text}>{props.active}</h5>
+            </div>
+          </Link>
+        )}
         <div className={styles.postulantes}>
           <h5 className={styles.postulantesh5}>Cantidad de postulantes:</h5>
           <h5>{postulantes.length}</h5>
         </div>
         <div className={styles.options}>
           <button className={styles.buttonEdit} onClick={handleClickEditEvent}>
-            Editar
+            <Link to={"/company/create"} className={styles.editar}>
+              Editar
+            </Link>
           </button>
           <button
             className={styles.buttonClose}

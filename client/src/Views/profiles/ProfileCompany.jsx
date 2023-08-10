@@ -40,7 +40,7 @@ const profileCompany=() => {
                 }
               </div>
               <div className={style.textoCard}>
-              <h3 className={style.nombre}>{userName ? userName : company?.name}</h3>
+              <h3 className={style.nombre}>{company?.name ? company.name : userName}</h3>
                 {/* <p className={style.descripcion}>
                   {company?.descriptionShort}
                 </p> */}
@@ -123,8 +123,9 @@ const profileCompany=() => {
                     />
                   </svg>
                   
-                  {company?.phoneNumber ?<span className={style.valueContact}>{company.phoneNumber?.join(", ")}</span>
+                  { company.phoneNumber ? <span className={style.valueContact}>{company?.phoneNumber}</span>
                     : <span className={style.valueContact}>xxx-xxx-xxxx</span>}
+                    {/* <span className={style.valueContact}>{company?.phoneNumber}</span> */}
                 </p>
                 <p>
                   <svg
