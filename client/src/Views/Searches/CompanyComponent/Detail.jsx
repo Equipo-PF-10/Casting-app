@@ -246,7 +246,7 @@ const Detail = (props) => {
         <div className= {style.containerModalOpened}>
             <div className={style.modalConfirmationOpened}>
               <div className={style.head3}>
-                <h4>¿Está seguro/a de enviar un mail de conacto al Postulante?</h4>
+                <h4>¿Está seguro/a de enviar un email de contacto al Postulante?</h4>
                 <hr />
               </div>
               

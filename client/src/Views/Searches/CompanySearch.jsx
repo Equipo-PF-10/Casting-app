@@ -5,7 +5,7 @@ import style from "./CompanySearch.module.css";
 import Search from "./CompanyComponent/Search";
 import Detail from "./CompanyComponent/Detail";
 import NavBarLateral from "../../Components/NavBarLateral/NavBarLateral";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   get_all_postulations,
@@ -21,6 +21,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const CompanySearch = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const eventSelected = useSelector((state) => state.eventById);
   const postulantes = useSelector((state) => state.postulatedTalentsByEvent);
@@ -120,7 +121,7 @@ const CompanySearch = () => {
   const singleLocation = ubication.filter((item, index) => {
     return ubication.indexOf(item) === index;
   });
-
+  
   return (
     <div className={style.containerG}>
       <div className={style.searchFil}>
@@ -139,6 +140,7 @@ const CompanySearch = () => {
         </div>
         {postulantesCopy.length === 0 ? (
           <div className={style.text}>
+            {navigate("/home/company")}
             <h3>No se han encontrado resultados.</h3>
           </div>
         ) : filters ? (

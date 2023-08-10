@@ -233,8 +233,12 @@ const FormTalento = () => {
                             <p className={error.email ? Styles.error : ""}>{error.email ? error.email : null} </p>
                         </article>
                         <article className={Styles.coolinput}>
-                            <label htmlFor="contact" className={Styles.text}>Contacto</label>
+                            <label htmlFor="contact" className={Styles.text}>Número de contacto</label>
                             <input type="text" name="contact" id="contact" value={input.contact[0] || ""} onChange={(e) => handleContactChange(0, e)}/>
+                        </article>
+                        <article className={Styles.coolinput}>
+                            <label htmlFor="nationality" className={Styles.text}>Nacionalidad</label>
+                            <input type="text"  name="nationality" id="nationality" value={input.nationality} onChange={handleChange}/>
                         </article>
                         <article className={Styles.coolinput}>
                                 <label htmlFor="" className={Styles.text}>Descripción</label>
@@ -348,11 +352,7 @@ const FormTalento = () => {
                             <input type="text" id="ubication" name="ubication" value={input.ubication} onChange={handleChange}/>
                             <p className={error.ubication ? Styles.error : ""}>{error.ubication ? error.ubication : null}</p>
                         </article>
-                        <article className={Styles.coolinput}>
-                            <label htmlFor="nationality" className={Styles.text}>Nacionalidad</label>
-                            <input type="text"  name="nationality" id="nationality" value={input.nationality} onChange={handleChange}/>
-
-                        </article>
+                        
                         <article className={Styles.coolinput}>
                             <label htmlFor="dni" className={Styles.text}>Documento de Identidad</label>
                             <input type="text" name="dni" id="dni" value={input.dni} onChange={handleChange}/>

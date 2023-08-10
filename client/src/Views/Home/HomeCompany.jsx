@@ -58,13 +58,6 @@ export default function HomeCompany() {
       dispatch(get_all_postulants_contacted_by_id(id_company));
   },[dispatch])
 
-  // if(postulantes.length > 0){
-  //   for(let i=0; i < postulantes.length ; i++){
-  //     setNumberPostulations(numberPostulations ++);
-  //   }
-  // }
-  
-  
   let message_success_toastify = "¡Se ha actualizado su plan con éxito!";
   //Mostrar mensaje cuando se actualiza un plan correctamente
   let currentToastIdSuccess = null;
@@ -121,7 +114,6 @@ export default function HomeCompany() {
       });
     }
   };
-
   
     if(messagePlanUpdated === "PRUEBA GRATIS" || messagePlanUpdated === "PREMIUM" || messagePlanUpdated === "BASICO") {
       mensaje_success_Toast();
@@ -142,8 +134,6 @@ export default function HomeCompany() {
     mensaje_success_Toast_contacted();
     dispatch(message_hired_or_refused_talents(""));
   }
-  
-
   return (
     <div className={styles.container}>
       <NavBarLateral />
