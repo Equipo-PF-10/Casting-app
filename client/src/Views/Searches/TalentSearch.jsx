@@ -217,7 +217,6 @@ const TalentSearch = () => {
           </div>
         )}
         <div className={style.detailStyle}>
-          {/*<Detail events={events} />*/}
           {id.length === 0 ? (
             <Detail detail={Object.keys(eventFromHome).length === 0 ? eventFilter[0] : eventFromHome} idTalent={idTalent} idEvent={id} />
           ) : (
