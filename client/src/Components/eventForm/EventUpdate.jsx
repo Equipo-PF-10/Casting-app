@@ -10,9 +10,10 @@ import { getAllCompanies, get_company_by_id } from "../../redux/actions"
 
 const EventUpdate = () => {
 
-    const {eventId} = useParams();
+    const {id}=useParams();
+    console.log(id);
 
-    const URL = `http://localhost:3001/events/${eventId}`;
+    const URL = `http://localhost:3001/events/${id}`;
   
     const idUser = localStorage.getItem("user_id");
     
@@ -80,7 +81,7 @@ const EventUpdate = () => {
 
       input.active = isActive;
 
-      console.log(input.active)
+      //console.log(input.active)
             
       // Handlers
   

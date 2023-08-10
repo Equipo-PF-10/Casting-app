@@ -5,7 +5,7 @@ import {connect, useDispatch} from 'react-redux';
 
 const HomeEventsCard=(props) => {
   //const dispatch = useDispatch()
-  console.log(props.eventDetail);
+  //console.log(props.eventDetail);
   return (
     <div className={styles.container}>
       <h1>{props.title}</h1>

@@ -45,6 +45,7 @@ import {
   ERROR_POSTULATE,
   MESSAGE_CONTACTED,
   ADD_REVIEW_TALENT,
+  GET_EVENT_BY_NAME,
 } from "./actions.js";
 
 const initialState = {
@@ -393,6 +394,21 @@ const rootReducer = (state = initialState, { type, payload }) => {
         filtersEvent: true,
         eventsFiltered: payload,
       };
+    case GET_EVENT_BY_NAME: {
+      if (payload.error) {
+        return {
+          ...state,
+          eventsFiltered: [],
+          error: payload.error,
+        };
+      }
+    
+      return {
+        ...state,
+        eventsFiltered: payload,
+        error: null,
+      };
+    }
     case SEND_ID_OF_CARD:
       return {
         ...state,
