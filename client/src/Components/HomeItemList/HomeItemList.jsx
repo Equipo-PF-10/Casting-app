@@ -48,9 +48,9 @@ const HomeItemList = (props) => {
             Buscar
           </button>
         </div>
-        </div>
+        
         {/*BOTON RECARGAR*/}
-        {/*<div>
+        <div>
           <button
             onClick={(event) => {
               handleClickRefresh(event);
@@ -73,7 +73,8 @@ const HomeItemList = (props) => {
             </svg>
             
           </button>
-        </div>*/}
+        </div>
+        </div>
       </div>
       <div className={styles.cards}>
       {props.allFavoritePostulants.length === 0 &&

@@ -205,6 +205,7 @@
   position: relative;
   border: 1px solid black;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.599);
+  overflow: hidden;
   &:hover {
       border: 1px solid blue;
   }

@@ -150,6 +150,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   width: 70px;
   margin-top: 15px;
   margin-bottom: 1px;
+  margin-left: 20px;
   border: none;
   height: 30px;
   box-shadow: rgba(0, 0, 0, 0.1) 3px 8px 12px,
