@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
       },
 
       planType: {
-        type: DataTypes.ENUM("PRUEBA GRATIS", "PREMIUM", "PRO"),
+        type: DataTypes.ENUM("PRUEBA GRATIS", "BASICO", "PREMIUM"),
         allowNull: false,
       },
 

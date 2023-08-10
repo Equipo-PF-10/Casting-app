@@ -14,10 +14,10 @@ const getAllPayments = async (req, res) => {
 }
 
 const createPayment = async (req, res) => {
-    const { paymentId, CompanyId, planType, paymentDate, expirationDate, price, taxes } = req.body;
-    if (!paymentId || !CompanyId || !planType || !paymentDate || !expirationDate || !price || !taxes) return res.status(400).send("Faltan datos obligatorios");
+    const { paymentId, CompanyId, planType, price, taxes } = req.body;
+    if (!paymentId || !CompanyId || !planType || !price || !taxes) return res.status(400).send("Faltan datos obligatorios");
     try {
-        const newPayment = await createPaymentDb(paymentId, CompanyId, planType, paymentDate, expirationDate, price, taxes);
+        const newPayment = await createPaymentDb(paymentId, CompanyId, planType, price, taxes);
         return res.status(200).send("Subscription payment saved succesfully.");
     } catch(error) {
         res.status(400).json(error.message);

@@ -1,34 +1,49 @@
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     overflow: hidden;
-    box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
+    /* box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432); */
     border-radius: 1rem;
-    background-color: #00c9a7;
-    color: #f5f5f5;
-    width: 93%;
+    /* background-color: #00c9a7; */
+    /* color: #f5f5f5; */
+    width: 100%;
+    /* background-color: red; */
+    /* padding-left: 10%; */
 }
 
 .chart {
     padding: 2.5rem;
     position: relative;
-    width: 30%;
+    width: 40%;
+    box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
+    border-radius: 1rem;
+    background-color: rgb(255, 255, 255);
+    margin: 3rem 0 0 5rem;
+    /* border: 2px solid #00c9a7; */
+    color: #00c9a7;
 }
 
 .donnutChart {
-    padding: 2.5rem;
+    padding: 1rem;
     position: relative;
     width: 100%;
 }
 
 .donnutDiv {
-    width: 20%;
+    padding: 1rem;
+    width: 21%;
+    background-color: #00c9a7d7;
+    box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
+    border-radius: 1rem;
+    color: white;
+    /* margin-right: 100px; */
+    /* margin-left: 100px; */
+    margin: 3rem 0rem 0 4rem;
 }
 
 .dropDown {
-    margin-top: 0.7rem;
     background: transparent;
     width: 150px;
     padding: 3px 10px 3px;
@@ -40,4 +55,49 @@
 
 .dropDown:focus {
     outline: none;
+}
+
+.leftDiv {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* overflow: hidden; */
+    /* background-color: azure; */
+    width: 20%;
+    height: 45%;
+    /* margin: 0 0 0 4rem; */
+    margin-top: 2.6rem;
+    /* margin-right: 2.5rem; */
+    margin-left: 5rem;
+}
+
+
+
+.stats {
+    height: 140px;
+    width: 100%;
+    color: #00c9a7d7;
+    box-shadow: 0px 2px 8px 0px rgba(53, 53, 53, 0.432);
+    border-radius: 1rem;
+    /* margin: 2rem; */
+    padding:0.8rem;
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.amount {
+    margin-top: 0.8rem;
+    color: #7E7193;
+    font-weight: bold;
+    font-size: 41px;
+}
+
+.amount span {
+    margin-top: 0.8rem;
+    color: #00c9a7d7;
+    font-weight: bold;
+    font-size: 41px;
+    text-decoration: underline;
 }
