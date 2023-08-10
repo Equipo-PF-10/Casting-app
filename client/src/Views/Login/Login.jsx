@@ -10,16 +10,17 @@ import Navbar from "../../Components/Navbar/Navbar";
 import validate from "./Validate.jsx";
 import { loginControler } from "./loginControler";
 import style from "./Login.module.css";
+import axios from "axios";
+import {login} from "./loginFunction"
 
 const Login = () => {
-
   useEffect(() => {
-    if(localStorage.getItem("logged") === "true") {
+    if (localStorage.getItem("logged") === "true") {
       //dispatch(id_user(localStorage.getItem("user_id")));
       if (localStorage.getItem("type") === "talent") navigate(`/home/talent`);
       if (localStorage.getItem("type") === "company") navigate(`/home/company`);
     }
-  }, [])
+  }, []);
 
   //const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
@@ -58,6 +59,8 @@ const Login = () => {
     password: "",
   });
 
+  const [admin, setAdmin] = useState([]);
+
   const [errors, setErrors] = useState({});
 
   const disable = () => {
@@ -89,7 +92,7 @@ const Login = () => {
   };
 
   //--Le asigno el mensaje de error al inicio para que lo renderice en primer caso de error
-  //--El mensaje de error se setea a string vacio solo en caso de que el usuario se registre correctamente 
+  //--El mensaje de error se setea a string vacio solo en caso de que el usuario se registre correctamente
   const [errorMessage, setErrorMessage] = useState(
     "El email o contraseña no coinciden con un usuario registrado"
   );
@@ -129,47 +132,56 @@ const Login = () => {
     e.preventDefault();
     setShowErrorMessage(true);
 
-    const obj = await loginControler(input.email, input.password);
+    // const obj = await loginControler(input.email, input.password);
+    const response = await login(input.email, input.password)
+    // console.log(response.email + " " + input.email);
+    // console.log(response);
+      if(response.access){ 
+        navigate("/admin")
+      }
+      
     
+
+
     //este navigate deberia ser para una ruta donde la data sea del talento por id
-    if (obj.access === 1) {
-      saveData("talent", obj.id, input.email, input.password);
-      dispatch(id_user(obj.id));
-      setErrorMessage("");
-      dispatch(user_type("1"));
-      setInput({
-        email: "",
-        password: "",
-      });
-      navigate(`/home/talent`);
-    }
-    //este navigate deberia ser para una ruta donde la data sea de la empresa por id
-    if (obj.access === 2) {
-      saveData("company", obj.id, input.email, input.password);
-      dispatch(id_user(obj.id));
-      setErrorMessage("");
-      dispatch(user_type("2"));
-      setInput({
-        email: "",
-        password: "",
-      });
-      navigate(`/home/company`);
-    }
-    if (
-      obj.access === 0 &&
-      input.email.length > 0 &&
-      input.password.length > 0
-    ) {
-      //Este caso es cuando no consigue ningun match en la base de datos (Mostrar el mensaje de error por medio de Toastify)
-      mensaje_error_Toast();
-    }
-    if (obj.error) {
-      //Cuando no es ni 0, 1, ni 2 es error de servidor desconectado.
-      setErrorMessage(`${obj.error}`);
-      mensaje_error_Toast();
-      document.getElementById("loginForm").reset();
-      setShowErrorMessage(true);
-    }
+    // if (obj.access === 1) {
+    //   saveData("talent", obj.id, input.email, input.password);
+    //   dispatch(id_user(obj.id));
+    //   setErrorMessage("");
+    //   dispatch(user_type("1"));
+    //   setInput({
+    //     email: "",
+    //     password: "",
+    //   });
+    //   navigate(`/home/talent`);
+    // }
+    // //este navigate deberia ser para una ruta donde la data sea de la empresa por id
+    // if (obj.access === 2) {
+    //   saveData("company", obj.id, input.email, input.password);
+    //   dispatch(id_user(obj.id));
+    //   setErrorMessage("");
+    //   dispatch(user_type("2"));
+    //   setInput({
+    //     email: "",
+    //     password: "",
+    //   });
+    //   navigate(`/home/company`);
+    // }
+    // if (
+    //   obj.access === 0 &&
+    //   input.email.length > 0 &&
+    //   input.password.length > 0
+    // ) {
+    //   //Este caso es cuando no consigue ningun match en la base de datos (Mostrar el mensaje de error por medio de Toastify)
+    //   mensaje_error_Toast();
+    // }
+    // if (obj.error) {
+    //   //Cuando no es ni 0, 1, ni 2 es error de servidor desconectado.
+    //   setErrorMessage(`${obj.error}`);
+    //   mensaje_error_Toast();
+    //   document.getElementById("loginForm").reset();
+    //   setShowErrorMessage(true);
+    // }
   };
 
   const handler_click = () => {
