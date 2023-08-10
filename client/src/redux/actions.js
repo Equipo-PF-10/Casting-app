@@ -45,6 +45,7 @@ export const ERROR_POSTULATE = "ERROR_POSTULATE";
 export const GET_EVENTS_PREMIUM = "GET_EVENTS_PREMIUM";
 export const GET_POSTULANT_FAV_BY_NAME="GET_POSTULANT_FAV_BY_NAME";
 export const ADD_REVIEW_TALENT = "ADD_REVIEW_TALENT";
+export const GET_EVENT_BY_NAME = "GET_EVENT_BY_NAME"
 import axios from "axios";
 
 export const register_model = (payload) => {
@@ -364,6 +365,8 @@ export const get_all_postulations = (fk) => {
     }
   };
 };
+
+
 export const get_postulant_by_name = (fk, name) => {
   let endpoint = `http://localhost:3001/applied/company/${fk}/?name=${name}`;
 
@@ -542,6 +545,16 @@ export const filterByEvent = (hability) => {
   };
 };
 
+export const filterByUbicationEvent = (ubication) => {
+  return (dispatch) => {
+    return dispatch({
+      type: FILTER_BY_UBICATION_EVENT,
+      payload: ubication,
+    });
+  };
+};
+
+
 export const filterByGender = (gender) => {
   return (dispatch) => {
     return dispatch({
@@ -568,14 +581,6 @@ export const filterByUbication = (ubication) => {
   };
 };
 
-export const filterByUbicationEvent = (ubication) => {
-  return (dispatch) => {
-    return dispatch({
-      type: FILTER_BY_UBICATION_EVENT,
-      payload: ubication,
-    });
-  };
-};
 
 export const send_id_of_card = (id) => {
   return (dispatch) => {
@@ -614,6 +619,28 @@ export const getEventsByName = (name) => {
     }
   };
 };
+
+export const get_event_by_name = (name) => {
+  return async (dispatch) => {
+    try {
+      let response = await axios.get(
+        `http://localhost:3001/events//eventsName/${name}`
+      );
+
+      const payload = Array.isArray(response.data) ? response.data : [response.data];
+
+      return dispatch({
+        type: GET_EVENT_BY_NAME,
+        payload,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR",
+        payload: "No se ha encontrado evento",
+      });
+    }
+  };
+}
 
 export const getUrlImage = (url) => {
   return (dispatch) => {

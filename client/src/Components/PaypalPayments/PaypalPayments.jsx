@@ -15,8 +15,8 @@ const PaypalPayments = (props) => {
   const dispatch = useDispatch();
   const id_company = localStorage.getItem("user_id");
   let PLAN_TYPE = "";
-  if (props.subs === "pro") PLAN_TYPE = "PREMIUM";
-  else if (props.subs === "premium") PLAN_TYPE = "BASICO";
+  if (props.subs === "premium") PLAN_TYPE = "PREMIUM";
+  else if (props.subs === "basico") PLAN_TYPE = "BASICO";
   return (
     <PayPalButtons
       createSubscription={(data, actions) => {

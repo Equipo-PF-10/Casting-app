@@ -57,10 +57,31 @@ export default function PaymentPlans() {
     dispatch(get_company_id(id_company));
   }, [dispatch]);
 
+  //const handleContinueClick = () => {
+  //  // Redirigir a una URL específica para cada plan.
+  //  switch (selectedPlan) {
+  //    case "Free":
+  //      // if (!planFreeUtilizado) {
+  //      //   setModalPlanFree(true);
+  //      // }
+  //      setModalPlanFree(true);
+  //      break;
+  //    case "Básico":
+  //      // Lógica para el plan Básico
+  //      navigate("/company/plans/premium");
+  //      break;
+  //    case "Premium":
+  //      // Lógica para el plan Premium
+  //      navigate("/company/plans/pro");
+  //      break;
+  //    default:
+  //      break;
+  //  }
+  //};
   const handleContinueClick = () => {
     // Redirigir a una URL específica para cada plan.
     switch (selectedPlan) {
-      case "Free":
+      case "Prueba Gratis":
         // if (!planFreeUtilizado) {
         //   setModalPlanFree(true);
         // }
@@ -68,11 +89,11 @@ export default function PaymentPlans() {
         break;
       case "Básico":
         // Lógica para el plan Básico
-        navigate("/company/plans/premium");
+        navigate("/company/plans/basico");
         break;
       case "Premium":
         // Lógica para el plan Premium
-        navigate("/company/plans/pro");
+        navigate("/company/plans/premium");
         break;
       default:
         break;
@@ -155,14 +176,14 @@ export default function PaymentPlans() {
             </div>
             <div className={styles.infoPlan}>
               <p>
-                El plan Free es la opción perfecta para aquellos que desean
+                La Prueba Gratis es la opción perfecta para aquellos que desean
                 descubrir las funcionalidades básicas de nuestra plataforma sin
                 costo alguno; es la puerta de entrada a nuestra comunidad,
                 brindando una experiencia básica pero efectiva para empresas
                 interesadas en descubrir nuevos talentos.
               </p>
             </div>
-            <p className={styles.text2}>Caracteristicas del Plan Free: </p>
+            <p className={styles.text2}>Caracteristicas de la Prueba Gratis: </p>
             <div className={styles.features}>
               <ul>
                 <li>
@@ -207,7 +228,7 @@ export default function PaymentPlans() {
         <div className={styles.containerModalOpened}>
           <div className={styles.modalConfirmationOpened}>
             <div className={styles.head3}>
-              <h4>¿Está seguro/a de adquirir el Plan Free?</h4>
+              <h4>¿Está seguro/a de adquirir la Prueba Gratis?</h4>
               <hr />
             </div>
 
@@ -244,9 +265,9 @@ export default function PaymentPlans() {
           <h4>Información </h4>
           <hr />
           <p>
-            Casting App ofrece a las empresas tres planes de pago: Free, Básico
+            Casting App ofrece a las empresas tres planes de pago: Prueba Gratis, Básico
             y Premium, para adaptarse a sus necesidades y presupuestos
-            específicos. El plan Free es ideal para aquellos que desean explorar
+            específicos. La Prueba Gratis es ideal para aquellos que desean explorar
             las funcionalidades básicas de la plataforma sin costo alguno. Con
             el plan Básico, las empresas obtienen acceso a características
             adicionales. Por otro lado, el plan Premium brinda una experiencia
@@ -265,7 +286,7 @@ export default function PaymentPlans() {
       </div>
       <div className={styles.titles}>
         <h4 className={selectedPlan === "Free" ? styles.selectedh4 : ""}>
-          Free
+          Prueba Gratis
         </h4>
         {/* className={styles.text_margin} */}
         <h4
@@ -273,10 +294,10 @@ export default function PaymentPlans() {
             selectedPlan === "Básico" ? styles.selectedh4 : ""
           }`}
         >
-          Premium
+          Básico
         </h4>
         <h4 className={selectedPlan === "Premium" ? styles.selectedh4 : ""}>
-          PRO
+          Premium
         </h4>
       </div>
       <div className={styles.bottomSection}>
@@ -323,7 +344,7 @@ export default function PaymentPlans() {
             encontrar talento de manera efectiva.
           </p> */}
           <p>
-            El plan Premium te permitirá:
+            El plan Básico te permitirá:
           </p>
           <ul>
             <li>Publicar hasta 20 eventos cuando usted lo desee. </li>
@@ -355,7 +376,7 @@ export default function PaymentPlans() {
             de búsqueda de talento al siguiente nivel.{" "}
           </p> */}
           <p>
-            Nuestro Plan PRO te permitirá:
+            Nuestro Plan Premium te permitirá:
           </p>
           <ul>
             <li>Publicar eventos de forma ilimitada.</li>

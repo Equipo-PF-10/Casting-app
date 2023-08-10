@@ -55,7 +55,7 @@ export default function BasicPlan () {
                     </div>
                     <div className={styles.bodyLeftPlans}>
                     <div className={styles.bodyLeftMp}>
-                      <CardMP text_card_mp={text_card_mp}/>
+                      {/* <CardMP text_card_mp={text_card_mp}/> */}
                     </div>
                     <div className={styles.bodyLeftPaypal}>
                     <div className={styles.bodyLeftMp}>
@@ -66,12 +66,12 @@ export default function BasicPlan () {
                 </div>
                 <div className={styles.bodyCenter}>
                   <div className={styles.bodyCenterPlan}>
-                    <h2>Plan Seleccionado: <span>Plan Premium</span></h2>
+                    <h2>Plan Seleccionado: <span>Plan Básico</span></h2>
                   </div>
                   <hr />
                   <div className={styles.bodyCenterIntro}>
-                    <p>Nuestro Plan Premium es una opción intermedia que ofrece una experiencia enriquecedora para las empresas que buscan talentos emergentes. Este plan brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
-                    <p>Caracteristicas del Plan Premium: </p>
+                    <p>Nuestro Plan Básico es una opción intermedia que ofrece una experiencia enriquecedora para las empresas que buscan talentos emergentes. Este plan brinda a las empresas herramientas esenciales para encontrar talento de manera efectiva.</p>
+                    <p>Caracteristicas del Plan Básico: </p>
                   </div>
                   <div className={styles.bodyCenterFeatures}>
                     <ul>

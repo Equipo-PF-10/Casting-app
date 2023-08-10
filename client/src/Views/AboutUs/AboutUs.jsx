@@ -5,7 +5,7 @@ import { BsLinkedin } from "react-icons/bs";
 import { BsGithub } from "react-icons/bs";
 import julio from "../../../assets/Fotos/julio.png";
 import edu from "../../../assets/Fotos/edu.png";
-import agus from "../../../assets/Fotos/agus.png";
+import agus from "../../../assets/Fotos/agus.jpg";
 import pablo from "../../../assets/Fotos/pablo.png";
 import pedro from "../../../assets/Fotos/pedro.png";
 import sarah from "../../../assets/Fotos/sarah.png";
@@ -207,7 +207,7 @@ const AboutUs = () => {
               />
             </div>
             <p className={style.name}>
-              <h3>Agustin Vargas</h3>
+              <h3>Agustín Vargas</h3>
               <span>Fullstack web developer</span>
             </p>
             <div className={style.social}>

@@ -49,7 +49,7 @@ const ProfileModel=() => {
               }
             </div>
             <div className={style.textoCard}>
-              <h3 className={style.nombre}>{userName ? userName : talentId?.name}</h3>
+              <h3 className={style.nombre}>{talentId?.name ? talentId.name : userName}</h3>
               <h5 className={style.titulo}>{habilidades?.join(", ")}</h5>
               {/* <p className={style.descripcion}>
                 {talentId?.aboutMe}

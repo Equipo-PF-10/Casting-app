@@ -1,3 +1,4 @@
+import axios from "axios";
 import styles from "./CardContacto.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -20,11 +21,27 @@ const CardContacto = (props) => {
     setModalContratar(false);
   };
   //Eliminar de la lista de contactos y postear en la de contratados (cambio en el estado status=Contactado a Contratado )
-  const handleClickContratarConfirmation = () => {
+  const handleClickContratarConfirmation = async () => {
     dispatch(add_hired(props.id_talent, props.id_company, props.event.id));
     dispatch(message_hired_or_refused_talents("¡Se ha contratado al postulante con éxito!"));
     setModalContratar(false);
+  
+    try {
+      const talentResponse = await axios.get(`http://localhost:3001/talents/${props.id_talent}`);
+      const talentEmail = talentResponse.data.email;
+  
+      const emailToTalent = await axios.post(`http://localhost:3001/email/talenContacHired/${talentEmail}`);
+      console.log(emailToTalent.data);
+  
+      const emailToCompany = axios.post(`http://localhost:3001/email/talenContacHiredForCompany/${localStorage.getItem("user_email")}`)
+    
+      console.log(emailToCompany.data);
+    } catch (error) {
+      console.error("Error sending emails:", error);
+    }
+   
   };
+
   const handleClickRechazar = () => {
     setModalRechazar(true);
   };
@@ -32,7 +49,7 @@ const CardContacto = (props) => {
     setModalRechazar(false);
   };
   //Eliminar de la lista de contactos (cambio en el estado status=Contactado a Rechazado )
-  const handleClickRechazarConfirmation = () => {
+  const handleClickRechazarConfirmation = async () => {
     dispatch(
       refuse_postulant_contacted(
         props.id_talent,
@@ -42,6 +59,22 @@ const CardContacto = (props) => {
     );
     dispatch(message_hired_or_refused_talents("¡Se ha rechazado al postulante con éxito!"));
     setModalRechazar(false);
+
+
+    try {
+      const talentResponse = await axios.get(`http://localhost:3001/talents/${props.id_talent}`);
+      const talentEmail = talentResponse.data.email;
+  
+      const emailToTalent = await axios.post(`http://localhost:3001/email/talentContacRefused/${talentEmail}`);
+      console.log(emailToTalent.data);
+  
+      const emailToCompany = axios.post(`http://localhost:3001/email/talentContacRefusedForCompany/${localStorage.getItem("user_email")}`)
+    
+      console.log(emailToCompany.data);
+    } catch (error) {
+      console.error("Error sending emails:", error);
+    }
+
   };
 
   return (

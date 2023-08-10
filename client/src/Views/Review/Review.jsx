@@ -111,9 +111,9 @@ const Review = () => {
         <FaStar
           key={index}
           size={80}
-          onClick={() => setInput(({ ...input, rating: starValue }))}
+          onClick={() => setInput({ ...input, rating: starValue })}
           //onClick={() => console.log(starValue)}
-          color={starValue <= input.rating ? "#4B31A1" : "#324844"}
+          color={starValue <= input.rating ? "#eae71f" : "#7ff88d"}
           style={{ cursor: "pointer" }}
         />
       );
