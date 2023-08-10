@@ -3,7 +3,7 @@ import "./App.css";
 import Landing from "./Views/Landing/Landing.jsx";
 import Login from "./Views/Login/Login.jsx";
 import RegisterModel from "./Components/RegisterModel/RegisterModel";
-import ProfileCompany from './Views/Profiles/ProfileCompany'
+import ProfileCompany from "./Views/Profiles/ProfileCompany";
 import ProfileModel from "./Views/profiles/ProfileModel";
 import EventForm from "./Components/EventForm/EventFrom";
 import NavBarLateral from "./Components/NavBarLateral/NavBarLateral";
@@ -23,7 +23,7 @@ import SendPersonalized from "./Components/mail/sendContactTalent";
 import Report from "./Views/Report/Report";
 import HiredTalent from "./Views/HiredTalent/HiredTalent";
 import Admin from "./Views/Admin/Admin";
-import Review from "./Views/Review/Review"
+import Review from "./Views/Review/Review";
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
 import HomeTalento from "./Views/Home/HomeTalento";
 import EventUpdate from "./Components/EventForm/EventUpdate";
@@ -32,7 +32,7 @@ import Loader from "./Components/Preloader/preloader";
 import AboutUs from "./Views/AboutUs/AboutUs";
 
 function App() {
-  return ( 
+  return (
     <>
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -48,24 +48,32 @@ function App() {
         <Route path="/company/plans" element={<PaymentPlans />} />
         <Route path="/company/plans/premium" element={<BasicPlan />} />
         <Route path="/company/plans/pro" element={<PremiumPlan />} />
-        <Route path="/company/plans/premium/paypal" element={<PaypalBasicPlan />} />
-        <Route path="/company/plans/pro/paypal" element={<PaypalPremiumPlan />} />
+        <Route
+          path="/company/plans/premium/paypal"
+          element={<PaypalBasicPlan />}
+        />
+        <Route
+          path="/company/plans/pro/paypal"
+          element={<PaypalPremiumPlan />}
+        />
         <Route path="/company/create" element={<EventForm />} />
-        <Route path="/company/hiredtalent/:id" element={<HiredTalent/>}/>
-        <Route path="/company/review/:id/:idEvent" element={<Review />} /> {/*id de compañia*/}
-        <Route path="/company/updateEvent" element={<EventUpdate/>} />
-        <Route path="/company/finishedEvents" element={<FinishedEvents/>}/>
+        <Route path="/form/eventUpdate/:id" element={<EventUpdate />} />
+        <Route path="/company/hiredtalent/:id" element={<HiredTalent />} />
+        <Route path="/company/review/:id/:idEvent" element={<Review />} />{" "}
+        {/*id de compañia*/}
+        <Route path="/company/updateEvent" element={<EventUpdate />} />
+        <Route path="/company/finishedEvents" element={<FinishedEvents />} />
         <Route path="/form/company" element={<FormEmpresa />} />
         <Route path="/form/talent" element={<FormTalento />} />
         <Route path="/NavBarLateral" element={<NavBarLateral />} />
         {/* <Route path="/home/company" element={<Home type="company"/>} /> */}
-        <Route path="/home/company" element={<HomeCompany/>} />
-        <Route path="/home/talent" element={<HomeTalento/>}/>
-        <Route path="/cloud" element={<Cloudinary/>}/>
-        <Route path="/contact" element={<SendPersonalized/>} />
-        <Route path="/admin" element={<Admin/>}/>
-        <Route path="/report" element={<Report/>}/>
-        <Route path="/about" element={<AboutUs/>}/>
+        <Route path="/home/company" element={<HomeCompany />} />
+        <Route path="/home/talent" element={<HomeTalento />} />
+        <Route path="/cloud" element={<Cloudinary />} />
+        <Route path="/contact" element={<SendPersonalized />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/report" element={<Report />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
     </>
   );

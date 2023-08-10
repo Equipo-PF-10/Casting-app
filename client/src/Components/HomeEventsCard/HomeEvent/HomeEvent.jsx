@@ -1,5 +1,5 @@
 import styles from "./HomeEvent.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector, connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -14,7 +14,9 @@ import {
 } from "../../../redux/actions";
 import { useEffect, useState } from "react";
 
-const HomeEvent = (props) => {
+const HomeEvent=(props) => {
+  //const {id}=useParams()
+  console.log(props.id);
   const dispatch = useDispatch();
   //const navigate = useNavigate();
   //const postulantes = useSelector((state) => state.postulatedTalentsByEvent);
@@ -109,7 +111,7 @@ const HomeEvent = (props) => {
         </div>
         <div className={styles.options}>
           <button className={styles.buttonEdit} onClick={handleClickEditEvent}>
-            <Link to={"/company/create"} className={styles.editar}>
+            <Link to={`/form/eventUpdate/${props.id}`} className={styles.editar}>
               Editar
             </Link>
           </button>
