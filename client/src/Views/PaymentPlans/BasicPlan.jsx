@@ -55,7 +55,7 @@ export default function BasicPlan () {
                     </div>
                     <div className={styles.bodyLeftPlans}>
                     <div className={styles.bodyLeftMp}>
-                      <CardMP text_card_mp={text_card_mp}/>
+                      {/* <CardMP text_card_mp={text_card_mp}/> */}
                     </div>
                     <div className={styles.bodyLeftPaypal}>
                     <div className={styles.bodyLeftMp}>

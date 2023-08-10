@@ -251,24 +251,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         talentById: payload,
       };
-    case FILTER_BY_HABILITY: {
-      if (payload === "Todos") {
-        return {
-          ...state,
-          filters: true,
-          postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
-        };
-      } else {
-        const hability = [...state.postulatedTalentsByEventFiltered].filter(
-          (talent) => talent.hability.includes(payload)
-        );
-        return {
-          ...state,
-          filters: true,
-          postulatedTalentsByEventFiltered: hability,
-        };
-      }
-    }
     case EDIT_COMPANY:
       const updateCompany = state.getAllCompanies.map((companies) => {
         if (companies.name === action.payload.name) {
@@ -295,6 +277,25 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         mascotas: updateMascotas,
       };
+
+      case FILTER_BY_HABILITY: {
+        if (payload === "Todos") {
+          return {
+            ...state,
+            filters: true,
+            postulatedTalentsByEventFiltered: [...state.postulatedTalentsByEvent],
+          };
+        } else {
+          const hability = [...state.postulatedTalentsByEventFiltered].filter(
+            (talent) => talent.hability.includes(payload)
+          );
+          return {
+            ...state,
+            filters: true,
+            postulatedTalentsByEventFiltered: hability,
+          };
+        }
+      }
     case FILTER_BY_EVENT_HABILITY: {
       if (payload === "Todos") {
         return {
@@ -303,7 +304,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
           eventsFiltered: [...state.allEvents],
         };
       } else {
-        const hability = [...state.allEvents].filter((event) =>
+        const hability = [...state.eventsFiltered].filter((event) =>
           event.habilityRequired.includes(payload)
         );
         return {
@@ -376,7 +377,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
           eventsFiltered: [...state.allEvents],
         };
       } else {
-        const ubication = [...state.allEvents].filter((event) =>
+        const ubication = [...state.eventsFiltered].filter((event) =>
           event.ubication.includes(payload)
         );
         return {
@@ -386,6 +387,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
     }
+    case GET_NAME_EVENTS:
+      return {
+        ...state,
+        filtersEvent: true,
+        eventsFiltered: payload,
+      };
     case SEND_ID_OF_CARD:
       return {
         ...state,
@@ -400,11 +407,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         companyDetail: payload,
-      };
-    case GET_NAME_EVENTS:
-      return {
-        ...state,
-        allEvents: payload,
       };
     case IMAGE_URL:
       return {

@@ -364,6 +364,8 @@ export const get_all_postulations = (fk) => {
     }
   };
 };
+
+
 export const get_postulant_by_name = (fk, name) => {
   let endpoint = `http://localhost:3001/applied/company/${fk}/?name=${name}`;
 
@@ -542,6 +544,16 @@ export const filterByEvent = (hability) => {
   };
 };
 
+export const filterByUbicationEvent = (ubication) => {
+  return (dispatch) => {
+    return dispatch({
+      type: FILTER_BY_UBICATION_EVENT,
+      payload: ubication,
+    });
+  };
+};
+
+
 export const filterByGender = (gender) => {
   return (dispatch) => {
     return dispatch({
@@ -568,14 +580,6 @@ export const filterByUbication = (ubication) => {
   };
 };
 
-export const filterByUbicationEvent = (ubication) => {
-  return (dispatch) => {
-    return dispatch({
-      type: FILTER_BY_UBICATION_EVENT,
-      payload: ubication,
-    });
-  };
-};
 
 export const send_id_of_card = (id) => {
   return (dispatch) => {
