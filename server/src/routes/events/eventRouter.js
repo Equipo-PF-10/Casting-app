@@ -34,7 +34,7 @@ eventRouter.get("/:companyId", handlerGetEventByCompanyId);
 
 //? Esta ruta actualiza informacion de un evento por su id.
 eventRouter.put("/:id", handlerUpdateEventById);
-git
+
 //? Esta ruta hace el borrado logico de un evento por su id.
 eventRouter.delete("/:id", handlerDeleteEventById);
 
