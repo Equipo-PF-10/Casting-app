@@ -5,6 +5,7 @@ const {
   DisableTalent,
   SubscriptionPayment,
   Payment,
+  Admin,
 } = require("../../db");
 const { deleteTalent } = require("../talents/talentsController");
 const { deleteCompanyById } = require("../companies/companiesController.js");
@@ -417,6 +418,49 @@ const getBannedUsers = async (userType) => {
   }
 };
 
+const postAdmin = async (email, password) => {
+  try {
+    const [admin, created] = await Admin.findOrCreate({
+      where: { email },
+      defaults: {
+        email,
+        password,
+      },
+    });
+
+    if (!created)
+      throw new Error("Ya existe el usuario Admin. con este email.");
+
+    return admin;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const getAdmin = async () => {
+  try {
+    const admin = await Admin.findAll();
+    return admin;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const findAdmin = async (id, email, password) => {
+  try {
+    const foundInDb = await Admin.findOne({
+      where: {
+        email,
+        password,
+      },
+    });
+
+    return foundInDb;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 module.exports = {
   getCompaniesByMonth,
   getUsersByMonth,
@@ -430,4 +474,7 @@ module.exports = {
   banUser,
   desbanUser,
   getBannedUsers,
+  postAdmin,
+  getAdmin,
+  findAdmin,
 };

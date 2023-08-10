@@ -11,6 +11,8 @@ const {
   handlerToBan,
   handlerToDesban,
   handlerGetBanUsers,
+  handlerCreateAdmin,
+  handlerGetAdmin,
 } = require("../../handlers/admin/adminHandlers");
 
 const { Router } = require("express");
@@ -69,5 +71,10 @@ adminRouter.delete("/users/ban/:userType/:id", handlerToBan);
 
 //? Esta ruta es para desbanear (pasa de la tabla de borrado lógico a la original) un usuario.
 adminRouter.patch("/users/desban/:userType/:id", handlerToDesban);
+
+//? Esta ruta es para registra un admin.
+adminRouter.post("/login", handlerCreateAdmin);
+
+adminRouter.get("/login", handlerGetAdmin);
 
 module.exports = adminRouter;
