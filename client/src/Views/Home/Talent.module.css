@@ -165,7 +165,7 @@
 
 .info li{
     font-size: 18px;
-    /*padding-block: 5px;*/
+    padding-block: 5px;
     transition: 0.3s;
     display: flex;
 }
@@ -205,8 +205,8 @@
 }
 
 
-.yourEvents{
-     background-color: #755f98;
+.yourEvents{    
+    background-color: #755f98;
     border-radius: 30px;
     /*padding-block: 10px;*/
     overflow-y: auto;
@@ -218,12 +218,25 @@
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
 }
 
-.yourEvents h4{
-    /*margin-block: 3rem;*/
-    padding: 10px;
+/* .yourEvents h4{
+    margin-block: 3rem;     
+    padding: 0px;
     color: whitesmoke;
     background-color: #aaa0cc;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 20px 5px 10px; 
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
+    rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
+} */
+
+.yourEvents h4 {
+    width: 50%;
+    right: 50px;
+    padding-right: -25%;
+    height: auto;
+    margin: 0px; 
+    color: whitesmoke;
+    background-color: #aaa0cc;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.2) 10px 20px 30px,
     rgba(0, 0, 0, 0.1) 5px 1px 10px 3px, rgba(1, 0, 0, 0.2) 0px -1px 3px inset;
