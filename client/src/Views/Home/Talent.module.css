@@ -181,26 +181,32 @@
     list-style: none;
 }
 
+.eventH{
+    margin: 20px 10px 0 20px;
+    padding: 10px 0 10px 0;
+}
+
 .aplication{
     display: flex;
     gap: 10px;
-    margin-block: 10px;
-    height: 2rem;
+    margin-block: 12px;
+    /*height: 2rem;*/
     align-items: center;
     color: whitesmoke;
 }
 
-.aplication h4:first-of-type{
+/*.aplication h4:first-of-type{*/
     /*border-right: #4b31a1 2px solid;*/
-    width: 8rem;
-    font-size: 20px;
-}
+    /*width: 8rem;
+    font-size: 20px;*/
+/*}*/
 
 .aplication h4{
     font-size: 20px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    /*align-items: center;*/
+    /*gap: 10px;*/
     margin: auto;
 }
 
@@ -247,9 +253,9 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.aplication1 h4{
+/*.aplication1 h4{
     font-size: 1.2rem;
-}
+}*/
 
 .btnSection{
 background-color: aqua;

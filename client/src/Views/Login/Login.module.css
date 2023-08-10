@@ -1,11 +1,16 @@
+.containerGeneral{
+  background-color: rgb(213, 213, 213);
+
+}
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: rgb(227, 227, 227);
-  margin-top: -50px;
+  /*background-color: rgb(227, 227, 227);*/
+  /*margin-top: -50px;*/
 }
 
 .containerImg {
@@ -60,6 +65,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.adminis{
+  color: #429283;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
 }
 
 .loginRegistro {
