@@ -62,24 +62,301 @@ La idea de este proyecto es construir una aplicación web hdgjhfgkygjf:
 
 ### **🖱 BASE DE DATOS**
 
-Deberás crear dos modelos para tu base de datos. Una será para los países y la otra será para las actividades turísticas (pueden llevar el nombre que tu quieras). La relación entre ambos modelos debe ser de muchos a muchos. A continuación te dejamos las propiedades que debe tener cada modelo. Aquellas marcadas con un asterísco son obligatorias.
+Para nuestra Base de Datos, utilizamos las tecnologías de Sequelize y PostgreSQL. En total hemos creado 18 modelos con sus respectivas relaciones. 
 
-**📍 MODELO 1 | jbchfkdfhf**
+**📍 MODELO 1 | Admin
 
--  ID. \*
--  Nombre. \*
--  Imagen. \*
-
-<br />
-
-**📍 MODELO 2 | adjjkdfhff**
-
--  ID. \*
--  Nombre. \*
+-  ID. 
+-  Email. 
+-  Password. 
 
 <br />
 
----
+**📍 MODELO 2 | Applied
+
+-  ID. 
+-  Date.
+-  changeData.
+-  Active.
+-  Status.
+-  Talentreviews.
+-  TalentreviewsComentary.
+-  Companyreviews.
+-  CompanyreviewsComentary.
+-  EventId.
+
+<br />
+
+**📍 MODELO 3 | Company
+- ID.
+- Name.
+- Image.
+- Country.
+- Available.
+- Domain.
+- descriptionShort.
+- Instagram.
+- Facebook.
+- phoneNumber.
+- numberPosts.
+- Plan.
+- conditionPlan.
+- planFree.
+- Linkedin.
+- Twitter.
+- Password.
+- Email.
+- industryMain.
+- Description.
+- creationDate.
+- expirationDate.
+- Reviews.
+- reviewsCount.
+
+<br />
+
+**📍 MODELO 4 | CompanySelectedAsFav
+- Id.
+- Name.
+- Logo.
+- Country.
+- Available.
+- Domain.
+- descriptionShort.
+- Instagram.
+- Facebook.
+- Linkedin.
+- Twitter.
+- Password.
+- Email.
+- industryMain.
+- Description.
+- phoneNumber.
+- Plan.
+- conditionPlan.
+- creationDate.
+- expirationDate.
+- Reviews.
+- reviewsCount.
+
+  <br />
+
+**📍 MODELO 5 | DisableCompany
+- Id.
+- Name.
+- Image.
+- Country.
+- Available.
+- Domain.
+- descriptionShort.
+- Instagram.
+- Facebook.
+- phoneNumber.
+- numberPosts.
+- Plan.
+- conditionPlan.
+- Linkedin.
+- Twitter.
+- Password.
+- Email.
+- industryMain.
+- Description.
+- creationDate.
+- expirationDate.
+- Reviews.
+- reviewsCount.
+
+<br />
+
+**📍 MODELO 6 | DisableEvent
+- Id.
+- Name.
+- Image.
+- shortDescription.
+- Detail.
+- Active.
+- Ubication.
+- habilityRequired.
+- habilitySalary.
+- creationDate.
+- expirationDate.
+- changeDate.
+- Contact.
+- CompanyId.
+
+<br />
+
+**📍 MODELO 7 | DisableTalent
+- Id.
+- Email.
+- Name.
+- Dni.
+- Password.
+- Available.
+- aboutMe.
+- Image.
+- Gender.
+- Nationality.
+- Ubication.
+- Hability.
+- Contexture.
+- Weight.
+- ethnicOrigin.
+- dateComeBack.
+- socialNework.
+- Portfolio.
+- Contact.
+- Reviews.
+- reviewsCount.
+
+
+<br />
+
+**📍 MODELO 8 | Event
+- Id.
+- Name.
+- Image.
+- shortDescription.
+- Description.
+- Active.
+- Ubication.
+- habilityRequired.
+- Salary.
+- creationDate.
+- expirationDate.
+- changeDate.
+- Contact.
+
+<br />
+
+**📍 MODELO 9 | Messenger
+- Name.
+- Email.
+- Content.
+- Read.
+
+<br />
+
+**📍 MODELO 10 | Payment
+- Id.
+- orderId.
+- Amount.
+- Status.
+- buyerName.
+- mercadoPagoPaymentId.
+- returnUrl.
+- notificationUrl.
+
+<br />
+
+**📍 MODELO 11 | Report
+- Id.
+- Text.
+- Report.
+- CompanyId.
+- TalentId.
+
+<br />
+
+**📍 MODELO 12 | Reviews
+- Id.
+- Text.
+- Rating.
+- CompanyId.
+- TalentId.
+
+<br />
+
+**📍 MODELO 13 | SubscriptionPayment
+- Id.
+- paymentId.
+- planType.
+- paymentDate.
+- expirationDate.
+- Price.
+- Taxes.
+
+<br />
+
+**📍 MODELO 14 | SubscriptionPlan
+- Id.
+- Name.
+- Description.
+- Price.
+
+<br />
+
+**📍 MODELO 15 | Talent
+- Id.
+- Email.
+- Name.
+- Dni.
+- Password.
+- Available.
+- aboutMe.
+- Image.
+- Gender.
+- Nationality.
+- Ubication.
+- Hability.
+- Contexture.
+- Weight.
+- Height.
+- ethnicOrigin.
+- dateComeBack.
+- socialNetwork.
+- Portfolio.
+- Contact.
+- Reviews.
+- reviewsCount.
+- creationDate.
+
+ <br />
+
+**📍 MODELO 13 | TalentApplied
+- Id.
+- TalentId.
+- AppliedId.
+
+<br />
+
+**📍 MODELO 14 | TalentSelectedAsFav
+- Id.
+- Email.
+- Name.
+- Dni.
+- Password.
+- Available.
+- aboutMe.
+- Image.
+- Gender.
+- Nationality.
+- Ubication.
+- Hability.
+- Contexture.
+- Weight.
+- Height.
+- ethnicOrigin.
+- dateComeback.
+- socialNetwork.
+- Portfolio.
+- Contact.
+- Reviews.
+- reviewsCount.
+
+<br />
+
+**📍 MODELO 15 | ToContact
+- Id.
+- Date.
+- changeDate.
+- Active.
+- Status.
+- Talentreviews.
+- TalentreviewsComentary.
+- Companyreviews.
+- CompanyreviewsComentary.
+- EvemtId.
 
 <br />
 
