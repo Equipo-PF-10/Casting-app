@@ -382,29 +382,50 @@ Introducción:
 Arquitectura Controller en castinApp:
 
 📁controller
+<br />
    📁admin
+   <br />
      📋 adminControllers.js   
+     <br />
    📁companies
+   <br />
      📋 companiesController.js
+     <br />
      📋 conditionPlanController.js
+     <br />
      📋 talentContactController.js
+     <br />
      📋 talentFavoriteController.js
+     <br />
    📁events
+   <br />
      📋 companyFormController.js
+     <br />
      📋 eventsController.js
+     <br />
      📋 talentFormController.js
+     <br />
    📁payments
      📋 companypaymentsController.js
      📋 paymentsController.js
    📁plans
+   <br />
      📋 plansController.js
+     <br />
    📁report
+   <br />
      📋 reportController.js
+     <br />
    📁reviews
+   <br />
      📋 reviewsController.js
+     <br />
    📁talents
+   <br />
      📋 companyfavoriteController.js
+     <br />
      📋 postulationsController.js
+     <br />
      📋 talentsController.js
          
     
@@ -422,33 +443,61 @@ Arquitectura Controller en castinApp:
 Arquitectura Handler en castinApp:
 
 📁handlers
+<br />
   📁admin
+  <br />
     📋 adminHandlers.js
+    <br />
   📁companies
+  <br />
     📋 companiesHandler.js
+    <br />
     📋 conditionPlanHandler.js
+    <br />
     📋 talentContactHandler.js
+    <br />
     📋 talentFavoritehandler.js
+    <br />
   📁emails
+  <br />
     📋 emailsHandler.js
+    <br />
   📁events
+  <br />
     📋 eventsHandler.js
+    <br />
   📁forms
+  <br />
     📋 companiesFormHandler.js
+    <br />
     📋 eventFormHandler.js 
+    <br />
     📋 talentFormHandler.js
+    <br />
   📁payments
+  <br />
     📋 companiesPaymentsHandler.js
+    <br />
     📋 paymentsHandler.js
+    <br />
   📁plans
+  <br />
     📋 planHandler.js
+    <br />
   📁reports
-    📋 reportHandler.js    
+  <br />
+    📋 reportHandler.js  
+    <br />
   📁reviews
+  <br />
     📋 reviewsHandler.js
+    <br />
   📁talents
+  <br />
     📋 companyFavoriteHandler.js
+    <br />
     📋 postulationsHandler.js
+    <br />
     📋 talentsHandler.js
 
     
