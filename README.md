@@ -164,8 +164,11 @@ Arquitectura Controller en castinApp:
      📋 talentFormController.js
      <br />
    📁payments
+   <br />
      📋 companypaymentsController.js
+     <br />
      📋 paymentsController.js
+     <br />
    📁plans
    <br />
      📋 plansController.js
@@ -190,6 +193,7 @@ Arquitectura Controller en castinApp:
 🖱 Importancia de los Manejadores en CastinApp
 
   Los manejadores desempeñan un papel vital en CastinApp para manejar interacciones específicas y eventos clave dentro de la plataforma. Su relevancia se destaca en:
+  <br />
 
   📌 Respuesta a Solicitudes de Usuarios: Los manejadores se utilizan para responder a las solicitudes de los usuarios, como la creación de eventos, la inscripción de talentos o la gestión de pagos. Cada segmento tiene sus propios manejadores para garantizar una experiencia de usuario fluida y personalizada.
 
@@ -257,6 +261,7 @@ Arquitectura Handler en castinApp:
     📋 postulationsHandler.js
     <br />
     📋 talentsHandler.js
+    <br />
 
     
 
