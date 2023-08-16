@@ -406,8 +406,11 @@ Arquitectura Controller en castinApp:
      📋 talentFormController.js
      <br />
    📁payments
+   <br />
      📋 companypaymentsController.js
+     <br />
      📋 paymentsController.js
+     <br />
    📁plans
    <br />
      📋 plansController.js
