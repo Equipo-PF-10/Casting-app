@@ -125,22 +125,53 @@ Tu servidor deberá contar con las siguientes rutas:
 
 ### **🖱 FRONT-END**
 
-Se debe desarrollar una aplicación utilizando **React** y **Redux** que contenga las siguientes vistas:
+Para cada una de las vistas desarrolladas y diseñadas se aplicaron las siguientes tecnologías: 
+- React js
+- Redux
+- Css modules
+- Bootstrap
+- Toastify
+- NodeMailer
+- Formspree
+- Chart.js
+- Figma
+- Paypal developer
+- Auth 0
 
-**📍 LANDING PAGE |** deberás crear una página de inicio o bienvenida con:
+**📍 LANDING PAGE |
 
--  Alguna imagen de fondo representativa al proyecto.
--  Botón para ingresar a la **`home page`**.
+Esta es la vista inicial del proyecto, donde se va a mostrar información de la aplicación de forma general, como por ejemplo:
+
+- Navbar dinámico. Se encuentran los accesos al login y distintas secciones del landing
+- Main scrolling. Se puede ver una imagen de presentacion, un slider con los evento correspondientes a empresas con el plan premium, la informacion de los servicios ofrecidos, tips para el usuario y un formulario para contactar al equipo de Casting App. 
+- Footer. Contiene el acceso al dashboard para ingresar mediante un login a la cuenta de administrador, donde se podran ver métricas, deshabilitar, eliminar y habilitar usuarios y/o eventos,
 
 <br />
 
-**📍 HOME PAGE |** la página principal de tu SPA debe contener:
+**📍 LOGIN REGISTRO |
 
--  SearchBar: un input de búsqueda para encontrar países por nombre.
--  Sector en el que se vea un listado de cards con los países. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta **`GET /countries`** y deberá mostrar su:
-   -  Imagen de la bandera.
-   -  Nombre.
-   -  Continente.
+Esta ventana divide la aplicación en dos partes de acuerdo al tipo de usuario que se registra o se logea. Estos usuarios pueden ser "Talentos" o "Empresas". Se integro el servicio de Auth 0 para poder ingresar con la autorización de terceros o tambien de manera local.
+
+Una vez registrado, se redirige al usuario al home correspondiente
+
+<br />
+
+A continuación detallaremos cada una de las vistas correspondiente al usuario Empresa, las cuales tendrán acceso a una Navbar lateral general. Dicha Navbar permite la redirección a: Home, Perfil, Reviews, Salir y Ajustes.
+
+**📍 HOME PAGE EMPRESA |
+
+-  Navbar superior. Permite redirigir al usuario a: Crear Evento, Eventos Finalizados, Talentos Contratados y Una vista de Planes. 
+-  Carta de perfil. Sección que muestra una carta con la imagen y la información del usuario (nombre y plan actual)
+-  Eventos Publicados. Una sección que muestra los eventos publicados por la empresa con la opción de poder editarlos o finalizarlos.
+-  Postulantes Conectados. En esta sección se podrán visualizar los postulantes a eventos que fueron contactados, los cuales pueden ser rechazados o contratados. 
+-  Postulantes Favoritos: En esta sección se podrán visualizar los talentos seleccionados como Favoritos, pudiendo eliminarlo, enviar un mensaje y tambien contiene una busqueda por nombre.
+
+<br />
+
+**📍 HOME PAGE TALENTO |
+
+-  Navbar superior. Permite redirigir al usuario a: Crear Evento, Eventos Finalizados, Talentos Contratados y Una vista de Planes. 
+-  Sección que muestra una carta con la imagen y la informacion del usuario (nombre y plan actual)
 -  Cuando se le hace click a una Card deberá redirigir al detalle de ese país específico.
 -  Botones/Opciones para **filtrar** por continente y por tipo de actividad turística.
 -  Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente los países por orden alfabético y por cantidad de población.
