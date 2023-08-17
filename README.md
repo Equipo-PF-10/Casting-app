@@ -117,157 +117,114 @@ Para nuestra Base de Datos, utilizamos las tecnologías de Sequelize y PostgreSQ
 
 **📍 MODELO 18 | ToContact
 <br />
+<br />
+<br />
+<br />
 
 ### **🖱 BACK-END**
-
-📍Controladores y Manejadores en CastinApp
-
-Introducción: 
-
-    En el contexto de la aplicación CastinApp, que se centra en la gestión de casting para eventos y talentos, los controladores (controllers) y manejadores (handlers) desempeñan un papel esencial para garantizar la funcionalidad eficiente y ordenada de la plataforma. Estos componentes permiten una estructura modular y la separación de responsabilidades, contribuyendo así a un código más mantenible y escalable.
-
-
-🖱 Alcances de los Controladores en CastinApp
-
-    En la arquitectura de CastinApp, los controladores desempeñan un papel crucial en la coordinación de diversas áreas clave de la plataforma. Los alcances específicos de los controladores son:
-
-   📌 Gestión del Flujo de Trabajo: Los controladores en cada segmento, como "admin," "companies," "events," "talents," etc., gestionan el flujo de trabajo específico para cada entidad. Por ejemplo, los controladores de "companies" manejan la lógica detrás de las acciones relacionadas con las empresas inscritas en la plataforma.
-
-   📌 Interacción con la Base de Datos: Los controladores interactúan con la base de datos para realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) en los datos pertinentes. Por ejemplo, los controladores de "events" pueden crear eventos, listarlos, actualizarlos y eliminarlos según sea necesario.
-
-   📌 Validación y Seguridad: Los controladores son responsables de validar los datos de entrada y garantizar la seguridad de la información. Esto es especialmente importante en aspectos como "forms," donde los usuarios envían información relevante para el casting.
-
-Arquitectura Controller en castinApp:
-
-📁controller
 <br />
-   📁admin
-   <br />
-     📋 adminControllers.js   
-     <br />
-   📁companies
-   <br />
-     📋 companiesController.js
-     <br />
-     📋 conditionPlanController.js
-     <br />
-     📋 talentContactController.js
-     <br />
-     📋 talentFavoriteController.js
-     <br />
-   📁events
-   <br />
-     📋 companyFormController.js
-     <br />
-     📋 eventsController.js
-     <br />
-     📋 talentFormController.js
-     <br />
-   📁payments
-   <br />
-     📋 companypaymentsController.js
-     <br />
-     📋 paymentsController.js
-     <br />
-   📁plans
-   <br />
-     📋 plansController.js
-     <br />
-   📁report
-   <br />
-     📋 reportController.js
-     <br />
-   📁reviews
-   <br />
-     📋 reviewsController.js
-     <br />
-   📁talents
-   <br />
-     📋 companyfavoriteController.js
-     <br />
-     📋 postulationsController.js
-     <br />
-     📋 talentsController.js
-         
-    
-🖱 Importancia de los Manejadores en CastinApp
-
-  Los manejadores desempeñan un papel vital en CastinApp para manejar interacciones específicas y eventos clave dentro de la plataforma. Su relevancia se destaca en:
+<br />
+📍Controllers y Handlers en CastingApp
+<br />
+<br />
+- Introducción: 
+<br />
+<br />
+   
+ -   En el contexto de la aplicación CastingApp, que se centra en la gestión de casting para eventos y talentos, los Controllers y Handlers desempeñan un papel esencial para garantizar la funcionalidad eficiente y ordenada de la plataforma. Estos componentes permiten una estructura modular y la separación de responsabilidades, contribuyendo así a un código más mantenible y escalable.
+ 
+ -   En la arquitectura de CastingApp, los controllers desempeñan un papel crucial en la coordinación de diversas áreas clave de la plataforma. Los alcances específicos de los controllers  son:
   <br />
+   
+🖱 Alcances de los Controllers en CastingApp
 
-  📌 Respuesta a Solicitudes de Usuarios: Los manejadores se utilizan para responder a las solicitudes de los usuarios, como la creación de eventos, la inscripción de talentos o la gestión de pagos. Cada segmento tiene sus propios manejadores para garantizar una experiencia de usuario fluida y personalizada.
+   
+ -  📌 Gestión del Flujo de Trabajo: Los controllers en cada segmento, como "admin," "companies," "events," "talents," etc., gestionan el flujo de trabajo específico para cada entidad. Por ejemplo, los controladores de "companies" manejan la lógica detrás de las acciones relacionadas con las empresas inscritas en la plataforma.
 
-  📌 Eventos Asincrónicos: En un entorno donde los eventos pueden ocurrir de manera asincrónica, como "reviews" o "payments," los manejadores son cruciales para gestionar y responder a estos eventos en tiempo real.
+ -  📌 Interacción con la Base de Datos: Los controllers interactúan con la base de datos para realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) en los datos pertinentes. Por ejemplo, los controllers de "events" pueden crear eventos, listarlos, actualizarlos y eliminarlos según sea necesario.
 
-  📌 Mantenimiento de la Aplicación: Los manejadores también son esenciales para el mantenimiento y la actualización continua de CastinApp. Permiten agregar nuevas funcionalidades, ajustar la lógica existente y solucionar problemas de manera específica y modular.
+ -  📌 Validación y Seguridad: Los controllerss son responsables de validar los datos de entrada y garantizar la seguridad de la información. Esto es especialmente importante en aspectos como "forms," donde los usuarios envían información relevante para el casting.
+   <br />
+
+Arquitectura Controller en CastingApp:
+
+- 📁controller
+  - 📁admin
+    - 📋 adminControllers.js
+  - 📁companies
+    - 📋 companiesController.js
+    - 📋 conditionPlanController.js
+    - 📋 talentContactController.js
+    - 📋 talentFavoriteController.js
+  - 📁events
+    - 📋 companyFormController.js
+    - 📋 eventsController.js
+    - 📋 talentFormController.js
+  - 📁payments
+    - 📋 companypaymentsController.js
+    - 📋 paymentsController.js
+  - 📁plans
+    - 📋 plansController.js
+  - 📁report
+    - 📋 reportController.js
+  - 📁reviews
+    - 📋 reviewsController.js
+  - 📁talents
+    - 📋 companyfavoriteController.js
+    - 📋 postulationsController.js
+    - 📋 talentsController.js
+    <br />
+    <br />
+    
+ 🖱 Importancia de los Handlers en CastingApp
+
+ -  Los handlers desempeñan un papel vital en CastinApp para manejar interacciones específicas y eventos clave dentro de la plataforma. Su relevancia se destaca en:
+  <br />
+-   📌 Respuesta a Solicitudes de Usuarios: Los handlers se utilizan para responder a las solicitudes de los usuarios, como la creación de eventos, la inscripción de talentos o la gestión de pagos. Cada segmento tiene sus propios handlers para garantizar una experiencia de usuario fluida y personalizada.
+
+-   📌 Eventos Asincrónicos: En un entorno donde los eventos pueden ocurrir de manera asincrónica, como "reviews" o "payments," los handlers son cruciales para gestionar y responder a estos eventos en tiempo real.
+
+-   📌 Mantenimiento de la Aplicación: Los handlers también son esenciales para el mantenimiento y la actualización continua de CastinApp. Permiten agregar nuevas funcionalidades, ajustar la lógica existente y solucionar problemas de manera específica y modular.
 
 
 Arquitectura Handler en castinApp:
 
-📁handlers
+- 📁handlers
+  - 📁admin
+    - 📋 adminHandlers.js
+  - 📁companies
+    - 📋 companiesHandler.js
+    - 📋 conditionPlanHandler.js
+    - 📋 talentContactHandler.js
+    - 📋 talentFavoritehandler.js
+  - 📁emails
+    - 📋 emailsHandler.js
+  - 📁events
+    - 📋 eventsHandler.js
+  - 📁forms
+    - 📋 companiesFormHandler.js
+    - 📋 eventFormHandler.js 
+    - 📋 talentFormHandler.js
+  - 📁payments
+    - 📋 companiesPaymentsHandler.js
+    - 📋 paymentsHandler.js
+  - 📁plans
+    - 📋 planHandler.js
+  - 📁reports
+    - 📋 reportHandler.js  
+  - 📁reviews
+    - 📋 reviewsHandler.js
+  - 📁talents
+    - 📋 companyFavoriteHandler.js
+    - 📋 postulationsHandler.js
+    - 📋 talentsHandler.js
 <br />
-  📁admin
-  <br />
-    📋 adminHandlers.js
-    <br />
-  📁companies
-  <br />
-    📋 companiesHandler.js
-    <br />
-    📋 conditionPlanHandler.js
-    <br />
-    📋 talentContactHandler.js
-    <br />
-    📋 talentFavoritehandler.js
-    <br />
-  📁emails
-  <br />
-    📋 emailsHandler.js
-    <br />
-  📁events
-  <br />
-    📋 eventsHandler.js
-    <br />
-  📁forms
-  <br />
-    📋 companiesFormHandler.js
-    <br />
-    📋 eventFormHandler.js 
-    <br />
-    📋 talentFormHandler.js
-    <br />
-  📁payments
-  <br />
-    📋 companiesPaymentsHandler.js
-    <br />
-    📋 paymentsHandler.js
-    <br />
-  📁plans
-  <br />
-    📋 planHandler.js
-    <br />
-  📁reports
-  <br />
-    📋 reportHandler.js  
-    <br />
-  📁reviews
-  <br />
-    📋 reviewsHandler.js
-    <br />
-  📁talents
-  <br />
-    📋 companyFavoriteHandler.js
-    <br />
-    📋 postulationsHandler.js
-    <br />
-    📋 talentsHandler.js
-    <br />
-
+<br />
     
 
-🖱 Conclusión
+ 🖱 Conclusión
 
-  En la aplicación CastinApp, los controladores y manejadores son pilares fundamentales que permiten una gestión eficiente de la plataforma. A través de una estructura modular y la separación de responsabilidades, los controladores coordinan acciones y la lógica de negocio en diferentes segmentos. Los manejadores responden a eventos y solicitudes, asegurando una experiencia fluida y personalizada para los usuarios. En conjunto, estos componentes contribuyen al desarrollo de una plataforma escalable, mantenible y eficiente para la gestión de casting y talentos.
+  En la aplicación CastingApp, los Controllers y handlers son pilares fundamentales que permiten una gestión eficiente de la plataforma. A través de una estructura modular y la separación de responsabilidades, los controladores coordinan acciones y la lógica de negocio en diferentes segmentos. Los manejadores responden a eventos y solicitudes, asegurando una experiencia fluida y personalizada para los usuarios. En conjunto, estos componentes contribuyen al desarrollo de una plataforma escalable, mantenible y eficiente para la gestión de casting y talentos.
 
 <br />
 
