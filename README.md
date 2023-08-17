@@ -320,27 +320,22 @@ A continuación detallaremos cada una de las vistas correspondiente al usuario E
 
 <br />
 
-**📍 HOME PAGE TALENTO |
+**📍 SEARCH PAGE PARA EMPRESAS |
 
--  Navbar superior. Permite redirigir al usuario a: Crear Evento, Eventos Finalizados, Talentos Contratados y Una vista de Planes. 
--  Sección que muestra una carta con la imagen y la informacion del usuario (nombre y plan actual)
--  Cuando se le hace click a una Card deberá redirigir al detalle de ese país específico.
--  Botones/Opciones para **filtrar** por continente y por tipo de actividad turística.
--  Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente los países por orden alfabético y por cantidad de población.
--  Paginado: el listado de países se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 10 países por página.
+  En esta vista se muestra el detalle de los postulantes a un evento específico y consta de la siguiente estructura:
+-  Navbar superior. Permite al usuario: Buscar postulantes por nombre, filtrar por habilidad artística, ubicación, género y contextura física.
+-  Sección que muestra el detalle de un postulante, ademas muestra las opciones/botones para ver el perfil del postulante, contactarlo o rechazarlo.
+-  Sección central donde se muestran 10 cards de postulantes por pagina. En cada card se muestra la imagen, el nombre y la orientación artistica del talento postulado al evento.
 
+📋Cabe destacar que el usuario Empresa no podrá acceder a la vista si el evento publicado no tiene postulantes. 
 <br />
 
-**📍 DETAIL PAGE |** en esta vista se deberá mostrar toda la información específica de un país:
+**📍 PLANS PAGE | 
 
--  ID (Código de tres letras).
+  En esta vista se muestra informacion general a cerca de los planes que ofrece Casting App, además de 3 tipos de planes que el usuario empresa puede escoger para poder crear eventos.
+-  
 -  Nombre.
--  Imagen de la bandera.
--  Continente.
--  Capital.
--  Subregión (si tiene).
--  Área (si tiene).
--  Población.
+
 
 <br />
 
